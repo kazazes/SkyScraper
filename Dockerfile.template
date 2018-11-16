@@ -13,22 +13,25 @@ RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /e
 
 RUN apt-get -q update \
   && apt-get -y -q install --no-install-recommends \
-  build-essential \
-  python-scipy \
-  python-numpy \
-  python-apt \
   bladerf-fpga-hostedxa4 \
+  build-essential \
+  python-apt \
+  python-numpy \
+  python-scipy \
   && apt-get -y -q install \
-  multimon \
-  sudo \
   apt-utils \
-  sox \
-  git \
   curl \
-  wget \
+  git \
+  locales \
+  multimon \
   python-dev \
   python3-dev \
-  && rm -rf /var/lib/apt/lists/*
+  sox \
+  sudo \
+  wget \
+  && rm -rf /var/lib/apt/lists/* \
+  && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+  && locale-gen
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
@@ -80,7 +83,6 @@ RUN pybombs -v install \
   soapybladerf \
   gr-osmosdr \
   bladeRF \
-  # gr-op25 \
   && sed 's/@BLADERF_GROUP@/plugdev/g' ./src/bladeRF/host/misc/udev/88-nuand.rules.in > ./src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp ./src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
@@ -104,4 +106,6 @@ RUN git clone https://github.com/kazazes/trunk-recorder.git
 
 WORKDIR /skyscraper/build/trunk-recorder/
 RUN . /pybombs/setup_env.sh && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
-  && ln -s /skyscraper/src/trunk-recorder/recorder /usr/local/bin/trunk-recorder
+  && ln -s /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder
+
+ENTRYPOINT [ "/usr/local/bin/trunk-recorder" ]

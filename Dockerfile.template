@@ -96,7 +96,8 @@ ENTRYPOINT [ "/bin/bash" ]
 FROM dependencies as trunk-recorder
 
 RUN mkdir /skyscraper
-COPY ./src /skyscraper
+COPY ./src/trunk-recorder /skyscraper/src/trunk-recorder
 
 WORKDIR /skyscraper/src/trunk-recorder
-RUN cmake . && make -j$(nproc)
+RUN . /pybombs/setup_env.sh && cmake . && make -j$(nproc) && make install \
+  && ln -s /skyscraper/src/trunk-recorder/recorder /usr/local/bin/trunk-recorder

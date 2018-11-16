@@ -92,3 +92,11 @@ RUN rm -rf /tmp/* && apt-get -y autoremove --purge \
 ENV INITSYSTEM on
 
 ENTRYPOINT [ "/bin/bash" ]
+
+FROM dependencies as trunk-recorder
+
+RUN mkdir /skyscraper
+COPY ./src/trunk-recorder /skyscraper/src/trunk-recorder
+
+WORKDIR /skyscraper/src/trunk-recorder
+RUN . /pybombs/setup_env.sh && cmake . && make -j$(nproc)

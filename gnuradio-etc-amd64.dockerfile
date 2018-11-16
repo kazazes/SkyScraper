@@ -95,8 +95,12 @@ ENTRYPOINT [ "/bin/bash" ]
 
 FROM dependencies as trunk-recorder
 
-RUN mkdir -p /skyscraper/build
-COPY ./src/trunk-recorder /skyscraper/src/trunk-recorder
+WORKDIR /skyscraper
+
+RUN mkdir build && mkdir src
+
+WORKDIR /skyscraper/src/
+RUN git clone https://github.com/kazazes/trunk-recorder.git
 
 WORKDIR /skyscraper/build/trunk-recorder/
 RUN . /pybombs/setup_env.sh && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \

@@ -69,15 +69,7 @@ FROM gnuradio as dependencies
 
 WORKDIR /pybombs/
 
-RUN apt-get update && pybombs -v install --deps-only \
-  soapysdr \
-  soapyremote \
-  soapybladerf \
-  gr-osmosdr \
-  bladeRF \
-  gr-op25 \
-  && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src
-RUN pybombs -v install \
+RUN apt-get update && pybombs -v install \
   soapysdr \
   soapyremote \
   soapybladerf \
@@ -86,9 +78,8 @@ RUN pybombs -v install \
   && sed 's/@BLADERF_GROUP@/plugdev/g' ./src/bladeRF/host/misc/udev/88-nuand.rules.in > ./src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp ./src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf ./src/
-
-RUN rm -rf /tmp/* && apt-get -y autoremove --purge \
+  && rm -rf /var/lib/apt/lists/* /pybombs/src /tmp/* \
+  && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
 ENV INITSYSTEM on

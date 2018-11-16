@@ -18,7 +18,6 @@ RUN apt-get -q update \
   python-apt \
   python-numpy \
   python-scipy \
-  && apt-get -y -q install \
   apt-utils \
   curl \
   git \
@@ -29,6 +28,7 @@ RUN apt-get -q update \
   sox \
   sudo \
   wget \
+  ca-certificates \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen

@@ -80,7 +80,7 @@ RUN pybombs -v install \
   soapybladerf \
   gr-osmosdr \
   bladeRF \
-  gr-op25 \
+  # gr-op25 \
   && sed 's/@BLADERF_GROUP@/plugdev/g' ./src/bladeRF/host/misc/udev/88-nuand.rules.in > ./src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp ./src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
@@ -95,9 +95,9 @@ ENTRYPOINT [ "/bin/bash" ]
 
 FROM dependencies as trunk-recorder
 
-RUN mkdir /skyscraper
+RUN mkdir -p /skyscraper/build
 COPY ./src/trunk-recorder /skyscraper/src/trunk-recorder
 
-WORKDIR /skyscraper/src/trunk-recorder
-RUN . /pybombs/setup_env.sh && cmake . && make -j$(nproc) && make install \
+WORKDIR /skyscraper/build/trunk-recorder/
+RUN . /pybombs/setup_env.sh && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
   && ln -s /skyscraper/src/trunk-recorder/recorder /usr/local/bin/trunk-recorder

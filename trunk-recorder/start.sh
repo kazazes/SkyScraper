@@ -2,4 +2,4 @@
 
 source /pybombs/setup_env.sh
 
-./recorder -c /data/sites/SF-SN/SF.json
+./recorder --config /data/sites/SF-SN/SF.json

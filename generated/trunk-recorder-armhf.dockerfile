@@ -62,8 +62,6 @@ RUN apt-get update && pybombs -vv install gnuradio \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
-ENTRYPOINT [ "/bin/bash" ]
-
 FROM gnuradio as dependencies
 
 WORKDIR /pybombs/
@@ -83,8 +81,6 @@ RUN apt-get update && pybombs -v install \
 
 ENV INITSYSTEM on
 
-ENTRYPOINT [ "/bin/bash" ]
-
 FROM dependencies as trunk-recorder
 
 WORKDIR /skyscraper
@@ -99,4 +95,4 @@ RUN chmod +x start.sh && . /pybombs/setup_env.sh \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-ENTRYPOINT [ "/bin/bash", "/skyscraper/build/trunk-recorder/start.sh" ]
+CMD [ "/bin/bash", "/skyscraper/build/trunk-recorder/start.sh" ]

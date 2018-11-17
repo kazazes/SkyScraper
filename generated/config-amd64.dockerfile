@@ -14,6 +14,6 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 
 RUN git clone git@github.com:kazazes/skyscraper-config.git
 
-CMD [ "sh", "/skyscraper-config/fetch-all.sh" ]
+WORKDIR /data/
 
-WORKDIR /data/config
+CMD [ "sh", "/skyscraper-config/fetch-all.sh" ]

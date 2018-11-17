@@ -99,4 +99,4 @@ RUN chmod +x start.sh && . /pybombs/setup_env.sh \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/bin/bash", "/skyscraper/build/trunk-recorder/start.sh" ]

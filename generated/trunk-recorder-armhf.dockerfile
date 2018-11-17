@@ -55,10 +55,10 @@ RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package wxpython forceinstalled true \
   && pybombs config --package gnuradio gitbranch v3.7.13.4
 
-RUN apt-get update && pybombs -v install gnuradio \
+RUN apt-get update && pybombs -vv install gnuradio \
   && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src \
   && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests tmp/* \
-  && apt-get purge doxygen \
+  && apt-get -y purge doxygen \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
@@ -99,4 +99,4 @@ RUN chmod +x start.sh && . /pybombs/setup_env.sh \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-ENTRYPOINT [ "/bin/bash" ]
+ENTRYPOINT [ "/bin/bash", "/skyscraper/build/trunk-recorder/start.sh" ]

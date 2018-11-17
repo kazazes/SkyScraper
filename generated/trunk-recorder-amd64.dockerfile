@@ -91,12 +91,11 @@ WORKDIR /skyscraper
 RUN mkdir build && mkdir src
 
 WORKDIR /skyscraper/build/trunk-recorder/
-RUN . /pybombs/setup_env.sh \
+COPY start.sh .
+RUN chmod +x start.sh && . /pybombs/setup_env.sh \
   && git clone https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-COPY start.sh .
-
-ENTRYPOINT [ "/usr/local/bin/trunk-recorder" ]
+ENTRYPOINT [ "/bin/bash" ]

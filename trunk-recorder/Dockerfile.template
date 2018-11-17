@@ -53,6 +53,7 @@ RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
+  && pybombs config --package doxygen forceinstalled true \
   && pybombs config --package gnuradio gitbranch v3.7.13.4
 
 RUN apt-get update && pybombs -vv install gnuradio \

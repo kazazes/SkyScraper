@@ -53,12 +53,13 @@ RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
+  && pybombs config --package doxygen forceinstalled true \
   && pybombs config --package gnuradio gitbranch v3.7.13.4
 
-RUN apt-get update && pybombs -v install --deps-only gnuradio && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src
-RUN pybombs -vv install gnuradio && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests
-
-RUN rm -rf /tmp/* && apt-get -y autoremove --purge \
+RUN apt-get update && pybombs -vv install gnuradio \
+  && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src \
+  && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests tmp/* \
+  && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
 ENTRYPOINT [ "/bin/bash" ]

@@ -46,7 +46,7 @@ services:
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
   postgres:
-    image: postgres:11.1-alpine
+    image: ./postgres
     volumes:
       - "resin-data:/data"
     restart: always

@@ -16,4 +16,6 @@ WORKDIR /data
 
 RUN git clone git@github.com:kazazes/skyscraper-config.git /data/config
 
-ENTRYPOINT [ "/bin/sh" ]
+WORKDIR /data/config
+
+CMD [ "sh", "/data/config/fetch-all.sh" ]

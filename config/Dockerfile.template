@@ -1,5 +1,7 @@
 FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
 
+CMD [ "sh", "/data/config/fetch-all.sh" ]
+
 COPY keys/* /root/.ssh/
 
 RUN apk add --update \
@@ -16,4 +18,4 @@ WORKDIR /data
 
 RUN git clone git@github.com:kazazes/skyscraper-config.git /data/config
 
-ENTRYPOINT [ "/bin/sh" ]
+WORKDIR /data/config

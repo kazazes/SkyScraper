@@ -8,6 +8,8 @@ services:
       context: ./trunk-recorder
     privileged: true
     restart: always
+    depends_on:
+      - "config"
     network_mode: host
     volumes:
       - "resin-data:/data"
@@ -20,8 +22,6 @@ services:
   config:
     build:
       context: ./config
-    privileged: true
-    restart: always
     network_mode: host
     volumes:
       - "resin-data:/data"

@@ -7,7 +7,7 @@ services:
     build:
       context: ./trunk-recorder
     privileged: true
-    restart: always
+    restart: "no"
     depends_on:
       - "config"
     network_mode: host

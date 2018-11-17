@@ -1,0 +1,17 @@
+FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
+
+RUN apk add --update \
+  curl \
+  git \
+  ca-certificates \
+  python3-dev \
+  py-virtualenv \
+  py-pip
+
+RUN git clone https://github.com/ScanOC/trunk-player.git
+
+WORKDIR /trunk-player/
+
+RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
+  && source env/bin/activate \
+  && pip install -r requirements.txt

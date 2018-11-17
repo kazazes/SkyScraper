@@ -1,9 +1,9 @@
 #! /bin/bash
 
-./manage.py migrate
-
 source /trunk-player/env/bin/activate
 cd /trunk-player
+
+./manage.py migrate
 
 cp -a /trunk-player/static /data/web/static
 

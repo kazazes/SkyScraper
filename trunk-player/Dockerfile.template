@@ -1,5 +1,6 @@
 FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
 
+RUN apk add --virtual build-deps gcc python-dev musl-dev
 RUN apk add --update \
   curl \
   git \
@@ -7,7 +8,8 @@ RUN apk add --update \
   python3-dev \
   py-virtualenv \
   py-pip \
-  libpq
+  libpq \
+  postgresql-dev
 
 RUN git clone https://github.com/ScanOC/trunk-player.git
 

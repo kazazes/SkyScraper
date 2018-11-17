@@ -45,3 +45,31 @@ services:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
+  postgres:
+    image: postgres:11.1-alpine
+    volumes:
+      - "resin-data:/data"
+    restart: always
+    network_mode: host
+    environment:
+      POSTGRES_USER: skyscraper
+      POSTGRES_PASSWORD: sdr
+      PGDATA: /data/postgres
+    ports:
+      - "5433:5432"
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - "resin-data:/data"
+    network_mode: host
+    environment:
+      - NGINX_PORT=80
+    command: /bin/bash -c "envsubst < /data/conf/nginx.conf > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"

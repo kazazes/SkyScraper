@@ -23,6 +23,7 @@ services:
     build:
       context: ./config
     network_mode: host
+    restart: "no"
     volumes:
       - "resin-data:/data"
     labels:

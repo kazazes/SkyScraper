@@ -11,3 +11,7 @@ sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-recorder/Dockerfile.template
 # Trunk Player
 sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./trunk-player/Dockerfile.template > ./generated/player-amd64.dockerfile
 sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-player/Dockerfile.template > ./generated/player-armhf.dockerfile
+
+# Postgres
+sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./trunk-player/Dockerfile.template > ./generated/player-amd64.dockerfile
+sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-player/Dockerfile.template > ./generated/player-armhf.dockerfile

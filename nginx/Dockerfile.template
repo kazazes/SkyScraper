@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-debian:jessie
+FROM resin/odroid-xu4-debian:stretch
 
 RUN apt-get update \
   && apt-get install nginx \

@@ -15,3 +15,7 @@ sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-player/Dockerfile.template >
 # Redis
 sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./redis/Dockerfile.template > ./redis/amd64.dockerfile
 sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./redis/Dockerfile.template > ./redis/armhf.dockerfile
+
+# Postgres
+sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./postgres/Dockerfile.template > ./postgres/amd64.dockerfile
+sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./postgres/Dockerfile.template > ./postgres/armhf.dockerfile

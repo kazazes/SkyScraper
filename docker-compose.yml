@@ -97,7 +97,6 @@ services:
     image: nicolargo/glances
     volumes:
       - "resin-data:/data"
-      - "/var/run/docker.sock:/var/run/docker.sock"
     restart: "always"
     environment:
       - 'GLANCES_OPT="-w"'

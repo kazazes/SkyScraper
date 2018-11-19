@@ -1,5 +1,7 @@
 FROM resin/odroid-xu4-debian:stretch
 
+ENV INITSYSTEM on
+
 RUN apt-get update \
   && apt-get install nginx \
   && rm -f /etc/nginx/nginx.conf && ln -s /data/skyscraper-config/conf/nginx.conf /etc/nginx/nginx.conf \

@@ -23,4 +23,6 @@ RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
+RUN chmod +x /trunk-player/start.sh
+
 ENTRYPOINT ["/trunk-player/start.sh" ]

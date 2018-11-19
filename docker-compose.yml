@@ -97,7 +97,6 @@ services:
     image: nginx:latest
     volumes:
       - "resin-data:/data"
-      - "resin-data/skyscraper-config/conf/nginx.conf:/etc/nginx/nginx.conf"
     ports:
       - 80:80
     restart: "no"

@@ -40,6 +40,7 @@ services:
     depends_on:
       - "redis"
       - "postgres"
+      - "nginx"
     volumes:
       - "resin-data:/data"
     labels:
@@ -85,7 +86,6 @@ services:
     volumes:
       - "resin-data:/data"
     restart: "no"
-    privileged: true
     network_mode: host
     ports:
       - 80:80

@@ -1,6 +1,5 @@
 FROM debian:stretch
 
-ENV INITSYSTEM on
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
@@ -15,5 +14,6 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
+ENV INITSYSTEM on
 
 ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

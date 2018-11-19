@@ -37,8 +37,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/
   && rm -rf /root/.cache/
 
 RUN pybombs recipes add-defaults \
-  && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr \
-  && echo "gitrev: db24d41" >> /root/.pybombs/recipes/gr-recipes/bladeRF.lwr
+  && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
 RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
   && pybombs config --env DEBIAN_FRONTEND noninteractive \
@@ -54,7 +53,8 @@ RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
-  && pybombs config --package gnuradio gitbranch v3.7.13.4
+  && pybombs config --package gnuradio gitbranch v3.7.13.4 \
+  && pybombs config --package bladeRF gitrev db24d41
 
 RUN apt-get update && pybombs -vv install gnuradio \
   && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src \

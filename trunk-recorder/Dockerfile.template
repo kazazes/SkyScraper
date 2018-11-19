@@ -79,6 +79,8 @@ RUN apt-get update && pybombs -v install \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
+COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
+
 ENV INITSYSTEM on
 
 FROM dependencies as trunk-recorder

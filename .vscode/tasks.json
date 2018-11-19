@@ -6,7 +6,8 @@
     {
       "label": "Push Balena",
       "type": "shell",
-      "command": "git push balena master"
+      "command": "git push balena master",
+      "problemMatcher": []
     }
   ]
 }

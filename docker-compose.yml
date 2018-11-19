@@ -87,6 +87,8 @@ services:
     restart: "no"
     privileged: true
     network_mode: host
+    ports:
+      - 80:80
     labels:
       io.resin.features.kernel-modules: "1"
       io.resin.features.firmware: "1"

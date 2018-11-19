@@ -15,12 +15,12 @@ RUN git clone https://github.com/kazazes/trunk-player
 
 WORKDIR /trunk-player/
 
-COPY settings_local.py ./trunk-player/
-COPY start.sh .
+COPY settings_local.py /trunk-player/trunk-player/
+COPY start.sh /trunk-player
 
 RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
-CMD [ "sh", "start.sh" ]
+ENTRYPOINT ["/trunk-player/start.sh" ]

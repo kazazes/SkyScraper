@@ -138,4 +138,4 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-CMD ["nginx", "-g", "daemon off;", "-c", "/data/conf/nginx.conf"]
+CMD ["nginx", "-g", "daemon off", "-c", "/data/conf/nginx.conf;"]

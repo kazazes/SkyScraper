@@ -7,7 +7,7 @@ RUN apt-get update \
   && rm -f /etc/nginx/sites-enabled/default \
   && rm -rf /var/lib/apt/lists/*
 
-COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY ./trunk-player.conf /etc/nginx/sites-enabled/trunk-player
 
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 

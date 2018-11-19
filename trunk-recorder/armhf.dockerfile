@@ -37,7 +37,8 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/
   && rm -rf /root/.cache/
 
 RUN pybombs recipes add-defaults \
-  && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
+  && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr \
+  && echo "gitrev: db24d41" >> /root/.pybombs/recipes/gr-recipes/bladeRF.lwr
 RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
   && pybombs config --env DEBIAN_FRONTEND noninteractive \
@@ -78,6 +79,8 @@ RUN apt-get update && pybombs -v install \
   && rm -rf /var/lib/apt/lists/* /pybombs/src /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
+
+COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV INITSYSTEM on
 

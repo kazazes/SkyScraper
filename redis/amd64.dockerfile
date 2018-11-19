@@ -60,7 +60,8 @@ RUN set -ex; \
 WORKDIR /data
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+	echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 
 EXPOSE 6379
 ENTRYPOINT ["docker-entrypoint.sh"]

@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
+FROM resin/odroid-xu4-alpine:3.7
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN addgroup -S redis && adduser -S -G redis redis
@@ -60,8 +60,7 @@ RUN set -ex; \
 WORKDIR /data
 
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 EXPOSE 6379
-ENTRYPOINT ["docker-entrypoint.sh"]
+# ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["redis-server"]

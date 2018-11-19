@@ -1,6 +1,0 @@
-[submodule "docker-gnuradio-etc"]
-	path = docker-gnuradio-etc
-	url = git@github.com:kazazes/docker-gnuradio-etc.git
-[submodule "src/trunk-recorder"]
-	path = src/trunk-recorder
-	url = git@github.com:kazazes/trunk-recorder.git

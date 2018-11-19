@@ -15,7 +15,7 @@ RUN git clone https://github.com/kazazes/trunk-player
 
 WORKDIR /trunk-player/
 
-COPY settings_local.py /trunk-player/trunk-player/
+COPY settings_local.py /trunk-player/trunk_player/
 COPY start.sh /trunk-player
 
 RUN chmod +x /trunk-player/start.sh \

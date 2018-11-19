@@ -93,3 +93,20 @@ services:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
+  glances:
+    image: nicolargo/glances
+    volumes:
+      - "resin-data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    restart: "always"
+    environment:
+      - 'GLANCES_OPT="-w"'
+    pid: host
+    privileged: true
+    network_mode: host
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"

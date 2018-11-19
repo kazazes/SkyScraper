@@ -83,6 +83,7 @@ services:
   nginx:
     build:
       context: ./nginx
+    privileged: true
     volumes:
       - "resin-data:/data"
     restart: "no"

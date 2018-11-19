@@ -15,4 +15,4 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

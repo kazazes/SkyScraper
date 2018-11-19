@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-debian:stretch
+FROM debian:stretch
 
 ENV INITSYSTEM on
 
@@ -15,4 +15,4 @@ EXPOSE 80
 
 STOPSIGNAL SIGTERM
 
-ENTRYPOINT [ "docker-entrypoint.sh" ]
+ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

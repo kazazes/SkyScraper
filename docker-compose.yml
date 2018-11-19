@@ -60,8 +60,6 @@ services:
       POSTGRES_PASSWORD: sdr
       PGDATA: /data/postgres
       POSTGRES_DB: radio
-    ports:
-      - "5433:5432"
     labels:
       io.resin.features.kernel-modules: "1"
       io.resin.features.firmware: "1"
@@ -74,6 +72,20 @@ services:
     volumes:
       - "resin-data:/data"
     restart: "no"
+    network_mode: host
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - "resin-data:/data"
+    restart: "no"
+    privileged: true
     network_mode: host
     labels:
       io.resin.features.kernel-modules: "1"

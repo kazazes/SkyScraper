@@ -19,3 +19,7 @@ sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./redis/Dockerfile.template > ./redi
 # Postgres
 sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./postgres/Dockerfile.template > ./postgres/amd64.dockerfile
 sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./postgres/Dockerfile.template > ./postgres/armhf.dockerfile
+
+# Nginx
+sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./nginx/Dockerfile.template > ./nginx/amd64.dockerfile
+sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./nginx/Dockerfile.template > ./nginx/armhf.dockerfile

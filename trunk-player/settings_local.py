@@ -27,10 +27,10 @@ ACCESS_TG_RESTRICT = False
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'trunk_player',  # Database Name
+        'NAME': 'radio',  # Database Name
         'USER': 'skyscraper',  # Database User Name
         'PASSWORD': 'sdr',  # Database User Password
-        'HOST': 'localhost',
+        'HOST': '127.0.0.1',
         'PORT': '',
     }
 }

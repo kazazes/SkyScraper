@@ -1,4 +1,6 @@
 #!/bin/sh
+
+mkdir -p $PGDATA
 chown -R postgres "$PGDATA"
 
 if [ -z "$(ls -A "$PGDATA")" ]; then
@@ -33,7 +35,7 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
       op=ALTER
     fi
 
-    userSql="$op USER $POSTGRES_USER WITH SUPERUSER $pass;"
+    userSql="$op USER $POSTGRES_USER WITH SUPERUSER $pass; ALTER ROLE $POSTGRES_USER SET client_encoding TO 'utf8'; ALTER ROLE $POSTGRES_USER SET default_transaction_isolation TO 'read committed'; ALTER ROLE $POSTGRES_USER SET timezone TO 'UTC';"
     echo $userSql | gosu postgres postgres --single -jE
     echo
 

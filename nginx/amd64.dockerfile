@@ -1,9 +1,10 @@
 FROM debian:stretch
 
 ENV INITSYSTEM on
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
-  && apt-get install nginx \
+  && apt-get -y install nginx \
   && rm -f /etc/nginx/sites-enabled/default \
   && rm -rf /var/lib/apt/lists/*
 

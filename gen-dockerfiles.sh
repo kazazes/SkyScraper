@@ -25,5 +25,5 @@ sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./nginx/Dockerfile.template > ./nginx/
 sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./nginx/Dockerfile.template > ./nginx/armhf.dockerfile
 
 # Pybombs minimal
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' ./nginx/Dockerfile.template > ./pybombs-minimal/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./nginx/Dockerfile.template > ./pybombs-minimal/armhf.dockerfile
+sed 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' ./pybombs-minimal/Dockerfile.template > ./pybombs-minimal/amd64.dockerfile
+sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./pybombs-minimal/Dockerfile.template > ./pybombs-minimal/armhf.dockerfile

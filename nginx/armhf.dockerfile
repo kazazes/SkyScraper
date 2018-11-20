@@ -10,8 +10,6 @@ RUN apt-get update \
 
 COPY ./trunk-player.conf /etc/nginx/sites-enabled/trunk-player
 
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
 EXPOSE 80
 
 STOPSIGNAL SIGTERM

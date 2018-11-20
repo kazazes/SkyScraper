@@ -48,7 +48,6 @@ RUN apt-get -q update \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
-  && pybombs config --package uhd forceinstalled true \
   && pybombs config --package gnuradio gitrev a136dc0  \
   && pybombs config --package bladeRF gitrev db24d41
 

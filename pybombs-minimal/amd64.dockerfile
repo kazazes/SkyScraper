@@ -27,12 +27,12 @@ RUN apt-get -q update \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-  && locale-gen \
-  && curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
+  && locale-gen
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
   && pip install git+git://github.com/gnuradio/pybombs.git \
-  && rm -rf /root/.cache/ /tmp/get-pip.py \
-  && pybombs recipes add-defaults \
+  && rm -rf /root/.cache/ /tmp/get-pip.py
+RUN pybombs recipes add-defaults \
   && pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
   && pybombs config --env DEBIAN_FRONTEND noninteractive \
@@ -59,8 +59,8 @@ RUN apt-get update && pybombs -vv install gnuradio \
   soapyremote \
   soapybladerf \
   gr-osmosdr \
-  bladeRF \
-  && sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
+  bladeRF
+RUN sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
   && rm -rf /tmp/* \

@@ -10,11 +10,7 @@ RUN apk add --update \
   py-pip \
   libpq \
   postgresql-dev \
-  openssh \
-  && echo 'sdr' | passwd root --stdin \
-  && rc-update add sshd
-
-RUN git clone https://github.com/kazazes/trunk-player
+  && git clone https://github.com/kazazes/trunk-player
 
 WORKDIR /trunk-player/
 
@@ -26,5 +22,6 @@ RUN chmod +x /trunk-player/start.sh \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
+
 
 ENTRYPOINT ["/trunk-player/start.sh" ]

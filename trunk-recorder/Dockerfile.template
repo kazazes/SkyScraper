@@ -27,6 +27,7 @@ RUN apt-get -q update \
   python3-dev \
   sox \
   sudo \
+  lame \
   wget \
   jq \
   ca-certificates \
@@ -64,8 +65,8 @@ RUN pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package bladeRF gitrev db24d41
 
 RUN apt-get update && pybombs -vv install --deps-only gnuradio \
-  && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src \
-  && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests tmp/* \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/* \
   && apt-get -y purge doxygen \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
@@ -83,7 +84,7 @@ RUN apt-get update && pybombs -v install --deps-only \
   && sed 's/@BLADERF_GROUP@/plugdev/g' ./src/bladeRF/host/misc/udev/88-nuand.rules.in > ./src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp ./src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf /var/lib/apt/lists/* /pybombs/src /tmp/* \
+  && rm -rf /var/lib/apt/lists/* /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 

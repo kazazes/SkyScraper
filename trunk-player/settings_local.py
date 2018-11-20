@@ -5,7 +5,7 @@ LOCAL_SETTINGS = True
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 # Make this unique, and don't share it with anybody.
 # You can use http://www.miniwebtool.com/django-secret-key-generator/

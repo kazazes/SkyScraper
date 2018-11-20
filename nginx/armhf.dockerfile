@@ -1,6 +1,7 @@
 FROM resin/odroid-xu4-ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV INITSYSTEM on
 
 RUN apt-get update \
   && apt-get -y install nginx \
@@ -15,6 +16,3 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
-ENV INITSYSTEM on
-
-ENTRYPOINT [ "/usr/local/bin/docker-entrypoint.sh" ]

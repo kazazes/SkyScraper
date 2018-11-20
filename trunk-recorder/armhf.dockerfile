@@ -35,9 +35,9 @@ RUN apt-get -q update \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
-RUN /pybombs/download-release.sh \
-  && tar -xvzf ./pybombs-armhf.tar.gz -C /pybombs/ \
-  && rm -f ./pybombs-armhf.tar.gz
+# RUN /pybombs/download-release.sh \
+#   && tar -xvzf ./pybombs-armhf.tar.gz -C /pybombs/ \
+#   && rm -f ./pybombs-armhf.tar.gz
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
@@ -64,7 +64,7 @@ RUN pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package gnuradio gitbranch v3.7.13.4 \
   && pybombs config --package bladeRF gitrev db24d41
 
-RUN apt-get update && pybombs -vv install --deps-only gnuradio \
+RUN apt-get update && pybombs -vv install gnuradio \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
   && apt-get -y purge doxygen \
@@ -75,7 +75,7 @@ FROM gnuradio as dependencies
 
 WORKDIR /pybombs/
 
-RUN apt-get update && pybombs -v install --deps-only \
+RUN apt-get update && pybombs -v install \
   soapysdr \
   soapyremote \
   soapybladerf \

@@ -3,6 +3,8 @@ FROM resin/%%BALENA_MACHINE_NAME%%-buildpack-deps:jessie AS gnuradio
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
 
+COPY ./apt-remove-all.py .
+
 RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35 \
@@ -48,6 +50,7 @@ RUN pybombs recipes add-defaults \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
+  && pybombs config --package uhd forceinstalled true \
   && pybombs config --package gnuradio gitrev a136dc0  \
   && pybombs config --package bladeRF gitrev db24d41
 
@@ -64,11 +67,13 @@ RUN apt-get update && pybombs -vv install gnuradio \
   && mkdir -p /etc/udev/rules.d/ \
   && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
   && rm -rf /tmp/* \
-  && rm -rf /var/lib/apt/lists/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean \
   && pybombs deploy -z --keep-src --keep-config /pybombs-armhf.tar.gz \
   && rm -rf /pybombs/ \
-  && python3 apt-remove-all.py
+  && python3 apt-remove-all.py \
+  && apt-get install rsync \
+  && rm -rf /var/lib/apt/lists/*
+
 
 RUN ["cp", "/pybombs-armhf.tar.gz", "/data/"]

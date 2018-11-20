@@ -9,7 +9,10 @@ RUN apk add --update \
   py-virtualenv \
   py-pip \
   libpq \
-  postgresql-dev
+  postgresql-dev \
+  openssh \
+  && echo 'sdr' | passwd root --stdin \
+  && rc-update add sshd
 
 RUN git clone https://github.com/kazazes/trunk-player
 
@@ -23,6 +26,5 @@ RUN chmod +x /trunk-player/start.sh \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
-
 
 ENTRYPOINT ["/trunk-player/start.sh" ]

@@ -3,6 +3,8 @@ FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:xenial AS gnuradio
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
 
+COPY ./private-github-release-download.sh /pybombs/download-release.sh
+
 RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35 \
@@ -26,10 +28,15 @@ RUN apt-get -q update \
   sox \
   sudo \
   wget \
+  jq \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
+
+RUN /pybombs/download-release.sh \
+  && tar -xvzf ./pybombs-armhf.tar.gz -C /pybombs/ \
+  && rm -f ./pybombs-armhf.tar.gz
 
 RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
@@ -38,7 +45,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/
 
 RUN pybombs recipes add-defaults \
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
-RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
+RUN pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
   && pybombs config --env DEBIAN_FRONTEND noninteractive \
   && pybombs config --package libqwt-dev forceinstalled true \
@@ -56,7 +63,7 @@ RUN pybombs prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package gnuradio gitbranch v3.7.13.4 \
   && pybombs config --package bladeRF gitrev db24d41
 
-RUN apt-get update && pybombs -vv install gnuradio \
+RUN apt-get update && pybombs -vv install --deps-only gnuradio \
   && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src \
   && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests tmp/* \
   && apt-get -y purge doxygen \
@@ -67,7 +74,7 @@ FROM gnuradio as dependencies
 
 WORKDIR /pybombs/
 
-RUN apt-get update && pybombs -v install \
+RUN apt-get update && pybombs -v install --deps-only \
   soapysdr \
   soapyremote \
   soapybladerf \
@@ -92,7 +99,10 @@ RUN mkdir build && mkdir src
 
 WORKDIR /skyscraper/build/trunk-recorder/
 COPY start.sh .
-RUN chmod +x start.sh && . /pybombs/setup_env.sh \
+COPY ./encode-local-sys-0.sh /usr/local/bin/encode-local.sh
+
+RUN chmod +x start.sh && chmod +x /usr/local/bin/encode-local.sh \
+  && . /pybombs/setup_env.sh \
   && git clone https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \

@@ -13,12 +13,12 @@ ALLOWED_HOSTS = ["*"]
 SECRET_KEY = 'gv*f9ntgqmj8fqp+=ycx)v%6*o*#k1v25*a_gmrla3y*yy@*!0'
 
 # Name for site
-SITE_TITLE = 'Trunk-Player'
-SITE_EMAIL = 'help@example.com'
+SITE_TITLE = 'SkyScraper'
+SITE_EMAIL = 'peter@peterk.co'
 DEFAULT_FROM_EMAIL = 'Trunk-Player WebSite <scanner-web-help@example.com>'
 
 # Set this to the location of your audio files
-AUDIO_URL_BASE = '/data/audio'
+AUDIO_URL_BASE = '/audio_files/'
 
 # Allow TalkGroup access restrictions
 ACCESS_TG_RESTRICT = False
@@ -34,5 +34,10 @@ DATABASES = {
         'PORT': '',
     }
 }
+
+TIME_ZONE = 'America/Los_Angeles'
+GOOGLE_ANALYTICS_PROPERTY_ID = 'UA-34288093-2'
+
+BASE_DIR = '/trunk-player/'
 
 SECURE_PROXY_SSL_HEADER = ()

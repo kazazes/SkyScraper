@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-buildpack-deps:jessie AS gnuradio
+FROM resin/%%BALENA_MACHINE_NAME%%-buildpack-deps:xenial AS gnuradio
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
@@ -69,7 +69,6 @@ RUN apt-get update && pybombs -vv install gnuradio \
   && apt-get -y clean && apt-get -y autoclean \
   && pybombs deploy -z --keep-src --keep-config /pybombs-armhf.tar.gz \
   && rm -rf /pybombs/ \
-  && python3 apt-remove-all.py \
   && apt-get install rsync \
   && rm -rf /var/lib/apt/lists/*
 

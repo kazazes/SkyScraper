@@ -62,6 +62,4 @@ RUN apt-get -q update \
   && rm -rf /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean \
-  && pybombs deploy -z --keep-src --keep-config /pybombs-armhf.tar.gz \
-  && rm -rf /pybombs/ \
   && rm -rf /var/lib/apt/lists/*

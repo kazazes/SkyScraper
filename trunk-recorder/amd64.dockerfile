@@ -61,22 +61,13 @@ RUN pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config --package qwt5 forceinstalled true \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
+  && pybombs config --package uhd forceinstalled true \
   && pybombs config --package gnuradio gitbranch v3.7.13.4 \
   && pybombs config --package bladeRF gitrev db24d41
 
-RUN apt-get update && pybombs -vv install gnuradio \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /tmp/* \
-  && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests \
-  && apt-get -y purge doxygen \
-  && apt-get -y autoremove --purge \
-  && apt-get -y clean && apt-get -y autoclean
-
-FROM gnuradio as dependencies
-
 WORKDIR /pybombs/
 
-RUN apt-get update && pybombs -v install \
+RUN apt-get update && pybombs -v --deps-only install \
   soapysdr \
   soapyremote \
   soapybladerf \
@@ -90,6 +81,9 @@ RUN apt-get update && pybombs -v install \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
+
+RUN cp -a /data/pybombs/ /pybombs/ \
+  && pybombs -y -v init prefix /pybombs/
 
 ENV INITSYSTEM on
 

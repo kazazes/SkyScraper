@@ -3,7 +3,7 @@ FROM ubuntu:xenial AS gnuradio
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
 
-COPY ./private-github-release-download.sh /pybombs/download-release.sh
+# COPY ./private-github-release-download.sh /pybombs/download-release.sh
 
 RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
@@ -67,6 +67,7 @@ RUN pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
 RUN apt-get update && pybombs -vv install gnuradio \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
+  && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests \
   && apt-get -y purge doxygen \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
@@ -84,10 +85,10 @@ RUN apt-get update && pybombs -v install \
   && sed 's/@BLADERF_GROUP@/plugdev/g' ./src/bladeRF/host/misc/udev/88-nuand.rules.in > ./src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp ./src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf /var/lib/apt/lists/* /tmp/* \
+  && rm -rf /pybombs/src/ /pybombs/share/doc /pybombs/lib/uhd/tests/ /tmp/* \
+  && rm -rf /var/lib/apt/lists/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
-
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV INITSYSTEM on

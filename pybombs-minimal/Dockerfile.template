@@ -23,7 +23,6 @@ RUN apt-get -q update \
   git \
   locales \
   python-dev \
-  python-six \
   python3-dev \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/* \

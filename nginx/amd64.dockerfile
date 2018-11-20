@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 

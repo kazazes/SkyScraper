@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-debian:stretch
+FROM resin/odroid-xu4-ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 

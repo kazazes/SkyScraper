@@ -3,25 +3,25 @@ networks: {}
 volumes:
   resin-data: {}
 services:
-  # trunk-recorder:
-  #   build:
-  #     context: ./trunk-recorder
-  #   privileged: true
-  #   restart: "no"
-  #   depends_on:
-  #     - "config"
-  #   network_mode: host
-  #   volumes:
-  #     - "resin-data:/data"
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.resin.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
+  trunk-recorder:
+    build:
+      context: ./host-images/trunk-recorder
+    privileged: true
+    restart: "no"
+    depends_on:
+      - "config"
+    network_mode: host
+    volumes:
+      - "resin-data:/data"
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
   config:
     build:
-      context: ./config
+      context: ./host-images/config
     network_mode: host
     restart: "no"
     volumes:
@@ -34,7 +34,7 @@ services:
       io.resin.features.resin-api: "1"
   trunk-player:
     build:
-      context: ./trunk-player
+      context: ./host-images/trunk-player
     network_mode: host
     restart: "no"
     depends_on:
@@ -51,7 +51,7 @@ services:
       io.resin.features.resin-api: "1"
   postgres:
     build:
-      context: ./postgres
+      context: ./host-images/postgres
     volumes:
       - "resin-data:/data"
     restart: always
@@ -69,7 +69,7 @@ services:
       io.resin.features.resin-api: "1"
   redis:
     build:
-      context: ./redis
+      context: ./host-images/redis
     volumes:
       - "resin-data:/data"
     restart: "no"
@@ -82,7 +82,7 @@ services:
       io.resin.features.resin-api: "1"
   nginx:
     build:
-      context: ./nginx
+      context: ./host-images/nginx
     privileged: true
     volumes:
       - "resin-data:/data"

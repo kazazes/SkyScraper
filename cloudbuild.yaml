@@ -6,7 +6,7 @@ steps:
         "-t",
         "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper",
         "-f",
-        "armhf.dockerfile",
+        "./base-images/pybombs-minimal/armhf.dockerfile",
         "./base-images/pybombs-minimal/",
       ]
   - name: "gcr.io/cloud-builders/docker"

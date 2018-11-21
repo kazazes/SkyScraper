@@ -49,24 +49,26 @@ RUN pybombs recipes add-defaults \
   && pybombs config --package qwt6 forceinstalled true \
   && pybombs config --package wxpython forceinstalled true \
   && pybombs config --package gnuradio gitbranch v3.7.13.4 \
-  && pybombs config --package bladeRF gitrev db24d41\
+  && pybombs config --package bladeRF gitrev db24d41 \
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" \
   -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
 
-RUN apt-get update && pybombs -vv install gnuradio
+RUN apt-get update && pybombs -vv install --deps-only gnuradio && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src/*
+RUN pybombs -vv install gnuradio && rm -rf /pybombs/src/*
 
-RUN pybombs -vv install soapysdr \
+RUN apt-get update && pybombs -vv install --deps-only \
+  soapysdr \
   soapyremote \
   soapybladerf \
   gr-osmosdr \
   bladeRF \
-  && sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
+  sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf /tmp/* \
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /pybombs/src/* /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /pybombs/src
+  && rm -rf /var/lib/apt/lists/*
 
 RUN [ "cross-build-end" ]

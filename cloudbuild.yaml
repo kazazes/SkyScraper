@@ -7,7 +7,7 @@ steps:
         "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper",
         "./base-images/pybombs-minimal/armhf.dockerfile",
       ]
-    timeout: 1h
+    timeout: 55m
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]
 options:

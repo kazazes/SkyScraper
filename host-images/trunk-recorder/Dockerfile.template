@@ -25,7 +25,7 @@ RUN apt-get -q update \
 
 ENV INITSYSTEM on
 
-RUN pybombs -y -v init prefix /pybombs/
+RUN pybombs -y -v prefix init /pybombs/
 
 WORKDIR /skyscraper
 

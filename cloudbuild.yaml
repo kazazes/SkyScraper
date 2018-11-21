@@ -9,10 +9,10 @@ steps:
         "./base-images/pybombs-minimal/armhf.dockerfile",
         "./base-images/pybombs-minimal/",
       ]
-    timeout: 3600s
+    timeout: 5h
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]
 options:
   machineType: "N1_HIGHCPU_32"
 images: ["gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]
-timeout: 4000s
+timeout: 5h30m

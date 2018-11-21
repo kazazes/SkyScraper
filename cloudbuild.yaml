@@ -5,7 +5,9 @@ steps:
         "build",
         "-t",
         "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper",
-        "./base-images/pybombs-minimal/armhf.dockerfile",
+        "-f",
+        "armhf.dockerfile",
+        "./base-images/pybombs-minimal/",
       ]
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]

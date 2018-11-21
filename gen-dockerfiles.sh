@@ -1,29 +1,29 @@
 #! /bin/bash
 
-# Config
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./config/Dockerfile.template > ./config/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./config/Dockerfile.template > ./config/armhf.dockerfile
+set -e
 
-# Trunk Recorder
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./trunk-recorder/Dockerfile.template > ./trunk-recorder/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-recorder/Dockerfile.template > ./trunk-recorder/armhf.dockerfile
+echo -e "\nGenerating Dockerfiles for amd and arm.\n"
 
-# Trunk Player
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./trunk-player/Dockerfile.template > ./trunk-player/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./trunk-player/Dockerfile.template > ./trunk-player/armhf.dockerfile
+for D in ./host-images/*/; do
+    if [ -d "${D}" ]; then
+      echo "Host image: $(basename ${D})."
 
-# Redis
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./redis/Dockerfile.template > ./redis/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./redis/Dockerfile.template > ./redis/armhf.dockerfile
+      sed -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+      -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+      ${D}Dockerfile.template > ${D}amd64.dockerfile
 
-# Postgres
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./postgres/Dockerfile.template > ./postgres/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./postgres/Dockerfile.template > ./postgres/armhf.dockerfile
+      sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ${D}Dockerfile.template > ${D}armhf.dockerfile
+    fi
+done
 
-# Nginx
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-//' ./nginx/Dockerfile.template > ./nginx/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./nginx/Dockerfile.template > ./nginx/armhf.dockerfile
+for D in ./base-images/*/; do
+    if [ -d "${D}" ]; then
+      echo "Base image: $(basename ${D})."
 
-# Pybombs minimal
-sed 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' ./pybombs-minimal/Dockerfile.template > ./pybombs-minimal/amd64.dockerfile
-sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ./pybombs-minimal/Dockerfile.template > ./pybombs-minimal/armhf.dockerfile
+      sed -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+      -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+      ${D}Dockerfile.template > ${D}amd64.dockerfile
+
+      sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ${D}Dockerfile.template > ${D}armhf.dockerfile
+    fi
+done

@@ -1,9 +1,9 @@
-FROM resin/odroid-xu4-ubuntu:xenial AS gnuradio
+FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:xenial AS gnuradio
+
+RUN [ "cross-build-start" ]
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
-
-COPY ./apt-remove-all.py .
 
 RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
@@ -31,6 +31,7 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
   && pip install git+git://github.com/gnuradio/pybombs.git \
   && rm -rf /root/.cache/ /tmp/get-pip.py
+
 RUN pybombs recipes add-defaults \
   && pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
@@ -51,7 +52,9 @@ RUN pybombs recipes add-defaults \
   && pybombs config --package bladeRF gitrev db24d41\
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" \
   -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
+
 RUN apt-get update && pybombs -vv install gnuradio
+
 RUN pybombs -vv install soapysdr \
   soapyremote \
   soapybladerf \
@@ -65,3 +68,5 @@ RUN pybombs -vv install soapysdr \
   && apt-get -y clean && apt-get -y autoclean \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /pybombs/src
+
+RUN [ "cross-build-end" ]

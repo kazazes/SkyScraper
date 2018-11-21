@@ -70,7 +70,6 @@ services:
   redis:
     build:
       context: ./host-images/redis
-    command: redis-server --dir /data/redis
     volumes:
       - "resin-data:/data"
     restart: "no"

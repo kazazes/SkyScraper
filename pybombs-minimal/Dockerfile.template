@@ -25,12 +25,13 @@ RUN apt-get -q update \
   ca-certificates \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-  && locale-gen \
-  && curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
+  && locale-gen
+
+RUN curl https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py && python /tmp/get-pip.py \
   && echo "[global]\nno-cache-dir = 0" > /etc/pip.conf \
   && pip install git+git://github.com/gnuradio/pybombs.git \
-  && rm -rf /root/.cache/ /tmp/get-pip.py \
-  && pybombs recipes add-defaults \
+  && rm -rf /root/.cache/ /tmp/get-pip.py
+RUN pybombs recipes add-defaults \
   && pybombs -y prefix init ${PYBOMBS_PREFIX} -a master \
   && pybombs config default_prefix master && pybombs config makewidth $(nproc) \
   && pybombs config --env DEBIAN_FRONTEND noninteractive \
@@ -49,9 +50,9 @@ RUN apt-get -q update \
   && pybombs config --package gnuradio gitbranch v3.7.13.4 \
   && pybombs config --package bladeRF gitrev db24d41\
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" \
-  -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr\
-  && apt-get update && pybombs -vv install gnuradio \
-  soapysdr \
+  -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
+RUN apt-get update && pybombs -vv install gnuradio
+RUN pybombs -vv install soapysdr \
   soapyremote \
   soapybladerf \
   gr-osmosdr \
@@ -62,4 +63,5 @@ RUN apt-get -q update \
   && rm -rf /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /pybombs/src

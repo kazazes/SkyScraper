@@ -13,4 +13,4 @@ steps:
     args: ["push", "gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]
 options:
   machineType: "N1_HIGHCPU_32"
-images: ["gcr.io/my-project/myimage"]
+images: ["gcr.io/skyscraper-sdr/github.com/kazazes/skyscraper"]

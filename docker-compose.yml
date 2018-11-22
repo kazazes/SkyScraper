@@ -109,17 +109,3 @@ services:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
-  filebrowser:
-    image: filebrowser/filebrowser
-    privileged: true
-    volumes:
-      - "resin-data:/data"
-    restart: "no"
-    network_mode: host
-    command: filebrowser --port 3000 --scope /data
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"

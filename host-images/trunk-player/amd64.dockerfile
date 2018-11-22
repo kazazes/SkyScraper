@@ -14,7 +14,6 @@ RUN apk add --update \
 
 WORKDIR /trunk-player/
 
-COPY settings_local.py /trunk-player/trunk_player/
 COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN virtualenv -p python3 env --prompt='(Trunk Player)' \

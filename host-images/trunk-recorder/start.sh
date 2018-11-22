@@ -1,5 +1,7 @@
 #! /bin/bash
 
+cp /data/conf/trunk-player/settings_local.py /skyscraper/src/trunk-player/trunk_player/
+
 source /pybombs/setup_env.sh
 
 bladeRF-cli -p

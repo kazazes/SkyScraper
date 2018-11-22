@@ -1,5 +1,7 @@
 #! /bin/bash
 
+cp /data/conf/trunk-player/settings_local.py /trunk-player/trunk_player/
+
 source /trunk-player/env/bin/activate
 cd /trunk-player
 

@@ -31,6 +31,13 @@ WORKDIR /skyscraper
 
 RUN mkdir build && mkdir src
 
+WORKDIR /skyscraper/src/trunk-player/
+
+RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-player/ \
+  && virtualenv -p python3 env --prompt='(Trunk Player)' \
+  && source ./env/bin/activate \
+  && pip install --no-cache-dir -r requirements.txt --no-cache-dir
+
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY start.sh .

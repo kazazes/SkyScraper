@@ -35,7 +35,7 @@ WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY start.sh .
 
-COPY ./encode-local-sys-0.sh /usr/local/bin/encode-local.sh
+COPY encode-local-sys-0.sh .
 
 RUN chmod +x start.sh && chmod +x /usr/local/bin/encode-local.sh \
   && . /pybombs/setup_env.sh \
@@ -44,4 +44,4 @@ RUN chmod +x start.sh && chmod +x /usr/local/bin/encode-local.sh \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-CMD [ "/bin/bash", "/skyscraper/build/trunk-recorder/start.sh" ]
+ENTRYPOINT [ "/skyscraper/build/trunk-recorder/start.sh" ]

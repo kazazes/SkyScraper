@@ -63,7 +63,8 @@ services:
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
   postgres:
-    image: postgres:11
+    build:
+      context: ./host-images/postgres
     volumes:
       - "resin-data:/data"
     restart: always

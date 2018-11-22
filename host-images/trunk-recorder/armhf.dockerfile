@@ -20,6 +20,10 @@ RUN apt-get -q update \
   sudo \
   lame \
   wget \
+  virtualenv \
+  libpq-dev \
+  postgresql-client \
+  postgresql-client-common \
   jq \
   ca-certificates
 

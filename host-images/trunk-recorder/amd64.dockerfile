@@ -34,11 +34,9 @@ RUN mkdir build && mkdir src
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY start.sh .
-
 COPY encode-local-sys-0.sh .
 
-RUN chmod +x start.sh && chmod +x /usr/local/bin/encode-local.sh \
-  && . /pybombs/setup_env.sh \
+RUN . /pybombs/setup_env.sh \
   && git clone https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \

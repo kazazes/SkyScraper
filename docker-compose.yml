@@ -83,8 +83,6 @@ services:
   redis:
     build:
       context: ./host-images/redis
-    volumes:
-      - "resin-data:/data"
     restart: "no"
     network_mode: host
     labels:

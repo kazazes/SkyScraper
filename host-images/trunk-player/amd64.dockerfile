@@ -15,12 +15,11 @@ RUN apk add --update \
 WORKDIR /trunk-player/
 
 COPY settings_local.py /trunk-player/trunk_player/
-COPY start.sh /trunk-player
+COPY docker-entrypoint.sh /usr/local/bin/
 
-RUN chmod +x /trunk-player/start.sh \
-  && virtualenv -p python3 env --prompt='(Trunk Player)' \
+RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
-ENTRYPOINT ["/trunk-player/start.sh" ]
+ENTRYPOINT ["docker-entrypoint.sh" ]

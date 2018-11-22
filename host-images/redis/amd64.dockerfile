@@ -59,10 +59,9 @@ RUN set -ex; \
 
 WORKDIR /data
 
-COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
-	echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 
 EXPOSE 6379
+COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["redis-server"]

@@ -14,11 +14,11 @@ RUN apk add --update \
 
 WORKDIR /trunk-player/
 
-COPY docker-entrypoint.sh /usr/local/bin/
 
 RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
+COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh" ]

@@ -8,7 +8,7 @@ cd /trunk-player
 ./manage.py migrate
 
 mkdir -p /data/web/static
-rsync -a --delete /trunk-player/static /data/web/static
+rsync -a --delete /trunk-player/static /data/web/
 
 daphne trunk_player.asgi:channel_layer --port 7055 --bind 0.0.0.0 &
 

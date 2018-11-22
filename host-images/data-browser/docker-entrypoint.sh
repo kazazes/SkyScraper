@@ -1,5 +1,5 @@
 #! /bin/bash
 
-cd /data/audio
+cd /data/
 
 python -m SimpleHTTPServer

@@ -23,5 +23,4 @@ RUN chmod +x /trunk-player/start.sh \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
-
 ENTRYPOINT ["/trunk-player/start.sh" ]

@@ -1,6 +1,8 @@
 #! /bin/bash
 
 source /trunk-player/env/bin/activate
+rm -rf /data/trunk-player
+cp -a /trunk-player /data
 cd /trunk-player
 
 ./manage.py migrate

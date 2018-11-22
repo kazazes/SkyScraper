@@ -8,12 +8,12 @@ RUN apk add --update \
   python3-dev \
   py-virtualenv \
   py-pip \
+  rsync \
   libpq \
   postgresql-dev \
   && git clone https://github.com/kazazes/trunk-player
 
 WORKDIR /trunk-player/
-
 
 RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \

@@ -1,7 +1,10 @@
 # stage-1: build dist folder
 FROM node:alpine as build
 WORKDIR /usr/src/app
-RUN apk add python
+RUN apk add --no-cache --virtual .gyp \
+  python \
+  make \
+  g++
 COPY ["package.json", "yarn.lock", "/usr/src/app/"]
 RUN yarn install --pure-lockfile
 COPY . .

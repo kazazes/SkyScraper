@@ -2,6 +2,7 @@
 FROM resin/odroid-xu4-node as build
 WORKDIR /usr/src/app
 
+RUN apt-get update && apt-get -y install python make g++
 COPY ["package.json", "yarn.lock", "/usr/src/app/"]
 RUN yarn install --pure-lockfile
 COPY . .
@@ -145,7 +146,6 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
   && ln -sf /dev/stderr /var/log/nginx/error.log
 
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY nginx.vh.default.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
@@ -155,5 +155,5 @@ CMD ["nginx", "-g", "daemon off;"]
 
 EXPOSE 80
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html

@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:xenial AS gnuradio
+FROM ubuntu:xenial AS gnuradio
 
 RUN [ "cross-build-start" ]
 
@@ -13,9 +13,6 @@ RUN apt-get -q update \
   && apt-get -y -q install --no-install-recommends \
   bladerf-fpga-hostedxa4 \
   build-essential \
-  python-apt \
-  python-numpy \
-  python-scipy \
   apt-utils \
   curl \
   git \
@@ -53,20 +50,14 @@ RUN pybombs recipes add-defaults \
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" \
   -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
 
-RUN apt-get update && pybombs -vv install --deps-only gnuradio && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src/*
-RUN pybombs -vv install gnuradio && rm -rf /pybombs/src/*
-
-RUN apt-get update && \
-  pybombs -vv install \
+RUN apt-get update && pybombs -vv install \
   soapysdr \
   soapyremote \
   soapybladerf \
-  gr-osmosdr \
   bladeRF \
   && sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf /var/lib/apt/lists/* \
   && rm -rf /pybombs/src/* /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean \

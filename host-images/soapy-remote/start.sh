@@ -6,5 +6,5 @@ bladeRF-cli -p
 bladeRF-cli -l /usr/share/Nuand/bladeRF/hostedxA4.rbf
 
 SoapySDRUtil --find
-SoapySDRUtil --make="driver=bladeRF"
+SoapySDRUtil --make
 SoapySDRServer --bind

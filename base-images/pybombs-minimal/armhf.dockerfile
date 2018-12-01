@@ -56,13 +56,14 @@ RUN pybombs recipes add-defaults \
 RUN apt-get update && pybombs -vv install --deps-only gnuradio && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src/*
 RUN pybombs -vv install gnuradio && rm -rf /pybombs/src/*
 
-RUN apt-get update && pybombs -vv install --deps-only \
+RUN apt-get update && \
+  pybombs -vv install \
   soapysdr \
   soapyremote \
   soapybladerf \
   gr-osmosdr \
   bladeRF \
-  sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
+  && sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
   && mkdir -p /etc/udev/rules.d/ \
   && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
   && rm -rf /var/lib/apt/lists/* \

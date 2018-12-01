@@ -2,7 +2,6 @@
 FROM resin/odroid-xu4-node as build
 WORKDIR /usr/src/app
 
-RUN apt-get update && apt-get -y install python make g++
 COPY ["package.json", "yarn.lock", "/usr/src/app/"]
 RUN yarn install --pure-lockfile
 COPY . .

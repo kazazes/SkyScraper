@@ -1,0 +1,15 @@
+{
+  "defaultSeverity": "warning",
+  "extends": ["tslint:latest"],
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  },
+  "rules": {
+    "no-submodule-imports": [false, "@/*"],
+    "no-implicit-dependencies": [true, ["@/components"]],
+    "object-literal-sort-keys": false,
+    "quotemark": [true, "double"],
+    "indent": [true, "spaces", 2],
+    "trailing-comma": false
+  }
+}

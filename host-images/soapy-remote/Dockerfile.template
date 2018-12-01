@@ -1,7 +1,5 @@
 FROM pckzs/pybombs-bladerf-armhf
 
-COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
-
 RUN apt-get -q update \
   && apt-get -y -q install --no-install-recommends \
   bladerf-fpga-hostedxa4 \

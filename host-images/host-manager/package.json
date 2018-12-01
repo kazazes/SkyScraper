@@ -44,7 +44,8 @@
     "vue-cli-plugin-electron-builder": "^1.0.0-rc.9",
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.17",
-    "vuetify-loader": "^1.0.5"
+    "vuetify-loader": "^1.0.5",
+    "webpack": "^4.0.0"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"

@@ -1,4 +1,5 @@
 FROM pckzs/pybombs-bladerf-armhf
+ENV INITSYSTEM on
 
 RUN apt-get -q update \
   && apt-get -y -q install --no-install-recommends \
@@ -8,7 +9,6 @@ RUN apt-get -q update \
   libavahi-client-dev \
   && rm -rf /var/lib/apt/lists/*
 
-ENV INITSYSTEM on
 
 RUN pybombs -y -v prefix init /pybombs/
 

@@ -53,11 +53,8 @@ RUN pybombs recipes add-defaults \
   && sed -i -e "s/-DENABLE_GRC=ON/-DENABLE_GRC=OFF/g" -e "s/-DENABLE_GR_QTGUI=ON/-DENABLE_GR_QTGUI=OFF/g" \
   -e "s/-DENABLE_DOXYGEN=$builddocs/-DENABLE_DOXYGEN=OFF/g" /root/.pybombs/recipes/gr-recipes/gnuradio.lwr
 
-RUN apt-get update && pybombs -vv install --deps-only gnuradio && rm -rf /var/lib/apt/lists/* && rm -rf /pybombs/src/*
-RUN pybombs -vv install gnuradio && rm -rf /pybombs/src/*
-
-RUN apt-get update && \
-  pybombs -vv install \
+RUN apt-get update && pybombs -vv install \
+  gnuradio \
   soapysdr \
   soapyremote \
   soapybladerf \
@@ -69,7 +66,6 @@ RUN apt-get update && \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /pybombs/src/* /tmp/* \
   && apt-get -y autoremove --purge \
-  && apt-get -y clean && apt-get -y autoclean \
-  && rm -rf /var/lib/apt/lists/*
+  && apt-get -y clean && apt-get -y autoclean
 
 RUN [ "cross-build-end" ]

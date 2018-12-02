@@ -11,8 +11,8 @@ RUN apk add --update \
 
 RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
-  && ssh-keyscan github.com >> ~/.ssh/known_hosts
+  && ssh-keyscan git.sibyl.vision >> ~/.ssh/known_hosts
 
-RUN git clone git@github.com:kazazes/skyscraper-config.git
+RUN git clone git@git.sibyl.vision:peter/skyscraper-configurations.git
 
 ENTRYPOINT ["/skyscraper-config/fetch-all.sh"]

@@ -8,7 +8,6 @@ RUN apt-get -q update \
   libavahi-client-dev \
   && rm -rf /var/lib/apt/lists/*
 
-
 RUN pybombs -y -v prefix init /pybombs/
 
 COPY start.sh .

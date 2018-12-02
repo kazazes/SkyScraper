@@ -79,7 +79,7 @@ export LC_LANG=C
 EXTRAS=""
 MASTER_MODE=0
 OLD_MODE=0
-PULLED_LIST="gnuradio uhd rtl-sdr gr-osmosdr gr-iqbal hackrf gr-baz bladeRF libairspy"
+PULLED_LIST="gnuradio rtl-sdr gr-osmosdr gr-iqbal hackrf gr-baz bladeRF libairspy"
 which python3 >/dev/null 2>&1
 if [ $? -eq 0 ]
 then
@@ -537,7 +537,7 @@ function prereqs {
 		for pkg in $PKGLIST; do checkpkg $pkg; done
 		for pkg in $PKGLIST
 		do
-			sudo apt-get -y --ignore-missing install $pkg >>$LOGDEV 2>&1
+			sudo apt-fast -y --ignore-missing --no-install-recommends install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -554,16 +554,7 @@ function prereqs {
 		sudo apt-get -y purge 'python-gnuradio*' >>$LOGDEV 2>&1
 		case `grep DISTRIB_RELEASE /etc/lsb-release` in
 		*15.*|*16.*|*17.*)
-			PKGLIST="libqwt6 libfontconfig1-dev libxrender-dev libpulse-dev swig g++
-			automake autoconf libtool python-dev libfftw3-dev
-			libcppunit-dev libboost-all-dev libusb-dev libusb-1.0-0-dev fort77
-			libsdl1.2-dev python-wxgtk2.8 git-core
-			libqt4-dev python-numpy ccache python-opengl libgsl0-dev
-			python-cheetah python-mako python-lxml doxygen qt4-default qt4-dev-tools libusb-1.0-0-dev
-			libqwt5-qt4-dev libqwtplot3d-qt4-dev pyqt4-dev-tools python-qwt5-qt4
-			cmake git-core wget libxi-dev python-docutils gtk2-engines-pixbuf r-base-dev python-tk
-			liborc-0.4-0 liborc-0.4-dev libasound2-dev python-gtk2 libzmq libzmq-dev libzmq1 libzmq1-dev python-requests
-			python-sphinx comedi-dev python-zmq libncurses5 libncurses5-dev python-wxgtk3.0"
+			PKGLIST=""
 			CMAKE_FLAG1=-DPythonLibs_FIND_VERSION:STRING="2.7"
 			CMAKE_FLAG2=-DPythonInterp_FIND_VERSION:STRING="2.7"
 			;;
@@ -618,7 +609,7 @@ function prereqs {
 		my_echo Done checking packages
 		for pkg in $PKGLIST
 		do
-			sudo apt-get -y --ignore-missing install $pkg >>$LOGDEV 2>&1
+			sudo apt-fast -y --no-install-recommends --ignore-missing install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -665,7 +656,7 @@ function prereqs {
 			;;
 		esac
 		for pkg in $PKGLIST; do checkpkg $pkg; done
-		sudo apt-get -y --ignore-missing install $PKGLIST >>$LOGDEV 2>&1
+		sudo apt-fast -y --ignore-missing --no-install-recommends install $PKGLIST >>$LOGDEV 2>&1
 	elif [ -f /etc/SuSE-release ]
 	then
 		SYSTYPE=OpenSuSE
@@ -794,35 +785,6 @@ function gitfetch {
 	my_echo Done
 
 	#
-	# GIT the UHD source tree
-	#
-	rm -rf uhd
-	my_echo -n Fetching UHD via GIT...
-	git clone --progress  https://github.com/EttusResearch/uhd >>$LOGDEV 2>&1
-
-	if [ ! -d uhd/host ]
-	then
-		my_echo GIT checkout of UHD FAILED
-		rm -f tmp$$
-		doexit FETCH-UHD-FAIL
-	fi
-	if [ $UTAG != None ]
-	then
-		cd uhd
-		git checkout $UTAG >/dev/null 2>&1
-		git status >tmp$$ 2>&1
-		if grep -q "$UTAG" tmp$$
-		then
-			whee=yes
-			rm -f tmp$$
-		else
-			my_echo Could not fetch UHD tagged $UTAG from GIT
-			rm -f tmp$$
-		fi
-		cd ..
-	fi
-
-	#
 	# GIT the RTL-SDR source tree
 	#
 	rm -rf rtl-sdr
@@ -850,59 +812,6 @@ function gitfetch {
 	git clone --progress https://github.com/mossmann/hackrf.git >>$LOGDEV 2>&1
 	(cd $CWD; rm -rf airpsy; mkdir airspy; cd airspy; git clone https://github.com/airspy/host) >>$LOGDEV 2>&1
 	my_echo Done
-}
-
-function uhd_build {
-	#
-	# UHD build
-	#
-	sudocheck
-	if [ ! -d uhd ]
-	then
-		my_echo you do not appear to have the \'uhd\' directory
-		my_echo you should probably use $0 gitfetch to fetch the appropriate
-		my_echo files using GIT
-		doexit BUILD-UHD-NOT-THERE
-	fi
-	if [ $UTAG != None ]
-	then
-		cd uhd
-		git checkout $UTAG >/dev/null 2>&1
-		cd ..
-	fi
-	my_echo Building UHD...
-	my_echo "=============> THIS WILL TAKE SOME TIME <============="
-	my_echo
-	cd uhd/host
-	rm -rf build
-	if [ ! -d build ]
-	then
-		mkdir build
-	fi
-	cd build
-	make clean >/dev/null 2>&1
-	cmake $CMAKE_FLAG1 $CMAKE_FLAG2 $CMF1 $CMF2  $UCFLAGS ../ >>$LOGDEV 2>&1
-	make clean >>$LOGDEV 2>&1
-	make $JFLAG >>$LOGDEV 2>&1
-	if [ $? -ne 0  ]
-	then
-		my_echo UHD build apparently failed
-		my_echo Exiting UHD build
-		doexit UHD-BUILD-FAIL1
-	fi
-    sudo rm -f /usr/local/lib*/libuhd*
-	sudo make $JFLAG install >>$LOGDEV 2>&1
-	which uhd_find_devices >/dev/null 2>&1
-	x=$?
-	if [ $x -ne 0 -a ! -f /usr/local/bin/uhd_find_devices -a ! -f /opt/local/bin/uhd_find_devices ]
-	then
-		my_echo UHD build/install apparently failed since I cannot find /usr/local/bin/uhd_find_devices
-		my_echo after doing make and make install
-		my_echo Exiting UHD build
-		doexit UHD-BUILD-FAIL2
-	fi
-	sudo ldconfig >>$LOGDEV 2>&1
-	my_echo Done building/installing UHD
 }
 
 function rtl_build {
@@ -1384,7 +1293,7 @@ function all {
 		gitfetch
 	fi
 	rm -f touch$$
-	for fcn in uhd_build firmware gnuradio_build rtl_build mod_groups mod_udev mod_sysctl pythonpath extras
+	for fcn in firmware gnuradio_build rtl_build mod_groups mod_udev mod_sysctl pythonpath extras
 	do
 		my_echo Starting function $fcn at: `date`
 		cd $CWD

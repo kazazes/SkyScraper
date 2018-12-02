@@ -13,36 +13,25 @@ RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /e
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35
 
 RUN apt-get -q update \
-  && apt-get -y -q install \
+  && apt-get -y -q install --no-install-recommends \
   apt-utils \
+  software-properties-common \
   aria2 \
-  bladerf \
-  bladerf-fpga-hostedxa4 \
-  build-essential \
-  ca-certificates \
-  cmake \
+  wget \
   git \
-  libbladerf-dev \
-  libncurses5-dev \
-  libtecla-dev \
-  libtecla1 \
-  libusb-1.0-0 \
-  libusb-1.0-0-dev \
-  pkg-config \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src/gnuradio-build
-COPY build-gnuradio.sh build-gnuradio.sh
 
 RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
-  && chmod +x ./build-gnuradio.sh \
   && apt-get -q update \
-  && apt-fast -y install \
+  && apt-fast -y --ignore-missing install --no-install-recommends \
+  build-essential \
+  cmake \
   autoconf \
   automake \
   ccache \
   cmake \
-  doxygen \
   fort77 \
   g++ \
   git-core \
@@ -59,7 +48,6 @@ RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
   libusb-1.0-0-dev \
   libusb-dev \
   libzmq-dev \
-  libzmq1-dev \
   python-cheetah \
   python-dev \
   python-lxml \
@@ -69,31 +57,75 @@ RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
   python-zmq \
   r-base-dev \
   swig \
-  wget \
-  && ./build-gnuradio.sh -ja -v -m prereqs gitfetch \
-  && cd gnuradio \
+  bladerf \
+  bladerf-fpga-hostedxa4 \
+  build-essential \
+  ca-certificates \
+  cmake \
+  git \
+  libbladerf-dev \
+  libncurses5-dev \
+  libtecla-dev \
+  libtecla1 \
+  libusb-1.0-0 \
+  libusb-1.0-0-dev \
+  pkg-config
+
+RUN add-apt-repository -y ppa:myriadrf/drivers \
+  && add-apt-repository -y ppa:pothosware/support \
+  && add-apt-repository -y ppa:pothosware/framework \
+  apt-get update && \
+  apt-fast -y install \
+  python-pothos \
+  python3-pothos \
+  pothos-python-dev \
+  soapysdr \
+  python-soapysdr \
+  python3-soapysdr \
+  soapysdr-module-remote \
+  soapysdr-server \
+  soapysdr-module-bladerf \
+  && rm -rf /var/lib/apt/lists/*
+
+COPY build-gnuradio.sh build-gnuradio.sh
+
+RUN chmod +x ./build-gnuradio.sh \
+  && ./build-gnuradio.sh -j8 -v -m gitfetch
+
+
+RUN cd gnuradio \
   && git checkout -b gnuradio-v3.7.13.4 v3.7.13.4 \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j$(nproc) \
+  && make -j8 \
   && make install \
   && ldconfig -v | grep gnuradio \
-  && rm -rf /var/lib/apt/lists/*
+  && cd .. \
+  && rm -rf gnuradio
 
-RUN apt-get update \
-  && pybombs -vv install \
-  bladeRF \
-  gnuradio \
-  gr-osmosdr \
-  soapybladerf \
-  soapyremote \
-  soapysdr \
-  && sed 's/@BLADERF_GROUP@/plugdev/g' /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules.in > /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules \
-  && mkdir -p /etc/udev/rules.d/ \
-  && cp /pybombs/src/bladeRF/host/misc/udev/88-nuand.rules /etc/udev/rules.d/ \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /pybombs/src/* /tmp/* \
+WORKDIR /src/gnuradio-build
+
+RUN cd gr-iqbal  \
+  && mkdir build \
+  && cd build \
+  && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
+  && make -j8 && make install && ldconfig \
+  && cd .. \
+  && rm -rf gr-osmosdr
+
+WORKDIR /src/gnuradio-build
+
+RUN cd gr-osmosdr  \
+  && mkdir build \
+  && cd build \
+  && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
+  && make -j8 && make install && ldconfig \
+  && cd .. \
+  && rm -rf gr-osmosdr
+
+RUN rm -rf /var/lib/apt/lists/* \
+  && rm -rf /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 

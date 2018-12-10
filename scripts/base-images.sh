@@ -2,7 +2,7 @@
 
 set -e
 
-./scripts/gen-dockerfiles.sh
+gen-dockerfiles.sh
 
 cd base-images/bladerf
 

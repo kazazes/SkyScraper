@@ -16,7 +16,10 @@ balena:
 
 base-images:
   image: docker:latest
+  tags:
+    - docker
   before_script:
+    - docker info
     - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
   only:
     - master

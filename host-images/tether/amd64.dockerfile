@@ -7,6 +7,8 @@ RUN apt-get update \
   wireless-tools \
   libimobiledevice-dev \
   libimobiledevice-utils \
+  usbmuxd \
+  network-manager \
   ipheth-utils \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*

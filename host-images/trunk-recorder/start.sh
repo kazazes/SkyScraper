@@ -10,7 +10,7 @@ bladeRF-cli -l /usr/share/Nuand/bladeRF/hostedxA4.rbf
 mkdir -p /data/audio
 
 if [[ -z "${RECORDER_CONF}" ]]; then
-  RECORDER_CONF=sites/SF-SN/SF.json
+  RECORDER_CONF=sites/SF-PK/config.json
 fi
 
 ./recorder --config /data/$RECORDER_CONF

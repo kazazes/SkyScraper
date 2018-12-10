@@ -1,6 +1,6 @@
 FROM ubuntu:xenial AS gnuradio
 
-RUN [ "cross-build-start" ]
+
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV PYBOMBS_PREFIX=/pybombs
@@ -68,4 +68,4 @@ RUN apt-get update && pybombs -vv install \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
-RUN [ "cross-build-end" ]
+

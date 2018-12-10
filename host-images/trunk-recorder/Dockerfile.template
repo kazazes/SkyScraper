@@ -1,4 +1,4 @@
-FROM pckzs/pybombs-bladerf-armhf
+FROM pckzs/bladerf
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 

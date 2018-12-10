@@ -44,8 +44,8 @@ RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-play
 
 WORKDIR /skyscraper/build/trunk-recorder/
 
-COPY start.sh .
 COPY encode-local-sys-0.sh .
+COPY start.sh .
 
 RUN . /pybombs/setup_env.sh \
   && git clone https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \

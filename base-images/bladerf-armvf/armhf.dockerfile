@@ -74,7 +74,7 @@ RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
 RUN add-apt-repository -y ppa:myriadrf/drivers \
   && add-apt-repository -y ppa:pothosware/support \
   && add-apt-repository -y ppa:pothosware/framework \
-  apt-get update && \
+  && apt-get update && \
   apt-fast -y install \
   python-pothos \
   python3-pothos \

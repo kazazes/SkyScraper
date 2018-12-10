@@ -1,0 +1,16 @@
+image: alpine:latest
+
+before_script:
+  - apk add git openssh
+  - mkdir -p ~/.ssh
+  - echo "$RADIO_RSA" > ~/.ssh/id_rsa
+  - echo "$RADIO_RSA_PUB" > ~/.ssh/id_rsa.pub
+  - chmod 600 ~/.ssh/id_rsa && eval $(ssh-agent -s)
+  - ssh-add ~/.ssh/id_rsa
+  - ssh-keyscan git.balena-cloud.com >> ~/.ssh/known_hosts
+  - git remote add balena gh_kazazes@git.balena-cloud.com:gh_kazazes/skyscraper.git
+   
+balena:
+  stage: 
+  script:
+    - git push balena master

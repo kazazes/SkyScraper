@@ -52,7 +52,7 @@ services:
       - "resin-data:/data"
   tether:
     build:
-      context: ./host-images/tetheer
+      context: ./host-images/tether
     network_mode: host
     privileged: true
     labels:

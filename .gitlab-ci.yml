@@ -25,7 +25,7 @@ balena:
 # tcp://localhost:2375 because of how Kubernetes executor connects services
 # to the job container
 variables:
-  DOCKER_HOST: tcp://localhost:2375/
+  DOCKER_HOST: tcp://127.0.0.1:2375/
   DOCKER_DRIVER: overlay2
 
 base-images:

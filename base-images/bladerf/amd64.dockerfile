@@ -136,5 +136,3 @@ RUN rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
-
-

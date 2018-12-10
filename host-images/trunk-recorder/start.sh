@@ -1,8 +1,9 @@
 #! /bin/bash
 
-cp /data/conf/trunk-player/settings_local.py /skyscraper/src/trunk-player/trunk_player/
+PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
+PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
 
-source /pybombs/setup_env.sh
+cp /data/conf/trunk-player/settings_local.py /skyscraper/src/trunk-player/trunk_player/
 
 bladeRF-cli -p
 bladeRF-cli -l /usr/share/Nuand/bladeRF/hostedxA4.rbf

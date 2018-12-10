@@ -2,8 +2,6 @@
 
 set -e
 
-gen-dockerfiles.sh
-
 cd base-images/bladerf
 
 docker build --pull -t pckzs/bladerf-arm -f armhf.dockerfile .

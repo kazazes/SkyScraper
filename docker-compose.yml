@@ -43,12 +43,6 @@ services:
     network_mode: host
     volumes:
       - "resin-data:/data"
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"
   config:
     build:
       context: ./host-images/config
@@ -56,24 +50,22 @@ services:
     restart: "no"
     volumes:
       - "resin-data:/data"
+  wifi-connect:
+    build:
+      context: ./host-images/wifi-connect
+    network_mode: host
+    privileged: true
     labels:
+      io.balena.features.dbus: "1"
+      io.resin.features.dbus: "1"
       io.resin.features.kernel-modules: "1"
       io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
-  # wifi-connect:
-  #   build:
-  #     context: ./host-images/wifi-connect
-  #   network_mode: host
-  #   privileged: true
-  #   restart: "no"
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.balena.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
+      io.balena.features.kernel-modules: "1"
+      io.balena.features.firmware: "1"
+      io.balena.features.supervisor-api: "1"
+      io.balena.features.resin-api: "1"
   trunk-player:
     build:
       context: ./host-images/trunk-player
@@ -85,12 +77,6 @@ services:
       - "nginx"
     volumes:
       - "resin-data:/data"
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"
   postgres:
     build:
       context: ./host-images/postgres
@@ -103,23 +89,11 @@ services:
       POSTGRES_PASSWORD: sdr
       PGDATA: /data/postgres
       POSTGRES_DB: radio
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"
   redis:
     build:
       context: ./host-images/redis
     restart: "no"
     network_mode: host
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"
   nginx:
     build:
       context: ./host-images/nginx
@@ -130,9 +104,3 @@ services:
     network_mode: host
     ports:
       - 80:80
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"

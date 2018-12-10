@@ -2,6 +2,7 @@
 
 set -e
 
+cd ..
 echo -e "\nGenerating Dockerfiles for amd and arm.\n"
 
 for D in ./host-images/*/; do

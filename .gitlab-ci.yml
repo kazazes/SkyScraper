@@ -9,8 +9,8 @@ before_script:
   - ssh-add ~/.ssh/id_rsa
   - ssh-keyscan git.balena-cloud.com >> ~/.ssh/known_hosts
   - git remote add balena gh_kazazes@git.balena-cloud.com:gh_kazazes/skyscraper.git
-   
+
 balena:
-  stage: 
+  stage: build
   script:
     - git push balena master

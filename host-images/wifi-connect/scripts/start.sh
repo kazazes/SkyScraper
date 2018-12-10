@@ -23,4 +23,4 @@ else
     ./wifi-connect
 fi
 
-# Start your application here.
+sleep infinity

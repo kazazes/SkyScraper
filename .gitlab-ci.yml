@@ -25,7 +25,7 @@ base-images:
   stage: build
   script:
     - ls -al scripts
-    - ./scripts/gen-dockerfiles.sh
+    - sh ./scripts/gen-dockerfiles.sh
     - cd base-images/bladerf
     - docker build --pull -t pckzs/bladerf-arm -f armhf.dockerfile .
     - docker build --pull -t pckzs/bladerf-amd -f amd64.dockerfile .

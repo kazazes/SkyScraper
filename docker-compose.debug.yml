@@ -1,10 +1,15 @@
 version: "2.1"
 networks: {}
 volumes:
-  resin-data: {}
+  resin-data:
+    driver_opts:
+      type: none
+      device: $PWD/data
+      o: bind
 services:
   trunk-recorder:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     restart: "no"
@@ -15,6 +20,7 @@ services:
       - "resin-data:/data"
   config:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "no"
@@ -22,6 +28,7 @@ services:
       - "resin-data:/data"
   trunk-player:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/trunk-player
     network_mode: host
     restart: "no"
@@ -33,6 +40,7 @@ services:
       - "resin-data:/data"
   postgres:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/postgres
     volumes:
       - "resin-data:/data"
@@ -45,11 +53,13 @@ services:
       POSTGRES_DB: radio
   redis:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/redis
     restart: "no"
     network_mode: host
   nginx:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/nginx
     privileged: true
     volumes:
@@ -60,6 +70,7 @@ services:
       - 80:80
   data-browser:
     build:
+      dockerfile: amd64.dockerfile
       context: ./host-images/data-browser
     network_mode: host
     restart: "no"

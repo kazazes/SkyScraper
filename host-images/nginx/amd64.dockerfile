@@ -13,3 +13,4 @@ COPY ./trunk-player.conf /etc/nginx/sites-enabled/trunk-player
 EXPOSE 80
 
 STOPSIGNAL SIGTERM
+CMD [ "nginx" ]

@@ -1,6 +1,6 @@
 FROM ubuntu:xenial AS gnuradio
 
-RUN [ "cross-build-start" ]
+
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -137,4 +137,4 @@ RUN rm -rf /var/lib/apt/lists/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
 
-RUN [ "cross-build-end" ]
+

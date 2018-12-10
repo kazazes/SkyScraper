@@ -4,8 +4,8 @@ before_script:
   - apk add git openssh
   - echo $RADIO_RSA > ~/.ssh/id_rsa
   - echo $RADIO_RSA_PUB > ~/.ssh/id_rsa.pub
-  - chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s)
-  - cat /root/.ssh/id_rsa | ssh-add -
+  - chmod 600 ~/.ssh/id_rsa && eval $(ssh-agent -s)
+  - cat ~/.ssh/id_rsa | ssh-add -
   - git remote add balena gh_kazazes@git.balena-cloud.com:gh_kazazes/skyscraper.git
    
 balena:

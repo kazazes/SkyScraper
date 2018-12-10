@@ -17,25 +17,9 @@ services:
   #     io.resin.features.dbus: "1"
   #     io.resin.features.supervisor-api: "1"
   #     io.resin.features.resin-api: "1"
-  soapy-remote:
-    build:
-      context: ./host-images/soapy-remote
-    privileged: true
-    restart: "no"
-    depends_on:
-      - "config"
-    network_mode: host
-    volumes:
-      - "resin-data:/data"
-    labels:
-      io.resin.features.kernel-modules: "1"
-      io.resin.features.firmware: "1"
-      io.resin.features.dbus: "1"
-      io.resin.features.supervisor-api: "1"
-      io.resin.features.resin-api: "1"
-      # trunk-recorder:
+  # soapy-remote:
   #   build:
-  #     context: ./host-images/trunk-recorder
+  #     context: ./host-images/soapy-remote
   #   privileged: true
   #   restart: "no"
   #   depends_on:
@@ -49,6 +33,22 @@ services:
   #     io.resin.features.dbus: "1"
   #     io.resin.features.supervisor-api: "1"
   #     io.resin.features.resin-api: "1"
+  trunk-recorder:
+    build:
+      context: ./host-images/trunk-recorder
+    privileged: true
+    restart: "no"
+    depends_on:
+      - "config"
+    network_mode: host
+    volumes:
+      - "resin-data:/data"
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
   config:
     build:
       context: ./host-images/config
@@ -74,65 +74,65 @@ services:
       io.resin.features.dbus: "1"
       io.resin.features.supervisor-api: "1"
       io.resin.features.resin-api: "1"
-  # trunk-player:
-  #   build:
-  #     context: ./host-images/trunk-player
-  #   network_mode: host
-  #   restart: "no"
-  #   depends_on:
-  #     - "redis"
-  #     - "postgres"
-  #     - "nginx"
-  #   volumes:
-  #     - "resin-data:/data"
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.resin.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
-  # postgres:
-  #   build:
-  #     context: ./host-images/postgres
-  #   volumes:
-  #     - "resin-data:/data"
-  #   restart: always
-  #   network_mode: host
-  #   environment:
-  #     POSTGRES_USER: skyscraper
-  #     POSTGRES_PASSWORD: sdr
-  #     PGDATA: /data/postgres
-  #     POSTGRES_DB: radio
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.resin.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
-  # redis:
-  #   build:
-  #     context: ./host-images/redis
-  #   restart: "no"
-  #   network_mode: host
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.resin.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
-  # nginx:
-  #   build:
-  #     context: ./host-images/nginx
-  #   privileged: true
-  #   volumes:
-  #     - "resin-data:/data"
-  #   restart: "no"
-  #   network_mode: host
-  #   ports:
-  #     - 80:80
-  #   labels:
-  #     io.resin.features.kernel-modules: "1"
-  #     io.resin.features.firmware: "1"
-  #     io.resin.features.dbus: "1"
-  #     io.resin.features.supervisor-api: "1"
-  #     io.resin.features.resin-api: "1"
+  trunk-player:
+    build:
+      context: ./host-images/trunk-player
+    network_mode: host
+    restart: "no"
+    depends_on:
+      - "redis"
+      - "postgres"
+      - "nginx"
+    volumes:
+      - "resin-data:/data"
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
+  postgres:
+    build:
+      context: ./host-images/postgres
+    volumes:
+      - "resin-data:/data"
+    restart: always
+    network_mode: host
+    environment:
+      POSTGRES_USER: skyscraper
+      POSTGRES_PASSWORD: sdr
+      PGDATA: /data/postgres
+      POSTGRES_DB: radio
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
+  redis:
+    build:
+      context: ./host-images/redis
+    restart: "no"
+    network_mode: host
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"
+  nginx:
+    build:
+      context: ./host-images/nginx
+    privileged: true
+    volumes:
+      - "resin-data:/data"
+    restart: "no"
+    network_mode: host
+    ports:
+      - 80:80
+    labels:
+      io.resin.features.kernel-modules: "1"
+      io.resin.features.firmware: "1"
+      io.resin.features.dbus: "1"
+      io.resin.features.supervisor-api: "1"
+      io.resin.features.resin-api: "1"

@@ -13,6 +13,6 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan git.sibyl.vision >> ~/.ssh/known_hosts
 
-RUN git clone git@git.sibyl.vision:peter/skyscraper-configurations.git skyscraper-config
+RUN git clone git@git.sibyl.vision:peter/skyscraper-configurations.git config
 
 ENTRYPOINT ["/config/fetch-all.sh"]

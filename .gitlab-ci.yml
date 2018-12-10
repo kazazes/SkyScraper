@@ -14,20 +14,6 @@ balena:
     - git remote add balena gh_kazazes@git.balena-cloud.com:gh_kazazes/skyscraper.git
     - git push balena master
 
-# When using dind service we need to instruct docker, to talk with the
-# daemon started inside of the service. The daemon is available with
-# a network connection instead of the default /var/run/docker.sock socket.
-#
-# The 'docker' hostname is the alias of the service container as described at
-# https://docs.gitlab.com/ee/ci/docker/using_docker_images.html#accessing-the-services
-#
-# Note that if you're using Kubernetes executor, the variable should be set to
-# tcp://localhost:2375 because of how Kubernetes executor connects services
-# to the job container
-variables:
-  DOCKER_HOST: tcp://127.0.0.1:2375/
-  DOCKER_DRIVER: overlay2
-
 base-images:
   image: docker:dind
   before_script:

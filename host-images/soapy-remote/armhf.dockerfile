@@ -1,4 +1,4 @@
-FROM pckzs/pybombs-soapyremote
+FROM pckzs/pybombs-soapyremote:latest
 ENV INITSYSTEM on
 
 RUN apt-get -q update \

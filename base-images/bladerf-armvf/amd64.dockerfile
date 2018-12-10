@@ -3,11 +3,13 @@ FROM ubuntu:xenial AS gnuradio
 RUN [ "cross-build-start" ]
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV PYBOMBS_PREFIX=/pybombs
 
+# Make this gnuradio install globally available
 COPY gnuradio.sh /etc/profile.d/gnuradio.sh
+# ...and it's libraries
 COPY gnuradio.conf /etc/ld.so.conf.d/gnuradio.conf
 
+# BladeRF PPA
 RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35
@@ -23,6 +25,7 @@ RUN apt-get -q update \
 
 WORKDIR /src/gnuradio-build
 
+# Use apt-fast because armhf mirrors are so slow.
 RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
   && apt-get -q update \
   && apt-fast -y --ignore-missing install --no-install-recommends \
@@ -71,6 +74,7 @@ RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
   libusb-1.0-0-dev \
   pkg-config
 
+# Add third party SDR util PPAs and their packages
 RUN add-apt-repository -y ppa:myriadrf/drivers \
   && add-apt-repository -y ppa:pothosware/support \
   && add-apt-repository -y ppa:pothosware/framework \
@@ -87,12 +91,14 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
   soapysdr-module-bladerf \
   && rm -rf /var/lib/apt/lists/*
 
+# Use modified version of traditional build-gnuradio script
 COPY build-gnuradio.sh build-gnuradio.sh
 
+# Just fetch git repos for gnuradio-etc
 RUN chmod +x ./build-gnuradio.sh \
   && ./build-gnuradio.sh -j8 -v -m gitfetch
 
-
+# Build the bugger
 RUN cd gnuradio \
   && git checkout -b gnuradio-v3.7.13.4 v3.7.13.4 \
   && mkdir build \
@@ -106,6 +112,7 @@ RUN cd gnuradio \
 
 WORKDIR /src/gnuradio-build
 
+# gr-iqbal
 RUN cd gr-iqbal  \
   && mkdir build \
   && cd build \
@@ -116,6 +123,7 @@ RUN cd gr-iqbal  \
 
 WORKDIR /src/gnuradio-build
 
+# osmosdr
 RUN cd gr-osmosdr  \
   && mkdir build \
   && cd build \

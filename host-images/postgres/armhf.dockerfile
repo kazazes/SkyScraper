@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-alpine
+FROM resin/%%BALENA_MACHINE_NAME%%-alpine
 
 RUN echo "@edge http://nl.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
   apk update && \

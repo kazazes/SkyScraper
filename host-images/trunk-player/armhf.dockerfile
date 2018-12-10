@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-alpine:3.7
+FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
 
 RUN apk add --virtual build-deps gcc python-dev musl-dev
 RUN apk add --update \

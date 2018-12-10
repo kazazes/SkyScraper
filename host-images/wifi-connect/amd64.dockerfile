@@ -1,10 +1,9 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian
+FROM debian
 
 ENV INITSYSTEM on
-ENV DBUS_SYSTEM_BUS_ADDRESS unix:path=/host/run/dbus/system_bus_socket
 
 RUN apt-get update \
-  && apt-get install -y dnsmasq wireless-tools \
+  && apt-get install -y dnsmasq wireless-tools git build-essential \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

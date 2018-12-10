@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-ubuntu:latest
+FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:latest
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV INITSYSTEM on

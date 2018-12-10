@@ -14,6 +14,7 @@ for D in ./host-images/*/; do
       ${D}Dockerfile.template > ${D}amd64.dockerfile
 
       sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ${D}Dockerfile.template > ${D}armhf.dockerfile
+      sed 's/%%RESIN_ARCH%%/armv7h/' ${D}Dockerfile.template > ${D}armhf.dockerfile
     fi
 done
 

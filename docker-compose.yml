@@ -4,6 +4,7 @@ volumes:
   resin-data: {}
 services:
   trunk-recorder:
+    cpu_percent: 80
     build:
       context: ./host-images/trunk-recorder
     privileged: true
@@ -20,44 +21,6 @@ services:
     restart: "no"
     volumes:
       - "resin-data:/data"
-  trunk-player:
-    build:
-      context: ./host-images/trunk-player
-    network_mode: host
-    restart: "no"
-    depends_on:
-      - "redis"
-      - "postgres"
-      - "nginx"
-    volumes:
-      - "resin-data:/data"
-  postgres:
-    build:
-      context: ./host-images/postgres
-    volumes:
-      - "resin-data:/data"
-    restart: always
-    network_mode: host
-    environment:
-      POSTGRES_USER: skyscraper
-      POSTGRES_PASSWORD: sdr
-      PGDATA: /data/postgres
-      POSTGRES_DB: radio
-  redis:
-    build:
-      context: ./host-images/redis
-    restart: "no"
-    network_mode: host
-  nginx:
-    build:
-      context: ./host-images/nginx
-    privileged: true
-    volumes:
-      - "resin-data:/data"
-    restart: "no"
-    network_mode: host
-    ports:
-      - 80:80
   data-browser:
     build:
       context: ./host-images/data-browser

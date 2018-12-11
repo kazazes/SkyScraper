@@ -24,6 +24,8 @@ base-images:
   only:
     - master
   stage: build
+  services:
+    - docker:dind
   script:
     - ls -al scripts
     - sh ./scripts/base-images.sh

@@ -25,9 +25,7 @@ RUN apt-get -q update \
 
 WORKDIR /src/gnuradio-build
 
-# Use apt-fast because armhf mirrors are so slow.
-RUN /bin/bash -c "$(curl -sL https://git.io/vokNn)" \
-  && apt-get -q update \
+RUN apt-get -q update \
   && apt-fast -y --ignore-missing install --no-install-recommends \
   build-essential \
   cmake \
@@ -136,3 +134,5 @@ RUN rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \
   && apt-get -y autoremove --purge \
   && apt-get -y clean && apt-get -y autoclean
+
+

@@ -4,7 +4,7 @@ volumes:
   resin-data: {}
 services:
   trunk-recorder:
-    cpu_percent: 80
+    cpu_shares: 10
     build:
       context: ./host-images/trunk-recorder
     privileged: true
@@ -15,6 +15,7 @@ services:
     volumes:
       - "resin-data:/data"
   config:
+    cpu_shares: 1
     build:
       context: ./host-images/config
     network_mode: host
@@ -22,6 +23,7 @@ services:
     volumes:
       - "resin-data:/data"
   data-browser:
+    cpu_shares: 1
     build:
       context: ./host-images/data-browser
     network_mode: host

@@ -14,6 +14,7 @@ tmux -f /dev/null new-session -c $PWD -d -s CI "gcloud builds log --stream $FIRS
 tmux setw status-position top
 tmux setw mouse on
 tmux setw status on
+tmux setw status-justify centre
 tmux rename-window "$FIRST_TITLE"
 tmux select-window -t CI:0
 tmux new-window -d -c $PWD -n "$SECOND_TITLE" "gcloud builds log --stream $SECOND"

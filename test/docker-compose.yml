@@ -10,7 +10,7 @@ services:
   trunk-recorder:
     build:
       dockerfile: amd64.dockerfile
-      context: ./host-images/trunk-recorder
+      context: ../host-images/trunk-recorder
     privileged: true
     restart: "no"
     network_mode: host

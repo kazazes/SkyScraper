@@ -31,10 +31,10 @@ docker manifest create -a pckzs/pybombs \
   pckzs/pybombs-amd64:latest
 
 # Architectures
-docker manifest annotate pckzs/bladerf-arm:latest pckzs/bladerf --arch arm64
+docker manifest annotate pckzs/bladerf-arm:latest pckzs/bladerf --arch arm64 --os linux
 docker manifest annotate pckzs/bladerf-amd64:latest pckzs/bladerf --arch amd64
 
-docker manifest annotate pckzs/pybombs-arm:latest pckzs/pybombs --arch arm64
+docker manifest annotate pckzs/pybombs-arm:latest pckzs/pybombs --arch arm64 --os linux
 docker manifest annotate pckzs/pybombs-amd64:latest pckzs/pybombs --arch amd64
 
 # Push multi-arch image

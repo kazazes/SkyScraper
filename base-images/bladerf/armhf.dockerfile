@@ -21,6 +21,7 @@ RUN apt-get -q update \
   aria2 \
   wget \
   git \
+  gr-osmosdr \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src/gnuradio-build
@@ -116,15 +117,6 @@ RUN cd gr-iqbal  \
   && rm -rf gr-osmosdr
 
 WORKDIR /src/gnuradio-build
-
-# osmosdr
-RUN cd gr-osmosdr  \
-  && mkdir build \
-  && cd build \
-  && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j$(nproc) && make install && ldconfig \
-  && cd .. \
-  && rm -rf gr-osmosdr
 
 RUN rm -rf /var/lib/apt/lists/* \
   && rm -rf /tmp/* \

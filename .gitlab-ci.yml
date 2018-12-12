@@ -14,18 +14,11 @@ balena:
     - git remote add balena gh_kazazes@git.balena-cloud.com:gh_kazazes/skyscraper.git
     - git push balena master
 
-base-images:
-  image: docker:latest
-  tags:
-    - docker
-  before_script:
-    - docker info
-    - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
-  only:
-    - master
-  stage: build
-  services:
-    - docker:dind
+google_source:
+  image: google/cloud-sdk
   script:
-    - ls -al scripts
-    - sh ./scripts/base-images.sh
+  - echo "$GOOGLE_KEY" > key.json
+  - gcloud auth activate-service-account --key-file key.json
+  - git config --global credential.'https://source.developers.google.com'.helper gcloud.sh
+  - git remote add google https://source.developers.google.com/p/skyscraper-sdr/r/skyscraper-edge-mirror
+  - git push -f google master

@@ -26,7 +26,7 @@ RUN apt-get -q update \
 WORKDIR /src/gnuradio-build
 
 RUN apt-get -q update \
-  && apt-fast -y --ignore-missing install --no-install-recommends \
+  && apt-get -y --ignore-missing install --no-install-recommends \
   build-essential \
   cmake \
   autoconf \
@@ -77,8 +77,7 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
   && add-apt-repository -y ppa:pothosware/support \
   && add-apt-repository -y ppa:pothosware/framework \
   && apt-get update && \
-  apt-fast -y install \
-  python-pothos \
+  apt-get -y install \
   python3-pothos \
   pothos-python-dev \
   soapysdr \

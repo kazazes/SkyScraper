@@ -538,7 +538,7 @@ function prereqs {
 		for pkg in $PKGLIST; do checkpkg $pkg; done
 		for pkg in $PKGLIST
 		do
-			sudo apt-fast -y --ignore-missing --no-install-recommends install $pkg >>$LOGDEV 2>&1
+			sudo apt-get -y --ignore-missing --no-install-recommends install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -610,7 +610,7 @@ function prereqs {
 		my_echo Done checking packages
 		for pkg in $PKGLIST
 		do
-			sudo apt-fast -y --no-install-recommends --ignore-missing install $pkg >>$LOGDEV 2>&1
+			sudo apt-get -y --no-install-recommends --ignore-missing install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -657,7 +657,7 @@ function prereqs {
 			;;
 		esac
 		for pkg in $PKGLIST; do checkpkg $pkg; done
-		sudo apt-fast -y --ignore-missing --no-install-recommends install $PKGLIST >>$LOGDEV 2>&1
+		sudo apt-get -y --ignore-missing --no-install-recommends install $PKGLIST >>$LOGDEV 2>&1
 	elif [ -f /etc/SuSE-release ]
 	then
 		SYSTYPE=OpenSuSE

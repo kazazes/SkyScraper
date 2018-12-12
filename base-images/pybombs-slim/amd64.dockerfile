@@ -33,7 +33,7 @@ RUN pip3 install git+https://github.com/gnuradio/pybombs.git
 
 # Apply a configuration
 RUN pybombs auto-config \
-  && pybombs config makewidth $(nproc) \
+  && pybombs config makewidth $(($(nproc)>8?$(nproc):8)) \
   && pybombs recipes add-defaults
 
 # Customize configuration of some recipes

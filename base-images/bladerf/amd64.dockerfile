@@ -83,8 +83,6 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
   soapysdr \
   python-soapysdr \
   python3-soapysdr \
-  soapysdr-module-remote \
-  soapysdr-server \
   soapysdr-module-bladerf \
   && rm -rf /var/lib/apt/lists/*
 

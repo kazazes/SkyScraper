@@ -1,22 +1,22 @@
 steps:
   - name: "gcr.io/cloud-builders/docker"
-    args: ["pull", "gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest"]
+    args: ["pull", "gcr.io/skyscraper-sdr/pybombs-amd64:latest"]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "build",
         "-t",
-        "gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest",
+        "gcr.io/skyscraper-sdr/pybombs-amd64:latest",
         "--cache-from",
-        "gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest",
+        "gcr.io/skyscraper-sdr/pybombs-amd64:latest",
         "-f",
         "./base-images/bladerf/amd64.dockerfile",
         "./base-images/bladerf/",
       ]
     timeout: 8h
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest"]
-images: ["gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest"]
+    args: ["push", "gcr.io/skyscraper-sdr/pybombs-amd64:latest"]
+images: ["gcr.io/skyscraper-sdr/pybombs-amd64:latest"]
 timeout: 8h30m
 options:
   machineType: "N1_HIGHCPU_32"

@@ -1424,7 +1424,6 @@ case $# in
 	0)
 		all
 		my_echo All Done
-		doexit SUCCESS
 esac
 
 for arg in $*
@@ -1433,4 +1432,3 @@ do
 	$arg
 done
 my_echo All Done
-doexit SUCCESS

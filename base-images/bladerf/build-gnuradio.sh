@@ -72,7 +72,7 @@ export LC_LANG=C
 EXTRAS=""
 MASTER_MODE=0
 OLD_MODE=0
-PULLED_LIST="gnuradio uhd rtl-sdr gr-osmosdr gr-iqbal hackrf gr-baz bladeRF libairspy"
+PULLED_LIST="gnuradio uhd gr-iqbal gr-baz"
 which python3 >/dev/null 2>&1
 if [ $? -eq 0 ]
 then

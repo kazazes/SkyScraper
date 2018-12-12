@@ -90,7 +90,7 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
 COPY build-gnuradio.sh build-gnuradio.sh
 
 RUN chmod a+x build-gnuradio.sh \
-  && ./build-gnuradio.sh -j8 -v -m gitfetch
+  && ./build-gnuradio.sh -ja -v -m gitfetch uhd_build gnuradio_build mod_sysctl
 
 # Build the bugger
 RUN cd gnuradio \

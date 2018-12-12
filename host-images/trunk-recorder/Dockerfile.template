@@ -32,9 +32,7 @@ RUN apt-get -q update \
   postgresql-client-common \
   jq \
   ca-certificates \
-  openssl \
-  libuhd-dev \
-  libssl-dev
+  openssl
 
 WORKDIR /skyscraper
 

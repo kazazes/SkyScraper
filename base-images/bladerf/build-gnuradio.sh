@@ -11,20 +11,6 @@
 #
 # Exit function--Id like to be able to upload stats to a website somewhere...
 #
-function doexit
-{
-	cat <<"!EOF!"
-
-=======================================================================
-If you have found this script useful and time-saving, consider a
-donation to help me keep build-gnuradio, simple_ra, SIDsuite,
-meteor_detector, simple_fm_rcv, and multimode maintained and up to date.
-A simple paypal transfer to mleech@ripnet.com is all you need to do.
-======================================================================
-!EOF!
-
-	exit
-}
 
 function help {
 	cat <<!EOF!
@@ -68,7 +54,14 @@ mod_sysctl      - modify SYSCTL for larger net buffers
 
 }
 
-VERBOSE=Yes
+if [ $USER = root -o $UID -eq 0 ]
+then
+	echo Please run this script as an ordinary user
+	echo   it will acquire root privileges as it needs them via \"sudo\".
+	exit
+fi
+
+VERBOSE=No
 JFLAG=""
 LOGDEV=/dev/null
 USERSLIST=None
@@ -79,8 +72,7 @@ export LC_LANG=C
 EXTRAS=""
 MASTER_MODE=0
 OLD_MODE=0
-PULLED_LIST="gnuradio uhd rtl-sdr gr-osmosdr gr-iqbal hackrf gr-baz bladeRF"
-
+PULLED_LIST="gnuradio uhd rtl-sdr gr-osmosdr gr-iqbal hackrf gr-baz bladeRF libairspy"
 which python3 >/dev/null 2>&1
 if [ $? -eq 0 ]
 then
@@ -190,7 +182,7 @@ do
 done
 
 CWD=`pwd`
-SUDOASKED=y
+SUDOASKED=n
 SYSTYPE=unknown
 good_to_go=no
 for file in /etc/fedora-release /etc/linuxmint/info /etc/lsb-release /etc/debian_version /etc/redhat-release
@@ -207,35 +199,6 @@ then
 	exit
 fi
 
-echo This script will install Gnu Radio from current GIT sources
-echo You will require Internet access from the computer on which this
-echo script runs.  You will also require SUDO access.  You will require
-echo approximately 500MB of free disk space to perform the build.
-echo " "
-echo This script will, as a side-effect, remove any existing Gnu Radio
-echo installation that was installed from your Linux distribution packages.
-echo It must do this to prevent problems due to interference between
-echo a linux-distribution-installed Gnu Radio/UHD and one installed from GIT source.
-echo " "
-echo The whole process may take up to two hours to complete, depending on the
-echo capabilities of your system.
-echo
-echo "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-echo NOTE: if you run into problems while running this script, you can re-run it with
-echo the --verbose option to produce lots of diagnostic output to help debug problems.
-echo This script has been written to anticipate some of the more common problems one might
-echo encounter building ANY large, complex software package.  But it is not pefect, and
-echo there are certainly some situations it could encounter that it cannot deal with
-echo gracefully.  Altering the system configuration from something reasonably standard,
-echo removing parts of the filesystem, moving system libraries around arbitrarily, etc,
-echo it likely cannot cope with.  It is just a script.  It isn\'t intuitive or artificially
-echo intelligent.  It tries to make life a little easier for you, but at the end of the day
-echo if it runs into trouble, a certain amount of knowledge on your part about
-echo system configuration and idiosyncrasies will inevitably be necessary.
-echo
-
-
-PROCEED=y
 
 SPACE=`df $HOME| grep -v blocks|grep '%'`
 SPACE=`echo $SPACE | awk '/./ {n=NF-2; printf ("%d\n", $n/1.0e3)}'`
@@ -279,21 +242,9 @@ then
 			fi
 		done
 	done
-	echo " "
-	echo -n Remove them'?'
 
-	for file in $PULLED_LIST
-	do
-		for instance in ${file}.20*
-		do
-			if [ -d $instance ]
-			then
-				echo removing ${instance}
-				rm -rf ${instance}
-			fi
-		done
-	done
-
+	echo removing ${instance}
+	rm -rf ${instance}
 fi
 rm -rf *.20*.bgmoved
 
@@ -538,7 +489,7 @@ function prereqs {
 		for pkg in $PKGLIST; do checkpkg $pkg; done
 		for pkg in $PKGLIST
 		do
-			sudo apt-get -y --ignore-missing --no-install-recommends install $pkg >>$LOGDEV 2>&1
+			sudo apt-get -y --ignore-missing install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -554,8 +505,17 @@ function prereqs {
 		sudo apt-get -y purge 'libgnuradio*' >>$LOGDEV 2>&1
 		sudo apt-get -y purge 'python-gnuradio*' >>$LOGDEV 2>&1
 		case `grep DISTRIB_RELEASE /etc/lsb-release` in
-		*15.*|*16.*|*17.*)
-			PKGLIST=""
+		*15.*|*16.*)
+			PKGLIST="libqwt6 libfontconfig1-dev libxrender-dev libpulse-dev swig g++
+			automake autoconf libtool python-dev libfftw3-dev
+			libcppunit-dev libboost-all-dev libusb-dev libusb-1.0-0-dev fort77
+			libsdl1.2-dev python-wxgtk2.8 git-core
+			libqt4-dev python-numpy ccache python-opengl libgsl0-dev
+			python-cheetah python-mako python-lxml doxygen qt4-default qt4-dev-tools libusb-1.0-0-dev
+			libqwt5-qt4-dev libqwtplot3d-qt4-dev pyqt4-dev-tools python-qwt5-qt4
+			cmake git-core wget libxi-dev python-docutils gtk2-engines-pixbuf r-base-dev python-tk
+			liborc-0.4-0 liborc-0.4-dev libasound2-dev python-gtk2 libzmq libzmq-dev libzmq1 libzmq1-dev python-requests
+			python-sphinx comedi-dev python-zmq libncurses5 libncurses5-dev python-wxgtk3.0"
 			CMAKE_FLAG1=-DPythonLibs_FIND_VERSION:STRING="2.7"
 			CMAKE_FLAG2=-DPythonInterp_FIND_VERSION:STRING="2.7"
 			;;
@@ -610,7 +570,7 @@ function prereqs {
 		my_echo Done checking packages
 		for pkg in $PKGLIST
 		do
-			sudo apt-get -y --no-install-recommends --ignore-missing install $pkg >>$LOGDEV 2>&1
+			sudo apt-get -y --ignore-missing install $pkg >>$LOGDEV 2>&1
 		done
 
 	#
@@ -657,7 +617,7 @@ function prereqs {
 			;;
 		esac
 		for pkg in $PKGLIST; do checkpkg $pkg; done
-		sudo apt-get -y --ignore-missing --no-install-recommends install $PKGLIST >>$LOGDEV 2>&1
+		sudo apt-get -y --ignore-missing install $PKGLIST >>$LOGDEV 2>&1
 	elif [ -f /etc/SuSE-release ]
 	then
 		SYSTYPE=OpenSuSE
@@ -718,6 +678,7 @@ function gitfetch {
 	fi
 	echo This script will fetch Gnu Radio version $V from the repositories, along with compatible
 	echo  extras.
+
 
 	my_echo "Fetching various packages (Gnu Radio, UHD, gr-osmosdr, gr-iqbal, etc)"
 	my_echo "  via the Internet"
@@ -786,6 +747,35 @@ function gitfetch {
 	my_echo Done
 
 	#
+	# GIT the UHD source tree
+	#
+	rm -rf uhd
+	my_echo -n Fetching UHD via GIT...
+	git clone --progress  https://github.com/EttusResearch/uhd >>$LOGDEV 2>&1
+
+	if [ ! -d uhd/host ]
+	then
+		my_echo GIT checkout of UHD FAILED
+		rm -f tmp$$
+		doexit FETCH-UHD-FAIL
+	fi
+	if [ $UTAG != None ]
+	then
+		cd uhd
+		git checkout $UTAG >/dev/null 2>&1
+		git status >tmp$$ 2>&1
+		if grep -q "$UTAG" tmp$$
+		then
+			whee=yes
+			rm -f tmp$$
+		else
+			my_echo Could not fetch UHD tagged $UTAG from GIT
+			rm -f tmp$$
+		fi
+		cd ..
+	fi
+
+	#
 	# GIT the RTL-SDR source tree
 	#
 	rm -rf rtl-sdr
@@ -796,7 +786,7 @@ function gitfetch {
 	rm -rf airspy
 	my_echo Fetching rtl-sdr "(rtl-sdr, gr-osmosdr, gr-iqbal, hackrf, bladeRF and airspy)" via GIT
 	git clone --progress git://git.osmocom.org/rtl-sdr >>$LOGDEV 2>&1
-	git clone --progress https://github.com/Nuand/gr-osmosdr.git >>$LOGDEV 2>&1
+	git clone --progress git://git.osmocom.org/gr-osmosdr >>$LOGDEV 2>&1
 	git clone --progress git://git.osmocom.org/gr-iqbal.git >>$LOGDEV 2>&1
 	git clone https://github.com/Nuand/bladeRF.git >>$LOGDEV 2>&1
 	if [ -d gr-iqbal ]
@@ -813,6 +803,59 @@ function gitfetch {
 	git clone --progress https://github.com/mossmann/hackrf.git >>$LOGDEV 2>&1
 	(cd $CWD; rm -rf airpsy; mkdir airspy; cd airspy; git clone https://github.com/airspy/host) >>$LOGDEV 2>&1
 	my_echo Done
+}
+
+function uhd_build {
+	#
+	# UHD build
+	#
+	sudocheck
+	if [ ! -d uhd ]
+	then
+		my_echo you do not appear to have the \'uhd\' directory
+		my_echo you should probably use $0 gitfetch to fetch the appropriate
+		my_echo files using GIT
+		doexit BUILD-UHD-NOT-THERE
+	fi
+	if [ $UTAG != None ]
+	then
+		cd uhd
+		git checkout $UTAG >/dev/null 2>&1
+		cd ..
+	fi
+	my_echo Building UHD...
+	my_echo "=============> THIS WILL TAKE SOME TIME <============="
+	my_echo
+	cd uhd/host
+	rm -rf build
+	if [ ! -d build ]
+	then
+		mkdir build
+	fi
+	cd build
+	make clean >/dev/null 2>&1
+	cmake $CMAKE_FLAG1 $CMAKE_FLAG2 $CMF1 $CMF2  $UCFLAGS ../ >>$LOGDEV 2>&1
+	make clean >>$LOGDEV 2>&1
+	make $JFLAG >>$LOGDEV 2>&1
+	if [ $? -ne 0  ]
+	then
+		my_echo UHD build apparently failed
+		my_echo Exiting UHD build
+		doexit UHD-BUILD-FAIL1
+	fi
+    sudo rm -f /usr/local/lib*/libuhd*
+	sudo make $JFLAG install >>$LOGDEV 2>&1
+	which uhd_find_devices >/dev/null 2>&1
+	x=$?
+	if [ $x -ne 0 -a ! -f /usr/local/bin/uhd_find_devices -a ! -f /opt/local/bin/uhd_find_devices ]
+	then
+		my_echo UHD build/install apparently failed since I cannot find /usr/local/bin/uhd_find_devices
+		my_echo after doing make and make install
+		my_echo Exiting UHD build
+		doexit UHD-BUILD-FAIL2
+	fi
+	sudo ldconfig >>$LOGDEV 2>&1
+	my_echo Done building/installing UHD
 }
 
 function rtl_build {
@@ -1294,7 +1337,7 @@ function all {
 		gitfetch
 	fi
 	rm -f touch$$
-	for fcn in firmware gnuradio_build rtl_build mod_groups mod_udev mod_sysctl pythonpath extras
+	for fcn in uhd_build firmware gnuradio_build rtl_build mod_groups mod_udev mod_sysctl pythonpath extras
 	do
 		my_echo Starting function $fcn at: `date`
 		cd $CWD
@@ -1347,7 +1390,7 @@ function sudocheck {
 		case $ans in
 			y|Y|YES|yes|Yes)
 				echo Continuing with script
-
+				SUDOASKED=y
 				sudo grep timestamp_timeout /etc/sudoers >tmp$$
 				timeout=`cat tmp$$|awk '/./ {print $4}'`
 				rm -f tmp$$

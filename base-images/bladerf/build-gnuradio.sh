@@ -85,9 +85,9 @@ do
 		-ja)
 			cnt=`grep 'processor.*:' /proc/cpuinfo|wc -l`
 			cnt=`expr $cnt - 1`
-			if [ $cnt -lt 1 ]
+			if [ $cnt -lt 8 ]
 			then
-				cnt=1
+				cnt=8
 			fi
 			JFLAG=-j$cnt
 			shift

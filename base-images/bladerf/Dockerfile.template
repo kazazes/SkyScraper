@@ -86,10 +86,8 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
   soapysdr-module-bladerf \
   && rm -rf /var/lib/apt/lists/*
 
-RUN wget http://www.sbrac.org/files/build-gnuradio && chmod a+x build-gnuradio && ./build-gnuradio
-
-# Just fetch git repos for gnuradio-etc
-RUN chmod +x ./build-gnuradio.sh \
+RUN wget http://www.sbrac.org/files/build-gnuradio \
+  && chmod a+x build-gnuradio \
   && ./build-gnuradio.sh -j8 -v -m gitfetch
 
 # Build the bugger

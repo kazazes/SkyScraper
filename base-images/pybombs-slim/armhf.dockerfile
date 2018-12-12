@@ -7,7 +7,7 @@ ENV PyBOMBS_prefix myprefix
 ENV PyBOMBS_init /pybombs
 
 # Update apt-get and install some dependencies
-RUN apt-get -qq update && apt-get install --fix-missing -y --no-install-recommends \
+RUN apt-get update && apt-get install -y --no-install-recommends \
   automake \
   git \
   libarmadillo-dev \
@@ -77,7 +77,8 @@ RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_profile -v 8111
 RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_gnsssdr_profile
 RUN rm -rf /tmp/* /var/tmp/*
 
-RUN [ "cross-build-end" ]
 
 WORKDIR /home
 CMD ["bash"]
+
+RUN [ "cross-build-end" ]

@@ -4,7 +4,7 @@ RUN [ "cross-build-start" ]
 
 # Set prefix variables
 ENV PyBOMBS_prefix skyscraper
-ENV PyBOMBS_init /usr/local/
+ENV PyBOMBS_init /usr/local
 
 # Update apt-get and install some dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \

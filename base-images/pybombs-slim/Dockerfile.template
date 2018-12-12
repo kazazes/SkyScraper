@@ -1,5 +1,7 @@
 FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:xenial as pybombs-slim
 
+RUN [ "cross-build-start" ]
+
 # Set prefix variables
 ENV PyBOMBS_prefix myprefix
 ENV PyBOMBS_init /pybombs
@@ -74,6 +76,8 @@ RUN apt-get -qq update && pybombs -p ${PyBOMBS_prefix} -v install gr-osmosdr gr-
 RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_profile -v 8111
 RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_gnsssdr_profile
 RUN rm -rf /tmp/* /var/tmp/*
+
+RUN [ "cross-build-end" ]
 
 WORKDIR /home
 CMD ["bash"]

@@ -25,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python-six \
   python3-six \
   swig \
+  python \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PyBOMBS

@@ -17,13 +17,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   pkg-config \
   python3-apt \
   python3-dev \
-  python3-gi-cairo \
-  python3-lxml \
-  python3-mako \
-  python3-numpy \
   python3-pip \
-  python3-pyqt5 \
-  python3-requests \
   python3-setuptools \
   python3-yaml \
   swig \

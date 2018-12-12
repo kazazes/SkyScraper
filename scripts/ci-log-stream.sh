@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+set -e
 
 BUILDS=$(gcloud builds list | grep WORKING | cut -f1 -d " " | tr "\n" " ")
 [[ -z "$BUILDS" ]] && echo "No running builds." && exit 1

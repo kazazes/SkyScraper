@@ -25,7 +25,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python-six \
   python3-six \
   swig \
-  python \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PyBOMBS
@@ -58,10 +57,10 @@ RUN echo "vars:\n  config_opt: \"-DENABLE_OSMOSDR=ON -DENABLE_FMCOMMS2=ON -DENAB
   && sed -i '/gitrev/d' /root/.pybombs/recipes/gr-recipes/gr-iio.lwr \
   && sed -i 's/git+git:\/\/git.osmocom.org\/gr-osmosdr/git+https:\/\/github.com\/Nuand\/gr-osmosdr.git/' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr \
   && echo "gitbranch: master\n" >> /root/.pybombs/recipes/gr-recipes/gr-iio.lwr \
+  && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix}
 
-  # Build and install GNU Radio via Pybombs
-  RUN apt-get -qq update \
-  && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix} -R gnuradio-default \
+RUN apt-get -qq update \
+  pybombs -vv install --deps-only gnuradio gr-osmosdr bladeRF gr-iqbal \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*
 
@@ -72,7 +71,7 @@ RUN echo "export PYTHONPATH=\"\$PYTHONPATH:/pybombs/lib/python3.5/dist-packages\
 
 # Install optional drivers via Pybombs
 RUN apt-get -qq update \
-  && pybombs -p ${PyBOMBS_prefix} -v install gr-osmosdr bladeRF gr-iqbal \
+  && pybombs -p ${PyBOMBS_prefix} -v install gnuradio gr-osmosdr bladeRF gr-iqbal \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*
 

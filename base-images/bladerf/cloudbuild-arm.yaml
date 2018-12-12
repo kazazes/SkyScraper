@@ -16,7 +16,7 @@ steps:
     timeout: 8h
   - name: "gcr.io/cloud-builders/docker"
     args: ["push", "gcr.io/skyscraper-sdr/skyscraper-edge-arm:latest"]
-images: ["gcr.io/skyscraper-sdr/skyscraper-edge-amd64:latest"]
+images: ["gcr.io/skyscraper-sdr/skyscraper-edge-arm:latest"]
 timeout: 8h30m
 options:
   machineType: "N1_HIGHCPU_32"

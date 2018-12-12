@@ -88,7 +88,7 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
 
 RUN wget http://www.sbrac.org/files/build-gnuradio \
   && chmod a+x build-gnuradio \
-  && ./build-gnuradio.sh -j8 -v -m gitfetch
+  && ./build-gnuradio -j8 -v -m gitfetch
 
 # Build the bugger
 RUN cd gnuradio \

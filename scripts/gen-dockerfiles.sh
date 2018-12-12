@@ -33,18 +33,18 @@ for D in ./base-images/*/; do
 done
 
 
-cat <<EOT > ./host-images/postgres/amd64.dockerfile
-FROM postgres
+# cat <<EOT > ./host-images/postgres/amd64.dockerfile
+# FROM postgres
 
-ENV LANG en_US.utf8
+# ENV LANG en_US.utf8
 
-COPY docker-entrypoint.sh /usr/local/bin
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# COPY docker-entrypoint.sh /usr/local/bin
+# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-ENTRYPOINT ["docker-entrypoint.sh"]
+# ENTRYPOINT ["docker-entrypoint.sh"]
 
-EXPOSE 5432
-CMD ["postgres"]
-EOT
+# EXPOSE 5432
+# CMD ["postgres"]
+# EOT
 
 echo 'CMD [ "nginx" ]' >> ./host-images/nginx/amd64.dockerfile

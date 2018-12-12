@@ -34,6 +34,12 @@ RUN apt-get -q update \
   ca-certificates \
   openssl
 
+## trunk-recorder needs
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && apt-get install locales \
+  && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
+  && locale-gen
+
 WORKDIR /skyscraper
 
 RUN mkdir build && mkdir src

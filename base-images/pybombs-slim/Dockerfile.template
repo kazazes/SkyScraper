@@ -60,7 +60,7 @@ RUN echo "vars:\n  config_opt: \"-DENABLE_OSMOSDR=ON -DENABLE_FMCOMMS2=ON -DENAB
   && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix}
 
 RUN apt-get -qq update \
-  pybombs -vv install --deps-only gnuradio gr-osmosdr bladeRF gr-iqbal \
+  && pybombs -vv install --deps-only gnuradio gr-osmosdr bladeRF gr-iqbal \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*
 

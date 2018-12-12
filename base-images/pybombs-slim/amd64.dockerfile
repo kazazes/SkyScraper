@@ -75,9 +75,6 @@ RUN apt-get -qq update \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*
 
-# Run VOLK profilers
-RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_profile -v 8111
-RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_gnsssdr_profile
 RUN rm -rf /tmp/* /var/tmp/*
 
 WORKDIR /home

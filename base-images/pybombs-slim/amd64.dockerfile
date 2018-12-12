@@ -55,10 +55,11 @@ RUN echo "vars:\n  config_opt: \"-DENABLE_OSMOSDR=ON -DENABLE_FMCOMMS2=ON -DENAB
   && echo "gitbranch: v3.7.13.4\n" >> /root/.pybombs/recipes/gr-recipes/gnuradio.lwr \
   && echo "vars:\n  config_opt: \"-DENABLE_GR_AUDIO=OFF -DENABLE_GR_CHANNELS=OFF -DENABLE_GR_COMEDI=OFF -DENABLE_GR_DIGITAL=ON -DENABLE_DOXYGEN=OFF -DENABLE_GR_DTV=OFF -DENABLE_GR_FEC=OFF -DENABLE_GR_TRELLIS=OFF -DENABLE_GR_VIDEO_SDL=OFF -DENABLE_GR_VOCODER=ON -DENABLE_GR_WAVELET=OFF -DENABLE_GR_ZEROMQ=ON -DENABLE_GR_ANALOG=ON -DENABLE_GR_FFT=ON -DENABLE_GR_FILTER=ON -DENABLE_GRC=OFF\"\n" >> /root/.pybombs/recipes/gr-recipes/gnuradio.lwr \
   && sed -i '/gitrev/d' /root/.pybombs/recipes/gr-recipes/gr-iio.lwr \
-  && echo "gitbranch: master\n" >> /root/.pybombs/recipes/gr-recipes/gr-iio.lwr
+  && sed -i 's/git+git:\/\/git.osmocom.org\/gr-osmosdr/git+https:\/\/github.com\/Nuand\/gr-osmosdr.git/' ~/.pybombs/recipes/gr-recipes/gr-osmosdr.lwr \
+  && echo "gitbranch: master\n" >> /root/.pybombs/recipes/gr-recipes/gr-iio.lwr \
 
-# Build and install GNU Radio via Pybombs
-RUN apt-get -qq update \
+  # Build and install GNU Radio via Pybombs
+  RUN apt-get -qq update \
   && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix} -R gnuradio-default \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*

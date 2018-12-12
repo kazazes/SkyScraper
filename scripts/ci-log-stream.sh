@@ -15,6 +15,8 @@ do
   tmux setw mouse on
   tmux setw status on
   tmux setw status-justify centre
+  tmux setw monitor-silence 15
+  tmux setw remain-on-exit on
 done
 
 tmux select-window -t CI:0

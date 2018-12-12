@@ -3,8 +3,8 @@ FROM ubuntu:xenial as pybombs-slim
 
 
 # Set prefix variables
-ENV PyBOMBS_prefix myprefix
-ENV PyBOMBS_init /pybombs
+ENV PyBOMBS_prefix skyscraper
+ENV PyBOMBS_init /usr/local/
 
 # Update apt-get and install some dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -20,6 +20,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   python3-pip \
   python3-setuptools \
   python3-yaml \
+  python-mako \
+  python3-mako \
+  python-six \
+  python3-six \
   swig \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -28,14 +32,9 @@ RUN pip3 install --upgrade pip
 RUN pip3 install git+https://github.com/gnuradio/pybombs.git
 
 # Apply a configuration
-RUN pybombs auto-config && pybombs config makewidth $(nproc)
-
-# Add list of default recipes
-RUN pybombs recipes add-defaults
-
-RUN pip install \
-  mako \
-  six
+RUN pybombs auto-config \
+  && pybombs config makewidth $(nproc) \
+  && pybombs recipes add-defaults
 
 # Customize configuration of some recipes
 RUN echo "vars:\n  config_opt: \"-DENABLE_OSMOSDR=ON -DENABLE_FMCOMMS2=ON -DENABLE_PLUTOSDR=ON -DENABLE_AD9361=ON -DENABLE_RAW_UDP=ON -DENABLE_PACKAGING=ON -DENABLE_UNIT_TESTING=OFF -DPYTHON_EXECUTABLE=/usr/bin/python3\"\n" >> /root/.pybombs/recipes/gr-recipes/gnss-sdr.lwr \
@@ -59,19 +58,26 @@ RUN echo "vars:\n  config_opt: \"-DENABLE_OSMOSDR=ON -DENABLE_FMCOMMS2=ON -DENAB
   && echo "gitbranch: master\n" >> /root/.pybombs/recipes/gr-recipes/gr-iio.lwr
 
 # Build and install GNU Radio via Pybombs
-RUN apt-get -qq update && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix} -R gnuradio-default && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf ${PyBOMBS_init}/src/*
+RUN apt-get -qq update \
+  && pybombs prefix init ${PyBOMBS_init} -a ${PyBOMBS_prefix} -R gnuradio-default \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* \
+  && rm -rf ${PyBOMBS_init}/src/*
 
 # Setup environment
-RUN echo "export PYTHONPATH=\"\$PYTHONPATH:/pybombs/lib/python3.5/dist-packages\"" >> ${PyBOMBS_init}/setup_env.sh && echo "source "${PyBOMBS_init}"/setup_env.sh" > /root/.bashrc && . ${PyBOMBS_init}/setup_env.sh
+RUN echo "export PYTHONPATH=\"\$PYTHONPATH:/pybombs/lib/python3.5/dist-packages\"" >> ${PyBOMBS_init}/setup_env.sh \
+  && echo "source "${PyBOMBS_init}"/setup_env.sh" > /root/.bashrc \
+  && . ${PyBOMBS_init}/setup_env.sh
 
 # Install optional drivers via Pybombs
-RUN apt-get -qq update && pybombs -p ${PyBOMBS_prefix} -v install gr-osmosdr gr-iio bladeRF && apt-get clean && rm -rf /var/lib/apt/lists/* && rm -rf ${PyBOMBS_init}/src/*
+RUN apt-get -qq update \
+  && pybombs -p ${PyBOMBS_prefix} -v install gr-osmosdr bladeRF gr-iqbal \
+  && apt-get clean && rm -rf /var/lib/apt/lists/* \
+  && rm -rf ${PyBOMBS_init}/src/*
 
 # Run VOLK profilers
 RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_profile -v 8111
 RUN . ${PyBOMBS_init}/setup_env.sh && ${PyBOMBS_init}/bin/volk_gnsssdr_profile
 RUN rm -rf /tmp/* /var/tmp/*
-
 
 WORKDIR /home
 CMD ["bash"]

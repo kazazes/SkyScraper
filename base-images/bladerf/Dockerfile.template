@@ -90,7 +90,7 @@ RUN add-apt-repository -y ppa:myriadrf/drivers \
 COPY build-gnuradio.sh build-gnuradio.sh
 
 RUN chmod a+x build-gnuradio.sh \
-  && ./build-gnuradio.sh -ja -v -m gitfetch uhd_build gnuradio_build mod_sysctl
+  && ./build-gnuradio.sh -v -m gitfetch
 
 # Build the bugger
 RUN cd gnuradio \
@@ -98,7 +98,7 @@ RUN cd gnuradio \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j8 \
+  && make -j$(nproc) \
   && make install \
   && ldconfig -v | grep gnuradio \
   && cd .. \
@@ -111,7 +111,7 @@ RUN cd gr-iqbal  \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j8 && make install && ldconfig \
+  && make -j$(nproc) && make install && ldconfig \
   && cd .. \
   && rm -rf gr-osmosdr
 
@@ -122,7 +122,7 @@ RUN cd gr-osmosdr  \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j8 && make install && ldconfig \
+  && make -j$(nproc) && make install && ldconfig \
   && cd .. \
   && rm -rf gr-osmosdr
 

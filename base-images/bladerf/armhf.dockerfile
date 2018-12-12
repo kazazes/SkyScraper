@@ -99,7 +99,7 @@ RUN cd gnuradio \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j$(nproc) \
+  && make -j$(($(nproc)>8?$(nproc):8)) \
   && make install \
   && ldconfig -v | grep gnuradio \
   && cd .. \
@@ -112,7 +112,8 @@ RUN cd gr-iqbal  \
   && mkdir build \
   && cd build \
   && cmake -DCMAKE_INSTALL_PREFIX=/opt/gnuradio-3.7.13.4 ../ \
-  && make -j$(nproc) && make install && ldconfig \
+  && make -j$(($(nproc)>8?$(nproc):8)) \
+  && make install && ldconfig \
   && cd .. \
   && rm -rf gr-osmosdr
 

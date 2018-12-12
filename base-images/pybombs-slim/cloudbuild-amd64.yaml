@@ -1,6 +1,6 @@
 steps:
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["pull", "gcr.io/skyscraper-sdr/pybombs-amd64:latest"]
+  # - name: "gcr.io/cloud-builders/docker"
+  # args: ["pull", "gcr.io/skyscraper-sdr/pybombs-amd64:latest"]
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
@@ -10,8 +10,8 @@ steps:
         "--cache-from",
         "gcr.io/skyscraper-sdr/pybombs-amd64:latest",
         "-f",
-        "./base-images/bladerf/amd64.dockerfile",
-        "./base-images/bladerf/",
+        "./base-images/pybombs-slim/amd64.dockerfile",
+        "./base-images/pybombs-slim/",
       ]
     timeout: 8h
   - name: "gcr.io/cloud-builders/docker"

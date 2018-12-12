@@ -10,8 +10,8 @@ steps:
         "--cache-from",
         "gcr.io/skyscraper-sdr/pybombs-arm:latest",
         "-f",
-        "./base-images/bladerf/armhf.dockerfile",
-        "./base-images/bladerf/",
+        "./base-images/pybombs-slim/armhf.dockerfile",
+        "./base-images/pybombs-slim/",
       ]
     timeout: 8h
   - name: "gcr.io/cloud-builders/docker"

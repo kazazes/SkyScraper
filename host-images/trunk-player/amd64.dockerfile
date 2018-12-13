@@ -20,5 +20,6 @@ RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput
 
-COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh" ]
+COPY docker-entrypoint.sh /trunk-player/start.sh
+RUN chmod a+x /trunk-player/start.sh
+CMD ["/trunk-player/start.sh" ]

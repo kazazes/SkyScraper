@@ -22,11 +22,11 @@ docker push pckzs/pybombs-amd64
 docker push pckzs/pybombs-arm
 
 # Manifest
-docker manifest create -a pckzs/bladerf \
+docker manifest create pckzs/bladerf \
   pckzs/bladerf-arm:latest \
   pckzs/bladerf-amd64:latest
 
-docker manifest create -a pckzs/pybombs \
+docker manifest create pckzs/pybombs \
   pckzs/pybombs-arm:latest \
   pckzs/pybombs-amd64:latest
 

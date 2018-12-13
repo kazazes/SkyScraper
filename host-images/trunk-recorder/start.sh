@@ -14,4 +14,7 @@ if [[ -z "${RECORDER_CONF}" ]]; then
   RECORDER_CONF=sites/SF-PK/config.json
 fi
 
+echo "Using container at path /data/${RECORDER_CONF}"
+echo $(cat /data/${RECORDER_CONF})
+
 ./recorder --config /data/$RECORDER_CONF

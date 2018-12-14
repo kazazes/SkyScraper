@@ -54,11 +54,11 @@ RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-play
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY encode-local-sys-0.sh .
-COPY start.sh .
 
 RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
+COPY start.sh .
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

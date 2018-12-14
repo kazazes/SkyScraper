@@ -38,13 +38,38 @@ RUN apt-get -qq update \
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get install  -y \
   locales \
-  ffmpeg \
+  autoconf \
+  automake \
+  build-essential  \
+  libass-dev \
+  libfreetype6-dev \
+  libtool \
+  pkg-config \
+  texinfo \
+  zlib1g-dev \
+  yasm \
+  libfdk-aac-dev \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
 WORKDIR /skyscraper
 
 RUN mkdir build && mkdir src
+
+WORKDIR /skyscraper/src/
+
+RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 \
+  && tar xjvf ffmpeg-snapshot.tar.bz2 \
+  && cd ffmpeg \
+  && ./configure \
+  --pkg-config-flags="--static" \
+  --bindir="/usr/local/bin" \
+  --enable-gpl \
+  --enable-libass \
+  --enable-libfdk-aac \
+  --enable-nonfree \
+  && make \
+  && make install
 
 WORKDIR /skyscraper/src/trunk-player/
 

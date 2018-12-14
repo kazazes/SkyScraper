@@ -8,7 +8,6 @@ source /trunk-player/env/bin/activate
 cd /trunk-player
 
 ./manage.py migrate
-echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'peter@peterk.co', 'scrapingskies')" | python manage.py shell
 
 mkdir -p /data/web/static
 rsync -a --delete /trunk-player/static /data/web/

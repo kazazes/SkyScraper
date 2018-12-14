@@ -2,7 +2,7 @@
 
 set -e
 
-cd base-images/pybombs
+cd base-images/pybombs-slim
 
 docker build --pull -t pckzs/pybombs-arm --cache-from=gcr.io/skyscraper-sdr/pybombs-arm -f armhf.dockerfile .
 docker build --pull -t pckzs/pybombs-amd64 --cache-from=gcr.io/skyscraper-sdr/pybombs-amd64 -f amd64.dockerfile .

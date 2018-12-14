@@ -18,7 +18,7 @@ WORKDIR /trunk-player/
 RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
-  && ./manage.py collectstatic --noinput
+  && ./manage.py collectstatic --noinput 
 
 COPY docker-entrypoint.sh /trunk-player/start.sh
 RUN chmod a+x /trunk-player/start.sh

@@ -11,7 +11,7 @@ services:
     depends_on:
       - "config"
     network_mode: host
-    cpuset: 1-4
+    cpuset: 0-3
     volumes:
       - "resin-data:/data"
   config:

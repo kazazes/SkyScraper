@@ -19,6 +19,7 @@ RUN apt-get -qq update \
   curl \
   git \
   locales \
+
   multimon \
   python-dev \
   python3-dev \
@@ -68,7 +69,7 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 \
   --enable-libass \
   --enable-libfdk-aac \
   --enable-nonfree \
-  && make \
+  && make -j$(nproc) \
   && make install
 
 WORKDIR /skyscraper/src/trunk-player/

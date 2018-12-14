@@ -31,6 +31,8 @@ services:
       - "nginx"
     volumes:
       - "resin-data:/data"
+    ports: 
+      - 7055:7055
   postgres:
     build:
       context: ./host-images/postgres
@@ -63,5 +65,7 @@ services:
       context: ./host-images/data-browser
     network_mode: host
     restart: "no"
+    ports:
+      8000:8000
     volumes:
       - "resin-data:/data"

@@ -81,7 +81,7 @@ RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /e
   && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35
 
 RUN apt-get -qq update \ 
-  && apt-get install -y --no-install-recommends bladerf-fpga-hostedx40 \
+  && apt-get install -y --no-install-recommends bladerf-fpga-hostedxa4 \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
 
 RUN rm -rf /tmp/* /var/tmp/*

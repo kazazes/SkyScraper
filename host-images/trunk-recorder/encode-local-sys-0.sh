@@ -4,6 +4,9 @@
 # Project https://github.com/ScanOC/trunk-player
 #-------------------------------------------------------
 
+set -e
+set -x
+
 echo "Encoding: $1"
 filename="$1"
 basename="${filename%.*}"
@@ -27,4 +30,3 @@ lame --preset voice $filename $mp3encoded
 cd /skyscraper/src/trunk-player/
 source ./env/bin/activate
 ./manage.py add_transmission $basename --web_url=$web_dir --system=$system
-rm -f $filename $json

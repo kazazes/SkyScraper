@@ -1,6 +1,7 @@
 #! /bin/sh
 
 . /usr/local/setup_env.sh
+. /skyscraper/src/trunk-player/env/bin/activate
 
 wget https://www.nuand.com/fpga/hostedxA4-latest.rbf
 

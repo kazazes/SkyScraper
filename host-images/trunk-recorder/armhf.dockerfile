@@ -8,7 +8,7 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/gnuradio-3.7.13.4/lib
 ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnuradio-3.7.13.4/lib/pkgconfig
 ENV PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
 
-RUN apt-get -q update \
+RUN apt-get -qq update \
   && apt-get -y -q install --no-install-recommends \
   build-essential \
   python-apt \
@@ -36,7 +36,9 @@ RUN apt-get -q update \
 
 ## trunk-recorder needs
 RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get install locales \
+  && apt-get install  -y \
+  locales \
+  ffmpeg \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 

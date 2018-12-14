@@ -19,6 +19,7 @@ RUN virtualenv -p python3 env --prompt='(Trunk Player)' \
   && source ./env/bin/activate \
   && pip install --no-cache-dir -r requirements.txt --no-cache-dir \
   && ./manage.py collectstatic --noinput \
+  && ./manage.py migrate \
   && echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'peter@sibyl.vision', 'scrapingskies')" | python manage.py shell
 
 COPY docker-entrypoint.sh /trunk-player/start.sh

@@ -1,7 +1,6 @@
-#! /bin/bash
+#! /bin/sh
 
-PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
-PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
+. /usr/local/setup_env.sh
 
 cp /data/conf/trunk-player/settings_local.py /skyscraper/src/trunk-player/trunk_player/
 

@@ -1,4 +1,7 @@
 #!/bin/sh
+ 
+set -e 
+set -x
 
 mkdir -p $PGDATA
 chown -R postgres "$PGDATA"
@@ -60,4 +63,4 @@ if [ -z "$(ls -A "$PGDATA")" ]; then
     { echo; echo "host all all 0.0.0.0/0 $authMethod"; } >> "$PGDATA"/pg_hba.conf
 fi
 
-exec gosu postgres "$@"
+exec gosu postgres postgres

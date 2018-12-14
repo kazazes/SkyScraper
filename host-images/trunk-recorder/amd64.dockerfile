@@ -1,4 +1,4 @@
-FROM pckzs/bladerf
+FROM pckzs/pybombs
 
 ENV INITSYSTEM on
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
@@ -67,4 +67,4 @@ RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/s
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
   && rm -rf /skyscraper/src/trunk-recorder
 
-ENTRYPOINT [ "/skyscraper/build/trunk-recorder/start.sh" ]
+CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

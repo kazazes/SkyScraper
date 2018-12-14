@@ -75,9 +75,18 @@ RUN apt-get -qq update \
   && apt-get clean && rm -rf /var/lib/apt/lists/* \
   && rm -rf ${PyBOMBS_init}/src/*
 
+# BladeRF PPA
+RUN echo "deb http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
+  && echo "deb-src http://ppa.launchpad.net/bladerf/bladerf/ubuntu xenial main" >> /etc/apt/sources.list \
+  && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 188FE585DD24922CE9CD1EE9BE99746B2FB21B35
+
+RUN apt-get -qq update \ 
+  && apt-get install bladerf-fpga-hostedx40
+  && apt-get clean && rm -rf /var/lib/apt/lists/* \
+
 RUN rm -rf /tmp/* /var/tmp/*
 
 WORKDIR /home
-CMD ["bash"]
+CMD ["bash"     ]
 
 

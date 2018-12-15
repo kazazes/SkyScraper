@@ -21,3 +21,13 @@ services:
     restart: "no"
     volumes:
       - "resin-data:/data"
+  node-red:
+    build:
+      context: ./host-images/node-red
+    environment:
+      - USERNAME: skyscraper
+      - PASSWORD: radio
+    network_mode: host
+    restart: "no"
+    volumes:
+      - "resin-data:/data"

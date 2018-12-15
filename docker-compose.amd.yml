@@ -5,6 +5,7 @@ volumes:
 services:
   trunk-recorder:
     build:
+      dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     restart: "no"
@@ -13,11 +14,12 @@ services:
     network_mode: host
     cpuset: 0-3
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
   config:
     build:
+      dockerfile:  amd64.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "no"
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"

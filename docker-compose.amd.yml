@@ -21,12 +21,3 @@ services:
     restart: "no"
     volumes:
       - "resin-data:/data"
-  data-browser:
-    build:
-      context: ./host-images/data-browser
-    network_mode: host
-    restart: "no"
-    ports:
-      - 8000:8000
-    volumes:
-      - "resin-data:/data"

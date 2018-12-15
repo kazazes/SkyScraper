@@ -17,12 +17,13 @@ balena:
     - git push balena master
 
 google_source:
+  stage: build
   services:
-  - docker:dind
+    - docker:dind
   image: google/cloud-sdk
   script:
-  - echo "$GOOGLE_KEY" > key.json
-  - gcloud auth activate-service-account --key-file key.json
-  - git config --global credential.'https://source.developers.google.com'.helper gcloud.sh
-  - git remote add google https://source.developers.google.com/p/skyscraper-sdr/r/skyscraper-edge-mirror
-  - git push -f google master
+    - echo "$GOOGLE_KEY" > key.json
+    - gcloud auth activate-service-account --key-file key.json
+    - git config --global credential.'https://source.developers.google.com'.helper gcloud.sh
+    - git remote add google https://source.developers.google.com/p/skyscraper-sdr/r/skyscraper-edge-mirror
+    - git push -f google master

@@ -9,7 +9,7 @@ services:
       dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
-    restart: "no"
+    restart: "unless-stopped"
     depends_on:
       - "config"
     network_mode: host
@@ -21,7 +21,7 @@ services:
       dockerfile:  amd64.dockerfile
       context: ./host-images/config
     network_mode: host
-    restart: "no"
+    restart: "on-failure"
     volumes:
       - "./data:/data"
   influxdb:

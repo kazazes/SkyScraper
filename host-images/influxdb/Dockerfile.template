@@ -1,14 +1,13 @@
-FROM arm32v7/influxdb:latest
+FROM resin/%%BALENA_MACHINE_NAME%%-debian:stretch
 
-# If the following instruction refers to an existing USB drive (e.g. memory stick) connected to the device
-# then it will use that drive for storing in the influxdb otherwise it will use the named volume
-# that is specified in the docker compose yaml file.
-#
-# So the instruction below refers to a connected USB drive with label "influxdb" which should be in "ext4" format.
-RUN echo "LABEL=influxdb /mnt/influxdb ext4 rw,relatime,discard,data=ordered 0 2"  >> /etc/fstab
+RUN apt-get update && apt-get install -yq \
+  fontconfig-config fonts-dejavu-core libfontconfig1 ucf \
+  wget && \
+  apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# The script "my_entrypoint.sh" is an extension of the existing script with extra instructions to mount the usb memory stick.
-COPY my_entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN wget -O /tmp/influxdb.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.6.3_armhf.deb && \
+  dpkg -i /tmp/influxdb.deb && rm /tmp/influxdb.deb
 
-COPY influxdb.conf /etc/influxdb
+RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf
+
+CMD ["/usr/bin/influxd"]

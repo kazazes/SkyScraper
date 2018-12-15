@@ -8,7 +8,7 @@ services:
     build:
       context: ./host-images/trunk-recorder
     privileged: true
-    restart: "no"
+    restart: "unless-stopped"
     depends_on:
       - "config"
     network_mode: host
@@ -19,7 +19,7 @@ services:
     build:
       context: ./host-images/config
     network_mode: host
-    restart: "no"
+    restart: "on-failure"
     volumes:
       - "resin-data:/data"
   influxdb:

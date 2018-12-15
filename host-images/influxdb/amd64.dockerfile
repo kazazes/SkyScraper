@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -yq \
   wget && \
   apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN wget -O /tmp/influxdb.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.6.3_armhf.deb && \
+RUN wget -O /tmp/influxdb.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.6.3_amd64.deb && \
   dpkg -i /tmp/influxdb.deb && rm /tmp/influxdb.deb
 
 RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf

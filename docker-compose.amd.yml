@@ -89,3 +89,7 @@ services:
       - "80:80"
       - "443:443"
     restart: always
+  debug:
+    image: pckzs/bladerf
+    command: "sleep 5 && exit 0"
+    restart: "no"

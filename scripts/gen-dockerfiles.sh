@@ -28,6 +28,7 @@ for D in ./host-images/*/; do
       -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
       -e 's/gosu-armhf/gosu-amd64/' \
       -e 's/rpi-v8/v8/' \
+      -e 's/armhf.deb/amd64.deb/' \
       -e 's/fg2it\/grafana-armhf:v5.1.4/grafana\/grafana:5.1.5/' \
       -e 's/tobi312\/rpi-nginx/nginx/' \
       -e 's/arm32v7\/telegraf:1.8.2/telegraf:1.8-alpine/' \

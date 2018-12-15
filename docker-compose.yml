@@ -36,8 +36,8 @@ services:
       - "8089:8089"
     restart: always
   telegraf:
-    # Full tag list: https://hub.docker.com/r/library/telegraf/tags/
     build: telegraf
+      context: ./host-images/telegraf
     pid: "host"
     network_mode: "host"
     privileged: true
@@ -48,6 +48,7 @@ services:
     restart: always
   grafana:
     build: grafana
+      context: ./host-images/grafana
     ports:
       - "3000:3000"
     depends_on:
@@ -57,10 +58,6 @@ services:
     image: panuwitp/mosquitto-arm
     ports:
       - "1883:1883"
-  mqtt-test:
-    image: panuwitp/mosquitto-arm
-    ports:
-      - "1884:1883"
   node-red:
     build: node-red
     volumes:

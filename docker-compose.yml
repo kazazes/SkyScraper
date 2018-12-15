@@ -21,13 +21,71 @@ services:
     restart: "no"
     volumes:
       - "resin-data:/data"
-  node-red:
-    build:
-      context: ./host-images/node-red
-    environment:
-      - USERNAME=skyscraper
-      - PASSWORD=radio
-    network_mode: host
-    restart: "no"
+  influxdb:
+    build: influxdb
+    container_name: influxdb
+    # privileged added so usb drive can be mounted.
+    privileged: true
     volumes:
       - "resin-data:/data"
+    ports:
+      # The API for InfluxDB is served on port 8086
+      - "8086:8086"
+      - "8082:8082"
+      # UDP Port
+      - "8089:8089"
+    restart: always
+  telegraf:
+    # Full tag list: https://hub.docker.com/r/library/telegraf/tags/
+    build: telegraf
+    pid: "host"
+    network_mode: "host"
+    privileged: true
+    labels:
+      io.resin.features.balena-socket: "1"
+    depends_on:
+      - influxdb
+    restart: always
+  grafana:
+    build: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    restart: always
+  mqtt:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1883:1883"
+  mqtt-test:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1884:1883"
+  node-red:
+    build: node-red
+    volumes:
+      - "node-red-data:/data"
+    ports:
+      - "1880:1880"
+    depends_on:
+      - mqtt
+    restart: always
+  node-red-test:
+    build: node-red-test
+    volumes:
+      - "node-red-test-data:/data"
+    ports:
+      - "1882:1880"
+    depends_on:
+      - mqtt-test
+    restart: always
+  nginx:
+    build: nginx
+    depends_on:
+      - grafana
+      - node-red
+      - node-red-test
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always

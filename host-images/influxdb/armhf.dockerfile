@@ -31,5 +31,9 @@ VOLUME /var/lib/influxdb
 
 COPY entrypoint.sh /entrypoint.sh
 COPY init-influxdb.sh /init-influxdb.sh
+
+RUN chmod a+x /entrypoint.sh \
+  && chmod a+x /init-influxdb.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["influxd"]

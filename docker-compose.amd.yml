@@ -5,74 +5,28 @@ volumes:
 services:
   trunk-recorder:
     build:
-      dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     restart: "no"
     depends_on:
       - "config"
     network_mode: host
+    cpuset: 0-3
     volumes:
-      - "./data:/data"
+      - "resin-data:/data"
   config:
     build:
-      dockerfile:  amd64.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "no"
     volumes:
-      - "./data:/data"
-  trunk-player:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/trunk-player
-    network_mode: host
-    restart: "no"
-    depends_on:
-      - "redis"
-      - "postgres"
-      - "nginx"
-    volumes:
-      - "./data:/data"
-    ports: 
-      - 7055:7055
-  postgres:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/postgres
-    volumes:
-      - "./data:/data"
-    restart: always
-    network_mode: host
-    environment:
-      POSTGRES_USER: skyscraper
-      POSTGRES_PASSWORD: sdr
-      PGDATA: /data/postgres
-      POSTGRES_DB: radio
-  redis:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/redis
-    restart: "no"
-    network_mode: host
-  nginx:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/nginx
-    privileged: true
-    volumes:
-      - "./data:/data"
-    restart: "no"
-    network_mode: host
-    ports:
-      - 80:80
+      - "resin-data:/data"
   data-browser:
     build:
-      dockerfile:  amd64.dockerfile
       context: ./host-images/data-browser
     network_mode: host
     restart: "no"
     ports:
       - 8000:8000
     volumes:
-      - "./data:/data"
+      - "resin-data:/data"

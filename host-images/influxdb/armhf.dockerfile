@@ -1,4 +1,5 @@
 FROM resin/odroid-xu4-buildpack-deps:jessie
+ENV INITSYSTEM on
 
 RUN apt-get update -qq \
   && apt-get -y install\

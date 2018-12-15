@@ -1,4 +1,5 @@
 FROM debian:jessie
+ENV INITSYSTEM on
 
 RUN apt-get update -qq \
   && apt-get -y install\

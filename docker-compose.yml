@@ -22,7 +22,8 @@ services:
     volumes:
       - "resin-data:/data"
   influxdb:
-    build: influxdb
+    build:
+      context: ./host-images/influxdb
     container_name: influxdb
     # privileged added so usb drive can be mounted.
     privileged: true
@@ -36,7 +37,7 @@ services:
       - "8089:8089"
     restart: always
   telegraf:
-    build: telegraf
+    build:
       context: ./host-images/telegraf
     pid: "host"
     network_mode: "host"
@@ -47,7 +48,7 @@ services:
       - influxdb
     restart: always
   grafana:
-    build: grafana
+    build:
       context: ./host-images/grafana
     ports:
       - "3000:3000"
@@ -59,7 +60,8 @@ services:
     ports:
       - "1883:1883"
   node-red:
-    build: node-red
+    build:
+      context: ./host-images/node-red
     volumes:
       - "resin-data:/data"
     ports:
@@ -68,7 +70,8 @@ services:
       - mqtt
     restart: always
   nginx:
-    build: nginx
+    build:
+      context: ./host-images/nginx
     depends_on:
       - grafana
       - node-red

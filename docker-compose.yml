@@ -1,7 +1,6 @@
 version: "2.1"
 networks: {}
 volumes:
-  influxdb-data: {}
   resin-data: {}
 services:
   trunk-recorder:
@@ -79,3 +78,5 @@ services:
   debug:
     image: pckzs/pybombs
     command: "sleep infinity"
+    volumes:
+      - "resin-data:/data"

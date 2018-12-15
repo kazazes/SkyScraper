@@ -25,17 +25,11 @@ services:
     build:
       context: ./host-images/influxdb
     container_name: influxdb
-    # privileged added so usb drive can be mounted.
-    privileged: true
     volumes:
-      # take care that the mount location "/mnt/influxdb" becomes overwritten
-      # by the mount location specified in the influxdb Dockerfile.
-      - "influxdb-data:/mnt/influxdb"
+      - "resin-data:/data"
     ports:
-      # The API for InfluxDB is served on port 8086
       - "8086:8086"
       - "8082:8082"
-      # UDP Port
       - "8089:8089"
     restart: always
   telegraf:

@@ -1,13 +1,35 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-debian:stretch
+FROM resin/%%BALENA_MACHINE_NAME%%-buildpack-deps:jessie-curl
 
-RUN apt-get update && apt-get install -yq \
-  fontconfig-config fonts-dejavu-core libfontconfig1 ucf \
-  wget && \
-  apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN set -ex && \
+  for key in \
+  05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
+  do \
+  gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key" || \
+  gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
+  gpg --keyserver keyserver.pgp.com --recv-keys "$key" ; \
+  done
 
-RUN wget -O /tmp/influxdb.deb https://dl.influxdata.com/influxdb/releases/influxdb_1.6.3_armhf.deb && \
-  dpkg -i /tmp/influxdb.deb && rm /tmp/influxdb.deb
+ENV INFLUXDB_VERSION 1.7.0
+RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
+  case "${dpkgArch##*-}" in \
+  amd64) ARCH='amd64';; \
+  arm64) ARCH='arm64';; \
+  armhf) ARCH='armhf';; \
+  armel) ARCH='armel';; \
+  *)     echo "Unsupported architecture: ${dpkgArch}"; exit 1;; \
+  esac && \
+  wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb.asc && \
+  wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
+  gpg --batch --verify influxdb_${INFLUXDB_VERSION}_${ARCH}.deb.asc influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
+  dpkg -i influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
+  rm -f influxdb_${INFLUXDB_VERSION}_${ARCH}.deb*
+COPY influxdb.conf /etc/influxdb/influxdb.conf
 
-RUN sed -i 's|/var/lib/influxdb|/data/influxdb|g' /etc/influxdb/influxdb.conf
+EXPOSE 8086
 
-CMD ["/usr/bin/influxd"]
+VOLUME /var/lib/influxdb
+
+COPY entrypoint.sh /entrypoint.sh
+COPY init-influxdb.sh /init-influxdb.sh
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["influxd"]

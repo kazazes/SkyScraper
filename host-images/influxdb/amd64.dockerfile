@@ -1,5 +1,7 @@
 FROM debian:jessie
 
+RUN ["cross-build-start"]
+
 RUN apt-get update -qq \
   && apt-get -y install\
   curl \
@@ -39,3 +41,5 @@ COPY entrypoint.sh /entrypoint.sh
 COPY init-influxdb.sh /init-influxdb.sh
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["influxd"]
+
+RUN ["cross-build-end"]

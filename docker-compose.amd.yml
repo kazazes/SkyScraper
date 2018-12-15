@@ -1,6 +1,7 @@
 version: "2.1"
 networks: {}
 volumes:
+  influxdb-data: {}
   resin-data: {}
 services:
   trunk-recorder:
@@ -33,7 +34,7 @@ services:
     volumes:
       # take care that the mount location "/mnt/influxdb" becomes overwritten
       # by the mount location specified in the influxdb Dockerfile.
-      - "resin-data:/mnt/influxdb"
+      - "influxdb-data:/mnt/influxdb"
     ports:
       # The API for InfluxDB is served on port 8086
       - "8086:8086"

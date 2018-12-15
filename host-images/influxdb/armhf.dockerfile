@@ -1,7 +1,10 @@
 FROM resin/odroid-xu4-buildpack-deps:jessie
 
 RUN apt-get update -qq \
-  && apt-get -y install curl
+  && apt-get -y install\
+  curl \
+  wget \
+  && rm -rf /var/lib/apt/lists/*
 
 RUN set -ex && \
   for key in \

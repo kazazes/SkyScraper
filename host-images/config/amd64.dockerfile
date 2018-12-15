@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM resin/odroid-xu4-alpine:3.7
 
 COPY keys/* /root/.ssh/
 

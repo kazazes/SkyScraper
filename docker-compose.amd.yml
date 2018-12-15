@@ -23,3 +23,66 @@ services:
     restart: "no"
     volumes:
       - "./data:/data"
+  influxdb:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/influxdb
+    container_name: influxdb
+    # privileged added so usb drive can be mounted.
+    privileged: true
+    volumes:
+      - "./data:/data"
+    ports:
+      # The API for InfluxDB is served on port 8086
+      - "8086:8086"
+      - "8082:8082"
+      # UDP Port
+      - "8089:8089"
+    restart: always
+  telegraf:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/telegraf
+    pid: "host"
+    network_mode: "host"
+    privileged: true
+    labels:
+      io.resin.features.balena-socket: "1"
+    depends_on:
+      - influxdb
+    restart: always
+  grafana:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - influxdb
+    restart: always
+  mqtt:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1883:1883"
+  node-red:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/node-red
+    volumes:
+      - "./data:/data"
+    ports:
+      - "1880:1880"
+    depends_on:
+      - mqtt
+    restart: always
+  nginx:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/nginx
+    depends_on:
+      - grafana
+      - node-red
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always

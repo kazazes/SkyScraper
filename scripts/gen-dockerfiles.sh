@@ -1,7 +1,6 @@
 #! /bin/bash
 
 set -e
-set -x
 
 echo
 echo ===
@@ -23,6 +22,8 @@ for D in ./host-images/*/; do
       echo "Host image: $(basename ${D})."
 
       cp ${D}Dockerfile.template ${D}amd64.dockerfile
+      cp ${D}Dockerfile.template ${D}armhf.dockerfile
+
       gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
       -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
       -e 's/gosu-armhf/gosu-amd64/' \
@@ -32,8 +33,7 @@ for D in ./host-images/*/; do
       -e 's/arm32v7\/telegraf:1.8.2/telegraf:1.8-alpine/' \
       ${D}amd64.dockerfile
 
-      gsed -i 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ${D}Dockerfile.template > ${D}armhf.dockerfile
-      gsed -i 's/%%RESIN_ARCH%%/armv7h/' ${D}Dockerfile.template > ${D}armhf.dockerfile
+      gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' ${D}armhf.dockerfile
     fi
 done
 

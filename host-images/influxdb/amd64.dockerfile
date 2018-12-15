@@ -1,42 +1,14 @@
-FROM debian:jessie
-ENV INITSYSTEM on
+FROM influxdb:alpine
 
-RUN apt-get update -qq \
-  && apt-get -y install\
-  curl \
-  wget \
-  && rm -rf /var/lib/apt/lists/*
+# If the following instruction refers to an existing USB drive (e.g. memory stick) connected to the device
+# then it will use that drive for storing in the influxdb otherwise it will use the named volume
+# that is specified in the docker compose yaml file.
+#
+# So the instruction below refers to a connected USB drive with label "influxdb" which should be in "ext4" format.
+RUN echo "LABEL=influxdb /mnt/influxdb ext4 rw,relatime,discard,data=ordered 0 2"  >> /etc/fstab
 
-RUN set -ex && \
-  for key in \
-  05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \
-  do \
-  gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "$key" || \
-  gpg --keyserver pgp.mit.edu --recv-keys "$key" || \
-  gpg --keyserver keyserver.pgp.com --recv-keys "$key" ; \
-  done
+# The script "my_entrypoint.sh" is an extension of the existing script with extra instructions to mount the usb memory stick.
+COPY my_entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-ENV INFLUXDB_VERSION 1.7.2
-RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" && \
-  case "${dpkgArch##*-}" in \
-  amd64) ARCH='amd64';; \
-  arm64) ARCH='arm64';; \
-  armhf) ARCH='armhf';; \
-  armel) ARCH='armel';; \
-  *)     echo "Unsupported architecture: ${dpkgArch}"; exit 1;; \
-  esac && \
-  wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb.asc && \
-  wget --no-verbose https://dl.influxdata.com/influxdb/releases/influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
-  gpg --batch --verify influxdb_${INFLUXDB_VERSION}_${ARCH}.deb.asc influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
-  dpkg -i influxdb_${INFLUXDB_VERSION}_${ARCH}.deb && \
-  rm -f influxdb_${INFLUXDB_VERSION}_${ARCH}.deb*
-COPY influxdb.conf /etc/influxdb/influxdb.conf
-
-EXPOSE 8086
-
-VOLUME /var/lib/influxdb
-
-COPY entrypoint.sh /entrypoint.sh
-COPY init-influxdb.sh /init-influxdb.sh
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["influxd"]
+COPY influxdb.conf /etc/influxdb

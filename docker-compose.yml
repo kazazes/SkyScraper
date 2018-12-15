@@ -64,20 +64,11 @@ services:
   node-red:
     build: node-red
     volumes:
-      - "node-red-data:/data"
+      - "resin-data:/data"
     ports:
       - "1880:1880"
     depends_on:
       - mqtt
-    restart: always
-  node-red-test:
-    build: node-red-test
-    volumes:
-      - "node-red-test-data:/data"
-    ports:
-      - "1882:1880"
-    depends_on:
-      - mqtt-test
     restart: always
   nginx:
     build: nginx

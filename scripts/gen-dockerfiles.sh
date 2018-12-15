@@ -31,6 +31,7 @@ for D in ./host-images/*/; do
       -e 's/fg2it\/grafana-armhf:v5.1.4/grafana\/grafana:5.1.5/' \
       -e 's/tobi312\/rpi-nginx/nginx/' \
       -e 's/arm32v7\/telegraf:1.8.2/telegraf:1.8-alpine/' \
+      -e 's/arm32v7\/influxdb:latest/influxdb:alpine/' \
       ${D}amd64.dockerfile
 
       gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' ${D}armhf.dockerfile

@@ -89,6 +89,6 @@ services:
       - "443:443"
     restart: always
   debug:
-    image: pckzs/bladerf
+    image: pckzs/pybombs
     command: "sleep infinity"
     restart: "no"

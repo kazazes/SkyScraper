@@ -5,13 +5,13 @@ import Home from "./views/Home.vue";
 Vue.use(Router);
 
 export default new Router({
-  base: process.env.BASE_URL,
+  base: process.env.BASE_URL || "/",
   mode: "history",
   routes: [
     {
       name: "home",
       path: "/",
-      component: Home,
+      component: Home
     },
     {
       path: "/about",
@@ -20,7 +20,7 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue"),
-    },
-  ],
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
+    }
+  ]
 });

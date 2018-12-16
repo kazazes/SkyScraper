@@ -1,5 +1,7 @@
 FROM resin/odroid-xu4-buildpack-deps:jessie-curl
 
+ENV INITSYSTEM on
+
 RUN set -ex && \
   for key in \
   05CE15085FC09D18E99EFB22684A14CF2582E0C5 ; \

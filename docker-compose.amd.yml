@@ -22,40 +22,6 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
-  influxdb:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/influxdb
-    container_name: influxdb
-    privileged: true
-    volumes:
-      - "./data:/data"
-    ports:
-      - "8086:8086"
-      - "8082:8082"
-      - "8089:8089"
-    restart: always
-  telegraf:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/telegraf
-    pid: "host"
-    network_mode: "host"
-    privileged: true
-    labels:
-      io.resin.features.balena-socket: "1"
-    depends_on:
-      - influxdb
-    restart: always
-  grafana:
-    build:
-      dockerfile:  amd64.dockerfile
-      context: ./host-images/grafana
-    ports:
-      - "3000:3000"
-    depends_on:
-      - influxdb
-    restart: always
   mqtt:
     image: panuwitp/mosquitto-arm
     ports:
@@ -76,7 +42,6 @@ services:
       dockerfile:  amd64.dockerfile
       context: ./host-images/nginx
     depends_on:
-      - grafana
       - node-red
     ports:
       - "80:80"

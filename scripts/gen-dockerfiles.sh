@@ -27,7 +27,7 @@ generate_host_dockerfile() {
 		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
-		-e 's/tobi312\/rpi-nginx/nginx/' \
+		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
 		amd64.dockerfile
 
 	gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' armhf.dockerfile
@@ -70,7 +70,7 @@ if [ $# -eq 0 ]; then
 		fi
 	done
 
-	echo 'CMD [ "nginx -t && ", nginx", "-g", "daemon off;" ]' >>./host-images/nginx/amd64.dockerfile
+	# echo 'CMD [ "nginx", "-g", "daemon off;" ]' >>./host-images/nginx/amd64.dockerfile
 	generate_compose
 else
 	if [ -d "$1" ]; then

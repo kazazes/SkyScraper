@@ -1,13 +1,11 @@
 FROM resin/%%BALENA_MACHINE_NAME%%-node:carbon as frontend
-WORKDIR /app
+WORKDIR /src/frontend
 
 COPY frontend/package.json .
 COPY frontend/yarn.lock .
 RUN yarn install --pure-lockfile
 COPY frontend/ ./
 RUN yarn run build
-
-FROM resin/%%BALENA_MACHINE_NAME%%-node:carbon
 
 WORKDIR /app
 
@@ -17,7 +15,7 @@ RUN yarn install --pure-lockfile
 COPY backend/ ./
 RUN yarn run build
 
-COPY --from=frontend /app/dist/* /app/public/
+RUN cp -r /src/frontend/dist/* ./public
 
 EXPOSE 3000
 CMD [ "yarn", "run", "start" ]

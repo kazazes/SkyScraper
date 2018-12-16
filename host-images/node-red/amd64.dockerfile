@@ -1,7 +1,7 @@
 # base-image for node on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 # Note the node:slim image doesn't have node-gyp
-FROM alpine-node:6-slim
+FROM node:6-alpine
 
 # Defines our working directory in container
 RUN mkdir -p /usr/src/app/
@@ -20,4 +20,4 @@ COPY ./app ./
 # ENV INITSYSTEM=on
 
 # server.js will run when container starts up on the device
-CMD ["bash", "/usr/src/app/start.sh"]
+CMD ["sh", "/usr/src/app/start.sh"]

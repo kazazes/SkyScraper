@@ -20,4 +20,4 @@ COPY ./app ./
 # ENV INITSYSTEM=on
 
 # server.js will run when container starts up on the device
-CMD ["bash", "/usr/src/app/start.sh"]
+CMD ["sh", "/usr/src/app/start.sh"]

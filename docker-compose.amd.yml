@@ -1,8 +1,23 @@
 version: "2.1"
-networks: {}
+networks:
+  frontend:
+    driver: bridge
 volumes:
   resin-data: {}
 services:
+  manager:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/manager
+    privileged: true
+    pid: host
+    restart: always
+    volumes:
+      - "./data:/data"
+    ports:
+      - 3000:3000
+    networks:
+      - frontend
   trunk-recorder:
     build:
       dockerfile:  amd64.dockerfile
@@ -37,15 +52,20 @@ services:
     depends_on:
       - mqtt
     restart: always
+    networks:
+      - frontend
   nginx:
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/nginx
+    privileged: true
     depends_on:
       - node-red
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - frontend
     restart: always
   debug:
     image: pckzs/pybombs

@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "watch": "gulp watch"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.15",
+    "gulp": "^4.0.0"
+  },
+  "name": "skyscraper",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "git@git.sibyl.vision:peter/skyscraper-edge.git",
+  "author": "Peter Kazazes <peter@peterk.co>",
+  "license": "None",
+  "private": true
+}

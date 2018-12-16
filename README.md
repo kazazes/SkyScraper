@@ -1,4 +1,4 @@
-## CI/CD Steps
+## CI/CD Process
 
 ![CI/CD](/docs/CD.png)
 

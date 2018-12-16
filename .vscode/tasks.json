@@ -8,6 +8,37 @@
       "type": "shell",
       "command": "git push balena master",
       "problemMatcher": []
+    },
+    {
+      "label": "Generate dockerfiles",
+      "type": "shell",
+      "command": "./scripts/gen-dockerfiles.sh",
+      "problemMatcher": [],
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
+      "type": "gulp",
+      "task": "watch",
+      "problemMatcher": [],
+      "isBackground": true,
+      "runOptions": {
+        "runOn": "folderOpen"
+      },
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": false
+      }
     }
   ]
 }

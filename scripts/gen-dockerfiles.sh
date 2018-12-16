@@ -8,54 +8,82 @@ echo === If running on macOS, run
 echo === brew install gnu-sed
 echo ===
 
-
-if [ -f /usr/local/bin/sed  ]; then
-  gsed=/usr/local/bin/sed
+if [ -f /usr/local/bin/sed ]; then
+	gsed=/usr/local/bin/sed
 else
-  gsed=$(which sed)
+	gsed=$(which sed)
 fi
 
-echo -e "\nGenerating Dockerfiles for amd and arm.\n"
+PROJECT_DIR=$(pwd)
 
-for D in ./host-images/*/; do
-    if [ -d "${D}" ]; then
-      echo "Host image: $(basename ${D})."
+generate_host_dockerfile() {
+	echo "Host image: $(basename ${1})."
+	cd $1
+	cp Dockerfile.template amd64.dockerfile
+	cp Dockerfile.template armhf.dockerfile
 
-      cp ${D}Dockerfile.template ${D}amd64.dockerfile
-      cp ${D}Dockerfile.template ${D}armhf.dockerfile
+	gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+		-e 's/gosu-armhf/gosu-amd64/' \
+		-e 's/rpi-v8/v8/' \
+		-e 's/armhf.deb/amd64.deb/' \
+		-e 's/fg2it\/grafana-armhf:v5.1.4/grafana\/grafana:5.1.5/' \
+		-e 's/tobi312\/rpi-nginx/nginx/' \
+		-e 's/arm32v7\/telegraf:1.8.2/telegraf:1.8-alpine/' \
+		-e 's/arm32v7\/influxdb:latest/influxdb:alpine/' \
+		amd64.dockerfile
 
-      gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-      -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
-      -e 's/gosu-armhf/gosu-amd64/' \
-      -e 's/rpi-v8/v8/' \
-      -e 's/armhf.deb/amd64.deb/' \
-      -e 's/fg2it\/grafana-armhf:v5.1.4/grafana\/grafana:5.1.5/' \
-      -e 's/tobi312\/rpi-nginx/nginx/' \
-      -e 's/arm32v7\/telegraf:1.8.2/telegraf:1.8-alpine/' \
-      -e 's/arm32v7\/influxdb:latest/influxdb:alpine/' \
-      ${D}amd64.dockerfile
+	gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' armhf.dockerfile
 
-      gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' ${D}armhf.dockerfile
-    fi
-done
+	cd $PROJECT_DIR
+}
 
-for D in ./base-images/*/; do
-    if [ -d "${D}" ]; then
-      echo "Base image: $(basename ${D})."
+function generate_base_dockerfile() {
+	echo "Base image: $(basename $1)."
+	cd $1
+	cp Dockerfile.template amd64.dockerfile
 
-      cp ${D}Dockerfile.template ${D}amd64.dockerfile
+	gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+		-e 's/RUN \[ "cross-build-start" \]//' \
+		-e 's/RUN \[ "cross-build-end" \]//' \
+		amd64.dockerfile
 
-      gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-      -e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
-      -e 's/RUN \[ "cross-build-start" \]//' \
-      -e 's/RUN \[ "cross-build-end" \]//' \
-      ${D}amd64.dockerfile
+	gsed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template >armhf.dockerfile
 
-      gsed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' ${D}Dockerfile.template > ${D}armhf.dockerfile
-    fi
-done
+	cd $PROJECT_DIR
+}
 
-echo 'CMD [ "nginx" ]' >> ./host-images/nginx/amd64.dockerfile
+function generate_compose() {
+	cp docker-compose.yml docker-compose.amd.yml
+	gsed -i -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile:  amd64.dockerfile/g" docker-compose.amd.yml
+}
 
-cp docker-compose.yml docker-compose.amd.yml
-gsed -i -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile:  amd64.dockerfile/g" docker-compose.amd.yml
+if [ $# -eq 0 ]; then
+	echo -e "\nGenerating Dockerfiles for amd and arm.\n"
+	for D in ./host-images/*; do
+		if [ -d "${D}" ]; then
+			generate_host_dockerfile ${D}
+		fi
+	done
+
+	for D in ./base-images/*; do
+		if [ -d "${D}" ]; then
+			generate_base_dockerfile ${D}
+		fi
+	done
+
+	echo 'CMD [ "nginx" ]' >>./host-images/nginx/amd64.dockerfile
+	generate_compose
+else
+	if [ -d "$1" ]; then
+		case "$1" in
+		*host-images/*)
+			generate_host_dockerfile $1
+			;;
+		*base-image/*)
+			generate_base_dockerfile $1
+			;;
+		esac
+	fi
+fi

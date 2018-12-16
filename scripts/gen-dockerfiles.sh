@@ -24,7 +24,7 @@ generate_host_dockerfile() {
 
 	gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
 		-e 's/resin\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6-alpine/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-node/node:carbon' \
+		-e 's/resin\/%%BALENA_MACHINE_NAME%%-node/node:carbon/' \
 		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \

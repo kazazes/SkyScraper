@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-node:carbon as frontend
+FROM resin/odroid-xu4-node as frontend
 WORKDIR /src/frontend
 
 COPY frontend/package.json .

@@ -15,7 +15,7 @@ RUN yarn install --pure-lockfile
 COPY backend/ ./
 RUN yarn run build
 
-RUN cp -r /src/frontend/dist/* ./public
+RUN mv /src/frontend/dist/* ./public
 
 EXPOSE 3000
 CMD [ "yarn", "run", "start" ]

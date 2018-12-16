@@ -1,6 +1,6 @@
 ## CI/CD Steps
 
-
+![CI/CD](/docs/CD.png)
 
 ## Generate dockerfiles for arm64 and x86
 

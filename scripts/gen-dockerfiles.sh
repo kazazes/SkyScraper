@@ -11,7 +11,7 @@ echo ===
 if [ -f /usr/local/bin/sed ]; then
 	gsed=/usr/local/bin/sed
 else
-	gsed=$(which sed)
+	gsed=/usr/bin/sed
 fi
 
 PROJECT_DIR=$(pwd)
@@ -22,16 +22,16 @@ generate_host_dockerfile() {
 	cp Dockerfile.template amd64.dockerfile
 	cp Dockerfile.template armhf.dockerfile
 
-	gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-node/node:carbon/' \
+	${gsed} -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+		-e 's/resin\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6-alpine/' \
+		-e 's/resin\/%%BALENA_MACHINE_NAME%%-node/node:9/' \
 		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
 		amd64.dockerfile
 
-	gsed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' armhf.dockerfile
+	${gsed} -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' armhf.dockerfile
 
 	cd $PROJECT_DIR
 }
@@ -41,20 +41,20 @@ function generate_base_dockerfile() {
 	cd $1
 	cp Dockerfile.template amd64.dockerfile
 
-	gsed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+	${gsed} -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
 		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/RUN \[ "cross-build-start" \]//' \
 		-e 's/RUN \[ "cross-build-end" \]//' \
 		amd64.dockerfile
 
-	gsed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template >armhf.dockerfile
+	${gsed} 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template >armhf.dockerfile
 
 	cd $PROJECT_DIR
 }
 
 function generate_compose() {
 	cp docker-compose.yml docker-compose.amd.yml
-	gsed -i -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile:  amd64.dockerfile/g" docker-compose.amd.yml
+	${gsed} -i -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile:  amd64.dockerfile/g" docker-compose.amd.yml
 }
 
 if [ $# -eq 0 ]; then

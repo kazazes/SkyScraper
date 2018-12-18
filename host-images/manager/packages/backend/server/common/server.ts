@@ -1,12 +1,12 @@
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import express from "express";
 import { Application } from "express";
-import path from "path";
-import bodyParser from "body-parser";
 import http from "http";
 import os from "os";
-import cookieParser from "cookie-parser";
-import swaggerify from "./swagger";
+import path from "path";
 import l from "./logger";
+import swaggerify from "./swagger";
 
 const app = express();
 
@@ -20,16 +20,16 @@ export default class ExpressServer {
     app.use(express.static(`${root}/public`));
   }
 
-  router(routes: (app: Application) => void): ExpressServer {
+  public router(routes: (app: Application) => void): ExpressServer {
     swaggerify(app, routes);
     return this;
   }
 
-  listen(p: string | number = process.env.PORT): Application {
-    const welcome = port => () =>
+  public listen(p: string | number = process.env.PORT): Application {
+    const welcome = (port) => () =>
       l.info(
         `up and running in ${process.env.NODE_ENV ||
-          "development"} @: ${os.hostname()} on port: ${port}}`
+          "development"} @: ${os.hostname()} on port: ${port}}`,
       );
     http.createServer(app).listen(p, welcome(p));
     return app;

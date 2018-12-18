@@ -1,6 +1,6 @@
 {
-  "name": "skyscraper-vue",
-  "version": "0.1.0",
+  "name": "frontend",
+  "version": "1.0.0",
   "private": true,
   "description": "Control and manage your Skyscraper.",
   "author": {
@@ -8,7 +8,7 @@
     "name": "Peter Kazazes"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -27,14 +27,12 @@
     "@vue/cli-plugin-typescript": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
     "lint-staged": "^7.2.2",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.0.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
-    "typescript": "^3.0.0",
     "vue-cli-plugin-vuetify": "^0.4.6",
     "vue-template-compiler": "^2.5.17",
     "vuetify-loader": "^1.0.5",
+    "typescript": "^3.1.6",
     "webpack": "^4.0.0"
   },
   "gitHooks": {
@@ -48,6 +46,17 @@
     "*.vue": [
       "vue-cli-service lint",
       "git add"
+    ]
+  },
+  "workspaces": {
+    "nohoist": [
+      "**vue**",
+      "@vue/**",
+      "vuetify**",
+      "roboto-fontface",
+      "@fortawesome/*",
+      "webpack/**",
+      "typescript/**"
     ]
   }
 }

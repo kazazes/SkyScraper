@@ -1,21 +1,24 @@
-FROM node:carbon as frontend
-WORKDIR /src/frontend
-
-COPY frontend/package.json .
-COPY frontend/yarn.lock .
-RUN yarn install --pure-lockfile
-COPY frontend/ ./
-RUN yarn run build
+FROM node:9 as vue
 
 WORKDIR /app
 
-COPY backend/package.json .
-COPY backend/yarn.lock .
+COPY packages/frontend/package.json .
+COPY packages/frontend/yarn.lock .
 RUN yarn install --pure-lockfile
-COPY backend/ ./
+COPY packages/frontend/ ./
 RUN yarn run build
 
-RUN mv /src/frontend/dist/* ./public
+FROM node:9
+
+WORKDIR /app
+
+COPY packages/backend/package.json .
+COPY packages/backend/yarn.lock .
+RUN yarn install --pure-lockfile
+COPY packages/backend/ ./
+RUN yarn run build
+
+COPY --from=vue /app/dist/* /app/public/
 
 EXPOSE 3000
 CMD [ "yarn", "run", "start" ]

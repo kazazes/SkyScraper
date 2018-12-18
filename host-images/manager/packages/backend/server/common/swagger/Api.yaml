@@ -1,0 +1,146 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: Skyscraper Edge API
+  description: The API for the SkyScraper edge devices
+  contact:
+    name: Peter Kazazes
+    url: https://sibylvision.com
+    email: peter@sibylvision.com
+
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /device/logs:
+    get:
+      tags:
+        - Device
+      description: return all logs
+      operationId: getLogs
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Log"
+
+  /radio:
+    get:
+      tags:
+        - Radio
+      description: returns all connected radios
+      operationId: getRadios
+      responses:
+        200:
+          description: All the radios
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Radio"
+  /radio/{deviceId}:
+    get:
+      tags:
+        - Radio
+      description: returns a connected radio
+      operationId: getRadio
+      parameters:
+        - name: "deviceId"
+          in: "path"
+          required: true
+          type: "integer"
+          maximum: 100.0
+          minimum: 0.0
+          format: "int32"
+      responses:
+        200:
+          description: the radio
+          schema:
+            $ref: "#/definitions/Radio"
+  /radio/{deviceId}/flash/${imageType}:
+    post:
+      tags:
+        - Radio
+      description: Flash a device's firmware
+      parameters:
+        - name: "deviceId"
+          in: "path"
+          required: true
+          type: "integer"
+          maximum: 100.0
+          minimum: 0.0
+          format: "int32"
+        - name: "imageType"
+          in: "path"
+          required: true
+          type: string
+          default: "default"
+          enum:
+            - "default"
+            - "adsb"
+      responses:
+        200:
+          description: FPGA loaded
+          schema:
+            $ref: "#/definitions/Radio"
+        400:
+          description: Could not load FPGA
+          schema:
+            $ref: "#/definitions/ApiResponseError"
+  /radio/{deviceId}/calibrate/:
+    post:
+      tags:
+        - Radio
+      description: Calibrate a device
+      parameters:
+        - name: "deviceId"
+          in: "path"
+          required: true
+          type: "integer"
+          maximum: 100.0
+          minimum: 0.0
+          format: "int32"
+      responses:
+        200:
+          description: Device calibrated
+          schema:
+            $ref: "#/definitions/Radio"
+        400:
+          description: Could not calibrate
+          schema:
+            $ref: "#/definitions/ApiResponseError"
+definitions:
+  Radio:
+    type: object
+    properties:
+      vendor:
+        type: string
+      serialNumber:
+        type: string
+      gainRange:
+        type: array
+        items:
+          maxItems: 3
+          type: number
+  Log:
+    type: string
+  ApiResponseError:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+        example: "something went wrong"
+      error:
+        type: object
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /SkyScraper/Edge/1.0.0
+schemes:
+  - https
+  - http

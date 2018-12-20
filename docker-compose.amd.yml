@@ -1,10 +1,37 @@
 version: "2.1"
-networks:
-  frontend:
-    driver: bridge
 volumes:
   resin-data: {}
 services:
+  postgres:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/postgres
+    volumes:
+      - "./data:/data"
+    restart: always
+    network_mode: host
+    environment:
+      POSTGRES_USER: skyscraper
+      POSTGRES_PASSWORD: sdr
+      PGDATA: /data/postgres
+      POSTGRES_DB: radio
+  prisma:
+    image: prismagraphql/prisma
+    restart: always
+    ports:
+      - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: scrapingskies
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            migrations: true
+            host: postgres
+            port: 5432
+            user: skyscraper
+            password: sdr
   manager:
     build:
       dockerfile:  amd64.dockerfile
@@ -18,8 +45,6 @@ services:
       - "./data:/data"
     ports:
       - 3000:3000
-    networks:
-      - frontend
   trunk-recorder:
     build:
       dockerfile:  amd64.dockerfile
@@ -54,8 +79,6 @@ services:
     depends_on:
       - mqtt
     restart: always
-    networks:
-      - frontend
   nginx:
     build:
       dockerfile:  amd64.dockerfile
@@ -66,9 +89,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    networks:
-      - frontend
     restart: always
+    links:
+      - manager
   debug:
     image: pckzs/pybombs
     command: "sleep infinity"

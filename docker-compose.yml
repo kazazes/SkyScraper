@@ -1,10 +1,36 @@
 version: "2.1"
-networks:
-  frontend:
-    driver: bridge
 volumes:
   resin-data: {}
 services:
+  postgres:
+    build:
+      context: ./host-images/postgres
+    volumes:
+      - "resin-data:/data"
+    restart: always
+    network_mode: host
+    environment:
+      POSTGRES_USER: skyscraper
+      POSTGRES_PASSWORD: sdr
+      PGDATA: /data/postgres
+      POSTGRES_DB: radio
+  prisma:
+    image: prismagraphql/prisma
+    restart: always
+    ports:
+      - "4466:4466"
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: scrapingskies
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            migrations: true
+            host: postgres
+            port: 5432
+            user: skyscraper
+            password: sdr
   manager:
     build:
       context: ./host-images/manager
@@ -17,8 +43,6 @@ services:
       - "resin-data:/data"
     ports:
       - 3000:3000
-    networks:
-      - frontend
   trunk-recorder:
     build:
       context: ./host-images/trunk-recorder
@@ -50,8 +74,6 @@ services:
     depends_on:
       - mqtt
     restart: always
-    networks:
-      - frontend
   nginx:
     build:
       context: ./host-images/nginx
@@ -61,8 +83,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    networks:
-      - frontend
     restart: always
     links:
       - manager

@@ -8,8 +8,8 @@ ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/gnuradio-3.7.13.4/lib
 ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnuradio-3.7.13.4/lib/pkgconfig
 ENV PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
 
-RUN apt-get -qq update \
-  && apt-get -y -q install --no-install-recommends \
+RUN apt-get -qq update && \
+  apt-get -y -q install --no-install-recommends \
   build-essential \
   python-apt \
   libcppunit-dev \
@@ -19,7 +19,6 @@ RUN apt-get -qq update \
   curl \
   git \
   locales \
-
   multimon \
   python-dev \
   python3-dev \
@@ -36,12 +35,12 @@ RUN apt-get -qq update \
   openssl
 
 ## trunk-recorder needs
-RUN export DEBIAN_FRONTEND=noninteractive \
-  && apt-get install  -y \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+  apt-get install -y \
   locales \
   autoconf \
   automake \
-  build-essential  \
+  build-essential \
   libass-dev \
   libfreetype6-dev \
   libtool \
@@ -49,9 +48,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   texinfo \
   zlib1g-dev \
   yasm \
-  libfdk-aac-dev \
-  && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
-  && locale-gen
+  libfdk-aac-dev && \
+  echo "en_US.UTF-8 UTF-8" >/etc/locale.gen && \
+  locale-gen
 
 WORKDIR /skyscraper
 
@@ -59,34 +58,34 @@ RUN mkdir build && mkdir src
 
 WORKDIR /skyscraper/src/
 
-RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 \
-  && tar xjvf ffmpeg-snapshot.tar.bz2 \
-  && cd ffmpeg \
-  && ./configure \
+RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
+  tar xjvf ffmpeg-snapshot.tar.bz2 && \
+  cd ffmpeg && \
+  ./configure \
   --pkg-config-flags="--static" \
   --bindir="/usr/local/bin" \
   --enable-gpl \
   --enable-libass \
   --enable-libfdk-aac \
-  --enable-nonfree \
-  && make -j$(nproc) \
-  && make install
+  --enable-nonfree && \
+  make -j$(nproc) && \
+  make install
 
 WORKDIR /skyscraper/src/trunk-player/
 
-RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-player/ \
-  && virtualenv -p python3 env --prompt='(Trunk Player)' \
-  && . env/bin/activate \
-  && pip install --no-cache-dir -r requirements.txt
+RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-player/ && \
+  virtualenv -p python3 env --prompt='(Trunk Player)' && \
+  . env/bin/activate && \
+  pip install --no-cache-dir -r requirements.txt
 
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY encode-local-sys-0.sh .
 
-RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder \
-  && cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install \
-  && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder \
-  && rm -rf /skyscraper/src/trunk-recorder
+RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
+  cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install && \
+  cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
+  rm -rf /skyscraper/src/trunk-recorder
 
 COPY start.sh .
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

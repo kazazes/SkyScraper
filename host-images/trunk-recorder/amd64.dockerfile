@@ -49,7 +49,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   texinfo \
   zlib1g-dev \
   yasm \
-  libfdk-aac-dev && \
+  libfdk-aac-dev \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen

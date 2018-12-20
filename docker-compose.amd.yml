@@ -123,12 +123,13 @@ services:
     privileged: true
     volumes:
       - "./data:/data"
-  wifi-connect:
-    cpuset: 3
-    build:
+  # wifi-connect:
+  #   cpuset: 3
+  #   build:
       dockerfile:  amd64.dockerfile
-      context: ./host-images/wifi-connect
-    privileged: true
-    network_mode: "host"
-    labels:
-      io.resin.features.dbus: "1"
+  #     context: ./host-images/wifi-connect
+  #   restart: no
+  #   privileged: true
+  #   network_mode: "host"
+  #   labels:
+  #     io.resin.features.dbus: "1"

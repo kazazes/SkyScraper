@@ -33,6 +33,7 @@ services:
   #           user: skyscraper
   #           password: sdr
   prometheus:
+    cpu_shares: 40
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/prometheus
@@ -58,7 +59,6 @@ services:
       - 3000:3000
   trunk-recorder:
     cpu_shares: 820
-    cpu_quota: 300000
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
@@ -74,6 +74,7 @@ services:
     volumes:
       - "./data:/data"
   config:
+    cpu_shares: 40
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/config
@@ -98,6 +99,7 @@ services:
   #     - mqtt
   #   restart: always
   nginx:
+    cpu_shares: 40
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/nginx
@@ -111,6 +113,7 @@ services:
       - "443:443"
     restart: always
   debugger:
+    cpu_shares: 40
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/debugger

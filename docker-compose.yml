@@ -116,6 +116,7 @@ services:
 
   prometheus:
     image: alexellis2/prometheus
+    privileged: true
     container_name: prometheus
     volumes:
       - ./prometheus/:/etc/prometheus/
@@ -132,8 +133,11 @@ services:
       - 9090
     labels:
       org.label-schema.group: "monitoring"
+    cap_add:
+      - SYS_RAWIO
 
   alertmanager:
+    privileged: true
     cap_add:
       - SYS_RAWIO
     image: linaro/debian-source-prometheus-alertmanager
@@ -184,6 +188,7 @@ services:
     restart: unless-stopped
     expose:
       - 8080
+    privileged: true
     labels:
       org.label-schema.group: "monitoring"
 
@@ -203,6 +208,7 @@ services:
       - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - GF_USERS_ALLOW_SIGN_UP=false
     restart: unless-stopped
+    privileged: true
     expose:
       - 3000
     labels:

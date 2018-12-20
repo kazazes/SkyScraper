@@ -31,6 +31,14 @@ services:
   #           port: 5432
   #           user: skyscraper
   #           password: sdr
+  prometheus:
+    build:
+      context: ./host-images/prometheus
+    privileged: true
+    pid: host
+    restart: always
+    ports:
+      - 80:80
   manager:
     build:
       context: ./host-images/manager

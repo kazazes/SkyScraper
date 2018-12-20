@@ -41,5 +41,3 @@ RUN echo "en_US.UTF-8 UTF-8" >/etc/locale.gen && \
   locale-gen
 
 WORKDIR /root
-
-COPY hostedxA4-latest.rbf xA4.rbf

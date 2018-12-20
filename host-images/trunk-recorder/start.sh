@@ -1,21 +1,23 @@
 #! /bin/bash
 
 source /usr/local/setup_env.sh
-source /skyscraper/src/trunk-player/env/bin/activate
-
-wget https://www.nuand.com/fpga/hostedxA4-latest.rbf
-
-cp /data/conf/trunk-player/settings_local.py /skyscraper/src/trunk-player/trunk_player/
 
 arch=$(uname -i)
-if  [[ $arch == armv7l ]]; then
-  mkdir -p /root/.volk
-  cp /data/conf/volk_config /root/.volk/volk_config
+if [[ $arch == armv7l ]]; then
+	mkdir -p /root/.volk
+	cp /data/conf/volk_config /root/.volk/volk_config
 fi
 
 bladeRF-cli -p
-bladeRF-cli -l ./hostedxA4-latest.rbf
+bladeRF-cli -l /data/fpga/hostedxA4-latest.rbf
 
 mkdir -p /data/audio
 
-./recorder --config /data/sites/SF-PK/config.json
+if [[ -z "${RECORDER_CONF}" ]]; then
+	RECORDER_CONF=sites/SF-PK/config.json
+fi
+
+echo "Using container at path /data/${RECORDER_CONF}"
+echo $(cat /data/${RECORDER_CONF})
+
+./recorder --config /data/$RECORDER_CONF

@@ -32,6 +32,15 @@ services:
   #           port: 5432
   #           user: skyscraper
   #           password: sdr
+  prometheus:
+    build:
+      dockerfile:  amd64.dockerfile
+      context: ./host-images/prometheus
+    privileged: true
+    pid: host
+    restart: always
+    ports:
+      - 80:80
   manager:
     build:
       dockerfile:  amd64.dockerfile
@@ -79,19 +88,19 @@ services:
   #   depends_on:
   #     - mqtt
   #   restart: always
-  nginx:
-    build:
+  # nginx:
+  #   build:
       dockerfile:  amd64.dockerfile
-      context: ./host-images/nginx
-    privileged: true
-    depends_on:
-      - manager
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-    links:
-      - manager
+  #     context: ./host-images/nginx
+  #   privileged: true
+  #   depends_on:
+  #     - manager
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   restart: always
+  #   links:
+  #     - manager
   # debug:
   #   image: pckzs/pybombs
   #   command: "sleep infinity"

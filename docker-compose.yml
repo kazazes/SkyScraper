@@ -107,6 +107,7 @@ services:
     restart: always
   debugger:
     cpu_shares: 40
+    cpuset: 3
     build:
       context: ./host-images/debugger
     command: "exit 0"
@@ -114,3 +115,11 @@ services:
     privileged: true
     volumes:
       - "resin-data:/data"
+  wifi-connect:
+    cpuset: 3
+    build:
+      context: ./host-images/wifi-connect
+    privileged: true
+    network_mode: "host"
+    labels:
+      io.resin.features.dbus: "1"

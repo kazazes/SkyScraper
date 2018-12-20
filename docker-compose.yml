@@ -74,18 +74,18 @@ services:
   #   depends_on:
   #     - mqtt
   #   restart: always
-  nginx:
-    build:
-      context: ./host-images/nginx
-    privileged: true
-    depends_on:
-      - manager
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-    links:
-      - manager
+  # nginx:
+  #   build:
+  #     context: ./host-images/nginx
+  #   privileged: true
+  #   depends_on:
+  #     - manager
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   restart: always
+  #   links:
+  #     - manager
   # debug:
   #   image: pckzs/pybombs
   #   command: "sleep infinity"

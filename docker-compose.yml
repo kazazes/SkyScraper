@@ -115,11 +115,12 @@ services:
     privileged: true
     volumes:
       - "resin-data:/data"
-  wifi-connect:
-    cpuset: 3
-    build:
-      context: ./host-images/wifi-connect
-    privileged: true
-    network_mode: "host"
-    labels:
-      io.resin.features.dbus: "1"
+  # wifi-connect:
+  #   cpuset: 3
+  #   build:
+  #     context: ./host-images/wifi-connect
+  #   restart: no
+  #   privileged: true
+  #   network_mode: "host"
+  #   labels:
+  #     io.resin.features.dbus: "1"

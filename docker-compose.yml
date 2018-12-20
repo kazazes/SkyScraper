@@ -64,6 +64,8 @@ services:
     networks:
       - frontend
     restart: always
+    links:
+      - manager
   debug:
     image: pckzs/pybombs
     command: "sleep infinity"

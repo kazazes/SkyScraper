@@ -12,7 +12,7 @@ if [[ $arch == armv7l ]]; then
 fi
 
 bladeRF-cli -p
-bladeRF-cli -l /data/fpga/hostedxA4-latest.rbf
+bladeRF-cli -l xA4.rbf
 
 mkdir -p /data/audio
 

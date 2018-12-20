@@ -4,7 +4,7 @@ volumes:
 services:
   # postgres:
   #   build:
-  # dockerfile:  amd64.dockerfile
+      dockerfile:  amd64.dockerfile
   #     context: ./host-images/postgres
   #   volumes:
   #     - "./data:/data"
@@ -34,7 +34,7 @@ services:
   #           password: sdr
   prometheus:
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile:  amd64.dockerfile
       context: ./host-images/prometheus
     privileged: true
     pid: host
@@ -43,7 +43,7 @@ services:
       - 80:80
   manager:
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile:  amd64.dockerfile
       context: ./host-images/manager
     privileged: true
     pid: host
@@ -56,7 +56,7 @@ services:
       - 3000:3000
   trunk-recorder:
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     restart: unless-stopped
@@ -67,7 +67,7 @@ services:
       - "./data:/data"
   config:
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile:  amd64.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "on-failure"
@@ -79,7 +79,7 @@ services:
   #     - "1883:1883"
   # node-red:
   #   build:
-  # dockerfile:  amd64.dockerfile
+      dockerfile:  amd64.dockerfile
   #     context: ./host-images/node-red
   #   volumes:
   #     - "./data:/data"
@@ -90,7 +90,7 @@ services:
   #   restart: always
   # nginx:
   #   build:
-  # dockerfile:  amd64.dockerfile
+      dockerfile:  amd64.dockerfile
   #     context: ./host-images/nginx
   #   privileged: true
   #   depends_on:

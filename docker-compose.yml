@@ -1,8 +1,6 @@
 version: "2.1"
 volumes:
   resin-data: {}
-  prometheus_data: {}
-  grafana_data: {}
 services:
   # postgres:
   #   build:
@@ -33,15 +31,15 @@ services:
   #           port: 5432
   #           user: skyscraper
   #           password: sdr
-  # prometheus:
-  #   build:
-  #     context: ./host-images/prometheus
-  #   privileged: true
-  #   pid: host
-  #   cpuset: 3
-  #   restart: always
-  #   ports:
-  #     - 8080:8080
+  prometheus:
+    build:
+      context: ./host-images/prometheus
+    privileged: true
+    pid: host
+    cpuset: 3
+    restart: always
+    ports:
+      - 8080:8080
   manager:
     build:
       context: ./host-images/manager
@@ -113,103 +111,3 @@ services:
     privileged: true
     volumes:
       - "resin-data:/data"
-
-  prometheus:
-    image: alexellis2/prometheus
-    privileged: true
-    container_name: prometheus
-    volumes:
-      - ./prometheus/:/etc/prometheus/
-      - prometheus_data:/prometheus
-    command:
-      - "--config.file=/etc/prometheus/prometheus.yml"
-      - "--storage.tsdb.path=/prometheus"
-      - "--web.console.libraries=/etc/prometheus/console_libraries"
-      - "--web.console.templates=/etc/prometheus/consoles"
-      - "--storage.tsdb.retention=200h"
-      - "--web.enable-lifecycle"
-    restart: unless-stopped
-    expose:
-      - 9090
-    labels:
-      org.label-schema.group: "monitoring"
-    cap_add:
-      - SYS_RAWIO
-
-  alertmanager:
-    privileged: true
-    cap_add:
-      - SYS_RAWIO
-    image: linaro/debian-source-prometheus-alertmanager
-    container_name: alertmanager
-    volumes:
-      - ./alertmanager/:/etc/alertmanager/
-    command:
-      - "--config.file=/etc/alertmanager/config.yml"
-      - "--storage.path=/alertmanager"
-    restart: unless-stopped
-    expose:
-      - 9093
-    labels:
-      org.label-schema.group: "monitoring"
-
-  nodeexporter:
-    image: linaro/debian-source-prometheus-node-exporter
-    cap_add:
-      - SYS_RAWIO
-    container_name: nodeexporter
-    user: root
-    privileged: true
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - "--path.procfs=/host/proc"
-      - "--path.sysfs=/host/sys"
-      - "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"
-    restart: unless-stopped
-    expose:
-      - 9100
-    labels:
-      org.label-schema.group: "monitoring"
-
-  cadvisor:
-    image: linuxkit/cadvisor
-    cap_add:
-      - SYS_RAWIO
-    container_name: cadvisor
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /cgroup:/cgroup:ro
-    restart: unless-stopped
-    expose:
-      - 8080
-    privileged: true
-    labels:
-      org.label-schema.group: "monitoring"
-
-  grafana:
-    image: raymondmm/grafana
-    container_name: grafana
-    cap_add:
-      - SYS_RAWIO
-    volumes:
-      - grafana_data:/var/lib/grafana
-      - ./grafana/datasources:/etc/grafana/datasources
-      - ./grafana/dashboards:/etc/grafana/dashboards
-      - ./grafana/setup.sh:/setup.sh
-    entrypoint: /setup.sh
-    environment:
-      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
-      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
-      - GF_USERS_ALLOW_SIGN_UP=false
-    restart: unless-stopped
-    privileged: true
-    expose:
-      - 3000
-    labels:
-      org.label-schema.group: "monitoring"

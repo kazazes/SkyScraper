@@ -32,11 +32,12 @@ RUN apt-get -qq update && \
   postgresql-client-common \
   jq \
   ca-certificates \
-  openssl
+  && rm -rf /var/lib/apt/lists/*
 
-## trunk-recorder needs
 RUN export DEBIAN_FRONTEND=noninteractive && \
-  apt-get install -y \
+  apt-get -qq update \
+  && apt-get install -y \
+  openssl \
   locales \
   autoconf \
   automake \
@@ -49,7 +50,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   zlib1g-dev \
   yasm \
   libfdk-aac-dev && \
-  echo "en_US.UTF-8 UTF-8" >/etc/locale.gen && \
+  && rm -rf /var/lib/apt/lists/* \
+  echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
   locale-gen
 
 RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
@@ -64,18 +66,7 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
   --enable-nonfree && \
   make -j$(nproc) && \
   make install \
-  && rm -rf ffmpeg-snapshot.tar.bz2
-
-WORKDIR /skyscraper
-
-RUN mkdir build && mkdir src
-
-WORKDIR /skyscraper/src/trunk-player/
-
-RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-player/ && \
-  virtualenv -p python3 env --prompt='(Trunk Player)' && \
-  . env/bin/activate && \
-  pip install --no-cache-dir -r requirements.txt
+  && rm -rf ffmpeg-snapshot.tar.bz2 ffmpeg
 
 WORKDIR /skyscraper/build/trunk-recorder/
 

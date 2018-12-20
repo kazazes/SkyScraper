@@ -2,18 +2,18 @@ version: "2.1"
 volumes:
   resin-data: {}
 services:
-  postgres:
-    build:
-      context: ./host-images/postgres
-    volumes:
-      - "resin-data:/data"
-    restart: always
-    network_mode: host
-    environment:
-      POSTGRES_USER: skyscraper
-      POSTGRES_PASSWORD: sdr
-      PGDATA: /data/postgres
-      POSTGRES_DB: radio
+  # postgres:
+  #   build:
+  #     context: ./host-images/postgres
+  #   volumes:
+  #     - "resin-data:/data"
+  #   restart: always
+  #   network_mode: host
+  #   environment:
+  #     POSTGRES_USER: skyscraper
+  #     POSTGRES_PASSWORD: sdr
+  #     PGDATA: /data/postgres
+  #     POSTGRES_DB: radio
   # prisma:
   #   image: prismagraphql/prisma
   #   restart: always
@@ -60,20 +60,20 @@ services:
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
-  mqtt:
-    image: panuwitp/mosquitto-arm
-    ports:
-      - "1883:1883"
-  node-red:
-    build:
-      context: ./host-images/node-red
-    volumes:
-      - "resin-data:/data"
-    ports:
-      - "1880:1880"
-    depends_on:
-      - mqtt
-    restart: always
+  # mqtt:
+  #   image: panuwitp/mosquitto-arm
+  #   ports:
+  #     - "1883:1883"
+  # node-red:
+  #   build:
+  #     context: ./host-images/node-red
+  #   volumes:
+  #     - "resin-data:/data"
+  #   ports:
+  #     - "1880:1880"
+  #   depends_on:
+  #     - mqtt
+  #   restart: always
   nginx:
     build:
       context: ./host-images/nginx
@@ -86,9 +86,9 @@ services:
     restart: always
     links:
       - manager
-  debug:
-    image: pckzs/pybombs
-    command: "sleep infinity"
-    privileged: true
-    volumes:
-      - "resin-data:/data"
+  # debug:
+  #   image: pckzs/pybombs
+  #   command: "sleep infinity"
+  #   privileged: true
+  #   volumes:
+  #     - "resin-data:/data"

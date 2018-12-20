@@ -56,7 +56,6 @@ services:
       - 3000:3000
   trunk-recorder:
     cpu_shares: 820
-    cpu_quota: 300000
     build:
       context: ./host-images/trunk-recorder
     privileged: true

@@ -16,7 +16,5 @@ RUN yarn install --pure-lockfile
 COPY packages/backend/ ./
 RUN yarn run build && cp -a /app/frontend /app/public-vue
 
-COPY --from=vue /app/dist /app/public-vue
-
 EXPOSE 3000
 CMD [ "yarn", "run", "start" ]

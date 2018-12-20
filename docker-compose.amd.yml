@@ -38,6 +38,7 @@ services:
       context: ./host-images/prometheus
     privileged: true
     pid: host
+    cpuset: 3
     restart: always
     ports:
       - 8080:8080
@@ -47,6 +48,7 @@ services:
       context: ./host-images/manager
     privileged: true
     pid: host
+    cpuset: 3
     restart: always
     environment:
       - "NODE_ENV=production"
@@ -55,14 +57,20 @@ services:
     ports:
       - 3000:3000
   trunk-recorder:
+    cpu_shares: 820
+    cpu_quota: 300000
     build:
       dockerfile:  amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
+    cpuset: 0-3
     restart: unless-stopped
     depends_on:
       - "config"
     network_mode: host
+    mem_swappiness: 10
+    cap_add:
+      - SYS_RAWIO
     volumes:
       - "./data:/data"
   config:
@@ -70,6 +78,7 @@ services:
       dockerfile:  amd64.dockerfile
       context: ./host-images/config
     network_mode: host
+    cpuset: 3
     restart: "on-failure"
     volumes:
       - "./data:/data"
@@ -93,6 +102,7 @@ services:
       dockerfile:  amd64.dockerfile
       context: ./host-images/nginx
     privileged: true
+    cpuset: 3
     depends_on:
       - manager
       - prometheus

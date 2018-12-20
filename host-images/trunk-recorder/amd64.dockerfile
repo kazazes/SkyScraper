@@ -80,6 +80,7 @@ RUN git clone https://github.com/kazazes/trunk-player /skyscraper/src/trunk-play
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY encode-local-sys-0.sh .
+COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
   cmake /skyscraper/src/trunk-recorder && make -j$(nproc) && make install && \

@@ -54,7 +54,7 @@ services:
     ports:
       - 3000:3000
   trunk-recorder:
-    cpu_quota: -1
+    cpu_shares: 820
     build:
       context: ./host-images/trunk-recorder
     privileged: true

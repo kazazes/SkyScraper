@@ -1,3 +1,5 @@
-FROM nginx
+FROM linuxserver/nginx
 
-COPY ./nginx.conf /etc/nginx/nginx.conf
+RUN rm -rf /config/www/*
+
+COPY ./nginx.conf /config/nginx/nginx.conf

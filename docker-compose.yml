@@ -32,6 +32,7 @@ services:
   #           user: skyscraper
   #           password: sdr
   prometheus:
+    cpu_shares: 40
     build:
       context: ./host-images/prometheus
     privileged: true
@@ -70,6 +71,7 @@ services:
     volumes:
       - "resin-data:/data"
   config:
+    cpu_shares: 40
     build:
       context: ./host-images/config
     network_mode: host
@@ -92,6 +94,7 @@ services:
   #     - mqtt
   #   restart: always
   nginx:
+    cpu_shares: 40
     build:
       context: ./host-images/nginx
     privileged: true
@@ -104,6 +107,7 @@ services:
       - "443:443"
     restart: always
   debugger:
+    cpu_shares: 40
     build:
       context: ./host-images/debugger
     command: "exit 0"

@@ -55,11 +55,11 @@ services:
     ports:
       - 3000:3000
   trunk-recorder:
-    cpu_shares: 820
+    cpu_shares: 1000
     build:
       context: ./host-images/trunk-recorder
     privileged: true
-    cpuset: 0-2
+    cpuset: 0-3
     restart: unless-stopped
     depends_on:
       - "config"

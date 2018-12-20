@@ -78,6 +78,6 @@ RUN apt-get -qq update \
 RUN rm -rf /tmp/* /var/tmp/*
 
 WORKDIR /home
-CMD ["bash"     ]
+CMD ["bash"]
 
 

@@ -55,6 +55,7 @@ services:
     build:
       context: ./host-images/trunk-recorder
     privileged: true
+    cpuset: 0-3
     restart: unless-stopped
     depends_on:
       - "config"

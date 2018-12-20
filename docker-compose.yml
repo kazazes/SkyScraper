@@ -79,7 +79,7 @@ services:
       context: ./host-images/nginx
     privileged: true
     depends_on:
-      - node-red
+      - manager
     ports:
       - "80:80"
       - "443:443"

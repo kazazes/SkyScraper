@@ -18,6 +18,7 @@ export default class ExpressServer {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(cookieParser(process.env.SESSION_SECRET || "SETMEPLZ"));
     app.use(express.static(`${root}/public`));
+    app.use(express.static(`${root}/public-vue`));
   }
 
   public router(routes: (app: Application) => void): ExpressServer {

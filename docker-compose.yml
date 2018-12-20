@@ -103,9 +103,11 @@ services:
       - "80:80"
       - "443:443"
     restart: always
-  # debug:
-  #   image: pckzs/pybombs
-  #   command: "sleep infinity"
-  #   privileged: true
-  #   volumes:
-  #     - "resin-data:/data"
+  debugger:
+    build:
+      context: ./host-images/debugger
+    command: "exit 0"
+    restart: "no"
+    privileged: true
+    volumes:
+      - "resin-data:/data"

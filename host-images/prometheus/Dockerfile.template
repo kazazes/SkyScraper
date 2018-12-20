@@ -1,8 +1,5 @@
 FROM resin/%%RESIN_MACHINE_NAME%%-debian:latest
 
-# Enable systemd
-ENV INITSYSTEM on
-
 # versions
 ENV NODE_EXPORTER_VERSION 0.12.0
 

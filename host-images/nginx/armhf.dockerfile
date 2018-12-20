@@ -1,5 +1,3 @@
-FROM linuxserver/nginx
+FROM tobi312/rpi-nginx
 
-RUN rm -rf /config/www/*
-
-COPY ./nginx.conf /config/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf

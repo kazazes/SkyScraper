@@ -1,5 +1,3 @@
-FROM linuxserver/nginx
+FROM nginx:stable-alpine
 
-RUN rm -rf /config/www/*
-
-COPY ./nginx.conf /config/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf

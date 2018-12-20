@@ -1,5 +1,8 @@
 #! /bin/bash
 
+set -e
+set -x
+
 source /usr/local/setup_env.sh
 
 arch=$(uname -i)

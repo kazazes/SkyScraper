@@ -52,12 +52,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   echo "en_US.UTF-8 UTF-8" >/etc/locale.gen && \
   locale-gen
 
-WORKDIR /skyscraper
-
-RUN mkdir build && mkdir src
-
-WORKDIR /skyscraper/src/
-
 RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
   tar xjvf ffmpeg-snapshot.tar.bz2 && \
   cd ffmpeg && \
@@ -69,7 +63,12 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
   --enable-libfdk-aac \
   --enable-nonfree && \
   make -j$(nproc) && \
-  make install
+  make install \
+  && rm -rf ffmpeg-snapshot.tar.bz2
+
+WORKDIR /skyscraper
+
+RUN mkdir build && mkdir src
 
 WORKDIR /skyscraper/src/trunk-player/
 

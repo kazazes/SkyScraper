@@ -14,7 +14,7 @@ COPY packages/backend/package.json .
 COPY packages/backend/yarn.lock .
 RUN yarn install --pure-lockfile
 COPY packages/backend/ ./
-RUN yarn run build && cp -a /app/frontend/* /app/public-vue
+RUN yarn run build && cp -a /app/frontend /app/public-vue
 
 COPY --from=vue /app/dist /app/public-vue
 

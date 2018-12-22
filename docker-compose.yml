@@ -37,7 +37,7 @@ services:
       context: ./host-images/prometheus
     privileged: true
     pid: host
-    cpuset: 3
+    cpuset: "3"
     restart: always
     ports:
       - 8080:8080
@@ -46,7 +46,7 @@ services:
       context: ./host-images/manager
     privileged: true
     pid: host
-    cpuset: 3
+    cpuset: "3"
     restart: always
     environment:
       - "NODE_ENV=production"
@@ -59,7 +59,7 @@ services:
     build:
       context: ./host-images/trunk-recorder
     privileged: true
-    cpuset: 0-3
+    cpuset: "0-3"
     restart: unless-stopped
     depends_on:
       - "config"
@@ -97,7 +97,7 @@ services:
     build:
       context: ./host-images/nginx
     privileged: true
-    cpuset: 3
+    cpuset: "3"
     depends_on:
       - manager
       - prometheus
@@ -107,7 +107,7 @@ services:
     restart: always
   debugger:
     cpu_shares: 40
-    cpuset: 3
+    cpuset: "3"
     build:
       context: ./host-images/debugger
     command: "exit 0"

@@ -37,7 +37,6 @@ services:
       context: ./host-images/prometheus
     privileged: true
     pid: host
-    cpuset: "4"
     restart: always
     ports:
       - 8080:8080
@@ -46,7 +45,6 @@ services:
       context: ./host-images/manager
     privileged: true
     pid: host
-    cpuset: "4"
     restart: always
     environment:
       - "NODE_ENV=production"
@@ -59,7 +57,6 @@ services:
     build:
       context: ./host-images/trunk-recorder
     privileged: true
-    cpuset: "4-7"
     restart: unless-stopped
     depends_on:
       - "config"
@@ -74,7 +71,6 @@ services:
     build:
       context: ./host-images/config
     network_mode: host
-    cpuset: 4
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
@@ -107,7 +103,6 @@ services:
     restart: always
   debugger:
     cpu_shares: 40
-    cpuset: "4-7"
     build:
       context: ./host-images/debugger
     command: "exit 0"

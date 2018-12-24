@@ -93,7 +93,6 @@ services:
     build:
       context: ./host-images/nginx
     privileged: true
-    cpuset: "4"
     depends_on:
       - manager
       - prometheus
@@ -111,7 +110,6 @@ services:
     volumes:
       - "resin-data:/data"
   # wifi-connect:
-  #   cpuset: 4
   #   build:
   #     context: ./host-images/wifi-connect
   #   restart: no

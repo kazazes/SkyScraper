@@ -74,8 +74,10 @@ COPY encode-local-sys-0.sh .
 COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
-  cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder && make -j$(nproc) && make install && \
-  cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
+  cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
+  && make -j4 \
+  && make install \
+  && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
   rm -rf /skyscraper/src/trunk-recorder
 
 COPY start.sh .

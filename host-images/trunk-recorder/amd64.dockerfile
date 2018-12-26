@@ -1,6 +1,5 @@
 FROM pckzs/pybombs
 
-ENV INITSYSTEM on
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin

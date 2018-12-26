@@ -66,6 +66,8 @@ services:
       - SYS_RAWIO
     volumes:
       - "resin-data:/data"
+    environment:
+      - RECORDER_CONF
   config:
     cpu_shares: 40
     build:

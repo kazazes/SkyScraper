@@ -40,6 +40,8 @@ services:
       - SYS_RAWIO
     volumes:
       - "./data:/data"
+    environment:
+      - RECORDER_CONF
   config:
     cpu_shares: 40
     build:

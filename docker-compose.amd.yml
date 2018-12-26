@@ -4,6 +4,7 @@ volumes:
   portainer_data: {}
 services:
   prometheus:
+    container_name: prometheus
     cpu_shares: 40
     build:
       dockerfile: amd64.dockerfile
@@ -47,6 +48,7 @@ services:
     environment:
       - RECORDER_CONF
   config:
+    container_name: config
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/config
@@ -72,6 +74,7 @@ services:
       - mqtt
     restart: always
   nginx:
+    container_name: nginx
     cpuset: "0-3"
     build:
       dockerfile: amd64.dockerfile
@@ -85,7 +88,7 @@ services:
       - "443:443"
     restart: always
   debugger:
-    cpu_shares: 40
+    container_name: debugger
     cpuset: "0"
     build:
       dockerfile: amd64.dockerfile
@@ -96,9 +99,21 @@ services:
     volumes:
       - "./data:/data"
   portainer:
+    container_name: portainer
     image: portainer/portainer
+    cap_add:
+      - HOST_MANAGEMENT
     volumes:
       - "portainer_data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
       - "9000:9000"
+  webrx:
+    container_name: webrx
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/webrx
+    privileged: true
+    cpuset: "0-7"
+    ports:
+      - 8073:8073

@@ -4,6 +4,7 @@ volumes:
   portainer_data: {}
 services:
   prometheus:
+    container_name: prometheus
     cpu_shares: 40
     build:
       context: ./host-images/prometheus
@@ -44,6 +45,7 @@ services:
     environment:
       - RECORDER_CONF
   config:
+    container_name: config
     build:
       context: ./host-images/config
     network_mode: host
@@ -67,6 +69,7 @@ services:
       - mqtt
     restart: always
   nginx:
+    container_name: nginx
     cpuset: "0-3"
     build:
       context: ./host-images/nginx
@@ -79,7 +82,7 @@ services:
       - "443:443"
     restart: always
   debugger:
-    cpu_shares: 40
+    container_name: debugger
     cpuset: "0"
     build:
       context: ./host-images/debugger
@@ -89,12 +92,23 @@ services:
     volumes:
       - "resin-data:/data"
   portainer:
+    container_name: portainer
     image: portainer/portainer
+    cap_add:
+      - HOST_MANAGEMENT
     volumes:
       - "portainer_data:/data"
       - "/var/run/docker.sock:/var/run/docker.sock"
     ports:
       - "9000:9000"
+  webrx:
+    container_name: webrx
+    build:
+      context: ./host-images/webrx
+    privileged: true
+    cpuset: "0-7"
+    ports:
+      - 8073:8073
   # wifi-connect:
   #   build:
   #     context: ./host-images/wifi-connect

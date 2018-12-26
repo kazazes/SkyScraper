@@ -1,36 +1,8 @@
 version: "2.1"
 volumes:
   resin-data: {}
+  portainer_data: {}
 services:
-  # postgres:
-  #   build:
-  #     context: ./host-images/postgres
-  #   volumes:
-  #     - "resin-data:/data"
-  #   restart: always
-  #   network_mode: host
-  #   environment:
-  #     POSTGRES_USER: skyscraper
-  #     POSTGRES_PASSWORD: sdr
-  #     PGDATA: /data/postgres
-  #     POSTGRES_DB: radio
-  # prisma:
-  #   image: prismagraphql/prisma
-  #   restart: always
-  #   ports:
-  #     - "4466:4466"
-  #   environment:
-  #     PRISMA_CONFIG: |
-  #       managementApiSecret: scrapingskies
-  #       port: 4466
-  #       databases:
-  #         default:
-  #           connector: postgres
-  #           migrations: true
-  #           host: postgres
-  #           port: 5432
-  #           user: skyscraper
-  #           password: sdr
   prometheus:
     cpu_shares: 40
     build:
@@ -76,20 +48,20 @@ services:
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
-  # mqtt:
-  #   image: panuwitp/mosquitto-arm
-  #   ports:
-  #     - "1883:1883"
-  # node-red:
-  #   build:
-  #     context: ./host-images/node-red
-  #   volumes:
-  #     - "resin-data:/data"
-  #   ports:
-  #     - "1880:1880"
-  #   depends_on:
-  #     - mqtt
-  #   restart: always
+  mqtt:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1883:1883"
+  node-red:
+    build:
+      context: ./host-images/node-red
+    volumes:
+      - "resin-data:/data"
+    ports:
+      - "1880:1880"
+    depends_on:
+      - mqtt
+    restart: always
   nginx:
     cpu_shares: 40
     build:
@@ -111,6 +83,13 @@ services:
     privileged: true
     volumes:
       - "resin-data:/data"
+  portainer:
+    image: portainer/portainer
+    volumes:
+      - "portainer_data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - "9000:9000"
   # wifi-connect:
   #   build:
   #     context: ./host-images/wifi-connect

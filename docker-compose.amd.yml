@@ -1,6 +1,7 @@
 version: "2.1"
 volumes:
   resin-data: {}
+  portainer_data: {}
 services:
   prometheus:
     cpu_shares: 40
@@ -51,6 +52,21 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
+  mqtt:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1883:1883"
+  node-red:
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/node-red
+    volumes:
+      - "./data:/data"
+    ports:
+      - "1880:1880"
+    depends_on:
+      - mqtt
+    restart: always
   nginx:
     cpu_shares: 40
     build:
@@ -74,3 +90,10 @@ services:
     privileged: true
     volumes:
       - "./data:/data"
+  portainer:
+    image: portainer/portainer
+    volumes:
+      - "portainer_data:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    ports:
+      - "9000:9000"

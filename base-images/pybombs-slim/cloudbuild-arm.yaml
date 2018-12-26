@@ -18,5 +18,3 @@ steps:
     args: ["push", "gcr.io/skyscraper-sdr/pybombs-arm:latest"]
 images: ["gcr.io/skyscraper-sdr/pybombs-arm:latest"]
 timeout: 8h30m
-options:
-  machineType: "N1_HIGHCPU_32"

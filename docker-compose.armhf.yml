@@ -3,6 +3,16 @@ volumes:
   resin-data: {}
   portainer_data: {}
 services:
+  prometheus:
+    cpu_shares: 40
+    build:
+      dockerfile: armhf.dockerfile
+      context: ./host-images/prometheus
+    privileged: true
+    pid: host
+    restart: always
+    ports:
+      - 8080:8080
   manager:
     container_name: manager
     cpuset: "0-3"

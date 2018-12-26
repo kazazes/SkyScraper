@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian:latest
+FROM debian:latest
 
 # versions
 ENV NODE_EXPORTER_VERSION 0.12.0

@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-debian:buster
+FROM debian:buster
 
 RUN apt-get update \
   && apt-get install -y dnsmasq wireless-tools \

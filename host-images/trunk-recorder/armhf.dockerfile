@@ -1,5 +1,7 @@
 FROM pckzs/pybombs-arm
 
+RUN [ "cross-build-start" ]
+
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
@@ -74,10 +76,13 @@ COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
   cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
-  && make -j1 \
+  && make -j$(nproc) \
   && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
   rm -rf /skyscraper/src/trunk-recorder
 
+RUN [ "cross-build-end" ]
+
 COPY start.sh .
+
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

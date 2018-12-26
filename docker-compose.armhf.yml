@@ -5,7 +5,7 @@ services:
   prometheus:
     cpu_shares: 40
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/prometheus
     privileged: true
     pid: host
@@ -14,7 +14,7 @@ services:
       - 8080:8080
   manager:
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/manager
     privileged: true
     pid: host
@@ -28,7 +28,7 @@ services:
   trunk-recorder:
     cpu_shares: 1000
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     restart: unless-stopped
@@ -43,7 +43,7 @@ services:
   config:
     cpu_shares: 40
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "on-failure"
@@ -52,7 +52,7 @@ services:
   nginx:
     cpu_shares: 40
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/nginx
     privileged: true
     depends_on:
@@ -65,7 +65,7 @@ services:
   debugger:
     cpu_shares: 40
     build:
-      dockerfile: amd64.dockerfile
+      dockerfile: armhf.dockerfile
       context: ./host-images/debugger
     command: "exit 0"
     restart: "no"

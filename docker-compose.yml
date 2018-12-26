@@ -3,16 +3,18 @@ volumes:
   resin-data: {}
   portainer_data: {}
 services:
-  prometheus:
-    cpu_shares: 40
-    build:
-      context: ./host-images/prometheus
-    privileged: true
-    pid: host
-    restart: always
-    ports:
-      - 8080:8080
+  # prometheus:
+  #   cpu_shares: 40
+  #   build:
+  #     context: ./host-images/prometheus
+  #   privileged: true
+  #   pid: host
+  #   restart: always
+  #   ports:
+  #     - 8080:8080
   manager:
+    container_name: manager
+    cpuset: "0-3"
     build:
       context: ./host-images/manager
     privileged: true
@@ -25,7 +27,8 @@ services:
     ports:
       - 3000:3000
   trunk-recorder:
-    cpu_shares: 1000
+    container_name: trunk-recorder
+    cpuset: "0-7"
     build:
       context: ./host-images/trunk-recorder
     privileged: true
@@ -41,18 +44,19 @@ services:
     environment:
       - RECORDER_CONF
   config:
-    cpu_shares: 40
     build:
       context: ./host-images/config
     network_mode: host
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
-  mqtt:
-    image: panuwitp/mosquitto-arm
-    ports:
-      - "1883:1883"
+  # mqtt:
+  #   image: panuwitp/mosquitto-arm
+  #   ports:
+  #     - "1883:1883"
   node-red:
+    container_name: node-red
+    cpuset: "0-3"
     build:
       context: ./host-images/node-red
     volumes:
@@ -63,7 +67,7 @@ services:
       - mqtt
     restart: always
   nginx:
-    cpu_shares: 40
+    cpuset: "0-3"
     build:
       context: ./host-images/nginx
     privileged: true
@@ -76,6 +80,7 @@ services:
     restart: always
   debugger:
     cpu_shares: 40
+    cpuset: "0"
     build:
       context: ./host-images/debugger
     command: "exit 0"

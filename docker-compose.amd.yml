@@ -44,6 +44,10 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
+  mqtt:
+    image: panuwitp/mosquitto-arm
+    ports:
+      - "1883:1883"
   node-red:
     container_name: node-red
     cpuset: "0-3"

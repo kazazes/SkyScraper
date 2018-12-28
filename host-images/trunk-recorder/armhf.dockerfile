@@ -1,7 +1,5 @@
 FROM pckzs/pybombs-arm
 
-RUN [ "cross-build-start" ]
-
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
@@ -80,8 +78,6 @@ RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/s
   && make install \
   && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
   rm -rf /skyscraper/src/trunk-recorder
-
-RUN [ "cross-build-end" ]
 
 COPY start.sh .
 

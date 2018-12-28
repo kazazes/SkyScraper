@@ -11,7 +11,7 @@ echo ===
 if [ -f /usr/local/bin/sed ]; then
 	gsed=/usr/local/bin/sed
 else
-	gsed=/usr/bin/sed
+	alias gsed=$(which sed)
 fi
 
 PROJECT_DIR=$(pwd)

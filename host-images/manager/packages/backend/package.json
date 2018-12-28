@@ -16,7 +16,7 @@
   "dependencies": {
     "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
-    "concat-stream": "^1.6.2",
+    "concat-stream": "^2.0.0",
     "cookie-parser": "^1.4.3",
     "dockerode": "^2.5.7",
     "dotenv": "^6.1.0",

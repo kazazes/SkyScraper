@@ -18,14 +18,19 @@ RUN git clone https://github.com/rxseger/rx_tools \
   && cd .. \
   && rm -rf rx_tools
 
-COPY src/csdr ./csdr
-
-RUN cd csdr \
+RUN git clone https://github.com/simonyiszk/csdr.git csdr \
+  && cd csdr \
+  && git checkout eabc2c5 \
   && make -j$(nproc) \
   && make install \
   && cd .. \
   && rm -rf csdr
 
-COPY src/webrx .
+RUN git clone https://github.com/simonyiszk/openwebrx /webrx \
+  && cd /webrx \
+  && git checkout 4e30fd5
+
+WORKDIR /webrx
+COPY config_webrx.py .
 
 CMD [ "python2", "openwebrx.py" ]

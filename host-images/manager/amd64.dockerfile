@@ -1,4 +1,4 @@
-FROM node:9 as vue
+FROM node:11.6.0 as vue
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN yarn install --pure-lockfile
 COPY packages/frontend/ ./
 RUN yarn run build
 
-FROM node:9
+FROM node:11.6.0
 
 WORKDIR /app
 

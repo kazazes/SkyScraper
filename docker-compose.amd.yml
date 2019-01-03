@@ -16,7 +16,7 @@ services:
       - 8080:8080
   manager:
     container_name: manager
-    cpuset: "0-3"
+    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/manager
@@ -31,7 +31,7 @@ services:
       - 3000:3000
   trunk-recorder:
     container_name: trunk-recorder
-    cpuset: "0-7"
+    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/trunk-recorder
@@ -62,7 +62,7 @@ services:
       - "1883:1883"
   node-red:
     container_name: node-red
-    cpuset: "0-3"
+    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/node-red
@@ -75,7 +75,7 @@ services:
     restart: always
   nginx:
     container_name: nginx
-    cpuset: "0-3"
+    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/nginx
@@ -89,7 +89,7 @@ services:
     restart: always
   debugger:
     container_name: debugger
-    cpuset: "0"
+    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/debugger
@@ -114,6 +114,6 @@ services:
       dockerfile: amd64.dockerfile
       context: ./host-images/webrx
     privileged: true
-    cpuset: "0-7"
+    
     ports:
       - 8073:8073

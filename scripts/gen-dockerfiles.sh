@@ -55,7 +55,7 @@ function generate_base_dockerfile() {
 function generate_compose() {
 	cp docker-compose.yml docker-compose.amd.yml
 	cp docker-compose.yml docker-compose.armhf.yml
-	${gsed} -i -e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" docker-compose.amd.yml
+	${gsed} -i -e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" -e "s/cpuset: \".*\"//" docker-compose.amd.yml
 	${gsed} -i -e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: armhf.dockerfile/g" docker-compose.armhf.yml
 }
 

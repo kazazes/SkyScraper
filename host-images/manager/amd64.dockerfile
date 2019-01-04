@@ -1,4 +1,4 @@
-FROM node:9 as vue
+FROM node:11 as vue
 
 WORKDIR /app
 
@@ -8,9 +8,12 @@ RUN yarn install --pure-lockfile
 COPY packages/frontend/ ./
 RUN yarn run build
 
-FROM node:9
+FROM node:11
 
 WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y libudev-dev
 
 COPY packages/backend/package.json .
 COPY packages/backend/yarn.lock .

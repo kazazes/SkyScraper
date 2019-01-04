@@ -21,6 +21,6 @@ if [[ -z "${RECORDER_CONF}" ]]; then
 fi
 
 echo "Using configuration at path /data/${RECORDER_CONF}"
-echo $(cat /data/${RECORDER_CONF})
+echo $(cat /data/${RECORDER_CONF} | python -m json.tool)
 
 ./recorder --config /data/$RECORDER_CONF

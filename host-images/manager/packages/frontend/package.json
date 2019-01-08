@@ -1,16 +1,37 @@
 {
-  "name": "frontend",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Control and manage your Skyscraper.",
-  "author": {
-    "email": "peter@sibylvision.com",
-    "name": "Peter Kazazes"
-  },
+  "name": "vue-element-admin",
+  "version": "3.10.0",
+  "description": "A magical vue admin. Typical templates for enterprise applications. Newest development stack of vue. Lots of awesome features",
+  "author": "Pan <panfree23@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "cross-env BABEL_ENV=development webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "build:prod": "cross-env NODE_ENV=production env_config=prod node build/build.js",
+    "build:sit": "cross-env NODE_ENV=production env_config=sit node build/build.js",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "npm run lint",
+    "precommit": "lint-staged",
+    "svgo": "svgo -f src/icons/svg --config=src/icons/svgo.yml"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "keywords": [
+    "vue",
+    "element-ui",
+    "admin",
+    "management-system",
+    "admin-template"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PanJiaChen/vue-element-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PanJiaChen/vue-element-admin/issues"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
@@ -35,28 +56,14 @@
     "vuetify-loader": "^1.0.5",
     "webpack": "^4.0.0"
   },
-  "gitHooks": {
-    "pre-commit": "lint-staged"
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
   },
-  "lint-staged": {
-    "*.ts": [
-      "vue-cli-service lint",
-      "git add"
-    ],
-    "*.vue": [
-      "vue-cli-service lint",
-      "git add"
-    ]
-  },
-  "workspaces": {
-    "nohoist": [
-      "**vue**",
-      "@vue/**",
-      "vuetify**",
-      "roboto-fontface",
-      "@fortawesome/*",
-      "webpack/**",
-      "typescript/**"
-    ]
-  }
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "private": true
 }

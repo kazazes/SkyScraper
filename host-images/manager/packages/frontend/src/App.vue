@@ -1,10 +1,7 @@
 <template>
-  <v-app>
-    <v-toolbar primary dark fixed app></v-toolbar>
-    <v-content dark>
-      <v-container fluid fill-height></v-container>
-    </v-content>
-  </v-app>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script lang="ts">

@@ -4,15 +4,24 @@
     "build:backend": "cd packages/backend && yarn run --focus build"
   },
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/vuetify",
+      "**/material-design-icons-iconfont",
+      "**/chartist",
+      "**/@mdi/**"
+    ]
+  },
   "devDependencies": {
-    "lerna": "^3.6.0",
+    "@vue/eslint-config-typescript": "^3.2.0",
     "chai": "^4.1.2",
+    "lerna": "^3.6.0",
     "mocha": "^5.0.5",
-    "sass-loader": "^7.0.1",
     "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
     "supertest": "^3.3.0",
     "tslint": "^5.11.0"
   },

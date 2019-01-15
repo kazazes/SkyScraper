@@ -9,49 +9,54 @@
     mobile-break-point="991"
     width="260"
   >
-    <v-img :src="image" height="100%">
-      <v-layout class="fill-height" tag="v-list" column>
-        <v-list-tile avatar>
-          <v-list-tile-avatar color="white">
-            <v-img :src="logo" height="34" contain/>
-          </v-list-tile-avatar>
-          <v-list-tile-title class="title">Vuetify MD</v-list-tile-title>
-        </v-list-tile>
-        <v-divider/>
-        <v-list-tile v-if="responsive">
-          <v-text-field class="purple-input search-input" label="Search..." color="purple"/>
+    <v-layout class="fill-height" tag="v-list" column>
+      <v-list-tile avatar>
+        <v-list-tile-title class="title text-xs-center">SkyScraper</v-list-tile-title>
+      </v-list-tile>
+      <v-divider/>
+      <v-list-tile v-if="responsive">
+        <v-text-field class="purple-input search-input" label="Search..." color="purple"/>
+      </v-list-tile>
+      <v-list-tile
+        v-for="(link, i) in links"
+        :key="i"
+        :to="link.to"
+        :active-class="color"
+        avatar
+        class="v-list-item"
+      >
+        <v-list-tile-action>
+          <v-icon>{{ link.icon }}</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-title v-text="link.text"/>
+      </v-list-tile>
+      <v-subheader>Applications</v-subheader>
+      <v-list-group v-for="(category, i) in applications" :key="'cat' + i" value="true">
+        <v-list-tile avatar slot="activator" class="v-list-item">
+          <v-list-tile-action>
+            <v-icon>{{category.icon}}</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-title v-text="category.text"></v-list-tile-title>
         </v-list-tile>
         <v-list-tile
-          v-for="(link, i) in links"
-          :key="i"
-          :to="link.to"
-          :active-class="color"
           avatar
+          :active-class="color"
+          v-for="(app, j) in category.children"
+          :key="'app' + j"
+          :to="app.to"
           class="v-list-item"
         >
           <v-list-tile-action>
-            <v-icon>{{ link.icon }}</v-icon>
+            <v-icon>{{ app.icon }}</v-icon>
           </v-list-tile-action>
-          <v-list-tile-title v-text="link.text"/>
+          <v-list-tile-title v-text="app.text"></v-list-tile-title>
         </v-list-tile>
-        <v-list-tile
-          disabled
-          active-class="primary"
-          class="v-list-item v-list__tile--buy"
-          to="/upgrade"
-        >
-          <v-list-tile-action>
-            <v-icon>mdi-package-up</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title class="font-weight-light">Upgrade To PRO</v-list-tile-title>
-        </v-list-tile>
-      </v-layout>
-    </v-img>
+      </v-list-group>
+    </v-layout>
   </v-navigation-drawer>
 </template>
 
 <script>
-  // Utilities
   import { mapMutations, mapState } from "vuex";
 
   export default {
@@ -62,45 +67,28 @@
           to: "/dashboard",
           icon: "mdi-view-dashboard",
           text: "Dashboard"
-        },
+        }
+      ],
+      applications: [
         {
-          to: "/user-profile",
-          icon: "mdi-account",
-          text: "User Profile"
-        },
-        {
-          to: "/table-list",
-          icon: "mdi-clipboard-outline",
-          text: "Table List"
-        },
-        {
-          to: "/typography",
-          icon: "mdi-format-font",
-          text: "Typography"
-        },
-        {
-          to: "/icons",
-          icon: "mdi-chart-bubble",
-          text: "Icons"
-        },
-        {
-          to: "/maps",
-          icon: "mdi-map-marker",
-          text: "Maps"
-        },
-        {
-          to: "/notifications",
-          icon: "mdi-bell",
-          text: "Notifications"
+          icon: "mdi-microphone",
+          text: "Voice",
+          children: [
+            {
+              to: "/app/trunked",
+              icon: "mdi-briefcase",
+              text: "Trunked"
+            }
+          ]
         }
       ],
       responsive: false
     }),
     computed: {
-      ...mapState("app", ["image", "color"]),
+      ...mapState(["image", "color"]),
       inputValue: {
         get() {
-          return this.$store.state.app.drawer;
+          return this.$store.state.drawer;
         },
         set(val) {
           this.setDrawer(val);
@@ -118,7 +106,7 @@
       window.removeEventListener("resize", this.onResponsiveInverted);
     },
     methods: {
-      ...mapMutations("app", ["setDrawer", "toggleDrawer"]),
+      ...mapMutations(["setDrawer", "toggleDrawer"]),
       onResponsiveInverted() {
         if (window.innerWidth < 991) {
           this.responsive = true;
@@ -133,12 +121,7 @@
 <style lang="scss">
   #app-drawer {
     .v-list__tile {
-      border-radius: 4px;
-
-      &--buy {
-        margin-top: auto;
-        margin-bottom: 17px;
-      }
+      border-radius: 0px;
     }
 
     .v-image__image--contain {

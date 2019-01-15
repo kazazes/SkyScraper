@@ -1,10 +1,9 @@
 export default {
-  primary: '#4caf50',
-  secondary: '#4caf50',
-  tertiary: '#495057',
-  accent: '#82B1FF',
-  error: '#f55a4e',
-  info: '#00d3ee',
-  success: '#5cb860',
-  warning: '#ffa21a'
-}
+  primary: "#607d8b",
+  secondary: "#3f51b5",
+  accent: "#2196f3",
+  error: "#f44336",
+  warning: "#ffc107",
+  info: "#03a9f4",
+  success: "#4caf50"
+};

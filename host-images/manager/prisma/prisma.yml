@@ -1,0 +1,18 @@
+endpoint: https://us1.prisma.sh/peter-k/skyscraper/dev
+datamodel:
+  - datamodel.prisma
+  - trunk-recorder.prisma
+
+generate:
+  - generator: typescript-client
+    output: ../packages/backend/prisma
+  - generator: graphql-schema
+    output: ../packages/backend/prisma
+  - generator: typescript-client
+    output: ../packages/frontend/src/prisma
+  - generator: graphql-schema
+    output: ../packages/frontend/src/prisma
+
+hooks:
+  post-deploy:
+    - prisma generate

@@ -1,1 +1,0 @@
-./host-images/manager/prisma/generated/index.ts

@@ -1,0 +1,1 @@
+./host-images/manager/prisma/generated/graphqlgen.ts

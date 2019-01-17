@@ -1,24 +1,28 @@
-FROM node:9 as vue
+FROM node:11
+
+COPY keys/* /root/.ssh/
+
+RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
+  && cat /root/.ssh/id_rsa | ssh-add - \
+  && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+RUN npm i -g typescript lerna
+RUN git clone git@github.com:kazazes/skyscraper-manager.git /app
 
 WORKDIR /app
 
-COPY packages/frontend/package.json .
-COPY packages/frontend/yarn.lock .
-RUN yarn install --pure-lockfile
-COPY packages/frontend/ ./
-RUN yarn run build
-
-FROM node:9
-
-WORKDIR /app
-
-COPY packages/backend/package.json .
-COPY packages/backend/yarn.lock .
-RUN yarn install --pure-lockfile
-COPY packages/backend/ ./
-RUN yarn run build
-
-COPY --from=vue /app/dist /app/public-vue
+RUN yarn install --pure-lockfile &&\
+  lerna bootstrap &&\
+  cd /app/packages/prisma &&\
+  tsc && \
+  cd /app/packages/frontend && \
+  yarn run build &&\
+  cd /app/packages/backend && \
+  yarn run build && \
+  cd /app/packages/backend && \
+  yarn run build && \
+  cp -a /app/packages/frontend/dist /app/packages/backend/public-vue && \
+  rm -rf /app/packages/frontend
 
 EXPOSE 3000
 CMD [ "yarn", "run", "start" ]

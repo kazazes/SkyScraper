@@ -53,9 +53,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
-RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
-  tar xjvf ffmpeg-snapshot.tar.bz2 && \
-  cd ffmpeg && \
+RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
+  tar xjvf ffmpeg-4.1.tar.bz2 && \
+  cd ffmpeg-4.1 && \
   ./configure \
   --pkg-config-flags="--static" \
   --bindir="/usr/local/bin" \
@@ -65,7 +65,7 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-snapshot.tar.bz2 && \
   --enable-nonfree && \
   make -j$(nproc) && \
   make install \
-  && rm -rf ffmpeg-snapshot.tar.bz2 ffmpeg
+  && rm -rf ffmpeg-4.1.tar.bz2 ffmpeg-4.1
 
 WORKDIR /skyscraper/build/trunk-recorder/
 

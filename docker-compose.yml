@@ -7,7 +7,6 @@ services:
     build:
       context: ./host-images/trunk-recorder
     privileged: true
-    restart: unless-stopped
     depends_on:
       - "config"
     network_mode: host
@@ -23,4 +22,18 @@ services:
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
-    
+  manager:
+    container_name: manager
+    build:
+      context: ./host-images/manager
+    volumes:
+      - "resin-data:/data"
+    ports:
+      - 3000
+    environment:
+      - APP_ID=backend
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - REQUEST_LIMIT=100kb
+      - SESSION_SECRET=mySecret
+      - SWAGGER_API_SPEC=/spec

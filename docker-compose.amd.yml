@@ -1,48 +1,16 @@
 version: "2.1"
 volumes:
   resin-data: {}
-  portainer_data: {}
 services:
-  prometheus:
-    container_name: prometheus
-    cpu_shares: 40
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/prometheus
-    privileged: true
-    pid: host
-    restart: always
-    ports:
-      - 8080:8080
-  manager:
-    container_name: manager
-    
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/manager
-    privileged: true
-    pid: host
-    restart: always
-    environment:
-      - "NODE_ENV=production"
-    volumes:
-      - "./data:/data"
-    ports:
-      - 3000:3000
   trunk-recorder:
     container_name: trunk-recorder
-    
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
-    restart: unless-stopped
     depends_on:
       - "config"
     network_mode: host
-    mem_swappiness: 10
-    cap_add:
-      - SYS_RAWIO
     volumes:
       - "./data:/data"
     environment:
@@ -56,64 +24,19 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
-  mqtt:
-    image: panuwitp/mosquitto-arm
-    ports:
-      - "1883:1883"
-  node-red:
-    container_name: node-red
-    
+  manager:
+    container_name: manager
     build:
       dockerfile: amd64.dockerfile
-      context: ./host-images/node-red
+      context: ./host-images/manager
     volumes:
       - "./data:/data"
     ports:
-      - "1880:1880"
-    depends_on:
-      - mqtt
-    restart: always
-  nginx:
-    container_name: nginx
-    
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/nginx
-    privileged: true
-    depends_on:
-      - manager
-      - prometheus
-    ports:
-      - "80:80"
-      - "443:443"
-    restart: always
-  debugger:
-    container_name: debugger
-    
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/debugger
-    command: "exit 0"
-    restart: "no"
-    privileged: true
-    volumes:
-      - "./data:/data"
-  portainer:
-    container_name: portainer
-    image: portainer/portainer
-    cap_add:
-      - HOST_MANAGEMENT
-    volumes:
-      - "portainer_data:/data"
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    ports:
-      - "9000:9000"
-  webrx:
-    container_name: webrx
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/webrx
-    privileged: true
-    
-    ports:
-      - 8073:8073
+      - 3000:3000
+    environment:
+      - APP_ID=backend
+      - PORT=3000
+      - LOG_LEVEL=debug
+      - REQUEST_LIMIT=100kb
+      - SESSION_SECRET=mySecret
+      - SWAGGER_API_SPEC=/spec

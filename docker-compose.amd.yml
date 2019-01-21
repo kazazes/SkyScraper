@@ -32,7 +32,7 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - 3000:3000
+      - 3000
     environment:
       - APP_ID=backend
       - PORT=3000
@@ -40,3 +40,12 @@ services:
       - REQUEST_LIMIT=100kb
       - SESSION_SECRET=mySecret
       - SWAGGER_API_SPEC=/spec
+  nginx:
+    container_name: nginx
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always

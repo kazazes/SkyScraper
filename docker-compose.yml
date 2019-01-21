@@ -37,3 +37,11 @@ services:
       - REQUEST_LIMIT=100kb
       - SESSION_SECRET=mySecret
       - SWAGGER_API_SPEC=/spec
+  nginx:
+    container_name: nginx
+    build:
+      context: ./host-images/nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always

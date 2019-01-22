@@ -21,4 +21,4 @@ RUN cd /app && yarn run build
 EXPOSE 3000
 ENV NODE_ENV=production
 
-CMD ['docker-entrypoint.sh']
+ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

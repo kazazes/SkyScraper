@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-mkdir -p /data/www/
-mv /app/packages/frontend/public-vue/* /data/www/admin/
+mkdir -p /data/www/admin/
+mv /app/packages/frontend/dist/* /data/www/admin/
 
 cd /app/packages/server
 

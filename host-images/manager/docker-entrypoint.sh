@@ -1,7 +1,8 @@
 #!/bin/sh
 
-mkdir -p /data/www/admin/
-mv /app/packages/frontend/dist/* /data/www/admin/
+rm -rf /data/www
+mkdir -p /data/www/
+mv /app/packages/frontend/dist/* /data/www/
 
 cd /app/packages/server
 

@@ -1,3 +1,3 @@
-FROM nginx:stable-alpine
-
-COPY ./nginx.conf /etc/nginx/nginx.conf
+FROM nginx
+COPY mime.types /etc/nginx/
+COPY nginx.conf proxy.conf /etc/nginx/

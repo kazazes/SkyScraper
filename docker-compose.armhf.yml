@@ -45,6 +45,8 @@ services:
     build:
       dockerfile: armhf.dockerfile
       context: ./host-images/nginx
+    volumes:
+      - "./data:/data"
     ports:
       - "80:80"
       - "443:443"

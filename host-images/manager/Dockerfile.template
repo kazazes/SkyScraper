@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-node
+FROM resin/%%BALENA_MACHINE_NAME%%-node as build
 
 COPY keys/* /root/.ssh/
 
@@ -10,13 +10,12 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ENV CACHEBUST=3
+ENV CACHEBUST=2
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \
     yarn install --pure-lockfile && \
-    yarn run build && \
-    rm -rf ./node_modules packages/*/node_modules
+    yarn run build
 
 ENV NODE_ENV=production
 

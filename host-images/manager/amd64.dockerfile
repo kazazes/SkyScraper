@@ -1,4 +1,4 @@
-FROM node:11
+FROM node:11 as build
 
 COPY keys/* /root/.ssh/
 
@@ -15,8 +15,7 @@ ENV CACHEBUST=2
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \
     yarn install --pure-lockfile && \
-    yarn run build && \
-    rm -rf ./node_modules packages/*/node_modules
+    yarn run build
 
 ENV NODE_ENV=production
 

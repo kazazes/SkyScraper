@@ -1,5 +1,7 @@
 #! /bin/bash
 
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
+
 set -e
 
 echo

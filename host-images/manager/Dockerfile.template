@@ -10,7 +10,7 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ENV CACHEBUST=4
+ENV CACHEBUST=6
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \

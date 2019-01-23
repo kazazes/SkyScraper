@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-alpine:3.7
+FROM resin/odroid-xu4-alpine:3.8
 
 # add our user and group first to make sure their IDs get assigned consistently, regardless of whatever dependencies get added
 RUN addgroup -S redis && adduser -S -G redis redis

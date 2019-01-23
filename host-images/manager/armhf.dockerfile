@@ -10,7 +10,7 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ADD https://en.wikipedia.org/wiki/Wikipedia_logo#/media/File:Wikipedia-logo-v2.svg /dev/null
+ENV CACHEBUST=1
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \

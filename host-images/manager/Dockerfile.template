@@ -10,15 +10,18 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ENV CACHEBUST=1
+ENV CACHEBUST=2
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \
-    yarn install --pure-lockfile
+    yarn install --pure-lockfile && \
+    yarn run build && \
+    rm -rf ./node_modules packages/*/node_modules
 
-RUN cd /app && yarn run build
+ENV NODE_ENV=production
+
+RUN yarn
 
 EXPOSE 3000
-ENV NODE_ENV=production
 
 ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

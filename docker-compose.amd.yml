@@ -50,3 +50,13 @@ services:
     ports:
       - "80:80"
     restart: always
+  openvpn:
+    container_name: openvpn
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/openvpn
+    privileged: true
+    volumes:
+      - "./data:/data"
+    restart: always
+    network_mode: host

@@ -46,3 +46,12 @@ services:
     ports:
       - "80:80"
     restart: always
+  openvpn:
+    container_name: openvpn
+    build:
+      context: ./host-images/openvpn
+    privileged: true
+    volumes:
+      - "resin-data:/data"
+    restart: always
+    network_mode: host

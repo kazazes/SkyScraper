@@ -3,6 +3,11 @@
 set -e
 set -x
 
+if [ -v TR_DISABLED ]; then
+    echo "Trunk recorder disabled. Sleeping."
+    sleep infinity
+fi
+
 source /usr/local/setup_env.sh
 
 arch=$(uname -i)

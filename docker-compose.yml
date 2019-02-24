@@ -37,14 +37,16 @@ services:
       - REQUEST_LIMIT=100kb
       - SESSION_SECRET=mySecret
       - SWAGGER_API_SPEC=/spec
-  proxy:
-    container_name: proxy
+      - NODE_ENV=production
+  nginx:
+    container_name: nginx
     depends_on:
       - manager
     build:
-      context: host-images/proxy
+      context: host-images/nginx
     ports:
       - "80:80"
+      - "443:443"
     restart: always
   openvpn:
     container_name: openvpn

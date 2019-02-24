@@ -15,6 +15,7 @@ services:
       - "./data:/data"
     environment:
       - RECORDER_CONF
+    restart: on-failure
   config:
     container_name: config
     build:
@@ -41,6 +42,7 @@ services:
       - SESSION_SECRET=mySecret
       - SWAGGER_API_SPEC=/spec
       - NODE_ENV=production
+    restart: always
   nginx:
     container_name: nginx
     depends_on:
@@ -60,7 +62,7 @@ services:
     privileged: true
     volumes:
       - "./data:/data"
-    restart: always
+    restart: on-failure
   watchdog:
     container_name: watchdog
     build:

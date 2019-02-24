@@ -4,8 +4,7 @@ RUN apk add --no-cache \
 	bash \
 	openssh \
 	git \
-	socat \
-&& rm -rf /var/cache/apk/*
+	socat
 
 COPY keys/* /root/.ssh/
 
@@ -18,15 +17,14 @@ RUN npm i -g typescript lerna
 COPY docker-entrypoint.sh /usr/local/bin
 
 ENV CACHEBUST=8
-
-RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
-    cd /app && \
-    yarn install --pure-lockfile && \
-    yarn run build
-
 ENV NODE_ENV=production
 
-RUN yarn
+RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
+    git clone git@github.com:kazazes/skyscraper-manager.git /app && \
+    cd /app && \
+    yarn install --pure-lockfile && \
+    yarn run build && \
+    apk del .build-deps
 
 EXPOSE 3000
 

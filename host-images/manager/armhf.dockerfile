@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-node as build
+FROM balenalib/odroid-xu4-debian-node as build
 
 COPY keys/* /root/.ssh/
 
@@ -10,7 +10,7 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ENV CACHEBUST=6
+ENV CACHEBUST=8
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
     cd /app && \

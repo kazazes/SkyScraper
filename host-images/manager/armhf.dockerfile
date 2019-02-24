@@ -1,4 +1,11 @@
-FROM balenalib/odroid-xu4-debian-node as build
+FROM balenalib/odroid-xu4-alpine-node as build
+
+RUN apk add --no-cache \
+	bash \
+	openssh \
+	git \
+	socat \
+&& rm -rf /var/cache/apk/*
 
 COPY keys/* /root/.ssh/
 

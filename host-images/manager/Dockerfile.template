@@ -1,4 +1,11 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node as build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-node as build
+
+RUN apk add --no-cache \
+	bash \
+	openssh \
+	git \
+	socat \
+&& rm -rf /var/cache/apk/*
 
 COPY keys/* /root/.ssh/
 

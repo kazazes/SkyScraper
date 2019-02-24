@@ -1,4 +1,11 @@
-FROM node:latest as build
+FROM mhart/alpine-node:11 as build
+
+RUN apk add --no-cache \
+	bash \
+	openssh \
+	git \
+	socat \
+&& rm -rf /var/cache/apk/*
 
 COPY keys/* /root/.ssh/
 

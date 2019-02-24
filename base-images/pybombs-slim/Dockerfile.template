@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-ubuntu:xenial as pybombs-slim
+FROM balenalib/%%BALENA_MACHINE_NAME%%-ubuntu:xenial as pybombs-slim
 
 RUN [ "cross-build-start" ]
 

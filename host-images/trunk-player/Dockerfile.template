@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%:3.7
+FROM balenalib/%%BALENA_MACHINE_NAME%%:3.7
 
 RUN apk add --virtual build-deps gcc python-dev musl-dev
 RUN apk add --update \

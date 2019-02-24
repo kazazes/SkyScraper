@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-debian:buster
+FROM balenalib/odroid-xu4-debian:buster
 
 RUN apt-get update \
   && apt-get install -y dnsmasq wireless-tools \
@@ -7,7 +7,7 @@ RUN apt-get update \
 
 WORKDIR /usr/src/app
 
-RUN curl -Ls https://github.com/resin-io/resin-wifi-connect/releases/download/v4.1.1/wifi-connect-v4.1.1-linux-armv7h.tar.gz \
+RUN curl -Ls https://github.com/resin-io/resin-wifi-connect/releases/download/v4.1.1/wifi-connect-v4.1.1-linux-%%RESIN_ARCH%%.tar.gz \
   | tar -xvz -C /usr/src/app/
 
 COPY start.sh .

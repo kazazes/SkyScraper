@@ -1,4 +1,4 @@
-FROM resin/%%BALENA_MACHINE_NAME%%-alpine:3.7
+FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:3.7
 
 ENV VPN_HOST=sky.sibyl.vision
 

@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-node as build
+FROM balenalib/odroid-xu4-node as build
 
 COPY keys/* /root/.ssh/
 

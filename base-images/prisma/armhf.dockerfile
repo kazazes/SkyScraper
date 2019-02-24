@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-ubuntu
+FROM balenalib/odroid-xu4-ubuntu
 
 RUN ["cross-build-start"]
 

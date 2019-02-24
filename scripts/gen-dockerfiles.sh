@@ -10,6 +10,8 @@ echo === If running on macOS, run
 echo === brew install gnu-sed
 echo ===
 
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+
 PROJECT_DIR=$(pwd)
 
 generate_host_dockerfile() {
@@ -18,16 +20,17 @@ generate_host_dockerfile() {
 	cp Dockerfile.template amd64.dockerfile
 	cp Dockerfile.template armhf.dockerfile
 
-	sed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6-alpine/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-node/node:11/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+	sed -i -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6-alpine/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-node/node:11/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-ubuntu-python:latest/python:3/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
 		amd64.dockerfile
 
-	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%RESIN_ARCH%%/armv7h/' armhf.dockerfile
+	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%BALENA_ARCH%%/armv7h/' armhf.dockerfile
 
 	cd $PROJECT_DIR
 }
@@ -37,8 +40,8 @@ function generate_base_dockerfile() {
 	cd $1
 	cp Dockerfile.template amd64.dockerfile
 
-	sed -i -e 's/resin\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-		-e 's/resin\/%%BALENA_MACHINE_NAME%%-//' \
+	sed -i -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/RUN \[ "cross-build-start" \]//' \
 		-e 's/RUN \[ "cross-build-end" \]//' \
 		amd64.dockerfile

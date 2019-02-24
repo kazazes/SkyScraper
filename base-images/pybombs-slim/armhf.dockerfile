@@ -1,4 +1,4 @@
-FROM resin/odroid-xu4-ubuntu:xenial as pybombs-slim
+FROM balenalib/odroid-xu4-ubuntu:xenial as pybombs-slim
 
 RUN [ "cross-build-start" ]
 

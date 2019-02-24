@@ -59,4 +59,12 @@ services:
     volumes:
       - "./data:/data"
     restart: always
-    network_mode: host
+  watchdog:
+    container_name: watchdog
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/watchdog
+    privileged: true
+    volumes:
+      - "./data:/data"
+    restart: always

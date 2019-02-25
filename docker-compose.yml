@@ -13,7 +13,7 @@ services:
     volumes:
       - "resin-data:/data"
     environment:
-      - RECORDER_CONF
+      - RECORDER_CONF=sites/US/CA/SanMateo/config.json
     restart: on-failure
   ngrok:
     container_name: ngrok

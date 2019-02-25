@@ -53,28 +53,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
-RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
-  tar xjvf ffmpeg-4.1.tar.bz2 && \
-  cd ffmpeg-4.1 && \
-  ./configure \
-  --pkg-config-flags="--static" \
-  --bindir="/usr/local/bin" \
-  --enable-gpl \
-  --enable-libass \
-  --enable-libfdk-aac \
-  --enable-hardcoded-tables \
-  --disable-doc \
-  --enable-nonfree && \
-  make -j$(nproc) && \
-  make install \
-  && rm -rf ffmpeg-4.1.tar.bz2 ffmpeg-4.1
-
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY encode-local-sys-0.sh .
 COPY hostedxA4-latest.rbf xA4.rbf
 
-RUN git clone -b dev https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
+RUN git clone -b master https://github.com/kazazes/trunk-recorder.git /skyscraper/src/trunk-recorder && \
   cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
   && make -j$(nproc) \
   && make install \

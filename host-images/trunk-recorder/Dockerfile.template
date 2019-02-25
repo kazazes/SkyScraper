@@ -1,4 +1,4 @@
-FROM pckzs/pybombs-slim
+FROM pckzs/pybombs
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 

@@ -26,9 +26,9 @@ services:
       - nginx
     environment:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
-      - NGROK_SUBDOMAIN=skyscraper-edge
       - NGROK_PORT=nginx:80
-#      - NGROK_HOSTNAME
+      - NGROK_HOSTNAME=edge.sibyl.vision
+#      - NGROK_SUBDOMAIN=skyscraper-edge
 #      - NGROK_USERNAME
 #      - NGROK_PASSWORD
 #      - NGROK_PROTOCOL

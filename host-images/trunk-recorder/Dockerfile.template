@@ -62,6 +62,8 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
   --enable-gpl \
   --enable-libass \
   --enable-libfdk-aac \
+  --enable-hardcoded-tables \
+  --disable-doc \
   --enable-nonfree && \
   make -j$(nproc) && \
   make install \

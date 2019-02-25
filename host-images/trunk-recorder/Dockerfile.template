@@ -76,11 +76,13 @@ COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone https://github.com/Sibyl-Vision/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cd /skyscraper/src/trunk-recorder \
-  && git checkout 6423b238d26b034eda6cb93c5a44fb666a076d0f \
-  && cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
+  && git checkout 6423b238d26b034eda6cb93c5a44fb666a076d0f
+
+RUN cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
   && make -j$(nproc) \
-  && make install \
-  && cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
+  && make install
+
+RUN cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
   rm -rf /skyscraper/src/trunk-recorder
 
 COPY start.sh .

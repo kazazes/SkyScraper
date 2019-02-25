@@ -25,15 +25,8 @@ services:
     depends_on:
       - nginx
     environment:
-      - NGROK_AUTH
-      - NGROK_SUBDOMAIN
-      - NGROK_HOSTNAME
-      - NGROK_USERNAME
-      - NGROK_PASSWORD
-      - NGROK_PROTOCOL
-      - NGROK_PORT
-      - NGROK_REGION
-      - NGROK_BINDTLS
+      - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
+      - NGROK_SUBDOMAIN=skyscraper-edge
   config:
     container_name: config
     build:

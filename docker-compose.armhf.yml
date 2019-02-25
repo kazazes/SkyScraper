@@ -17,6 +17,8 @@ services:
       - RECORDER_CONF=sites/US/CA/SanMateo/config.json
     restart: on-failure
   ngrok:
+    links:
+      - nginx
     container_name: ngrok
     build:
       dockerfile: armhf.dockerfile
@@ -27,6 +29,7 @@ services:
     environment:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
       - NGROK_SUBDOMAIN=skyscraper-edge
+      - NGROK_PORT=nginx:80
   config:
     container_name: config
     build:

@@ -26,7 +26,7 @@ RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
 RUN cd /app && \
     yarn install --pure-lockfile --network-timeout 180000
 
-RUN NODE_ENV=production yarn run build
+RUN cd /app && NODE_ENV=production yarn run build
 
 EXPOSE 3000
 

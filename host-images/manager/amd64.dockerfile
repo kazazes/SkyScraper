@@ -5,6 +5,7 @@ RUN apk add --no-cache \
 	openssh \
 	git \
 	socat \
+	python \
 && rm -rf /var/cache/apk/*
 
 COPY keys/* /root/.ssh/

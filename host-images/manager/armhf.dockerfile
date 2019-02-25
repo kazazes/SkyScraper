@@ -24,7 +24,7 @@ RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
     git clone git@github.com:kazazes/skyscraper-manager.git /app
 
 RUN cd /app && \
-    yarn install --pure-lockfile
+    yarn install --pure-lockfile --network-timeout 180000
 
 RUN NODE_ENV=production yarn run build
 

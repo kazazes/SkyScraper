@@ -58,12 +58,11 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
   cd ffmpeg-4.1 && \
   ./configure \
   --pkg-config-flags="--static" \
-  --bindir="/usr/local/bin" \
+  --bindir="/usr/bin" \
+  --pkg-config-flags="--static" \
   --enable-gpl \
   --enable-libass \
   --enable-libfdk-aac \
-  --enable-hardcoded-tables \
-  --disable-doc \
   --enable-nonfree && \
   make -j$(nproc) && \
   make install \

@@ -27,6 +27,3 @@ mv $json.new $json
 
 lame --preset voice $filename $mp3encoded
 
-cd /skyscraper/src/trunk-player/
-source ./env/bin/activate
-./manage.py add_transmission $basename --web_url=$web_dir --system=$system

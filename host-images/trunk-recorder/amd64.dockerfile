@@ -1,4 +1,4 @@
-FROM pckzs/pybombs
+FROM pckzs/sdr-ubuntu
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
@@ -9,46 +9,35 @@ ENV PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
 
 RUN apt-get -qq update && \
   apt-get -y -q install --no-install-recommends \
-  build-essential \
-  python-apt \
-  libcppunit-dev \
-  python-numpy \
-  python-scipy \
   apt-utils \
-  curl \
-  git \
+  automake \
+  build-essential \
+  build-essential \
+  cmake \
+  jq \
+  lame \
+  libass-dev \
+  libboost-all-dev \
+  libfdk-aac-dev \
+  libfreetype6-dev \
+  libpq-dev \
+  libssl-dev \
+  libtool \
+  libuhd-dev \
+  locales \
   locales \
   multimon \
-  python-dev \
+  pkg-config \
+  postgresql-client \
+  postgresql-client-common \
+  python-apt \
   python3-dev \
   sox \
   sudo \
-  lame \
-  wget \
-  virtualenv \
-  libpq-dev \
-  postgresql-client \
-  postgresql-client-common \
-  jq \
-  ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN export DEBIAN_FRONTEND=noninteractive && \
-  apt-get -qq update \
-  && apt-get install -y \
-  openssl \
-  locales \
-  autoconf \
-  automake \
-  build-essential \
-  libass-dev \
-  libfreetype6-dev \
-  libtool \
-  pkg-config \
   texinfo \
-  zlib1g-dev \
+  virtualenv \
   yasm \
-  libfdk-aac-dev \
+  zlib1g-dev \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen

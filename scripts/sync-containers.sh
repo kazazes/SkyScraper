@@ -3,26 +3,18 @@
 set -e
 set -x
 
-# Pull GC built containers
-docker pull gcr.io/skyscraper-sdr/pybombs-amd64:latest
-docker pull gcr.io/skyscraper-sdr/pybombs-arm:latest
-
-# Tag GC containers for Docker Hub
-docker tag gcr.io/skyscraper-sdr/pybombs-amd64:latest pckzs/pybombs-amd64
-docker tag gcr.io/skyscraper-sdr/pybombs-arm:latest pckzs/pybombs-arm
-
 # Push before manifest
-docker push pckzs/pybombs-amd64
-docker push pckzs/pybombs-arm
+docker push pckzs/sdr-ubuntu:amd64
+docker push pckzs/sdr-ubuntu:arm64
 
 # Manifest
-docker manifest create -a pckzs/pybombs \
-  pckzs/pybombs-arm:latest \
-  pckzs/pybombs-amd64:latest
+docker manifest create -a pckzs/sdr-ubuntu \
+   pckzs/sdr-ubuntu:arm64 \
+   pckzs/sdr-ubuntu:amd64
 
 # Architectures
-docker manifest annotate  pckzs/pybombs pckzs/pybombs-arm:latest --arch arm64 --os linux
-docker manifest annotate  pckzs/pybombs pckzs/pybombs-amd64:latest --arch amd64
+docker manifest annotate pckzs/sdr-ubuntu pckzs/sdr-ubuntu:arm64 --arch arm64 --os linux
+docker manifest annotate pckzs/sdr-ubuntu pckzs/sdr-ubuntu:amd64 --arch amd64
 
 # Push multi-arch images
-docker manifest push -p pckzs/pybombs
+docker manifest push -p pckzs/sdr-ubuntu

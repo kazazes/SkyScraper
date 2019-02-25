@@ -2,14 +2,14 @@
 
 set -e
 
-cd base-images/pybombs-slim
+cd base-images/sdr-ubuntu
 
-docker build --pull -t pckzs/pybombs-arm --cache-from=gcr.io/skyscraper-sdr/pybombs-arm -f armhf.dockerfile .
-docker build --pull -t pckzs/pybombs-amd64 --cache-from=gcr.io/skyscraper-sdr/pybombs-amd64 -f amd64.dockerfile .
+docker build --pull -t pckzs/sdr-ubuntu:amd64 -f amd64.dockerfile .
+docker build --pull -t pckzs/sdr-ubuntu:arm64 -f armhf.dockerfile .
 
-docker manifest create -a pckzs/pybombs \
-  pckzs/pybombs-arm:latest \
-  pckzs/pybombs-amd64:latest
+docker manifest create -a pckzs/sdr-ubuntu \
+  pckzs/sdr-ubuntu:arm64 \
+  pckzs/sdr-ubuntu:amd64
 
-docker manifest annotate  pckzs/pybombs pckzs/pybombs-arm:latest --arch arm64 --os linux
-docker manifest annotate  pckzs/pybombs pckzs/pybombs-amd64:latest --arch amd64
+docker manifest annotate  pckzs/sdr-ubuntu pckzs/sdr-ubuntu:arm64 --arch arm64 --os linux
+docker manifest annotate  pckzs/sdr-ubuntu pckzs/sdr-ubuntu:amd64 --arch amd64

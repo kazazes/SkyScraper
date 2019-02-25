@@ -16,6 +16,24 @@ services:
     environment:
       - RECORDER_CONF
     restart: on-failure
+  ngrok:
+    container_name: ngrok
+    build:
+      dockerfile: armhf.dockerfile
+      context: ./host-images/ngrok
+    privileged: false
+    depends_on:
+      - nginx
+    environment:
+      - NGROK_AUTH
+      - NGROK_SUBDOMAIN
+      - NGROK_HOSTNAME
+      - NGROK_USERNAME
+      - NGROK_PASSWORD
+      - NGROK_PROTOCOL
+      - NGROK_PORT
+      - NGROK_REGION
+      - NGROK_BINDTLS
   config:
     container_name: config
     build:

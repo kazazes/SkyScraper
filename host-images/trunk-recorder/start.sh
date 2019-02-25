@@ -8,6 +8,8 @@ if [ -v TR_DISABLED ]; then
     sleep infinity
 fi
 
+source /usr/local/setup_env.sh
+
 arch=$(uname -i)
 if [[ $arch == armv7l ]]; then
 	mkdir -p /root/.volk

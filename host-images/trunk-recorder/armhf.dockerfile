@@ -1,4 +1,4 @@
-FROM pckzs/sdr-ubuntu
+FROM pckzs/pybombs-arm-slim
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 

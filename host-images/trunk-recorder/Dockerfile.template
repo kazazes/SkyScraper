@@ -2,11 +2,6 @@ FROM pckzs/sdr-ubuntu
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
-ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
-ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/gnuradio-3.7.13.4/lib
-ENV PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/opt/gnuradio-3.7.13.4/lib/pkgconfig
-ENV PYTHONPATH=$PYTHONPATH:/opt/gnuradio-3.7.13.4/lib/python2.6/site-packages
-
 RUN apt-get -qq update && \
   apt-get -y -q install --no-install-recommends \
   apt-utils \

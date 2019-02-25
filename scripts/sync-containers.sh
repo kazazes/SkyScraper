@@ -13,7 +13,7 @@ docker manifest create -a pckzs/sdr-ubuntu \
    pckzs/sdr-ubuntu:amd64
 
 # Architectures
-docker manifest annotate pckzs/sdr-ubuntu pckzs/sdr-ubuntu:arm64 --arch arm64 --os linux
+docker manifest annotate pckzs/sdr-ubuntu pckzs/sdr-ubuntu:arm64 --arch arm --os linux
 docker manifest annotate pckzs/sdr-ubuntu pckzs/sdr-ubuntu:amd64 --arch amd64
 
 # Push multi-arch images

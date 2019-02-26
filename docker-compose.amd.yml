@@ -19,7 +19,7 @@ services:
     restart: on-failure
   ngrok:
     links:
-      - nginx
+      - nginx:https
     container_name: ngrok
     build:
       dockerfile: amd64.dockerfile
@@ -31,7 +31,6 @@ services:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
       - NGROK_PORT=nginx:443
       - NGROK_HOSTNAME=edge.sibyl.vision
-      - NGROK_BINDTLS=true
       - NGROK_REGION=us
   config:
     container_name: config

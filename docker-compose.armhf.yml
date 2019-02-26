@@ -15,6 +15,7 @@ services:
       - "./data:/data"
     environment:
       - RECORDER_CONF=sites/US/CA/SanMateo/config.json
+      - TR_DISABLED=1
     restart: on-failure
   ngrok:
     links:
@@ -30,6 +31,8 @@ services:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
       - NGROK_PORT=nginx:80
       - NGROK_HOSTNAME=edge.sibyl.vision
+      - NGROK_BINDTLS=true
+      - NGROK_REGION=us
   config:
     container_name: config
     build:

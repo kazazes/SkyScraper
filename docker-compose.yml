@@ -25,7 +25,7 @@ services:
     privileged: false
     depends_on:
       - nginx
-    command: tls '-authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L' '-hostname=edge.sibyl.vision' '-region=us' nginx:443
+    command: ngrok tls '-authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L' '-hostname=edge.sibyl.vision' '-region=us' nginx:443
   config:
     container_name: config
     build:

@@ -30,7 +30,7 @@ services:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
       - NGROK_HOSTNAME=edge.sibyl.vision
       - NGROK_PORT=nginx:443
-      - NGROK_PROTOCOL=tls
+      - NGROK_PROTOCOL=tcp
   config:
     container_name: config
     build:

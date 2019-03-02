@@ -107,6 +107,7 @@ services:
       context: ./host-images/mqtt
     volumes:
       - "./data:/data"
+    privileged: true
     restart: always
     ports:
       - 1883

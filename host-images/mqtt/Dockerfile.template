@@ -60,8 +60,9 @@ RUN addgroup -S mosquitto 2>/dev/null && \
     cp /etc/mosquitto/mosquitto.conf /mosquitto/config && \
     chown -R mosquitto:mosquitto /mosquitto
 
-COPY docker-entrypoint.sh /
 
 COPY mosquitto.conf /mosquitto/config/
 
-CMD docker-entrypoint.sh
+COPY docker-entrypoint.sh /
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]

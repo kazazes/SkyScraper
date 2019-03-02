@@ -2,7 +2,7 @@ FROM balenalib/odroid-xu4-alpine:3.7
 
 RUN apk add nginx && rm  -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
 
-COPY nginx.conf proxy.conf /etc/nginx/
+COPY mime.types nginx.conf proxy.conf /etc/nginx/
 
 EXPOSE 80 443
 

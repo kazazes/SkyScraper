@@ -71,6 +71,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
     build:
       dockerfile: armhf.dockerfile
       context: ./host-images/datadog

@@ -48,14 +48,15 @@ function generate_base_dockerfile() {
 function generate_compose() {
 	cp docker-compose.yml docker-compose.amd.yml
 	cp docker-compose.yml docker-compose.armhf.yml
+
 	sed -i \
 	    -e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 	    -e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" -e "s/cpuset: \".*\"//" \
-        -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus/' \
+        -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 	    docker-compose.amd.yml
 	sed -i -e 's/#.*$//' \
 	    -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: armhf.dockerfile/g" \
-	    -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus/' \
+        -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 	    docker-compose.armhf.yml
 }
 

@@ -136,7 +136,7 @@ module.exports = {
 
   // The following property can be used to cause insecure HTTP connections to
   // be redirected to HTTPS.
-  requireHttps: true,
+  // requireHttps: true,
 
   // The following property can be used to disable the editor. The admin API
   // is not affected by this option. To disable both the editor and the admin
@@ -147,10 +147,10 @@ module.exports = {
   // in the HTTP nodes.
   // See https://github.com/troygoode/node-cors#configuration-options for
   // details on its contents. The following is a basic permissive set of options:
-  //httpNodeCors: {
-  //    origin: "*",
-  //    methods: "GET,PUT,POST,DELETE"
-  //},
+  httpNodeCors: {
+     origin: "*",
+     methods: "GET,PUT,POST,DELETE"
+  },
 
   // If you need to set an http proxy please set an environment variable
   // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.

@@ -54,6 +54,7 @@ services:
     container_name: nginx
     depends_on:
       - manager
+      - node-red
     build:
       context: host-images/nginx
     ports:

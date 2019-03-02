@@ -1,65 +1,18 @@
 FROM balenalib/odroid-xu4-alpine:latest AS build
 
-# A released dist version, like "1.2.3"
-ENV VERSION 1.5.8
-RUN test -n "${VERSION}"
-
-RUN apk --no-cache add \
-      build-base \
-      libressl-dev \
-      c-ares-dev \
-      curl \
-      util-linux-dev \
-      libwebsockets-dev \
-      libxslt \
-      python2
-
-# This build procedure is based on:
-# https://github.com/alpinelinux/aports/blob/master/main/mosquitto/APKBUILD
-#
-# If this step fails, double check the version build-arg and make sure its
-# a valid published tarball at https://mosquitto.org/files/source/
-RUN mkdir -p /build /install && \
-    curl -SL https://mosquitto.org/files/source/mosquitto-${VERSION}.tar.gz \
-      | tar --strip=1 -xzC /build && \
-    make -C /build \
-      WITH_MEMORY_TRACKING=no \
-      WITH_WEBSOCKETS=yes \
-      WITH_SRV=yes \
-      WITH_TLS_PSK=no \
-      WITH_ADNS=no \
-      prefix=/usr \
-      binary && \
-    make -C /build \
-      prefix=/usr \
-      DESTDIR="/install" \
-      install && \
-    mv /install/etc/mosquitto/mosquitto.conf.example /install/etc/mosquitto/mosquitto.conf && \
-    sed -i -e 's/#log_dest stderr/log_dest syslog/' /install/etc/mosquitto/mosquitto.conf
-
-# Single-layer image for the mosquitto distribution
-FROM alpine:latest
-LABEL maintainer="Jonathan Hanson <jonathan@jonathan-hanson.org>" \
-	description="Eclipse Mosquitto MQTT Broker"
-
 # Install the run-time dependencies
-RUN apk --no-cache add \
-      busybox \
-      openssl-dev \
-      libuuid \
-      libwebsockets \
-      musl
-
-# Copy over the built install from the earlier image layer
-COPY --from=build /install /
+RUN apk update && \
+    apk --no-cache add \
+    busybox \
+    openssl-dev \
+    libuuid \
+    libwebsockets \
+    musl \
+    mosquitto
 
 # Set up the mosquitto directories and the mosquitto user
-RUN addgroup -S mosquitto 2>/dev/null && \
-    adduser -S -D -H -h /var/empty -s /sbin/nologin -G mosquitto -g mosquitto mosquitto 2>/dev/null && \
-    mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && \
-    cp /etc/mosquitto/mosquitto.conf /mosquitto/config && \
+RUN mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && \
     chown -R mosquitto:mosquitto /mosquitto
-
 
 COPY mosquitto.conf /mosquitto/config/
 

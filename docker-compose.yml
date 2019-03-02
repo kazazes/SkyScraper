@@ -82,5 +82,5 @@ services:
     volumes:
       - "resin-data:/data"
     ports:
-      - "1880:1880"
+      - 1880
     restart: always

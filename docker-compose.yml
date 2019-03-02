@@ -26,7 +26,7 @@ services:
       - nginx
     environment:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
-      - NGROK_SUBDOMAIN=edge.sibyl.vision
+      - NGROK_HOSTNAME=edge.sibyl.vision
       - NGROK_PORT=443
       - NGROK_BINDTLS=true
   config:

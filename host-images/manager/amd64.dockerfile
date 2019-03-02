@@ -30,6 +30,7 @@ RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/
 
 ENV SKIP_SASS_BINARY_DOWNLOAD_FOR_CI true
 ENV SKIP_NODE_SASS_TESTS true
+RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/.npmrc
 
 COPY keys/* /root/.ssh/
 
@@ -49,13 +50,8 @@ RUN cd /app && \
 
 RUN cd /app && NODE_ENV=production yarn run build
 
-FROM balenalib/intel-nuc-alpine-node
-
 EXPOSE 3000
-RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/.npmrc
 
-COPY --from=build /usr/lib/node_modules/node-sass/ /usr/lib/node_modules/node-sass/
-COPY --from=build /app/ /app/
 COPY docker-entrypoint.sh /usr/local/bin
 
 ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

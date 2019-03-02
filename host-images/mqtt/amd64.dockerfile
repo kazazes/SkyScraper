@@ -45,8 +45,7 @@ LABEL maintainer="Jonathan Hanson <jonathan@jonathan-hanson.org>" \
 # Install the run-time dependencies
 RUN apk --no-cache add \
       busybox \
-      libcrypto1.0 \
-      libssl1.0 \
+      openssl-dev \
       libuuid \
       libwebsockets \
       musl

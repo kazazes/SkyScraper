@@ -13,7 +13,7 @@ services:
     volumes:
       - "resin-data:/data"
     environment:
-      - RECORDER_CONF=sites/US/CA/SF-CERS/config.json
+      - RECORDER_CONF=sites/SF-PK/config.json
     restart: on-failure
   ngrok:
     links:

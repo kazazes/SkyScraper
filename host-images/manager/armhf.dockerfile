@@ -40,7 +40,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 
 RUN npm i -g typescript lerna
 
-ENV CACHEBUST=177
+ENV CACHEBUST=18
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
     git clone git@github.com:kazazes/skyscraper-manager.git /app

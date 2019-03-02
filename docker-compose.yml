@@ -24,10 +24,7 @@ services:
     privileged: false
     depends_on:
       - nginx
-    environment:
-      - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
-      - NGROK_HOSTNAME=edge.sibyl.vision
-      - NGROK_PORT=nginx:80
+    command: ngrok tls -region=us -hostname=edge.sibyl.vision nginx:443
   config:
     container_name: config
     build:

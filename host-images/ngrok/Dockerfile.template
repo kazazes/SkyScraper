@@ -5,7 +5,7 @@ RUN set -x \
  && apk add --no-cache curl \
      python \
      python-dev \
-     py-pip && \
+     py-pip \
     && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip \
     && unzip -o /ngrok.zip -d /bin \
     && pip install idna pyOpenSSL \

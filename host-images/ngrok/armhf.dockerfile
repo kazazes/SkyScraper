@@ -3,9 +3,13 @@ FROM balenalib/odroid-xu4-alpine:3.8
 RUN set -x \
     # Install ngrok (latest official stable from https://ngrok.com/download).
  && apk add --no-cache curl \
- && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip \
- && unzip -o /ngrok.zip -d /bin \
- && rm -f /ngrok.zip \
+     python \
+     python-dev \
+     py-pip && \
+    && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip \
+    && unzip -o /ngrok.zip -d /bin \
+    && pip install idna pyOpenSSL \
+    && rm -f /ngrok.zip \
     # Create non-root user.
  && adduser -h /home/ngrok -D -u 6737 ngrok
 

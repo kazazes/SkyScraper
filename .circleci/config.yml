@@ -3,17 +3,19 @@ jobs:
   build:
     docker:
       - image: docker:stable-dind
+    working_directory: ~/repo
     steps:
       - run:
           name: Install Docker Compose
           command: |
+            apk add curl
             curl -L https://github.com/docker/compose/releases/download/1.19.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
-            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+            mv ~/docker-compose /usr/local/bin/docker-compose
       - checkout
       - run:
           command: |
-            cd skyscraper
+            cd ~/repo
             docker-compose -f docker-compose.amd.yml build --parallel
 workflows:
   version: 2

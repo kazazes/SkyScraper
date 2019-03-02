@@ -6,9 +6,11 @@ RUN set -x \
      python \
      python-dev \
      py-pip \
+     py-openssl \
+     py3-openssl \
     && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip \
     && unzip -o /ngrok.zip -d /bin \
-    && pip install idna pyOpenSSL \
+    && pip install idna \
     && rm -f /ngrok.zip \
     # Create non-root user.
  && adduser -h /home/ngrok -D -u 6737 ngrok

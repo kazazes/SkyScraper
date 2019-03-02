@@ -26,7 +26,11 @@ services:
     privileged: false
     depends_on:
       - nginx
-    command: ngrok http --bind-tls https '-authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L' '-hostname=edge.sibyl.vision' '-region=us' nginx:443
+    environment:
+      - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
+      - NGROK_SUBDOMAIN=edge.sibyl.vision
+      - NGROK_PORT=443
+      - NGROK_BINDTLS=true
   config:
     container_name: config
     build:

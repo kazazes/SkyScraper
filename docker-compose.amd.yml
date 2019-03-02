@@ -85,3 +85,13 @@ services:
     labels:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
+  node-red:
+    container_name: node-red
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/node-red
+    volumes:
+      - "./data:/data"
+    ports:
+      - "1880:1880"
+    restart: always

@@ -39,7 +39,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 
 RUN npm i -g typescript lerna
 
-ENV CACHEBUST=14
+ENV CACHEBUST=15
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
     git clone git@github.com:kazazes/skyscraper-manager.git /app
@@ -54,8 +54,8 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-node
 EXPOSE 3000
 RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/.npmrc
 
-COPY docker-entrypoint.sh /usr/local/bin
 COPY --from=build /usr/lib/node_modules/node-sass/ /usr/lib/node_modules/node-sass/
 COPY --from=build /app/ /app/
+COPY docker-entrypoint.sh /usr/local/bin
 
 ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

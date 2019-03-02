@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 RUN apk add --no-cache make gcc g++ python && \
   JOBS=MAX npm install -g node-red node-red-contrib-resinio ace jsonata --production --silent && \
   apk del make gcc g++ python && \
-  npm cache clean --force && rm -rf /tmp/*
+  rm -rf /tmp/*
 
 # This will copy all files in our root to the working  directory in the container
 COPY ./app ./

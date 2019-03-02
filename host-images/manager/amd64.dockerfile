@@ -8,6 +8,29 @@ RUN apk add --no-cache \
 	python \
 && rm -rf /var/cache/apk/*
 
+ENV SASS_BINARY_PATH=/usr/lib/node_modules/node-sass/build/Release/binding.node
+
+RUN apk add --virtual .build-deps g++ gcc libgcc libstdc++ linux-headers make python && \
+    git clone https://github.com/sass/sassc && cd sassc && \
+    git clone https://github.com/sass/libsass && \
+    SASS_LIBSASS_PATH=/sassc/libsass make -j8 && \
+    mv bin/sassc /usr/bin/sassc && \
+    cd ../ && rm -rf /sassc && cd / && \
+    git clone --recursive https://github.com/sass/node-sass.git && \
+    cd node-sass && \
+    git submodule update --init --recursive && \
+    npm install && \
+    node scripts/build -f && \
+    cd ../ && rm -rf node-sass && \
+    rm -rf /var/cache/apk/* && \
+    apk del .build-deps
+
+# add binary path of node-sass to .npmrc
+RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/.npmrc
+
+ENV SKIP_SASS_BINARY_DOWNLOAD_FOR_CI true
+ENV SKIP_NODE_SASS_TESTS true
+
 COPY keys/* /root/.ssh/
 
 RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
@@ -16,9 +39,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 
 RUN npm i -g typescript lerna
 
-COPY docker-entrypoint.sh /usr/local/bin
-
-ENV CACHEBUST=10
+ENV CACHEBUST=11
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
     git clone git@github.com:kazazes/skyscraper-manager.git /app
@@ -28,6 +49,13 @@ RUN cd /app && \
 
 RUN cd /app && NODE_ENV=production yarn run build
 
+FROM balenalib/intel-nuc-alpine-node
+
 EXPOSE 3000
+RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/.npmrc
+
+COPY docker-entrypoint.sh /usr/local/bin
+COPY --from=build /usr/lib/node_modules/node-sass/ /usr/lib/node_modules/node-sass/
+COPY --from=build /app/ /app/
 
 ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

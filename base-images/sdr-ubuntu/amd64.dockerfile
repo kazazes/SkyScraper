@@ -1,15 +1,34 @@
-FROM ubuntu:cosmic as pybombs-slim
-
+FROM ubuntu:cosmic
 
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
   apt-get install -y software-properties-common && \
-  add-apt-repository ppa:bladerf/bladerf && \
-  apt-get update && apt-get install -y \
+  add-apt-repository -y ppa:bladerf/bladerf && \
+  add-apt-repository -y ppa:ettusresearch/uhd && \
+  add-apt-repository -y ppa:pothosware/support && \
+  add-apt-repository -y ppa:myriadrf/drivers && \
+  add-apt-repository -y ppa:ettusresearch/uhd && \
+  add-apt-repository -y ppa:pothosware/framework && \
+  apt-get update
+
+RUN apt-get install -y \
   automake \
   git \
+  pothos-all \
+  soapysdr-tools \
+  python-soapysdr \
+  python-numpy \
+  python3-soapysdr \
+  python3-numpy \
+  osmo-sdr \
+  soapysdr-module-osmosdr \
+  rtl-sdr \
+  soapysdr-module-rtlsdr \
+  bladerf \
+  soapysdr-module-bladerf \
+  uhd-host uhd-soapysdr soapysdr-module-uhd \
   swig \
   gnuradio \
   libbladerf-udev \
@@ -22,7 +41,6 @@ RUN apt-get update && \
 
 RUN rm -rf /tmp/* /var/tmp/*
 
+
 WORKDIR /home
 CMD ["bash"]
-
-

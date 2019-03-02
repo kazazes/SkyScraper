@@ -25,6 +25,7 @@ generate_host_dockerfile() {
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-node/node:11/' \
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-ubuntu-python:latest/python:3/' \
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-python:3-slim/python:3-slim/' \
+		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-golang:latest-build/golang:latest/' \
         -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-alpine-node/mhart\/alpine-node:11/' \
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/gosu-armhf/gosu-amd64/' \

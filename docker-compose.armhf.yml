@@ -68,3 +68,16 @@ services:
     restart: always
     volumes:
       - "./data:/data"
+  datadog:
+    build:
+      dockerfile: armhf.dockerfile
+      context: ./host-images/datadog
+    privileged: true
+    restart: always
+    pid: "host"
+    network_mode: "host"
+    environment:
+      - DATADOG_API_KEY=d08da1e51918163e2333a86cb54d4b02
+    labels:
+      io.resin.features.dbus: '1'
+      io.resin.features.balena-socket: '1'

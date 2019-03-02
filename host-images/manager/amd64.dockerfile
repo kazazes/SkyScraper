@@ -57,5 +57,6 @@ RUN touch $HOME/.npmrc && echo "sass_binary_cache=${SASS_BINARY_PATH}" >> $HOME/
 COPY docker-entrypoint.sh /usr/local/bin
 COPY --from=build /usr/lib/node_modules/node-sass/ /usr/lib/node_modules/node-sass/
 COPY --from=build /app/ /app/
+COPY --from=build /app/packages/frontend/dist/* /app/packages/server/dist/public-vue/
 
 ENTRYPOINT '/usr/local/bin/docker-entrypoint.sh'

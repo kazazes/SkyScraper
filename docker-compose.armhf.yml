@@ -95,4 +95,6 @@ services:
       - "./data:/data"
     ports:
       - 1880
+    environment:
+      - NODE_ENV=production
     restart: always

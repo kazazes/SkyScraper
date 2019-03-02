@@ -18,7 +18,7 @@ RUN npm i -g typescript lerna
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-ENV CACHEBUST=8
+ENV CACHEBUST=9
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
     git clone git@github.com:kazazes/skyscraper-manager.git /app

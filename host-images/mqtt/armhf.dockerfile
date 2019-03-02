@@ -1,7 +1,7 @@
 FROM balenalib/odroid-xu4-alpine:latest AS build
 
 # A released dist version, like "1.2.3"
-ARG VERSION
+ENV VERSION 1.5.8
 RUN test -n "${VERSION}"
 
 RUN apk --no-cache add \

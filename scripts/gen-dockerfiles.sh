@@ -51,11 +51,11 @@ function generate_compose() {
 	sed -i \
 	    -e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 	    -e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" -e "s/cpuset: \".*\"//" \
-        -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock/' \
+        -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus/' \
 	    docker-compose.amd.yml
 	sed -i -e 's/#.*$//' \
 	    -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: armhf.dockerfile/g" \
-	    -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock/' \
+	    -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus/' \
 	    docker-compose.armhf.yml
 }
 

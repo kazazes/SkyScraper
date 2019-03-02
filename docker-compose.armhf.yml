@@ -71,6 +71,7 @@ services:
   datadog:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
     build:
       dockerfile: armhf.dockerfile
       context: ./host-images/datadog

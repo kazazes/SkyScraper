@@ -41,17 +41,14 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 RUN npm i -g typescript lerna
 
 ENV CACHEBUST=20
-
-RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
-    git clone git@github.com:kazazes/skyscraper-manager.git /app
-
-RUN cd /app && \
-    yarn install --pure-lockfile --network-timeout 180000
-
 ENV VUE_APP_GRAPHQL_HTTP https://edge.sibyl.vision/graphql
 ENV VUE_APP_GRAPHQL_WS wss://edge.sibyl.vision/graphql/subscriptions
 
-RUN cd /app && NODE_ENV=production yarn run build
+RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
+    git clone git@github.com:kazazes/skyscraper-manager.git /app && \
+     cd /app && \
+    yarn install --pure-lockfile --network-timeout 180000 && \
+    NODE_ENV=production yarn run build
 
 EXPOSE 3000
 

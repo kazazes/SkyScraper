@@ -5,7 +5,10 @@ then
   exit 1
 fi
 
-ln -sf /var/run/balena.sock /var/run/docker.sock
+
+if [ -v BALENA ]; then
+    ln -sf /var/run/balena.sock /var/run/docker.sock
+fi
 
 echo "api_key: $DATADOG_API_KEY" | cat - files/datadog.yaml > temp && mv temp files/datadog.yaml
 

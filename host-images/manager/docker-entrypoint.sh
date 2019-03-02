@@ -6,6 +6,8 @@ mkdir -p /data/www/
 rm -rf /data/www/*
 cp -r /app/packages/frontend/dist/* /data/www/
 touch /data/log/mosquitto.log
+chmod -R 777 /data/logs
+chown $(whoami):$(whoami) /data/log/mosquitto.log
 
 cd /app/packages/server/
 yarn run start

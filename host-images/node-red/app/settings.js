@@ -73,17 +73,17 @@ module.exports = {
   // By default, the Node-RED UI is available at http://localhost:1880/
   // The following property can be used to specifiy a different root path.
   // If set to false, this is disabled.
-  //httpAdminRoot: '/admin',
+  httpAdminRoot: '/red/admin',
 
   // Some nodes, such as HTTP In, can be used to listen for incoming http requests.
   // By default, these are served relative to '/'. The following property
   // can be used to specifiy a different root path. If set to false, this is
   // disabled.
-  //httpNodeRoot: '/red-nodes',
+  httpNodeRoot: '/red/nodes',
 
   // The following property can be used in place of 'httpAdminRoot' and 'httpNodeRoot',
   // to apply the same root to both parts.
-  httpRoot: '/red',
+  // httpRoot: '/red',
 
   // When httpAdminRoot is used to move the UI to a different root path, the
   // following property can be used to identify a directory of static content
@@ -147,10 +147,10 @@ module.exports = {
   // in the HTTP nodes.
   // See https://github.com/troygoode/node-cors#configuration-options for
   // details on its contents. The following is a basic permissive set of options:
-  //httpNodeCors: {
-  //    origin: "*",
-  //    methods: "GET,PUT,POST,DELETE"
-  //},
+  httpNodeCors: {
+     origin: "*",
+     methods: "GET,PUT,POST,DELETE"
+  },
 
   // If you need to set an http proxy please set an environment variable
   // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.
@@ -219,7 +219,7 @@ module.exports = {
       // info - record information about the general running of the application + warn + error + fatal errors
       // debug - record information which is more verbose than info + info + warn + error + fatal errors
       // trace - record very detailed logging + debug + info + warn + error + fatal errors
-      level: "info",
+      level: "debug",
       // Whether or not to include metric events in the log output
       metrics: false,
       // Whether or not to include audit events in the log output

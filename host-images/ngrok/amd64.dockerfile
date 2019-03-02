@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM balenalib/intel-nuc-alpine:3.8
 
 RUN set -x \
     # Install ngrok (latest official stable from https://ngrok.com/download).

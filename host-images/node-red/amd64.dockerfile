@@ -1,7 +1,7 @@
 # base-image for node on any machine using a template variable,
 # see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
 # Note the node:slim image doesn't have node-gyp
-FROM node:6-alpine
+FROM balenalib/intel-nuc-alpine-node:6-slim
 
 # Defines our working directory in container
 RUN mkdir -p /usr/src/app/

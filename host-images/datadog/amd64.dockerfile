@@ -1,4 +1,4 @@
-FROM golang:latest AS build
+FROM balenalib/intel-nuc-golang:latest-build AS build
 
 RUN install_packages sysstat python python-dev python-pip libpython-dev python-setuptools git
 
@@ -17,7 +17,7 @@ RUN export PATH=$PATH:$GOPATH/bin && \
   invoke deps && \
   invoke agent.build --build-exclude=snmp,systemd
 
-FROM debian
+FROM balenalib/intel-nuc-debian
 
 WORKDIR /usr/app
 

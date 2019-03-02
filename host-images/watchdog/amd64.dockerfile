@@ -1,4 +1,4 @@
-FROM python:3
+FROM balenalib/intel-nuc-ubuntu-python:latest
 
 ENV INITSYSTEM on
 

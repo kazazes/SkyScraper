@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM balenalib/intel-nuc-alpine:3.7
 
 ENV VPN_HOST=sky.sibyl.vision
 

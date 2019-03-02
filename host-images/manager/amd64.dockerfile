@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:11 as build
+FROM balenalib/intel-nuc-alpine-node as build
 
 RUN apk add --no-cache \
 	bash \

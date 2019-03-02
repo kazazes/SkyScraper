@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM balenalib/intel-nuc-alpine:3.7
 
 RUN apk add nginx && rm  -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
 

@@ -1,4 +1,4 @@
-FROM python:3-slim
+FROM balenalib/intel-nuc-python:3-slim
 
 ENV CF_EMAIL peter@peterk.co
 

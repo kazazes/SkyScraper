@@ -1,4 +1,4 @@
-FROM debian:buster
+FROM balenalib/intel-nuc-debian:buster
 
 RUN apt-get update \
   && apt-get install -y dnsmasq wireless-tools \

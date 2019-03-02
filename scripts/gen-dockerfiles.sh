@@ -10,8 +10,6 @@ echo === If running on macOS, run
 echo === brew install gnu-sed
 echo ===
 
-PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
-
 PROJECT_DIR=$(pwd)
 
 generate_host_dockerfile() {
@@ -20,14 +18,7 @@ generate_host_dockerfile() {
 	cp Dockerfile.template amd64.dockerfile
 	cp Dockerfile.template armhf.dockerfile
 
-	sed -i -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-alpine-node:6-slim/node:6-alpine/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-node/node:11/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-ubuntu-python:latest/python:3/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-python:3-slim/python:3-slim/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-golang:latest-build/golang:latest/' \
-        -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-alpine-node/mhart\/alpine-node:11/' \
-		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
+	sed -i -e 's/%%BALENA_MACHINE_NAME%%/intel-nuc/' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \

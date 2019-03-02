@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM balenalib/intel-nuc-debian:latest
 
 # versions
 ENV NODE_EXPORTER_VERSION 0.12.0

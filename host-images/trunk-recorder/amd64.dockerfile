@@ -58,8 +58,6 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
   cd ffmpeg-4.1 && \
   ./configure \
   --pkg-config-flags="--static" \
-  --bindir="/usr/bin" \
-  --pkg-config-flags="--static" \
   --enable-gpl \
   --enable-libass \
   --enable-libfdk-aac \

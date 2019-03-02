@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: docker:stable-dind
+      - image: docker:stable
     working_directory: ~/repo
     steps:
       - run:

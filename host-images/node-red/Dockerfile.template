@@ -9,7 +9,12 @@ WORKDIR /usr/src/app
 
 # Install node modules, including i2c-bus without carrying all the deps in the layers
 RUN apk add --no-cache make gcc g++ python && \
-  JOBS=MAX npm install -g node-red node-red-contrib-resinio ace jsonata --production --silent && \
+  JOBS=MAX npm install -g \
+    node-red \
+    node-red-contrib-resinio \
+    node-red-contrib-play-audio \
+    node-red-contrib-slack \
+    node-red-node-watson --production --silent && \
   apk del make gcc g++ python && \
   rm -rf /tmp/*
 

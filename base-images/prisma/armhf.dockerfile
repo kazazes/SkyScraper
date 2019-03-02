@@ -1,7 +1,5 @@
 FROM balenalib/odroid-xu4-ubuntu
 
-RUN ["cross-build-start"]
-
 ENV LANG=C.UTF-8
 
 RUN apt-get update && \
@@ -28,4 +26,3 @@ WORKDIR /prisma/server
 
 RUN COMMIT_SHA=$(git rev-parse HEAD) CLUSTER_VERSION=1.8 sbt docker
 
-RUN ["cross-build-end"]

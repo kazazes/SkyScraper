@@ -50,6 +50,7 @@ services:
       - SWAGGER_API_SPEC=/spec
       - NODE_ENV=production
       - VUE_APP_GRAPHQL_WS=wss://edge.sibyl.vision/graphql/subscriptions
+      - VUE_APP_GRAPHQL_HTTP=https://edge.sibyl.vision/graphqlc./
     restart: always
   nginx:
     container_name: nginx

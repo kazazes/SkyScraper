@@ -58,7 +58,7 @@ services:
     container_name: nginx
     depends_on:
       - manager
-      - node-red
+      - nodered
     build:
       dockerfile: armhf.dockerfile
       context: host-images/nginx

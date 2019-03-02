@@ -88,3 +88,13 @@ services:
     environment:
       - NODE_ENV=production
     restart: always
+  mqtt:
+    container_name: mqtt
+    build:
+      context: ./host-images/mqtt
+    volumes:
+      - "resin-data:/data"
+    restart: always
+    ports:
+      - 1883
+

@@ -69,6 +69,8 @@ services:
     volumes:
       - "./data:/data"
   datadog:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/datadog
@@ -79,5 +81,5 @@ services:
     environment:
       - DATADOG_API_KEY=d08da1e51918163e2333a86cb54d4b02
     labels:
-      io.resin.features.dbus: '1'
-      io.resin.features.balena-socket: '1'
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'

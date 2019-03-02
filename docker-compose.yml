@@ -75,8 +75,8 @@ services:
     labels:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
-  node-red:
-    container_name: node-red
+  nodered:
+    container_name: nodered
     build:
       context: ./host-images/node-red
     volumes:

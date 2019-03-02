@@ -86,8 +86,8 @@ services:
     labels:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
-  node-red:
-    container_name: node-red
+  nodered:
+    container_name: nodered
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/node-red

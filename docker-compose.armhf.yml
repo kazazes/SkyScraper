@@ -14,8 +14,7 @@ services:
     volumes:
       - "./data:/data"
     environment:
-      - RECORDER_CONF=sites/US/CA/SanMateo/config.json
-      - TR_DISABLED=1
+      - RECORDER_CONF=sites/US/CA/SF-CERS/config.json
     restart: on-failure
   ngrok:
     links:

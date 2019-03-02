@@ -1,23 +1,3 @@
-/**
- * Copyright 2013, 2016 IBM Corp.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- **/
-
-// The `https` setting requires the `fs` module. Uncomment the following
-// to make it available:
-//var fs = require("fs");
-
 module.exports = {
   // the tcp port that the Node-RED web server is listening on
   uiPort: process.env.PORT || 1880,
@@ -32,17 +12,6 @@ module.exports = {
 
   // Retry time in milliseconds for Serial port connections
   serialReconnectTime: 15000,
-
-  // Retry time in milliseconds for TCP socket connections
-  //socketReconnectTime: 10000,
-
-  // Timeout in milliseconds for TCP server socket connections
-  //  defaults to no timeout
-  //socketTimeout: 120000,
-
-  // Timeout in milliseconds for HTTP request connections
-  //  defaults to 120 seconds
-  //httpRequestTimeout: 120000,
 
   // The maximum length, in characters, of any message sent to the debug sidebar tab
   debugMaxLength: 1000,
@@ -73,17 +42,17 @@ module.exports = {
   // By default, the Node-RED UI is available at http://localhost:1880/
   // The following property can be used to specifiy a different root path.
   // If set to false, this is disabled.
-  //httpAdminRoot: '/admin',
+  httpAdminRoot: '/red',
 
   // Some nodes, such as HTTP In, can be used to listen for incoming http requests.
   // By default, these are served relative to '/'. The following property
   // can be used to specifiy a different root path. If set to false, this is
   // disabled.
-  //httpNodeRoot: '/red-nodes',
+  httpNodeRoot: '/red/nodes',
 
   // The following property can be used in place of 'httpAdminRoot' and 'httpNodeRoot',
   // to apply the same root to both parts.
-  httpRoot: '/red',
+  // httpRoot: '/red',
 
   // When httpAdminRoot is used to move the UI to a different root path, the
   // following property can be used to identify a directory of static content
@@ -96,7 +65,7 @@ module.exports = {
 
   // If you installed the optional node-red-dashboard you can set it's path
   // relative to httpRoot
-  //ui: { path: "ui" },
+  ui: { path: "/" },
 
   // Securing Node-RED
   // -----------------

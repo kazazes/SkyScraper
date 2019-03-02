@@ -14,7 +14,10 @@ RUN apk add --no-cache make gcc g++ python && \
     node-red-contrib-resinio \
     node-red-contrib-play-audio \
     node-red-contrib-slack \
-    node-red-node-watson --production --silent && \
+    node-red-node-watson \
+    node-red-contrib-telegrambot \
+    node-red-contrib-google-storage \
+    --production --silent && \
   apk del make gcc g++ python && \
   rm -rf /tmp/*
 

@@ -14,6 +14,7 @@ services:
       - "resin-data:/data"
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
+      - SHORTNAME=SFPD
     restart: on-failure
   ngrok:
     links:
@@ -98,5 +99,5 @@ services:
     privileged: true
     restart: always
     ports:
-      - 1883
+      - "1883:1883"
 

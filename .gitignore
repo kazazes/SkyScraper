@@ -54,3 +54,4 @@ Temporary Items
 
 host-images/certbot/dnscloudflare.ini
 Dockerfiles
+venv

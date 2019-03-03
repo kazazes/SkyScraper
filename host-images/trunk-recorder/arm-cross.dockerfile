@@ -38,6 +38,9 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   apt-get -qq update \
   && apt-get install -y \
   openssl \
+  python3 \
+  py-pip \
+  python-dev \
   locales \
   autoconf \
   automake \
@@ -70,7 +73,8 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
 
 WORKDIR /skyscraper/build/trunk-recorder/
 
-COPY encode-local-sys-0.sh .
+COPY encode-local-sys-0.sh requirements.txt mqtt-pub.py ./
+RUN pip install -r requirements.txt
 COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone https://github.com/Sibyl-Vision/trunk-recorder.git /skyscraper/src/trunk-recorder \

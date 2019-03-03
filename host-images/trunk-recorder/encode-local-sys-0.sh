@@ -14,7 +14,7 @@ filename_only=$(basename $basename)
 mp3encoded="$basename.mp3"
 json="$basename.json"
 web_dir=$(dirname $filename | cut -d/ -f6-)"/"
-system=0 # Change this for each system
+system=${SHORTNAME}
 
 # Hack the JSON to add play length and source
 len=$(soxi -D $filename)
@@ -27,3 +27,4 @@ mv $json.new $json
 
 lame --preset voice $filename $mp3encoded
 
+python mqtt-pub.py $web_dir $mp3encoded $system $json

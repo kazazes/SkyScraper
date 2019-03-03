@@ -1,0 +1,33 @@
+# base-image for node on any machine using a template variable,
+# see more about dockerfile templates here:http://docs.resin.io/pages/deployment/docker-templates
+# Note the node:slim image doesn't have node-gyp
+FROM balenalib/odroid-xu4-alpine-node:6-3.5-build
+RUN ["cross-build-start"]
+
+# Defines our working directory in container
+RUN mkdir -p /usr/src/app/
+WORKDIR /usr/src/app
+
+# Install node modules, including i2c-bus without carrying all the deps in the layers
+RUN apk add --no-cache make gcc g++ python && \
+  JOBS=MAX npm install -g \
+    node-red \
+    node-red-contrib-resinio \
+    node-red-contrib-play-audio \
+    node-red-contrib-slack \
+    node-red-node-watson \
+    node-red-contrib-telegrambot \
+    node-red-contrib-google-storage \
+    --production --silent && \
+  apk del make gcc g++ python && \
+  rm -rf /tmp/*
+
+# This will copy all files in our root to the working  directory in the container
+COPY ./app ./
+
+# Enable systemd init system in container
+# ENV INITSYSTEM=on
+
+# server.js will run when container starts up on the device
+CMD ["sh", "/usr/src/app/start.sh"]
+RUN ["cross-build-end"]

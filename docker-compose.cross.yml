@@ -5,13 +5,14 @@ services:
   trunk-recorder:
     container_name: trunk-recorder
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     depends_on:
       - "config"
     network_mode: host
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
     restart: on-failure
@@ -20,6 +21,7 @@ services:
       - nginx:https
     container_name: ngrok
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/ngrok
     privileged: false
     depends_on:
@@ -28,17 +30,19 @@ services:
   config:
     container_name: config
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "on-failure"
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
   manager:
     container_name: manager
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/manager
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - 3000
     environment:
@@ -58,16 +62,23 @@ services:
       - manager
       - nodered
     build:
+      dockerfile: arm-cross.dockerfile
       context: host-images/nginx
     ports:
       - "80:80"
       - "443:443"
     restart: always
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
   datadog:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
     container_name: datadog
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/datadog
     privileged: true
     restart: always
@@ -81,9 +92,10 @@ services:
   nodered:
     container_name: nodered
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/node-red
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - 1880
     environment:
@@ -92,11 +104,11 @@ services:
   mqtt:
     container_name: mqtt
     build:
+      dockerfile: arm-cross.dockerfile
       context: ./host-images/mqtt
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     privileged: true
     restart: always
     ports:
       - 1883
-

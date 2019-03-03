@@ -76,6 +76,7 @@ services:
       - /run/dbus:/host/run/dbus
       - /proc/:/host/proc/
       - /sys/fs/cgroup/:/host/sys/fs/cgroup/
+    container_name: datadog
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/datadog

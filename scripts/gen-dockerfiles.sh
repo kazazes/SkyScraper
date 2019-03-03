@@ -26,6 +26,10 @@ generate_host_dockerfile() {
 
 	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%BALENA_ARCH%%/armv7h/' armhf.dockerfile
 
+    cp armhf.dockerfile arm-cross.dockerfile
+    sed -i -e '/FROM .*/a RUN ["cross-build-start"]' arm-cross.dockerfile
+    echo 'RUN ["cross-build-end"]' >> arm-cross.dockerfile
+
 	cd $PROJECT_DIR
 }
 
@@ -40,7 +44,7 @@ function generate_base_dockerfile() {
 		-e 's/RUN \[ "cross-build-end" \]//' \
 		amd64.dockerfile
 
-	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template >armhf.dockerfile
+	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template > armhf.dockerfile
 
 	cd $PROJECT_DIR
 }
@@ -58,6 +62,9 @@ function generate_compose() {
 	    -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: armhf.dockerfile/g" \
         -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 	    docker-compose.armhf.yml
+
+    cp docker-compose.armhf.yml docker-compose.cross.yml
+    sed -i -e 's/dockerfile: armhf.dockerfile/dockerfile: arm-cross.dockerfile/' docker-compose.cross.yml
 }
 
 if [ $# -eq 0 ]; then

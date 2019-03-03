@@ -1,0 +1,13 @@
+FROM balenalib/odroid-xu4-alpine:3.7
+RUN ["cross-build-start"]
+
+RUN apk add nginx && rm  -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
+
+COPY mime.types nginx.conf proxy.conf /etc/nginx/
+
+EXPOSE 80 443
+
+STOPSIGNAL SIGTERM
+
+CMD ["nginx", "-g", "daemon off;"]
+RUN ["cross-build-end"]

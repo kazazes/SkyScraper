@@ -39,7 +39,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && apt-get install -y \
   openssl \
   python3 \
-  py-pip \
+  python-pip \
   python-dev \
   locales \
   autoconf \

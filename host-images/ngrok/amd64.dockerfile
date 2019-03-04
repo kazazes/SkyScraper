@@ -1,14 +1,21 @@
 FROM balenalib/intel-nuc-alpine:3.8
 
-RUN set -x \
-    # Install ngrok (latest official stable from https://ngrok.com/download).
- && apk add --no-cache curl \
-     python \
-     python-dev \
-     py-pip \
-     py-openssl \
-     py3-openssl \
-    && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip \
+RUN apk add --no-cache \
+    curl \
+    python \
+    python-dev \
+    py-pip \
+    py-openssl \
+    py3-openssl
+
+ RUN architecture="" && \
+     case $(uname -m) in \
+         i386)   architecture="386" ;; \
+         i686)   architecture="386" ;; \
+         x86_64) architecture="amd64" ;; \
+         arm)    dpkg --print-architecture | grep -q "arm64" && architecture="arm64" || architecture="arm" ;; \
+     esac \
+    && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-${architecture}.zip \
     && unzip -o /ngrok.zip -d /bin \
     && pip install idna \
     && rm -f /ngrok.zip \

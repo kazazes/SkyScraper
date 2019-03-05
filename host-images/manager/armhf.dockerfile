@@ -40,7 +40,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
 
 RUN npm i -g typescript lerna
 
-ENV CACHEBUST=20
+ENV CACHEBUST=21
 ENV VUE_APP_GRAPHQL_HTTP https://edge.sibyl.vision/graphql
 ENV VUE_APP_GRAPHQL_WS wss://edge.sibyl.vision/graphql/subscriptions
 

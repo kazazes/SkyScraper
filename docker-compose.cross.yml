@@ -11,10 +11,10 @@ services:
       - SYS_PTRACE
     security_opt:
       - apparmor:unconfined
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
     privileged: true
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'
   trunk-recorder:
     container_name: trunk-recorder
     build:

@@ -2,6 +2,19 @@ version: "2.1"
 volumes:
   resin-data: {}
 services:
+  netdata:
+    image: netdata/netdata
+    hostname: edge.sibyl.vision
+    ports:
+      - 19999:19999
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    privileged: true
   trunk-recorder:
     container_name: trunk-recorder
     build:

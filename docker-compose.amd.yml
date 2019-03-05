@@ -4,6 +4,7 @@ volumes:
 services:
   netdata:
     image: netdata/netdata
+    container_name: netdata
     hostname: edge.sibyl.vision
     ports:
       - 19999:19999
@@ -12,6 +13,7 @@ services:
     security_opt:
       - apparmor:unconfined
     privileged: true
+    restart: always
     labels:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
@@ -75,6 +77,7 @@ services:
     depends_on:
       - manager
       - nodered
+      - netdata
     build:
       dockerfile: amd64.dockerfile
       context: host-images/nginx

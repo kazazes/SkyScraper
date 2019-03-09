@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-alpine:3.7
+FROM balenalib/odroid-xu4-alpine:3.9
 RUN ["cross-build-start"]
 
 COPY keys/* /root/.ssh/

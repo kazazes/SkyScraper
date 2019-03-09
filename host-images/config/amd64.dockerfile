@@ -1,4 +1,4 @@
-FROM balenalib/intel-nuc-alpine:3.7
+FROM balenalib/intel-nuc-alpine:3.9
 
 COPY keys/* /root/.ssh/
 

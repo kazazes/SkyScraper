@@ -1,7 +1,7 @@
-FROM balenalib/odroid-xu4-alpine:3.7
+FROM balenalib/odroid-xu4-alpine:3.9
 RUN ["cross-build-start"]
 
-RUN apk add nginx && rm  -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
+RUN apk add nginx && rm -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
 
 COPY mime.types nginx.conf proxy.conf /etc/nginx/
 

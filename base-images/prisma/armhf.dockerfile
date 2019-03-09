@@ -25,4 +25,3 @@ RUN git clone https://github.com/prisma/prisma \
 WORKDIR /prisma/server
 
 RUN COMMIT_SHA=$(git rev-parse HEAD) CLUSTER_VERSION=1.8 sbt docker
-

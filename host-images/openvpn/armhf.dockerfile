@@ -1,10 +1,10 @@
-FROM balenalib/odroid-xu4-alpine:3.7
+FROM balenalib/odroid-xu4-alpine:3.9
 
 ENV VPN_HOST=sky.sibyl.vision
 
 RUN apk add \
- openvpn && \
- rm  -rf /tmp/* /var/cache/apk/*
+    openvpn && \
+    rm  -rf /tmp/* /var/cache/apk/*
 
 WORKDIR /ovpn
 

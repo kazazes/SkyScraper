@@ -20,7 +20,8 @@ RUN architecture="" && \
     && pip install idna \
     && rm -f /ngrok.zip \
     # Create non-root user.
-    && adduser -h /home/ngrok -D -u 6737 ngrok
+    && adduser -h /home/ngrok -D -u 6737 ngrok \
+    && file /bin/ngrok
 
 # Add config script.
 COPY ngrok.yml /home/ngrok/.ngrok2/

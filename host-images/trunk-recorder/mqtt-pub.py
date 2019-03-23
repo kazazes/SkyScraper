@@ -17,4 +17,4 @@ with open(webDir + '/' + jsonFile) as f:
 data.system = system
 data.audioPath = webDir + mp3File
 
-client.publish("truk-recorder/" + system, data, data)
+client.publish("trunk-recorder/" + system, data, data)

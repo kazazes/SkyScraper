@@ -15,8 +15,8 @@ services:
     privileged: true
     restart: always
     labels:
-      io.balena.features.dbus: '1'
-      io.balena.features.balena-socket: '1'
+      io.balena.features.dbus: "1"
+      io.balena.features.balena-socket: "1"
   trunk-recorder:
     container_name: trunk-recorder
     build:
@@ -93,8 +93,8 @@ services:
     environment:
       - DATADOG_API_KEY=d08da1e51918163e2333a86cb54d4b02
     labels:
-      io.balena.features.dbus: '1'
-      io.balena.features.balena-socket: '1'
+      io.balena.features.dbus: "1"
+      io.balena.features.balena-socket: "1"
   nodered:
     container_name: nodered
     build:
@@ -123,6 +123,5 @@ services:
       - "9000:9000"
     privileged: true
     labels:
-      io.balena.features.balena-socket: '1'
+      io.balena.features.balena-socket: "1"
     command: "--admin-password $$2y$$05$$KPaHvzT/lom.XYVR/KzUkewmIaAypH9zM/m0.2RLQHjYsWKrtPkCC --data /data/portainer"
-

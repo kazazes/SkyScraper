@@ -52,7 +52,7 @@ module.exports = {
 
   // The following property can be used in place of 'httpAdminRoot' and 'httpNodeRoot',
   // to apply the same root to both parts.
-  httpRoot: '/red/',
+  // httpRoot: '/red/',
 
   // When httpAdminRoot is used to move the UI to a different root path, the
   // following property can be used to identify a directory of static content
@@ -65,7 +65,7 @@ module.exports = {
 
   // If you installed the optional node-red-dashboard you can set it's path
   // relative to httpRoot
-  // ui: { path: "/" },
+  ui: { path: "/" },
 
   // Securing Node-RED
   // -----------------

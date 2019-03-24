@@ -1,4 +1,4 @@
-version: "2.1"
+version: "2"
 volumes:
   resin-data: {}
 services:
@@ -67,6 +67,7 @@ services:
       - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
+      - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
     restart: always
   datarouter:
     container_name: datarouter

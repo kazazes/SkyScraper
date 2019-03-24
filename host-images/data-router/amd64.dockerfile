@@ -1,4 +1,4 @@
-FROM balenalib/intel-nuc-alpine-node:6-edge-build as build
+FROM balenalib/intel-nuc-alpine-node:8-edge-build as build
 
 RUN apk add --no-cache \
   bash \

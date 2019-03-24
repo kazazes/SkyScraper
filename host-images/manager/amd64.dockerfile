@@ -39,8 +39,6 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 ENV CACHEBUST=23
-ENV VUE_APP_GRAPHQL_HTTP https://edge.sibyl.vision/
-ENV VUE_APP_GRAPHQL_WS wss://edge.sibyl.vision/subscriptions
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
   git clone git@github.com:kazazes/skyscraper-manager.git /app && \

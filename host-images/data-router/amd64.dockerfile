@@ -1,16 +1,9 @@
 FROM balenalib/intel-nuc-node:8-jessie-build as build
 
-RUN apk add --no-cache \
-  bash \
-  openssh \
+RUN apt update && apt install -y --no-install-recommends \
+  openssh-client \
   git \
-  alpine-sdk \
-  python \
-  g++ \
-  gcc \
-  libgcc \
-  libstdc++ \
-  linux-headers \
+  build-essential \
   make \
   python
 

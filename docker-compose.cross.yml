@@ -84,14 +84,17 @@ services:
       - NODE_ENV=production
       - GRAPHQL_PORT=4000
       - MQTT_PORT=1883
-      - VUE_APP_GRAPHQL_WS=wss://edge.sibyl.vision/graphql/subscriptions
-      - VUE_APP_GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
+      - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/subscriptions
+      - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
+    depends_on:
+      - redis
   nginx:
     container_name: nginx
     depends_on:
       - manager
       - nodered
       - netdata
+      - datarouter
     build:
       dockerfile: arm-cross.dockerfile
       context: host-images/nginx

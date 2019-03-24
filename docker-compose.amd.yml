@@ -66,8 +66,8 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
     restart: always
-  data-router:
-    container_name: data-router
+  datarouter:
+    container_name: datarouter
     build:
       dockerfile: amd64.dockerfile
       context: ./host-images/data-router

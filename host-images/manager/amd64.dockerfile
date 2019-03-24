@@ -1,4 +1,4 @@
-FROM balenalib/intel-nuc-alpine-node as build
+FROM balenalib/intel-nuc-alpine-node:10-edge-build as build
 
 RUN apk add --no-cache \
   bash \
@@ -38,7 +38,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=24
+ENV CACHEBUST=25
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
   git clone git@github.com:kazazes/skyscraper-manager.git /app && \

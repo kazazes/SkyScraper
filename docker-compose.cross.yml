@@ -3,7 +3,7 @@ volumes:
   resin-data: {}
 services:
   netdata:
-    image: netdata/netdata
+    image: sibylvision/netdata
     container_name: netdata
     hostname: edge.sibyl.vision
     ports:

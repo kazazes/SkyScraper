@@ -1,6 +1,12 @@
 #!/bin/sh
 
-export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
-
 cd /app/data-router
 yarn run start
+
+if [ -n "$DEBUG" ]; then
+  echo "Application exited."
+  while :; do
+    echo "Idling..."
+    sleep 600
+  done
+fi

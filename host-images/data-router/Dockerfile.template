@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-node:8-edge-build as build
+FROM balenalib/%%BALENA_MACHINE_NAME%%-node:8-jessie-build as build
 
 RUN apk add --no-cache \
   bash \

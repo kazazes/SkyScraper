@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-node:8-edge-build as build
+FROM balenalib/odroid-xu4-node:8-jessie-build as build
 RUN ["cross-build-start"]
 
 RUN apk add --no-cache \

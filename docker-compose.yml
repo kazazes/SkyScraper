@@ -115,16 +115,16 @@ services:
     environment:
       - NODE_ENV=production
     restart: always
-  mqtt:
-    container_name: mqtt
-    build:
-      context: ./host-images/mqtt
-    volumes:
-      - "resin-data:/data"
-    privileged: true
-    restart: always
-    ports:
-      - "1883:1883"
+  # mqtt:
+  #   container_name: mqtt
+  #   build:
+  #     context: ./host-images/mqtt
+  #   volumes:
+  #     - "resin-data:/data"
+  #   privileged: true
+  #   restart: always
+  #   ports:
+  #     - "1883:1883"
   portainer:
     container_name: portainer
     image: portainer/portainer

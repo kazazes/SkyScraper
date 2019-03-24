@@ -60,7 +60,7 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - 3000
+      - "3000:3000"
     environment:
       - APP_ID=backend
       - PORT=3000

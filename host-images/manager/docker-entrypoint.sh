@@ -8,5 +8,5 @@ touch /data/log/mosquitto.log
 chmod -R 777 /data/logs
 chown $(whoami):$(whoami) /data/log/mosquitto.log
 
-cd /app/packages/nuxt/
+cd /app/frontend
 yarn run start

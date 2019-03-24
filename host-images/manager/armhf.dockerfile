@@ -38,7 +38,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=22
+ENV CACHEBUST=23
 ENV VUE_APP_GRAPHQL_HTTP https://edge.sibyl.vision/
 ENV VUE_APP_GRAPHQL_WS wss://edge.sibyl.vision/subscriptions
 

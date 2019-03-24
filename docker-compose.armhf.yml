@@ -17,7 +17,7 @@ services:
     labels:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
-    cpu_shares: 200
+    cpu_shares: 150
   trunk-recorder:
     container_name: trunk-recorder
     build:
@@ -78,8 +78,8 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - "4000:4000"
-      - "1883:1883"
+      - "1883"
+      - "4000"
     environment:
       - NODE_ENV=production
       - GRAPHQL_PORT=4000
@@ -94,7 +94,6 @@ services:
       - manager
       - nodered
       - netdata
-      - datarouter
     build:
       dockerfile: armhf.dockerfile
       context: host-images/nginx

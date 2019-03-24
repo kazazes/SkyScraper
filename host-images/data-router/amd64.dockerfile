@@ -23,9 +23,9 @@ RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
   yarn install --pure-lockfile --network-timeout 180000 && \
   NODE_ENV=production yarn run build
 
-EXPOSE 4000
 EXPOSE 1888
+EXPOSE 4000
 
 COPY docker-entrypoint.sh /usr/local/bin
 
-CMD [ "/usr/local/bin/docker-entrypoint.sh"]
+ENTRYPOINT "/usr/local/bin/docker-entrypoint.sh"

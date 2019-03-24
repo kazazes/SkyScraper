@@ -73,8 +73,8 @@ services:
     volumes:
       - "resin-data:/data"
     ports:
-      - "4000:4000"
-      - "1883:1883"
+      - "1883"
+      - "4000"
     environment:
       - NODE_ENV=production
       - GRAPHQL_PORT=4000

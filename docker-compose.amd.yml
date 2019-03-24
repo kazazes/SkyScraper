@@ -65,8 +65,8 @@ services:
       - PORT=3000
       - HOST=0.0.0.0
       - NODE_ENV=production
-      - NETDATA_HTTP=/netdata
-      - GRAPHQL_HTTP=/graphql
+      - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
+      - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
     restart: always
   datarouter:
     container_name: datarouter

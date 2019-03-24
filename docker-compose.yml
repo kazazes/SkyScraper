@@ -58,16 +58,25 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - APP_ID=backend
       - PORT=3000
-      - LOG_LEVEL=debug
-      - REQUEST_LIMIT=100kb
-      - SESSION_SECRET=mySecret
-      - SWAGGER_API_SPEC=/spec
+      - HOST=0.0.0.0
       - NODE_ENV=production
-      - VUE_APP_GRAPHQL_WS=wss://edge.sibyl.vision/graphql/subscriptions
-      - VUE_APP_GRAPHQL_HTTP=https://edge.sibyl.vision/graphqlc./
     restart: always
+  data-router:
+    container_name: data-router
+    build:
+      context: ./host-images/data-router
+    volumes:
+      - "resin-data:/data"
+    ports:
+      - "4000:4000"
+      - "1883:1883"
+    environment:
+      - NODE_ENV=production
+      - GRAPHQL_PORT=4000
+      - MQTT_PORT=1883
+      - VUE_APP_GRAPHQL_WS=wss://edge.sibyl.vision/graphql/subscriptions
+      - VUE_APP_GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
   nginx:
     container_name: nginx
     depends_on:

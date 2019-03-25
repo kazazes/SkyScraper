@@ -27,4 +27,4 @@ mv $json.new $json
 
 lame --preset voice $filename $mp3encoded
 
-python mqtt-pub.py $web_dir $mp3encoded $system $json
+# python mqtt-pub.py $web_dir $mp3encoded $system $json

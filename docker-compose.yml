@@ -8,16 +8,9 @@ services:
       context: ./host-images/mqtt
     volumes:
       - "resin-data:/data"
-    privileged: true
     restart: always
     ports:
       - "1883:1883"
-  rabbitmq:
-    container_name: rabbitmq
-    build:
-      context: ./host-images/rabbitmq
-    ports:
-      - 15672:15672
   netdata:
     image: sibylvision/netdata
     container_name: netdata
@@ -90,7 +83,6 @@ services:
     volumes:
       - "resin-data:/data"
     ports:
-      - "1883"
       - "4000"
     environment:
       - NODE_ENV=production

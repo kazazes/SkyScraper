@@ -1,7 +1,6 @@
 #! /bin/bash
 
-cd "$(dirname "$0")"
-cd ..
+cd "$(dirname "$0")"/..
 
 PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
 

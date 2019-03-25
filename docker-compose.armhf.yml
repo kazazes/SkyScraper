@@ -2,6 +2,13 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  rabbitmq:
+    container_name: rabbitmq
+    build:
+      dockerfile: armhf.dockerfile
+      context: ./host-images/rabbitmq
+    ports:
+      - 15672:15672
   netdata:
     image: sibylvision/netdata
     container_name: netdata

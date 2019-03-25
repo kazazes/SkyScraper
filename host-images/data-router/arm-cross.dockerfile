@@ -15,7 +15,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=35
+ENV CACHEBUST=36
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
   cd /app && \
@@ -24,7 +24,6 @@ RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
   yarn install --pure-lockfile --network-timeout 180000 && \
   NODE_ENV=production yarn run build
 
-EXPOSE 1888
 EXPOSE 4000
 
 COPY docker-entrypoint.sh /usr/local/bin

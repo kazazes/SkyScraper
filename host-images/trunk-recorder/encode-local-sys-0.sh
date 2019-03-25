@@ -19,12 +19,12 @@ system=${SHORTNAME}
 # Hack the JSON to add play length and source
 len=$(soxi -D $filename)
 
-head -n-2 $json > $json.new
-echo "\"play_length\": $len," >> $json.new
-echo "\"source\": 0," >> $json.new
-tail -n2 $json >> $json.new
+head -n-2 $json >$json.new
+echo "\"play_length\": $len," >>$json.new
+echo "\"source\": 0," >>$json.new
+tail -n2 $json >>$json.new
 mv $json.new $json
 
 lame --preset voice $filename $mp3encoded
 
-# python mqtt-pub.py $web_dir $mp3encoded $system $json
+python mqtt-pub.py $web_dir $mp3encoded $system $json

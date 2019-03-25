@@ -22,9 +22,11 @@ len=$(soxi -D $filename)
 head -n-2 $json >$json.new
 echo "\"play_length\": $len," >>$json.new
 echo "\"source\": 0," >>$json.new
+echo "\"system\": $system," >>$json.new
+echo "\"audioPath\": $web_dir$mp3encoded," >>$json.new
 tail -n2 $json >>$json.new
 mv $json.new $json
 
 lame --preset voice $filename $mp3encoded
 
-python mqtt-pub.py $web_dir $mp3encoded $system $json
+mosquitto_pub -h $MQTT_HOST -f $json -t trunk-recorder/$system

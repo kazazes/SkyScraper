@@ -11,7 +11,7 @@ services:
       - "./data:/data"
     restart: always
     ports:
-      - "1883:1883"
+      - "1883"
   netdata:
     image: sibylvision/netdata
     container_name: netdata

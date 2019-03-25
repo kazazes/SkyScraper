@@ -1,5 +1,6 @@
 import json
 import sys
+import os
 
 import paho.mqtt.client as mqtt
 
@@ -9,7 +10,7 @@ system = sys.argv[3]
 jsonFile = sys.argv[4]
 
 client = mqtt.Client("trunk-recorder")
-client.connect("127.0.0.1")
+client.connect(os.environ['MQTT_HOST'])
 
 with open(webDir + '/' + jsonFile) as f:
     data = json.load(f)
@@ -17,4 +18,4 @@ with open(webDir + '/' + jsonFile) as f:
 data.system = system
 data.audioPath = webDir + mp3File
 
-client.publish("trunk-recorder/" + system, data, data)
+client.publish("trunk-recorder/" + system, data)

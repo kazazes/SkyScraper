@@ -39,6 +39,7 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
+      - MQTT_HOST=mqtt
     restart: on-failure
   ngrok:
     links:

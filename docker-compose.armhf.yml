@@ -89,7 +89,7 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - "4000"
+      - "4000:4000"
     environment:
       - NODE_ENV=production
       - GRAPHQL_PORT=4000

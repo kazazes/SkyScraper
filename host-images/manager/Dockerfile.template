@@ -38,7 +38,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=ivzB93wWdco6RsMDKrGG5sNIOWoelc3q
+ENV CACHEBUST=VBo7VZT7e8ZWAICZ19HGGJSoGS44WKkY
 
 RUN apk add --no-cache --virtual .build-deps alpine-sdk python && \
   git clone git@github.com:kazazes/skyscraper-manager.git /app && \

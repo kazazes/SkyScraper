@@ -24,6 +24,20 @@
       }
     },
     {
+      "label": "Cache bust",
+      "type": "shell",
+      "command": "./scripts/bust-cache.sh",
+      "problemMatcher": [],
+      "isBackground": true,
+      "presentation": {
+        "echo": true,
+        "reveal": "silent",
+        "focus": false,
+        "panel": "shared",
+        "clear": true
+      }
+    },
+    {
       "label": "docker-compose build",
       "type": "shell",
       "command": "docker-compose -f docker-compose.amd.yml build",

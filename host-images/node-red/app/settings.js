@@ -81,7 +81,7 @@ module.exports = {
       },
     ],
     default: {
-      permissions: "*",
+      permissions: "read",
     },
   },
 

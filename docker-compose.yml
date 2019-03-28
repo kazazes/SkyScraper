@@ -124,3 +124,30 @@ services:
     ports:
       - "6379"
     restart: always
+#  prisma:
+#    image: prismagraphql/prisma:1.29
+#    restart: always
+#    depends_on:
+#      - postgres-db
+#    ports:
+#      - "4466:4466"
+#    environment:
+#      PRISMA_CONFIG: |
+#        port: 4466
+#        managementApiSecret: scrapingskies
+#        databases:
+#          default:
+#            connector: postgres
+#            host: postgres-db
+#            port: 5432
+#            user: prisma
+#            password: prisma
+#            migrations: true
+#  postgres-db:
+#    image: postgres:alpine
+#    restart: always
+#    environment:
+#      POSTGRES_USER: prisma
+#      POSTGRES_PASSWORD: prisma
+#    volumes:
+#      - resin-data:/var/lib/postgresql

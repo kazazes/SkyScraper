@@ -27,7 +27,6 @@ services:
     labels:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
-    cpu_shares: 150
   trunk-recorder:
     container_name: trunk-recorder
     build:
@@ -132,3 +131,21 @@ services:
     ports:
       - "6379"
     restart: always
+  sdrangel:
+    build:
+      dockerfile: armhf.dockerfile
+      context: "./host-images/sdrangel"
+    container_name: sdrangel
+    ports:
+      - "8091:8091"
+      - "10011:10011/udp"
+    environment:
+      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+  sdrangelcli:
+    image: sdrangelcli/node:latest
+    container_name: "sdrangelcli"
+    ports:
+      - "8888:8080"
+    environment:
+      - UDP_PORT=10011
+      - API_PORT=1880

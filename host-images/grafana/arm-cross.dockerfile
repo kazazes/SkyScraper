@@ -1,4 +1,4 @@
-FROM grafana:6.0.2
+FROM grafana:6.0.3
 RUN ["cross-build-start"]
 
 COPY  datasources dashboards /etc/grafana/

@@ -31,7 +31,5 @@ lame --preset voice $filename $mp3encoded
 
 chmod -R 755 $json
 chmod -R 755 $mp3encoded
-chown nginx:www-data $json
-chown nginx:www-data $mp3encoded
 
 mosquitto_pub -h $MQTT_HOST -f $json -t trunk-recorder/system/$system

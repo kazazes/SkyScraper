@@ -141,6 +141,9 @@ services:
       - "10011:10011/udp"
     environment:
       - PULSE_SERVER=unix:/run/user/1000/pulse/native
+      - UDP_PORT=10011
+      - API_PORT=1880
+      - RX_BITS=24
   sdrangelcli:
     image: sdrangelcli/node:latest
     container_name: "sdrangelcli"
@@ -149,3 +152,4 @@ services:
     environment:
       - UDP_PORT=10011
       - API_PORT=1880
+      - RX_BITS=24

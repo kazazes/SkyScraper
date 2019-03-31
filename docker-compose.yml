@@ -136,7 +136,8 @@ services:
       - API_PORT=1880
       - RX_BITS=24
   sdrangelcli:
-    image: sdrangelcli/node:latest
+    build:
+      context: ./host-images/sdrangelcli
     container_name: "sdrangelcli"
     ports:
       - "8888:8080"
@@ -144,30 +145,3 @@ services:
       - UDP_PORT=10011
       - API_PORT=1880
       - RX_BITS=24
-#  prisma:
-#    image: prismagraphql/prisma:1.29
-#    restart: always
-#    depends_on:
-#      - postgres-db
-#    ports:
-#      - "4466:4466"
-#    environment:
-#      PRISMA_CONFIG: |
-#        port: 4466
-#        managementApiSecret: scrapingskies
-#        databases:
-#          default:
-#            connector: postgres
-#            host: postgres-db
-#            port: 5432
-#            user: prisma
-#            password: prisma
-#            migrations: true
-#  postgres-db:
-#    image: postgres:alpine
-#    restart: always
-#    environment:
-#      POSTGRES_USER: prisma
-#      POSTGRES_PASSWORD: prisma
-#    volumes:
-#      - resin-data:/var/lib/postgresql

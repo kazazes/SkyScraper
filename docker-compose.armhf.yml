@@ -147,7 +147,7 @@ services:
   sdrangelcli:
     build:
       dockerfile: armhf.dockerfile
-      context: ./host-images/sdrangelcli
+      context: "./host-images/sdrangelcli"
     container_name: "sdrangelcli"
     ports:
       - "8888:8080"

@@ -123,25 +123,25 @@ services:
     ports:
       - "6379"
     restart: always
-  sdrangel:
-    build:
-      context: "./host-images/sdrangel"
-    container_name: sdrangel
-    ports:
-      - "8091:8091"
-      - "10011:10011/udp"
-    environment:
-      - PULSE_SERVER=unix:/run/user/1000/pulse/native
-      - UDP_PORT=10011
-      - API_PORT=1880
-      - RX_BITS=24
-  sdrangelcli:
-    build:
-      context: "./host-images/sdrangelcli"
-    container_name: "sdrangelcli"
-    ports:
-      - "8888:8080"
-    environment:
-      - UDP_PORT=10011
-      - API_PORT=1880
-      - RX_BITS=24
+#  sdrangel:
+#    build:
+#      context: "./host-images/sdrangel"
+#    container_name: sdrangel
+#    ports:
+#      - "8091:8091"
+#      - "10011:10011/udp"
+#    environment:
+#      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+#      - UDP_PORT=10011
+#      - API_PORT=1880
+#      - RX_BITS=24
+#  sdrangelcli:
+#    build:
+#      context: "./host-images/sdrangelcli"
+#    container_name: "sdrangelcli"
+#    ports:
+#      - "8888:8080"
+#    environment:
+#      - UDP_PORT=10011
+#      - API_PORT=1880
+#      - RX_BITS=24

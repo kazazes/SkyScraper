@@ -335,5 +335,6 @@ RUN cmake -Wno-dev -DDEBUG_OUTPUT=ON -DBUILD_TYPE=RELEASE -DRX_SAMPLE_24BIT=ON -
 # Start SDRangel and some more services on which SDRangel depends
 COPY start_server.sh /start.sh
 COPY restart_server.sh /home/sdr/restart.sh
+RUN sudo apt install -y avahi-daemon dbus
 WORKDIR /home/sdr
 ENTRYPOINT ["/start.sh"]

@@ -169,7 +169,7 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - 9090
+      - "9090:9090"
     labels:
       org.label-schema.group: "monitoring"
       io.balena.features.dbus: "1"
@@ -194,7 +194,9 @@ services:
     container_name: cadvisor
     restart: unless-stopped
     expose:
-      - 8080
+      - "8080:8080"
+    command:
+      - "--uri_base_prefix /cadvisor"
     labels:
       org.label-schema.group: "monitoring"
   grafana:
@@ -210,9 +212,10 @@ services:
       - "GF_SECURITY_ADMIN_PASSWORD=admin"
       - "GF_USERS_ALLOW_SIGN_UP=false"
       - "GF_PATHS_DATA=/data/grafana/"
+      - "GF_SERVER_HTTP_PORT=9900"
     restart: unless-stopped
     ports:
-      - 3000
+      - "9900:9900"
     labels:
       org.label-schema.group: "monitoring"
       io.balena.features.dbus: "1"
@@ -222,6 +225,6 @@ services:
     container_name: pushgateway
     restart: unless-stopped
     ports:
-      - 9091
+      - "9091:9091"
     labels:
       org.label-schema.group: "monitoring"

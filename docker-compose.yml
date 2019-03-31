@@ -42,7 +42,6 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
-    cpuset: "0-4"
   ngrok:
     links:
       - nginx:https

@@ -15,7 +15,7 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=YdJQvCv2NjgyGkE6HXJyXUqL0m7hULyd
+ENV CACHEBUST=axzfYatIEN9vxJ6WmqHKGH7eieroYPVD
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
   cd /app && \

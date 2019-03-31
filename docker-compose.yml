@@ -130,7 +130,8 @@ services:
     container_name: "prometheus"
     volumes:
       - "resin-data:/data"
-
+    ports:
+      - "9090"
 #  prisma:
 #    image: prismagraphql/prisma:1.29
 #    restart: always

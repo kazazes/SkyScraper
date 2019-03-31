@@ -132,3 +132,10 @@ services:
     ports:
       - "6379"
     restart: always
+  prometheus:
+    build:
+      dockerfile: arm-cross.dockerfile
+      context: "./host-images/prometheus"
+    container_name: "prometheus"
+    volumes:
+      - "./data:/data"

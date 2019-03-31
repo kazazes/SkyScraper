@@ -124,6 +124,13 @@ services:
     ports:
       - "6379"
     restart: always
+  prometheus:
+    build:
+      context: "./host-images/prometheus"
+    container_name: "prometheus"
+    volumes:
+      - "resin-data:/data"
+
 #  prisma:
 #    image: prismagraphql/prisma:1.29
 #    restart: always

@@ -74,8 +74,6 @@ RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
 
 WORKDIR /skyscraper/build/trunk-recorder/
 
-COPY encode-local-sys-0.sh requirements.txt mqtt-pub.py ./
-RUN pip install -r requirements.txt
 COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone https://github.com/Sibyl-Vision/trunk-recorder.git /skyscraper/src/trunk-recorder \
@@ -89,6 +87,6 @@ RUN cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
 RUN cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \
   rm -rf /skyscraper/src/trunk-recorder
 
-COPY start.sh .
+COPY start.sh encode-local-sys-0.sh ./
 
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

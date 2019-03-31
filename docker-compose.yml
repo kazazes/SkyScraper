@@ -182,7 +182,7 @@ services:
     image: google/cadvisor:v0.33.0
     container_name: cadvisor
     restart: unless-stopped
-    expose:
+    ports:
       - "8080:8080"
     command:
       - "--uri_base_prefix /cadvisor"

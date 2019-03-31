@@ -191,8 +191,6 @@ services:
   cadvisor:
     image: google/cadvisor:v0.33.0
     container_name: cadvisor
-    volumes:
-      - /var/lib/docker/:/var/lib/docker:ro
     restart: unless-stopped
     expose:
       - 8080

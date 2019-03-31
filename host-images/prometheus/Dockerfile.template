@@ -4,7 +4,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:latest
 ENV NODE_EXPORTER_VERSION 0.12.0
 
 # arch
-ENV DIST_ARCH linux-armv7
+ENV DIST_ARCH linux-amd64
 
 # downloading utils
 RUN apt-get update && apt-get install -y wget build-essential libc6-dev

@@ -139,3 +139,5 @@ services:
     container_name: "prometheus"
     volumes:
       - "./data:/data"
+    ports:
+      - "9090"

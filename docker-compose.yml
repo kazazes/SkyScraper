@@ -127,11 +127,11 @@ services:
     build:
       context: ./host-images/prometheus
     container_name: prometheus
+    privileged: true
     ports:
       - "8888:80"
     volumes:
       - "resin-data:/data"
-
 #  dump1090:
 #    build:
 #      context: ./host-images/dump1090

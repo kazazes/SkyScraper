@@ -1,15 +1,44 @@
 #! /bin/bash
 
 set -e
+set -x
 
-cd base-images/sdr-ubuntu
+cd "$(dirname "$0")"/..
+PROJECT_DIR=$(pwd)
+HUB_NAMEPSACE=skyscraperai
 
-docker build --pull -t pckzs/sdr-ubuntu:amd64 -f amd64.dockerfile .
-docker build --pull -t pckzs/sdr-ubuntu:arm64 -f armhf.dockerfile .
+build_arm() {
+    cd $1
+    echo "Building $BASENAME:arm64"
+    docker build --rm --pull -f armhf.dockerfile -t $HUB_NAMEPSACE/$BASENAME:arm64 .
+    cd $PROJECT_DIR
+}
 
-docker manifest create -a pckzs/sdr-ubuntu \
-  pckzs/sdr-ubuntu:arm64 \
-  pckzs/sdr-ubuntu:amd64
+build_amd() {
+    cd $1
+    docker pull $HUB_NAMEPSACE/$BASENAME:amd64
+    docker build --rm --pull -f amd64.dockerfile -t $HUB_NAMEPSACE/$BASENAME:amd64 . >/dev/null
+    cd $PROJECT_DIR
+}
 
-docker manifest annotate  pckzs/sdr-ubuntu pckzs/sdr-ubuntu:arm64 --arch arm64 --os linux
-docker manifest annotate  pckzs/sdr-ubuntu pckzs/sdr-ubuntu:amd64 --arch amd64
+create_manifest() {
+    docker manifest create -a $HUB_NAMEPSACE/$BASENAME \
+        $HUB_NAMEPSACE/$BASENAME:arm64 \
+        $HUB_NAMEPSACE/$BASENAME:amd64
+}
+
+annotate_manifest() {
+    docker manifest annotate $HUB_NAMEPSACE/$BASENAME $HUB_NAMEPSACE/$BASENAME:arm64 --arch arm64 --os linux
+    docker manifest annotate $HUB_NAMEPSACE/$BASENAME $HUB_NAMEPSACE/$BASENAME:amd64 --arch amd64
+}
+
+echo -e "\nBuilding base images for amd and arm.\n"
+for D in ./base-images/*; do
+    if [[ -d "${D}" ]]; then
+        BASENAME=$(basename ${D})
+        build_arm ${D}
+        build_amd ${D}
+        create_manifest ${D}
+        annotate_manifest ${D}
+    fi
+done

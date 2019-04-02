@@ -1,6 +1,7 @@
 #! /bin/bash
 
 cd "$(dirname "$0")"/..
+PROJECT_DIR=$(pwd)
 
 PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
 
@@ -11,8 +12,6 @@ echo ===
 echo === If running on macOS, run
 echo === brew install gnu-sed
 echo ===
-
-PROJECT_DIR=$(pwd)
 
 generate_host_dockerfile() {
 	echo "Host image: $(basename ${1})."
@@ -46,7 +45,12 @@ function generate_base_dockerfile() {
 		-e 's/RUN \[ "cross-build-end" \]//' \
 		amd64.dockerfile
 
-	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template >armhf.dockerfile
+	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template > armhf.dockerfile
+
+	cp armhf.dockerfile arm-cross.dockerfile
+	sed -i -e 's/RUN \[ "cross-build-start" \]//' \
+		-e 's/RUN \[ "cross-build-end" \]//' \
+		arm-cross.dockerfile
 
 	cd $PROJECT_DIR
 }

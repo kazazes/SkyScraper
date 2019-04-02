@@ -1,5 +1,4 @@
-FROM pckzs/pybombs-arm
-RUN ["cross-build-start"]
+FROM pckzs/pybombs
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
@@ -91,4 +90,3 @@ RUN cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder &
 COPY start.sh encode-local-sys-0.sh ./
 
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]
-RUN ["cross-build-end"]

@@ -136,6 +136,7 @@ services:
       dockerfile: armhf.dockerfile
       context: ./host-images/prometheus
     container_name: prometheus
+    privileged: true
     ports:
       - "8888:80"
     volumes:

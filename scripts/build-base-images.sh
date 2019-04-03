@@ -1,22 +1,16 @@
 #! /bin/bash
 
-set -x
+set -e
 
 cd "$(dirname "$0")"/..
 PROJECT_DIR=$(pwd)
 HUB_NAMEPSACE=skyscraperai
 
-build_arm() {
+docker_build() {
     cd $1
-    echo "Building $HUB_NAMEPSACE/$BASENAME:arm64"
-    docker build --rm --pull -f armhf.dockerfile -t $HUB_NAMEPSACE/$BASENAME:arm64 . >/dev/null
-    cd $PROJECT_DIR
-}
-
-build_amd() {
-    cd $1
-    echo "Building $HUB_NAMEPSACE/$BASENAME:amd64"
-    docker build --rm --pull -f amd64.dockerfile -t $HUB_NAMEPSACE/$BASENAME:amd64 . >/dev/null
+    ARCH=$2
+    echo "Building $HUB_NAMEPSACE/$BASENAME:$ARCH"
+    docker build --rm --pull --cache-from $HUB_NAMEPSACE/$BASENAME:$ARCH -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
     cd $PROJECT_DIR
 }
 
@@ -35,8 +29,8 @@ echo -e "\nBuilding base images for amd and arm.\n"
 for D in ./base-images/*; do
     if [[ -d "${D}" ]]; then
         BASENAME=$(basename ${D})
-        build_arm ${D}
-        build_amd ${D}
+        docker_build ${D} arm64
+        docker_build ${D} amd64
         create_manifest ${D}
         annotate_manifest ${D}
     fi

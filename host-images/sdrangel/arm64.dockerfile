@@ -1,5 +1,4 @@
 FROM ubuntu:18.04 AS base
-RUN ["cross-build-start"]
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -77,7 +76,6 @@ WORKDIR /opt/build
 
 # CM256cc
 FROM base AS cm256cc
-RUN ["cross-build-start"]
 ARG nb_cores=8
 RUN git clone https://github.com/f4exb/cm256cc.git \
     && cd cm256cc \
@@ -88,7 +86,6 @@ RUN git clone https://github.com/f4exb/cm256cc.git \
 
 # MBElib
 FROM base AS mbelib
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/szechyjs/mbelib.git \
     && cd mbelib \
@@ -99,7 +96,6 @@ RUN git clone https://github.com/szechyjs/mbelib.git \
 
 # SerialDV
 FROM base AS serialdv
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/f4exb/serialDV.git \
     && cd serialDV \
@@ -110,7 +106,6 @@ RUN git clone https://github.com/f4exb/serialDV.git \
 
 # DSDcc
 FROM base AS dsdcc
-RUN ["cross-build-start"]
 ARG nb_cores
 COPY --from=mbelib --chown=sdr /opt/install /opt/install
 COPY --from=serialdv --chown=sdr /opt/install /opt/install
@@ -123,7 +118,6 @@ RUN git clone https://github.com/f4exb/dsdcc.git \
 
 # Codec2
 FROM base AS codec2
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN sudo apt-get update && sudo apt-get -y install subversion
 RUN svn co https://svn.code.sf.net/p/freetel/code/codec2-dev@4067 codec2-dev \
@@ -134,7 +128,6 @@ RUN svn co https://svn.code.sf.net/p/freetel/code/codec2-dev@4067 codec2-dev \
 
 # SDRplay special
 FROM base AS sdrplay
-RUN ["cross-build-start"]
 ENV SDRPLAY_MAJ 2.13
 ENV SDRPLAY_MIN .1
 RUN mkdir /home/sdr/sdrplay \
@@ -156,7 +149,6 @@ WORKDIR /opt/build
 
 # Airspy
 FROM base AS airspy
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/airspy/host.git libairspy \
     && cd libairspy \
@@ -167,7 +159,6 @@ RUN git clone https://github.com/airspy/host.git libairspy \
 
 # RTL-SDR
 FROM base AS rtlsdr
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/librtlsdr/librtlsdr.git \
     && cd librtlsdr \
@@ -178,7 +169,6 @@ RUN git clone https://github.com/librtlsdr/librtlsdr.git \
 
 # PlutoSDR
 FROM base AS plutosdr
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/analogdevicesinc/libiio.git \
     && cd libiio \
@@ -189,7 +179,6 @@ RUN git clone https://github.com/analogdevicesinc/libiio.git \
 
 # BladeRF
 FROM base AS bladerf
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/Nuand/bladeRF.git \
     && cd bladeRF/host \
@@ -200,7 +189,6 @@ RUN git clone https://github.com/Nuand/bladeRF.git \
 
 # HackRF
 FROM base AS hackrf
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/mossmann/hackrf.git \
     && cd hackrf/host \
@@ -211,7 +199,6 @@ RUN git clone https://github.com/mossmann/hackrf.git \
 
 # LimeSDR
 FROM base AS limesdr
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/myriadrf/LimeSuite.git \
     && cd LimeSuite \
@@ -222,7 +209,6 @@ RUN git clone https://github.com/myriadrf/LimeSuite.git \
 
 # Airspy HF
 FROM base AS airspyhf
-RUN ["cross-build-start"]
 ARG nb_cores=8
 RUN git clone https://github.com/airspy/airspyhf \
     && cd airspyhf \
@@ -233,7 +219,6 @@ RUN git clone https://github.com/airspy/airspyhf \
 
 # Perseus
 FROM base AS perseus
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/f4exb/libperseus-sdr.git \
     && cd libperseus-sdr \
@@ -245,7 +230,6 @@ RUN git clone https://github.com/f4exb/libperseus-sdr.git \
 
 # XTRX
 FROM base AS xtrx
-RUN ["cross-build-start"]
 ARG nb_cores
 RUN git clone https://github.com/xtrx-sdr/images.git xtrx-images \
     && cd xtrx-images \
@@ -259,7 +243,6 @@ RUN git clone https://github.com/xtrx-sdr/images.git xtrx-images \
 
 # SDRPlay RSP1
 FROM base AS libmirisdr
-RUN ["cross-build-start"]
 ARG nb_cores=8
 RUN git clone https://github.com/f4exb/libmirisdr-4.git \
     && cd libmirisdr-4 \
@@ -269,7 +252,6 @@ RUN git clone https://github.com/f4exb/libmirisdr-4.git \
 
 # Soapy main
 FROM base AS soapy
-RUN ["cross-build-start"]
 ARG nb_cores=8
 RUN git clone https://github.com/pothosware/SoapySDR.git \
     && cd SoapySDR \
@@ -280,7 +262,6 @@ RUN git clone https://github.com/pothosware/SoapySDR.git \
 
 # Soapy remote
 FROM base AS soapy_remote
-RUN ["cross-build-start"]
 ARG nb_cores
 COPY --from=soapy --chown=sdr /opt/install /opt/install
 RUN git clone https://github.com/pothosware/SoapyRemote.git \
@@ -292,7 +273,6 @@ RUN git clone https://github.com/pothosware/SoapyRemote.git \
 
 # Soapy SDRplay
 FROM base AS soapy_sdrplay
-RUN ["cross-build-start"]
 ARG nb_cores=8
 COPY --from=soapy --chown=sdr /opt/install /opt/install
 COPY --from=sdrplay --chown=sdr /opt/install /opt/install
@@ -305,7 +285,6 @@ RUN git clone https://github.com/pothosware/SoapySDRPlay.git \
 
 # Soapy LimeSDR
 FROM base AS soapy_limesdr
-RUN ["cross-build-start"]
 ARG nb_cores=8
 COPY --from=soapy_remote --chown=sdr /opt/install /opt/install
 COPY --from=limesdr --chown=sdr /opt/build /opt/build
@@ -316,7 +295,6 @@ RUN cd LimeSuite/builddir \
 
 # Create a base image plus dependencies
 FROM base AS base_deps
-RUN ["cross-build-start"]
 COPY --from=cm256cc --chown=sdr /opt/install /opt/install
 COPY --from=mbelib --chown=sdr /opt/install /opt/install
 COPY --from=serialdv --chown=sdr /opt/install /opt/install
@@ -339,7 +317,6 @@ COPY --from=soapy_sdrplay --chown=sdr /opt/install /opt/install
 COPY --from=soapy_limesdr --chown=sdr /opt/install /opt/install
 
 FROM base AS sdrangel_clone
-RUN ["cross-build-start"]
 WORKDIR /opt/build
 ARG repository=https://github.com/f4exb/sdrangel
 ARG branch=master
@@ -350,7 +327,6 @@ RUN GIT_SSL_NO_VERIFY=true git clone ${repository} -b ${branch} sdrangel \
 
 # The final server version
 FROM base_deps AS server
-RUN ["cross-build-start"]
 ARG nb_cores=8
 COPY --from=sdrangel_clone --chown=sdr /opt/build/sdrangel /opt/build/sdrangel
 WORKDIR /opt/build/sdrangel/build
@@ -359,6 +335,6 @@ RUN cmake -Wno-dev -DDEBUG_OUTPUT=ON -DBUILD_TYPE=RELEASE -DRX_SAMPLE_24BIT=ON -
 # Start SDRangel and some more services on which SDRangel depends
 COPY start_server.sh /start.sh
 COPY restart_server.sh /home/sdr/restart.sh
+RUN sudo apt install -y avahi-daemon dbus
 WORKDIR /home/sdr
 ENTRYPOINT ["/start.sh"]
-RUN ["cross-build-end"]

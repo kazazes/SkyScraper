@@ -5,7 +5,7 @@ services:
   mqtt:
     container_name: mqtt
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/mqtt
     volumes:
       - "./data:/data"
@@ -30,7 +30,7 @@ services:
   trunk-recorder:
     container_name: trunk-recorder
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/trunk-recorder
     privileged: true
     depends_on:
@@ -48,7 +48,7 @@ services:
       - nginx:https
     container_name: ngrok
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/ngrok
     privileged: false
     depends_on:
@@ -57,7 +57,7 @@ services:
   config:
     container_name: config
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/config
     network_mode: host
     restart: "on-failure"
@@ -66,7 +66,7 @@ services:
   manager:
     container_name: manager
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/manager
     volumes:
       - "./data:/data"
@@ -83,7 +83,7 @@ services:
   datarouter:
     container_name: datarouter
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/data-router
     volumes:
       - "./data:/data"
@@ -102,7 +102,7 @@ services:
       - nodered
       - netdata
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: host-images/nginx
     ports:
       - "80:80"
@@ -113,7 +113,7 @@ services:
   nodered:
     container_name: nodered
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/node-red
     volumes:
       - "./data:/data"
@@ -133,7 +133,7 @@ services:
     restart: always
   prometheus:
     build:
-      dockerfile: arm-cross.dockerfile
+      dockerfile: arm64.dockerfile
       context: ./host-images/prometheus
     container_name: prometheus
     privileged: true

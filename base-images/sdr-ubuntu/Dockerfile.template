@@ -19,6 +19,7 @@ RUN apt-get install -y \
   cmake \
   git \
   gnuradio \
+  gnuradio-dev \
   gr-iqbal \
   gr-osmosdr \
   libbladerf-dev \

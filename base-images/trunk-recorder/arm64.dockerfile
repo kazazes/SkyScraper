@@ -14,42 +14,51 @@ ENV PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 RUN apt-get -qq update && \
-  apt-get -y -q install --no-install-recommends \
-  build-essential \
-  libcppunit-dev \
+  apt-get -y -q install \
   apt-utils \
-  curl \
-  git \
-  locales \
-  multimon \
-  sox \
-  sudo \
-  lame \
-  wget \
-  jq \
-  ca-certificates \
-  git g++ libboost-all-dev python-dev python-mako \
-  python-numpy python-wxgtk3.0 python-sphinx python-cheetah swig libzmq3-dev \
-  libfftw3-dev libgsl-dev libcppunit-dev doxygen libcomedi-dev libqt4-opengl-dev \
-  python-qt4 libqwt-dev libsdl1.2-dev libusb-1.0-0-dev python-gtk2 python-lxml \
-  pkg-config python-sip-dev \
-  && rm -rf /var/lib/apt/lists/*
-
-RUN export DEBIAN_FRONTEND=noninteractive && \
-  apt-get -qq update \
-  && apt-get install -y \
-  openssl \
-  locales \
   autoconf \
   automake \
   build-essential \
-  libass-dev \
-  pkg-config \
-  yasm \
-  mosquitto \
-  mosquitto-clients \
+  build-essential \
+  ca-certificates \
+  curl \
+  doxygen \
+  g++ \
+  git \
   gnuradio-dev \
   gr-osmosdr \
+  jq \
+  lame \
+  libass-dev \
+  libboost-all-dev \
+  libcomedi-dev \
+  libcppunit-dev \
+  libcppunit-dev \
+  libfftw3-dev \
+  libgsl-dev \
+  libsdl1.2-dev \
+  libusb-1.0-0-dev \
+  libzmq3-dev \
+  locales \
+  locales \
+  mosquitto \
+  mosquitto-clients \
+  multimon \
+  openssl \
+  pkg-config \
+  pkg-config \
+  python-cheetah \
+  python-dev \
+  python-lxml \
+  python-mako \
+  python-numpy \
+  python-sip-dev \
+  python-sphinx \
+  python-wxgtk3.0 \
+  sox \
+  sudo \
+  wget \
+  yasm \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen

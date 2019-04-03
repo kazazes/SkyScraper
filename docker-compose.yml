@@ -27,7 +27,8 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   trunk-recorder:
-    image: skyscraperai/trunk-recorder:latest
+    build:
+      context: ./host-images/trunk-recorder
     privileged: true
     depends_on:
       - "config"

@@ -1,7 +1,6 @@
 #! /bin/bash
 
 set -e
-set -x
 
 cd "$(dirname "$0")"/..
 PROJECT_DIR=$(pwd)
@@ -9,7 +8,7 @@ HUB_NAMEPSACE=skyscraperai
 
 build_arm() {
     cd $1
-    echo "Building $BASENAME:arm64"
+    docker pull $HUB_NAMEPSACE/$BASENAME:arm64
     docker build --rm --pull -f armhf.dockerfile -t $HUB_NAMEPSACE/$BASENAME:arm64 .
     cd $PROJECT_DIR
 }
@@ -17,7 +16,7 @@ build_arm() {
 build_amd() {
     cd $1
     docker pull $HUB_NAMEPSACE/$BASENAME:amd64
-    docker build --rm --pull -f amd64.dockerfile -t $HUB_NAMEPSACE/$BASENAME:amd64 . >/dev/null
+    docker build --rm --pull -f amd64.dockerfile -t $HUB_NAMEPSACE/$BASENAME:amd64 .
     cd $PROJECT_DIR
 }
 

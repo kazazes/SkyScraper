@@ -1,13 +1,7 @@
 #! /bin/bash
-# Sample file for loading local files into trunk-player
-# Dylan Reinhold 03/10/2017
-# Project https://github.com/ScanOC/trunk-player
-#-------------------------------------------------------
 
 set -e
-set -x
 
-echo "Encoding: $1"
 filename="$1"
 basename="${filename%.*}"
 filename_only=$(basename $basename)
@@ -20,11 +14,6 @@ system=${SHORTNAME}
 len=$(soxi -D $filename)
 
 head -n-2 $json >$json.new
-echo "\"duration\": $len," >>$json.new
-echo "\"source\": 0," >>$json.new
-echo "\"system\": \"$system\"," >>$json.new
-echo "\"audioPath\": \"$mp3encoded\"," >>$json.new
-tail -n2 $json >>$json.new
 mv $json.new $json
 
 lame --preset voice $filename $mp3encoded

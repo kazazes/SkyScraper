@@ -12,7 +12,7 @@ RUN apt-get update && \
   add-apt-repository -y ppa:ettusresearch/uhd && \
   add-apt-repository -y ppa:pothosware/framework
 
-RUN apt-get install -y \
+RUN apt-get install -y --no-install-recommends \
   automake \
   bladerf \
   bladerf-fpga-hostedx40 \
@@ -25,10 +25,12 @@ RUN apt-get install -y \
   libbladerf-dev \
   libbladerf-udev \
   libboost-all-dev \
+  libuhd-dev \
   libssl-dev \
   libusb-1.0-0.dev \
   osmo-sdr \
-  pothos-all \
+  python3-pothos \
+  pothos-python-dev \
   python-numpy \
   python-soapysdr \
   python3-numpy \
@@ -38,6 +40,7 @@ RUN apt-get install -y \
   soapysdr-module-osmosdr \
   soapysdr-module-rtlsdr \
   soapysdr-tools \
+  soapysdr-module-uhd \
   swig \
   uhd-host \
   uhd-soapysdr \

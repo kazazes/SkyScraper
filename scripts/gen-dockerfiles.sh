@@ -45,6 +45,7 @@ generate_base_dockerfile() {
 	sed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' \
     	-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
     	-e 's/ENV ARCH=amd64/ENV ARCH=arm64/' \
+    	-e 's/ARG ARCH=amd64/ARG ARCH=arm64/' \
 	    arm64.dockerfile
 
 

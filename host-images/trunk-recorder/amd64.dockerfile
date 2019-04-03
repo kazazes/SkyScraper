@@ -1,10 +1,5 @@
 FROM pckzs/pybombs
 
-ENV ARCH=amd64
-
-# Static ffmpeg binaries from https://www.johnvansickle.com/ffmpeg/
-COPY ./ffmpeg-4.1.2-$ARCH-static/* /usr/bin/
-
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
@@ -31,9 +26,11 @@ RUN apt-get -qq update && \
   lame \
   wget \
   virtualenv \
+  libpq-dev \
+  postgresql-client \
+  postgresql-client-common \
   jq \
   ca-certificates \
-  libssl-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
@@ -61,6 +58,20 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
+RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
+  tar xjvf ffmpeg-4.1.tar.bz2 && \
+  cd ffmpeg-4.1 && \
+  ./configure \
+  --bindir="/usr/bin" \
+  --pkg-config-flags="--static" \
+  --enable-gpl \
+  --enable-libass \
+  --enable-libfdk-aac \
+  --enable-nonfree && \
+  make -j$(nproc) && \
+  make install \
+  && rm -rf ffmpeg-4.1.tar.bz2 ffmpeg-4.1
+
 WORKDIR /skyscraper/build/trunk-recorder/
 
 COPY hostedxA4-latest.rbf xA4.rbf
@@ -68,7 +79,6 @@ COPY hostedxA4-latest.rbf xA4.rbf
 RUN git clone https://github.com/Sibyl-Vision/trunk-recorder.git /skyscraper/src/trunk-recorder \
   && cd /skyscraper/src/trunk-recorder \
   && git checkout 6423b238d26b034eda6cb93c5a44fb666a076d0f
-
 
 RUN cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
   && make -j$(nproc) \

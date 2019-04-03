@@ -35,7 +35,7 @@ echo -e "\nBuilding base images for amd and arm.\n"
 for D in ./base-images/*; do
     if [[ -d "${D}" ]]; then
         BASENAME=$(basename ${D})
-        # docker_build ${D} arm64
+        docker_build ${D} arm64
         docker_build ${D} amd64
         create_manifest ${D}
         annotate_manifest ${D}

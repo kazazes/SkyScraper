@@ -30,10 +30,11 @@ generate_host_dockerfile() {
 	cd $PROJECT_DIR
 }
 
-function generate_base_dockerfile() {
+generate_base_dockerfile() {
 	echo "Base image: $(basename $1)."
 	cd $1
 	cp Dockerfile.template amd64.dockerfile
+	cp Dockerfile.template arm64.dockerfile
 
 	sed -i -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
@@ -41,9 +42,11 @@ function generate_base_dockerfile() {
 		-e 's/RUN \[ "cross-build-end" \]//' \
 		amd64.dockerfile
 
-	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template > arm64.dockerfile
+	sed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' \
+    	-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
+    	-e 's/ENV ARCH=amd64/ENV ARCH=arm64/' \
+	    arm64.dockerfile
 
-	sed -i -e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' arm64.dockerfile
 
 	cd $PROJECT_DIR
 }

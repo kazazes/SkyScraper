@@ -1,5 +1,7 @@
 FROM skyscraperai/sdr-ubuntu:arm64
 
+ENV ARCH=arm64
+
 RUN [ "cross-build-start" ]
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
@@ -60,19 +62,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
-RUN wget http://ffmpeg.org/releases/ffmpeg-4.1.tar.bz2 && \
-  tar xjvf ffmpeg-4.1.tar.bz2 && \
-  cd ffmpeg-4.1 && \
-  ./configure \
-  --bindir="/usr/bin" \
-  --pkg-config-flags="--static" \
-  --enable-gpl \
-  --enable-libass \
-  --enable-libfdk-aac \
-  --enable-nonfree && \
-  make -j$(nproc) && \
-  make install \
-  && rm -rf ffmpeg-4.1.tar.bz2 ffmpeg-4.1
+# Static ffmpeg binaries from https://www.johnvansickle.com/ffmpeg/
+COPY ffmpeg-4.1.2-${ARCH}-static/* /usr/bin/
 
 WORKDIR /skyscraper/build/trunk-recorder/
 

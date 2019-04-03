@@ -39,18 +39,6 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
-  trunk-recorder-dev:
-    image: skyscraperai/trunk-recorder
-    privileged: true
-    depends_on:
-      - "config"
-    volumes:
-      - "resin-data:/data"
-    environment:
-      - RECORDER_CONF=sites/SF-PK/config.json
-      - SHORTNAME=SFPD
-      - MQTT_HOST=mqtt
-    restart: on-failure
   ngrok:
     links:
       - nginx:https

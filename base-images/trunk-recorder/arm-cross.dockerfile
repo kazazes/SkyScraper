@@ -1,4 +1,4 @@
-FROM pckzs/pybombs
+FROM skyscraperai/sdr-ubuntu
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 

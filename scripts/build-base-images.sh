@@ -11,6 +11,7 @@ docker_build() {
     ARCH=$2
     echo -e "Building $HUB_NAMEPSACE/$BASENAME:$ARCH\n\n"
     docker build --rm --pull --cache-from $HUB_NAMEPSACE/$BASENAME:$ARCH -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
+    docker push $HUB_NAMEPSACE/$BASENAME:$ARCH
     cd $PROJECT_DIR
 }
 
@@ -27,6 +28,7 @@ annotate_manifest() {
 
 push_manifest() {
     docker manifest push $HUB_NAMEPSACE/$BASENAME
+    docker push $HUB_NAMEPSACE/$BASENAME
 }
 
 echo -e "\nBuilding base images for amd and arm.\n"

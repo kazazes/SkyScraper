@@ -25,6 +25,10 @@ annotate_manifest() {
     docker manifest annotate $HUB_NAMEPSACE/$BASENAME $HUB_NAMEPSACE/$BASENAME:amd64 --arch amd64
 }
 
+push_manifest() {
+    docker manifest push $HUB_NAMEPSACE/$BASENAME
+}
+
 echo -e "\nBuilding base images for amd and arm.\n"
 for D in ./base-images/*; do
     if [[ -d "${D}" ]]; then
@@ -33,5 +37,6 @@ for D in ./base-images/*; do
         docker_build ${D} amd64
         create_manifest ${D}
         annotate_manifest ${D}
+        push_manifest ${D}
     fi
 done

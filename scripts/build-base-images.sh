@@ -10,7 +10,7 @@ docker_build() {
     cd $1
     ARCH=$2
     echo -e "Building $HUB_NAMEPSACE/$BASENAME:$ARCH\n\n"
-    docker build --rm --pull --cache-from $HUB_NAMEPSACE/$BASENAME:$ARCH -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
+    docker build --pull -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
     docker push $HUB_NAMEPSACE/$BASENAME:$ARCH
     cd $PROJECT_DIR
 }
@@ -41,9 +41,9 @@ if [[ $# -eq 0 ]]; then
             BASENAME=$(basename ${D})
             docker_build ${D} arm64
             docker_build ${D} amd64
-            create_manifest ${D}
-            annotate_manifest ${D}
-            push_manifest ${D}
+            create_manifest
+            annotate_manifest
+            push_manifest
         fi
     done
 else

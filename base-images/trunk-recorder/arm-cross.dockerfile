@@ -1,5 +1,7 @@
 FROM skyscraperai/sdr-ubuntu:arm64
 
+
+
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 ENV PATH=$PATH:/opt/gnuradio-3.7.13.4/bin
@@ -88,5 +90,7 @@ RUN cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder &
   rm -rf /skyscraper/src/trunk-recorder
 
 COPY start.sh encode-local-sys-0.sh ./
+
+
 
 CMD [ "/skyscraper/build/trunk-recorder/start.sh" ]

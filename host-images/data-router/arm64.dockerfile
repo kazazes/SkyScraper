@@ -18,7 +18,6 @@ ENV CACHEBUST=axzfYatIEN9vxJ6WmqHKGH7eieroYPVD
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
   cd /app && \
-  git checkout nuxt && \
   cd /app/data-router && \
   yarn install --pure-lockfile --network-timeout 180000 && \
   NODE_ENV=production yarn run build

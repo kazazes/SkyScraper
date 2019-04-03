@@ -47,6 +47,8 @@ function generate_base_dockerfile() {
 
 	sed 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' Dockerfile.template > armhf.dockerfile
 
+	sed -i -e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' armhf.dockerfile
+
 	cp armhf.dockerfile arm-cross.dockerfile
 	sed -i -e 's/RUN \[ "cross-build-start" \]//' \
 		-e 's/RUN \[ "cross-build-end" \]//' \

@@ -1,4 +1,4 @@
-FROM skyscraperai/sdr-ubuntu
+FROM skyscraperai/sdr-ubuntu:arm64
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 

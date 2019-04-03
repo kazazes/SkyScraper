@@ -12,7 +12,7 @@ services:
     ports:
       - "1883"
   netdata:
-    image: sibylvision/netdata
+    image: skyscraperai/netdata
     container_name: netdata
     hostname: edge.sibyl.vision
     ports:

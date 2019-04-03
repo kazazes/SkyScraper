@@ -121,7 +121,7 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: redis:latest
+    image: redis
     command: redis-server --appendonly yes
     container_name: redis
     volumes:

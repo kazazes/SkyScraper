@@ -3,14 +3,14 @@ FROM ubuntu:cosmic
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get install -y software-properties-common && \
+RUN apt-get update && \
+  apt-get install -y software-properties-common && \
   add-apt-repository -y ppa:bladerf/bladerf && \
   add-apt-repository -y ppa:ettusresearch/uhd && \
   add-apt-repository -y ppa:pothosware/support && \
   add-apt-repository -y ppa:myriadrf/drivers && \
   add-apt-repository -y ppa:ettusresearch/uhd && \
-  add-apt-repository -y ppa:pothosware/framework && \
-  apt-get update
+  add-apt-repository -y ppa:pothosware/framework
 
 RUN apt-get install -y \
   automake \

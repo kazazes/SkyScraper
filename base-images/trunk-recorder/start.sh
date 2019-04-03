@@ -11,7 +11,7 @@ fi
 arch=$(uname -i)
 if [[ $arch == armv7l ]]; then
 	mkdir -p /root/.volk
-	cp /data/conf/volk_config /root/.volk/volk_config
+	cp ${VOLK_CONFIG:=/data/conf/volk_config} /root/.volk/volk_config
 fi
 
 bladeRF-cli -p

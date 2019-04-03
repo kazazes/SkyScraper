@@ -9,7 +9,7 @@ HUB_NAMEPSACE=skyscraperai
 docker_build() {
     cd $1
     ARCH=$2
-    echo "Building $HUB_NAMEPSACE/$BASENAME:$ARCH"
+    echo -e "Building $HUB_NAMEPSACE/$BASENAME:$ARCH\n\n"
     docker build --rm --pull --cache-from $HUB_NAMEPSACE/$BASENAME:$ARCH -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
     cd $PROJECT_DIR
 }

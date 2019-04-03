@@ -25,6 +25,7 @@ RUN apt-get install -y \
   libbladerf-udev \
   libboost-all-dev \
   libssl-dev \
+  libusb-1.0-0.dev \
   osmo-sdr \
   pothos-all \
   python-numpy \
@@ -39,7 +40,6 @@ RUN apt-get install -y \
   swig \
   uhd-host \
   uhd-soapysdr \
-  soapysdr-module-uhd \
   && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN rm -rf /tmp/* /var/tmp/*

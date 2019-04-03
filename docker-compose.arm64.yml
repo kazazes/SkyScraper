@@ -32,7 +32,6 @@ services:
     privileged: true
     depends_on:
       - "config"
-    network_mode: host
     volumes:
       - "./data:/data"
     environment:

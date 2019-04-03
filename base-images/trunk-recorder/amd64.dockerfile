@@ -7,6 +7,10 @@ COPY ./ffmpeg-4.1.2-$ARCH-static/* /usr/bin/
 
 
 
+ENV PATH=$PATH:/usr/bin/
+ENV LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/
+ENV PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/dist-packages
+
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
 RUN apt-get -qq update && \
@@ -24,6 +28,11 @@ RUN apt-get -qq update && \
   wget \
   jq \
   ca-certificates \
+  git g++ libboost-all-dev python-dev python-mako \
+  python-numpy python-wxgtk3.0 python-sphinx python-cheetah swig libzmq3-dev \
+  libfftw3-dev libgsl-dev libcppunit-dev doxygen libcomedi-dev libqt4-opengl-dev \
+  python-qt4 libqwt-dev libsdl1.2-dev libusb-1.0-0-dev python-gtk2 python-lxml \
+  pkg-config python-sip-dev \
   && rm -rf /var/lib/apt/lists/*
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
@@ -35,15 +44,12 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   automake \
   build-essential \
   libass-dev \
-  libfreetype6-dev \
-  libtool \
   pkg-config \
-  texinfo \
-  zlib1g-dev \
   yasm \
-  libfdk-aac-dev \
   mosquitto \
   mosquitto-clients \
+  gnuradio-dev \
+  gr-osmosdr \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
@@ -53,11 +59,11 @@ WORKDIR /skyscraper/build/trunk-recorder/
 COPY hostedxA4-latest.rbf xA4.rbf
 
 RUN git clone https://github.com/Sibyl-Vision/trunk-recorder.git /skyscraper/src/trunk-recorder \
-  && cd /skyscraper/src/trunk-recorder \
-  && git checkout 6423b238d26b034eda6cb93c5a44fb666a076d0f
+  && cd /skyscraper/src/trunk-recorder
 
-RUN cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
-  && make -j$(nproc) \
+RUN PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$(pkg-config --variable pc_path pkg-config) && \
+  cmake -DCMAKE_BUILD_TYPE=Release /skyscraper/src/trunk-recorder \
+  && make -j8 \
   && make install
 
 RUN cp /skyscraper/build/trunk-recorder/recorder /usr/local/bin/trunk-recorder && \

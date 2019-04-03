@@ -31,7 +31,6 @@ services:
     privileged: true
     depends_on:
       - "config"
-    network_mode: host
     volumes:
       - "resin-data:/data"
     environment:

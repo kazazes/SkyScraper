@@ -48,6 +48,8 @@ services:
     volumes:
       - "resin-data:/data"
     restart: on-failure
+    pid: host
+    pids_limit: -1
   ngrok:
     links:
       - nginx:https

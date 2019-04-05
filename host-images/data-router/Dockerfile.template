@@ -14,11 +14,10 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
-ENV CACHEBUST=GY5Ld4gcdXbiIPZVH8UQeqGXFzqGBY3O
+ENV CACHEBUST=soQSkW6p5VO6SSZn0JpriG6u59vexOb0
 
 RUN git clone git@github.com:kazazes/skyscraper-manager.git /app && \
-  cd /app && \
-  cd /app/data-router && \
+  cd /app/backend && \
   yarn install --pure-lockfile --network-timeout 180000 && \
   NODE_ENV=production yarn run build
 

@@ -93,6 +93,7 @@ services:
       - manager
       - nodered
       - netdata
+      - datarouter
     build:
       context: host-images/nginx
     ports:

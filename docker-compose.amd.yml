@@ -99,6 +99,7 @@ services:
       - manager
       - nodered
       - netdata
+      - datarouter
     build:
       dockerfile: amd64.dockerfile
       context: host-images/nginx

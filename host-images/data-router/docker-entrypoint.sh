@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cd /app/data-router
+cd /app/backend
 yarn run start
 
 if [ -n "$DEBUG" ]; then

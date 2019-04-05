@@ -12,7 +12,7 @@ RUN git clone --depth 1 --branch release_18_12 https://github.com/srsLTE/srsLTE.
   cd srsLTE && \
   mkdir build && \
   cd build && \
-  cmake -DENABLE_GUI=OFF -DENABLE_UHD=OFF -DENABLE_SOAPYSDR=OFF -DCMAKE_BUILD_TYPE=Release ../ && \
+  cmake -DENABLE_GUI=OFF -DENABLE_UHD=OFF -DENABLE_SOAPYSDR=OFF -DCMAKE_BUILD_TYPE=Debug -DBUILD_STATIC=TRUE ../ && \
   make -j$(nproc) && \
   make -j$(nproc) install
 

@@ -51,7 +51,7 @@ services:
     volumes:
       - "./data:/data"
     restart: on-failure
-    pids_limit: 1000
+    pid: host
   ngrok:
     links:
       - nginx:https

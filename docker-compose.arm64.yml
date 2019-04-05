@@ -41,6 +41,16 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
+  lte-site:
+    build:
+      dockerfile: arm64.dockerfile
+      context: ./host-images/srsLTE
+    privileged: true
+    depends_on:
+      - "config"
+    volumes:
+      - "./data:/data"
+    restart: on-failure
   ngrok:
     links:
       - nginx:https

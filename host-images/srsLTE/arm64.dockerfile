@@ -24,5 +24,5 @@ RUN ldconfig
 COPY conf /etc/srslte/
 COPY entrypoint.sh /usr/local/bin
 
-ENTRYPOINT [ "entrypoint.sh" ]
+CMD [ "entrypoint.sh" ]
 # CMD [ "bash" ]

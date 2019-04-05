@@ -52,6 +52,7 @@ services:
       - "./data:/data"
     restart: on-failure
     pid: host
+    network_mode: host
   ngrok:
     links:
       - nginx:https

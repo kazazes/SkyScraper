@@ -1,10 +1,13 @@
-FROM pckzs/sdr-ubuntu
+FROM skyscraperai/sdr-ubuntu
+
+ENV INITSYSTEM on
 
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends cmake libfftw3-dev libmbedtls-dev libboost-program-options-dev \
-  libconfig++-dev libsctp-dev libboost-system-dev libboost-test-dev libboost-thread-dev libqwt-dev libqt4-dev
+  libconfig++-dev libsctp-dev libboost-system-dev libboost-test-dev libboost-thread-dev libqwt-dev libqt4-dev libmbedtls10 \
+  libfftw3-3 libsctp1 systemd
 
 WORKDIR /src
 
@@ -22,3 +25,4 @@ COPY conf /etc/srslte/
 COPY entrypoint.sh /usr/local/bin
 
 ENTRYPOINT [ "entrypoint.sh" ]
+# CMD [ "bash" ]

@@ -1,16 +1,31 @@
+# #
+# # .csv to store UE's information in HSS
+# # Kept in the following format: "Name,IMSI,Key,OP_Type,OP,AMF,SQN,QCI"
+# #
+# # Name:    Human readable name to help distinguish UE's. Ignored by the HSS
+# # IMSI:    UE's IMSI value
+# # Key:     UE's key, where other keys are derived from. Stored in hexadecimal
+# # OP_Type: Operator's code type, either OP or OPc
+# # OP/OPc:  Operator Code/Cyphered Operator Code, stored in hexadecimal
+# # AMF:     Authentication management field, stored in hexadecimal
+# # SQN:     UE's Sequence number for freshness of the authentication
+# # QCI:     QoS Class Identifier for the UE's default bearer.
+# #
+# # Note: Lines starting by '#' are ignored and will be overwritten
+# ue2,001010123456780,00112233445566778899aabbccddeeff,opc,63bfa50ee6523365ff14c1f45f88737d,8000,000000001234,7
+# s01,901700000026198,DF9D448D6EE8677B11291B46C198EAFC,opc,9CBEA0B39812A0E01E50B6A0C705B2E6,9001,000000001001,7
+s02,901700000026197,2F48B07107DD5EF075CDAC9073C8BD14,opc,71E0963F8EDA2065A5AE639D201DB75E,0080,000000001234,7
+# python2 pySim-prog.py -p 0 -t sysmoUSIM-SJS1 -a 92628432 -x 001  -y 01 -n SkyScraper -i 901700000026197 -s 8988211000000261977 --acc=0080 -k 2F48B07107DD5EF075CDAC9073C8BD14 -o 71E0963F8EDA2065A5AE639D201DB75E
+# Insert card now (or CTRL-C to cancel)
+# Generated card parameters :
+#  > Name    : SkyScraper
+#  > SMSP    : e1ffffffffffffffffffffffff0581005155f5ffffffffffff000000
+#  > ICCID   : 8988211000000261977
+#  > MCC/MNC : 1/1
+#  > IMSI    : 901700000026197
+#  > Ki      : 2F48B07107DD5EF075CDAC9073C8BD14
+#  > OPC     : 71E0963F8EDA2065A5AE639D201DB75E
+#  > ACC     : 0080
 #
-# .csv to store UE's information in HSS
-# Kept in the following format: "Name,IMSI,Key,OP_Type,OP,AMF,SQN,QCI"
-#
-# Name:    Human readable name to help distinguish UE's. Ignored by the HSS
-# IMSI:    UE's IMSI value
-# Key:     UE's key, where other keys are derived from. Stored in hexadecimal
-# OP_Type: Operator's code type, either OP or OPc
-# OP/OPc:  Operator Code/Cyphered Operator Code, stored in hexadecimal
-# AMF:     Authentication management field, stored in hexadecimal
-# SQN:     UE's Sequence number for freshness of the authentication
-# QCI:     QoS Class Identifier for the UE's default bearer.
-#
-# Note: Lines starting by '#' are ignored and will be overwritten
-ue2,001010123456780,00112233445566778899aabbccddeeff,opc,63bfa50ee6523365ff14c1f45f88737d,8000,000000001234,7
-s01,901700000026198,DF9D448D6EE8677B11291B46C198EAFC,opc,9CBEA0B39812A0E01E50B6A0C705B2E6,9001,000000001001,7
+# Programming ...
+# Done !

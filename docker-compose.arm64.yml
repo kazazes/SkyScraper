@@ -152,3 +152,13 @@ services:
       - "8888:80"
     volumes:
       - "./data:/data"
+  dump1090:
+    build:
+      dockerfile: arm64.dockerfile
+      context: ./host-images/dump1090
+    container_name: dump1090
+    volumes:
+      - "./data:/data"
+    ports:
+      - "30002:30002"
+    restart: always

@@ -157,6 +157,7 @@ services:
       dockerfile: arm64.dockerfile
       context: ./host-images/dump1090
     container_name: dump1090
+    privileged: true
     volumes:
       - "./data:/data"
     ports:

@@ -146,6 +146,7 @@ services:
     build:
       context: ./host-images/dump1090
     container_name: dump1090
+    privileged: true
     volumes:
       - "resin-data:/data"
     ports:

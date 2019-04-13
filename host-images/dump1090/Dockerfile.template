@@ -22,4 +22,4 @@ RUN dpkg-buildpackage -b
 
 COPY start.sh .
 
-CMD ["./start.sh" ]
+ENTRYPOINT ["./start.sh" ]

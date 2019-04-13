@@ -22,4 +22,4 @@ RUN git checkout bladerf2 && dpkg-buildpackage -b
 
 COPY start.sh .
 
-ENTRYPOINT ["./start.sh" ]
+CMD ["./start.sh" ]

@@ -10,7 +10,7 @@ services:
       - "resin-data:/data"
     restart: always
     ports:
-      - "1883"
+      - "1883:1883"
   samba:
     container_name: samba
     build:
@@ -135,6 +135,7 @@ services:
       context: ./host-images/dump1090
     container_name: dump1090
     privileged: true
+
     volumes:
       - "resin-data:/data"
     ports:
@@ -147,6 +148,7 @@ services:
       context: ./host-images/adsb-mqtt
     depends_on:
       - mqtt
+      - dump1090
 # lte-site:
 #   build:
 #     context: ./host-images/srsLTE

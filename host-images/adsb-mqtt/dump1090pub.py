@@ -51,11 +51,11 @@ def publish():
     line = socket_file.readline()
     while line:
         try:
-            if options.console:
-                print(topic, line)
             line = line.strip()
             columns = line.split(',')
             topic = "/adsb/%s/%s" % (options.radar, columns[4])
+            if options.console:
+                print(topic, line)
             ttc.publish(topic, line)
             line = socket_file.readline()
             if options.console:

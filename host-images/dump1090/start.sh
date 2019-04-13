@@ -9,4 +9,4 @@ fi
 
 mkdir -p /data/adsb
 
-./dump1090 --fix --enable-agc --net --net-bind-address 0.0.0.0 --dcfilter
+./dump1090 --fix --enable-agc --net --dcfilter

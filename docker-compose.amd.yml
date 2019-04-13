@@ -11,7 +11,7 @@ services:
       - "./data:/data"
     restart: always
     ports:
-      - "1883"
+      - "1883:1883"
   samba:
     container_name: samba
     build:
@@ -158,3 +158,4 @@ services:
       context: ./host-images/adsb-mqtt
     depends_on:
       - mqtt
+      - dump1090

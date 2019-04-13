@@ -29,7 +29,7 @@ module.exports = {
   // Note: once you set this property, do not change it - doing so will prevent
   // node-red from being able to decrypt your existing credentials and they will be
   // lost.
-  credentialSecret: "scrapingskies2020!",
+  credentialSecret: false,
 
   // By default, all user data is stored in the Node-RED install directory. To
   // use a different location, the following property can be used
@@ -75,8 +75,8 @@ module.exports = {
     type: "credentials",
     users: [
       {
-        username: process.env.USERNAME,
-        password: process.env.PASSWORD,
+        username: process.env.NODE_RED_USERNAME,
+        password: process.env.NODE_RED_PASSWORD,
         permissions: "*",
       },
     ],
@@ -117,8 +117,8 @@ module.exports = {
   // See https://github.com/troygoode/node-cors#configuration-options for
   // details on its contents. The following is a basic permissive set of options:
   httpNodeCors: {
-     origin: "*",
-     methods: "GET,PUT,POST,DELETE"
+    origin: "*",
+    methods: "GET,PUT,POST,DELETE",
   },
 
   // If you need to set an http proxy please set an environment variable

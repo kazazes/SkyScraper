@@ -135,7 +135,6 @@ services:
       context: ./host-images/dump1090
     container_name: dump1090
     privileged: true
-
     volumes:
       - "resin-data:/data"
     ports:
@@ -149,45 +148,3 @@ services:
     depends_on:
       - mqtt
       - dump1090
-# lte-site:
-#   build:
-#     context: ./host-images/srsLTE
-#   privileged: true
-#   depends_on:
-#     - "config"
-#   volumes:
-#     - "resin-data:/data"
-#   restart: on-failure
-#   pid: host
-#   network_mode: host
-# prometheus:
-#   build:
-#     context: ./host-images/prometheus
-#   container_name: prometheus
-#   privileged: true
-#   ports:
-#     - "8888:80"
-#   volumes:
-#     - "resin-data:/data"
-#  sdrangel:
-#    build:
-#      context: "./host-images/sdrangel"
-#    container_name: sdrangel
-#    ports:
-#      - "8091:8091"
-#      - "10011:10011/udp"
-#    environment:
-#      - PULSE_SERVER=unix:/run/user/1000/pulse/native
-#      - UDP_PORT=10011
-#      - API_PORT=1880
-#      - RX_BITS=24
-#  sdrangelcli:
-#    build:
-#      context: "./host-images/sdrangelcli"
-#    container_name: "sdrangelcli"
-#    ports:
-#      - "8888:8080"
-#    environment:
-#      - UDP_PORT=10011
-#      - API_PORT=1880
-#      - RX_BITS=24

@@ -11,7 +11,6 @@ services:
     restart: always
     ports:
       - "1883:1883"
-    network_mode: host
   samba:
     container_name: samba
     build:
@@ -136,7 +135,7 @@ services:
       context: ./host-images/dump1090
     container_name: dump1090
     privileged: true
-    network_mode: host
+
     volumes:
       - "resin-data:/data"
     ports:

@@ -7,4 +7,4 @@ if [[ -v ADSB_DISABLED ]]; then
     sleep 99999d
 fi
 
-python dump1090pub.py -m ${MQTT_HOST:-127.0.0.1} -H ${DUMP1090_HOST:-127.0.0.1} -r RTL -c
+python dump1090pub.py -m mqtt -H dump1090 -r RTL -c

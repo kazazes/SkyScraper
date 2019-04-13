@@ -97,6 +97,7 @@ services:
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   datarouter:
     container_name: datarouter

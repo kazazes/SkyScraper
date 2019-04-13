@@ -53,7 +53,7 @@ def publish():
         try:
             line = line.strip()
             columns = line.split(',')
-            topic = "adsb/%s/%s" % (options.radar, columns[4])
+            topic = "/adsb/%s/%s" % (options.radar, columns[4])
             ttc.publish(topic, line)
             if options.console:
                 print(topic, line)

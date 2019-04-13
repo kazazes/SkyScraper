@@ -25,7 +25,11 @@ generate_host_dockerfile() {
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
 		amd64.dockerfile
 
-	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%BALENA_ARCH%%/armv7h/' arm64.dockerfile
+	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' \
+		-e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' \
+		-e 's/%%BALENA_ARCH%%/armv7h/' \
+		-e 's/ubuntu:cosmic/balenalib\/odroid-xu4-ubuntu:cosmic/' \
+		arm64.dockerfile
 
 	cd $PROJECT_DIR
 }
@@ -43,11 +47,11 @@ generate_base_dockerfile() {
 		amd64.dockerfile
 
 	sed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' \
-    	-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
-    	-e 's/ENV ARCH=amd64/ENV ARCH=arm64/' \
-    	-e 's/ARG ARCH=amd64/ARG ARCH=arm64/' \
-	    arm64.dockerfile
-
+		-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
+		-e 's/ENV ARCH=amd64/ENV ARCH=arm64/' \
+		-e 's/ARG ARCH=amd64/ARG ARCH=arm64/' \
+		-e 's/ubuntu:cosmic/balenalib\/odroid-xu4-ubuntu:cosmic/' \
+		arm64.dockerfile
 
 	cd $PROJECT_DIR
 }

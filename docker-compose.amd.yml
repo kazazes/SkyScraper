@@ -12,6 +12,14 @@ services:
     restart: always
     ports:
       - "1883"
+  samba:
+    container_name: samba
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/samba
+    volumes:
+      - "./data:/data"
+    network_mode: host
   netdata:
     image: skyscraperai/netdata
     container_name: netdata

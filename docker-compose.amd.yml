@@ -150,3 +150,10 @@ services:
     ports:
       - "30002:30002"
     restart: always
+  adsb-mqtt:
+    container_name: adsb-mqtt
+    build:
+      dockerfile: amd64.dockerfile
+      context: ./host-images/adsb-mqtt
+    depends_on:
+      - mqtt

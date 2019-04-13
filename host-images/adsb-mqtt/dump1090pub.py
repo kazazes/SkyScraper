@@ -51,13 +51,15 @@ def publish():
     line = socket_file.readline()
     while line:
         try:
+            if options.console:
+                print(topic, line)
             line = line.strip()
             columns = line.split(',')
             topic = "/adsb/%s/%s" % (options.radar, columns[4])
             ttc.publish(topic, line)
-            if options.console:
-                print(topic, line)
             line = socket_file.readline()
+            if options.console:
+                print('Posted to: %s' % topic)
         except IndexError:
             print('cannot parse line: %s' % line)
 
@@ -67,4 +69,3 @@ def publish():
 
 if __name__ == '__main__':
     publish()
-

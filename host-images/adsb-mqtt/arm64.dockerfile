@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-alpine-python:latest
+FROM balenalib/odroid-xu4-debian-python:latest
 
 RUN pip install paho-mqtt
 

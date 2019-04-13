@@ -1,4 +1,4 @@
-FROM balenalib/intel-nuc-alpine-python:latest
+FROM balenalib/intel-nuc-debian-python:latest
 
 RUN pip install paho-mqtt
 

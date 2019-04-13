@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine-python:latest
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-python:latest
 
 RUN pip install paho-mqtt
 

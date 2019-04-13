@@ -81,7 +81,7 @@ module.exports = {
       },
     ],
     default: {
-      permissions: "*",
+      permissions: "read",
     },
   },
 
@@ -147,10 +147,7 @@ module.exports = {
 
   functionGlobalContext: {
     process: process,
-    os: require("os"),
-    // octalbonescript:require('octalbonescript'),
-    // jfive:require("johnny-five"),
-    // j5board:require("johnny-five").Board({repl:false})
+    os: require("os")
   },
 
   // The following property can be used to order the categories in the editor
@@ -160,21 +157,21 @@ module.exports = {
   //paletteCategories: ['subflows', 'input', 'output', 'function', 'social', 'mobile', 'storage', 'analysis', 'advanced'],
   editorTheme: {
     page: {
-      title: "resin.io Node-RED",
+      title: "SkyScraper Node-RED",
       favicon: "/usr/src/app/assets/favicon.ico",
     },
     header: {
-      title: "resin.io Node-RED",
-      image: "/usr/src/app/assets/resin_logo.png", // or null to remove image
-      url: "https://resin.io",
+      title: "SkyScraper Node-RED",
+      image: "/usr/src/app/assets/logo.png", // or null to remove image
+      url: "https://skyscraper.ai",
     },
     deployButton: {
       type: "simple",
       label: "Deploy",
-      icon: "/usr/src/app/assets/favicon.ico", // or null to remove image
+      icon: "/usr/src/app/assets/favicon.ico",
     },
     login: {
-      image: "/usr/src/app/assets/resin_logo.png", // a 256x256 image
+      image: "/usr/src/app/assets/logo.png",
     },
   },
   // Configure the logging output

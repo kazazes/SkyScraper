@@ -49,18 +49,6 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
-  lte-site:
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/srsLTE
-    privileged: true
-    depends_on:
-      - "config"
-    volumes:
-      - "./data:/data"
-    restart: on-failure
-    pid: host
-    network_mode: host
   ngrok:
     links:
       - nginx:https
@@ -151,16 +139,6 @@ services:
     ports:
       - "6379"
     restart: always
-  prometheus:
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/prometheus
-    container_name: prometheus
-    privileged: true
-    ports:
-      - "8888:80"
-    volumes:
-      - "./data:/data"
   dump1090:
     build:
       dockerfile: amd64.dockerfile

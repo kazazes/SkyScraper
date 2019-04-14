@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-balenalib/odroid-xu4-ubuntu:cosmic
+FROM balenalib/odroid-xu4-ubuntu:cosmic
 RUN [ "cross-build-start" ]
 
 ENV DEBIAN_FRONTEND noninteractive

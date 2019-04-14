@@ -10,7 +10,7 @@ services:
       - "resin-data:/data"
     restart: always
     ports:
-      - "1883:1883"
+      - "1883"
   samba:
     container_name: samba
     build:
@@ -46,6 +46,17 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
+  # lte-site:
+  #   build:
+  #     context: ./host-images/srsLTE
+  #   privileged: true
+  #   depends_on:
+  #     - "config"
+  #   volumes:
+  #     - "resin-data:/data"
+  #   restart: on-failure
+  #   pid: host
+  #   network_mode: host
   ngrok:
     links:
       - nginx:https
@@ -130,6 +141,15 @@ services:
     ports:
       - "6379"
     restart: always
+  # prometheus:
+  #   build:
+  #     context: ./host-images/prometheus
+  #   container_name: prometheus
+  #   privileged: true
+  #   ports:
+  #     - "8888:80"
+  #   volumes:
+  #     - "resin-data:/data"
   dump1090:
     build:
       context: ./host-images/dump1090
@@ -139,12 +159,26 @@ services:
       - "resin-data:/data"
     ports:
       - "30002:30002"
-      - "30003:30003"
     restart: always
-  adsb-mqtt:
-    container_name: adsb-mqtt
-    build:
-      context: ./host-images/adsb-mqtt
-    depends_on:
-      - mqtt
-      - dump1090
+#  sdrangel:
+#    build:
+#      context: "./host-images/sdrangel"
+#    container_name: sdrangel
+#    ports:
+#      - "8091:8091"
+#      - "10011:10011/udp"
+#    environment:
+#      - PULSE_SERVER=unix:/run/user/1000/pulse/native
+#      - UDP_PORT=10011
+#      - API_PORT=1880
+#      - RX_BITS=24
+#  sdrangelcli:
+#    build:
+#      context: "./host-images/sdrangelcli"
+#    container_name: "sdrangelcli"
+#    ports:
+#      - "8888:8080"
+#    environment:
+#      - UDP_PORT=10011
+#      - API_PORT=1880
+#      - RX_BITS=24

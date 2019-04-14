@@ -7,7 +7,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
   apt-get install -y --no-install-recommends cmake libfftw3-dev libmbedtls-dev \
   libconfig++-dev libsctp-dev libboost-all-dev libqwt-dev libqt4-dev libmbedtls10 \
-  libsctp1 sudo iptables
+  libsctp1
 
 WORKDIR /src
 

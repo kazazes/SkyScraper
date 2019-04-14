@@ -1,28 +1,25 @@
-FROM alpine:latest
+FROM ubuntu:cosmic
 
-# rtl-sdr
-RUN apk add libusb git build-base cmake libusb-dev
-RUN git clone git://git.osmocom.org/rtl-sdr.git /tmp/rtl-sdr
-RUN mkdir /tmp/rtl-sdr/build
-WORKDIR /tmp/rtl-sdr/build
-RUN cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-RUN make
-RUN make install
+RUN apt-get update && \
+  apt-get install -y software-properties-common
 
-# dump1090
-RUN git clone https://github.com/flightaware/dump1090.git /tmp/dump1090
-WORKDIR /tmp/dump1090
-RUN apk add ncurses-dev
-RUN make BLADERF=no
-RUN cp dump1090 view1090 /usr/local/bin/
+RUN  add-apt-repository ppa:bladerf/bladerf && \
+  apt-get update && \
+  apt-get install -y \
+  bladerf \
+  libbladerf-dev \
+  librtlsdr-dev \
+  git \
+  build-essential \
+  pkg-config \
+  dh-systemd \
+  libncurses5-dev
 
-# re-create the image without all of the build tools/artefacts
-FROM alpine:latest
-RUN apk add --no-cache libusb ncurses-libs
-COPY --from=0 /usr/local/bin/* /usr/local/bin/
-COPY --from=0 /etc/udev/rules.d/rtl-sdr.rules /etc/udev/rules.d/rtl-sdr.rules
-COPY --from=0 /usr/local/lib/librtlsdr* /usr/local/lib/
+RUN git clone https://github.com/elafargue/dump1090 /dump1090
+WORKDIR /dump1090
 
-# Just expose the BEAST output port
-CMD dump1090 --net --quiet --fix
-EXPOSE 30005
+RUN git checkout bladerf2 && dpkg-buildpackage -b
+
+COPY start.sh .
+
+ENTRYPOINT ["./start.sh" ]

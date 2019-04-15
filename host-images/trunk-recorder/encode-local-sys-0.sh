@@ -12,16 +12,16 @@ system=${SHORTNAME}
 
 # Hack the JSON to add play length and source
 len=$(soxi -D $filename)
+lame --preset voice $filename $mp3encoded
 
 head -n-2 $json >$json.new
 echo "\"duration\": $len," >>$json.new
 echo "\"source\": 0," >>$json.new
 echo "\"system\": \"$system\"," >>$json.new
 echo "\"audioPath\": \"$mp3encoded\"," >>$json.new
+echo "\"wavPath\": \"$basename.wav\"," >> $json.new
 tail -n2 $json >>$json.new
 mv $json.new $json
-
-lame --preset voice $filename $mp3encoded
 
 chmod -R 755 $json
 chmod -R 755 $mp3encoded

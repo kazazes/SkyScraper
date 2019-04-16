@@ -3,21 +3,16 @@ volumes:
   resin-data: {}
 services:
   mqtt:
-    image:
+    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/mqtt
     volumes:
       - "./data:/data"
     restart: always
     ports:
       - "1883"
   samba:
+    image: gcr.io/methodical-tea-237508/skyscraperai/samba:latest
     container_name: samba
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/samba
     volumes:
       - "./data:/data"
     network_mode: host
@@ -37,9 +32,7 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   trunk-recorder:
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/trunk-recorder
+    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
     privileged: true
     depends_on:
       - "config"
@@ -51,12 +44,10 @@ services:
       - MQTT_HOST=mqtt
     restart: on-failure
   ngrok:
+    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
     links:
       - nginx:https
     container_name: ngrok
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/ngrok
     privileged: false
     depends_on:
       - nginx
@@ -69,10 +60,8 @@ services:
     volumes:
       - "./data:/data"
   manager:
+    image: gcr.io/methodical-tea-237508/skyscraperai/manager:latest
     container_name: manager
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/manager
     volumes:
       - "./data:/data"
     ports:
@@ -87,10 +76,8 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   datarouter:
+    image: gcr.io/methodical-tea-237508/skyscraperai/data-router:latest
     container_name: datarouter
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/data-router
     volumes:
       - "./data:/data"
     ports:
@@ -102,15 +89,13 @@ services:
     depends_on:
       - redis
   nginx:
+    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
     container_name: nginx
     depends_on:
       - manager
       - nodered
       - netdata
       - datarouter
-    build:
-      dockerfile: amd64.dockerfile
-      context: host-images/nginx
     ports:
       - "80:80"
       - "443:443"
@@ -118,6 +103,7 @@ services:
     volumes:
       - "./data:/data"
   nodered:
+    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
     build:
       dockerfile: amd64.dockerfile
@@ -139,9 +125,7 @@ services:
       - "6379"
     restart: always
   dump1090:
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/dump1090
+    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: dump1090
     privileged: true
     volumes:

@@ -3,19 +3,16 @@ volumes:
   resin-data: {}
 services:
   mqtt:
-    image:
+    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
-    build:
-      context: ./host-images/mqtt
     volumes:
       - "resin-data:/data"
     restart: always
     ports:
       - "1883"
   samba:
+    image: gcr.io/methodical-tea-237508/skyscraperai/samba:latest
     container_name: samba
-    build:
-      context: ./host-images/samba
     volumes:
       - "resin-data:/data"
     network_mode: host
@@ -35,8 +32,7 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   trunk-recorder:
-    build:
-      context: ./host-images/trunk-recorder
+    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
     privileged: true
     depends_on:
       - "config"
@@ -59,11 +55,10 @@ services:
   #   pid: host
   #   network_mode: host
   ngrok:
+    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
     links:
       - nginx:https
     container_name: ngrok
-    build:
-      context: ./host-images/ngrok
     privileged: false
     depends_on:
       - nginx
@@ -76,9 +71,8 @@ services:
     volumes:
       - "resin-data:/data"
   manager:
+    image: gcr.io/methodical-tea-237508/skyscraperai/manager:latest
     container_name: manager
-    build:
-      context: ./host-images/manager
     volumes:
       - "resin-data:/data"
     ports:
@@ -93,9 +87,8 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   datarouter:
+    image: gcr.io/methodical-tea-237508/skyscraperai/data-router:latest
     container_name: datarouter
-    build:
-      context: ./host-images/data-router
     volumes:
       - "resin-data:/data"
     ports:
@@ -107,14 +100,13 @@ services:
     depends_on:
       - redis
   nginx:
+    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
     container_name: nginx
     depends_on:
       - manager
       - nodered
       - netdata
       - datarouter
-    build:
-      context: host-images/nginx
     ports:
       - "80:80"
       - "443:443"
@@ -122,6 +114,7 @@ services:
     volumes:
       - "resin-data:/data"
   nodered:
+    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
     build:
       context: ./host-images/node-red
@@ -151,8 +144,7 @@ services:
   #   volumes:
   #     - "resin-data:/data"
   dump1090:
-    build:
-      context: ./host-images/dump1090
+    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: dump1090
     privileged: true
     volumes:

@@ -1,7 +1,3 @@
-## CI/CD Process
-
-![CI/CD](/docs/CD.png)
-
 ## Generate dockerfiles for arm64 and x86
 
 ```bash

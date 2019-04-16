@@ -1,0 +1,158 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/adsb-mqtt:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/adsb-mqtt:latest', './host-images/adsb-mqtt']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/adsb-mqtt:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/certbot:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/certbot:latest', './host-images/certbot']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/certbot:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', './host-images/config']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest', './host-images/data-router']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', './host-images/datadog']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/debugger:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/debugger:latest', './host-images/debugger']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/debugger:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', './host-images/dump1090']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest', './host-images/manager']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', './host-images/mqtt']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', './host-images/nginx']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', './host-images/ngrok']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', './host-images/node-red']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/openvpn:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/openvpn:latest', './host-images/openvpn']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/openvpn:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/postgres:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/postgres:latest', './host-images/postgres']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/postgres:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/prometheus:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/prometheus:latest', './host-images/prometheus']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/prometheus:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/rabbitmq:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/rabbitmq:latest', './host-images/rabbitmq']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/rabbitmq:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', './host-images/redis']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', './host-images/samba']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangel:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangel:latest', './host-images/sdrangel']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangel:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangelcli:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangelcli:latest', './host-images/sdrangelcli']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangelcli:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/srsLTE:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/srsLTE:latest', './host-images/srsLTE']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/srsLTE:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-player:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-player:latest', './host-images/trunk-player']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-player:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', './host-images/trunk-recorder']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/watchdog:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/watchdog:latest', './host-images/watchdog']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/watchdog:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/webrx:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/webrx:latest', './host-images/webrx']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/webrx:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest' '-t', 'gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', './host-images/wifi-connect']
+    timeout: 1200s
+    waitFor: ['-']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest']
+images: ['gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', 'gcr.io/methodical-tea-237508/skyscraperai/webrx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/watchdog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-player:latest', 'gcr.io/methodical-tea-237508/skyscraperai/srsLTE:latest', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangelcli:latest', 'gcr.io/methodical-tea-237508/skyscraperai/sdrangel:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', 'gcr.io/methodical-tea-237508/skyscraperai/rabbitmq:latest', 'gcr.io/methodical-tea-237508/skyscraperai/prometheus:latest', 'gcr.io/methodical-tea-237508/skyscraperai/postgres:latest', 'gcr.io/methodical-tea-237508/skyscraperai/openvpn:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/debugger:latest', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', 'gcr.io/methodical-tea-237508/skyscraperai/certbot:latest', 'gcr.io/methodical-tea-237508/skyscraperai/adsb-mqtt:latest', ]

@@ -20,18 +20,19 @@ function generate_cloudbuild() {
     echo "steps:" > $YAML
     for D in ./host-images/*; do
 		if [[ -d "${D}" ]]; then
-		    IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/$(basename ${D}):latest
+		    BASENAME=$(basename ${D} | awk '{print tolower($0)}')
+		    IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest
 		    IMAGES="'$IMAGE_URI', $IMAGES"
             echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
-            echo -e "  args: ['build', '--cache-from', '${IMAGE_URI}' '-t', '${IMAGE_URI}', '${D}']" >> $YAML
-            echo -e "  timeout: 1200s" >> $YAML
-            echo -e "  waitFor: ['-']" >> $YAML
+            echo -e "  args: ['build', '--cache-from', '${IMAGE_URI}', '-t', '${IMAGE_URI}', '-f', '${D}/amd64.dockerfile', '${D}']" >> $YAML
+            echo -e "  timeout: 600s" >> $YAML
+#            echo -e "  waitFor: ['-']" >> $YAML
             echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
             echo -e "  args: ['push', '${IMAGE_URI}']" >> $YAML
 		fi
 	done
 
-	echo -e "images: [$IMAGES]" >> $YAML
+#	echo -e "images: [$IMAGES]" >> $YAML
 #
 #	for D in ./base-images/*; do
 #		if [[ -d "${D}" ]]; then

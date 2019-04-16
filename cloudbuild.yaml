@@ -49,4 +49,4 @@ steps:
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest']
-timeout: 1800s
+timeout: 3600s

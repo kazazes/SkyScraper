@@ -21,4 +21,5 @@ lame --preset voice $filename $mp3encoded
 chmod -R 755 $json
 chmod -R 755 $mp3encoded
 
-mosquitto_pub -h $MQTT_HOST -f $json -t trunk-recorder/system/$system
+mosquitto_pub -h $MQTT_HOST -p $MQTT_PORT -t trunk-recorder/system/$system -f $json --capath /etc/ssl/certs/ \
+    -u "$MQTT_USER" -P "$MQTT_PASSWORD"

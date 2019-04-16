@@ -25,13 +25,14 @@ function generate_cloudbuild() {
 		    IMAGES="'$IMAGE_URI', $IMAGES"
             echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
             echo -e "  args: ['build', '--cache-from', '${IMAGE_URI}', '-t', '${IMAGE_URI}', '-f', '${D}/amd64.dockerfile', '${D}']" >> $YAML
-            echo -e "  timeout: 600s" >> $YAML
+            echo -e "  timeout: 1200s" >> $YAML
 #            echo -e "  waitFor: ['-']" >> $YAML
             echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
             echo -e "  args: ['push', '${IMAGE_URI}']" >> $YAML
 		fi
 	done
 
+    echo -e "timeout: 1800s" >> $YAML
 #	echo -e "images: [$IMAGES]" >> $YAML
 #
 #	for D in ./base-images/*; do

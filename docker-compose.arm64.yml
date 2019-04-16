@@ -3,6 +3,7 @@ volumes:
   resin-data: {}
 services:
   mqtt:
+    image:
     container_name: mqtt
     build:
       dockerfile: arm64.dockerfile
@@ -61,10 +62,8 @@ services:
       - nginx
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   config:
+    image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
     container_name: config
-    build:
-      dockerfile: arm64.dockerfile
-      context: ./host-images/config
     network_mode: host
     restart: "on-failure"
     volumes:

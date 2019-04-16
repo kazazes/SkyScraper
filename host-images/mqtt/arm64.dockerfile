@@ -8,7 +8,8 @@ RUN apk update && \
     libuuid \
     libwebsockets \
     musl \
-    mosquitto
+    mosquitto \
+    ca-certificates
 
 # Set up the mosquitto directories and the mosquitto user
 RUN mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && \

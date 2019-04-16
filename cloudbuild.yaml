@@ -1,49 +1,109 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/config:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', '-f', './host-images/config/amd64.dockerfile', './host-images/config']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/data-router:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest', '-f', './host-images/data-router/amd64.dockerfile', './host-images/data-router']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/data-router:latest']
 - name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-f', './host-images/dump1090/amd64.dockerfile', './host-images/dump1090']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/manager:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest', '-f', './host-images/manager/amd64.dockerfile', './host-images/manager']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/manager:latest']
 - name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '-f', './host-images/mqtt/amd64.dockerfile', './host-images/mqtt']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/nginx:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '-f', './host-images/nginx/amd64.dockerfile', './host-images/nginx']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest']
 - name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '-f', './host-images/ngrok/amd64.dockerfile', './host-images/ngrok']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/node-red:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '-f', './host-images/node-red/amd64.dockerfile', './host-images/node-red']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest']
 - name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/samba:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-f', './host-images/samba/amd64.dockerfile', './host-images/samba']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+    - '-c'
+    - |
+      docker pull gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '-f', './host-images/trunk-recorder/amd64.dockerfile', './host-images/trunk-recorder']
   timeout: 1200s

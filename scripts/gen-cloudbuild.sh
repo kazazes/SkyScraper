@@ -23,6 +23,12 @@ function generate_cloudbuild() {
 		    BASENAME=$(basename ${D} | awk '{print tolower($0)}')
 		    IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest
 		    IMAGES="'$IMAGE_URI', $IMAGES"
+		    echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
+            echo -e "  entrypoint: 'bash'" >> $YAML
+            echo -e "  args:" >> $YAML
+            echo -e "  - '-c'" >> $YAML
+            echo -e "  - |" >> $YAML
+            echo -e "    docker pull ${IMAGE_URI} || exit 0" >> $YAML
             echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
             echo -e "  args: ['build', '--cache-from', '${IMAGE_URI}', '-t', '${IMAGE_URI}', '-f', '${D}/amd64.dockerfile', '${D}']" >> $YAML
             echo -e "  timeout: 1200s" >> $YAML
@@ -32,7 +38,7 @@ function generate_cloudbuild() {
 		fi
 	done
 
-    echo -e "timeout: 1800s" >> $YAML
+    echo -e "timeout: 3600s" >> $YAML
 #	echo -e "images: [$IMAGES]" >> $YAML
 #
 #	for D in ./base-images/*; do

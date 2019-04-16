@@ -43,17 +43,6 @@ services:
       - SHORTNAME=SFPD
       - MQTT_HOST=mqtt
     restart: on-failure
-  # lte-site:
-  #   build:
-  #     context: ./host-images/srsLTE
-  #   privileged: true
-  #   depends_on:
-  #     - "config"
-  #   volumes:
-  #     - "resin-data:/data"
-  #   restart: on-failure
-  #   pid: host
-  #   network_mode: host
   ngrok:
     image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
     links:
@@ -71,7 +60,7 @@ services:
     volumes:
       - "resin-data:/data"
   manager:
-    image: gcr.io/methodical-tea-237508/skyscraperai/manager:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
     container_name: manager
     volumes:
       - "resin-data:/data"
@@ -87,7 +76,7 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   datarouter:
-    image: gcr.io/methodical-tea-237508/skyscraperai/data-router:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
     volumes:
       - "resin-data:/data"
@@ -116,8 +105,6 @@ services:
   nodered:
     image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
-    build:
-      context: ./host-images/node-red
     volumes:
       - "resin-data:/data"
     ports:
@@ -126,23 +113,15 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: redis
-    command: redis-server --appendonly yes
+    image: bitnami/redis:latest
     container_name: redis
     volumes:
       - "resin-data:/data"
     ports:
       - "6379"
     restart: always
-  # prometheus:
-  #   build:
-  #     context: ./host-images/prometheus
-  #   container_name: prometheus
-  #   privileged: true
-  #   ports:
-  #     - "8888:80"
-  #   volumes:
-  #     - "resin-data:/data"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
   dump1090:
     image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: dump1090
@@ -152,25 +131,3 @@ services:
     ports:
       - "30002:30002"
     restart: always
-#  sdrangel:
-#    build:
-#      context: "./host-images/sdrangel"
-#    container_name: sdrangel
-#    ports:
-#      - "8091:8091"
-#      - "10011:10011/udp"
-#    environment:
-#      - PULSE_SERVER=unix:/run/user/1000/pulse/native
-#      - UDP_PORT=10011
-#      - API_PORT=1880
-#      - RX_BITS=24
-#  sdrangelcli:
-#    build:
-#      context: "./host-images/sdrangelcli"
-#    container_name: "sdrangelcli"
-#    ports:
-#      - "8888:8080"
-#    environment:
-#      - UDP_PORT=10011
-#      - API_PORT=1880
-#      - RX_BITS=24

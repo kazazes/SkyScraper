@@ -7,13 +7,6 @@ PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
 
 set -e
 
-echo
-echo ===
-echo === If running on macOS, run
-echo === brew install gnu-sed
-echo ===
-
-
 function generate_cloudbuild() {
     YAML=${PROJECT_DIR}/cloudbuild.yaml
 
@@ -39,12 +32,6 @@ function generate_cloudbuild() {
 	done
 
     echo -e "timeout: 3600s" >> $YAML
-#	echo -e "images: [$IMAGES]" >> $YAML
-#
-#	for D in ./base-images/*; do
-#		if [[ -d "${D}" ]]; then
-#
-#		fi
-#	done
+	echo -e "images: [$IMAGES]" >> $YAML
 }
 generate_cloudbuild

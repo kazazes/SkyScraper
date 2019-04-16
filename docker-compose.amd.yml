@@ -60,7 +60,7 @@ services:
     volumes:
       - "./data:/data"
   manager:
-    image: gcr.io/methodical-tea-237508/skyscraperai/manager:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
     container_name: manager
     volumes:
       - "./data:/data"
@@ -76,7 +76,7 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   datarouter:
-    image: gcr.io/methodical-tea-237508/skyscraperai/data-router:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
     volumes:
       - "./data:/data"
@@ -105,9 +105,6 @@ services:
   nodered:
     image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
-    build:
-      dockerfile: amd64.dockerfile
-      context: ./host-images/node-red
     volumes:
       - "./data:/data"
     ports:
@@ -116,14 +113,15 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: redis
-    command: redis-server --appendonly yes
+    image: bitnami/redis:latest
     container_name: redis
     volumes:
       - "./data:/data"
     ports:
       - "6379"
     restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
   dump1090:
     image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: dump1090

@@ -1,4 +1,4 @@
-FROM balenalib/odroid-xu4-python:3-slim
+FROM balenalib/odroid-xu4-python:3
 
 ENV CF_EMAIL peter@peterk.co
 

@@ -1,4 +1,4 @@
-FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-slim
+FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3
 
 ENV CF_EMAIL peter@peterk.co
 

@@ -40,11 +40,6 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '-f', './host-images/redis/amd64.dockerfile', './host-images/redis']
-  timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest']
-- name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-f', './host-images/samba/amd64.dockerfile', './host-images/samba']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'

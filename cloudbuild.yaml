@@ -1,4 +1,7 @@
 steps:
+- name: 'gcr.io/$PROJECT_ID/slackbot'
+  args: [ '--build', '$BUILD_ID',
+          '--webhook', 'https://hooks.slack.com/services/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SLACK_WEBHOOK' ]
 - name: 'gcr.io/cloud-builders/docker'
   entrypoint: 'bash'
   args:

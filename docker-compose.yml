@@ -119,7 +119,7 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
     container_name: redis
     ports:
       - "6379:6379"
@@ -133,3 +133,16 @@ services:
     ports:
       - "30002:30002"
     restart: always
+  datadog:
+    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:latest
+    privileged: true
+    restart: always
+    pid: "host"
+    network_mode: "host"
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'
+    environment:
+      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
+      - DD_PROCESS_AGENT_ENABLED=true
+

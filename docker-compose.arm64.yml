@@ -113,15 +113,14 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: bitnami/redis:latest
+    image: redis
+    command: redis-server --appendonly yes
     container_name: redis
     volumes:
       - "./data:/data"
     ports:
       - "6379"
     restart: always
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
   dump1090:
     image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: dump1090

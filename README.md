@@ -1,4 +1,28 @@
-## Generate dockerfiles for arm64 and x86
+## Directory structure
+
+```
+.
+├── Dockerfiles - Consolidated by architecture
+│   ├── ARM
+│   └── x86
+├── base-images - Base images from which others are built
+│   ├── netdata
+│   ├── sdr-ubuntu
+│   └── trunk-recorder
+├── edge-images - The actual application containers
+│   ├── config
+│   ├── datadog
+│   ├── dump1090
+│   ├── mqtt
+│   ├── nginx
+│   ├── ngrok
+│   ├── node-red
+│   ├── redis
+│   └── samba
+└── scripts
+```
+
+## Generate multi-arch dockerfiles
 
 ```bash
 ./scripts/gen-dockerfiles.sh
@@ -7,15 +31,11 @@
 ### Build docker images locally
 
 ```bash
-./scripts/docker-build.sh
-```
-
-### Fetch Google Cloud Build images, sync with Docker Hub
-
-```bash
-./scripts/sync-containers.sh
+docker-compose -f docker-compose.amd.yml build --parallel
 ```
 
 ## Meta
+
+***[SkyScraper](https://skyscraper.ai)***
 
 **Peter Kazazes** – [@pkpolls](https://twitter.com/pkpolls)

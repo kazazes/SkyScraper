@@ -1,11 +1,11 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 # author  : paulfantom
 
-# Cross-arch building is achieved by specifying ARCH as a build parameter with `--build-arg` option.
+# Cross-arch building is achieved by specifying ARCH_ALIAS as a build parameter with `--build-arg` option.
 # It is automated in `build.sh` script
-ARG ARCH=arm64
+ARG ARCH_ALIAS=armhf
 # This image contains preinstalled dependecies
-FROM netdata/builder:${ARCH} as builder
+FROM netdata/builder:${ARCH_ALIAS} as builder
 
 # Copy source
 COPY src /opt/netdata.git
@@ -35,7 +35,7 @@ RUN mkdir -p /app/usr/sbin/ \
 #####################################################################
 ARG ARCH
 # This image contains preinstalled dependecies
-FROM netdata/base:${ARCH}
+FROM netdata/base:${ARCH_ALIAS}
 
 # Conditional subscribiton to Polyverse's Polymorphic Linux repositories
 RUN if [ "$(uname -m)" == "x86_64" ]; then \

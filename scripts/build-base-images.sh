@@ -9,7 +9,7 @@ HUB_NAMEPSACE=skyscraperai
 docker_build() {
     cd $1
     ARCH=$2
-    echo -e "Building $HUB_NAMEPSACE/$BASENAME:$ARCH\n\n"
+    echo -e "Building $HUB_NAMEPSACE/$BASENAME:$ARCH\n"
     docker build --pull -f $ARCH.dockerfile -t $HUB_NAMEPSACE/$BASENAME:$ARCH .
     docker push $HUB_NAMEPSACE/$BASENAME:$ARCH
     cd $PROJECT_DIR
@@ -33,8 +33,6 @@ push_manifest() {
 
 echo -e "\nBuilding base images for amd and arm.\n"
 
-
-
 if [[ $# -eq 0 ]]; then
     for D in ./base-images/*; do
         if [[ -d "${D}" ]]; then
@@ -49,7 +47,7 @@ if [[ $# -eq 0 ]]; then
 else
 		    D=./base-images/$1
 			BASENAME=$(basename ${D})
-#            docker_build ${D} arm64
+            docker_build ${D} arm64
             docker_build ${D} amd64
             create_manifest ${D}
             annotate_manifest ${D}

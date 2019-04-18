@@ -1,3 +1,5 @@
+# Generate platform-specific dockerfiles from dockerfile.template files.
+
 #! /bin/bash
 
 cd "$(dirname "$0")"/..
@@ -14,17 +16,19 @@ echo === brew install gnu-sed
 echo ===
 
 generate_host_dockerfile() {
-	echo "Host image: $(basename ${1})."
+	echo "Edge image: $(basename ${1})."
 	cd $1
 	cp Dockerfile.template amd64.dockerfile
 	cp Dockerfile.template arm64.dockerfile
 
+    # x86 compose file
 	sed -i -e 's/%%BALENA_MACHINE_NAME%%/intel-nuc/' \
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
 		amd64.dockerfile
 
+    # armhf compose file
 	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%BALENA_ARCH%%/armv7h/' arm64.dockerfile
 
 	cd $PROJECT_DIR
@@ -46,8 +50,8 @@ generate_base_dockerfile() {
     	-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
     	-e 's/ENV ARCH=amd64/ENV ARCH=arm64/' \
     	-e 's/ARG ARCH=amd64/ARG ARCH=arm64/' \
+    	-e 's/ARG ARCH_ALIAS=amd64/ARG ARCH_ALIAS=armhf/' \
 	    arm64.dockerfile
-
 
 	cd $PROJECT_DIR
 }
@@ -59,11 +63,18 @@ function generate_compose() {
 	sed -i \
 		-e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 		-e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" \
-		# -e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
+        -e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.amd.yml
+
+	sed -i \
+	    -E 's,image: gcr.io\/methodical-tea-237508\/skyscraperai\/(.*[^backend][^trunk-recorder]):latest,build:\n        dockerfile: amd64.dockerfile\n        context: edge-images\/\1,' \
+	    docker-compose.amd.yml
+
 	sed -i -e 's/#.*$//' \
-		-e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" -e "s/build:/build:\n      dockerfile: arm64.dockerfile/g" \
-		-e 's/datadog:/datadog:\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
+		-e 's/ *$//; /^$/d;' \
+		-e "s/\"resin-data:\/data/\".\/data:\/data/g" \
+		-e "s/build:/build:\n      dockerfile: arm64.dockerfile/g" \
+        -e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.arm64.yml
 }
 

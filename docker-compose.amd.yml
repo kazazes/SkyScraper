@@ -3,14 +3,23 @@ volumes:
   resin-data: {}
 services:
   config:
-    image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/config
     container_name: config
     network_mode: host
     restart: "on-failure"
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
   datadog:
-    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/datadog
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
     privileged: true
     restart: always
     pid: "host"
@@ -25,7 +34,7 @@ services:
     image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - "4000:4000"
     environment:
@@ -46,11 +55,13 @@ services:
     depends_on:
       - redis
   dump1090:
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/dump1090
     container_name: dump1090
     privileged: true
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - "30002:30002"
     restart: always
@@ -59,7 +70,7 @@ services:
     container_name: mqtt
     user: root
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     restart: always
     ports:
       - "1883"
@@ -91,12 +102,12 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
   nodered:
     image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - "1880:1880"
     environment:
@@ -115,7 +126,7 @@ services:
     image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
     container_name: manager
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     ports:
       - "3000:3000"
     environment:
@@ -128,7 +139,9 @@ services:
       - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   redis:
-    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/redis
     container_name: redis
     command: redis-server --appendonly yes
     ports:
@@ -140,9 +153,8 @@ services:
     depends_on:
       - "config"
     volumes:
-      - "resin-data:/data"
+      - "./data:/data"
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
     restart: on-failure
-

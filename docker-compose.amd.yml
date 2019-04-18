@@ -139,4 +139,24 @@ services:
     privileged: true
     labels:
       io.balena.features.balena-socket: '1'
-    command: "portainer --admin-password $$2y$$05$$KPaHvzT/lom.XYVR/KzUkewmIaAypH9zM/m0.2RLQHjYsWKrtPkCC --data /data/portainer"
+    command: "--admin-password $$2y$$05$$KPaHvzT/lom.XYVR/KzUkewmIaAypH9zM/m0.2RLQHjYsWKrtPkCC --data /data/portainer"
+  datadog:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
+    build:
+      dockerfile: amd64.dockerfile gcr.io/methodical-tea-237508/skyscraperai/datadog:
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/latest
+    privileged: true
+    restart: always
+    pid: "host"
+    network_mode: "host"
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'

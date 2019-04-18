@@ -11,12 +11,6 @@ services:
     restart: always
     ports:
       - "1883"
-#  samba:
-#    image: gcr.io/methodical-tea-237508/skyscraperai/samba:latest
-#    container_name: samba
-#    volumes:
-#      - "resin-data:/data"
-#    network_mode: host
   netdata:
     image: skyscraperai/netdata
     container_name: netdata
@@ -42,7 +36,6 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
-      - MQTT_HOST=mqtt
     restart: on-failure
   ngrok:
     image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
@@ -126,13 +119,8 @@ services:
       - NODE_ENV=production
     restart: always
   redis:
-    image: registry.hub.docker.com/library/redis
-    command: redis-server --appendonly yes
-    user: root
-    privileged: true
+    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
     container_name: redis
-    volumes:
-      - "resin-data:/data"
     ports:
       - "6379:6379"
     restart: always
@@ -145,24 +133,3 @@ services:
     ports:
       - "30002:30002"
     restart: always
-  portainer:
-    container_name: portainer
-    image: portainer/portainer
-    ports:
-      - "9000:9000"
-    privileged: true
-    labels:
-      io.balena.features.balena-socket: '1'
-    command: "--admin-password $$2y$$05$$KPaHvzT/lom.XYVR/KzUkewmIaAypH9zM/m0.2RLQHjYsWKrtPkCC --data /data/portainer"
-  datadog:
-    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:latest
-    privileged: true
-    restart: always
-    pid: "host"
-    network_mode: "host"
-    labels:
-      io.balena.features.dbus: '1'
-      io.balena.features.balena-socket: '1'
-    environment:
-      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
-      - DD_PROCESS_AGENT_ENABLED=true

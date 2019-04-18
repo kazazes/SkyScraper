@@ -130,3 +130,12 @@ services:
     ports:
       - "30002:30002"
     restart: always
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    ports:
+      - "9000:9000"
+    privileged: true
+    labels:
+      io.balena.features.balena-socket: '1'
+    command: "portainer --admin-password $$2y$$05$$KPaHvzT/lom.XYVR/KzUkewmIaAypH9zM/m0.2RLQHjYsWKrtPkCC --data /data/portainer"

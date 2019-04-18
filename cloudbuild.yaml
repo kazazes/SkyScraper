@@ -18,6 +18,17 @@ steps:
   args:
   - '-c'
   - |
+    docker pull gcr.io/methodical-tea-237508/skyscraperai/datadog:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '-f', './host-images/datadog/amd64.dockerfile', './host-images/datadog']
+  timeout: 1200s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
     docker pull gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-f', './host-images/dump1090/amd64.dockerfile', './host-images/dump1090']
@@ -91,4 +102,4 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest']
 timeout: 3600s
-images: ['gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', ]
+images: ['gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', ]

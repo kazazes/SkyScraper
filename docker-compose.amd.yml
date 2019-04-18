@@ -11,12 +11,6 @@ services:
     restart: always
     ports:
       - "1883"
-  samba:
-    image: gcr.io/methodical-tea-237508/skyscraperai/samba:latest
-    container_name: samba
-    volumes:
-      - "./data:/data"
-    network_mode: host
   netdata:
     image: skyscraperai/netdata
     container_name: netdata
@@ -87,6 +81,10 @@ services:
       - NODE_ENV=production
       - GRAPHQL_PORT=4000
       - MQTT_PORT=1883
+      - REDIS_HOST=redis
+      - MQTT_HOST=mqtt.skyscraper.ai
+      - MQTT_USER=edge
+      - MQTT_PASSWORD=Ur6yANnx@ZD
     depends_on:
       - redis
   nginx:
@@ -116,6 +114,8 @@ services:
   redis:
     image: registry.hub.docker.com/library/redis
     command: redis-server --appendonly yes
+    user: root
+    privileged: true
     container_name: redis
     volumes:
       - "./data:/data"
@@ -146,8 +146,7 @@ services:
       - /run/dbus:/host/run/dbus
       - /proc/:/host/proc/
       - /sys/fs/cgroup/:/host/sys/fs/cgroup/
-    build:
-      dockerfile: amd64.dockerfile gcr.io/methodical-tea-237508/skyscraperai/datadog:
+    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /run/dbus:/host/run/dbus
@@ -160,3 +159,5 @@ services:
     labels:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
+    environment:
+      - DATADOG_API_KEY=620ab404151e7eced0c32128e1e740f05453f338

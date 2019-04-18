@@ -9,9 +9,8 @@ RUN apk add --no-cache \
 	# add tzdata for https://github.com/docker-library/redis/issues/138
 	tzdata
 
-ENV REDIS_VERSION 5.0.1
-ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-5.0.1.tar.gz
-ENV REDIS_DOWNLOAD_SHA 82a67c0eec97f9ad379384c30ec391b269e17a3e4596393c808f02db7595abcb
+ENV REDIS_VERSION 5.0.4
+ENV REDIS_DOWNLOAD_URL http://download.redis.io/releases/redis-5.0.4.tar.gz
 
 # for redis-sentinel see: http://redis.io/topics/sentinel
 RUN set -ex; \
@@ -26,7 +25,6 @@ RUN set -ex; \
 	; \
 	\
 	wget -O redis.tar.gz "$REDIS_DOWNLOAD_URL"; \
-	echo "$REDIS_DOWNLOAD_SHA *redis.tar.gz" | sha256sum -c -; \
 	mkdir -p /usr/src/redis; \
 	tar -xzf redis.tar.gz -C /usr/src/redis --strip-components=1; \
 	rm redis.tar.gz; \

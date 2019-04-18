@@ -117,7 +117,7 @@ services:
     command: redis-server --appendonly yes
     container_name: redis
     volumes:
-      - "./data:/data"
+      - "resin-data:/data"
     ports:
       - "6379"
     restart: always

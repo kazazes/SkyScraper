@@ -85,12 +85,20 @@ services:
       - "4000:4000"
     environment:
       - NODE_ENV=production
+      - ENABLE_UPLOAD=true
+      - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
+      - GCP_PROJECT_ID=methodical-tea-237508
+      - GCP_REGION=us-central1
+      - GOOGLE_APPLICATION_CREDENTIALS=/Users/pk/.gcp-skyscraper.json
       - GRAPHQL_PORT=4000
-      - MQTT_PORT=1883
-      - REDIS_HOST=redis
       - MQTT_HOST=mqtt.skyscraper.ai
-      - MQTT_USER=edge
       - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PORT=1883
+      - MQTT_USER=edge
+      - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
+      - PRISMA_SECRET=scrapingskies
+      - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
+      - REDIS_HOST=redis
     depends_on:
       - redis
   nginx:
@@ -126,7 +134,7 @@ services:
     volumes:
       - "resin-data:/data"
     ports:
-      - "6379"
+      - "6379:6379"
     restart: always
   dump1090:
     image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
@@ -156,4 +164,5 @@ services:
       io.balena.features.dbus: '1'
       io.balena.features.balena-socket: '1'
     environment:
-      - DATADOG_API_KEY=620ab404151e7eced0c32128e1e740f05453f338
+      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
+      - DD_PROCESS_AGENT_ENABLED=true

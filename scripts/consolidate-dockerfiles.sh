@@ -30,7 +30,7 @@ function copy_ARM() {
     rm $OUT_PATH/Dockerfile.template $OUT_PATH/amd64.dockerfile
 }
 
-for D in ./host-images/*; do
+for D in ./edge-images/*; do
     if [ -d "${D}" ]; then
         copy_x86 ${D}
         copy_ARM ${D}

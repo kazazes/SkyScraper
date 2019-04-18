@@ -17,7 +17,7 @@ bust_caches() {
   cd $PROJECT_DIR
 }
 
-for D in ./host-images/*; do
+for D in ./edge-images/*; do
   if [ -d "${D}" ]; then
     bust_caches ${D}
   fi

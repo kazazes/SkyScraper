@@ -69,7 +69,7 @@ function generate_compose() {
 
 if [[ $# -eq 0 ]]; then
 	echo -e "\nGenerating Dockerfiles for amd and arm.\n"
-	for D in ./host-images/*; do
+	for D in ./edge-images/*; do
 		if [[ -d "${D}" ]]; then
 			generate_host_dockerfile ${D}
 		fi
@@ -81,12 +81,12 @@ if [[ $# -eq 0 ]]; then
 		fi
 	done
 
-	# echo 'CMD [ "nginx", "-g", "daemon off;" ]' >>./host-images/nginx/amd64.dockerfile
+	# echo 'CMD [ "nginx", "-g", "daemon off;" ]' >>./edge-images/nginx/amd64.dockerfile
 	generate_compose
 else
 	if [[ -d "$1" ]]; then
 		case "$1" in
-		*host-images/*)
+		*edge-images/*)
 			generate_host_dockerfile $1
 			;;
 		*base-image/*)

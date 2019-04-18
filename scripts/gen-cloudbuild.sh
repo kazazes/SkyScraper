@@ -14,7 +14,7 @@ function generate_cloudbuild() {
     echo -e "- name: 'gcr.io/\$PROJECT_ID/slackbot'" >> $YAML
     echo -e "  args: [ '--build', '\$BUILD_ID'," >> $YAML
     echo -e "  '--webhook', 'https://hooks.slack.com/services/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' ]" >> $YAML
-    for D in ./host-images/*; do
+    for D in ./edge-images/*; do
 		if [[ -d "${D}" ]]; then
 		    BASENAME=$(basename ${D} | awk '{print tolower($0)}')
 		    IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest

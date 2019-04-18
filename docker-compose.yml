@@ -5,6 +5,7 @@ services:
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
+    user: root
     volumes:
       - "resin-data:/data"
     restart: always

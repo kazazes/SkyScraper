@@ -1,24 +1,76 @@
 version: "2"
 volumes:
-  balena-data: {}
+  resin-data: {}
 services:
   config:
     image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
+    container_name: config
     network_mode: host
     restart: "on-failure"
     volumes:
-      - "balena-data:/data"
-  redis:
-    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
-    privileged: true
-    environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-    ports:
-      - "6379:6379"
+      - "./data:/data"
+  datadog:
+    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:latest
     volumes:
-      - "balena-data:/data"
-    restart: "on-failure"
-    command: /data/conf/redis.conf
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /run/dbus:/host/run/dbus
+      - /proc/:/host/proc/
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
+    privileged: true
+    restart: always
+    pid: "host"
+    network_mode: "host"
+    labels:
+      io.balena.features.dbus: '1'
+      io.balena.features.balena-socket: '1'
+    environment:
+      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
+      - DD_PROCESS_AGENT_ENABLED=true
+      - DD_LOGS_ENABLED=true
+      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+      - DD_AC_EXCLUDE="name:datadog-agent"
+  datarouter:
+    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
+    container_name: datarouter
+    volumes:
+      - "./data:/data"
+    ports:
+      - "4000:4000"
+    environment:
+      - NODE_ENV=production
+      - ENABLE_UPLOAD=true
+      - GCP_PROJECT_ID=methodical-tea-237508
+      - GCP_REGION=us-central1
+      - GOOGLE_APPLICATION_CREDENTIALS=/Users/pk/.gcp-skyscraper.json
+      - GRAPHQL_PORT=4000
+      - MQTT_HOST=mqtt.skyscraper.ai
+      - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PORT=1883
+      - MQTT_USER=edge
+      - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
+      - PRISMA_SECRET=scrapingskies
+      - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+  dump1090:
+    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
+    container_name: dump1090
+    privileged: true
+    volumes:
+      - "./data:/data"
+    ports:
+      - "30002:30002"
+    restart: always
+  mqtt:
+    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
+    container_name: mqtt
+    user: root
+    volumes:
+      - "./data:/data"
+    restart: always
+    ports:
+      - "1883"
   netdata:
     image: skyscraperai/netdata
     container_name: netdata
@@ -34,9 +86,70 @@ services:
     labels:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
-  x11:
-    image: gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest
+  nginx:
+    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
+    container_name: nginx
+    depends_on:
+      - manager
+      - nodered
+      - netdata
+      - datarouter
+    ports:
+      - "80:80"
+      - "443:443"
     restart: always
+    volumes:
+      - "./data:/data"
+  nodered:
+    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
+    container_name: nodered
+    volumes:
+      - "./data:/data"
+    ports:
+      - "1880:1880"
+    environment:
+      - NODE_ENV=production
+    restart: always
+  ngrok:
+    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
+    links:
+      - nginx:https
+    container_name: ngrok
+    privileged: false
+    depends_on:
+      - nginx
+    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
+  manager:
+    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
+    container_name: manager
+    volumes:
+      - "./data:/data"
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
+      - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
+      - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
+    restart: always
+  redis:
+    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
+    container_name: redis
+    command: redis-server --appendonly yes
+    ports:
+      - "6379:6379"
+    restart: always
+  trunk-recorder:
+    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
     privileged: true
-    labels:
-      io.balena.features.dbus: '1'
+    depends_on:
+      - "config"
+    volumes:
+      - "./data:/data"
+    environment:
+      - RECORDER_CONF=sites/SF-PK/config.json
+      - SHORTNAME=SFPD
+    restart: on-failure

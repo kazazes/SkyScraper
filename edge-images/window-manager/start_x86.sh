@@ -11,10 +11,10 @@ fi
 
 # start desktop manager
 echo "STARTING X"
-startx chromium --kiosk --allow-insecure-localhost  --
+# startx --
 
 # uncomment to start x without mouse cursor
 # startx -- -nocursor
 
 # uncomment to open an application instead of the desktop
-# startx xterm  
+startx xterm  

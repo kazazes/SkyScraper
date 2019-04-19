@@ -9,7 +9,8 @@ RUN install_packages xserver-xorg=1:7.7+19 \
   x11-xserver-utils \
   dbus-x11 \
   matchbox-keyboard \
-  xterm
+  xterm \
+  chromium
 
 
 # Disable screen from turning it off

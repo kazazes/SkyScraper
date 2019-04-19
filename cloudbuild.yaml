@@ -44,6 +44,18 @@ steps:
   args:
   - '-c'
   - |
+    docker pull gcr.io/methodical-tea-237508/skyscraperai/electron:latest || exit 0
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/electron:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/electron:latest', '-f', './edge-images/electron/amd64.dockerfile', './edge-images/electron']
+  timeout: 1200s
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/electron:latest']
+- name: 'gcr.io/cloud-builders/docker'
+  waitFor: ['-']
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
     docker pull gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '-f', './edge-images/mqtt/amd64.dockerfile', './edge-images/mqtt']
@@ -126,13 +138,13 @@ steps:
   waitFor: ['-']
   entrypoint: 'bash'
   args:
-    - '-c'
-    - |
-      docker pull gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest || exit 0
+  - '-c'
+  - |
+    docker pull gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '-f', './edge-images/window-manager/amd64.dockerfile', './edge-images/window-manager']
   timeout: 1200s
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest']
 timeout: 3600s
-images: ['gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', ]
+images: ['gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', 'gcr.io/methodical-tea-237508/skyscraperai/electron:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', ]

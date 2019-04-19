@@ -1,5 +1,8 @@
 FROM resin/odroid-xu4-node:8
 
+RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+RUN apt-get -o Acquire::Check-Valid-Until=false update
+
 # Install other apt deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
   apt-utils \

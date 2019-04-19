@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_MACHINE_NAME%%-node:8
+FROM resin/odroid-xu4-node:8
 
 # Install other apt deps
 RUN apt-get update && apt-get install -y --no-install-recommends \

@@ -39,19 +39,18 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - "4000:4000"
       - "1883:1883"
+      - "4000:4000"
     environment:
       - NODE_ENV=production
       - ENABLE_UPLOAD=true
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
-      - GOOGLE_APPLICATION_CREDENTIALS=/Users/pk/.gcp-skyscraper.json
       - GRAPHQL_PORT=4000
       - MQTT_HOST=mqtt://localhost
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
-      - MQTT_USER=edge
+      - MQTT_USERNAME=edge
       - MQTT_UPSTREAM_HOST=mqtt://skyscraper.ai
       - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
       - PRISMA_SECRET=scrapingskies

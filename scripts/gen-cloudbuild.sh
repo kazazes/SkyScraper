@@ -23,10 +23,10 @@ function generate_cloudbuild() {
 		    echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >> $YAML
             echo -e "  args: ['--cache=true', '--cache-ttl=12h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/amd64.dockerfile']" >> $YAML
             echo -e "  timeout: 1200s" >> $YAML
+            echo -e "  waitFor: ['-']" >> $YAML
 		fi
 	done
 
     echo -e "timeout: 3600s" >> $YAML
-	echo -e "images: [$IMAGES]" >> $YAML
 }
 generate_cloudbuild

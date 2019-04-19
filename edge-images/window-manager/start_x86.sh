@@ -11,7 +11,7 @@ fi
 
 # start desktop manager
 echo "STARTING X"
-startx chromium --kiosk --
+startx chromium --kiosk --allow-insecure-localhost  --
 
 # uncomment to start x without mouse cursor
 # startx -- -nocursor

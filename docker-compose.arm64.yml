@@ -36,6 +36,7 @@ services:
       - "./data:/data"
     ports:
       - "4000:4000"
+      - "1883:1883"
     environment:
       - NODE_ENV=production
       - ENABLE_UPLOAD=true
@@ -43,10 +44,11 @@ services:
       - GCP_REGION=us-central1
       - GOOGLE_APPLICATION_CREDENTIALS=/Users/pk/.gcp-skyscraper.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt.skyscraper.ai
+      - MQTT_HOST=mqtt://localhost
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USER=edge
+      - MQTT_UPSTREAM_HOST=mqtt://skyscraper.ai
       - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
       - PRISMA_SECRET=scrapingskies
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
@@ -62,19 +64,12 @@ services:
     ports:
       - "30002:30002"
     restart: always
-  electron:
-    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
-    container_name: electron
-    privileged: true
-  mqtt:
-    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
-    container_name: mqtt
-    user: root
-    volumes:
-      - "./data:/data"
+  wm:
+    image: gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest
     restart: always
-    ports:
-      - "1883"
+    privileged: true
+    labels:
+      io.balena.features.dbus: '1'
   netdata:
     image: skyscraperai/netdata
     container_name: netdata

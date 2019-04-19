@@ -2,125 +2,35 @@ steps:
 - name: 'gcr.io/$PROJECT_ID/slackbot'
   args: [ '--build', '$BUILD_ID',
   '--webhook', 'https://hooks.slack.com/services/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' ]
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/config:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', '-f', './edge-images/config/amd64.dockerfile', './edge-images/config']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/config:latest', '--context=dir://workspace/./edge-images/config', '--dockerfile=/workspace/./edge-images/config/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/datadog:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '-f', './edge-images/datadog/amd64.dockerfile', './edge-images/datadog']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '--context=dir://workspace/./edge-images/datadog', '--dockerfile=/workspace/./edge-images/datadog/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '-f', './edge-images/dump1090/amd64.dockerfile', './edge-images/dump1090']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '--context=dir://workspace/./edge-images/dump1090', '--dockerfile=/workspace/./edge-images/dump1090/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/nginx:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '-f', './edge-images/nginx/amd64.dockerfile', './edge-images/nginx']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '--context=dir://workspace/./edge-images/nginx', '--dockerfile=/workspace/./edge-images/nginx/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '-f', './edge-images/ngrok/amd64.dockerfile', './edge-images/ngrok']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '--context=dir://workspace/./edge-images/ngrok', '--dockerfile=/workspace/./edge-images/ngrok/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/node-red:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '-f', './edge-images/node-red/amd64.dockerfile', './edge-images/node-red']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '--context=dir://workspace/./edge-images/node-red', '--dockerfile=/workspace/./edge-images/node-red/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/redis:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '-f', './edge-images/redis/amd64.dockerfile', './edge-images/redis']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '--context=dir://workspace/./edge-images/redis', '--dockerfile=/workspace/./edge-images/redis/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/samba:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '-f', './edge-images/samba/amd64.dockerfile', './edge-images/samba']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '--context=dir://workspace/./edge-images/samba', '--dockerfile=/workspace/./edge-images/samba/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '-f', './edge-images/trunk-recorder/amd64.dockerfile', './edge-images/trunk-recorder']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '--context=dir://workspace/./edge-images/trunk-recorder', '--dockerfile=/workspace/./edge-images/trunk-recorder/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest']
-- name: 'gcr.io/cloud-builders/docker'
-  waitFor: ['-']
-  entrypoint: 'bash'
-  args:
-  - '-c'
-  - |
-    docker pull gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest || exit 0
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--cache-from', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '-t', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '-f', './edge-images/window-manager/amd64.dockerfile', './edge-images/window-manager']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/amd64.dockerfile']
   timeout: 1200s
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest']
 timeout: 3600s
 images: ['gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', 'gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', 'gcr.io/methodical-tea-237508/skyscraperai/samba:latest', 'gcr.io/methodical-tea-237508/skyscraperai/redis:latest', 'gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', 'gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', 'gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', 'gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', 'gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', 'gcr.io/methodical-tea-237508/skyscraperai/config:latest', ]

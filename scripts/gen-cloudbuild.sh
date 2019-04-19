@@ -19,18 +19,10 @@ function generate_cloudbuild() {
 		    BASENAME=$(basename ${D} | awk '{print tolower($0)}')
 		    IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest
 		    IMAGES="'$IMAGE_URI', $IMAGES"
-		    echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
-            echo -e "  waitFor: ['-']" >> $YAML
-            echo -e "  entrypoint: 'bash'" >> $YAML
-            echo -e "  args:" >> $YAML
-            echo -e "  - '-c'" >> $YAML
-            echo -e "  - |" >> $YAML
-            echo -e "    docker pull ${IMAGE_URI} || exit 0" >> $YAML
-            echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
-            echo -e "  args: ['build', '--cache-from', '${IMAGE_URI}', '-t', '${IMAGE_URI}', '-f', '${D}/amd64.dockerfile', '${D}']" >> $YAML
+
+		    echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >> $YAML
+            echo -e "  args: ['--cache=true', '--cache-ttl=12h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/amd64.dockerfile']" >> $YAML
             echo -e "  timeout: 1200s" >> $YAML
-            echo -e "- name: 'gcr.io/cloud-builders/docker'" >> $YAML
-            echo -e "  args: ['push', '${IMAGE_URI}']" >> $YAML
 		fi
 	done
 

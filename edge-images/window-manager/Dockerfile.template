@@ -4,12 +4,12 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:stretch-run
 RUN install_packages xserver-xorg=1:7.7+19 \
   xserver-xorg-input-evdev \
   xinit \
-  xfce4 \
-  xfce4-terminal \
+#  xfce4 \
+#  xfce4-terminal \
   x11-xserver-utils \
   dbus-x11 \
   matchbox-keyboard \
-  xterm \
+#  xterm \
   chromium
 
 

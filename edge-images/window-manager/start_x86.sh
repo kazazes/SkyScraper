@@ -11,7 +11,7 @@ fi
 
 # start desktop manager
 echo "STARTING X"
-startx
+startx chromium --kiosk --
 
 # uncomment to start x without mouse cursor
 # startx -- -nocursor

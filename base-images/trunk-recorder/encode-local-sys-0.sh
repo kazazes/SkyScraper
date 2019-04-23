@@ -1,6 +1,7 @@
 #! /bin/bash
 
 set -e
+set -x
 
 filename="$1"
 basename="${filename%.*}"

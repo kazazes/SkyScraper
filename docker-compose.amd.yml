@@ -1,4 +1,4 @@
-version: "2"
+version: "2.1"
 volumes:
   resin-data: {}
 services:
@@ -156,6 +156,6 @@ services:
     volumes:
       - "./data:/data"
     environment:
-      - RECORDER_CONF=sites/SF-PK/config.json
-      - SHORTNAME=SFPD
+      - RECORDER_CONF=${RECORDER_CONF:-sites/SF-PK/config.json}
+      - SHORTNAME=${SHORTNAME:-SFPD}
     restart: on-failure

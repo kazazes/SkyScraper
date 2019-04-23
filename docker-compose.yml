@@ -143,8 +143,12 @@ services:
     volumes:
       - "resin-data:/data"
     environment:
-      - RECORDER_CONF=sites/SF-PK/config.json
-      - SHORTNAME=SFPD
+      - RECORDER_CONF=${RECORDER_CONF:-sites/SF-PK/config.json}
+      - SHORTNAME=${SHORTNAME:-SFPD}
+      - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PORT=1883
+      - MQTT_USERNAME=edge
+      - MQTT_HOST=mqtt://skyscraper.ai
     restart: on-failure
 
 

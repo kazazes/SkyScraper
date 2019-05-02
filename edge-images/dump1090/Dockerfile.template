@@ -15,10 +15,10 @@ RUN  add-apt-repository ppa:bladerf/bladerf && \
   dh-systemd \
   libncurses5-dev
 
-RUN git clone https://github.com/elafargue/dump1090 /dump1090
+RUN git clone https://github.com/MalcolmRobb/dump1090 /dump1090
 WORKDIR /dump1090
 
-RUN git checkout bladerf2 && dpkg-buildpackage -b
+RUN make BLADERF=no && cp *1090 /usr/local/bin
 
 COPY start.sh .
 

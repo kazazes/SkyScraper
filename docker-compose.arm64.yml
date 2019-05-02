@@ -37,7 +37,7 @@ services:
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
       - MQTT_UPSTREAM_HOST=mqtt://skyscraper.ai
-      - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
+      - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/prod
       - PRISMA_SECRET=scrapingskies
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
@@ -49,8 +49,6 @@ services:
     privileged: true
     volumes:
       - "./data:/data"
-    environment:
-      - ADSB_DISABLED=1
     ports:
       - "30002:30002"
     restart: always

@@ -2,6 +2,12 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  mqtt:
+    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
+    container_name: mqtt
+    user: root
+    volumes:
+      - "./data:/data"
   config:
     image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
     container_name: config
@@ -9,29 +15,10 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
-  datadog:
-    image: gcr.io/methodical-tea-237508/skyscraperai/datadog:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /run/dbus:/host/run/dbus
-      - /proc/:/host/proc/
-      - /sys/fs/cgroup/:/host/sys/fs/cgroup/
-    privileged: true
-    restart: always
-    pid: "host"
-    network_mode: "host"
-    labels:
-      io.balena.features.dbus: '1'
-      io.balena.features.balena-socket: '1'
-    environment:
-      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
-      - DD_PROCESS_AGENT_ENABLED=true
-      - DD_LOGS_ENABLED=true
-      - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
-      - DD_AC_EXCLUDE="name:datadog-agent"
   datarouter:
     image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
+    network_mode: host
     volumes:
       - "./data:/data"
     ports:
@@ -42,8 +29,10 @@ services:
       - ENABLE_UPLOAD=true
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
+      - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt://localhost
+      - MQTT_HOST=mqtt://datarouter
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -60,15 +49,11 @@ services:
     privileged: true
     volumes:
       - "./data:/data"
+    environment:
+      - ADSB_DISABLED=1
     ports:
       - "30002:30002"
     restart: always
-  wm:
-    image: gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest
-    restart: always
-    privileged: true
-    labels:
-      io.balena.features.dbus: '1'
   netdata:
     image: skyscraperai/netdata
     container_name: netdata
@@ -150,4 +135,8 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
+      - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PORT=1883
+      - MQTT_USERNAME=edge
+      - MQTT_HOST=mqtt://datarouter
     restart: on-failure

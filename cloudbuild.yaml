@@ -15,6 +15,10 @@ steps:
   timeout: 1200s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest', '--context=dir://workspace/./edge-images/dump1090-mqtt', '--dockerfile=/workspace/./edge-images/dump1090-mqtt/amd64.dockerfile']
+  timeout: 1200s
+  waitFor: ['-']
+- name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '--context=dir://workspace/./edge-images/mqtt', '--dockerfile=/workspace/./edge-images/mqtt/amd64.dockerfile']
   timeout: 1200s
   waitFor: ['-']

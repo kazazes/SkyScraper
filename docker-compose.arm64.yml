@@ -52,6 +52,15 @@ services:
     ports:
       - "30003:30003"
     restart: always
+  dump1090-mqtt:
+    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest
+    container_name: dump1090-mqtt
+    volumes:
+      - "./data:/data"
+    depends_on:
+      - mqtt
+      - dump1090
+    restart: always
   netdata:
     image: skyscraperai/netdata
     container_name: netdata

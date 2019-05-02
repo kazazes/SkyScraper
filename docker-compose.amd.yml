@@ -6,6 +6,8 @@ services:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
     user: root
+    ports:
+      - "1883:1883"
     volumes:
       - "./data:/data"
   config:
@@ -24,7 +26,6 @@ services:
     volumes:
       - "./data:/data"
     ports:
-      - "1883:1883"
       - "4000:4000"
     environment:
       - NODE_ENV=production

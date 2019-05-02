@@ -26,4 +26,4 @@ mv $json.new $json
 chmod -R 755 $json
 chmod -R 755 $mp3encoded
 
-mosquitto_pub -h $MQTT_HOST -f $json -t trunk-recorder/system/$system
+mosquitto_pub -h $MQTT_HOST -f $json -t /trunk-recorder/system/$system

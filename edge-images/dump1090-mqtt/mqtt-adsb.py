@@ -6,6 +6,7 @@ Publish dump1090 output to MQTT
 from socket import socket, AF_INET, SOCK_STREAM
 import paho.mqtt.client as paho
 from os import environ
+from signal import pause
 
 
 def parse_options():
@@ -68,6 +69,6 @@ def publish():
 
 if __name__ == '__main__':
     if 'ADSB_DISABLED' in environ:
-        signal.pause()
+        pause()
     else:
         publish()

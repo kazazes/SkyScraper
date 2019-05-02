@@ -1,8 +1,9 @@
-#! /bin/bash
+#! /bin/sh
 
 set -e
+set -a
 
-if [[ -v ADSB_DISABLED ]]; then
+if [ -v ADSB_DISABLED ]; then
     echo "ADSB disabled. Sleeping."
     sleep infinity
 fi

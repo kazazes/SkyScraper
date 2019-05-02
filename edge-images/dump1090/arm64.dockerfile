@@ -7,7 +7,9 @@ RUN apk add --no-cache \
   g++ \
   pkgconfig
 
-RUN apk add -X http://dl-cdn.alpinelinux.org/alpine/edge/testing librtlsdr-dev
+RUN apk add --no-cache -X http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+  librtlsdr-dev && \
+  apk add --no-cache bash
 
 RUN git clone https://github.com/MalcolmRobb/dump1090 /dump1090
 WORKDIR /dump1090

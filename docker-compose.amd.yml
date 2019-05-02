@@ -22,7 +22,6 @@ services:
   datarouter:
     image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
-    network_mode: host
     volumes:
       - "./data:/data"
     ports:
@@ -35,7 +34,7 @@ services:
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt://datarouter
+      - MQTT_HOST=mqtt.skyscraper.ai
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -145,5 +144,5 @@ services:
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - MQTT_HOST=mqtt://datarouter
+      - MQTT_HOST=127.0.0.1
     restart: on-failure

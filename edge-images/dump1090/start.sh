@@ -9,4 +9,4 @@ fi
 
 mkdir -p /data/adsb
 
-./dump1090 --fix --enable-agc --net --aggressive
+dump1090 --fix --net --quiet --gain 44

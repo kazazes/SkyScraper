@@ -38,4 +38,4 @@ docker-compose -f docker-compose.amd.yml build --parallel
 
 ***[SkyScraper](https://skyscraper.ai)***
 
-**Peter Kazazes** – [@pkpolls](https://twitter.com/pkpolls)
+**Peter Kazazes** – [@pkcodes](https://twitter.com/pkcodes)

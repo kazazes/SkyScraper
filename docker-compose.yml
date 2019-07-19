@@ -161,6 +161,3 @@ services:
       - MQTT_USERNAME=edge
       - MQTT_HOST=127.0.0.1
     restart: on-failure
-
-
-

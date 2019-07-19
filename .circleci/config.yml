@@ -9,15 +9,16 @@ jobs:
           name: Install Docker Compose
           command: |
             apk update
-            apk add curl py-pip python build-base
-            pip install docker-compose
-      - setup_remote_docker:   
+            apk add curl py-pip python-dev libffi-dev openssl-dev gcc libc-dev make
+            curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+      - setup_remote_docker:
           docker_layer_caching: true
       - checkout
       - run:
           command: |
             cd ~/repo
-            docker-compose -f docker-compose.amd.yml build --parallel
+            /usr/local/bin/docker-compose -f docker-compose.amd.yml build --parallel
 workflows:
   version: 2
   build:

@@ -2,8 +2,7 @@ version: "2"
 volumes:
   resin-data: {}
 services:
-  sysdig:
-    name: sysdig-agent
+  sysdig-agent:
     restart: always
     privileged: true
     network_mode: host
@@ -13,7 +12,7 @@ services:
       - SECURE=true
       - TAGS=ss1:node
     volumes:
-      - /lib/modules:/host/lib/modules:ro
+      - /lib/modules:/host/lib/modules
       - /var/run/docker.sock:/host/var/run/docker.sock
     shm_size: 512m
     image: sysdig/agent

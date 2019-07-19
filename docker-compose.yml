@@ -11,10 +11,6 @@ services:
       - ACCESS_KEY=9b98a2e6-f13c-4b72-9fc9-997fb4cd02b3
       - SECURE=true
       - TAGS=ss1:node
-    volumes:
-      - /lib/modules:/host/lib/modules
-      - /var/run/docker.sock:/host/var/run/docker.sock
-      # /dev:/host/dev -v /proc:/host/proc:ro -v /boot:/host/boot:ro  /usr:/host/usr:ro --
     shm_size: 512m
     image: sysdig/agent
     labels:

@@ -2,6 +2,25 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  sysdig:
+    name: sysdig-agent
+    restart: always
+    privileged: true
+    network_mode: host
+    pid: host
+    environment:
+      ACCESS_KEY=9b98a2e6-f13c-4b72-9fc9-997fb4cd02b3
+      SECURE=true
+      TAGS=ss1:node
+    volumes:
+      /lib/modules:/host/lib/modules:ro
+      /var/run/docker.sock:/host/var/run/docker.sock
+      # /dev:/host/dev -v /proc:/host/proc:ro -v /boot:/host/boot:ro  /usr:/host/usr:ro --
+    shm_size: 512m
+    image: sysdig/agent
+    labels:
+      io.balena.features.balena-socket: "1"
+      io.balena.features.kernel-modules: "1"
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt

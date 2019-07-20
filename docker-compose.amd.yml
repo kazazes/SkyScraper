@@ -8,9 +8,7 @@ services:
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
-    build:
-        dockerfile: amd64.dockerfile
-        context: edge-images/dump1090
+    image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt

@@ -8,7 +8,7 @@ services:
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
+    image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt

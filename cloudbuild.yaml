@@ -47,6 +47,10 @@ steps:
   timeout: 1200s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', '--context=dir://workspace/./edge-images/wifi-connect', '--dockerfile=/workspace/./edge-images/wifi-connect/amd64.dockerfile']
+  timeout: 1200s
+  waitFor: ['-']
+- name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/amd64.dockerfile']
   timeout: 1200s
   waitFor: ['-']

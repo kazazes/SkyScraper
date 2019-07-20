@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+REGISTRY_SECRETS=registry-secrets.yml
+
 set -x
 
 cd "$(dirname "$0")"/..
 PROJECT_DIR=$(pwd)
 
-REGISTRY_SECRETS=registry-secrets.yml
-sudo balena push --registry-secrets registry-secrets.yml skyscraper-x86
-
+balena deploy --registry-secrets $REGISTRY_SECRETS skyscraper-x86

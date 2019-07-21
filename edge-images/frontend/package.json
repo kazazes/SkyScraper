@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
-    "@nuxt/typescript": "^2.7.1",
+    "@nuxt/typescript": "^2.8.1",
     "@nuxtjs/apollo": "^4.0.0-rc4",
     "@nuxtjs/axios": "^5.5.0",
     "@nuxtjs/component-cache": "^1.1.4",
@@ -70,7 +70,7 @@
     "wavesurfer.js": "^2.2.1"
   },
   "devDependencies": {
-    "@nuxt/typescript": "^2.7.1",
+    "@nuxt/typescript": "^2.8.1",
     "@nuxtjs/vuetify": "^0.5.5",
     "@types/http-proxy-middleware": "^0.19.2",
     "eslint": "^5.16.0",

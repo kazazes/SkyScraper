@@ -18,7 +18,7 @@
     "@mdi/font": "^3.6.95",
     "@nuxt/typescript": "^2.7.1",
     "@nuxtjs/apollo": "^4.0.0-rc4",
-    "@nuxtjs/axios": "^5.5.0",
+    "@nuxtjs/axios": "^5.5.4",
     "@nuxtjs/component-cache": "^1.1.4",
     "@nuxtjs/google-tag-manager": "^2.2.0",
     "@nuxtjs/localforage": "^1.0.2",

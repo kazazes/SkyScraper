@@ -58,4 +58,10 @@ steps:
   args: ['--cache=true', '--cache-ttl=72h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest', '--context=dir://workspace/./host-images/gc-to-balena', '--dockerfile=/workspace/./host-images/gc-to-balena/Dockerfile']
   timeout: 300s
   waitFor: ['-']
+- name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'
+  secretEnv: ['BALENA_TOKEN']
+secrets:
+  - kmsKeyName: projects/methodical-tea-237508/locations/global/keyRings/balena
+    secretEnv: 
+      BALENA_TOKEN: CiQAgf4uFlkkIt5DY1vPXcBMMbWbyI4Ogs58EEbRvcLETuZWNQwSSQC9/m0lMwfdWc/MRdcxEJ4fVE+NpiTwfVL26dCBIbiomj77F/jpdcpxIcbXTl9S3x5AUKA05uNNMQiqFa5mYsytbz3LOPzVEec=
 timeout: 3600s

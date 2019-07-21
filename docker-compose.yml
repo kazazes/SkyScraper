@@ -38,7 +38,7 @@ services:
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
-  datarouter:
+  backend:
     image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     container_name: datarouter
     volumes:
@@ -130,7 +130,7 @@ services:
     depends_on:
       - nginx
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
-  manager:
+  frontend:
     image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
     container_name: manager
     volumes:

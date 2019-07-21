@@ -7,10 +7,6 @@ steps:
   timeout: 1200s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/datadog:latest', '--context=dir://workspace/./edge-images/datadog', '--dockerfile=/workspace/./edge-images/datadog/amd64.dockerfile']
-  timeout: 1200s
-  waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '--context=dir://workspace/./edge-images/dump1090', '--dockerfile=/workspace/./edge-images/dump1090/amd64.dockerfile']
   timeout: 1200s
   waitFor: ['-']

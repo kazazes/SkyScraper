@@ -8,9 +8,13 @@ services:
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
-    image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/wifi-connect
   mqtt:
-    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/mqtt
     container_name: mqtt
     user: root
     ports:
@@ -26,8 +30,10 @@ services:
     restart: "on-failure"
     volumes:
       - "./data:/data"
-  datarouter:
-    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
+  backend:
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/backend
     container_name: datarouter
     volumes:
       - "./data:/data"
@@ -64,7 +70,9 @@ services:
       - "30003:30003"
     restart: always
   dump1090-mqtt:
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/dump1090-mqtt
     container_name: dump1090-mqtt
     volumes:
       - "./data:/data"
@@ -88,7 +96,9 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   nginx:
-    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/nginx
     container_name: nginx
     depends_on:
       - manager
@@ -102,7 +112,9 @@ services:
     volumes:
       - "./data:/data"
   nodered:
-    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/node-red
     container_name: nodered
     volumes:
       - "./data:/data"
@@ -112,7 +124,9 @@ services:
       - NODE_ENV=production
     restart: always
   ngrok:
-    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/ngrok
     links:
       - nginx:https
     container_name: ngrok
@@ -120,8 +134,10 @@ services:
     depends_on:
       - nginx
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
-  manager:
-    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
+  frontend:
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/frontend
     container_name: manager
     volumes:
       - "./data:/data"
@@ -146,7 +162,9 @@ services:
       - "6379:6379"
     restart: always
   trunk-recorder:
-    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
+    build:
+        dockerfile: amd64.dockerfile
+        context: edge-images/trunk-recorder
     privileged: true
     depends_on:
       - "config"

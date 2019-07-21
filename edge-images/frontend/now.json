@@ -1,0 +1,15 @@
+{
+  "name": "skyscraper.ai - Landing Page",
+  "version": 2,
+  "alias": ["skyscraper.ai", "xn--qg8hn3a.fm"],
+  "env": {
+    "API_ENDPOINT": "https://edge.sibyl.vision/api"
+  },
+  "regions": ["sfo", "iad"],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build"
+    }
+  ]
+}

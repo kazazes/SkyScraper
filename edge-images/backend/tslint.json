@@ -1,0 +1,16 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "promise-function-async": true,
+        "await-promise": true,
+        "no-floating-promises": true
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["src/generated/**/*"]
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "schema": {
+    "file": "src/graphql/generated/prisma.graphql"
+  },
+
+  "endpoints" : [
+    {
+      "name": "Default Hosted",
+      "url": "https://us1.prisma.sh/peter-k/skyscraper/dev"
+    }
+  ]
+
+}

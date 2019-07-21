@@ -12423,10 +12423,10 @@ vue-apollo@^3.0.0-beta.28, vue-apollo@^3.0.0-beta.29:
     chalk "^2.4.2"
     throttle-debounce "^2.1.0"
 
-vue-chartist@^2.2.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/vue-chartist/-/vue-chartist-2.2.0.tgz#08a05cb0bc1fc629befe3ca503a9af2d6def1ce7"
-  integrity sha512-LlTL4BvBqFe7yX0fD+PY12bblgVm7ZZHsVtWssmHXi6YVh/D2pfnV7Sm9+HFOVr3vqRvKpl6F048K2BWpGC4qw==
+vue-chartist@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/vue-chartist/-/vue-chartist-2.2.1.tgz#c110f06c252467c5682634265abab543fb9c730f"
+  integrity sha512-JM7zQ9Y1PaRKF5sf82+bVuyL4qjDi+1eidOYbUlOHkzyQ3YhSUZGONDeO5ae+SISE6INvuL5js5hLOKxQMh+Vg==
   dependencies:
     chartist "^0.11.0"
 

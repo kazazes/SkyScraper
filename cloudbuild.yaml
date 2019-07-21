@@ -54,4 +54,8 @@ steps:
   args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/amd64.dockerfile']
   timeout: 1200s
   waitFor: ['-']
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args: ['--cache=true', '--cache-ttl=72h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest', '--context=dir://workspace/./host-images/gc-to-balena', '--dockerfile=/workspace/./host-images/gc-to-balena/Dockerfile']
+  timeout: 300s
+  waitFor: ['-']
 timeout: 3600s

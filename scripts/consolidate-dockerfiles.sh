@@ -20,7 +20,7 @@ function copy_x86() {
     echo Generated x86 $(basename ${1}) at ${OUT_PATH}
     mkdir -p $OUT_PATH
     cp -a ${1}/* $OUT_PATH
-    mv $OUT_PATH/amd64.dockerfile $OUT_PATH/Dockerfile
+    mv $OUT_PATH/Dockerfile $OUT_PATH/Dockerfile
     rm $OUT_PATH/Dockerfile.template $OUT_PATH/arm64.dockerfile
 }
 
@@ -30,7 +30,7 @@ function copy_ARM() {
     mkdir -p $OUT_PATH
     cp -a ${1}/* $OUT_PATH
     mv $OUT_PATH/arm64.dockerfile $OUT_PATH/Dockerfile
-    rm $OUT_PATH/Dockerfile.template $OUT_PATH/amd64.dockerfile
+    rm $OUT_PATH/Dockerfile.template $OUT_PATH/Dockerfile
 }
 
 for D in ./edge-images/*; do

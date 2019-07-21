@@ -7,6 +7,8 @@ PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
 
 set -e
 
+IN_USE=$(cat ../docker-compose.yml && sed -e 's/[^  ](?:  )([\w\-]+)(?::\n)//g')
+
 function generate_cloudbuild() {
     YAML=${PROJECT_DIR}/cloudbuild.yaml
 
@@ -21,7 +23,7 @@ function generate_cloudbuild() {
             IMAGES="'$IMAGE_URI', $IMAGES"
 
             echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
-            echo -e "  args: ['--cache=true', '--cache-ttl=12h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/amd64.dockerfile']" >>$YAML
+            echo -e "  args: ['--cache=true', '--cache-ttl=12h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
             echo -e "  timeout: 1200s" >>$YAML
             echo -e "  waitFor: ['-']" >>$YAML
         fi

@@ -9,11 +9,11 @@ services:
     labels:
       io.balena.features.dbus: "1"
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/wifi-connect
   mqtt:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/mqtt
     container_name: mqtt
     user: root
@@ -23,7 +23,7 @@ services:
       - "./data:/data"
   config:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/config
     container_name: config
     network_mode: host
@@ -32,7 +32,7 @@ services:
       - "./data:/data"
   backend:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/backend
     volumes:
       - "./data:/data"
@@ -59,7 +59,7 @@ services:
       - redis
   dump1090:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/dump1090
     container_name: dump1090
     privileged: true
@@ -70,7 +70,7 @@ services:
     restart: always
   dump1090-mqtt:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/dump1090-mqtt
     container_name: dump1090-mqtt
     volumes:
@@ -96,7 +96,7 @@ services:
       io.balena.features.balena-socket: "1"
   nginx:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/nginx
     container_name: nginx
     depends_on:
@@ -112,7 +112,7 @@ services:
       - "./data:/data"
   nodered:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/node-red
     container_name: nodered
     volumes:
@@ -124,7 +124,7 @@ services:
     restart: always
   ngrok:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/ngrok
     links:
       - nginx:https
@@ -135,7 +135,7 @@ services:
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   frontend:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/frontend
     volumes:
       - "./data:/data"
@@ -152,7 +152,7 @@ services:
     restart: always
   redis:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/redis
     container_name: redis
     command: redis-server --appendonly yes
@@ -161,7 +161,7 @@ services:
     restart: always
   trunk-recorder:
     build:
-        dockerfile: amd64.dockerfile
+        dockerfile: Dockerfile
         context: edge-images/trunk-recorder
     privileged: true
     depends_on:

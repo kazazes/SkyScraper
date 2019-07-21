@@ -190,9 +190,9 @@
 
     get formValid() {
       return (
-        Object.keys(this.fields).findIndex((k: string) => {
-          const f = this.fields[k] as FieldFlags
-          return f.invalid || f.pending
+        Object.keys(this.$validator.fields).findIndex((k: string) => {
+          const f = this.$validator.fields[k] as FieldFlags;
+          return f.invalid || f.pending;
         }) === -1
       )
     }

@@ -72,9 +72,6 @@ const config = {
   ],
   axios: {},
   apollo: {
-    errorHandler(error) {
-      console.error(error);
-    },
     incldueNodeModules: true,
     clientConfigs: {
       default: apolloConfig,

@@ -18,7 +18,7 @@ echo ===
 generate_host_dockerfile() {
 	echo "Edge image: $(basename ${1})."
 	cd $1
-	cp Dockerfile.template amd64.dockerfile
+	cp Dockerfile.template Dockerfile
 	cp Dockerfile.template arm64.dockerfile
 
 	# x86 compose file
@@ -26,7 +26,7 @@ generate_host_dockerfile() {
 		-e 's/gosu-armhf/gosu-amd64/' \
 		-e 's/armhf.deb/amd64.deb/' \
 		-e 's/tobi312\/rpi-nginx/nginx:stable-alpine/' \
-		amd64.dockerfile
+		Dockerfile
 
 	# armhf compose file
 	sed -i -e 's/pckzs\/pybombs/pckzs\/pybombs-arm/' -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' -e 's/%%BALENA_ARCH%%/armv7h/' arm64.dockerfile
@@ -37,14 +37,14 @@ generate_host_dockerfile() {
 generate_base_dockerfile() {
 	echo "Base image: $(basename $1)."
 	cd $1
-	cp Dockerfile.template amd64.dockerfile
+	cp Dockerfile.template Dockerfile
 	cp Dockerfile.template arm64.dockerfile
 
 	sed -i -e 's/balenalib\/%%BALENA_MACHINE_NAME%%-buildpack-deps/debian/' \
 		-e 's/balenalib\/%%BALENA_MACHINE_NAME%%-//' \
 		-e 's/RUN \[ "cross-build-start" \]//' \
 		-e 's/RUN \[ "cross-build-end" \]//' \
-		amd64.dockerfile
+		Dockerfile
 
 	sed -i -e 's/%%BALENA_MACHINE_NAME%%/odroid-xu4/' \
 		-e 's/skyscraperai\/sdr-ubuntu/skyscraperai\/sdr-ubuntu:arm64/' \
@@ -62,12 +62,12 @@ function generate_compose() {
 
 	sed -i \
 		-e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
-		-e "s/build:/build:\n      dockerfile: amd64.dockerfile/g" \
+		-e "s/build:/build:\n      dockerfile: Dockerfile/g" \
 		-e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.amd.yml
 
 	sed -i \
-		-E 's,image: gcr\.io\/methodical-tea-237508\/skyscraperai\/(.*)(:latest?),build:\n        dockerfile: amd64.dockerfile\n        context: edge-images\/\1,' \
+		-E 's,image: gcr\.io\/methodical-tea-237508\/skyscraperai\/(.*)(:latest?),build:\n        dockerfile: Dockerfile\n        context: edge-images\/\1,' \
 		docker-compose.amd.yml
 
 	sed -i -e 's/#.*$//' \
@@ -92,7 +92,7 @@ if [[ $# -eq 0 ]]; then
 		fi
 	done
 
-	# echo 'CMD [ "nginx", "-g", "daemon off;" ]' >>./edge-images/nginx/amd64.dockerfile
+	# echo 'CMD [ "nginx", "-g", "daemon off;" ]' >>./edge-images/nginx/Dockerfile
 	generate_compose
 else
 	if [[ -d "$1" ]]; then

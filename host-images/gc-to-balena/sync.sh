@@ -2,5 +2,5 @@
 
 balena login --token $BALENA_TOKEN
 
-cd /app
+cd /workspace
 balena deploy skyscraper-x86

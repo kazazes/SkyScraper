@@ -8854,16 +8854,16 @@ nuxt@^2.7.1:
     "@nuxt/opencollective" "^0.2.2"
     "@nuxt/webpack" "2.7.1"
 
-nuxtron@^0.1.15:
-  version "0.1.15"
-  resolved "https://registry.yarnpkg.com/nuxtron/-/nuxtron-0.1.15.tgz#e977d6cef010b6f505a2a0890fbdbb8560da5a83"
-  integrity sha512-YtFyWfJK2XqzfJb9HNLbbcmO7oPbncnoNZSGechUA6yT71wxRM8iJ8tdmVpamhtVN1vvPlV8u8DamaMofNAsPg==
+nuxtron@^0.1.31:
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/nuxtron/-/nuxtron-0.1.31.tgz#5ab875d6cfb96b80a402db5906d283a51d3b0ae7"
+  integrity sha512-/eRZZySQaXw6qzBLBO0AT3lcLYtiGwHGLnUQedwrvtAfwKF4YPCLZPpk2nbL3PHUOOGP3HQuZ01MiL1mPOTmMg==
   dependencies:
     arg "^4.1.0"
     chalk "^2.4.2"
     cross-spawn "^6.0.5"
-    fs-extra "^7.0.1"
-    ora "^3.0.0"
+    fs-extra "^8.0.1"
+    ora "^3.4.0"
 
 oauth-sign@~0.9.0:
   version "0.9.0"
@@ -9002,7 +9002,7 @@ optionator@^0.8.2:
     type-check "~0.3.2"
     wordwrap "~1.0.0"
 
-ora@^3.0.0:
+ora@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/ora/-/ora-3.4.0.tgz#bf0752491059a3ef3ed4c85097531de9fdbcd318"
   integrity sha512-eNwHudNbO1folBP3JsZ19v9azXWtQZjICdr3Q0TDPIaeBQ3mXLrh54wM+er0+hSp+dWKf+Z8KM58CYzEyIYxYg==

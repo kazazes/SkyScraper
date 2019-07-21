@@ -34,7 +34,6 @@ services:
     build:
         dockerfile: amd64.dockerfile
         context: edge-images/backend
-    container_name: datarouter
     volumes:
       - "./data:/data"
     ports:
@@ -101,10 +100,10 @@ services:
         context: edge-images/nginx
     container_name: nginx
     depends_on:
-      - manager
+      - frontend
       - nodered
       - netdata
-      - datarouter
+      - backend
     ports:
       - "80:80"
       - "443:443"
@@ -138,7 +137,6 @@ services:
     build:
         dockerfile: amd64.dockerfile
         context: edge-images/frontend
-    container_name: manager
     volumes:
       - "./data:/data"
     ports:

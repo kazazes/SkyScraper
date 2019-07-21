@@ -26,7 +26,6 @@ services:
       - "./data:/data"
   backend:
     image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
-    container_name: datarouter
     volumes:
       - "./data:/data"
     ports:
@@ -87,10 +86,10 @@ services:
     image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
     container_name: nginx
     depends_on:
-      - manager
+      - frontend
       - nodered
       - netdata
-      - datarouter
+      - backend
     ports:
       - "80:80"
       - "443:443"
@@ -118,7 +117,6 @@ services:
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   frontend:
     image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
-    container_name: manager
     volumes:
       - "./data:/data"
     ports:

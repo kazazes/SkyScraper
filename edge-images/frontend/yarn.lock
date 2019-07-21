@@ -2106,10 +2106,10 @@
   dependencies:
     lru-cache "^5.1.1"
 
-"@nuxtjs/google-tag-manager@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-tag-manager/-/google-tag-manager-2.2.0.tgz#ee2c78aedebcf4e0c2a42e3a53fa38023d03d1ab"
-  integrity sha512-+F4kxhK0uVQiu2XWS+YqL5bisZQ4SlRtYaUThXwRtpmX0AYXAY2hLz37LXxTFP/TPclkfYtKxEBXxsayxVm18A==
+"@nuxtjs/google-tag-manager@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-tag-manager/-/google-tag-manager-2.2.1.tgz#8029953dcc1d09a430fc5f961a48555017c875d0"
+  integrity sha512-1JpV8NRpdTd58FQiPyZUdFdYxfhrt6/a0UUQcoFMBbM3+pELho2RlOj52NE+OYY0IPR0D736ULBHXLhwv1CKdw==
 
 "@nuxtjs/icon@3.0.0-beta.16":
   version "3.0.0-beta.16"

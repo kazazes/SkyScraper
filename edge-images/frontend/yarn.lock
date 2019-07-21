@@ -12471,10 +12471,10 @@ vue-cli-plugin-apollo@^0.19.1:
     subscriptions-transport-ws "^0.9.16"
     ts-node "^8.0.3"
 
-vue-good-table@^2.16.4:
-  version "2.16.4"
-  resolved "https://registry.yarnpkg.com/vue-good-table/-/vue-good-table-2.16.4.tgz#42b39014e8cfbc09537835b18ffd86b3d8bd9b0e"
-  integrity sha512-sJOSGYGVrgcbbeALPYXfVIKIyGA4cDpRxeVIRRLq2/Z5aRkTC9ER5OOz1oPbV2NtlQkrs2+BmHykPKpUAsH85g==
+vue-good-table@^2.17.3:
+  version "2.17.3"
+  resolved "https://registry.yarnpkg.com/vue-good-table/-/vue-good-table-2.17.3.tgz#2b7602311c3bfc0743499db118e6c69eed913385"
+  integrity sha512-s4GRz+Q9wEsl/Q5D/Ovnjp6d10L+fRCg5jMRSMCmeupuzGSMm3/bdfhQ69j92P/W3qz7kt0y414Evm5y80QvRw==
   dependencies:
     date-fns "2.0.0-alpha.7"
     diacriticless "1.0.1"

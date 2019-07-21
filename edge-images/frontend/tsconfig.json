@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "module": "es2015",
+    "esModuleInterop": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "@types/node",
+      "@nuxt/vue-app",
+      "./types",
+      "vuetify",
+      "vue-apollo"
+    ],
+    "pretty": true,
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
+    },
+    "target": "esnext",
+    "lib": [
+      "esnext",
+      "esnext.asynciterable",
+      "dom.iterable",
+      "dom"
+    ],
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "noImplicitAny": false
+  }
+}

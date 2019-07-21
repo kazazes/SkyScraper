@@ -1,0 +1,3609 @@
+type AggregateDump1090Aircraft {
+  count: Int!
+}
+
+type AggregateDump1090Message {
+  count: Int!
+}
+
+type AggregateTrunkedCall {
+  count: Int!
+}
+
+type AggregateTrunkedCallFrequencyTime {
+  count: Int!
+}
+
+type AggregateTrunkedCallSource {
+  count: Int!
+}
+
+type AggregateTrunkedConfig {
+  count: Int!
+}
+
+type AggregateTrunkedSource {
+  count: Int!
+}
+
+type AggregateTrunkedSystem {
+  count: Int!
+}
+
+type AggregateTrunkedTalkgroup {
+  count: Int!
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+scalar DateTime
+
+type Dump1090Aircraft {
+  id: ID!
+  IcaoID: String
+}
+
+type Dump1090AircraftConnection {
+  pageInfo: PageInfo!
+  edges: [Dump1090AircraftEdge]!
+  aggregate: AggregateDump1090Aircraft!
+}
+
+input Dump1090AircraftCreateInput {
+  id: ID
+  IcaoID: String
+}
+
+input Dump1090AircraftCreateOneInput {
+  create: Dump1090AircraftCreateInput
+  connect: Dump1090AircraftWhereUniqueInput
+}
+
+type Dump1090AircraftEdge {
+  node: Dump1090Aircraft!
+  cursor: String!
+}
+
+enum Dump1090AircraftOrderByInput {
+  id_ASC
+  id_DESC
+  IcaoID_ASC
+  IcaoID_DESC
+}
+
+type Dump1090AircraftPreviousValues {
+  id: ID!
+  IcaoID: String
+}
+
+type Dump1090AircraftSubscriptionPayload {
+  mutation: MutationType!
+  node: Dump1090Aircraft
+  updatedFields: [String!]
+  previousValues: Dump1090AircraftPreviousValues
+}
+
+input Dump1090AircraftSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: Dump1090AircraftWhereInput
+  AND: [Dump1090AircraftSubscriptionWhereInput!]
+  OR: [Dump1090AircraftSubscriptionWhereInput!]
+  NOT: [Dump1090AircraftSubscriptionWhereInput!]
+}
+
+input Dump1090AircraftUpdateDataInput {
+  IcaoID: String
+}
+
+input Dump1090AircraftUpdateInput {
+  IcaoID: String
+}
+
+input Dump1090AircraftUpdateManyMutationInput {
+  IcaoID: String
+}
+
+input Dump1090AircraftUpdateOneInput {
+  create: Dump1090AircraftCreateInput
+  update: Dump1090AircraftUpdateDataInput
+  upsert: Dump1090AircraftUpsertNestedInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: Dump1090AircraftWhereUniqueInput
+}
+
+input Dump1090AircraftUpsertNestedInput {
+  update: Dump1090AircraftUpdateDataInput!
+  create: Dump1090AircraftCreateInput!
+}
+
+input Dump1090AircraftWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  IcaoID: String
+  IcaoID_not: String
+  IcaoID_in: [String!]
+  IcaoID_not_in: [String!]
+  IcaoID_lt: String
+  IcaoID_lte: String
+  IcaoID_gt: String
+  IcaoID_gte: String
+  IcaoID_contains: String
+  IcaoID_not_contains: String
+  IcaoID_starts_with: String
+  IcaoID_not_starts_with: String
+  IcaoID_ends_with: String
+  IcaoID_not_ends_with: String
+  AND: [Dump1090AircraftWhereInput!]
+  OR: [Dump1090AircraftWhereInput!]
+  NOT: [Dump1090AircraftWhereInput!]
+}
+
+input Dump1090AircraftWhereUniqueInput {
+  id: ID
+  IcaoID: String
+}
+
+type Dump1090Message {
+  id: ID!
+  messageType: Dump1090MessageType!
+  transmissionType: Dump1090TransmissionType!
+  aircraft: Dump1090Aircraft
+  generated: DateTime!
+  logged: DateTime!
+  flightId: String
+  squawk: String
+  alert: Boolean
+  emergency: Boolean
+  isOnGround: Boolean
+  latitude: Float
+  longitude: Float
+  verticalRate: Int
+  track: Int
+  groupSpeed: Int
+  callsign: String
+  altitude: Int
+}
+
+type Dump1090MessageConnection {
+  pageInfo: PageInfo!
+  edges: [Dump1090MessageEdge]!
+  aggregate: AggregateDump1090Message!
+}
+
+input Dump1090MessageCreateInput {
+  id: ID
+  messageType: Dump1090MessageType!
+  transmissionType: Dump1090TransmissionType!
+  aircraft: Dump1090AircraftCreateOneInput
+  generated: DateTime!
+  logged: DateTime!
+  flightId: String
+  squawk: String
+  alert: Boolean
+  emergency: Boolean
+  isOnGround: Boolean
+  latitude: Float
+  longitude: Float
+  verticalRate: Int
+  track: Int
+  groupSpeed: Int
+  callsign: String
+  altitude: Int
+}
+
+type Dump1090MessageEdge {
+  node: Dump1090Message!
+  cursor: String!
+}
+
+enum Dump1090MessageOrderByInput {
+  id_ASC
+  id_DESC
+  messageType_ASC
+  messageType_DESC
+  transmissionType_ASC
+  transmissionType_DESC
+  generated_ASC
+  generated_DESC
+  logged_ASC
+  logged_DESC
+  flightId_ASC
+  flightId_DESC
+  squawk_ASC
+  squawk_DESC
+  alert_ASC
+  alert_DESC
+  emergency_ASC
+  emergency_DESC
+  isOnGround_ASC
+  isOnGround_DESC
+  latitude_ASC
+  latitude_DESC
+  longitude_ASC
+  longitude_DESC
+  verticalRate_ASC
+  verticalRate_DESC
+  track_ASC
+  track_DESC
+  groupSpeed_ASC
+  groupSpeed_DESC
+  callsign_ASC
+  callsign_DESC
+  altitude_ASC
+  altitude_DESC
+}
+
+type Dump1090MessagePreviousValues {
+  id: ID!
+  messageType: Dump1090MessageType!
+  transmissionType: Dump1090TransmissionType!
+  generated: DateTime!
+  logged: DateTime!
+  flightId: String
+  squawk: String
+  alert: Boolean
+  emergency: Boolean
+  isOnGround: Boolean
+  latitude: Float
+  longitude: Float
+  verticalRate: Int
+  track: Int
+  groupSpeed: Int
+  callsign: String
+  altitude: Int
+}
+
+type Dump1090MessageSubscriptionPayload {
+  mutation: MutationType!
+  node: Dump1090Message
+  updatedFields: [String!]
+  previousValues: Dump1090MessagePreviousValues
+}
+
+input Dump1090MessageSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: Dump1090MessageWhereInput
+  AND: [Dump1090MessageSubscriptionWhereInput!]
+  OR: [Dump1090MessageSubscriptionWhereInput!]
+  NOT: [Dump1090MessageSubscriptionWhereInput!]
+}
+
+enum Dump1090MessageType {
+  SELECTION_CHANGE
+  NEW_ID
+  NEW_AIRCRAFT
+  STATUS_AIRCRAFT
+  CLICK
+  TRANSMISSION
+}
+
+input Dump1090MessageUpdateInput {
+  messageType: Dump1090MessageType
+  transmissionType: Dump1090TransmissionType
+  aircraft: Dump1090AircraftUpdateOneInput
+  generated: DateTime
+  logged: DateTime
+  flightId: String
+  squawk: String
+  alert: Boolean
+  emergency: Boolean
+  isOnGround: Boolean
+  latitude: Float
+  longitude: Float
+  verticalRate: Int
+  track: Int
+  groupSpeed: Int
+  callsign: String
+  altitude: Int
+}
+
+input Dump1090MessageUpdateManyMutationInput {
+  messageType: Dump1090MessageType
+  transmissionType: Dump1090TransmissionType
+  generated: DateTime
+  logged: DateTime
+  flightId: String
+  squawk: String
+  alert: Boolean
+  emergency: Boolean
+  isOnGround: Boolean
+  latitude: Float
+  longitude: Float
+  verticalRate: Int
+  track: Int
+  groupSpeed: Int
+  callsign: String
+  altitude: Int
+}
+
+input Dump1090MessageWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  messageType: Dump1090MessageType
+  messageType_not: Dump1090MessageType
+  messageType_in: [Dump1090MessageType!]
+  messageType_not_in: [Dump1090MessageType!]
+  transmissionType: Dump1090TransmissionType
+  transmissionType_not: Dump1090TransmissionType
+  transmissionType_in: [Dump1090TransmissionType!]
+  transmissionType_not_in: [Dump1090TransmissionType!]
+  aircraft: Dump1090AircraftWhereInput
+  generated: DateTime
+  generated_not: DateTime
+  generated_in: [DateTime!]
+  generated_not_in: [DateTime!]
+  generated_lt: DateTime
+  generated_lte: DateTime
+  generated_gt: DateTime
+  generated_gte: DateTime
+  logged: DateTime
+  logged_not: DateTime
+  logged_in: [DateTime!]
+  logged_not_in: [DateTime!]
+  logged_lt: DateTime
+  logged_lte: DateTime
+  logged_gt: DateTime
+  logged_gte: DateTime
+  flightId: String
+  flightId_not: String
+  flightId_in: [String!]
+  flightId_not_in: [String!]
+  flightId_lt: String
+  flightId_lte: String
+  flightId_gt: String
+  flightId_gte: String
+  flightId_contains: String
+  flightId_not_contains: String
+  flightId_starts_with: String
+  flightId_not_starts_with: String
+  flightId_ends_with: String
+  flightId_not_ends_with: String
+  squawk: String
+  squawk_not: String
+  squawk_in: [String!]
+  squawk_not_in: [String!]
+  squawk_lt: String
+  squawk_lte: String
+  squawk_gt: String
+  squawk_gte: String
+  squawk_contains: String
+  squawk_not_contains: String
+  squawk_starts_with: String
+  squawk_not_starts_with: String
+  squawk_ends_with: String
+  squawk_not_ends_with: String
+  alert: Boolean
+  alert_not: Boolean
+  emergency: Boolean
+  emergency_not: Boolean
+  isOnGround: Boolean
+  isOnGround_not: Boolean
+  latitude: Float
+  latitude_not: Float
+  latitude_in: [Float!]
+  latitude_not_in: [Float!]
+  latitude_lt: Float
+  latitude_lte: Float
+  latitude_gt: Float
+  latitude_gte: Float
+  longitude: Float
+  longitude_not: Float
+  longitude_in: [Float!]
+  longitude_not_in: [Float!]
+  longitude_lt: Float
+  longitude_lte: Float
+  longitude_gt: Float
+  longitude_gte: Float
+  verticalRate: Int
+  verticalRate_not: Int
+  verticalRate_in: [Int!]
+  verticalRate_not_in: [Int!]
+  verticalRate_lt: Int
+  verticalRate_lte: Int
+  verticalRate_gt: Int
+  verticalRate_gte: Int
+  track: Int
+  track_not: Int
+  track_in: [Int!]
+  track_not_in: [Int!]
+  track_lt: Int
+  track_lte: Int
+  track_gt: Int
+  track_gte: Int
+  groupSpeed: Int
+  groupSpeed_not: Int
+  groupSpeed_in: [Int!]
+  groupSpeed_not_in: [Int!]
+  groupSpeed_lt: Int
+  groupSpeed_lte: Int
+  groupSpeed_gt: Int
+  groupSpeed_gte: Int
+  callsign: String
+  callsign_not: String
+  callsign_in: [String!]
+  callsign_not_in: [String!]
+  callsign_lt: String
+  callsign_lte: String
+  callsign_gt: String
+  callsign_gte: String
+  callsign_contains: String
+  callsign_not_contains: String
+  callsign_starts_with: String
+  callsign_not_starts_with: String
+  callsign_ends_with: String
+  callsign_not_ends_with: String
+  altitude: Int
+  altitude_not: Int
+  altitude_in: [Int!]
+  altitude_not_in: [Int!]
+  altitude_lt: Int
+  altitude_lte: Int
+  altitude_gt: Int
+  altitude_gte: Int
+  AND: [Dump1090MessageWhereInput!]
+  OR: [Dump1090MessageWhereInput!]
+  NOT: [Dump1090MessageWhereInput!]
+}
+
+input Dump1090MessageWhereUniqueInput {
+  id: ID
+}
+
+enum Dump1090TransmissionType {
+  ES_IDENT_AND_CATEGORY
+  ES_SURFACE_POS
+  ES_AIRBORNE_POS
+  ES_AIRBORNE_VEL
+  SURVEILLANCE_ALT
+  SURVEILLANCE_ID
+  AIR_TO_AIR
+  ALL_CALL_REPLY
+}
+
+scalar Long
+
+type Mutation {
+  createDump1090Aircraft(data: Dump1090AircraftCreateInput!): Dump1090Aircraft!
+  updateDump1090Aircraft(data: Dump1090AircraftUpdateInput!, where: Dump1090AircraftWhereUniqueInput!): Dump1090Aircraft
+  updateManyDump1090Aircrafts(data: Dump1090AircraftUpdateManyMutationInput!, where: Dump1090AircraftWhereInput): BatchPayload!
+  upsertDump1090Aircraft(where: Dump1090AircraftWhereUniqueInput!, create: Dump1090AircraftCreateInput!, update: Dump1090AircraftUpdateInput!): Dump1090Aircraft!
+  deleteDump1090Aircraft(where: Dump1090AircraftWhereUniqueInput!): Dump1090Aircraft
+  deleteManyDump1090Aircrafts(where: Dump1090AircraftWhereInput): BatchPayload!
+  createDump1090Message(data: Dump1090MessageCreateInput!): Dump1090Message!
+  updateDump1090Message(data: Dump1090MessageUpdateInput!, where: Dump1090MessageWhereUniqueInput!): Dump1090Message
+  updateManyDump1090Messages(data: Dump1090MessageUpdateManyMutationInput!, where: Dump1090MessageWhereInput): BatchPayload!
+  upsertDump1090Message(where: Dump1090MessageWhereUniqueInput!, create: Dump1090MessageCreateInput!, update: Dump1090MessageUpdateInput!): Dump1090Message!
+  deleteDump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
+  deleteManyDump1090Messages(where: Dump1090MessageWhereInput): BatchPayload!
+  createTrunkedCall(data: TrunkedCallCreateInput!): TrunkedCall!
+  updateTrunkedCall(data: TrunkedCallUpdateInput!, where: TrunkedCallWhereUniqueInput!): TrunkedCall
+  updateManyTrunkedCalls(data: TrunkedCallUpdateManyMutationInput!, where: TrunkedCallWhereInput): BatchPayload!
+  upsertTrunkedCall(where: TrunkedCallWhereUniqueInput!, create: TrunkedCallCreateInput!, update: TrunkedCallUpdateInput!): TrunkedCall!
+  deleteTrunkedCall(where: TrunkedCallWhereUniqueInput!): TrunkedCall
+  deleteManyTrunkedCalls(where: TrunkedCallWhereInput): BatchPayload!
+  createTrunkedCallFrequencyTime(data: TrunkedCallFrequencyTimeCreateInput!): TrunkedCallFrequencyTime!
+  updateTrunkedCallFrequencyTime(data: TrunkedCallFrequencyTimeUpdateInput!, where: TrunkedCallFrequencyTimeWhereUniqueInput!): TrunkedCallFrequencyTime
+  updateManyTrunkedCallFrequencyTimes(data: TrunkedCallFrequencyTimeUpdateManyMutationInput!, where: TrunkedCallFrequencyTimeWhereInput): BatchPayload!
+  upsertTrunkedCallFrequencyTime(where: TrunkedCallFrequencyTimeWhereUniqueInput!, create: TrunkedCallFrequencyTimeCreateInput!, update: TrunkedCallFrequencyTimeUpdateInput!): TrunkedCallFrequencyTime!
+  deleteTrunkedCallFrequencyTime(where: TrunkedCallFrequencyTimeWhereUniqueInput!): TrunkedCallFrequencyTime
+  deleteManyTrunkedCallFrequencyTimes(where: TrunkedCallFrequencyTimeWhereInput): BatchPayload!
+  createTrunkedCallSource(data: TrunkedCallSourceCreateInput!): TrunkedCallSource!
+  updateTrunkedCallSource(data: TrunkedCallSourceUpdateInput!, where: TrunkedCallSourceWhereUniqueInput!): TrunkedCallSource
+  updateManyTrunkedCallSources(data: TrunkedCallSourceUpdateManyMutationInput!, where: TrunkedCallSourceWhereInput): BatchPayload!
+  upsertTrunkedCallSource(where: TrunkedCallSourceWhereUniqueInput!, create: TrunkedCallSourceCreateInput!, update: TrunkedCallSourceUpdateInput!): TrunkedCallSource!
+  deleteTrunkedCallSource(where: TrunkedCallSourceWhereUniqueInput!): TrunkedCallSource
+  deleteManyTrunkedCallSources(where: TrunkedCallSourceWhereInput): BatchPayload!
+  createTrunkedConfig(data: TrunkedConfigCreateInput!): TrunkedConfig!
+  updateTrunkedConfig(data: TrunkedConfigUpdateInput!, where: TrunkedConfigWhereUniqueInput!): TrunkedConfig
+  updateManyTrunkedConfigs(data: TrunkedConfigUpdateManyMutationInput!, where: TrunkedConfigWhereInput): BatchPayload!
+  upsertTrunkedConfig(where: TrunkedConfigWhereUniqueInput!, create: TrunkedConfigCreateInput!, update: TrunkedConfigUpdateInput!): TrunkedConfig!
+  deleteTrunkedConfig(where: TrunkedConfigWhereUniqueInput!): TrunkedConfig
+  deleteManyTrunkedConfigs(where: TrunkedConfigWhereInput): BatchPayload!
+  createTrunkedSource(data: TrunkedSourceCreateInput!): TrunkedSource!
+  updateTrunkedSource(data: TrunkedSourceUpdateInput!, where: TrunkedSourceWhereUniqueInput!): TrunkedSource
+  updateManyTrunkedSources(data: TrunkedSourceUpdateManyMutationInput!, where: TrunkedSourceWhereInput): BatchPayload!
+  upsertTrunkedSource(where: TrunkedSourceWhereUniqueInput!, create: TrunkedSourceCreateInput!, update: TrunkedSourceUpdateInput!): TrunkedSource!
+  deleteTrunkedSource(where: TrunkedSourceWhereUniqueInput!): TrunkedSource
+  deleteManyTrunkedSources(where: TrunkedSourceWhereInput): BatchPayload!
+  createTrunkedSystem(data: TrunkedSystemCreateInput!): TrunkedSystem!
+  updateTrunkedSystem(data: TrunkedSystemUpdateInput!, where: TrunkedSystemWhereUniqueInput!): TrunkedSystem
+  updateManyTrunkedSystems(data: TrunkedSystemUpdateManyMutationInput!, where: TrunkedSystemWhereInput): BatchPayload!
+  upsertTrunkedSystem(where: TrunkedSystemWhereUniqueInput!, create: TrunkedSystemCreateInput!, update: TrunkedSystemUpdateInput!): TrunkedSystem!
+  deleteTrunkedSystem(where: TrunkedSystemWhereUniqueInput!): TrunkedSystem
+  deleteManyTrunkedSystems(where: TrunkedSystemWhereInput): BatchPayload!
+  createTrunkedTalkgroup(data: TrunkedTalkgroupCreateInput!): TrunkedTalkgroup!
+  updateTrunkedTalkgroup(data: TrunkedTalkgroupUpdateInput!, where: TrunkedTalkgroupWhereUniqueInput!): TrunkedTalkgroup
+  updateManyTrunkedTalkgroups(data: TrunkedTalkgroupUpdateManyMutationInput!, where: TrunkedTalkgroupWhereInput): BatchPayload!
+  upsertTrunkedTalkgroup(where: TrunkedTalkgroupWhereUniqueInput!, create: TrunkedTalkgroupCreateInput!, update: TrunkedTalkgroupUpdateInput!): TrunkedTalkgroup!
+  deleteTrunkedTalkgroup(where: TrunkedTalkgroupWhereUniqueInput!): TrunkedTalkgroup
+  deleteManyTrunkedTalkgroups(where: TrunkedTalkgroupWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type Query {
+  dump1090Aircraft(where: Dump1090AircraftWhereUniqueInput!): Dump1090Aircraft
+  dump1090Aircrafts(where: Dump1090AircraftWhereInput, orderBy: Dump1090AircraftOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dump1090Aircraft]!
+  dump1090AircraftsConnection(where: Dump1090AircraftWhereInput, orderBy: Dump1090AircraftOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): Dump1090AircraftConnection!
+  dump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
+  dump1090Messages(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dump1090Message]!
+  dump1090MessagesConnection(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): Dump1090MessageConnection!
+  trunkedCall(where: TrunkedCallWhereUniqueInput!): TrunkedCall
+  trunkedCalls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall]!
+  trunkedCallsConnection(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedCallConnection!
+  trunkedCallFrequencyTime(where: TrunkedCallFrequencyTimeWhereUniqueInput!): TrunkedCallFrequencyTime
+  trunkedCallFrequencyTimes(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime]!
+  trunkedCallFrequencyTimesConnection(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedCallFrequencyTimeConnection!
+  trunkedCallSource(where: TrunkedCallSourceWhereUniqueInput!): TrunkedCallSource
+  trunkedCallSources(where: TrunkedCallSourceWhereInput, orderBy: TrunkedCallSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallSource]!
+  trunkedCallSourcesConnection(where: TrunkedCallSourceWhereInput, orderBy: TrunkedCallSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedCallSourceConnection!
+  trunkedConfig(where: TrunkedConfigWhereUniqueInput!): TrunkedConfig
+  trunkedConfigs(where: TrunkedConfigWhereInput, orderBy: TrunkedConfigOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedConfig]!
+  trunkedConfigsConnection(where: TrunkedConfigWhereInput, orderBy: TrunkedConfigOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedConfigConnection!
+  trunkedSource(where: TrunkedSourceWhereUniqueInput!): TrunkedSource
+  trunkedSources(where: TrunkedSourceWhereInput, orderBy: TrunkedSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedSource]!
+  trunkedSourcesConnection(where: TrunkedSourceWhereInput, orderBy: TrunkedSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedSourceConnection!
+  trunkedSystem(where: TrunkedSystemWhereUniqueInput!): TrunkedSystem
+  trunkedSystems(where: TrunkedSystemWhereInput, orderBy: TrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedSystem]!
+  trunkedSystemsConnection(where: TrunkedSystemWhereInput, orderBy: TrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedSystemConnection!
+  trunkedTalkgroup(where: TrunkedTalkgroupWhereUniqueInput!): TrunkedTalkgroup
+  trunkedTalkgroups(where: TrunkedTalkgroupWhereInput, orderBy: TrunkedTalkgroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedTalkgroup]!
+  trunkedTalkgroupsConnection(where: TrunkedTalkgroupWhereInput, orderBy: TrunkedTalkgroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedTalkgroupConnection!
+  node(id: ID!): Node
+}
+
+type Subscription {
+  dump1090Aircraft(where: Dump1090AircraftSubscriptionWhereInput): Dump1090AircraftSubscriptionPayload
+  dump1090Message(where: Dump1090MessageSubscriptionWhereInput): Dump1090MessageSubscriptionPayload
+  trunkedCall(where: TrunkedCallSubscriptionWhereInput): TrunkedCallSubscriptionPayload
+  trunkedCallFrequencyTime(where: TrunkedCallFrequencyTimeSubscriptionWhereInput): TrunkedCallFrequencyTimeSubscriptionPayload
+  trunkedCallSource(where: TrunkedCallSourceSubscriptionWhereInput): TrunkedCallSourceSubscriptionPayload
+  trunkedConfig(where: TrunkedConfigSubscriptionWhereInput): TrunkedConfigSubscriptionPayload
+  trunkedSource(where: TrunkedSourceSubscriptionWhereInput): TrunkedSourceSubscriptionPayload
+  trunkedSystem(where: TrunkedSystemSubscriptionWhereInput): TrunkedSystemSubscriptionPayload
+  trunkedTalkgroup(where: TrunkedTalkgroupSubscriptionWhereInput): TrunkedTalkgroupSubscriptionPayload
+}
+
+type TrunkedCall {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroup
+  system: TrunkedSystem
+  sources(where: TrunkedCallSourceWhereInput, orderBy: TrunkedCallSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallSource!]
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime!]
+  callHash: String
+  wavPath: String
+}
+
+type TrunkedCallConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedCallEdge]!
+  aggregate: AggregateTrunkedCall!
+}
+
+input TrunkedCallCreateInput {
+  id: ID
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupCreateOneWithoutCallsInput
+  system: TrunkedSystemCreateOneWithoutCallsInput
+  sources: TrunkedCallSourceCreateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeCreateManyInput
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallCreateManyWithoutSystemInput {
+  create: [TrunkedCallCreateWithoutSystemInput!]
+  connect: [TrunkedCallWhereUniqueInput!]
+}
+
+input TrunkedCallCreateManyWithoutTalkgroupInput {
+  create: [TrunkedCallCreateWithoutTalkgroupInput!]
+  connect: [TrunkedCallWhereUniqueInput!]
+}
+
+input TrunkedCallCreateWithoutSystemInput {
+  id: ID
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupCreateOneWithoutCallsInput
+  sources: TrunkedCallSourceCreateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeCreateManyInput
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallCreateWithoutTalkgroupInput {
+  id: ID
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  system: TrunkedSystemCreateOneWithoutCallsInput
+  sources: TrunkedCallSourceCreateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeCreateManyInput
+  callHash: String
+  wavPath: String
+}
+
+type TrunkedCallEdge {
+  node: TrunkedCall!
+  cursor: String!
+}
+
+type TrunkedCallFrequencyTime {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  frequency: Int!
+  time: Int!
+  position: Float!
+  length: Int!
+  errors: Int!
+  spikes: Int!
+}
+
+type TrunkedCallFrequencyTimeConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedCallFrequencyTimeEdge]!
+  aggregate: AggregateTrunkedCallFrequencyTime!
+}
+
+input TrunkedCallFrequencyTimeCreateInput {
+  id: ID
+  frequency: Int!
+  time: Int!
+  position: Float!
+  length: Int!
+  errors: Int!
+  spikes: Int!
+}
+
+input TrunkedCallFrequencyTimeCreateManyInput {
+  create: [TrunkedCallFrequencyTimeCreateInput!]
+  connect: [TrunkedCallFrequencyTimeWhereUniqueInput!]
+}
+
+type TrunkedCallFrequencyTimeEdge {
+  node: TrunkedCallFrequencyTime!
+  cursor: String!
+}
+
+enum TrunkedCallFrequencyTimeOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  frequency_ASC
+  frequency_DESC
+  time_ASC
+  time_DESC
+  position_ASC
+  position_DESC
+  length_ASC
+  length_DESC
+  errors_ASC
+  errors_DESC
+  spikes_ASC
+  spikes_DESC
+}
+
+type TrunkedCallFrequencyTimePreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  frequency: Int!
+  time: Int!
+  position: Float!
+  length: Int!
+  errors: Int!
+  spikes: Int!
+}
+
+input TrunkedCallFrequencyTimeScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  frequency: Int
+  frequency_not: Int
+  frequency_in: [Int!]
+  frequency_not_in: [Int!]
+  frequency_lt: Int
+  frequency_lte: Int
+  frequency_gt: Int
+  frequency_gte: Int
+  time: Int
+  time_not: Int
+  time_in: [Int!]
+  time_not_in: [Int!]
+  time_lt: Int
+  time_lte: Int
+  time_gt: Int
+  time_gte: Int
+  position: Float
+  position_not: Float
+  position_in: [Float!]
+  position_not_in: [Float!]
+  position_lt: Float
+  position_lte: Float
+  position_gt: Float
+  position_gte: Float
+  length: Int
+  length_not: Int
+  length_in: [Int!]
+  length_not_in: [Int!]
+  length_lt: Int
+  length_lte: Int
+  length_gt: Int
+  length_gte: Int
+  errors: Int
+  errors_not: Int
+  errors_in: [Int!]
+  errors_not_in: [Int!]
+  errors_lt: Int
+  errors_lte: Int
+  errors_gt: Int
+  errors_gte: Int
+  spikes: Int
+  spikes_not: Int
+  spikes_in: [Int!]
+  spikes_not_in: [Int!]
+  spikes_lt: Int
+  spikes_lte: Int
+  spikes_gt: Int
+  spikes_gte: Int
+  AND: [TrunkedCallFrequencyTimeScalarWhereInput!]
+  OR: [TrunkedCallFrequencyTimeScalarWhereInput!]
+  NOT: [TrunkedCallFrequencyTimeScalarWhereInput!]
+}
+
+type TrunkedCallFrequencyTimeSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedCallFrequencyTime
+  updatedFields: [String!]
+  previousValues: TrunkedCallFrequencyTimePreviousValues
+}
+
+input TrunkedCallFrequencyTimeSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedCallFrequencyTimeWhereInput
+  AND: [TrunkedCallFrequencyTimeSubscriptionWhereInput!]
+  OR: [TrunkedCallFrequencyTimeSubscriptionWhereInput!]
+  NOT: [TrunkedCallFrequencyTimeSubscriptionWhereInput!]
+}
+
+input TrunkedCallFrequencyTimeUpdateDataInput {
+  frequency: Int
+  time: Int
+  position: Float
+  length: Int
+  errors: Int
+  spikes: Int
+}
+
+input TrunkedCallFrequencyTimeUpdateInput {
+  frequency: Int
+  time: Int
+  position: Float
+  length: Int
+  errors: Int
+  spikes: Int
+}
+
+input TrunkedCallFrequencyTimeUpdateManyDataInput {
+  frequency: Int
+  time: Int
+  position: Float
+  length: Int
+  errors: Int
+  spikes: Int
+}
+
+input TrunkedCallFrequencyTimeUpdateManyInput {
+  create: [TrunkedCallFrequencyTimeCreateInput!]
+  update: [TrunkedCallFrequencyTimeUpdateWithWhereUniqueNestedInput!]
+  upsert: [TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput!]
+  delete: [TrunkedCallFrequencyTimeWhereUniqueInput!]
+  connect: [TrunkedCallFrequencyTimeWhereUniqueInput!]
+  set: [TrunkedCallFrequencyTimeWhereUniqueInput!]
+  disconnect: [TrunkedCallFrequencyTimeWhereUniqueInput!]
+  deleteMany: [TrunkedCallFrequencyTimeScalarWhereInput!]
+  updateMany: [TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedCallFrequencyTimeUpdateManyMutationInput {
+  frequency: Int
+  time: Int
+  position: Float
+  length: Int
+  errors: Int
+  spikes: Int
+}
+
+input TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput {
+  where: TrunkedCallFrequencyTimeScalarWhereInput!
+  data: TrunkedCallFrequencyTimeUpdateManyDataInput!
+}
+
+input TrunkedCallFrequencyTimeUpdateWithWhereUniqueNestedInput {
+  where: TrunkedCallFrequencyTimeWhereUniqueInput!
+  data: TrunkedCallFrequencyTimeUpdateDataInput!
+}
+
+input TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput {
+  where: TrunkedCallFrequencyTimeWhereUniqueInput!
+  update: TrunkedCallFrequencyTimeUpdateDataInput!
+  create: TrunkedCallFrequencyTimeCreateInput!
+}
+
+input TrunkedCallFrequencyTimeWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  frequency: Int
+  frequency_not: Int
+  frequency_in: [Int!]
+  frequency_not_in: [Int!]
+  frequency_lt: Int
+  frequency_lte: Int
+  frequency_gt: Int
+  frequency_gte: Int
+  time: Int
+  time_not: Int
+  time_in: [Int!]
+  time_not_in: [Int!]
+  time_lt: Int
+  time_lte: Int
+  time_gt: Int
+  time_gte: Int
+  position: Float
+  position_not: Float
+  position_in: [Float!]
+  position_not_in: [Float!]
+  position_lt: Float
+  position_lte: Float
+  position_gt: Float
+  position_gte: Float
+  length: Int
+  length_not: Int
+  length_in: [Int!]
+  length_not_in: [Int!]
+  length_lt: Int
+  length_lte: Int
+  length_gt: Int
+  length_gte: Int
+  errors: Int
+  errors_not: Int
+  errors_in: [Int!]
+  errors_not_in: [Int!]
+  errors_lt: Int
+  errors_lte: Int
+  errors_gt: Int
+  errors_gte: Int
+  spikes: Int
+  spikes_not: Int
+  spikes_in: [Int!]
+  spikes_not_in: [Int!]
+  spikes_lt: Int
+  spikes_lte: Int
+  spikes_gt: Int
+  spikes_gte: Int
+  AND: [TrunkedCallFrequencyTimeWhereInput!]
+  OR: [TrunkedCallFrequencyTimeWhereInput!]
+  NOT: [TrunkedCallFrequencyTimeWhereInput!]
+}
+
+input TrunkedCallFrequencyTimeWhereUniqueInput {
+  id: ID
+}
+
+enum TrunkedCallOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  frequency_ASC
+  frequency_DESC
+  startTime_ASC
+  startTime_DESC
+  endTime_ASC
+  endTime_DESC
+  emergency_ASC
+  emergency_DESC
+  duration_ASC
+  duration_DESC
+  source_ASC
+  source_DESC
+  audioPath_ASC
+  audioPath_DESC
+  callHash_ASC
+  callHash_DESC
+  wavPath_ASC
+  wavPath_DESC
+}
+
+type TrunkedCallPreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  duration: Float
+  source: Int
+  audioPath: String
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  frequency: Int
+  frequency_not: Int
+  frequency_in: [Int!]
+  frequency_not_in: [Int!]
+  frequency_lt: Int
+  frequency_lte: Int
+  frequency_gt: Int
+  frequency_gte: Int
+  startTime: DateTime
+  startTime_not: DateTime
+  startTime_in: [DateTime!]
+  startTime_not_in: [DateTime!]
+  startTime_lt: DateTime
+  startTime_lte: DateTime
+  startTime_gt: DateTime
+  startTime_gte: DateTime
+  endTime: DateTime
+  endTime_not: DateTime
+  endTime_in: [DateTime!]
+  endTime_not_in: [DateTime!]
+  endTime_lt: DateTime
+  endTime_lte: DateTime
+  endTime_gt: DateTime
+  endTime_gte: DateTime
+  emergency: Boolean
+  emergency_not: Boolean
+  duration: Float
+  duration_not: Float
+  duration_in: [Float!]
+  duration_not_in: [Float!]
+  duration_lt: Float
+  duration_lte: Float
+  duration_gt: Float
+  duration_gte: Float
+  source: Int
+  source_not: Int
+  source_in: [Int!]
+  source_not_in: [Int!]
+  source_lt: Int
+  source_lte: Int
+  source_gt: Int
+  source_gte: Int
+  audioPath: String
+  audioPath_not: String
+  audioPath_in: [String!]
+  audioPath_not_in: [String!]
+  audioPath_lt: String
+  audioPath_lte: String
+  audioPath_gt: String
+  audioPath_gte: String
+  audioPath_contains: String
+  audioPath_not_contains: String
+  audioPath_starts_with: String
+  audioPath_not_starts_with: String
+  audioPath_ends_with: String
+  audioPath_not_ends_with: String
+  callHash: String
+  callHash_not: String
+  callHash_in: [String!]
+  callHash_not_in: [String!]
+  callHash_lt: String
+  callHash_lte: String
+  callHash_gt: String
+  callHash_gte: String
+  callHash_contains: String
+  callHash_not_contains: String
+  callHash_starts_with: String
+  callHash_not_starts_with: String
+  callHash_ends_with: String
+  callHash_not_ends_with: String
+  wavPath: String
+  wavPath_not: String
+  wavPath_in: [String!]
+  wavPath_not_in: [String!]
+  wavPath_lt: String
+  wavPath_lte: String
+  wavPath_gt: String
+  wavPath_gte: String
+  wavPath_contains: String
+  wavPath_not_contains: String
+  wavPath_starts_with: String
+  wavPath_not_starts_with: String
+  wavPath_ends_with: String
+  wavPath_not_ends_with: String
+  AND: [TrunkedCallScalarWhereInput!]
+  OR: [TrunkedCallScalarWhereInput!]
+  NOT: [TrunkedCallScalarWhereInput!]
+}
+
+type TrunkedCallSource {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+type TrunkedCallSourceConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedCallSourceEdge]!
+  aggregate: AggregateTrunkedCallSource!
+}
+
+input TrunkedCallSourceCreateInput {
+  id: ID
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceCreateManyInput {
+  create: [TrunkedCallSourceCreateInput!]
+  connect: [TrunkedCallSourceWhereUniqueInput!]
+}
+
+type TrunkedCallSourceEdge {
+  node: TrunkedCallSource!
+  cursor: String!
+}
+
+enum TrunkedCallSourceOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  sourceId_ASC
+  sourceId_DESC
+  time_ASC
+  time_DESC
+  position_ASC
+  position_DESC
+}
+
+type TrunkedCallSourcePreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  sourceId: Int
+  sourceId_not: Int
+  sourceId_in: [Int!]
+  sourceId_not_in: [Int!]
+  sourceId_lt: Int
+  sourceId_lte: Int
+  sourceId_gt: Int
+  sourceId_gte: Int
+  time: DateTime
+  time_not: DateTime
+  time_in: [DateTime!]
+  time_not_in: [DateTime!]
+  time_lt: DateTime
+  time_lte: DateTime
+  time_gt: DateTime
+  time_gte: DateTime
+  position: Float
+  position_not: Float
+  position_in: [Float!]
+  position_not_in: [Float!]
+  position_lt: Float
+  position_lte: Float
+  position_gt: Float
+  position_gte: Float
+  AND: [TrunkedCallSourceScalarWhereInput!]
+  OR: [TrunkedCallSourceScalarWhereInput!]
+  NOT: [TrunkedCallSourceScalarWhereInput!]
+}
+
+type TrunkedCallSourceSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedCallSource
+  updatedFields: [String!]
+  previousValues: TrunkedCallSourcePreviousValues
+}
+
+input TrunkedCallSourceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedCallSourceWhereInput
+  AND: [TrunkedCallSourceSubscriptionWhereInput!]
+  OR: [TrunkedCallSourceSubscriptionWhereInput!]
+  NOT: [TrunkedCallSourceSubscriptionWhereInput!]
+}
+
+input TrunkedCallSourceUpdateDataInput {
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceUpdateInput {
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceUpdateManyDataInput {
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceUpdateManyInput {
+  create: [TrunkedCallSourceCreateInput!]
+  update: [TrunkedCallSourceUpdateWithWhereUniqueNestedInput!]
+  upsert: [TrunkedCallSourceUpsertWithWhereUniqueNestedInput!]
+  delete: [TrunkedCallSourceWhereUniqueInput!]
+  connect: [TrunkedCallSourceWhereUniqueInput!]
+  set: [TrunkedCallSourceWhereUniqueInput!]
+  disconnect: [TrunkedCallSourceWhereUniqueInput!]
+  deleteMany: [TrunkedCallSourceScalarWhereInput!]
+  updateMany: [TrunkedCallSourceUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedCallSourceUpdateManyMutationInput {
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+input TrunkedCallSourceUpdateManyWithWhereNestedInput {
+  where: TrunkedCallSourceScalarWhereInput!
+  data: TrunkedCallSourceUpdateManyDataInput!
+}
+
+input TrunkedCallSourceUpdateWithWhereUniqueNestedInput {
+  where: TrunkedCallSourceWhereUniqueInput!
+  data: TrunkedCallSourceUpdateDataInput!
+}
+
+input TrunkedCallSourceUpsertWithWhereUniqueNestedInput {
+  where: TrunkedCallSourceWhereUniqueInput!
+  update: TrunkedCallSourceUpdateDataInput!
+  create: TrunkedCallSourceCreateInput!
+}
+
+input TrunkedCallSourceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  sourceId: Int
+  sourceId_not: Int
+  sourceId_in: [Int!]
+  sourceId_not_in: [Int!]
+  sourceId_lt: Int
+  sourceId_lte: Int
+  sourceId_gt: Int
+  sourceId_gte: Int
+  time: DateTime
+  time_not: DateTime
+  time_in: [DateTime!]
+  time_not_in: [DateTime!]
+  time_lt: DateTime
+  time_lte: DateTime
+  time_gt: DateTime
+  time_gte: DateTime
+  position: Float
+  position_not: Float
+  position_in: [Float!]
+  position_not_in: [Float!]
+  position_lt: Float
+  position_lte: Float
+  position_gt: Float
+  position_gte: Float
+  AND: [TrunkedCallSourceWhereInput!]
+  OR: [TrunkedCallSourceWhereInput!]
+  NOT: [TrunkedCallSourceWhereInput!]
+}
+
+input TrunkedCallSourceWhereUniqueInput {
+  id: ID
+}
+
+type TrunkedCallSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedCall
+  updatedFields: [String!]
+  previousValues: TrunkedCallPreviousValues
+}
+
+input TrunkedCallSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedCallWhereInput
+  AND: [TrunkedCallSubscriptionWhereInput!]
+  OR: [TrunkedCallSubscriptionWhereInput!]
+  NOT: [TrunkedCallSubscriptionWhereInput!]
+}
+
+input TrunkedCallUpdateInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupUpdateOneWithoutCallsInput
+  system: TrunkedSystemUpdateOneWithoutCallsInput
+  sources: TrunkedCallSourceUpdateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallUpdateManyDataInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  duration: Float
+  source: Int
+  audioPath: String
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallUpdateManyMutationInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  duration: Float
+  source: Int
+  audioPath: String
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallUpdateManyWithoutSystemInput {
+  create: [TrunkedCallCreateWithoutSystemInput!]
+  delete: [TrunkedCallWhereUniqueInput!]
+  connect: [TrunkedCallWhereUniqueInput!]
+  set: [TrunkedCallWhereUniqueInput!]
+  disconnect: [TrunkedCallWhereUniqueInput!]
+  update: [TrunkedCallUpdateWithWhereUniqueWithoutSystemInput!]
+  upsert: [TrunkedCallUpsertWithWhereUniqueWithoutSystemInput!]
+  deleteMany: [TrunkedCallScalarWhereInput!]
+  updateMany: [TrunkedCallUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedCallUpdateManyWithoutTalkgroupInput {
+  create: [TrunkedCallCreateWithoutTalkgroupInput!]
+  delete: [TrunkedCallWhereUniqueInput!]
+  connect: [TrunkedCallWhereUniqueInput!]
+  set: [TrunkedCallWhereUniqueInput!]
+  disconnect: [TrunkedCallWhereUniqueInput!]
+  update: [TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput!]
+  upsert: [TrunkedCallUpsertWithWhereUniqueWithoutTalkgroupInput!]
+  deleteMany: [TrunkedCallScalarWhereInput!]
+  updateMany: [TrunkedCallUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedCallUpdateManyWithWhereNestedInput {
+  where: TrunkedCallScalarWhereInput!
+  data: TrunkedCallUpdateManyDataInput!
+}
+
+input TrunkedCallUpdateWithoutSystemDataInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupUpdateOneWithoutCallsInput
+  sources: TrunkedCallSourceUpdateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallUpdateWithoutTalkgroupDataInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  system: TrunkedSystemUpdateOneWithoutCallsInput
+  sources: TrunkedCallSourceUpdateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
+  callHash: String
+  wavPath: String
+}
+
+input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
+  where: TrunkedCallWhereUniqueInput!
+  data: TrunkedCallUpdateWithoutSystemDataInput!
+}
+
+input TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput {
+  where: TrunkedCallWhereUniqueInput!
+  data: TrunkedCallUpdateWithoutTalkgroupDataInput!
+}
+
+input TrunkedCallUpsertWithWhereUniqueWithoutSystemInput {
+  where: TrunkedCallWhereUniqueInput!
+  update: TrunkedCallUpdateWithoutSystemDataInput!
+  create: TrunkedCallCreateWithoutSystemInput!
+}
+
+input TrunkedCallUpsertWithWhereUniqueWithoutTalkgroupInput {
+  where: TrunkedCallWhereUniqueInput!
+  update: TrunkedCallUpdateWithoutTalkgroupDataInput!
+  create: TrunkedCallCreateWithoutTalkgroupInput!
+}
+
+input TrunkedCallWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  frequency: Int
+  frequency_not: Int
+  frequency_in: [Int!]
+  frequency_not_in: [Int!]
+  frequency_lt: Int
+  frequency_lte: Int
+  frequency_gt: Int
+  frequency_gte: Int
+  startTime: DateTime
+  startTime_not: DateTime
+  startTime_in: [DateTime!]
+  startTime_not_in: [DateTime!]
+  startTime_lt: DateTime
+  startTime_lte: DateTime
+  startTime_gt: DateTime
+  startTime_gte: DateTime
+  endTime: DateTime
+  endTime_not: DateTime
+  endTime_in: [DateTime!]
+  endTime_not_in: [DateTime!]
+  endTime_lt: DateTime
+  endTime_lte: DateTime
+  endTime_gt: DateTime
+  endTime_gte: DateTime
+  emergency: Boolean
+  emergency_not: Boolean
+  talkgroup: TrunkedTalkgroupWhereInput
+  system: TrunkedSystemWhereInput
+  sources_every: TrunkedCallSourceWhereInput
+  sources_some: TrunkedCallSourceWhereInput
+  sources_none: TrunkedCallSourceWhereInput
+  duration: Float
+  duration_not: Float
+  duration_in: [Float!]
+  duration_not_in: [Float!]
+  duration_lt: Float
+  duration_lte: Float
+  duration_gt: Float
+  duration_gte: Float
+  source: Int
+  source_not: Int
+  source_in: [Int!]
+  source_not_in: [Int!]
+  source_lt: Int
+  source_lte: Int
+  source_gt: Int
+  source_gte: Int
+  audioPath: String
+  audioPath_not: String
+  audioPath_in: [String!]
+  audioPath_not_in: [String!]
+  audioPath_lt: String
+  audioPath_lte: String
+  audioPath_gt: String
+  audioPath_gte: String
+  audioPath_contains: String
+  audioPath_not_contains: String
+  audioPath_starts_with: String
+  audioPath_not_starts_with: String
+  audioPath_ends_with: String
+  audioPath_not_ends_with: String
+  frequencyList_every: TrunkedCallFrequencyTimeWhereInput
+  frequencyList_some: TrunkedCallFrequencyTimeWhereInput
+  frequencyList_none: TrunkedCallFrequencyTimeWhereInput
+  callHash: String
+  callHash_not: String
+  callHash_in: [String!]
+  callHash_not_in: [String!]
+  callHash_lt: String
+  callHash_lte: String
+  callHash_gt: String
+  callHash_gte: String
+  callHash_contains: String
+  callHash_not_contains: String
+  callHash_starts_with: String
+  callHash_not_starts_with: String
+  callHash_ends_with: String
+  callHash_not_ends_with: String
+  wavPath: String
+  wavPath_not: String
+  wavPath_in: [String!]
+  wavPath_not_in: [String!]
+  wavPath_lt: String
+  wavPath_lte: String
+  wavPath_gt: String
+  wavPath_gte: String
+  wavPath_contains: String
+  wavPath_not_contains: String
+  wavPath_starts_with: String
+  wavPath_not_starts_with: String
+  wavPath_ends_with: String
+  wavPath_not_ends_with: String
+  AND: [TrunkedCallWhereInput!]
+  OR: [TrunkedCallWhereInput!]
+  NOT: [TrunkedCallWhereInput!]
+}
+
+input TrunkedCallWhereUniqueInput {
+  id: ID
+  callHash: String
+}
+
+type TrunkedConfig {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  name: String!
+  sources(where: TrunkedSourceWhereInput, orderBy: TrunkedSourceOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedSource!]
+  systems(where: TrunkedSystemWhereInput, orderBy: TrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedSystem!]
+  defaultMode: TrunkedDefaultMode!
+  captureDir: String!
+  callTimeout: Int!
+  logFile: Boolean!
+  frequencyFormat: TrunkedFrequencyFormat!
+  controlWarnRate: Int!
+  statusAsString: Boolean!
+}
+
+type TrunkedConfigConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedConfigEdge]!
+  aggregate: AggregateTrunkedConfig!
+}
+
+input TrunkedConfigCreateInput {
+  id: ID
+  name: String!
+  sources: TrunkedSourceCreateManyInput
+  systems: TrunkedSystemCreateManyInput
+  defaultMode: TrunkedDefaultMode
+  captureDir: String!
+  callTimeout: Int
+  logFile: Boolean
+  frequencyFormat: TrunkedFrequencyFormat
+  controlWarnRate: Int
+  statusAsString: Boolean
+}
+
+type TrunkedConfigEdge {
+  node: TrunkedConfig!
+  cursor: String!
+}
+
+enum TrunkedConfigOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  name_ASC
+  name_DESC
+  defaultMode_ASC
+  defaultMode_DESC
+  captureDir_ASC
+  captureDir_DESC
+  callTimeout_ASC
+  callTimeout_DESC
+  logFile_ASC
+  logFile_DESC
+  frequencyFormat_ASC
+  frequencyFormat_DESC
+  controlWarnRate_ASC
+  controlWarnRate_DESC
+  statusAsString_ASC
+  statusAsString_DESC
+}
+
+type TrunkedConfigPreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  name: String!
+  defaultMode: TrunkedDefaultMode!
+  captureDir: String!
+  callTimeout: Int!
+  logFile: Boolean!
+  frequencyFormat: TrunkedFrequencyFormat!
+  controlWarnRate: Int!
+  statusAsString: Boolean!
+}
+
+type TrunkedConfigSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedConfig
+  updatedFields: [String!]
+  previousValues: TrunkedConfigPreviousValues
+}
+
+input TrunkedConfigSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedConfigWhereInput
+  AND: [TrunkedConfigSubscriptionWhereInput!]
+  OR: [TrunkedConfigSubscriptionWhereInput!]
+  NOT: [TrunkedConfigSubscriptionWhereInput!]
+}
+
+input TrunkedConfigUpdateInput {
+  name: String
+  sources: TrunkedSourceUpdateManyInput
+  systems: TrunkedSystemUpdateManyInput
+  defaultMode: TrunkedDefaultMode
+  captureDir: String
+  callTimeout: Int
+  logFile: Boolean
+  frequencyFormat: TrunkedFrequencyFormat
+  controlWarnRate: Int
+  statusAsString: Boolean
+}
+
+input TrunkedConfigUpdateManyMutationInput {
+  name: String
+  defaultMode: TrunkedDefaultMode
+  captureDir: String
+  callTimeout: Int
+  logFile: Boolean
+  frequencyFormat: TrunkedFrequencyFormat
+  controlWarnRate: Int
+  statusAsString: Boolean
+}
+
+input TrunkedConfigWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  sources_every: TrunkedSourceWhereInput
+  sources_some: TrunkedSourceWhereInput
+  sources_none: TrunkedSourceWhereInput
+  systems_every: TrunkedSystemWhereInput
+  systems_some: TrunkedSystemWhereInput
+  systems_none: TrunkedSystemWhereInput
+  defaultMode: TrunkedDefaultMode
+  defaultMode_not: TrunkedDefaultMode
+  defaultMode_in: [TrunkedDefaultMode!]
+  defaultMode_not_in: [TrunkedDefaultMode!]
+  captureDir: String
+  captureDir_not: String
+  captureDir_in: [String!]
+  captureDir_not_in: [String!]
+  captureDir_lt: String
+  captureDir_lte: String
+  captureDir_gt: String
+  captureDir_gte: String
+  captureDir_contains: String
+  captureDir_not_contains: String
+  captureDir_starts_with: String
+  captureDir_not_starts_with: String
+  captureDir_ends_with: String
+  captureDir_not_ends_with: String
+  callTimeout: Int
+  callTimeout_not: Int
+  callTimeout_in: [Int!]
+  callTimeout_not_in: [Int!]
+  callTimeout_lt: Int
+  callTimeout_lte: Int
+  callTimeout_gt: Int
+  callTimeout_gte: Int
+  logFile: Boolean
+  logFile_not: Boolean
+  frequencyFormat: TrunkedFrequencyFormat
+  frequencyFormat_not: TrunkedFrequencyFormat
+  frequencyFormat_in: [TrunkedFrequencyFormat!]
+  frequencyFormat_not_in: [TrunkedFrequencyFormat!]
+  controlWarnRate: Int
+  controlWarnRate_not: Int
+  controlWarnRate_in: [Int!]
+  controlWarnRate_not_in: [Int!]
+  controlWarnRate_lt: Int
+  controlWarnRate_lte: Int
+  controlWarnRate_gt: Int
+  controlWarnRate_gte: Int
+  statusAsString: Boolean
+  statusAsString_not: Boolean
+  AND: [TrunkedConfigWhereInput!]
+  OR: [TrunkedConfigWhereInput!]
+  NOT: [TrunkedConfigWhereInput!]
+}
+
+input TrunkedConfigWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+enum TrunkedDefaultMode {
+  ANALOG
+  DIGITAL
+}
+
+enum TrunkedFrequencyFormat {
+  EXP
+  MHZ
+  HZ
+}
+
+enum TrunkedModulation {
+  QPSK
+  FSK4
+}
+
+enum TrunkedSmartnetBandplan {
+  STANDARD_800
+  REBAND_800
+  SPLINTER_800
+  CUSTOM_400
+}
+
+type TrunkedSource {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  center: Float!
+  rate: Float!
+  squelch: Float!
+  error: Float!
+  gain: Float!
+  digitalRecorders: Float!
+  digitalLevels: Float
+  analogRecorders: Float!
+  analogLevels: Float
+  device: String!
+  modulation: TrunkedModulation!
+}
+
+type TrunkedSourceConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedSourceEdge]!
+  aggregate: AggregateTrunkedSource!
+}
+
+input TrunkedSourceCreateInput {
+  id: ID
+  center: Float!
+  rate: Float!
+  squelch: Float
+  error: Float
+  gain: Float
+  digitalRecorders: Float
+  digitalLevels: Float
+  analogRecorders: Float
+  analogLevels: Float
+  device: String!
+  modulation: TrunkedModulation!
+}
+
+input TrunkedSourceCreateManyInput {
+  create: [TrunkedSourceCreateInput!]
+  connect: [TrunkedSourceWhereUniqueInput!]
+}
+
+type TrunkedSourceEdge {
+  node: TrunkedSource!
+  cursor: String!
+}
+
+enum TrunkedSourceOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  center_ASC
+  center_DESC
+  rate_ASC
+  rate_DESC
+  squelch_ASC
+  squelch_DESC
+  error_ASC
+  error_DESC
+  gain_ASC
+  gain_DESC
+  digitalRecorders_ASC
+  digitalRecorders_DESC
+  digitalLevels_ASC
+  digitalLevels_DESC
+  analogRecorders_ASC
+  analogRecorders_DESC
+  analogLevels_ASC
+  analogLevels_DESC
+  device_ASC
+  device_DESC
+  modulation_ASC
+  modulation_DESC
+}
+
+type TrunkedSourcePreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  center: Float!
+  rate: Float!
+  squelch: Float!
+  error: Float!
+  gain: Float!
+  digitalRecorders: Float!
+  digitalLevels: Float
+  analogRecorders: Float!
+  analogLevels: Float
+  device: String!
+  modulation: TrunkedModulation!
+}
+
+input TrunkedSourceScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  center: Float
+  center_not: Float
+  center_in: [Float!]
+  center_not_in: [Float!]
+  center_lt: Float
+  center_lte: Float
+  center_gt: Float
+  center_gte: Float
+  rate: Float
+  rate_not: Float
+  rate_in: [Float!]
+  rate_not_in: [Float!]
+  rate_lt: Float
+  rate_lte: Float
+  rate_gt: Float
+  rate_gte: Float
+  squelch: Float
+  squelch_not: Float
+  squelch_in: [Float!]
+  squelch_not_in: [Float!]
+  squelch_lt: Float
+  squelch_lte: Float
+  squelch_gt: Float
+  squelch_gte: Float
+  error: Float
+  error_not: Float
+  error_in: [Float!]
+  error_not_in: [Float!]
+  error_lt: Float
+  error_lte: Float
+  error_gt: Float
+  error_gte: Float
+  gain: Float
+  gain_not: Float
+  gain_in: [Float!]
+  gain_not_in: [Float!]
+  gain_lt: Float
+  gain_lte: Float
+  gain_gt: Float
+  gain_gte: Float
+  digitalRecorders: Float
+  digitalRecorders_not: Float
+  digitalRecorders_in: [Float!]
+  digitalRecorders_not_in: [Float!]
+  digitalRecorders_lt: Float
+  digitalRecorders_lte: Float
+  digitalRecorders_gt: Float
+  digitalRecorders_gte: Float
+  digitalLevels: Float
+  digitalLevels_not: Float
+  digitalLevels_in: [Float!]
+  digitalLevels_not_in: [Float!]
+  digitalLevels_lt: Float
+  digitalLevels_lte: Float
+  digitalLevels_gt: Float
+  digitalLevels_gte: Float
+  analogRecorders: Float
+  analogRecorders_not: Float
+  analogRecorders_in: [Float!]
+  analogRecorders_not_in: [Float!]
+  analogRecorders_lt: Float
+  analogRecorders_lte: Float
+  analogRecorders_gt: Float
+  analogRecorders_gte: Float
+  analogLevels: Float
+  analogLevels_not: Float
+  analogLevels_in: [Float!]
+  analogLevels_not_in: [Float!]
+  analogLevels_lt: Float
+  analogLevels_lte: Float
+  analogLevels_gt: Float
+  analogLevels_gte: Float
+  device: String
+  device_not: String
+  device_in: [String!]
+  device_not_in: [String!]
+  device_lt: String
+  device_lte: String
+  device_gt: String
+  device_gte: String
+  device_contains: String
+  device_not_contains: String
+  device_starts_with: String
+  device_not_starts_with: String
+  device_ends_with: String
+  device_not_ends_with: String
+  modulation: TrunkedModulation
+  modulation_not: TrunkedModulation
+  modulation_in: [TrunkedModulation!]
+  modulation_not_in: [TrunkedModulation!]
+  AND: [TrunkedSourceScalarWhereInput!]
+  OR: [TrunkedSourceScalarWhereInput!]
+  NOT: [TrunkedSourceScalarWhereInput!]
+}
+
+type TrunkedSourceSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedSource
+  updatedFields: [String!]
+  previousValues: TrunkedSourcePreviousValues
+}
+
+input TrunkedSourceSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedSourceWhereInput
+  AND: [TrunkedSourceSubscriptionWhereInput!]
+  OR: [TrunkedSourceSubscriptionWhereInput!]
+  NOT: [TrunkedSourceSubscriptionWhereInput!]
+}
+
+input TrunkedSourceUpdateDataInput {
+  center: Float
+  rate: Float
+  squelch: Float
+  error: Float
+  gain: Float
+  digitalRecorders: Float
+  digitalLevels: Float
+  analogRecorders: Float
+  analogLevels: Float
+  device: String
+  modulation: TrunkedModulation
+}
+
+input TrunkedSourceUpdateInput {
+  center: Float
+  rate: Float
+  squelch: Float
+  error: Float
+  gain: Float
+  digitalRecorders: Float
+  digitalLevels: Float
+  analogRecorders: Float
+  analogLevels: Float
+  device: String
+  modulation: TrunkedModulation
+}
+
+input TrunkedSourceUpdateManyDataInput {
+  center: Float
+  rate: Float
+  squelch: Float
+  error: Float
+  gain: Float
+  digitalRecorders: Float
+  digitalLevels: Float
+  analogRecorders: Float
+  analogLevels: Float
+  device: String
+  modulation: TrunkedModulation
+}
+
+input TrunkedSourceUpdateManyInput {
+  create: [TrunkedSourceCreateInput!]
+  update: [TrunkedSourceUpdateWithWhereUniqueNestedInput!]
+  upsert: [TrunkedSourceUpsertWithWhereUniqueNestedInput!]
+  delete: [TrunkedSourceWhereUniqueInput!]
+  connect: [TrunkedSourceWhereUniqueInput!]
+  set: [TrunkedSourceWhereUniqueInput!]
+  disconnect: [TrunkedSourceWhereUniqueInput!]
+  deleteMany: [TrunkedSourceScalarWhereInput!]
+  updateMany: [TrunkedSourceUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedSourceUpdateManyMutationInput {
+  center: Float
+  rate: Float
+  squelch: Float
+  error: Float
+  gain: Float
+  digitalRecorders: Float
+  digitalLevels: Float
+  analogRecorders: Float
+  analogLevels: Float
+  device: String
+  modulation: TrunkedModulation
+}
+
+input TrunkedSourceUpdateManyWithWhereNestedInput {
+  where: TrunkedSourceScalarWhereInput!
+  data: TrunkedSourceUpdateManyDataInput!
+}
+
+input TrunkedSourceUpdateWithWhereUniqueNestedInput {
+  where: TrunkedSourceWhereUniqueInput!
+  data: TrunkedSourceUpdateDataInput!
+}
+
+input TrunkedSourceUpsertWithWhereUniqueNestedInput {
+  where: TrunkedSourceWhereUniqueInput!
+  update: TrunkedSourceUpdateDataInput!
+  create: TrunkedSourceCreateInput!
+}
+
+input TrunkedSourceWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  center: Float
+  center_not: Float
+  center_in: [Float!]
+  center_not_in: [Float!]
+  center_lt: Float
+  center_lte: Float
+  center_gt: Float
+  center_gte: Float
+  rate: Float
+  rate_not: Float
+  rate_in: [Float!]
+  rate_not_in: [Float!]
+  rate_lt: Float
+  rate_lte: Float
+  rate_gt: Float
+  rate_gte: Float
+  squelch: Float
+  squelch_not: Float
+  squelch_in: [Float!]
+  squelch_not_in: [Float!]
+  squelch_lt: Float
+  squelch_lte: Float
+  squelch_gt: Float
+  squelch_gte: Float
+  error: Float
+  error_not: Float
+  error_in: [Float!]
+  error_not_in: [Float!]
+  error_lt: Float
+  error_lte: Float
+  error_gt: Float
+  error_gte: Float
+  gain: Float
+  gain_not: Float
+  gain_in: [Float!]
+  gain_not_in: [Float!]
+  gain_lt: Float
+  gain_lte: Float
+  gain_gt: Float
+  gain_gte: Float
+  digitalRecorders: Float
+  digitalRecorders_not: Float
+  digitalRecorders_in: [Float!]
+  digitalRecorders_not_in: [Float!]
+  digitalRecorders_lt: Float
+  digitalRecorders_lte: Float
+  digitalRecorders_gt: Float
+  digitalRecorders_gte: Float
+  digitalLevels: Float
+  digitalLevels_not: Float
+  digitalLevels_in: [Float!]
+  digitalLevels_not_in: [Float!]
+  digitalLevels_lt: Float
+  digitalLevels_lte: Float
+  digitalLevels_gt: Float
+  digitalLevels_gte: Float
+  analogRecorders: Float
+  analogRecorders_not: Float
+  analogRecorders_in: [Float!]
+  analogRecorders_not_in: [Float!]
+  analogRecorders_lt: Float
+  analogRecorders_lte: Float
+  analogRecorders_gt: Float
+  analogRecorders_gte: Float
+  analogLevels: Float
+  analogLevels_not: Float
+  analogLevels_in: [Float!]
+  analogLevels_not_in: [Float!]
+  analogLevels_lt: Float
+  analogLevels_lte: Float
+  analogLevels_gt: Float
+  analogLevels_gte: Float
+  device: String
+  device_not: String
+  device_in: [String!]
+  device_not_in: [String!]
+  device_lt: String
+  device_lte: String
+  device_gt: String
+  device_gte: String
+  device_contains: String
+  device_not_contains: String
+  device_starts_with: String
+  device_not_starts_with: String
+  device_ends_with: String
+  device_not_ends_with: String
+  modulation: TrunkedModulation
+  modulation_not: TrunkedModulation
+  modulation_in: [TrunkedModulation!]
+  modulation_not_in: [TrunkedModulation!]
+  AND: [TrunkedSourceWhereInput!]
+  OR: [TrunkedSourceWhereInput!]
+  NOT: [TrunkedSourceWhereInput!]
+}
+
+input TrunkedSourceWhereUniqueInput {
+  id: ID
+}
+
+type TrunkedSystem {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  controlChannels: [Float!]!
+  channels: [Float!]!
+  type: TrunkedSystemType!
+  alphatags: [String!]!
+  talkgroups(where: TrunkedTalkgroupWhereInput, orderBy: TrunkedTalkgroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedTalkgroup!]
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall!]
+}
+
+type TrunkedSystemConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedSystemEdge]!
+  aggregate: AggregateTrunkedSystem!
+}
+
+input TrunkedSystemCreatealphatagsInput {
+  set: [String!]
+}
+
+input TrunkedSystemCreatechannelsInput {
+  set: [Float!]
+}
+
+input TrunkedSystemCreatecontrolChannelsInput {
+  set: [Float!]
+}
+
+input TrunkedSystemCreateInput {
+  id: ID
+  controlChannels: TrunkedSystemCreatecontrolChannelsInput
+  channels: TrunkedSystemCreatechannelsInput
+  type: TrunkedSystemType!
+  alphatags: TrunkedSystemCreatealphatagsInput
+  talkgroups: TrunkedTalkgroupCreateManyWithoutSystemInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls: TrunkedCallCreateManyWithoutSystemInput
+}
+
+input TrunkedSystemCreateManyInput {
+  create: [TrunkedSystemCreateInput!]
+  connect: [TrunkedSystemWhereUniqueInput!]
+}
+
+input TrunkedSystemCreateOneWithoutCallsInput {
+  create: TrunkedSystemCreateWithoutCallsInput
+  connect: TrunkedSystemWhereUniqueInput
+}
+
+input TrunkedSystemCreateOneWithoutTalkgroupsInput {
+  create: TrunkedSystemCreateWithoutTalkgroupsInput
+  connect: TrunkedSystemWhereUniqueInput
+}
+
+input TrunkedSystemCreateWithoutCallsInput {
+  id: ID
+  controlChannels: TrunkedSystemCreatecontrolChannelsInput
+  channels: TrunkedSystemCreatechannelsInput
+  type: TrunkedSystemType!
+  alphatags: TrunkedSystemCreatealphatagsInput
+  talkgroups: TrunkedTalkgroupCreateManyWithoutSystemInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+}
+
+input TrunkedSystemCreateWithoutTalkgroupsInput {
+  id: ID
+  controlChannels: TrunkedSystemCreatecontrolChannelsInput
+  channels: TrunkedSystemCreatechannelsInput
+  type: TrunkedSystemType!
+  alphatags: TrunkedSystemCreatealphatagsInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls: TrunkedCallCreateManyWithoutSystemInput
+}
+
+type TrunkedSystemEdge {
+  node: TrunkedSystem!
+  cursor: String!
+}
+
+enum TrunkedSystemOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  type_ASC
+  type_DESC
+  recordUnknown_ASC
+  recordUnknown_DESC
+  shortName_ASC
+  shortName_DESC
+  uploadScript_ASC
+  uploadScript_DESC
+  audioArchive_ASC
+  audioArchive_DESC
+  callLog_ASC
+  callLog_DESC
+  bandplan_ASC
+  bandplan_DESC
+  bandplanBase_ASC
+  bandplanBase_DESC
+  bandplanHigh_ASC
+  bandplanHigh_DESC
+  bandplanSpacing_ASC
+  bandplanSpacing_DESC
+  bandplanOffset_ASC
+  bandplanOffset_DESC
+  talkgroupDisplayFormat_ASC
+  talkgroupDisplayFormat_DESC
+  delayCreateOutput_ASC
+  delayCreateOutput_DESC
+  hideEncrypted_ASC
+  hideEncrypted_DESC
+  hideUnknownTalkgroups_ASC
+  hideUnknownTalkgroups_DESC
+}
+
+type TrunkedSystemPreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  controlChannels: [Float!]!
+  channels: [Float!]!
+  type: TrunkedSystemType!
+  alphatags: [String!]!
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+}
+
+input TrunkedSystemScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  type: TrunkedSystemType
+  type_not: TrunkedSystemType
+  type_in: [TrunkedSystemType!]
+  type_not_in: [TrunkedSystemType!]
+  recordUnknown: Boolean
+  recordUnknown_not: Boolean
+  shortName: String
+  shortName_not: String
+  shortName_in: [String!]
+  shortName_not_in: [String!]
+  shortName_lt: String
+  shortName_lte: String
+  shortName_gt: String
+  shortName_gte: String
+  shortName_contains: String
+  shortName_not_contains: String
+  shortName_starts_with: String
+  shortName_not_starts_with: String
+  shortName_ends_with: String
+  shortName_not_ends_with: String
+  uploadScript: String
+  uploadScript_not: String
+  uploadScript_in: [String!]
+  uploadScript_not_in: [String!]
+  uploadScript_lt: String
+  uploadScript_lte: String
+  uploadScript_gt: String
+  uploadScript_gte: String
+  uploadScript_contains: String
+  uploadScript_not_contains: String
+  uploadScript_starts_with: String
+  uploadScript_not_starts_with: String
+  uploadScript_ends_with: String
+  uploadScript_not_ends_with: String
+  audioArchive: Boolean
+  audioArchive_not: Boolean
+  callLog: Boolean
+  callLog_not: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplan_not: TrunkedSmartnetBandplan
+  bandplan_in: [TrunkedSmartnetBandplan!]
+  bandplan_not_in: [TrunkedSmartnetBandplan!]
+  bandplanBase: Float
+  bandplanBase_not: Float
+  bandplanBase_in: [Float!]
+  bandplanBase_not_in: [Float!]
+  bandplanBase_lt: Float
+  bandplanBase_lte: Float
+  bandplanBase_gt: Float
+  bandplanBase_gte: Float
+  bandplanHigh: Float
+  bandplanHigh_not: Float
+  bandplanHigh_in: [Float!]
+  bandplanHigh_not_in: [Float!]
+  bandplanHigh_lt: Float
+  bandplanHigh_lte: Float
+  bandplanHigh_gt: Float
+  bandplanHigh_gte: Float
+  bandplanSpacing: Float
+  bandplanSpacing_not: Float
+  bandplanSpacing_in: [Float!]
+  bandplanSpacing_not_in: [Float!]
+  bandplanSpacing_lt: Float
+  bandplanSpacing_lte: Float
+  bandplanSpacing_gt: Float
+  bandplanSpacing_gte: Float
+  bandplanOffset: Float
+  bandplanOffset_not: Float
+  bandplanOffset_in: [Float!]
+  bandplanOffset_not_in: [Float!]
+  bandplanOffset_lt: Float
+  bandplanOffset_lte: Float
+  bandplanOffset_gt: Float
+  bandplanOffset_gte: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat_not: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat_in: [TrunkedTalkgroupDisplayFormat!]
+  talkgroupDisplayFormat_not_in: [TrunkedTalkgroupDisplayFormat!]
+  delayCreateOutput: Boolean
+  delayCreateOutput_not: Boolean
+  hideEncrypted: Boolean
+  hideEncrypted_not: Boolean
+  hideUnknownTalkgroups: Boolean
+  hideUnknownTalkgroups_not: Boolean
+  AND: [TrunkedSystemScalarWhereInput!]
+  OR: [TrunkedSystemScalarWhereInput!]
+  NOT: [TrunkedSystemScalarWhereInput!]
+}
+
+type TrunkedSystemSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedSystem
+  updatedFields: [String!]
+  previousValues: TrunkedSystemPreviousValues
+}
+
+input TrunkedSystemSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedSystemWhereInput
+  AND: [TrunkedSystemSubscriptionWhereInput!]
+  OR: [TrunkedSystemSubscriptionWhereInput!]
+  NOT: [TrunkedSystemSubscriptionWhereInput!]
+}
+
+enum TrunkedSystemType {
+  SMARTNET
+  P25
+  CONVENTIONAL
+  CONVENTIONAL_P25
+  UNKNOWN
+}
+
+input TrunkedSystemUpdatealphatagsInput {
+  set: [String!]
+}
+
+input TrunkedSystemUpdatechannelsInput {
+  set: [Float!]
+}
+
+input TrunkedSystemUpdatecontrolChannelsInput {
+  set: [Float!]
+}
+
+input TrunkedSystemUpdateDataInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls: TrunkedCallUpdateManyWithoutSystemInput
+}
+
+input TrunkedSystemUpdateInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls: TrunkedCallUpdateManyWithoutSystemInput
+}
+
+input TrunkedSystemUpdateManyDataInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+}
+
+input TrunkedSystemUpdateManyInput {
+  create: [TrunkedSystemCreateInput!]
+  update: [TrunkedSystemUpdateWithWhereUniqueNestedInput!]
+  upsert: [TrunkedSystemUpsertWithWhereUniqueNestedInput!]
+  delete: [TrunkedSystemWhereUniqueInput!]
+  connect: [TrunkedSystemWhereUniqueInput!]
+  set: [TrunkedSystemWhereUniqueInput!]
+  disconnect: [TrunkedSystemWhereUniqueInput!]
+  deleteMany: [TrunkedSystemScalarWhereInput!]
+  updateMany: [TrunkedSystemUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedSystemUpdateManyMutationInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+}
+
+input TrunkedSystemUpdateManyWithWhereNestedInput {
+  where: TrunkedSystemScalarWhereInput!
+  data: TrunkedSystemUpdateManyDataInput!
+}
+
+input TrunkedSystemUpdateOneWithoutCallsInput {
+  create: TrunkedSystemCreateWithoutCallsInput
+  update: TrunkedSystemUpdateWithoutCallsDataInput
+  upsert: TrunkedSystemUpsertWithoutCallsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TrunkedSystemWhereUniqueInput
+}
+
+input TrunkedSystemUpdateOneWithoutTalkgroupsInput {
+  create: TrunkedSystemCreateWithoutTalkgroupsInput
+  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput
+  upsert: TrunkedSystemUpsertWithoutTalkgroupsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TrunkedSystemWhereUniqueInput
+}
+
+input TrunkedSystemUpdateWithoutCallsDataInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+}
+
+input TrunkedSystemUpdateWithoutTalkgroupsDataInput {
+  controlChannels: TrunkedSystemUpdatecontrolChannelsInput
+  channels: TrunkedSystemUpdatechannelsInput
+  type: TrunkedSystemType
+  alphatags: TrunkedSystemUpdatealphatagsInput
+  recordUnknown: Boolean
+  shortName: String
+  uploadScript: String
+  audioArchive: Boolean
+  callLog: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean
+  hideUnknownTalkgroups: Boolean
+  calls: TrunkedCallUpdateManyWithoutSystemInput
+}
+
+input TrunkedSystemUpdateWithWhereUniqueNestedInput {
+  where: TrunkedSystemWhereUniqueInput!
+  data: TrunkedSystemUpdateDataInput!
+}
+
+input TrunkedSystemUpsertWithoutCallsInput {
+  update: TrunkedSystemUpdateWithoutCallsDataInput!
+  create: TrunkedSystemCreateWithoutCallsInput!
+}
+
+input TrunkedSystemUpsertWithoutTalkgroupsInput {
+  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput!
+  create: TrunkedSystemCreateWithoutTalkgroupsInput!
+}
+
+input TrunkedSystemUpsertWithWhereUniqueNestedInput {
+  where: TrunkedSystemWhereUniqueInput!
+  update: TrunkedSystemUpdateDataInput!
+  create: TrunkedSystemCreateInput!
+}
+
+input TrunkedSystemWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  type: TrunkedSystemType
+  type_not: TrunkedSystemType
+  type_in: [TrunkedSystemType!]
+  type_not_in: [TrunkedSystemType!]
+  talkgroups_every: TrunkedTalkgroupWhereInput
+  talkgroups_some: TrunkedTalkgroupWhereInput
+  talkgroups_none: TrunkedTalkgroupWhereInput
+  recordUnknown: Boolean
+  recordUnknown_not: Boolean
+  shortName: String
+  shortName_not: String
+  shortName_in: [String!]
+  shortName_not_in: [String!]
+  shortName_lt: String
+  shortName_lte: String
+  shortName_gt: String
+  shortName_gte: String
+  shortName_contains: String
+  shortName_not_contains: String
+  shortName_starts_with: String
+  shortName_not_starts_with: String
+  shortName_ends_with: String
+  shortName_not_ends_with: String
+  uploadScript: String
+  uploadScript_not: String
+  uploadScript_in: [String!]
+  uploadScript_not_in: [String!]
+  uploadScript_lt: String
+  uploadScript_lte: String
+  uploadScript_gt: String
+  uploadScript_gte: String
+  uploadScript_contains: String
+  uploadScript_not_contains: String
+  uploadScript_starts_with: String
+  uploadScript_not_starts_with: String
+  uploadScript_ends_with: String
+  uploadScript_not_ends_with: String
+  audioArchive: Boolean
+  audioArchive_not: Boolean
+  callLog: Boolean
+  callLog_not: Boolean
+  bandplan: TrunkedSmartnetBandplan
+  bandplan_not: TrunkedSmartnetBandplan
+  bandplan_in: [TrunkedSmartnetBandplan!]
+  bandplan_not_in: [TrunkedSmartnetBandplan!]
+  bandplanBase: Float
+  bandplanBase_not: Float
+  bandplanBase_in: [Float!]
+  bandplanBase_not_in: [Float!]
+  bandplanBase_lt: Float
+  bandplanBase_lte: Float
+  bandplanBase_gt: Float
+  bandplanBase_gte: Float
+  bandplanHigh: Float
+  bandplanHigh_not: Float
+  bandplanHigh_in: [Float!]
+  bandplanHigh_not_in: [Float!]
+  bandplanHigh_lt: Float
+  bandplanHigh_lte: Float
+  bandplanHigh_gt: Float
+  bandplanHigh_gte: Float
+  bandplanSpacing: Float
+  bandplanSpacing_not: Float
+  bandplanSpacing_in: [Float!]
+  bandplanSpacing_not_in: [Float!]
+  bandplanSpacing_lt: Float
+  bandplanSpacing_lte: Float
+  bandplanSpacing_gt: Float
+  bandplanSpacing_gte: Float
+  bandplanOffset: Float
+  bandplanOffset_not: Float
+  bandplanOffset_in: [Float!]
+  bandplanOffset_not_in: [Float!]
+  bandplanOffset_lt: Float
+  bandplanOffset_lte: Float
+  bandplanOffset_gt: Float
+  bandplanOffset_gte: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat_not: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat_in: [TrunkedTalkgroupDisplayFormat!]
+  talkgroupDisplayFormat_not_in: [TrunkedTalkgroupDisplayFormat!]
+  delayCreateOutput: Boolean
+  delayCreateOutput_not: Boolean
+  hideEncrypted: Boolean
+  hideEncrypted_not: Boolean
+  hideUnknownTalkgroups: Boolean
+  hideUnknownTalkgroups_not: Boolean
+  calls_every: TrunkedCallWhereInput
+  calls_some: TrunkedCallWhereInput
+  calls_none: TrunkedCallWhereInput
+  AND: [TrunkedSystemWhereInput!]
+  OR: [TrunkedSystemWhereInput!]
+  NOT: [TrunkedSystemWhereInput!]
+}
+
+input TrunkedSystemWhereUniqueInput {
+  id: ID
+  shortName: String
+}
+
+type TrunkedTalkgroup {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int!
+  system: TrunkedSystem
+  calls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall!]
+  hash: String!
+}
+
+type TrunkedTalkgroupConnection {
+  pageInfo: PageInfo!
+  edges: [TrunkedTalkgroupEdge]!
+  aggregate: AggregateTrunkedTalkgroup!
+}
+
+input TrunkedTalkgroupCreateInput {
+  id: ID
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  calls: TrunkedCallCreateManyWithoutTalkgroupInput
+  hash: String!
+}
+
+input TrunkedTalkgroupCreateManyWithoutSystemInput {
+  create: [TrunkedTalkgroupCreateWithoutSystemInput!]
+  connect: [TrunkedTalkgroupWhereUniqueInput!]
+}
+
+input TrunkedTalkgroupCreateOneWithoutCallsInput {
+  create: TrunkedTalkgroupCreateWithoutCallsInput
+  connect: TrunkedTalkgroupWhereUniqueInput
+}
+
+input TrunkedTalkgroupCreateWithoutCallsInput {
+  id: ID
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  hash: String!
+}
+
+input TrunkedTalkgroupCreateWithoutSystemInput {
+  id: ID
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  calls: TrunkedCallCreateManyWithoutTalkgroupInput
+  hash: String!
+}
+
+enum TrunkedTalkgroupDisplayFormat {
+  ID
+  ID_TAG
+  TAG_ID
+}
+
+type TrunkedTalkgroupEdge {
+  node: TrunkedTalkgroup!
+  cursor: String!
+}
+
+enum TrunkedTalkgroupOrderByInput {
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+  decimal_ASC
+  decimal_DESC
+  mode_ASC
+  mode_DESC
+  alphaTag_ASC
+  alphaTag_DESC
+  description_ASC
+  description_DESC
+  tag_ASC
+  tag_DESC
+  group_ASC
+  group_DESC
+  priority_ASC
+  priority_DESC
+  hash_ASC
+  hash_DESC
+}
+
+type TrunkedTalkgroupPreviousValues {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int!
+  hash: String!
+}
+
+input TrunkedTalkgroupScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  decimal: Int
+  decimal_not: Int
+  decimal_in: [Int!]
+  decimal_not_in: [Int!]
+  decimal_lt: Int
+  decimal_lte: Int
+  decimal_gt: Int
+  decimal_gte: Int
+  mode: String
+  mode_not: String
+  mode_in: [String!]
+  mode_not_in: [String!]
+  mode_lt: String
+  mode_lte: String
+  mode_gt: String
+  mode_gte: String
+  mode_contains: String
+  mode_not_contains: String
+  mode_starts_with: String
+  mode_not_starts_with: String
+  mode_ends_with: String
+  mode_not_ends_with: String
+  alphaTag: String
+  alphaTag_not: String
+  alphaTag_in: [String!]
+  alphaTag_not_in: [String!]
+  alphaTag_lt: String
+  alphaTag_lte: String
+  alphaTag_gt: String
+  alphaTag_gte: String
+  alphaTag_contains: String
+  alphaTag_not_contains: String
+  alphaTag_starts_with: String
+  alphaTag_not_starts_with: String
+  alphaTag_ends_with: String
+  alphaTag_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  tag: String
+  tag_not: String
+  tag_in: [String!]
+  tag_not_in: [String!]
+  tag_lt: String
+  tag_lte: String
+  tag_gt: String
+  tag_gte: String
+  tag_contains: String
+  tag_not_contains: String
+  tag_starts_with: String
+  tag_not_starts_with: String
+  tag_ends_with: String
+  tag_not_ends_with: String
+  group: String
+  group_not: String
+  group_in: [String!]
+  group_not_in: [String!]
+  group_lt: String
+  group_lte: String
+  group_gt: String
+  group_gte: String
+  group_contains: String
+  group_not_contains: String
+  group_starts_with: String
+  group_not_starts_with: String
+  group_ends_with: String
+  group_not_ends_with: String
+  priority: Int
+  priority_not: Int
+  priority_in: [Int!]
+  priority_not_in: [Int!]
+  priority_lt: Int
+  priority_lte: Int
+  priority_gt: Int
+  priority_gte: Int
+  hash: String
+  hash_not: String
+  hash_in: [String!]
+  hash_not_in: [String!]
+  hash_lt: String
+  hash_lte: String
+  hash_gt: String
+  hash_gte: String
+  hash_contains: String
+  hash_not_contains: String
+  hash_starts_with: String
+  hash_not_starts_with: String
+  hash_ends_with: String
+  hash_not_ends_with: String
+  AND: [TrunkedTalkgroupScalarWhereInput!]
+  OR: [TrunkedTalkgroupScalarWhereInput!]
+  NOT: [TrunkedTalkgroupScalarWhereInput!]
+}
+
+type TrunkedTalkgroupSubscriptionPayload {
+  mutation: MutationType!
+  node: TrunkedTalkgroup
+  updatedFields: [String!]
+  previousValues: TrunkedTalkgroupPreviousValues
+}
+
+input TrunkedTalkgroupSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TrunkedTalkgroupWhereInput
+  AND: [TrunkedTalkgroupSubscriptionWhereInput!]
+  OR: [TrunkedTalkgroupSubscriptionWhereInput!]
+  NOT: [TrunkedTalkgroupSubscriptionWhereInput!]
+}
+
+input TrunkedTalkgroupUpdateInput {
+  decimal: Int
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  calls: TrunkedCallUpdateManyWithoutTalkgroupInput
+  hash: String
+}
+
+input TrunkedTalkgroupUpdateManyDataInput {
+  decimal: Int
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  hash: String
+}
+
+input TrunkedTalkgroupUpdateManyMutationInput {
+  decimal: Int
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  hash: String
+}
+
+input TrunkedTalkgroupUpdateManyWithoutSystemInput {
+  create: [TrunkedTalkgroupCreateWithoutSystemInput!]
+  delete: [TrunkedTalkgroupWhereUniqueInput!]
+  connect: [TrunkedTalkgroupWhereUniqueInput!]
+  set: [TrunkedTalkgroupWhereUniqueInput!]
+  disconnect: [TrunkedTalkgroupWhereUniqueInput!]
+  update: [TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput!]
+  upsert: [TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput!]
+  deleteMany: [TrunkedTalkgroupScalarWhereInput!]
+  updateMany: [TrunkedTalkgroupUpdateManyWithWhereNestedInput!]
+}
+
+input TrunkedTalkgroupUpdateManyWithWhereNestedInput {
+  where: TrunkedTalkgroupScalarWhereInput!
+  data: TrunkedTalkgroupUpdateManyDataInput!
+}
+
+input TrunkedTalkgroupUpdateOneWithoutCallsInput {
+  create: TrunkedTalkgroupCreateWithoutCallsInput
+  update: TrunkedTalkgroupUpdateWithoutCallsDataInput
+  upsert: TrunkedTalkgroupUpsertWithoutCallsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TrunkedTalkgroupWhereUniqueInput
+}
+
+input TrunkedTalkgroupUpdateWithoutCallsDataInput {
+  decimal: Int
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  hash: String
+}
+
+input TrunkedTalkgroupUpdateWithoutSystemDataInput {
+  decimal: Int
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  calls: TrunkedCallUpdateManyWithoutTalkgroupInput
+  hash: String
+}
+
+input TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput {
+  where: TrunkedTalkgroupWhereUniqueInput!
+  data: TrunkedTalkgroupUpdateWithoutSystemDataInput!
+}
+
+input TrunkedTalkgroupUpsertWithoutCallsInput {
+  update: TrunkedTalkgroupUpdateWithoutCallsDataInput!
+  create: TrunkedTalkgroupCreateWithoutCallsInput!
+}
+
+input TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput {
+  where: TrunkedTalkgroupWhereUniqueInput!
+  update: TrunkedTalkgroupUpdateWithoutSystemDataInput!
+  create: TrunkedTalkgroupCreateWithoutSystemInput!
+}
+
+input TrunkedTalkgroupWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  decimal: Int
+  decimal_not: Int
+  decimal_in: [Int!]
+  decimal_not_in: [Int!]
+  decimal_lt: Int
+  decimal_lte: Int
+  decimal_gt: Int
+  decimal_gte: Int
+  mode: String
+  mode_not: String
+  mode_in: [String!]
+  mode_not_in: [String!]
+  mode_lt: String
+  mode_lte: String
+  mode_gt: String
+  mode_gte: String
+  mode_contains: String
+  mode_not_contains: String
+  mode_starts_with: String
+  mode_not_starts_with: String
+  mode_ends_with: String
+  mode_not_ends_with: String
+  alphaTag: String
+  alphaTag_not: String
+  alphaTag_in: [String!]
+  alphaTag_not_in: [String!]
+  alphaTag_lt: String
+  alphaTag_lte: String
+  alphaTag_gt: String
+  alphaTag_gte: String
+  alphaTag_contains: String
+  alphaTag_not_contains: String
+  alphaTag_starts_with: String
+  alphaTag_not_starts_with: String
+  alphaTag_ends_with: String
+  alphaTag_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  tag: String
+  tag_not: String
+  tag_in: [String!]
+  tag_not_in: [String!]
+  tag_lt: String
+  tag_lte: String
+  tag_gt: String
+  tag_gte: String
+  tag_contains: String
+  tag_not_contains: String
+  tag_starts_with: String
+  tag_not_starts_with: String
+  tag_ends_with: String
+  tag_not_ends_with: String
+  group: String
+  group_not: String
+  group_in: [String!]
+  group_not_in: [String!]
+  group_lt: String
+  group_lte: String
+  group_gt: String
+  group_gte: String
+  group_contains: String
+  group_not_contains: String
+  group_starts_with: String
+  group_not_starts_with: String
+  group_ends_with: String
+  group_not_ends_with: String
+  priority: Int
+  priority_not: Int
+  priority_in: [Int!]
+  priority_not_in: [Int!]
+  priority_lt: Int
+  priority_lte: Int
+  priority_gt: Int
+  priority_gte: Int
+  system: TrunkedSystemWhereInput
+  calls_every: TrunkedCallWhereInput
+  calls_some: TrunkedCallWhereInput
+  calls_none: TrunkedCallWhereInput
+  hash: String
+  hash_not: String
+  hash_in: [String!]
+  hash_not_in: [String!]
+  hash_lt: String
+  hash_lte: String
+  hash_gt: String
+  hash_gte: String
+  hash_contains: String
+  hash_not_contains: String
+  hash_starts_with: String
+  hash_not_starts_with: String
+  hash_ends_with: String
+  hash_not_ends_with: String
+  AND: [TrunkedTalkgroupWhereInput!]
+  OR: [TrunkedTalkgroupWhereInput!]
+  NOT: [TrunkedTalkgroupWhereInput!]
+}
+
+input TrunkedTalkgroupWhereUniqueInput {
+  id: ID
+  hash: String
+}

@@ -67,7 +67,7 @@ function generate_compose() {
 		docker-compose.amd.yml
 
 	sed -i \
-		-E 's,image: gcr.io\/methodical-tea-237508\/skyscraperai\/(.*[^backend][^trunk-recorder]):latest,build:\n        dockerfile: amd64.dockerfile\n        context: edge-images\/\1,' \
+		-E 's,image: gcr\.io\/methodical-tea-237508\/skyscraperai\/(.*)(:latest?),build:\n        dockerfile: amd64.dockerfile\n        context: edge-images\/\1,' \
 		docker-compose.amd.yml
 
 	sed -i -e 's/#.*$//' \

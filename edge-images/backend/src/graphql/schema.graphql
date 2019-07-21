@@ -1,0 +1,17 @@
+# import TrunkedConfigWhereUniqueInput from "./generated/prisma.graphql"
+
+type Query {
+    trunkedCalls(
+        where: TrunkedCallWhereInput
+        orderBy: TrunkedCallOrderByInput
+        skip: Int
+        after: String
+        before: String
+        first: Int
+        last: Int
+    ): [TrunkedCall]!
+}
+
+type Subscription {
+  trunkedCalls: TrunkedCall
+}

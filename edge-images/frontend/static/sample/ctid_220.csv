@@ -1,0 +1,216 @@
+Frequency Output,Frequency Input,FCC Callsign,Agency/Category,Description,Alpha Tag,PL Tone,Mode,Class Station Code,Tag
+30.740000,0.00000,KMA672,San Francisco Municipal Railway MUNI 	,Security Old Still used,MUNI SecurityOld,123.0 PL,FM,BM,Deprecated
+31.140000,0.00000,KMA672,San Francisco Municipal Railway MUNI 	,Operations  Maintenance,MUNI Ops/Maint,123.0 PL,FM,BM,Deprecated
+45.100000,0.00000,KMA438,San Francisco,Police Lowband Ch 1  Backup Div 2 G H I,SFPD Low Ch1,131.8 PL,FM,BM,Law Dispatch
+45.140000,0.00000,WNHH873,San Francisco,Police Lowband Ch 2  Backup Div 2 C D,SFPD Low Ch2,131.8 PL,FM,BM,Law Dispatch
+45.460000,0.00000,KMA438,San Francisco,Police Lowband Ch 4  Backup Div 1 E F,SFPD Low Ch4,131.8 PL,FM,BM,Law Dispatch
+45.580000,0.00000,KMA438,San Francisco,Police Lowband Ch 3  Backup Div 1 A B J,SFPD Low Ch3,131.8 PL,FM,BM,Law Dispatch
+48.300000,0.00000,KMK423,Utilities San Francisco Water Department,City Distribution Division,SFWD CDD,156.7 PL,FM,BM,Utilities
+48.400000,0.00000,KGT708,Utilities San Francisco Water Department,Millbrae  Alameda,SFWD MillAla,156.7 PL,FM,BM,Utilities
+124.300000,0.00000,,Media Helo Interop,Golden Gate Traffic,GG Traffic,,AM,M,Aircraft
+145.150000,144.55000,W6PW,2m,San Francisco Radio Club VHF,W6PW VHF,664 DPL,FM,RM,Ham
+146.790000,146.19000,W6TP,2m,GSL Pioneer Radio Club VHF,W6TP VHF,114.8 PL,FM,RM,Ham
+151.700000,0.00000,,Businesses Tourism,Golden Gate Park Segway Tours Group Leader to Riders,GGP Segway Tours,,FMN,M,Business
+151.835000,0.00000,,Businesses SecurityAlarm,California Security Systems,CA Security,,FM,M,Security
+152.270000,157.35000,,Businesses Transportation,Luxor Taxis  MDT Data,LuxorCab MDT,,Telm,BM,Data
+152.390000,0.00000,KMA354,Businesses Transportation,Base  DeSoto Cab,DeSoto Cab B,100.0 PL,FMN,B,Transportation
+152.960000,0.00000,KMA354,Businesses Transportation,Mobile  DeSoto Cab,Desoto Cab M,100.0 PL,FMN,M,Transportation
+153.605000,0.00000,,Businesses Transportation,Base  Luxor Cab,Luxor Cab B,162.2 PL,FM,B,Transportation
+153.650000,0.00000,KLD507,Utilities Pacific Gas  Electric,Golden Gate Region  Operations,PGEGoldenGat,127.3 PL,FM,BM,Utilities
+155.355000,0.00000,,SheriffEMS,UCSF to Medic Helicopters,USCF Med Helo,173.8 PL,FMN,BM,Hospital
+160.125000,159.81000,WPTY464,Businesses Transportation,SF Yellow Cab,SF YellowCab,179.9 PL,FM,RM,Transportation
+160.185000,0.00000,,Businesses Transportation,Mobile  Luxor Cab,Luxor Cab M,162.2 PL,FM,M,Transportation
+161.670000,0.00000,,Media Channel 5  KPIX TV,TV IFB,KPIX5 IFB,107.2 PL,FMN,F,Media
+161.700000,0.00000,,Media 740AM  1069FM  KCBS Radio,Radio IFB 1,KCBS IFB 1,CSQ,FMN,F,Media
+161.760000,0.00000,,Media 740AM  1069FM  KCBS Radio,Radio IFB 2,KCBS IFB 2,CSQ,FMN,F,Media
+166.737500,0.00000,,Federal San Francisco,Mint Security,US Mint SF,293 NAC,P25,RM,Law Dispatch
+407.187500,0.00000, ,  Lawrence Livermore National Laboratory,Site 009 Presidio Hill,,,Project 25,,TRS
+407.987500,0.00000, ,  Lawrence Livermore National Laboratory,Site 009 Presidio Hill,,,Project 25,,TRS
+408.737500,0.00000, ,  Lawrence Livermore National Laboratory,Site 009 Presidio Hill,,,Project 25,,TRS
+409.787500,0.00000, ,  Lawrence Livermore National Laboratory,Site 009 Presidio Hill,,,Project 25,,TRS
+409.875000,418.87500,,Federal VA San Francisco,Ft Miley Medical Center,VA Ft Miley,293 NAC,P25,RM,Federal
+443.100000,448.10000,W6TP,70cm,GSL Pioneer Radio Club UHF,W6TP UHF,114.8 PL,FM,RM,Ham
+444.225000,449.22500,W6PW,70cm,San Francisco Radio Club UHF,W6PW UHF,664 DPL,FM,RM,Ham
+444.850000,449.85000,K6KYA,70cm,Echolink to the WIN System ,K6YKA WIN,,FM,RM,Ham
+450.062500,455.06250,,Media Metro Traffic,Traffic Channel 1,Metro 1,,FM,RM,Media
+450.087500,455.08750,,Media Channel 5  KPIX TV,TV Engineering,KPIX5 Eng,88.5 PL,FM,RM,Media
+450.187500,455.18750,,Media Channel 11  KNTV TV,TV Engineering,KNTV Eng,,FM,RM,Media
+450.212500,0.00000,,Media 810AM  KGO Radio,Radio News,KGO Radio 1,,FM,RM,Media
+450.262500,0.00000,,Media 810AM  KGO Radio,Radio Traffic,KGO Radio 2,,FM,RM,Media
+450.287500,0.00000,,Media Channel 7  KGO TV,TV Ch 1,KGO7 Ch 1,114.8 PL,FMN,RM,Media
+450.337500,455.33750,,Media Channel 2  KTVU TV,TV Engineering,KTVU2 Eng 1,127.3 PL,FM,RM,Media
+450.362500,455.36250,,Media Channel 2  KTVU TV,TV Engineering,KTVU2 Eng 2,,FM,RM,Media
+450.462500,0.00000,,Media Channel 7  KGO TV,TV Ch 2,KGO7 Ch 2,85.4 PL,FMN,RM,Media
+450.487500,455.48750,,Media Channel 5  KPIX TV,TV Helicopeter,KPIX HELO,411 DPL,FMN,RM,Media
+450.512500,455.51250,,Media Channel 5  KPIX TV,TV Engineering ,KPIX 5 Eng,074 DPL,FMN,RM,Media
+450.537500,0.00000,,Media 740AM  1069FM  KCBS Radio,Traffic Reports,KCBSTraffRpt,CSQ,FMN,M,Media
+450.625000,455.62500,,Media Metro Traffic,Channel 2,Metro 2,,FM,RM,Media
+451.025000,0.00000, ,  RFC Wireless DMR,Site 008 San Francisco,,,DMR,,TRS
+451.087500,0.00000, ,  RFC Wireless DMR,Site 008 San Francisco,,,DMR,,TRS
+451.200000,0.00000, ,  Pacific Gas and Electric PGE,Site 20673 Twin Peaks Z2 S9,,,MPT-1327,,TRS
+451.500000,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 017 Site 17  San Francisco,,,NXDN,,TRS
+451.550000,0.00000,,Attractions Oracle Park,Dugout 1,OP Dugout 1,179.9 PL,FMN,M,Business
+451.600000,0.00000,,Attractions Oracle Park,Dugout 2,OP Dugout 2,179.9 PL,FMN,M,Business
+451.637500,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 017 Site 17  San Francisco,,,NXDN,,TRS
+451.675000,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 014 Site 14  Twin Peaks,,,NXDN,,TRS
+451.887500,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 014 Site 14  Twin Peaks,,,NXDN,,TRS
+451.925000,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+452.062500,0.00000, ,  Oracle Park,Site 001 Oracle Park,,,DMR,,TRS
+452.100000,0.00000,KRO357,Businesses Transportation,Base  Citywide Dispatch  Royal Metro Big Dog Green  City Cab,Citywide D-B,88.5 PL,FM,B,Transportation
+452.125000,0.00000, ,  San Francisco Zoo,Site 001 SF Zoo,,,DMR,,TRS
+452.187500,0.00000, ,  Oracle Park,Site 001 Oracle Park,,,DMR,,TRS
+452.287500,0.00000, ,  Oracle Park,Site 001 Oracle Park,,,DMR,,TRS
+452.387500,457.38750,WQJZ388,Businesses Properties,595 Market Tower,595 Market ,,FM,RM,Business
+452.700000,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 017 Site 17  San Francisco,,,NXDN,,TRS
+453.637500,0.00000, ,  University of California San Francisco,Site 003 Laurel Heights,,,DMR,,TRS
+454.018750,0.00000, ,  Pacific Gas and Electric PGE,Site 20673 Twin Peaks Z2 S9,,,MPT-1327,,TRS
+454.143750,0.00000, ,  Pacific Gas and Electric PGE,Site 20673 Twin Peaks Z2 S9,,,MPT-1327,,TRS
+454.243750,0.00000, ,  Fisher Wireless TeamTalk,Site 033 Sutro,,,DMR,,TRS
+454.293750,0.00000, ,  Pacific Gas and Electric PGE,Site 20673 Twin Peaks Z2 S9,,,MPT-1327,,TRS
+455.537500,0.00000,,Media 740AM  1069FM  KCBS Radio,Traffic Talk Around,KCBSTraff TA,67.0 PL,FMN,M,Media
+457.100000,0.00000,KRO357,Businesses Transportation,Mobile  Citywide Dispatch  Royal Metro Big Dog Green  City Cab,Citywide D-M,88.5 PL,FM,M,Transportation
+457.525000,0.00000,,Businesses Properties,James R Herman Cruise Terminal  Longshoreman,Cruise Ship Term,032 DPL,FMN,M,Business
+457.600000,0.00000,,Port of San Francisco,Herman Cruise Terminal  Security,Cruise Term Sec,051 DPL,FMN,M,Security
+461.125000,0.00000,,Businesses SecurityAlarm,West Coast Security,W Coast SCY,,FM,RM,Security
+461.162500,0.00000,,Attractions San Francisco Exploratorium,Operations,SF Explorato,97.4 PL,FM,M,Business
+461.200000,0.00000,,Businesses SecurityAlarm,Twilight Security,TWLGHT SCY,,FM,M,Security
+461.350000,466.35000,WQXL816,Businesses Properties,375 Beale Street Cushman  Wakefield Inc  Valet  Front Desk,375 Beale St Ch1,CC 13|TG 105|SL 1,DMR,RM,Business
+461.350000,466.35000,WQXL816,Businesses Properties,375 Beale Street Cushman  Wakefield Inc  Custodial,375 Beale St Ch2,CC 13|TG 102|SL 2,DMR,RM,Business
+461.412500,0.00000, ,  Fisher Wireless TeamTalk,Site 033 Sutro,,,DMR,,TRS
+461.475000,0.00000, ,  San Francisco Zoo,Site 001 SF Zoo,,,DMR,,TRS
+461.500000,0.00000,,Businesses SecurityAlarm,Twilight Security F2,TWLGHT SCY,,FM,M,Security
+461.662500,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+461.675000,0.00000, ,  San Francisco Zoo,Site 001 SF Zoo,,,DMR,,TRS
+461.687500,0.00000, ,  University of California San Francisco,Site 001 Parnassus,,,DMR,,TRS
+461.762500,466.76250,WQHJ635,Attractions Alcatraz Cruises,Operations,Alcatraz Ops,244 DPL,FMN,RM,Business
+462.162500,0.00000, ,  TelePath Corporation,Site 023 Site 23  Downtown SF,,,DMR,,TRS
+462.262500,0.00000,WQUT624,Attractions Alcatraz Cruises,Photo Crew,Alcatraz Photo,205 DPL,FMN,M,Business
+462.312500,0.00000,WQUT624,Attractions Alcatraz Cruises,Guest Services  Dock Ops SF Side,Alcatraz SF Dock,411 DPL,FMN,M,Business
+462.362500,0.00000,WQUT624,Attractions Alcatraz Cruises,Clipper Crew,Alcatraz Clipper,364 DPL,FMN,M,Business
+462.850000,0.00000,WQJZ858,Businesses Properties,Adobe Systems,Adobe Bldg ,,FM,BM,Business
+463.200000,0.00000, ,  RFC Wireless DMR,Site 008 San Francisco,,,DMR,,TRS
+463.250000,0.00000,,Businesses SecurityAlarm,Excellent Security,EXECLT Secty,,FM,M,Security
+463.350000,468.35000,WPKB340,Attractions Pier 39,Security Primary,Pier39 Sec 1,703 DPL,FMN,RM,Security
+463.400000,0.00000, ,  University of California San Francisco,Site 005 Med Center Mission Bay,,,DMR,,TRS
+463.687500,0.00000, ,  Fisher Wireless TeamTalk,Site 033 Sutro,,,DMR,,TRS
+463.725000,0.00000, ,  University of California San Francisco,Site 002 Helen Diller,,,DMR,,TRS
+463.925000,468.92500,,Businesses Transportation,Speck Cab Co,SpeckCab,203.5 PL,FMN,RM,Transportation
+463.925000,0.00000,,Businesses SecurityAlarm,American Mutual Protection,AM Protect,,FM,RM,Security
+464.000000,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+464.037500,469.03750,WQSA593,Businesses Properties,Ferry Building  Security,Ferry Building,21 RAN,NXDN,RM,Security
+464.050000,0.00000, ,  University of California San Francisco,Site 005 Med Center Mission Bay,,,DMR,,TRS
+464.212500,0.00000, ,  Fisher Wireless TeamTalk,Site 033 Sutro,,,DMR,,TRS
+464.275000,0.00000, ,  University of California San Francisco,Site 004 Mission Center,,,DMR,,TRS
+464.325000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,Rock Med 4,RockMed 4,162.2 PL,FM,M,Business
+464.450000,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+464.475000,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+464.500000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,Rock Med 2,RockMed 2,074 DPL,FM,M,Business
+464.550000,0.00000,,Attractions San Francisco Exploratorium,Operations,SF Explorato,97.4 PL,FM,M,Business
+464.550000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,RockMed 1  Concert Med Dispatch,RockMed 1,162.2 PL,FM,M,Business
+464.712500,0.00000, ,  Signature Wireless Group iDAS Multitrunk Bay Area,Site 017 Site 17  San Francisco,,,NXDN,,TRS
+466.112500,0.00000,,Businesses Retail,Loehmanns Clothing Store  Security,Loehmanns,464 DPL,FM,M,Security
+468.725000,0.00000,,Attractions Pier 39,Security Tac,Pier39 Sec 2,703 DPL,FMN,M,Security
+468.850000,0.00000,,Attractions Pier 39,Janitorial,Pier39Janitr,703 DPL,FMN,M,Business
+469.325000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,Rock Med 3,RockMed 3,162.2 PL,FM,M,Business
+469.500000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,Rock Med 6,RockMed 6,074 DPL,FM,M,Business
+469.550000,0.00000,,Businesses Rock Medicine HaightAshbury Free Clinic,Rock Med 5,RockMed 5,074 DPL,FM,M,Business
+482.700000,0.00000, ,  The Radio Guys,Site 005 Twin Peaks,,,NXDN,,TRS
+482.887500,485.88750,KZR629,San Francisco Municipal Railway MUNI 	,Ch 5G  Coach Voice,MUNI 5G Coach,173.8 PL,FM,RM,Deprecated
+482.900000,0.00000, ,  Silke Communications,Site 029 Site 29  Twin Peaks,,,NXDN,,TRS
+483.037500,486.03750,WPVM204,San Francisco Municipal Railway MUNI 	,Security Primary,MUNI Security 1,100.0 PL,FM,RM,Deprecated
+483.075000,0.00000, ,  Silke Communications,Site 011 Site 11  Twin Peaks,,,NXDN,,TRS
+483.137500,486.13750,WPVM204,San Francisco Municipal Railway MUNI 	,Security Tactical,MUNI Security 2,100.0 PL,FM,RM,Deprecated
+483.225000,0.00000, ,  Silke Communications,Site 010 Site 10  Twin Peaks,,,NXDN,,TRS
+483.737500,0.00000, ,  Fisher Wireless San Francisco,Site 001 Clay Jones Building,,,LTR,,TRS
+483.887500,0.00000, ,  Fisher Wireless San Francisco,Site 001 Clay Jones Building,,,LTR,,TRS
+484.012500,0.00000, ,  Fisher Wireless TeamTalk,Site 057 Clay Jones Building,,,DMR,,TRS
+484.075000,0.00000, ,  Silke Communications,Site 010 Site 10  Twin Peaks,,,NXDN,,TRS
+484.262500,0.00000, ,  Fisher Wireless San Francisco,Site 001 Clay Jones Building,,,LTR,,TRS
+484.412500,0.00000, ,  RFC Wireless DMR,Site 004 Sutro,,,DMR,,TRS
+484.512500,487.51250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 2B  Trolley Voice,MUNI 2B Trolley,173.8 PL,FM,RM,Deprecated
+484.562500,487.56250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 6C  Light Rail Data,MUNI 6C RailData,,Telm,RM,Data
+484.612500,487.61250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 3D  Trolley Voice,MUNI 3D Trolley,173.8 PL,FM,RM,Deprecated
+484.662500,487.66250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 1A  Light Rail Voice,MUNI 1A Rail,173.8 PL,FM,RM,Transportation
+484.712500,487.71250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 4E  Coach Voice,MUNI 4E Coach,173.8 PL,FM,RM,Deprecated
+484.762500,487.76250,KZR629,San Francisco Municipal Railway MUNI 	,Ch 7F  Coach Data,MUNI 7F Bus Data,,Telm,RM,Data
+484.837500,0.00000, ,  Fisher Wireless TeamTalk,Site 057 Clay Jones Building,,,DMR,,TRS
+484.900000,0.00000, ,  Silke Communications,Site 010 Site 10  Twin Peaks,,,NXDN,,TRS
+485.475000,488.47500,,San Francisco Municipal Railway MUNI 	,Misc Portables,MUNI Portables,,FM,RM,Deprecated
+488.562500,491.56250,KZR629,San Francisco Municipal Railway MUNI 	,Security Future,MUNI Sec Future,173.8 PL,FM,RM,Security
+489.212500,0.00000, ,  TelePath Corporation,Site 013 Site 13  Twin Peaks,,,DMR,,TRS
+489.287500,0.00000, ,  Fisher Wireless TeamTalk,Site 057 Clay Jones Building,,,DMR,,TRS
+490.062500,0.00000, ,  Fisher Wireless TeamTalk,Site 057 Clay Jones Building,,,DMR,,TRS
+490.425000,0.00000, ,  RFC Wireless DMR,Site 004 Sutro,,,DMR,,TRS
+769.268750,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+769.531250,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+769.606250,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+769.843750,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+770.106250,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+770.256250,0.00000, ,  Golden Gate Bridge Highway and Transportation District,Site 001 South Simulcast Toll PlazaMt Tam,,,Project 25,,TRS
+771.131250,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+771.156250,0.00000, ,  Golden Gate Bridge Highway and Transportation District,Site 001 South Simulcast Toll PlazaMt Tam,,,Project 25,,TRS
+771.368750,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+771.668750,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+772.131250,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+772.431250,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+772.731250,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+773.131250,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+773.381250,0.00000, ,  Golden Gate Bridge Highway and Transportation District,Site 001 South Simulcast Toll PlazaMt Tam,,,Project 25,,TRS
+773.418750,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+773.681250,0.00000, ,  San Francisco CountyCity P25,Site 025 City Simulcast,,,Project 25,,TRS
+773.993750,0.00000, ,  Golden Gate Bridge Highway and Transportation District,Site 001 South Simulcast Toll PlazaMt Tam,,,Project 25,,TRS
+774.643750,0.00000, ,  San Francisco Municipal Transportation Agency SFMTA,Site 006 SFMTA,,,Project 25,,TRS
+851.037500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+851.050000,0.00000,WQYG201,San Francisco,Police C14  Talkaround 1,SFPD TA 1,506 DPL,FM,M,Law Talk
+851.125000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.150000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.250000,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+851.312500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+851.400000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.425000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.562500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+851.587500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.612500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.762500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.812500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+851.887500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+851.937500,0.00000,WQYG201,San Francisco,Fire C14  Talkaround 1,SFFD C14/TA1,506 DPL,FM,M,Fire-Talk
+852.037500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+852.062500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+852.087500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.175000,0.00000,WQYG201,San Francisco,Public Safety Talkaround 1  Shared PoliceFire SFFD C16,SF PS-TA 1,506 DPL,FM,M,Multi-Talk
+852.212500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.237500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+852.262500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.312500,0.00000,WQYG201,San Francisco,Fire C15  Talkaround 2,SFFD C15/TA2,506 DPL,FM,M,Fire-Talk
+852.362500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+852.387500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.562500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+852.650000,0.00000,,San Francisco,Police C15  Talkaround 2,SFPD TA 2,506 DPL,FM,M,Law Talk
+852.675000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.812500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+852.837500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+852.862500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+853.037500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+853.087500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.225000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.250000,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+853.362500,0.00000, ,  Bay Area Rapid Transit BART,Site 010 Simulcast,,,EDACS,,TRS
+853.412500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.437500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.537500,808.53750,WPSH605,Bay Area Rapid Transit,Conventional Backup,BART Conv BU,CSQ,FM,RM,Transportation
+853.625000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.650000,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.787500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+853.812500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+853.887500,0.00000, ,  San Francisco CountyCity,Site 001 CERS Public Safety,,,Motorola,,TRS
+854.087500,857.08750,,Businesses Transportation,First Student Transportation School Buses,First Student,110.9 PL,FMN,RM,Transportation
+855.237500,810.23750,WNXR204,San Francisco Municipal Railway MUNI 	,MDT Data,MUNI MDT Data,,Telm,RM,Data
+856.237500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+857.237500,0.00000, ,  San Francisco CountyCity,Site 003 PERS Public Works,,,Motorola,,TRS
+935.450000,0.00000, ,  ATT LTR,Site 031 Sutro,,,LTR,,TRS
+935.462500,0.00000, ,  ATT LTR,Site 031 Sutro,,,LTR,,TRS
+935.475000,0.00000, ,  ATT LTR,Site 007 BushPine,,,LTR,,TRS
+935.487500,0.00000, ,  ATT LTR,Site 031 Sutro,,,LTR,,TRS
+935.500000,0.00000, ,  ATT LTR,Site 007 BushPine,,,LTR,,TRS
+938.475000,0.00000, ,  ATT LTR,Site 007 BushPine,,,LTR,,TRS

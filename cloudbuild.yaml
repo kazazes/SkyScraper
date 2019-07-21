@@ -59,6 +59,4 @@ steps:
   timeout: 1200s
   waitFor: ['-']
 - name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'
-  args:
-    - BALENA_TOKEN=NVPBU7madNgPKZhe1JsuDttQRvDykgO9
 timeout: 3600s

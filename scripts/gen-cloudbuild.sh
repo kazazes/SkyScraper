@@ -41,12 +41,6 @@ function generate_cloudbuild() {
     done
 
     echo -e "- name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'" >>$YAML
-    echo -e "  secretEnv: ['BALENA_TOKEN']" >>$YAML
-    echo -e "secrets:" >>$YAML
-    echo -e "  - kmsKeyName: projects/methodical-tea-237508/locations/global/keyRings/balena" >>$YAML
-    echo -e "    secretEnv: " >>$YAML
-    echo -e "      BALENA_TOKEN: CiQAgf4uFlkkIt5DY1vPXcBMMbWbyI4Ogs58EEbRvcLETuZWNQwSSQC9/m0lMwfdWc/MRdcxEJ4fVE+NpiTwfVL26dCBIbiomj77F/jpdcpxIcbXTl9S3x5AUKA05uNNMQiqFa5mYsytbz3LOPzVEec=" >>$YAML
-
     echo -e "timeout: 3600s" >>$YAML
 }
 generate_cloudbuild

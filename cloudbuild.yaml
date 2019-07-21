@@ -59,9 +59,6 @@ steps:
   timeout: 1200s
   waitFor: ['-']
 - name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'
-  secretEnv: ['BALENA_TOKEN']
-secrets:
-  - kmsKeyName: projects/methodical-tea-237508/locations/global/keyRings/balena
-    secretEnv: 
-      BALENA_TOKEN: CiQAgf4uFlkkIt5DY1vPXcBMMbWbyI4Ogs58EEbRvcLETuZWNQwSSQC9/m0lMwfdWc/MRdcxEJ4fVE+NpiTwfVL26dCBIbiomj77F/jpdcpxIcbXTl9S3x5AUKA05uNNMQiqFa5mYsytbz3LOPzVEec=
+  args:
+    - BALENA_TOKEN=NVPBU7madNgPKZhe1JsuDttQRvDykgO9
 timeout: 3600s

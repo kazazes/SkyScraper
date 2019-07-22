@@ -20,7 +20,7 @@ if [ $? -eq 0 ]; then
     printf 'Skipping WiFi Connect\n'
 else
     printf 'Starting WiFi Connect\n'
-    ./wifi-connect
+    ./wifi-connect -o ${BROATCAST_PORT:-8888}
 fi
 
 # Start your application here.

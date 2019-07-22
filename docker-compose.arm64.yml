@@ -10,7 +10,7 @@ services:
       io.balena.features.dbus: "1"
     image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
     ports:
-      - "80:80"
+      - "8888:8888"
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
@@ -51,28 +51,6 @@ services:
       - REDIS_HOST=redis
     depends_on:
       - redis
-  dump1090:
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest
-    container_name: dump1090
-    privileged: true
-    volumes:
-      - "./data:/data"
-    ports:
-      - "30003:30003"
-    environment:
-      - ADSB_DISABLED=1
-    restart: always
-  dump1090-mqtt:
-    image: gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest
-    container_name: dump1090-mqtt
-    volumes:
-      - "./data:/data"
-    depends_on:
-      - mqtt
-      - dump1090
-    restart: always
-    environment:
-      - ADSB_DISABLED=1
   netdata:
     image: skyscraperai/netdata
     container_name: netdata

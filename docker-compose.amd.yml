@@ -12,7 +12,7 @@ services:
         dockerfile: Dockerfile
         context: edge-images/wifi-connect
     ports:
-      - "80:80"
+      - "8888:8888"
   mqtt:
     build:
         dockerfile: Dockerfile
@@ -59,32 +59,6 @@ services:
       - REDIS_HOST=redis
     depends_on:
       - redis
-  dump1090:
-    build:
-        dockerfile: Dockerfile
-        context: edge-images/dump1090
-    container_name: dump1090
-    privileged: true
-    volumes:
-      - "./data:/data"
-    ports:
-      - "30003:30003"
-    environment:
-      - ADSB_DISABLED=1
-    restart: always
-  dump1090-mqtt:
-    build:
-        dockerfile: Dockerfile
-        context: edge-images/dump1090-mqtt
-    container_name: dump1090-mqtt
-    volumes:
-      - "./data:/data"
-    depends_on:
-      - mqtt
-      - dump1090
-    restart: always
-    environment:
-      - ADSB_DISABLED=1
   netdata:
     image: skyscraperai/netdata
     container_name: netdata

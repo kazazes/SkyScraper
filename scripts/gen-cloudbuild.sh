@@ -26,24 +26,21 @@ function generate_cloudbuild() {
             echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
             echo -e "  args: ['--cache=true', '--cache-ttl=${CACHE_TTL}', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
             echo -e "  timeout: 3600s" >>$YAML
-            echo -e "  waitFor: ['-']" >>$YAML
+            # echo -e "  waitFor: ['-']" >>$YAML
         fi
     done
 
-    for D in ./host-images/*; do
-        if [[ -d "${D}" ]]; then
-            BASENAME=$(basename ${D} | awk '{print tolower($0)}')
-            IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest
-            IMAGES="'$IMAGE_URI', $IMAGES"
+    # for D in ./host-images/*; do
+    #     if [[ -d "${D}" ]]; then
+    #         BASENAME=$(basename ${D} | awk '{print tolower($0)}')
+    #         IMAGE_URI=gcr.io/methodical-tea-237508/skyscraperai/${BASENAME}:latest
+    #         IMAGES="'$IMAGE_URI', $IMAGES"
 
-            echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
-            echo -e "  args: ['--cache=true', '--cache-ttl=${CACHE_TTL}', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
-            echo -e "  timeout: 3600s" >>$YAML
-            echo -e "  waitFor: ['-']" >>$YAML
-        fi
-    done
-
-    echo -e "- name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'" >>$YAML
-    echo -e "timeout: 4200s" >>$YAML
+    #         echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
+    #         echo -e "  args: ['--cache=true', '--cache-ttl=${CACHE_TTL}', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
+    #         echo -e "  timeout: 3600s" >>$YAML
+    #         echo -e "  waitFor: ['-']" >>$YAML
+    #     fi
+    # done
 }
 generate_cloudbuild

@@ -9,6 +9,8 @@ services:
     labels:
       io.balena.features.dbus: "1"
     image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
+    ports:
+      - "80:80"
   mqtt:
     image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt

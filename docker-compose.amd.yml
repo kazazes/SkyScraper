@@ -11,6 +11,8 @@ services:
     build:
         dockerfile: Dockerfile
         context: edge-images/wifi-connect
+    ports:
+      - "80:80"
   mqtt:
     build:
         dockerfile: Dockerfile

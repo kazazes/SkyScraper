@@ -48,7 +48,7 @@ services:
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt.skyscraper.ai
+      - MQTT_HOST=mqtt
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -69,6 +69,8 @@ services:
       - "./data:/data"
     ports:
       - "30003:30003"
+    environment:
+      - ADSB_DISABLED=1
     restart: always
   dump1090-mqtt:
     build:
@@ -81,6 +83,8 @@ services:
       - mqtt
       - dump1090
     restart: always
+    environment:
+      - ADSB_DISABLED=1
   netdata:
     image: skyscraperai/netdata
     container_name: netdata
@@ -173,8 +177,8 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
-      - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PASSWORD=1
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - MQTT_HOST=127.0.0.1
+      - MQTT_HOST=mqtt
     restart: on-failure

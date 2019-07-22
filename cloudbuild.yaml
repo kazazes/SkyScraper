@@ -3,64 +3,64 @@ steps:
   args: [ '--build', '$BUILD_ID',
   '--webhook', 'https://hooks.slack.com/services/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' ]
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/backend:latest', '--context=dir://workspace/./edge-images/backend', '--dockerfile=/workspace/./edge-images/backend/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/backend:latest', '--context=dir://workspace/./edge-images/backend', '--dockerfile=/workspace/./edge-images/backend/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/config:latest', '--context=dir://workspace/./edge-images/config', '--dockerfile=/workspace/./edge-images/config/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/config:latest', '--context=dir://workspace/./edge-images/config', '--dockerfile=/workspace/./edge-images/config/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '--context=dir://workspace/./edge-images/dump1090', '--dockerfile=/workspace/./edge-images/dump1090/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '--context=dir://workspace/./edge-images/dump1090', '--dockerfile=/workspace/./edge-images/dump1090/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest', '--context=dir://workspace/./edge-images/dump1090-mqtt', '--dockerfile=/workspace/./edge-images/dump1090-mqtt/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest', '--context=dir://workspace/./edge-images/dump1090-mqtt', '--dockerfile=/workspace/./edge-images/dump1090-mqtt/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/frontend:latest', '--context=dir://workspace/./edge-images/frontend', '--dockerfile=/workspace/./edge-images/frontend/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/frontend:latest', '--context=dir://workspace/./edge-images/frontend', '--dockerfile=/workspace/./edge-images/frontend/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '--context=dir://workspace/./edge-images/mqtt', '--dockerfile=/workspace/./edge-images/mqtt/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest', '--context=dir://workspace/./edge-images/mqtt', '--dockerfile=/workspace/./edge-images/mqtt/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '--context=dir://workspace/./edge-images/nginx', '--dockerfile=/workspace/./edge-images/nginx/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/nginx:latest', '--context=dir://workspace/./edge-images/nginx', '--dockerfile=/workspace/./edge-images/nginx/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '--context=dir://workspace/./edge-images/ngrok', '--dockerfile=/workspace/./edge-images/ngrok/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest', '--context=dir://workspace/./edge-images/ngrok', '--dockerfile=/workspace/./edge-images/ngrok/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '--context=dir://workspace/./edge-images/node-red', '--dockerfile=/workspace/./edge-images/node-red/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/node-red:latest', '--context=dir://workspace/./edge-images/node-red', '--dockerfile=/workspace/./edge-images/node-red/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '--context=dir://workspace/./edge-images/redis', '--dockerfile=/workspace/./edge-images/redis/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/redis:latest', '--context=dir://workspace/./edge-images/redis', '--dockerfile=/workspace/./edge-images/redis/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '--context=dir://workspace/./edge-images/samba', '--dockerfile=/workspace/./edge-images/samba/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '--context=dir://workspace/./edge-images/samba', '--dockerfile=/workspace/./edge-images/samba/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '--context=dir://workspace/./edge-images/trunk-recorder', '--dockerfile=/workspace/./edge-images/trunk-recorder/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '--context=dir://workspace/./edge-images/trunk-recorder', '--dockerfile=/workspace/./edge-images/trunk-recorder/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', '--context=dir://workspace/./edge-images/wifi-connect', '--dockerfile=/workspace/./edge-images/wifi-connect/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', '--context=dir://workspace/./edge-images/wifi-connect', '--dockerfile=/workspace/./edge-images/wifi-connect/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=12h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=72h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest', '--context=dir://workspace/./host-images/gc-to-balena', '--dockerfile=/workspace/./host-images/gc-to-balena/Dockerfile']
-  timeout: 1200s
+  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest', '--context=dir://workspace/./host-images/gc-to-balena', '--dockerfile=/workspace/./host-images/gc-to-balena/Dockerfile']
+  timeout: 3600s
   waitFor: ['-']
 - name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'
-timeout: 3600s
+timeout: 4200s

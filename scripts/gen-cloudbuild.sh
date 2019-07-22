@@ -1,13 +1,14 @@
 #! /bin/bash
 
 cd "$(dirname "$0")"/..
-PROJECT_DIR=$(pwd)
-
-PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
 
 set -e
 
-IN_USE=$(cat ../docker-compose.yml && sed -e 's/[^  ](?:  )([\w\-]+)(?::\n)//g')
+CACHE_TTL=48h
+
+PROJECT_DIR=$(pwd)
+PATH=/usr/local/opt/gnu-sed/libexec/gnubin/:$PATH
+# IN_USE=$(cat ../docker-compose.yml && sed -e 's/[^  ](?:  )([\w\-]+)(?::\n)//g')
 
 function generate_cloudbuild() {
     YAML=${PROJECT_DIR}/cloudbuild.yaml
@@ -23,8 +24,8 @@ function generate_cloudbuild() {
             IMAGES="'$IMAGE_URI', $IMAGES"
 
             echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
-            echo -e "  args: ['--cache=true', '--cache-ttl=12h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
-            echo -e "  timeout: 1200s" >>$YAML
+            echo -e "  args: ['--cache=true', '--cache-ttl=${CACHE_TTL}', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
+            echo -e "  timeout: 3600s" >>$YAML
             echo -e "  waitFor: ['-']" >>$YAML
         fi
     done
@@ -36,13 +37,13 @@ function generate_cloudbuild() {
             IMAGES="'$IMAGE_URI', $IMAGES"
 
             echo -e "- name: 'gcr.io/kaniko-project/executor:latest'" >>$YAML
-            echo -e "  args: ['--cache=true', '--cache-ttl=72h', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
-            echo -e "  timeout: 1200s" >>$YAML
+            echo -e "  args: ['--cache=true', '--cache-ttl=${CACHE_TTL}', '--destination=${IMAGE_URI}', '--context=dir://workspace/${D}', '--dockerfile=/workspace/${D}/Dockerfile']" >>$YAML
+            echo -e "  timeout: 3600s" >>$YAML
             echo -e "  waitFor: ['-']" >>$YAML
         fi
     done
 
     echo -e "- name: 'gcr.io/methodical-tea-237508/skyscraperai/gc-to-balena:latest'" >>$YAML
-    echo -e "timeout: 3600s" >>$YAML
+    echo -e "timeout: 4200s" >>$YAML
 }
 generate_cloudbuild

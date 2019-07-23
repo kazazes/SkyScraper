@@ -10,7 +10,7 @@ services:
       io.balena.features.dbus: "1"
     image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
     ports:
-      - "8888:8888"
+      - "8888:80"
   sysdig-agent:
     restart: always
     privileged: true
@@ -149,4 +149,15 @@ services:
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
       - MQTT_HOST=mqtt
+  ftp:
+    image: stilliard/pure-ftpd:hardened
+    environment:
+      - PUBLICHOST=localhost
+      - ADDED_FLAGS=-d -d
+      - FTP_USER_NAME=skyscraper
+      - FTP_USER_PASS=$craping$kies
+      - FTP_USER_HOME=/data
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
     restart: on-failure

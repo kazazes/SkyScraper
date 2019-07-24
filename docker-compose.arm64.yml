@@ -105,6 +105,7 @@ services:
   redis:
     image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
     container_name: redis
+    privileged: true
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"

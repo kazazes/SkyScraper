@@ -11,14 +11,6 @@ steps:
   timeout: 3400s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090:latest', '--context=dir://workspace/./edge-images/dump1090', '--dockerfile=/workspace/./edge-images/dump1090/Dockerfile']
-  timeout: 3400s
-  waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/dump1090-mqtt:latest', '--context=dir://workspace/./edge-images/dump1090-mqtt', '--dockerfile=/workspace/./edge-images/dump1090-mqtt/Dockerfile']
-  timeout: 3400s
-  waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/frontend:latest', '--context=dir://workspace/./edge-images/frontend', '--dockerfile=/workspace/./edge-images/frontend/Dockerfile']
   timeout: 3400s
   waitFor: ['-']
@@ -43,19 +35,11 @@ steps:
   timeout: 3400s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/samba:latest', '--context=dir://workspace/./edge-images/samba', '--dockerfile=/workspace/./edge-images/samba/Dockerfile']
-  timeout: 3400s
-  waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '--context=dir://workspace/./edge-images/trunk-recorder', '--dockerfile=/workspace/./edge-images/trunk-recorder/Dockerfile']
   timeout: 3400s
   waitFor: ['-']
 - name: 'gcr.io/kaniko-project/executor:latest'
   args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', '--context=dir://workspace/./edge-images/wifi-connect', '--dockerfile=/workspace/./edge-images/wifi-connect/Dockerfile']
-  timeout: 3400s
-  waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/window-manager:latest', '--context=dir://workspace/./edge-images/window-manager', '--dockerfile=/workspace/./edge-images/window-manager/Dockerfile']
   timeout: 3400s
   waitFor: ['-']
 timeout: 4200s

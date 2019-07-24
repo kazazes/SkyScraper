@@ -59,12 +59,22 @@ generate_base_dockerfile() {
 function generate_compose() {
 	cp docker-compose.yml docker-compose.amd.yml
 	cp docker-compose.yml docker-compose.arm64.yml
+ 	cp docker-compose.yml docker-compose.balena.yml
 
 	sed -i \
 		-e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 		-e "s/build:/build:\n      dockerfile: Dockerfile/g" \
 		-e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.amd.yml
+
+		sed -i \
+		-e 's/#.*$//' -e 's/ *$//; /^$/d;' \
+		-e "s/build:/build:\n      dockerfile: Dockerfile/g" \
+		docker-compose.balena.yml
+
+	sed -i \
+		-E 's,image: gcr\.io\/methodical-tea-237508\/skyscraperai\/(.*)(:latest?),build:\n        dockerfile: Dockerfile\n        context: edge-images\/\1,' \
+		docker-compose.balena.yml
 
 	sed -i \
 		-E 's,image: gcr\.io\/methodical-tea-237508\/skyscraperai\/(.*)(:latest?),build:\n        dockerfile: Dockerfile\n        context: edge-images\/\1,' \

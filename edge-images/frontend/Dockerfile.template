@@ -10,7 +10,6 @@ COPY yarn.lock /usr/src/app/
 RUN yarn install --pure-lockfile --network-timeout 1000000000
 
 # Set environment variables
-ENV NODE_ENV production
 ENV NUXT_HOST 0.0.0.0
 ENV NUXT_PORT 3000
 

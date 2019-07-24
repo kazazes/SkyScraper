@@ -38,8 +38,4 @@ steps:
   args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest', '--context=dir://workspace/./edge-images/trunk-recorder', '--dockerfile=/workspace/./edge-images/trunk-recorder/Dockerfile']
   timeout: 3400s
   waitFor: ['-']
-- name: 'gcr.io/kaniko-project/executor:latest'
-  args: ['--cache=true', '--cache-ttl=48h', '--destination=gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest', '--context=dir://workspace/./edge-images/wifi-connect', '--dockerfile=/workspace/./edge-images/wifi-connect/Dockerfile']
-  timeout: 3400s
-  waitFor: ['-']
 timeout: 4200s

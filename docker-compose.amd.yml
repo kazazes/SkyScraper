@@ -2,31 +2,6 @@ version: "2"
 volumes:
   resin-data: {}
 services:
-  wifi-connect:
-    privileged: true
-    pid: host
-    network_mode: host
-    labels:
-      io.balena.features.dbus: "1"
-    build:
-        dockerfile: Dockerfile
-        context: edge-images/wifi-connect
-    ports:
-      - "8888:80"
-  sysdig-agent:
-    restart: always
-    privileged: true
-    network_mode: host
-    pid: host
-    environment:
-      - ACCESS_KEY=9b98a2e6-f13c-4b72-9fc9-997fb4cd02b3
-      - SECURE=true
-      - TAGS=ss1:node
-    shm_size: 512m
-    image: sysdig/agent
-    labels:
-      io.balena.features.balena-socket: "1"
-      io.balena.features.kernel-modules: "1"
   mqtt:
     build:
         dockerfile: Dockerfile
@@ -55,8 +30,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - NODE_ENV=production
-      - ENABLE_UPLOAD=true
+      - ENABLE_UPLOAD=false
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
@@ -138,11 +112,9 @@ services:
     environment:
       - PORT=3000
       - HOST=0.0.0.0
-      - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
-      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   redis:
     build:
@@ -169,15 +141,4 @@ services:
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
       - MQTT_HOST=mqtt
-  ftp:
-    image: stilliard/pure-ftpd:hardened
-    environment:
-      - PUBLICHOST=localhost
-      - ADDED_FLAGS=-d -d
-      - FTP_USER_NAME=skyscraper
-      - FTP_USER_PASS=$craping$kies
-      - FTP_USER_HOME=/data
-    ports:
-      - "21:21"
-      - "30000-30009:30000-30009"
     restart: on-failure

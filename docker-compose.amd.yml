@@ -30,14 +30,13 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - NODE_ENV=production
-      - ENABLE_UPLOAD=true
+      - ENABLE_UPLOAD=false
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt.skyscraper.ai
+      - MQTT_HOST=mqtt
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -111,13 +110,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - PORT=3000
-      - HOST=0.0.0.0
       - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
-      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   redis:
     build:
@@ -140,8 +136,8 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
-      - MQTT_PASSWORD=Ur6yANnx@ZD
+      - MQTT_PASSWORD=1
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - MQTT_HOST=127.0.0.1
+      - MQTT_HOST=mqtt
     restart: on-failure

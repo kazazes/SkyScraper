@@ -63,7 +63,6 @@ function generate_compose() {
 	sed -i \
 		-e 's/#.*$//' -e 's/ *$//; /^$/d;' -e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 		-e "s/build:/build:\n      dockerfile: Dockerfile/g" \
-		-e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.amd.yml
 
 	sed -i \
@@ -74,7 +73,6 @@ function generate_compose() {
 		-e 's/ *$//; /^$/d;' \
 		-e "s/\"resin-data:\/data/\".\/data:\/data/g" \
 		-e "s/build:/build:\n      dockerfile: arm64.dockerfile/g" \
-		-e 's/skyscraperai\/datadog:latest/skyscraperai\/datadog:latest\n    volumes:\n      - \/var\/run\/docker.sock:\/var\/run\/docker.sock\n      - \/run\/dbus:\/host\/run\/dbus\n      - \/proc\/:\/host\/proc\/\n      - \/sys\/fs\/cgroup\/:\/host\/sys\/fs\/cgroup\//' \
 		docker-compose.arm64.yml
 }
 

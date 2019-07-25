@@ -3,10 +3,10 @@
     <v-layout align-center justify-space-around wrap row>
       <v-flex md3 hidden-sm-and-down>
         <!-- <v-toolbar-side-icon @click.stop="onClickBtn"></v-toolbar-side-icon> -->
-        <span>
-          <v-icon small class="mr-1" color="success">mdi-power-off</v-icon>
-          <span class="white--text body-1">System healthy.</span>
-        </span>
+<!--        <span>-->
+<!--          <v-icon small class="mr-1" color="success">mdi-power-off</v-icon>-->
+<!--          <span class="white&#45;&#45;text body-1">System healthy.</span>-->
+<!--        </span>-->
       </v-flex>
       <v-flex md6 text-xs-center>
         <v-btn round flat color="#2c303a" active-class="active-nav" nuxt to="/data">Browse</v-btn>

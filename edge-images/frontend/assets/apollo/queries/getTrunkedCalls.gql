@@ -1,5 +1,5 @@
 query trunkedCalls($first: Int, $skip: Int) {
-  trunkedCalls(first: $first, skip: $skip, orderBy: startTime_DESC) {
+  trunkedCalls(first: $first, skip: $skip, orderBy: startTime_DESC, limit: 50) {
     id
     createdAt
     frequency

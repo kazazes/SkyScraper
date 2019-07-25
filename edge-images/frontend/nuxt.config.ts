@@ -1,7 +1,5 @@
 import webpack from "webpack";
 
-import apolloConfig from "./plugins/apollo-config";
-
 const isDev = process.env.NODE_ENV !== "production";
 
 const config = {

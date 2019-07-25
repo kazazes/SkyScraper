@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package.json tsconfig.json yarn.lock ./
-RUN yarn install --network-timeout 1000000000 --frozen-lockfile
+RUN yarn install --network-timeout 1000000000 --pure-lockfile
 
 # Set environment variables
 ENV NODE_ENV production

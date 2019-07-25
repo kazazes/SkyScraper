@@ -117,19 +117,19 @@
   </v-container>
 </template>
 <script lang="ts">
-  import { MAX_TRUNKED_RANGE_MHZ } from "~/assets/constants"
-  import { validFrequencyKHz, validFrequencyMHz } from "~/utils/frequencies"
+  import { MAX_TRUNKED_RANGE_MHZ } from "~/assets/constants";
+  import { validFrequencyKHz, validFrequencyMHz } from "~/utils/frequencies";
   import {
     TrunkedConfigCreateInput,
     TrunkedSmartnetBandplan,
     TrunkedSystemCreateInput,
     TrunkedSystemType,
   } from "~/assets/prisma-client";
-  import { randomBytes } from "crypto"
-  import {FieldFlags, ValidationObserver} from "~/node_modules/vee-validate"
-  import Vue from "~/node_modules/vue"
-  import {Component, Prop} from "~/node_modules/vue-property-decorator";
-  import {ErrorBag} from "~/node_modules/vee-validate"
+  import { randomBytes } from "crypto";
+  import { FieldFlags, ValidationObserver } from "~/node_modules/vee-validate";
+  import Vue from "~/node_modules/vue";
+  import { Component, Prop } from "~/node_modules/vue-property-decorator";
+  import { ErrorBag } from "~/node_modules/vee-validate";
 
   @Component({
     methods: {
@@ -138,34 +138,34 @@
     },
     components: {
       ValidationObserver,
-    }
+    },
   })
   export default class TrunkedWizardSystem extends Vue {
     // errors = new ErrorBag();
-    @Prop() configs!: any[]
-    controlChannels: string[] = []
-    controlChannelErrors: string[] = []
-    conventionalChannels: string[] = []
-    conventionalChannelErrors: string[] = []
-    nameInput = ""
-    bandplan: TrunkedSmartnetBandplan = "CUSTOM_400"
-    bandplanBase: string = ""
-    bandplanHigh: string = ""
-    bandplanOffset = ""
-    bandplanSpacing = "25"
+    @Prop() configs!: any[];
+    controlChannels: string[] = [];
+    controlChannelErrors: string[] = [];
+    conventionalChannels: string[] = [];
+    conventionalChannelErrors: string[] = [];
+    nameInput = "";
+    bandplan: TrunkedSmartnetBandplan = "CUSTOM_400";
+    bandplanBase: string = "";
+    bandplanHigh: string = "";
+    bandplanOffset = "";
+    bandplanSpacing = "25";
     bandplans: { value: TrunkedSmartnetBandplan; text: string }[] = [
       { value: "STANDARD_800", text: "800 Standard" },
       { value: "REBAND_800", text: "800 Reband" },
       { value: "SPLINTER_800", text: "800 Splinter" },
       { value: "CUSTOM_400", text: "400 Custom" },
-    ]
-    systemType: TrunkedSystemType = "SMARTNET"
+    ];
+    systemType: TrunkedSystemType = "SMARTNET";
     systemTypes: { value: TrunkedSystemType; text: string }[] = [
       { value: "CONVENTIONAL", text: "Conventional" },
       { value: "P25", text: "P25" },
       { value: "SMARTNET", text: "Motorola" },
       { value: "CONVENTIONAL_P25", text: "Conventional P25" },
-    ]
+    ];
 
     // Get the fragment made by this step of the wizard
     get fragment(): Partial<TrunkedConfigCreateInput> {
@@ -179,91 +179,91 @@
         channels: { set: this.conventionalChannels.map((c) => Number(c)) },
         type: this.systemType,
         shortName: randomBytes(3).toString("hex"),
-      }
+      };
       return {
         name: this.nameInput,
         systems: {
           create: systemInput,
         },
-      }
+      };
     }
 
     get formValid() {
       return (
-        Object.keys(this.fields).findIndex((k: string) => {
-          const f = this.fields[k] as FieldFlags
-          return f.invalid || f.pending
+        Object.keys(this.$validator.fields).findIndex((k: string) => {
+          const f = this.$validator.fields[k] as FieldFlags;
+          return f.invalid || f.pending;
         }) === -1
-      )
+      );
     }
 
     get channels() {
-      if (this.systemType === "CONVENTIONAL") return this.conventionalChannels
-      else return this.controlChannels
+      if (this.systemType === "CONVENTIONAL") return this.conventionalChannels;
+      else return this.controlChannels;
     }
 
     set channels(a: string[]) {
-      if (this.systemType === "CONVENTIONAL") this.conventionalChannels = a
-      else this.controlChannels = a
+      if (this.systemType === "CONVENTIONAL") this.conventionalChannels = a;
+      else this.controlChannels = a;
     }
 
     get conventional() {
-      return this.systemType === "CONVENTIONAL"
+      return this.systemType === "CONVENTIONAL";
     }
 
     get channelNumbers() {
-      return this.channels.map((c) => Number(c))
+      return this.channels.map((c) => Number(c));
     }
 
     validateChannels() {
-      if (this.channels.length < 2) return true
-      const min = this.minChannel
-      const max = this.maxChannel
-      console.log(`Min: ${min} Max: ${max} Diff: ${max - min}`)
+      if (this.channels.length < 2) return true;
+      const min = this.minChannel;
+      const max = this.maxChannel;
+      console.log(`Min: ${min} Max: ${max} Diff: ${max - min}`);
       if (max - min > MAX_TRUNKED_RANGE_MHZ) {
         const err = `${(max - min).toFixed(
           2
-        )} MHz is above max range of ${MAX_TRUNKED_RANGE_MHZ} MHz.`
-        return err
+        )} MHz is above max range of ${MAX_TRUNKED_RANGE_MHZ} MHz.`;
+        return err;
       }
-      if (this.channels.length > 1) return true
+      if (this.channels.length > 1) return true;
     }
 
     get minChannel() {
-      const ctrl = this.channelNumbers
+      const ctrl = this.channelNumbers;
       return ctrl.reduce((prev, current) => {
-        if (Number(current) < Number(prev)) return current
-        else return prev
-      })
+        if (Number(current) < Number(prev)) return current;
+        else return prev;
+      });
     }
 
     get maxChannel() {
-      if (this.channels.length < 1) return 400.0
-      const ctrl = this.channelNumbers
+      if (this.channels.length < 1) return 400.0;
+      const ctrl = this.channelNumbers;
       const max = ctrl.reduce((prev, current) => {
-        if (Number(current) > Number(prev)) return current
-        else return prev
-      })
-      return max
+        if (Number(current) > Number(prev)) return current;
+        else return prev;
+      });
+      return max;
     }
 
     get medianChannel() {
-      if (this.channels.length < 1) return 400.0
-      const median = (this.maxChannel + this.minChannel) / 2
-      console.log(`Median: ${median}`)
-      return median
+      if (this.channels.length < 1) return 400.0;
+      const median = (this.maxChannel + this.minChannel) / 2;
+      console.log(`Median: ${median}`);
+      return median;
     }
 
     get bandwidthString() {
       if (this.channels.length < 2)
         return `Input at least two ${
           this.systemType === "CONVENTIONAL" ? "conventional" : "control"
-          } channels.`
-      else return `Bandwidth: ${this.bandwidth.toFixed(2)} MHz`
+        } channels.`;
+      else return `Bandwidth: ${this.bandwidth.toFixed(2)} MHz`;
     }
 
     get bandwidth() {
-      return this.maxChannel - this.minChannel
+      return this.maxChannel - this.minChannel;
     }
   }
 </script>

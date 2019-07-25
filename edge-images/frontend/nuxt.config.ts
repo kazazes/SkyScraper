@@ -95,9 +95,9 @@ const config = {
   vue: {
     config: {
       productionTip: false,
-      devtools: true
-    }
-  }
+      devtools: true,
+    },
+  },
 };
 
 export default config;

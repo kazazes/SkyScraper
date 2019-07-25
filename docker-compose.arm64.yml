@@ -3,7 +3,10 @@ volumes:
   resin-data: {}
 services:
   mqtt:
-    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/mqtt
     container_name: mqtt
     user: root
     ports:
@@ -11,14 +14,20 @@ services:
     volumes:
       - "./data:/data"
   config:
-    image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/config
     container_name: config
     network_mode: host
     restart: "on-failure"
     volumes:
       - "./data:/data"
   backend:
-    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/backend
     volumes:
       - "./data:/data"
     ports:
@@ -57,7 +66,10 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   nginx:
-    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/nginx
     container_name: nginx
     depends_on:
       - frontend
@@ -71,7 +83,10 @@ services:
     volumes:
       - "./data:/data"
   nodered:
-    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/node-red
     container_name: nodered
     volumes:
       - "./data:/data"
@@ -81,7 +96,10 @@ services:
       - NODE_ENV=production
     restart: always
   ngrok:
-    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/ngrok
     links:
       - nginx:https
     container_name: ngrok
@@ -90,7 +108,10 @@ services:
       - nginx
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   frontend:
-    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/frontend
     volumes:
       - "./data:/data"
     ports:
@@ -103,7 +124,10 @@ services:
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
     restart: always
   redis:
-    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/redis
     container_name: redis
     privileged: true
     command: redis-server --appendonly yes
@@ -111,7 +135,10 @@ services:
       - "6379:6379"
     restart: always
   trunk-recorder:
-    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
+    build:
+      dockerfile: arm64.dockerfile
+        dockerfile: Dockerfile
+        context: edge-images/trunk-recorder
     privileged: true
     depends_on:
       - "config"

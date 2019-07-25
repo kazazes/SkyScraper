@@ -5,13 +5,11 @@ import apolloConfig from "./plugins/apollo-config";
 const isDev = process.env.NODE_ENV !== "production";
 
 const config = {
-  mode: "universal",
-  modern: isDev ? false : "client",
   /*
    ** Headers of the page
    */
   head: {
-    title: "Admin | SkyScraper",
+    title: "SkyScraper",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -93,8 +91,13 @@ const config = {
         mapboxgl: "mapbox-gl",
       }),
     ],
-    parallel: true,
   },
+  vue: {
+    config: {
+      productionTip: false,
+      devtools: true
+    }
+  }
 };
 
 export default config;

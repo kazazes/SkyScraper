@@ -10,7 +10,7 @@
           z-index="10"
           slider-color="white"
         >
-          <v-tab nuxt to="/data" value="true">
+          <v-tab nuxt to="/data/voice" value="true">
             <v-icon class="pr-2">mdi-microphone</v-icon>
             <span class="text-uppercase">Voice</span>
           </v-tab>
@@ -20,14 +20,14 @@
           </v-tab>
         </v-tabs>
       </v-flex>
-      <n-child></n-child>
+      <nuxt-child></nuxt-child>
     </v-container>
   </v-layout>
 </template>
 
 <script lang="ts">
   import Vue from "vue";
-  import Component from "nuxt-class-component";
+  import Component from "vue-class-component";
 
   @Component({
     components: {},

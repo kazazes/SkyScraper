@@ -9,48 +9,12 @@
         </span>
       </v-flex>
       <v-flex md6 text-xs-center>
-        <v-btn round flat color="#2c303a" active-class="active-nav" nuxt to="/data">Browse</v-btn>
-        <v-btn round flat color="#2c303a" active-class="active-nav" nuxt to="/configure">Configure</v-btn>
-        <v-btn round flat color="#2c303a" active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
+        <v-btn round flat active-class="active-nav" nuxt to="/data">Browse</v-btn>
+        <v-btn round flat active-class="active-nav" nuxt to="/configure">Configure</v-btn>
+        <v-btn round flat active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
       </v-flex>
       <v-flex md3 class="hidden-md-and-down">
-        <v-flex align-center justify-end layout>
-          <v-menu
-            bottom
-            left
-            content-class="dropdown-menu"
-            offset-y
-            transition="slide-y-transition"
-          >
-            <nuxt-link
-              @click.stop
-              v-ripple
-              disabled
-              slot="activator"
-              class="toolbar-items"
-              to="/notifications"
-            >
-              <v-badge color="error" overlap>
-                <template v-if="notifications.length > 0" slot="badge">{{ notifications.length }}</template>
-                <v-icon color="grey" class="text-muted px-2">mdi-bell</v-icon>
-              </v-badge>
-            </nuxt-link>
-            <v-card v-if="notifications.length > 0">
-              <v-list dense>
-                <v-list-tile
-                  v-for="notification in notifications"
-                  :key="notification"
-                  @click="onClick"
-                >
-                  <v-list-tile-title v-text="notification"/>
-                </v-list-tile>
-              </v-list>
-            </v-card>
-          </v-menu>
-          <nuxt-link v-ripple class="toolbar-items px-2" to="/help">
-            <v-icon color="tertiary">mdi-help</v-icon>
-          </nuxt-link>
-        </v-flex>
+        <v-flex align-center justify-end layout></v-flex>
       </v-flex>
     </v-layout>
   </v-toolbar>

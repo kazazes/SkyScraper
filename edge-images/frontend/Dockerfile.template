@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json /usr/src/app/
 COPY yarn.lock /usr/src/app/
-RUN yarn install --pure-lockfile --network-timeout 1000000000
+RUN yarn install --frozen-lockfile --network-timeout 1000000000
 
 # Set environment variables
 ENV NUXT_HOST 0.0.0.0

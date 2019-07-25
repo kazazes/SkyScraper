@@ -110,8 +110,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - PORT=3000
-      - HOST=0.0.0.0
+      - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
@@ -121,7 +120,6 @@ services:
         dockerfile: Dockerfile
         context: edge-images/redis
     container_name: redis
-    privileged: true
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"

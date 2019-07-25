@@ -1,10 +1,9 @@
 *.log
 .balena-sync.yml
-test/data/
-data
 **/node_modules/
 balenaOS
 .idea
+/data/
 
 cloudflare.ini
 

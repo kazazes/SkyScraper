@@ -48,6 +48,7 @@ const config = {
    ** Nuxt.js modules
    */
   modules: [
+    "@nuxtjs/sentry",
     "@nuxtjs/axios",
     "@nuxtjs/vuetify",
     "@nuxtjs/apollo",
@@ -68,6 +69,10 @@ const config = {
       },
     ],
   ],
+  sentry: {
+    dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
+    config: {}, // Additional config
+  },
   axios: {},
   apollo: {
     incldueNodeModules: true,

@@ -4,7 +4,6 @@ volumes:
 services:
   mqtt:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/mqtt
     container_name: mqtt
@@ -15,7 +14,6 @@ services:
       - "./data:/data"
   config:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/config
     container_name: config
@@ -25,7 +23,6 @@ services:
       - "./data:/data"
   backend:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/backend
     volumes:
@@ -33,13 +30,14 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - ENABLE_UPLOAD=false
+      - NODE_ENV=production
+      - ENABLE_UPLOAD=true
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt
+      - MQTT_HOST=mqtt.skyscraper.ai
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -67,7 +65,6 @@ services:
       io.balena.features.balena-socket: "1"
   nginx:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/nginx
     container_name: nginx
@@ -84,7 +81,6 @@ services:
       - "./data:/data"
   nodered:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/node-red
     container_name: nodered
@@ -97,7 +93,6 @@ services:
     restart: always
   ngrok:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/ngrok
     links:
@@ -109,7 +104,6 @@ services:
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   frontend:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/frontend
     volumes:
@@ -119,24 +113,23 @@ services:
     environment:
       - PORT=3000
       - HOST=0.0.0.0
+      - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   redis:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/redis
     container_name: redis
-    privileged: true
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"
     restart: always
   trunk-recorder:
     build:
-      dockerfile: Dockerfile
         dockerfile: Dockerfile
         context: edge-images/trunk-recorder
     privileged: true
@@ -147,8 +140,8 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
-      - MQTT_PASSWORD=1
+      - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - MQTT_HOST=mqtt
+      - MQTT_HOST=127.0.0.1
     restart: on-failure

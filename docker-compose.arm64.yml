@@ -3,10 +3,7 @@ volumes:
   resin-data: {}
 services:
   mqtt:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/mqtt
+    image: gcr.io/methodical-tea-237508/skyscraperai/mqtt:latest
     container_name: mqtt
     user: root
     ports:
@@ -14,32 +11,27 @@ services:
     volumes:
       - "./data:/data"
   config:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/config
+    image: gcr.io/methodical-tea-237508/skyscraperai/config:latest
     container_name: config
     network_mode: host
     restart: "on-failure"
     volumes:
       - "./data:/data"
   backend:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/backend
+    image: gcr.io/methodical-tea-237508/skyscraperai/backend:latest
     volumes:
       - "./data:/data"
     ports:
       - "4000:4000"
     environment:
-      - ENABLE_UPLOAD=false
+      - NODE_ENV=production
+      - ENABLE_UPLOAD=true
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
-      - MQTT_HOST=mqtt
+      - MQTT_HOST=mqtt.skyscraper.ai
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
@@ -66,10 +58,7 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
   nginx:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/nginx
+    image: gcr.io/methodical-tea-237508/skyscraperai/nginx:latest
     container_name: nginx
     depends_on:
       - frontend
@@ -83,10 +72,7 @@ services:
     volumes:
       - "./data:/data"
   nodered:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/node-red
+    image: gcr.io/methodical-tea-237508/skyscraperai/node-red:latest
     container_name: nodered
     volumes:
       - "./data:/data"
@@ -96,10 +82,7 @@ services:
       - NODE_ENV=production
     restart: always
   ngrok:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/ngrok
+    image: gcr.io/methodical-tea-237508/skyscraperai/ngrok:latest
     links:
       - nginx:https
     container_name: ngrok
@@ -108,10 +91,7 @@ services:
       - nginx
     command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
   frontend:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/frontend
+    image: gcr.io/methodical-tea-237508/skyscraperai/frontend:latest
     volumes:
       - "./data:/data"
     ports:
@@ -119,26 +99,21 @@ services:
     environment:
       - PORT=3000
       - HOST=0.0.0.0
+      - NODE_ENV=production
       - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
       - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
       - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/config/certs/gcp.json
     restart: always
   redis:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/redis
+    image: gcr.io/methodical-tea-237508/skyscraperai/redis:latest
     container_name: redis
-    privileged: true
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"
     restart: always
   trunk-recorder:
-    build:
-      dockerfile: arm64.dockerfile
-        dockerfile: Dockerfile
-        context: edge-images/trunk-recorder
+    image: gcr.io/methodical-tea-237508/skyscraperai/trunk-recorder:latest
     privileged: true
     depends_on:
       - "config"
@@ -147,8 +122,8 @@ services:
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
-      - MQTT_PASSWORD=1
+      - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - MQTT_HOST=mqtt
+      - MQTT_HOST=127.0.0.1
     restart: on-failure

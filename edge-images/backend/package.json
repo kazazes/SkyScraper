@@ -23,7 +23,7 @@
     "@google-cloud/pubsub": "^0.28.1",
     "@google-cloud/storage": "^2.5.0",
     "@koa/cors": "^3.0.0",
-    "@sentry/node": "5.1.0",
+    "@sentry/node": "5.5.0",
     "async-mqtt": "^2.2.1",
     "consola": "^2.6.0",
     "dotenv-safe": "^6.1.0",

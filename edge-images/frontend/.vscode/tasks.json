@@ -4,27 +4,9 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Push Balena",
-      "type": "shell",
-      "command": "git push balena master",
-      "problemMatcher": []
-    },
-    {
-      "label": "Manager Compose Deps",
-      "type": "shell",
-      "command": "/Users/pk/repositories/skyscraper/balena/scripts/local-dev-deps.sh",
-      "problemMatcher": [],
-      "options": {
-        "cwd": "/Users/pk/repositories/skyscraper/balena"
-      },
-      "isBackground": true,
-      "presentation": {
-        "echo": true,
-        "reveal": "silent",
-        "focus": false,
-        "panel": "shared",
-        "clear": true
-      }
+      "type": "npm",
+      "script": "lint",
+      "problemMatcher": ["$tslint5"]
     }
   ]
 }

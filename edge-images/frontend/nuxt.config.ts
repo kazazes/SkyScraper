@@ -105,6 +105,11 @@ const config = {
         mapboxgl: "mapbox-gl",
       }),
     ],
+    extend(config, ctx) {
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
+      }
+    },
   },
   vue: {
     config: {

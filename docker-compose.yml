@@ -8,7 +8,9 @@ services:
     network_mode: host
     labels:
       io.balena.features.dbus: "1"
-    image: gcr.io/methodical-tea-237508/skyscraperai/wifi-connect:latest
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/wifi-connect
     environment:
       - PORTAL_LISTENING_PORT=8080
       - PORTAL_PASSPHRASE=$craping$kies

@@ -64,7 +64,7 @@
     "vue-good-table": "^2.16.4",
     "vue-material-design-icons": "^3.2.0",
     "vue-property-decorator": "^8.1.1",
-    "vue-server-renderer": "2.6.6",
+    "vue-server-renderer": "2.6.10",
     "vuetify": "^1.5.6",
     "vuetify-audio": "^0.0.8",
     "vuex-persist": "^2.0.0",

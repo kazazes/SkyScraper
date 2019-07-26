@@ -14,7 +14,8 @@ services:
     environment:
       - PORTAL_PASSPHRASE=$craping$kies
       - PORTAL_SSID=SkyScraper
-      - PORTAL_INTERFACE=wlp58s0
+    ports:
+      - "8080:80"
   mqtt:
     build:
       dockerfile: Dockerfile

@@ -12,7 +12,7 @@ $(function(){
 
 	$('#ssid-select').change(showHideEnterpriseSettings);
 
-	$.get("/networks", function(data){
+	$.get("networks", function(data){
 		if(data.length === 0){
 			$('.before-submit').hide();
 			$('#no-networks-message').removeClass('hidden');
@@ -32,7 +32,7 @@ $(function(){
 	});
 
 	$('#connect-form').submit(function(ev){
-		$.post('/connect', $('#connect-form').serialize(), function(data){
+		$.post('connect', $('#connect-form').serialize(), function(data){
 			$('.before-submit').hide();
 			$('#submit-message').removeClass('hidden');
 		});

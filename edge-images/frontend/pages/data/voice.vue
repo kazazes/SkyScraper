@@ -228,7 +228,7 @@
     realTimeQueueEmpty: boolean = false;
 
     protected playerStatePause(isPaused: Boolean) {
-      this.paused = isPaused;
+      this.paused = isPaused.valueOf();
     }
 
     protected playerStateEnded(isEnded: Boolean) {

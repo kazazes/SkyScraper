@@ -2,6 +2,14 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  wm:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/window-manager
+    labels:
+      io.balena.features.dbus: '1'
+    privileged: true
   wifi:
     privileged: true
     pid: host

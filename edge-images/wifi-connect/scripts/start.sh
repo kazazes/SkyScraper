@@ -20,11 +20,14 @@ export DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 # wget --spider http://google.com 2>&1
 
 # 4. Is there an active WiFi connection?
-iwgetid -r
+# iwgetid -r
 
-if [ $? -eq 0 ]; then
-    printf 'Skipping WiFi Connect\n'
-else
-    printf 'Starting WiFi Connect\n'
-    ./wifi-connect
-fi
+while true; do
+    iwgetid -r
+    if [ $? -ne 0 ]; then
+        printf 'Starting WiFi Connect\n'
+        ./wifi-connect
+    fi
+
+    sleep 1m
+done

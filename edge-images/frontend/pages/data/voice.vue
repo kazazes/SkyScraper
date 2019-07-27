@@ -122,7 +122,6 @@
   import moment from "moment";
   import { VueGoodTable } from "vue-good-table";
   import consola from "consola";
-  import { Boolean } from "../../../backend/src/graphql/generated/prisma-client";
 
   if (process.client) {
     (window as any).mapboxgl = require("mapbox-gl");

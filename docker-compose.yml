@@ -2,13 +2,15 @@ version: "2"
 volumes:
   resin-data: {}
 services:
-  wm:
+  kiosk:
     restart: always
     build:
       dockerfile: Dockerfile
-      context: edge-images/window-manager
+      context: chromium-kiosk
     labels:
-      io.balena.features.dbus: '1'
+      io.balena.features.dbus: "1"
+    environment:
+      - KIOSK_URL=http://nginx/
     privileged: true
   wifi:
     privileged: true
@@ -18,7 +20,7 @@ services:
       io.balena.features.dbus: "1"
     build:
       dockerfile: Dockerfile
-      context: edge-images/wifi-connect
+      context: wifi-connect
     environment:
       - PORTAL_PASSPHRASE=$craping$kies
       - PORTAL_SSID=SkyScraper
@@ -26,8 +28,7 @@ services:
   mqtt:
     build:
       dockerfile: Dockerfile
-      context: edge-images/mqtt
-    container_name: mqtt
+      context: mqtt
     user: root
     ports:
       - "1883:1883"
@@ -36,15 +37,14 @@ services:
   config:
     build:
       dockerfile: Dockerfile
-      context: edge-images/config
-    container_name: config
+      context: config
     restart: "on-failure"
     volumes:
       - "resin-data:/data"
   backend:
     build:
       dockerfile: Dockerfile
-      context: edge-images/backend
+      context: backend
     volumes:
       - "resin-data:/data"
     ports:
@@ -69,7 +69,6 @@ services:
       - redis
   netdata:
     image: skyscraperai/netdata
-    container_name: netdata
     hostname: edge.sibyl.vision
     ports:
       - 19999:19999
@@ -85,8 +84,7 @@ services:
   nginx:
     build:
       dockerfile: Dockerfile
-      context: edge-images/nginx
-    container_name: nginx
+      context: nginx
     depends_on:
       - frontend
       - nodered
@@ -101,8 +99,7 @@ services:
   nodered:
     build:
       dockerfile: Dockerfile
-      context: edge-images/node-red
-    container_name: nodered
+      context: node-red
     volumes:
       - "resin-data:/data"
     ports:
@@ -113,10 +110,9 @@ services:
   ngrok:
     build:
       dockerfile: Dockerfile
-      context: edge-images/ngrok
+      context: ngrok
     links:
       - nginx:https
-    container_name: ngrok
     privileged: false
     depends_on:
       - nginx
@@ -124,7 +120,7 @@ services:
   frontend:
     build:
       dockerfile: Dockerfile
-      context: edge-images/frontend
+      context: frontend
     volumes:
       - "resin-data:/data"
     ports:
@@ -138,8 +134,7 @@ services:
   redis:
     build:
       dockerfile: Dockerfile
-      context: edge-images/redis
-    container_name: redis
+      context: redis
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"
@@ -148,7 +143,7 @@ services:
   trunk-recorder:
     build:
       dockerfile: Dockerfile
-      context: edge-images/trunk-recorder
+      context: trunk-recorder
     privileged: true
     depends_on:
       - "config"

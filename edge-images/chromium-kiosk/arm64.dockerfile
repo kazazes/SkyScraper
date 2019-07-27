@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   xorg \
   chromium \
   chromium-sandbox \
+  psmisc \
   libxcb-image0 \
   libxcb-util0 \
   xdg-utils \

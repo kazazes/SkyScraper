@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app fluid>
     <core-toolbar></core-toolbar>
     <core-view></core-view>
   </v-app>

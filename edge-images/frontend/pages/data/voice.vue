@@ -39,8 +39,8 @@
                       :active="(!!selected && selected.id === props.item.id)"
                       @click="selected = props.item"
                     >
-                      <td class="hidden-md-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
-                      <td>
+                      <td class="hidden-lg-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
+                      <td class="hidden-md-and-down pl-4">
                         <v-chip>{{ props.item.talkgroup.tag }}</v-chip>
                       </td>
                       <td>{{ props.item.talkgroup.description }}</td>
@@ -57,6 +57,19 @@
         </ApolloQuery>
       </v-flex>
       <v-flex md4 order-sm1 order-xs1 v-if="selected.audioPath">
+        <v-flex class="ma-3 mb-4" text-xs-center>
+          <v-btn-toggle v-model="toggleAutoPlay">
+            <v-btn color="red lighten-2">
+              <v-icon class="my-2">mdi-numeric-1</v-icon>
+            </v-btn>
+            <v-btn color="red lighten-2">
+              <v-icon>mdi-update</v-icon>&nbsp;Real time
+            </v-btn>
+            <v-btn color="red lighten-2">
+              <v-icon>mdi-access-point</v-icon>&nbsp;Live
+            </v-btn>
+          </v-btn-toggle>
+        </v-flex>
         <v-card class="ma-3 mb-4">
           <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
             <h3 class="headline mt-2 pl-2">{{selected.talkgroup.alphaTag}}</h3>
@@ -72,7 +85,15 @@
             </v-flex>
           </v-card-text>
           <v-card-actions class="mx-0 px-0 pb-0">
-            <Player :autoPlay="autoplay" :file="'https://edge.sibyl.vision' + selected.audioPath"></Player>
+            <Player
+              :toggleAutoPlay="toggleAutoPlay"
+              :file="'https://edge.sibyl.vision' + selected.audioPath"
+              v-on:play-live-audio="playLiveAudio"
+              v-on:play-next-audio="playRealtimeAudio"
+              v-on:player-state-pause="playerStatePause"
+              v-on:player-state-ended="playerStateEnded"
+              ref="player"
+            ></Player>
           </v-card-actions>
         </v-card>
         <v-card class="elevation-2 ma-3 hidden-md-and-down" style="height: 300px;">
@@ -95,15 +116,22 @@
 </template>
 <script lang="ts">
   import Vue from "vue";
-  import { Component } from "vue-property-decorator"
+  import { Component } from "vue-property-decorator";
   import Player from "~/components/audio/Player.vue";
   import Mapbox from "mapbox-gl-vue";
   import moment from "moment";
   import { VueGoodTable } from "vue-good-table";
   import consola from "consola";
+  import { Boolean } from "../../../backend/src/graphql/generated/prisma-client";
 
   if (process.client) {
     (window as any).mapboxgl = require("mapbox-gl");
+  }
+
+  export enum toggleAutoPlay {
+    SINGLE = 0,
+    REALTIME = 1,
+    LIVE = 2,
   }
 
   @Component({
@@ -150,11 +178,12 @@
             text: "Alpha Tag",
             value: "talkgroup.alphaTag",
             sortable: true,
-            class: "hidden-md-and-down pl-4",
+            class: "hidden-lg-and-down pl-4",
           },
           {
             text: "",
             value: "talkgroup.tag",
+            class: "hidden-md-and-down pl-2",
             sortable: true,
           },
           {
@@ -194,6 +223,37 @@
   export default class DataStream extends Vue {
     protected selected = { id: undefined };
     protected error: any = false;
+    protected toggleAutoPlay: toggleAutoPlay = 0;
+    protected returnedCalls: any[] = [];
+    protected paused = true;
+    realTimeQueueEmpty: boolean = false;
+
+    protected playerStatePause(isPaused: Boolean) {
+      this.paused = isPaused;
+    }
+
+    protected playerStateEnded(isEnded: Boolean) {
+      const auto = this.toggleAutoPlay as toggleAutoPlay;
+      switch (auto) {
+        case toggleAutoPlay.LIVE:
+          this.playLiveAudio();
+        case toggleAutoPlay.REALTIME:
+          const current = this.returnedCalls.findIndex(
+            (call: any, idx: number) => {
+              if (call.id === this.selected.id) return true;
+            }
+          );
+          const next = current - 1;
+          if (current - 1 > 0) {
+            this.selected = this.returnedCalls[next];
+            this.realTimeQueueEmpty = false;
+          } else {
+            this.realTimeQueueEmpty = true;
+          }
+        default:
+          break;
+      }
+    }
 
     protected apolloError(e: any) {
       consola.error(e);
@@ -268,6 +328,12 @@
       return false;
     }
 
+    protected playLiveAudio() {
+      this.selected = this.returnedCalls[0];
+    }
+
+    protected playRealtimeAudio() {}
+
     protected onMessageAdded(previousResult, { subscriptionData }) {
       const newResult = {
         trunkedCalls: [
@@ -279,9 +345,14 @@
     }
 
     protected voiceResults(result) {
-      if (typeof this.selected.id === "undefined" && result.data) {
+      if (
+        (typeof this.selected.id === "undefined" && result.data) ||
+        this.realTimeQueueEmpty
+      ) {
         this.selected = result.data.trunkedCalls[0];
       }
+
+      this.returnedCalls = result.data.trunkedCalls;
     }
   }
 </script>

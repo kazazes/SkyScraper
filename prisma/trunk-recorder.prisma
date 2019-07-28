@@ -1,0 +1,151 @@
+type TrunkedConfig implements IApplicationConfig {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  name: String! @unique
+  sources: [TrunkedSource]!
+  systems: [TrunkedSystem]!
+  defaultMode: TrunkedDefaultMode! @default(value: ANALOG)
+  captureDir: String!
+  callTimeout: Int! @default(value: 3)
+  logFile: Boolean! @default(value: false)
+  frequencyFormat: TrunkedFrequencyFormat! @default(value: MHZ)
+  controlWarnRate: Int! @default(value: 10)
+  statusAsString: Boolean! @default(value: false)
+}
+
+type TrunkedSource {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  center: Float!
+  rate: Float!
+  squelch: Float! @default(value: -50)
+  error: Float! @default(value: 0)
+  gain: Float! @default(value: 30)
+  digitalRecorders: Float! @default(value: 3)
+  digitalLevels: Float
+  analogRecorders: Float! @default(value: 3)
+  analogLevels: Float
+  device: String!
+  modulation: TrunkedModulation!
+}
+
+type TrunkedSystem {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  controlChannels: [Float] @scalarList(strategy: RELATION)
+  channels: [Float] @scalarList(strategy: RELATION)
+  type: TrunkedSystemType!
+  alphatags: [String] @scalarList(strategy: RELATION)
+  talkgroups: [TrunkedTalkgroup]
+  recordUnknown: Boolean @default(value: false)
+  shortName: String @unique
+  uploadScript: String
+  audioArchive: Boolean @default(value: true)
+  callLog: Boolean @default(value: true)
+  bandplan: TrunkedSmartnetBandplan
+  bandplanBase: Float
+  bandplanHigh: Float
+  bandplanSpacing: Float
+  bandplanOffset: Float
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat @default(value: ID)
+  delayCreateOutput: Boolean
+  hideEncrypted: Boolean @default(value: false)
+  hideUnknownTalkgroups: Boolean @default(value: false)
+  calls: [TrunkedCall]!
+}
+
+type TrunkedTalkgroup {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  decimal: Int!
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int! @default(value: 1)
+  system: TrunkedSystem
+  calls: [TrunkedCall]!
+  hash: String! @unique # The MD5 of system.shortName + tg.decimal
+}
+
+type TrunkedCall {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroup
+  system: TrunkedSystem
+  sources: [TrunkedCallSource]!
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: [TrunkedCallFrequencyTime]
+  callHash: String @unique # The MD5 of talkgroupDec + frequency + startTime
+  wavPath: String
+}
+
+type TrunkedCallSource {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  sourceId: Int
+  time: DateTime
+  position: Float
+}
+
+type TrunkedCallFrequencyTime {
+  id: ID! @id
+  updatedAt: DateTime! @updatedAt
+  createdAt: DateTime! @createdAt
+  frequency: Int!
+  time: Int!
+  position: Float!
+  length: Int!
+  errors: Int!
+  spikes: Int!
+}
+
+enum TrunkedModulation {
+  QPSK
+  FSK4
+}
+
+enum TrunkedSystemType {
+  SMARTNET
+  P25
+  CONVENTIONAL
+  CONVENTIONAL_P25
+  UNKNOWN
+}
+
+enum TrunkedSmartnetBandplan {
+  STANDARD_800
+  REBAND_800
+  SPLINTER_800
+  CUSTOM_400
+}
+
+enum TrunkedTalkgroupDisplayFormat {
+  ID
+  ID_TAG
+  TAG_ID
+}
+
+enum TrunkedDefaultMode {
+  ANALOG
+  DIGITAL
+}
+
+enum TrunkedFrequencyFormat {
+  EXP
+  MHZ
+  HZ
+}

@@ -5,14 +5,14 @@ import {
   prisma,
   TrunkedCallCreateInput,
   TrunkedCallFrequencyTimeCreateInput,
-  TrunkedCallSourceCreateInput
+  TrunkedCallSourceCreateInput,
 } from "../graphql/generated/prisma-client";
+import log from "../log";
 import { processTrunkedVoice } from "../processing/process";
 import {
   ApplicationListener,
-  ApplicationMessageHandler
+  ApplicationMessageHandler,
 } from "./applicationListener";
-import log from "../log";
 
 const rootTopic = "/trunk-recorder";
 
@@ -20,7 +20,7 @@ export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
     rootTopic,
     client,
-      new TrunkRecorderHandler(rootTopic)
+    new TrunkRecorderHandler(rootTopic),
   );
   return l.listen();
 };
@@ -30,7 +30,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
     log.info(
       `MQTT: trunk-recorder processing on topic ${rootTopic} ${
         Buffer.from(payload).length
-          }`
+      }`,
     );
 
     let parsed: TrunkedMQTTMessage;
@@ -41,7 +41,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       log.error(
         new Error(`Malformed JSON received on MQTT topic ${topic}:
 
-      ${payload.toString()}`)
+      ${payload.toString()}`),
       );
       return;
     }
@@ -49,7 +49,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
     const sys = await prisma.upsertTrunkedSystem({
       where: { shortName: parsed.system },
       create: { shortName: parsed.system, type: "UNKNOWN" },
-      update: {}
+      update: {},
     });
 
     const tgHash = createHash("md5")
@@ -57,17 +57,17 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       .digest("hex");
 
     const callHash = createHash("md5")
-        .update(parsed.talkgroup + parsed.freq + parsed.start_time.toString())
-        .digest("hex");
+      .update(parsed.talkgroup + parsed.freq + parsed.start_time.toString())
+      .digest("hex");
 
     const tg = await prisma.upsertTrunkedTalkgroup({
-      where: {hash: tgHash},
+      where: { hash: tgHash },
       create: {
         decimal: parsed.talkgroup,
         hash: tgHash,
-        system: {connect: {shortName: parsed.system}}
+        system: { connect: { shortName: parsed.system } },
       },
-      update: {}
+      update: {},
     });
 
     const call: TrunkedCallCreateInput = {
@@ -79,42 +79,43 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       system: { connect: { id: sys.id } },
       callHash,
       sources: {
-        create: parsed.srcList.map(value => {
+        create: parsed.srcList.map((value) => {
           const s: TrunkedCallSourceCreateInput = {
             position: value.pos,
             sourceId: value.src,
-            time: new Date(value.time * 1000)
+            time: new Date(value.time * 1000),
           };
           return s;
-        })
+        }),
       },
       source: parsed.source,
       audioPath: parsed.audioPath,
+      wavPath: parsed.wavPath,
       duration: parsed.duration,
       frequencyList: {
-        create: parsed.freqList.map(fs => {
+        create: parsed.freqList.map((fs) => {
           const f: TrunkedCallFrequencyTimeCreateInput = {
             errors: fs.error_count,
             frequency: fs.freq,
             length: fs.len,
             position: fs.pos,
             spikes: fs.spike_count,
-            time: fs.time
+            time: fs.time,
           };
           return f;
-        })
-      }
+        }),
+      },
     };
 
     const c = await prisma.upsertTrunkedCall({
-      where: {callHash},
+      where: { callHash },
       create: call,
-      update: {}
+      update: {},
     });
-    await processTrunkedVoice(c).catch(e => {
+    await processTrunkedVoice(c).catch((e) => {
       log.error(e);
     });
-  };
+  }
 }
 
 interface SrcList {
@@ -143,5 +144,6 @@ interface TrunkedMQTTMessage {
   source: number;
   system: string;
   audioPath: string;
+  wavPath: string;
   freqList: FreqList[];
 }

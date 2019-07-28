@@ -1,0 +1,15 @@
+{
+  "name": "@skyscraper/prisma",
+  "scripts": {
+    "deploy:dev": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev prisma deploy",
+    "deploy:prod": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/prod prisma deploy",
+    "generate:prod": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/prod prisma generate",
+    "generate:dev": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev prisma generate",
+    "admin": "prisma admin"
+  },
+  "author": "Peter Kazazes",
+  "devDependencies": {
+    "graphqlgen": "^0.6.0-rc9",
+    "prisma": "^1.31.1"
+  }
+}

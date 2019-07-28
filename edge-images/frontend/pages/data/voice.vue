@@ -79,9 +79,9 @@
             {{formatDate(selected.startTime)}}
             <h5 class="caption">Frequency:</h5>
             <span class="monospaced">{{ formatFrequency(selected.frequency) }}</span>
-            <v-flex>
+            <v-flex v-show="selected.transcription">
               <h5 class="caption">Transcription:</h5>
-              <code class="code">Transcription processing</code>
+              <code class="code" v-text="selected.transcription"></code>
             </v-flex>
           </v-card-text>
           <v-card-actions class="mx-0 px-0 pb-0">

@@ -4,6 +4,7 @@
 balenaOS
 .idea
 /data/
+.env
 
 cloudflare.ini
 

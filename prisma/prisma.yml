@@ -7,11 +7,11 @@ datamodel:
 # Specifies the language and directory for the generated Prisma client.
 generate:
   - generator: typescript-client
-    output: ../backend/src/graphql/generated/prisma-client/
+    output: ../edge-images/backend/src/graphql/generated/prisma-client/
   - generator: typescript-client
-    output: ../frontend/assets/prisma-client/
+    output: ../edge-images/frontend/assets/prisma-client/
   - generator: graphql-schema
-    output: ../backend/src/graphql/generated/prisma.graphql
+    output: ../edge-images/backend/src/graphql/generated/prisma.graphql
 
 hooks:
   post-deploy:

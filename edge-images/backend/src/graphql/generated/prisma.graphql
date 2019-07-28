@@ -71,6 +71,10 @@ enum Dump1090AircraftOrderByInput {
   id_DESC
   IcaoID_ASC
   IcaoID_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type Dump1090AircraftPreviousValues {
@@ -249,6 +253,10 @@ enum Dump1090MessageOrderByInput {
   callsign_DESC
   altitude_ASC
   altitude_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type Dump1090MessagePreviousValues {
@@ -629,6 +637,7 @@ type TrunkedCall {
   frequencyList(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime!]
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 type TrunkedCallConnection {
@@ -652,6 +661,7 @@ input TrunkedCallCreateInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallCreateManyWithoutSystemInput {
@@ -678,6 +688,7 @@ input TrunkedCallCreateWithoutSystemInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallCreateWithoutTalkgroupInput {
@@ -694,6 +705,7 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 type TrunkedCallEdge {
@@ -1051,6 +1063,8 @@ enum TrunkedCallOrderByInput {
   callHash_DESC
   wavPath_ASC
   wavPath_DESC
+  transcription_ASC
+  transcription_DESC
 }
 
 type TrunkedCallPreviousValues {
@@ -1066,6 +1080,7 @@ type TrunkedCallPreviousValues {
   audioPath: String
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallScalarWhereInput {
@@ -1183,6 +1198,20 @@ input TrunkedCallScalarWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
+  transcription: String
+  transcription_not: String
+  transcription_in: [String!]
+  transcription_not_in: [String!]
+  transcription_lt: String
+  transcription_lte: String
+  transcription_gt: String
+  transcription_gte: String
+  transcription_contains: String
+  transcription_not_contains: String
+  transcription_starts_with: String
+  transcription_not_starts_with: String
+  transcription_ends_with: String
+  transcription_not_ends_with: String
   AND: [TrunkedCallScalarWhereInput!]
   OR: [TrunkedCallScalarWhereInput!]
   NOT: [TrunkedCallScalarWhereInput!]
@@ -1470,6 +1499,7 @@ input TrunkedCallUpdateInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallUpdateManyDataInput {
@@ -1482,6 +1512,7 @@ input TrunkedCallUpdateManyDataInput {
   audioPath: String
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallUpdateManyMutationInput {
@@ -1494,6 +1525,7 @@ input TrunkedCallUpdateManyMutationInput {
   audioPath: String
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallUpdateManyWithoutSystemInput {
@@ -1538,6 +1570,7 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallUpdateWithoutTalkgroupDataInput {
@@ -1553,6 +1586,7 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  transcription: String
 }
 
 input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
@@ -1700,6 +1734,20 @@ input TrunkedCallWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
+  transcription: String
+  transcription_not: String
+  transcription_in: [String!]
+  transcription_not_in: [String!]
+  transcription_lt: String
+  transcription_lte: String
+  transcription_gt: String
+  transcription_gte: String
+  transcription_contains: String
+  transcription_not_contains: String
+  transcription_starts_with: String
+  transcription_not_starts_with: String
+  transcription_ends_with: String
+  transcription_not_ends_with: String
   AND: [TrunkedCallWhereInput!]
   OR: [TrunkedCallWhereInput!]
   NOT: [TrunkedCallWhereInput!]

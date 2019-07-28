@@ -19,5 +19,6 @@ subscription {
     }
     duration
     audioPath
+    transcription
   }
 }

@@ -1,0 +1,13 @@
+{
+  "extends": "gts/tslint.json",
+  "linterOptions": {
+    "exclude": [
+      "**/*.json"
+    ]
+  },
+  "rules": {
+    "quotemark": {
+      "options": "double"
+    }
+  }
+}

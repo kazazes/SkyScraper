@@ -1,0 +1,36 @@
+{
+  "name": "@skyscraper/scribe",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Peter Kazazes",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "gts": "^1.0.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "typescript": "^3.5.3",
+    "@types/bull": "^3.10.1",
+    "@types/shelljs": "^0.8.5"
+  },
+  "dependencies": {
+    "@sentry/node": "^5.5.0",
+    "async-mqtt": "^2.3.0",
+    "bull": "^3.10.0",
+    "deepspeech": "^0.5.1",
+    "dotenv-safe": "^6.1.0",
+    "memory-stream": "^1.0.0",
+    "node-wav": "^0.0.2",
+    "shelljs": "^0.8.3",
+    "sox-stream": "^2.0.3",
+    "winston": "^3.2.1"
+  },
+  "scripts": {
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "dev": "ts-node-dev -- src",
+    "dev-debug": "ts-node-dev --inspect -- src"
+  }
+}

@@ -90,6 +90,7 @@ type TrunkedCall {
   frequencyList: [TrunkedCallFrequencyTime]
   callHash: String @unique # The MD5 of talkgroupDec + frequency + startTime
   wavPath: String
+  transcription: String
 }
 
 type TrunkedCallSource {

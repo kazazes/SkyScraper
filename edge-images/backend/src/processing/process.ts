@@ -1,6 +1,5 @@
 import { TrunkedCall } from "../graphql/generated/prisma-client";
 
-import { readFile } from "fs";
 import log from "../log";
 import { publish } from "../mqtt/broker";
 import CloudStorage from "./cloudStorage";
@@ -9,7 +8,6 @@ import CloudPublish from "./transcription";
 const UUID = process.env.BALENA_DEVICE_UUID || "skyscraper-test";
 
 const storage = new CloudStorage(UUID);
-const publisher = new CloudPublish("transcribe");
 
 export const processTrunkedVoice = async (call: TrunkedCall) => {
   if (process.env.ENABLE_UPLOAD === "1") {

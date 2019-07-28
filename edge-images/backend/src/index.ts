@@ -5,10 +5,13 @@ require("dotenv-safe").config();
 
 import { listen as apiServer } from "./api";
 import graphServer from "./graphql/server";
-import mqttListen from "./mqtt/listen";
+import { connect as connectMqtt } from "./mqtt/broker";
 
-graphServer();
+async function start() {
+  await connectMqtt();
+  graphServer();
+  apiServer();
+  return;
+}
 
-mqttListen();
-
-apiServer();
+start();

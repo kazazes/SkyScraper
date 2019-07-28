@@ -25,7 +25,7 @@ export const processTrunkedVoice = async (call: TrunkedCall) => {
     }
   }
 
-  if (process.env.ENABLE_TRANSCRIPTION) {
+  if (process.env.ENABLE_TRANSCRIPTION === "1") {
     try {
       const topic = `transcription/${call.id}/request`;
       await publish(topic, JSON.stringify(call), 2);

@@ -50,7 +50,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - ENABLE_UPLOAD=false
+      - ENABLE_UPLOAD=0
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
       - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
@@ -65,6 +65,7 @@ services:
       - PRISMA_SECRET=scrapingskies
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
+      - TRANSCRIPTION_ENABLED=1
     depends_on:
       - redis
   netdata:

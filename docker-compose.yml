@@ -65,7 +65,7 @@ services:
       - PRISMA_SECRET=scrapingskies
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
-      - TRANSCRIPTION_ENABLED=1
+      - ENABLE_TRANSCRIPTION=1
     depends_on:
       - redis
   netdata:

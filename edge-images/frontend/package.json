@@ -27,7 +27,7 @@
     "@nuxtjs/pwa": "^3.0.0-beta.14",
     "@nuxtjs/robots": "^2.1.0",
     "@nuxtjs/sentry": "^3.0.0",
-    "@nuxtjs/vuetify": "^0.5.7",
+    "@nuxtjs/vuetify": "^1.0.2",
     "@nymdev/health-check": "^0.1.3",
     "apollo-cache-persist": "^0.1.1",
     "axios": "^0.18.0",

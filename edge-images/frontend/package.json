@@ -41,7 +41,7 @@
     "graphql-tag": "^2.10.1",
     "http-proxy-middleware": "^0.19.1",
     "lodash": "^4.17.11",
-    "mapbox-gl": "^0.53.1",
+    "mapbox-gl": "^1.2.0",
     "mapbox-gl-vue": "^1.9.0",
     "moment": "^2.24.0",
     "newrelic": "^5.6.4",

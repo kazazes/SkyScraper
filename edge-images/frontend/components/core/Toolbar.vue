@@ -3,8 +3,8 @@
     <v-layout align-center justify-space-around wrap row>
       <v-flex md6 text-xs-center>
         <v-btn round flat small active-class="active-nav" nuxt to="/data">Data</v-btn>
-        <v-btn round flat active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
-        <v-btn round flat active-class="active-nav" nuxt to="/configure">Configure</v-btn>
+        <v-btn round flat small active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
+        <v-btn round flat small active-class="active-nav" nuxt to="/configure">Configure</v-btn>
       </v-flex>
     </v-layout>
   </v-toolbar>

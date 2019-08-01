@@ -22,5 +22,6 @@ RUN apt-get update && \
   rm -rf /var/apt/lists/*
 
 COPY 00-volume-mount.sh /usr/local/bin/start-notebook.d/
+COPY jupyter_notebook_config.py /etc/jupyter
 
 USER $NB_USER

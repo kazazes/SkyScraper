@@ -21,19 +21,6 @@ services:
     command: "start-notebook.sh \
     --NotebookApp.base_url=/jupyter \
     --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
-  # scribe:
-  #   build:
-  #     dockerfile: Dockerfile
-  #     context: edge-images/scribe
-  #   environment:
-  #     - MQTT_HOST=mqtt
-  #     - MQTT_PASSWORD=
-  #     - MQTT_PORT=1883
-  #     - MQTT_USERNAME=
-  #     - MQTT_UPSTREAM_HOST=mqtt.skyscraper.ai
-  #     - SENTRY_URI=https://e66086ee3cc449feaae7b78750476d30@sentry.io/1515270
-  #     - DEEPSPEECH_MODEL_DIR=/data/deepspeech/
-  #     - REDIS_HOST=redis
   kiosk:
     restart: always
     build:

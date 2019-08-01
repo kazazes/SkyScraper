@@ -54,7 +54,7 @@ services:
       dockerfile: Dockerfile
       context: edge-images/wifi-connect
     environment:
-      - PORTAL_PASSPHRASE=\$craping\$kies
+      - PORTAL_PASSPHRASE=$$craping$$kies
       - PORTAL_SSID=SkyScraper
       - PORTAL_LISTENING_PORT=8081
   mqtt:

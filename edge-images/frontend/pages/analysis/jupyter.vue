@@ -13,7 +13,11 @@
 import { Component } from "vue-property-decorator";
 import Vue from "vue";
 
-@Component({})
+@Component({
+  head: {
+    title: "Jupyter | SkyScraper"
+  }
+})
 export default class JupyterServer extends Vue {
   protected endpoint = process.env.NODE_ENV === 'production' ? "/jupyter" : "https://edge.sibyl.vision/jupyter";
 }

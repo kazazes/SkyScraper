@@ -3,6 +3,8 @@
     <v-container fluid pa-0>
       <v-flex>
         <v-tabs
+          :scroll-off-screen=true
+          :scroll-threshold=1
           centered
           fixed-tabs
           dark

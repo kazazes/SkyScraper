@@ -9,6 +9,8 @@
           color="primary lighten-1"
           z-index="10"
           slider-color="white"
+          :scroll-off-screen="true"
+          :scroll-threshold="1"
         >
           <v-tab nuxt to="/analysis/jupyter">
             <v-icon class="pr-2">mdi-language-python</v-icon>

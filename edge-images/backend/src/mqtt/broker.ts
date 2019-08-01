@@ -6,7 +6,7 @@ import dump1090 from "./dump1090";
 import trunkRecorder from "./trunkRecorder";
 
 const mqttServer = `tcp://${process.env.MQTT_HOST || "tcp://127.0.0.1"}`;
-let client: AsyncMqttClient;
+export let client: AsyncMqttClient;
 
 export async function connect() {
   log.debug(`Connecting to MQTT server ${mqttServer}`);
@@ -15,7 +15,7 @@ export async function connect() {
     client = await mqtt.connect(mqttServer, {
       username: process.env.MQTT_USERNAME,
       password: process.env.MQTT_PASSWORD,
-      clientId: `ss-backend-${process.env.BALENA_DEVICE_UUID || hostname()}`,
+      clientId: `ss-backend-${process.env.BALENA_DEVICE_UUID || hostname()}-${new Date().getMilliseconds}`,
     });
   } catch (e) {
     log.emerg("Could not connect to local MQTT server @ " + mqttServer, e);

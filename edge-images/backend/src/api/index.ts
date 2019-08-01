@@ -4,15 +4,18 @@ import { hostname } from "os";
 import cors from "@koa/cors";
 import { routes } from "./routes";
 import log from "../log";
+import websockify from "koa-websocket";
+import { mqttWs } from "./routes/ws/mqtt";
 
 export const listen = async () => {
-  const app = new Koa();
+  const app = websockify(new Koa());
 
   app.use(koaBody());
 
   app.use(cors());
 
   app.use(routes);
+  app.ws.use(mqttWs);
 
   const port = process.env.API_PORT || 9090;
   app.listen(port);

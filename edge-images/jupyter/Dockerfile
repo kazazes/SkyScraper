@@ -1,4 +1,4 @@
-FROM jupyter/datascience-notebook
+FROM jupyter/datascience-notebook:307ad2bb5fce
 
 USER root
 
@@ -14,13 +14,17 @@ RUN apt-get update && \
   apt-get install -y --no-install-recommends \
   bladerf \
   libbladerf-dev \
-  swig \
+  librtlsdr-dev \
   python-dev \
   python3-soapysdr \
+  rtl-sdr \
   soapysdr-module-bladerf \
-  rtl-sdr && \
+  soapysdr-module-rtlsdr \
+  soapysdr-tools \
+  swig && \
   rm -rf /var/apt/lists/*
 
 COPY 00-volume-mount.sh /usr/local/bin/start-notebook.d/
+COPY jupyter_notebook_config.py /etc/jupyter
 
 USER $NB_USER

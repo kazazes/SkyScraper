@@ -15,6 +15,7 @@
     "@types/mosca": "^2.8.1",
     "@types/public-ip": "^2.4.0",
     "@types/redis": "^2.8.13",
+    "@types/shelljs": "^0.8.5",
     "@types/ws": "6.0.1",
     "ts-node-dev": "^1.0.0-pre.39",
     "typescript": "^3.5.3"
@@ -41,6 +42,7 @@
     "public-ip": "^3.1.0",
     "redis": "^2.8.0",
     "sbs1-compat": "^0.2.6",
+    "shelljs": "^0.8.3",
     "simple-stats-server": "^0.0.5",
     "winston": "^3.2.1"
   },

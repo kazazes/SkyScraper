@@ -2,6 +2,9 @@ FROM jupyter/datascience-notebook:307ad2bb5fce
 
 USER root
 
+RUN usermod -a -G tty $NB_USER
+RUN usermod -a -G plugdev $NB_USER
+
 RUN apt-get update &&\
   apt-get install -y software-properties-common --no-install-recommends && \
   add-apt-repository -y ppa:bladerf/bladerf && \

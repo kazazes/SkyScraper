@@ -14,7 +14,7 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.tornado_settings = {
     'headers': {
         'Content-Security-Policy':
-        "frame-ancestors 'self' https://*.sibyl.vision"
+        "frame-ancestors 'self' https://*.sibyl.vision http://127.0.0.1:3000 http://localhost:3000"
     }
 }
 

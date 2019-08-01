@@ -119,7 +119,10 @@
           this.$emit("player-state-paused", true);
           this.paused = true;
         },
-        onend: () => this.$emit("player-state-ended", true),
+        onend: () => {
+          this.$emit("player-state-ended", true);
+          this.paused = true;
+        },
         onload: () => {
           this.durationTime = String(
             convertTimeHHMMSS(this.sound.duration() || 0)

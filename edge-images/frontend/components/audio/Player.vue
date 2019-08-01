@@ -58,40 +58,34 @@
         </a>
       </div>
     </v-flex>
-    <audio
-      v-if="file"
-      :loop="innerLoop"
-      ref="audiofile"
-      :src="file"
-      preload="auto"
-      style="display: none;"
-    ></audio>
   </v-flex>
 </template>
 
 <script lang="ts">
+  import { Howl, Howler } from "howler";
   import { Component, Prop, Vue, Watch } from "vue-property-decorator";
   import { toggleAutoPlay } from "../../pages/data/voice.vue";
 
   const convertTimeHHMMSS = (val) => {
-    let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
-    return hhmmss.indexOf("00:") === 0 ? hhmmss.substr(3) : hhmmss;
+    try {
+      let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
+      return hhmmss.indexOf("00:") === 0 ? hhmmss.substr(3) : hhmmss;
+    } catch (e) {
+      return "0:00";
+    }
   };
 
   @Component({})
   export default class Player extends Vue {
-    audio!: HTMLAudioElement;
+    sound!: Howl;
     currentSeconds = 0;
     durationSeconds = 0;
-    innerLoop = false;
-    previousVolume = 35;
-    showVolume = false;
     volume = 100;
-    hasPlayed = false;
     currentTime: string = "0:00";
     durationTime: string = "0:00";
     paused: boolean = true;
     percentComplete: number = 0;
+    muted = false;
 
     @Prop({
       type: String,
@@ -106,115 +100,82 @@
     })
     toggleAutoPlay;
 
-    @Prop({
-      type: Boolean,
-      default: false,
-    })
-    loop = false;
-
     @Watch("file")
     fileChanged() {
-      if (this.toggleAutoPlay !== toggleAutoPlay.SINGLE) {
-        this.audio.load();
-      }
+      this.currentTime = "0:00";
+      this.percentComplete = 0;
+      this.createHowl();
     }
 
-    @Watch("volume")
-    watchVolume(value) {
-      this.showVolume = false;
-      this.audio.volume = this.volume / 100;
-    }
-
-    created() {
-      this.innerLoop = this.loop;
-    }
-
-    mounted() {
-      this.audio = this.$el.querySelectorAll("audio")[0];
-      this.audio.addEventListener("timeupdate", this.update);
-      this.audio.addEventListener("loadeddata", this.load);
-      this.audio.addEventListener("ended", this.trackEnded);
-    }
-
-    // Media lifecycle
-
-    load() {
-      if (this.audio.readyState >= 2) {
-        this.durationSeconds = this.audio.duration;
-        this.currentTime = convertTimeHHMMSS(this.audio.currentTime);
-        this.durationTime = convertTimeHHMMSS(this.audio.duration);
-        if (this.hasPlayed) {
+    createHowl() {
+      if (this.sound) this.sound.unload();
+      this.sound = new Howl({
+        mute: this.muted,
+        src: this.file,
+        html5: true,
+        autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE,
+        volume: this.volume / 100,
+        onpause: () => {
+          this.$emit("player-state-paused", true);
+          this.paused = true;
+        },
+        onend: () => this.$emit("player-state-ended", true),
+        onload: () => {
+          this.durationTime = String(
+            convertTimeHHMMSS(this.sound.duration() || 0)
+          );
+          this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
+        },
+        onplay: () => {
+          this.$emit("player-state-paused", false);
+          requestAnimationFrame(this.step.bind(self));
           this.paused = false;
-          this.audio.play();
-        }
-        return;
-      }
-      throw new Error(
-        "Failed to load sound file. Ready state: " + this.audio.readyState
-      );
-    }
-
-    trackEnded() {
-      this.paused = true;
-      this.$emit("player-state-ended", true);
-    }
-
-    update(e) {
-      this.currentTime = convertTimeHHMMSS(this.audio.currentTime);
-      this.percentComplete = parseInt(
-        String((this.audio.currentTime / this.audio.duration) * 100)
-      );
-    }
-
-    // Utility
-    download() {
-      this.stop();
-      window.open(this.file, "_blank");
-      // also download json metadata
-      const jsonFile = this.file.replace(/\.[^\.]+$/, ".json");
-      window.open(jsonFile, "_blank");
-    }
-
-    mute() {
-      if (this.muted) {
-        return (this.volume = this.previousVolume);
-      }
-
-      this.previousVolume = this.volume;
-      this.volume = 0;
+        },
+        onseek: () => requestAnimationFrame(this.step.bind(self)),
+        onloaderror: (id, err) => console.warn(err),
+      });
     }
 
     seek(e) {
-      if (this.audio.paused || e.target.tagName === "SPAN") {
+      if (!this.sound.playing() || e.target.tagName === "SPAN") {
         return;
       }
 
       const el = e.target.getBoundingClientRect();
       const seekPos = (e.clientX - el.left) / el.width;
-
-      this.audio.currentTime = parseInt(String(this.audio.duration * seekPos));
+      this.sound.seek(parseInt(String(this.sound.duration() * seekPos)));
     }
 
-    stop() {
-      this.$forceUpdate();
-      this.audio.pause();
-      this.audio.currentTime = 0;
+    mounted() {
+      this.createHowl();
     }
 
-    playPause() {
-      this.hasPlayed = true;
-      if (this.audio.paused) {
-        this.audio.play();
-        this.paused = false;
-      } else {
-        this.paused = true;
-        this.$emit("player-state-paused", true);
-        this.audio.pause();
+    mute() {
+      this.muted = !this.muted;
+      this.sound.mute(this.muted);
+    }
+
+    step() {
+      const self = this;
+      this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
+      this.percentComplete =
+        ((this.sound.seek() as number) / (this.sound.duration() || 0)) * 100;
+      if (this.sound.playing()) {
+        requestAnimationFrame(self.step.bind(self));
       }
     }
 
-    get muted() {
-      return this.volume / 100 === 0;
+    playPause() {
+      if (this.sound.playing()) return this.sound.pause();
+      this.sound.play();
+    }
+
+    // Utility
+    download() {
+      window.open(this.file, "_blank");
+      // also download json metadata
+      const jsonFile = this.file.replace(/\.[^\.]+$/, ".json");
+      window.open(jsonFile, "_blank");
     }
   }
 </script>

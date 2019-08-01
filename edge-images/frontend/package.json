@@ -39,6 +39,7 @@
     "express": "^4.16.4",
     "graphql-client": "^2.0.1",
     "graphql-tag": "^2.10.1",
+    "howler": "^2.1.2",
     "http-proxy-middleware": "^0.19.1",
     "lodash": "^4.17.11",
     "mapbox-gl": "^0.53.1",
@@ -68,8 +69,9 @@
   },
   "devDependencies": {
     "@nuxt/typescript": "^2.7.1",
-    "@types/http-proxy-middleware": "^0.19.2",
+    "@types/howler": "^2.1.1",
     "@types/graphql": "^14.2.0",
+    "@types/http-proxy-middleware": "^0.19.2",
     "@types/lodash": "^4.14.123",
     "@types/papaparse": "^4.5.9",
     "@wry/context": "^0.4.4",

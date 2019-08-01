@@ -6,7 +6,7 @@
 
   @Component({
     fetch({ params, redirect }) {
-      redirect(307, "/analysis/performance");
+      redirect(307, "/analysis/jupyter");
     },
   })
   export default class AnalysisIndex extends Vue {

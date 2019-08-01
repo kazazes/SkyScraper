@@ -10,6 +10,10 @@
           z-index="10"
           slider-color="white"
         >
+          <v-tab nuxt to="/analysis/jupyter">
+            <v-icon class="pr-2">mdi-language-python</v-icon>
+            <span class="text-uppercase">Jupyter</span>
+          </v-tab>
           <v-tab nuxt to="/analysis/performance">
             <v-icon class="pr-2">mdi-tune</v-icon>
             <span class="text-uppercase">Performance</span>

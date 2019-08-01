@@ -2,8 +2,26 @@ version: "2"
 volumes:
   resin-data: {}
 services:
-  scribe:
+  jupyter:
     restart: always
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/jupyter
+    environment:
+      - CHOWN_HOME=yes
+      - GRANT_SUDO=yes
+      - JUPYTER_ENABLE_LAB=yes
+      - PYTHONPATH=/usr/lib/python3/dist-packages
+    user: root
+    privileged: true
+    ports:
+      - "8888:8888"
+    volumes:
+      - "resin-data:/data"
+    command: "start-notebook.sh \
+    --NotebookApp.base_url=/jupyter \
+    --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
+  scribe:
     build:
       dockerfile: Dockerfile
       context: edge-images/scribe
@@ -36,7 +54,7 @@ services:
       dockerfile: Dockerfile
       context: edge-images/wifi-connect
     environment:
-      - PORTAL_PASSPHRASE=$craping$kies
+      - PORTAL_PASSPHRASE=\$craping\$kies
       - PORTAL_SSID=SkyScraper
       - PORTAL_LISTENING_PORT=8081
   mqtt:

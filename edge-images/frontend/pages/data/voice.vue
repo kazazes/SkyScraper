@@ -68,7 +68,7 @@
             </v-card>
           </v-flex>
           <v-flex md4 mt-2 pr-3>
-            <v-card class="elevation-2 hidden-xs-and-down" style="height: 240px;">
+            <v-card class="elevation-2 hidden-sm-and-down" style="height: 240px;">
               <Mapbox
                 @map-load="mapLoaded"
                 accessToken="pk.eyJ1Ijoia2F6YXplcyIsImEiOiJjanR3cG9kOXEyYWtiNDVsbDc3NTZxY3BuIn0.2XRXcuF1xMAsUkuhy9RGKw"

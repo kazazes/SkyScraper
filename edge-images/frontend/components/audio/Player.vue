@@ -26,7 +26,7 @@
           <div class="player-time-total" v-text="durationTime"></div>
         </div>
       </v-flex>
-      <div class="hidden-md-and-down">
+      <div class="hidden-sm-and-down">
         <a v-on:click.prevent="download" href="#" alt="Download audio.">
           <svg
             width="18px"
@@ -112,7 +112,6 @@
       this.sound = new Howl({
         mute: this.muted,
         src: this.file,
-        html5: true,
         autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE,
         volume: this.volume / 100,
         onpause: () => {

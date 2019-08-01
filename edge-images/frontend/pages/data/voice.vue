@@ -1,5 +1,16 @@
 <template>
-  <v-container fill-height xl12 d-flex id="voice" pa-0 grid-list-xs>
+  <v-container
+    id="voice"
+    fill-height
+    row
+    wrap
+    align-center
+    justify-center
+    xl12
+    d-flex
+    pa-0
+    grid-list-xs
+  >
     <v-layout row align-start justify-start wrap>
       <v-flex xs12>
         <v-alert :value="error" type="error">
@@ -9,7 +20,72 @@
           </v-card>
         </v-alert>
       </v-flex>
-      <v-flex md8 order-sm2 order-xs2 order-md1 sm12>
+      <v-flex text-xs-center>
+        <v-btn-toggle v-model="toggleAutoPlay">
+          <v-btn color="red lighten-2">
+            <v-icon class="my-2">mdi-numeric-1</v-icon>
+          </v-btn>
+          <v-btn color="red lighten-2">
+            <v-icon>mdi-update</v-icon>&nbsp;Real time
+          </v-btn>
+          <v-btn color="red lighten-2">
+            <v-icon>mdi-access-point</v-icon>&nbsp;Live
+          </v-btn>
+        </v-btn-toggle>
+      </v-flex>
+      <v-flex xs12>
+        <v-layout row align-start justify-start wrap>
+          <v-flex md9 px-3 mt-2>
+            <v-card>
+              <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
+                <h4
+                  class="subtitle mt-2 pl-2"
+                >{{ (selected.talkgroup && selected.talkgroup.description) || "Loading..."}}</h4>
+              </v-card-title>
+              <v-card-text v-if="selected.startTime">
+                {{selected.talkgroup.alphaTag}} @
+                {{formatDate(selected.startTime)}} on
+                <span
+                  class="monospaced"
+                >{{ formatFrequency(selected.frequency) }}</span>
+                <v-flex>
+                  <h5 class="caption">Transcription:</h5>
+                  <code class="code" v-text="selected.transcription || 'Processing...'"></code>
+                </v-flex>
+              </v-card-text>
+              <v-card-text v-else style="min-height: 200px;"></v-card-text>
+              <v-card-actions class="mx-0 px-0 pb-0">
+                <Player
+                  :toggleAutoPlay="toggleAutoPlay"
+                  :file="'https://edge.sibyl.vision' + selected.audioPath"
+                  v-on:play-live-audio="playLiveAudio"
+                  v-on:play-next-audio="playRealtimeAudio"
+                  v-on:player-state-pause="playerStatePause"
+                  v-on:player-state-ended="playerStateEnded"
+                  ref="player"
+                ></Player>
+              </v-card-actions>
+            </v-card>
+          </v-flex>
+          <v-flex md3 mt-2 pr-3>
+            <v-card class="elevation-2 hidden-sm-and-down" style="height: 240px;">
+              <Mapbox
+                @map-load="mapLoaded"
+                accessToken="pk.eyJ1Ijoia2F6YXplcyIsImEiOiJjanR3cG9kOXEyYWtiNDVsbDc3NTZxY3BuIn0.2XRXcuF1xMAsUkuhy9RGKw"
+                :map-options="{
+                style: 'mapbox://styles/mapbox/dark-v9',
+                interactive: false,
+                center: {lon: -122.448173, lat: 37.743780},
+                zoom: 9,
+                attributionControl: false
+              }"
+                :nav-control="{show: false}"
+              ></Mapbox>
+            </v-card>
+          </v-flex>
+        </v-layout>
+      </v-flex>
+      <v-flex>
         <ApolloQuery
           :query="require('~/assets/apollo/queries/getTrunkedCalls.gql')"
           :variables="{first: pagination.rowsPerPage, skip: 0}"
@@ -46,7 +122,7 @@
                       <td>{{ props.item.talkgroup.description }}</td>
                       <td>{{ timeAgo(props.item.startTime) }}</td>
                       <td
-                        class="text-xs-right pr-4 hidden-md-and-down"
+                        class="text-xs-right pr-4 hidden-sm-and-down"
                       >{{ props.item.duration.toFixed(0) + 's' }}</td>
                     </tr>
                   </template>
@@ -55,61 +131,6 @@
             </div>
           </template>
         </ApolloQuery>
-      </v-flex>
-      <v-flex md4 order-sm1 order-xs1 v-if="selected.audioPath">
-        <v-flex class="ma-3 mb-4" text-xs-center>
-          <v-btn-toggle v-model="toggleAutoPlay">
-            <v-btn color="red lighten-2">
-              <v-icon class="my-2">mdi-numeric-1</v-icon>
-            </v-btn>
-            <v-btn color="red lighten-2">
-              <v-icon>mdi-update</v-icon>&nbsp;Real time
-            </v-btn>
-            <v-btn color="red lighten-2">
-              <v-icon>mdi-access-point</v-icon>&nbsp;Live
-            </v-btn>
-          </v-btn-toggle>
-        </v-flex>
-        <v-card class="ma-3 mb-4">
-          <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
-            <h3 class="headline mt-2 pl-2">{{selected.talkgroup.alphaTag}}</h3>
-            <h4 class="subtitle mt-2 pl-2">{{ selected.talkgroup.description}}</h4>
-          </v-card-title>
-          <v-card-text>
-            {{formatDate(selected.startTime)}}
-            <h5 class="caption">Frequency:</h5>
-            <span class="monospaced">{{ formatFrequency(selected.frequency) }}</span>
-            <v-flex v-show="selected.transcription">
-              <h5 class="caption">Transcription:</h5>
-              <code class="code" v-text="selected.transcription"></code>
-            </v-flex>
-          </v-card-text>
-          <v-card-actions class="mx-0 px-0 pb-0">
-            <Player
-              :toggleAutoPlay="toggleAutoPlay"
-              :file="'https://edge.sibyl.vision' + selected.audioPath"
-              v-on:play-live-audio="playLiveAudio"
-              v-on:play-next-audio="playRealtimeAudio"
-              v-on:player-state-pause="playerStatePause"
-              v-on:player-state-ended="playerStateEnded"
-              ref="player"
-            ></Player>
-          </v-card-actions>
-        </v-card>
-        <v-card class="elevation-2 ma-3 hidden-md-and-down" style="height: 300px;">
-          <Mapbox
-            @map-load="mapLoaded"
-            accessToken="pk.eyJ1Ijoia2F6YXplcyIsImEiOiJjanR3cG9kOXEyYWtiNDVsbDc3NTZxY3BuIn0.2XRXcuF1xMAsUkuhy9RGKw"
-            :map-options="{
-                style: 'mapbox://styles/mapbox/dark-v9',
-                interactive: false,
-                center: {lon: -122.448173, lat: 37.743780},
-                zoom: 9,
-                attributionControl: false
-              }"
-            :nav-control="{show: false}"
-          ></Mapbox>
-        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -199,7 +220,7 @@
             text: "Duration",
             value: "duration",
             sortable: true,
-            class: "hidden-md-and-down text-xs-right",
+            class: "hidden-sm-and-down text-xs-right",
           },
         ],
       };
@@ -212,7 +233,7 @@
         return moment(d).format("lll");
       },
       formatFrequency(hertz: number) {
-        return Number(hertz / 1000000).toFixed(4) + " MHz";
+        return Number(hertz / 1000000).toFixed(3) + " MHz";
       },
     },
     head: {
@@ -220,7 +241,7 @@
     },
   })
   export default class DataStream extends Vue {
-    protected selected = { id: undefined };
+    protected selected = { id: undefined, description: "Loading..." };
     protected error: any = false;
     protected toggleAutoPlay: toggleAutoPlay = 0;
     protected returnedCalls: any[] = [];

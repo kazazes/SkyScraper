@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "NUXT_HOST=0.0.0.0 nuxt",
     "build": "nuxt build",
     "dev-debug": "node --inspect node_modules/.bin/nuxt",
     "generate": "nuxt generate",

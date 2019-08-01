@@ -1,5 +1,14 @@
 <template>
-  <v-toolbar app dark id="core-toolbar" flat color="primary">
+  <v-toolbar
+    app
+    dense
+    dark
+    scroll-threshold=30
+    scroll-off-screen="true"
+    id="core-toolbar"
+    flat
+    color="primary"
+  >
     <v-layout align-center justify-space-around wrap row>
       <v-flex md6 text-xs-center>
         <v-btn round flat small active-class="active-nav" nuxt to="/data">Data</v-btn>

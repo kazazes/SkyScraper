@@ -57,7 +57,7 @@
     "vee-validate": "^2.2.7",
     "vue-chartist": "^2.2.0",
     "vue-class-component": "^7.1.0",
-    "vue-good-table": "^2.16.4",
+    "vue-good-table": "^2.17.5",
     "vue-material-design-icons": "^3.2.0",
     "vue-property-decorator": "^8.1.1",
     "vue-server-renderer": "2.6.6",

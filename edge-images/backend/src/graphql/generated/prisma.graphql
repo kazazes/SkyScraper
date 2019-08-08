@@ -71,10 +71,6 @@ enum Dump1090AircraftOrderByInput {
   id_DESC
   IcaoID_ASC
   IcaoID_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type Dump1090AircraftPreviousValues {
@@ -253,10 +249,6 @@ enum Dump1090MessageOrderByInput {
   callsign_DESC
   altitude_ASC
   altitude_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type Dump1090MessagePreviousValues {
@@ -638,6 +630,7 @@ type TrunkedCall {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 type TrunkedCallConnection {
@@ -662,6 +655,7 @@ input TrunkedCallCreateInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallCreateManyWithoutSystemInput {
@@ -689,6 +683,7 @@ input TrunkedCallCreateWithoutSystemInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallCreateWithoutTalkgroupInput {
@@ -706,6 +701,7 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 type TrunkedCallEdge {
@@ -1065,6 +1061,8 @@ enum TrunkedCallOrderByInput {
   wavPath_DESC
   transcription_ASC
   transcription_DESC
+  remotePath_ASC
+  remotePath_DESC
 }
 
 type TrunkedCallPreviousValues {
@@ -1081,6 +1079,7 @@ type TrunkedCallPreviousValues {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallScalarWhereInput {
@@ -1212,6 +1211,20 @@ input TrunkedCallScalarWhereInput {
   transcription_not_starts_with: String
   transcription_ends_with: String
   transcription_not_ends_with: String
+  remotePath: String
+  remotePath_not: String
+  remotePath_in: [String!]
+  remotePath_not_in: [String!]
+  remotePath_lt: String
+  remotePath_lte: String
+  remotePath_gt: String
+  remotePath_gte: String
+  remotePath_contains: String
+  remotePath_not_contains: String
+  remotePath_starts_with: String
+  remotePath_not_starts_with: String
+  remotePath_ends_with: String
+  remotePath_not_ends_with: String
   AND: [TrunkedCallScalarWhereInput!]
   OR: [TrunkedCallScalarWhereInput!]
   NOT: [TrunkedCallScalarWhereInput!]
@@ -1500,6 +1513,7 @@ input TrunkedCallUpdateInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallUpdateManyDataInput {
@@ -1513,6 +1527,7 @@ input TrunkedCallUpdateManyDataInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallUpdateManyMutationInput {
@@ -1526,6 +1541,7 @@ input TrunkedCallUpdateManyMutationInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallUpdateManyWithoutSystemInput {
@@ -1571,6 +1587,7 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallUpdateWithoutTalkgroupDataInput {
@@ -1587,6 +1604,7 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   callHash: String
   wavPath: String
   transcription: String
+  remotePath: String
 }
 
 input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
@@ -1748,6 +1766,20 @@ input TrunkedCallWhereInput {
   transcription_not_starts_with: String
   transcription_ends_with: String
   transcription_not_ends_with: String
+  remotePath: String
+  remotePath_not: String
+  remotePath_in: [String!]
+  remotePath_not_in: [String!]
+  remotePath_lt: String
+  remotePath_lte: String
+  remotePath_gt: String
+  remotePath_gte: String
+  remotePath_contains: String
+  remotePath_not_contains: String
+  remotePath_starts_with: String
+  remotePath_not_starts_with: String
+  remotePath_ends_with: String
+  remotePath_not_ends_with: String
   AND: [TrunkedCallWhereInput!]
   OR: [TrunkedCallWhereInput!]
   NOT: [TrunkedCallWhereInput!]

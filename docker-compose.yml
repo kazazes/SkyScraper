@@ -2,6 +2,15 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  sdr-watchdog:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/sdr-watchdog
+    privileged: true
+    environment:
+      - MQTT_HOST=mqtt
+      - MQTT_PORT=1883
   jupyter:
     restart: always
     build:

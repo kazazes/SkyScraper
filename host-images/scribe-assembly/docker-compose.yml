@@ -1,0 +1,38 @@
+version: '3.5'
+
+services:
+
+  server:
+    image: ${MODELSERVER_IMAGE}
+    command: python start_server.py
+    environment:
+      SKIP_DECODER: 1
+    expose:
+      - 9999
+    ports:
+      - 9999:9999
+    restart: always
+    links:
+      - redis
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+
+  worker:
+    image: ${MODELSERVER_IMAGE}
+    command: python start_worker.py
+    environment:
+      LOGLEVEL: 'DEBUG'
+    restart: always
+    links:
+      - redis
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "200k"
+        max-file: "10"
+
+  redis:
+    image: redis

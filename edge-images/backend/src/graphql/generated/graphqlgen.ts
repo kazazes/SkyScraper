@@ -46,7 +46,11 @@ export type TrunkedCallOrderByInput =
   | "callHash_ASC"
   | "callHash_DESC"
   | "wavPath_ASC"
-  | "wavPath_DESC";
+  | "wavPath_DESC"
+  | "transcription_ASC"
+  | "transcription_DESC"
+  | "remotePath_ASC"
+  | "remotePath_DESC";
 export type TrunkedTalkgroupOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -229,6 +233,34 @@ export namespace QueryResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
+    transcription?: string | null;
+    transcription_not?: string | null;
+    transcription_in?: string[] | null;
+    transcription_not_in?: string[] | null;
+    transcription_lt?: string | null;
+    transcription_lte?: string | null;
+    transcription_gt?: string | null;
+    transcription_gte?: string | null;
+    transcription_contains?: string | null;
+    transcription_not_contains?: string | null;
+    transcription_starts_with?: string | null;
+    transcription_not_starts_with?: string | null;
+    transcription_ends_with?: string | null;
+    transcription_not_ends_with?: string | null;
+    remotePath?: string | null;
+    remotePath_not?: string | null;
+    remotePath_in?: string[] | null;
+    remotePath_not_in?: string[] | null;
+    remotePath_lt?: string | null;
+    remotePath_lte?: string | null;
+    remotePath_gt?: string | null;
+    remotePath_gte?: string | null;
+    remotePath_contains?: string | null;
+    remotePath_not_contains?: string | null;
+    remotePath_starts_with?: string | null;
+    remotePath_not_starts_with?: string | null;
+    remotePath_ends_with?: string | null;
+    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
@@ -706,7 +738,11 @@ export namespace TrunkedCallResolvers {
     callHash: (parent: TrunkedCall) =>
       parent.callHash === undefined ? null : parent.callHash,
     wavPath: (parent: TrunkedCall) =>
-      parent.wavPath === undefined ? null : parent.wavPath
+      parent.wavPath === undefined ? null : parent.wavPath,
+    transcription: (parent: TrunkedCall) =>
+      parent.transcription === undefined ? null : parent.transcription,
+    remotePath: (parent: TrunkedCall) =>
+      parent.remotePath === undefined ? null : parent.remotePath
   };
 
   export interface TrunkedCallSourceWhereInput {
@@ -1151,6 +1187,40 @@ export namespace TrunkedCallResolvers {
         ) => string | null | Promise<string | null>;
       };
 
+  export type TranscriptionResolver =
+    | ((
+        parent: TrunkedCall,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type RemotePathResolver =
+    | ((
+        parent: TrunkedCall,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
   export interface Type {
     id:
       | ((
@@ -1430,6 +1500,40 @@ export namespace TrunkedCallResolvers {
             info: GraphQLResolveInfo
           ) => string | null | Promise<string | null>;
         };
+
+    transcription:
+      | ((
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedCall,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    remotePath:
+      | ((
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedCall,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
   }
 }
 
@@ -1576,6 +1680,34 @@ export namespace TrunkedTalkgroupResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
+    transcription?: string | null;
+    transcription_not?: string | null;
+    transcription_in?: string[] | null;
+    transcription_not_in?: string[] | null;
+    transcription_lt?: string | null;
+    transcription_lte?: string | null;
+    transcription_gt?: string | null;
+    transcription_gte?: string | null;
+    transcription_contains?: string | null;
+    transcription_not_contains?: string | null;
+    transcription_starts_with?: string | null;
+    transcription_not_starts_with?: string | null;
+    transcription_ends_with?: string | null;
+    transcription_not_ends_with?: string | null;
+    remotePath?: string | null;
+    remotePath_not?: string | null;
+    remotePath_in?: string[] | null;
+    remotePath_not_in?: string[] | null;
+    remotePath_lt?: string | null;
+    remotePath_lte?: string | null;
+    remotePath_gt?: string | null;
+    remotePath_gte?: string | null;
+    remotePath_contains?: string | null;
+    remotePath_not_contains?: string | null;
+    remotePath_starts_with?: string | null;
+    remotePath_not_starts_with?: string | null;
+    remotePath_ends_with?: string | null;
+    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
@@ -2747,6 +2879,34 @@ export namespace TrunkedSystemResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
+    transcription?: string | null;
+    transcription_not?: string | null;
+    transcription_in?: string[] | null;
+    transcription_not_in?: string[] | null;
+    transcription_lt?: string | null;
+    transcription_lte?: string | null;
+    transcription_gt?: string | null;
+    transcription_gte?: string | null;
+    transcription_contains?: string | null;
+    transcription_not_contains?: string | null;
+    transcription_starts_with?: string | null;
+    transcription_not_starts_with?: string | null;
+    transcription_ends_with?: string | null;
+    transcription_not_ends_with?: string | null;
+    remotePath?: string | null;
+    remotePath_not?: string | null;
+    remotePath_in?: string[] | null;
+    remotePath_not_in?: string[] | null;
+    remotePath_lt?: string | null;
+    remotePath_lte?: string | null;
+    remotePath_gt?: string | null;
+    remotePath_gte?: string | null;
+    remotePath_contains?: string | null;
+    remotePath_not_contains?: string | null;
+    remotePath_starts_with?: string | null;
+    remotePath_not_starts_with?: string | null;
+    remotePath_ends_with?: string | null;
+    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;

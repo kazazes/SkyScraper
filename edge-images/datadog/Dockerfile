@@ -1,6 +1,6 @@
 FROM balenalib/intel-nuc-golang:latest-build AS build
 
-RUN install_packages sysstat python python-dev python-pip libpython-dev python-setuptools git libkrb5-dev build-essential
+RUN install_packages sysstat python python-dev python-pip libpython-dev python-setuptools git libkrb5-dev cmake
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
@@ -15,8 +15,6 @@ WORKDIR /usr/app/src/github.com/DataDog/datadog-agent
 RUN export PATH=$PATH:$GOPATH/bin && \
   cd /usr/app/src/github.com/DataDog/datadog-agent && \
   invoke deps -v
-
-RUN install_packages cmake
 
 RUN invoke rtloader.build && invoke rtloader.install && \
   invoke agent.build --build-exclude=snmp,systemd

@@ -2,15 +2,6 @@ version: "2"
 volumes:
   resin-data: {}
 services:
-  # sdr-watchdog:
-  # restart: always
-  # build:
-  #   dockerfile: Dockerfile
-  #   context: edge-images/sdr-watchdog
-  # privileged: true
-  # environment:
-  #   - MQTT_HOST=mqtt
-  #   - MQTT_PORT=1883
   jupyter:
     restart: always
     build:
@@ -30,16 +21,6 @@ services:
     command: "start-notebook.sh \
       --NotebookApp.base_url=/jupyter \
       --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
-  kiosk:
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: edge-images/chromium-kiosk
-    labels:
-      io.balena.features.dbus: "1"
-    environment:
-      - KIOSK_URL=http://nginx/
-    privileged: true
   wifi:
     privileged: true
     pid: host
@@ -202,3 +183,22 @@ services:
     labels:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
+  # kiosk:
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: edge-images/chromium-kiosk
+  #   labels:
+  #     io.balena.features.dbus: "1"
+  #   environment:
+  #     - KIOSK_URL=http://nginx/
+  #   privileged: true
+  # sdr-watchdog:
+  # restart: always
+  # build:
+  #   dockerfile: Dockerfile
+  #   context: edge-images/sdr-watchdog
+  # privileged: true
+  # environment:
+  #   - MQTT_HOST=mqtt
+  #   - MQTT_PORT=1883

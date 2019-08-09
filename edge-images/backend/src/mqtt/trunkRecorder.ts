@@ -29,7 +29,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
   public callback = async (topic: string, payload: any, packet: any) => {
     log.info(
       `MQTT: trunk-recorder processing on topic ${rootTopic} ${
-      Buffer.from(payload).length
+        Buffer.from(payload).length
       }`,
     );
 
@@ -92,7 +92,9 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       audioPath: parsed.audioPath,
       wavPath: parsed.wavPath,
       duration: parsed.duration,
-      remotePath: `${process.env.HOSTNAME || 'https://edge.sibyl.vision'}${parsed.wavPath}`,
+      remotePath: `${process.env.HOSTNAME || "https://edge.sibyl.vision"}${
+        parsed.wavPath
+      }`,
       frequencyList: {
         create: parsed.freqList.map((fs) => {
           const f: TrunkedCallFrequencyTimeCreateInput = {
@@ -113,7 +115,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       create: call,
       update: {},
     });
-    await processTrunkedVoice(c).catch((e) => {
+    return processTrunkedVoice(c).catch((e) => {
       log.error(e);
     });
   }

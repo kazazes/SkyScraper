@@ -19,6 +19,8 @@ query trunkedCalls($first: Int, $skip: Int) {
     }
     duration
     audioPath
-    transcription
+    transcription {
+      body
+    }
   }
 }

@@ -3,14 +3,14 @@ volumes:
   resin-data: {}
 services:
   # sdr-watchdog:
-    # restart: always
-    # build:
-    #   dockerfile: Dockerfile
-    #   context: edge-images/sdr-watchdog
-    # privileged: true
-    # environment:
-    #   - MQTT_HOST=mqtt
-    #   - MQTT_PORT=1883
+  # restart: always
+  # build:
+  #   dockerfile: Dockerfile
+  #   context: edge-images/sdr-watchdog
+  # privileged: true
+  # environment:
+  #   - MQTT_HOST=mqtt
+  #   - MQTT_PORT=1883
   jupyter:
     restart: always
     build:
@@ -28,8 +28,8 @@ services:
     volumes:
       - "resin-data:/data"
     command: "start-notebook.sh \
-    --NotebookApp.base_url=/jupyter \
-    --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
+      --NotebookApp.base_url=/jupyter \
+      --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
   kiosk:
     restart: always
     build:
@@ -178,8 +178,6 @@ services:
       dockerfile: Dockerfile
       context: edge-images/trunk-recorder
     privileged: true
-    depends_on:
-      - "config"
     volumes:
       - "resin-data:/data"
     environment:
@@ -189,4 +187,4 @@ services:
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
       - MQTT_HOST=mqtt
-    restart: on-failure
+    restart: always

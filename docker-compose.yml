@@ -188,3 +188,17 @@ services:
       - MQTT_USERNAME=edge
       - MQTT_HOST=mqtt
     restart: always
+  datadog:
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/datadog
+    privileged: true
+    restart: always
+    pid: "host"
+    network_mode: "host"
+    environment:
+      - DATADOG_API_KEY=721a8a6024c81a2cefaa08e2e2ef4fb4
+      - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+    labels:
+      io.balena.features.dbus: "1"
+      io.balena.features.balena-socket: "1"

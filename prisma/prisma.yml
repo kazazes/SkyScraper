@@ -3,6 +3,7 @@ datamodel:
   - ./datamodel.prisma
   - ./trunk-recorder.prisma
   - ./dump1090.prisma
+  - ./transcription.prisma
 
 # Specifies the language and directory for the generated Prisma client.
 generate:

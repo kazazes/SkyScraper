@@ -1,0 +1,19 @@
+type Transcription {
+    id: ID! @id
+    callId: TrunkedCall! @relation(name: "TranscriptionOnCall")
+    languageModel: String!
+    beta: Float!
+    body: String!
+    words: [TranscriptionWord]! @relation(name: "WordsOnTranscription" onDelete: CASCADE)
+    duration: Float!
+    alpha: Float!
+}
+
+type TranscriptionWord {
+    id: ID! @id
+    transcription: Transcription @relation(name: "WordsOnTranscription")
+    text: String!
+    confidence: Float!
+    end: Int!
+    start: Int!
+}

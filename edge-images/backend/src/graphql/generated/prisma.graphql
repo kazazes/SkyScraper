@@ -6,6 +6,14 @@ type AggregateDump1090Message {
   count: Int!
 }
 
+type AggregateTranscription {
+  count: Int!
+}
+
+type AggregateTranscriptionWord {
+  count: Int!
+}
+
 type AggregateTrunkedCall {
   count: Int!
 }
@@ -508,6 +516,18 @@ type Mutation {
   upsertDump1090Message(where: Dump1090MessageWhereUniqueInput!, create: Dump1090MessageCreateInput!, update: Dump1090MessageUpdateInput!): Dump1090Message!
   deleteDump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
   deleteManyDump1090Messages(where: Dump1090MessageWhereInput): BatchPayload!
+  createTranscription(data: TranscriptionCreateInput!): Transcription!
+  updateTranscription(data: TranscriptionUpdateInput!, where: TranscriptionWhereUniqueInput!): Transcription
+  updateManyTranscriptions(data: TranscriptionUpdateManyMutationInput!, where: TranscriptionWhereInput): BatchPayload!
+  upsertTranscription(where: TranscriptionWhereUniqueInput!, create: TranscriptionCreateInput!, update: TranscriptionUpdateInput!): Transcription!
+  deleteTranscription(where: TranscriptionWhereUniqueInput!): Transcription
+  deleteManyTranscriptions(where: TranscriptionWhereInput): BatchPayload!
+  createTranscriptionWord(data: TranscriptionWordCreateInput!): TranscriptionWord!
+  updateTranscriptionWord(data: TranscriptionWordUpdateInput!, where: TranscriptionWordWhereUniqueInput!): TranscriptionWord
+  updateManyTranscriptionWords(data: TranscriptionWordUpdateManyMutationInput!, where: TranscriptionWordWhereInput): BatchPayload!
+  upsertTranscriptionWord(where: TranscriptionWordWhereUniqueInput!, create: TranscriptionWordCreateInput!, update: TranscriptionWordUpdateInput!): TranscriptionWord!
+  deleteTranscriptionWord(where: TranscriptionWordWhereUniqueInput!): TranscriptionWord
+  deleteManyTranscriptionWords(where: TranscriptionWordWhereInput): BatchPayload!
   createTrunkedCall(data: TrunkedCallCreateInput!): TrunkedCall!
   updateTrunkedCall(data: TrunkedCallUpdateInput!, where: TrunkedCallWhereUniqueInput!): TrunkedCall
   updateManyTrunkedCalls(data: TrunkedCallUpdateManyMutationInput!, where: TrunkedCallWhereInput): BatchPayload!
@@ -576,6 +596,12 @@ type Query {
   dump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
   dump1090Messages(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dump1090Message]!
   dump1090MessagesConnection(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): Dump1090MessageConnection!
+  transcription(where: TranscriptionWhereUniqueInput!): Transcription
+  transcriptions(where: TranscriptionWhereInput, orderBy: TranscriptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transcription]!
+  transcriptionsConnection(where: TranscriptionWhereInput, orderBy: TranscriptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TranscriptionConnection!
+  transcriptionWord(where: TranscriptionWordWhereUniqueInput!): TranscriptionWord
+  transcriptionWords(where: TranscriptionWordWhereInput, orderBy: TranscriptionWordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TranscriptionWord]!
+  transcriptionWordsConnection(where: TranscriptionWordWhereInput, orderBy: TranscriptionWordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TranscriptionWordConnection!
   trunkedCall(where: TrunkedCallWhereUniqueInput!): TrunkedCall
   trunkedCalls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall]!
   trunkedCallsConnection(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TrunkedCallConnection!
@@ -603,6 +629,8 @@ type Query {
 type Subscription {
   dump1090Aircraft(where: Dump1090AircraftSubscriptionWhereInput): Dump1090AircraftSubscriptionPayload
   dump1090Message(where: Dump1090MessageSubscriptionWhereInput): Dump1090MessageSubscriptionPayload
+  transcription(where: TranscriptionSubscriptionWhereInput): TranscriptionSubscriptionPayload
+  transcriptionWord(where: TranscriptionWordSubscriptionWhereInput): TranscriptionWordSubscriptionPayload
   trunkedCall(where: TrunkedCallSubscriptionWhereInput): TrunkedCallSubscriptionPayload
   trunkedCallFrequencyTime(where: TrunkedCallFrequencyTimeSubscriptionWhereInput): TrunkedCallFrequencyTimeSubscriptionPayload
   trunkedCallSource(where: TrunkedCallSourceSubscriptionWhereInput): TrunkedCallSourceSubscriptionPayload
@@ -610,6 +638,514 @@ type Subscription {
   trunkedSource(where: TrunkedSourceSubscriptionWhereInput): TrunkedSourceSubscriptionPayload
   trunkedSystem(where: TrunkedSystemSubscriptionWhereInput): TrunkedSystemSubscriptionPayload
   trunkedTalkgroup(where: TrunkedTalkgroupSubscriptionWhereInput): TrunkedTalkgroupSubscriptionPayload
+}
+
+type Transcription {
+  id: ID!
+  callId: TrunkedCall!
+  languageModel: String!
+  beta: Float!
+  body: String!
+  words(where: TranscriptionWordWhereInput, orderBy: TranscriptionWordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TranscriptionWord!]
+  duration: Float!
+  alpha: Float!
+}
+
+type TranscriptionConnection {
+  pageInfo: PageInfo!
+  edges: [TranscriptionEdge]!
+  aggregate: AggregateTranscription!
+}
+
+input TranscriptionCreateInput {
+  id: ID
+  callId: TrunkedCallCreateOneWithoutTranscriptionInput!
+  languageModel: String!
+  beta: Float!
+  body: String!
+  words: TranscriptionWordCreateManyWithoutTranscriptionInput
+  duration: Float!
+  alpha: Float!
+}
+
+input TranscriptionCreateOneWithoutCallIdInput {
+  create: TranscriptionCreateWithoutCallIdInput
+  connect: TranscriptionWhereUniqueInput
+}
+
+input TranscriptionCreateOneWithoutWordsInput {
+  create: TranscriptionCreateWithoutWordsInput
+  connect: TranscriptionWhereUniqueInput
+}
+
+input TranscriptionCreateWithoutCallIdInput {
+  id: ID
+  languageModel: String!
+  beta: Float!
+  body: String!
+  words: TranscriptionWordCreateManyWithoutTranscriptionInput
+  duration: Float!
+  alpha: Float!
+}
+
+input TranscriptionCreateWithoutWordsInput {
+  id: ID
+  callId: TrunkedCallCreateOneWithoutTranscriptionInput!
+  languageModel: String!
+  beta: Float!
+  body: String!
+  duration: Float!
+  alpha: Float!
+}
+
+type TranscriptionEdge {
+  node: Transcription!
+  cursor: String!
+}
+
+enum TranscriptionOrderByInput {
+  id_ASC
+  id_DESC
+  languageModel_ASC
+  languageModel_DESC
+  beta_ASC
+  beta_DESC
+  body_ASC
+  body_DESC
+  duration_ASC
+  duration_DESC
+  alpha_ASC
+  alpha_DESC
+}
+
+type TranscriptionPreviousValues {
+  id: ID!
+  languageModel: String!
+  beta: Float!
+  body: String!
+  duration: Float!
+  alpha: Float!
+}
+
+type TranscriptionSubscriptionPayload {
+  mutation: MutationType!
+  node: Transcription
+  updatedFields: [String!]
+  previousValues: TranscriptionPreviousValues
+}
+
+input TranscriptionSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TranscriptionWhereInput
+  AND: [TranscriptionSubscriptionWhereInput!]
+  OR: [TranscriptionSubscriptionWhereInput!]
+  NOT: [TranscriptionSubscriptionWhereInput!]
+}
+
+input TranscriptionUpdateInput {
+  callId: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
+  languageModel: String
+  beta: Float
+  body: String
+  words: TranscriptionWordUpdateManyWithoutTranscriptionInput
+  duration: Float
+  alpha: Float
+}
+
+input TranscriptionUpdateManyMutationInput {
+  languageModel: String
+  beta: Float
+  body: String
+  duration: Float
+  alpha: Float
+}
+
+input TranscriptionUpdateOneWithoutCallIdInput {
+  create: TranscriptionCreateWithoutCallIdInput
+  update: TranscriptionUpdateWithoutCallIdDataInput
+  upsert: TranscriptionUpsertWithoutCallIdInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TranscriptionWhereUniqueInput
+}
+
+input TranscriptionUpdateOneWithoutWordsInput {
+  create: TranscriptionCreateWithoutWordsInput
+  update: TranscriptionUpdateWithoutWordsDataInput
+  upsert: TranscriptionUpsertWithoutWordsInput
+  delete: Boolean
+  disconnect: Boolean
+  connect: TranscriptionWhereUniqueInput
+}
+
+input TranscriptionUpdateWithoutCallIdDataInput {
+  languageModel: String
+  beta: Float
+  body: String
+  words: TranscriptionWordUpdateManyWithoutTranscriptionInput
+  duration: Float
+  alpha: Float
+}
+
+input TranscriptionUpdateWithoutWordsDataInput {
+  callId: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
+  languageModel: String
+  beta: Float
+  body: String
+  duration: Float
+  alpha: Float
+}
+
+input TranscriptionUpsertWithoutCallIdInput {
+  update: TranscriptionUpdateWithoutCallIdDataInput!
+  create: TranscriptionCreateWithoutCallIdInput!
+}
+
+input TranscriptionUpsertWithoutWordsInput {
+  update: TranscriptionUpdateWithoutWordsDataInput!
+  create: TranscriptionCreateWithoutWordsInput!
+}
+
+input TranscriptionWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  callId: TrunkedCallWhereInput
+  languageModel: String
+  languageModel_not: String
+  languageModel_in: [String!]
+  languageModel_not_in: [String!]
+  languageModel_lt: String
+  languageModel_lte: String
+  languageModel_gt: String
+  languageModel_gte: String
+  languageModel_contains: String
+  languageModel_not_contains: String
+  languageModel_starts_with: String
+  languageModel_not_starts_with: String
+  languageModel_ends_with: String
+  languageModel_not_ends_with: String
+  beta: Float
+  beta_not: Float
+  beta_in: [Float!]
+  beta_not_in: [Float!]
+  beta_lt: Float
+  beta_lte: Float
+  beta_gt: Float
+  beta_gte: Float
+  body: String
+  body_not: String
+  body_in: [String!]
+  body_not_in: [String!]
+  body_lt: String
+  body_lte: String
+  body_gt: String
+  body_gte: String
+  body_contains: String
+  body_not_contains: String
+  body_starts_with: String
+  body_not_starts_with: String
+  body_ends_with: String
+  body_not_ends_with: String
+  words_every: TranscriptionWordWhereInput
+  words_some: TranscriptionWordWhereInput
+  words_none: TranscriptionWordWhereInput
+  duration: Float
+  duration_not: Float
+  duration_in: [Float!]
+  duration_not_in: [Float!]
+  duration_lt: Float
+  duration_lte: Float
+  duration_gt: Float
+  duration_gte: Float
+  alpha: Float
+  alpha_not: Float
+  alpha_in: [Float!]
+  alpha_not_in: [Float!]
+  alpha_lt: Float
+  alpha_lte: Float
+  alpha_gt: Float
+  alpha_gte: Float
+  AND: [TranscriptionWhereInput!]
+  OR: [TranscriptionWhereInput!]
+  NOT: [TranscriptionWhereInput!]
+}
+
+input TranscriptionWhereUniqueInput {
+  id: ID
+}
+
+type TranscriptionWord {
+  id: ID!
+  transcription: Transcription
+  text: String!
+  confidence: Float!
+  end: Int!
+  start: Int!
+}
+
+type TranscriptionWordConnection {
+  pageInfo: PageInfo!
+  edges: [TranscriptionWordEdge]!
+  aggregate: AggregateTranscriptionWord!
+}
+
+input TranscriptionWordCreateInput {
+  id: ID
+  transcription: TranscriptionCreateOneWithoutWordsInput
+  text: String!
+  confidence: Float!
+  end: Int!
+  start: Int!
+}
+
+input TranscriptionWordCreateManyWithoutTranscriptionInput {
+  create: [TranscriptionWordCreateWithoutTranscriptionInput!]
+  connect: [TranscriptionWordWhereUniqueInput!]
+}
+
+input TranscriptionWordCreateWithoutTranscriptionInput {
+  id: ID
+  text: String!
+  confidence: Float!
+  end: Int!
+  start: Int!
+}
+
+type TranscriptionWordEdge {
+  node: TranscriptionWord!
+  cursor: String!
+}
+
+enum TranscriptionWordOrderByInput {
+  id_ASC
+  id_DESC
+  text_ASC
+  text_DESC
+  confidence_ASC
+  confidence_DESC
+  end_ASC
+  end_DESC
+  start_ASC
+  start_DESC
+}
+
+type TranscriptionWordPreviousValues {
+  id: ID!
+  text: String!
+  confidence: Float!
+  end: Int!
+  start: Int!
+}
+
+input TranscriptionWordScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  confidence: Float
+  confidence_not: Float
+  confidence_in: [Float!]
+  confidence_not_in: [Float!]
+  confidence_lt: Float
+  confidence_lte: Float
+  confidence_gt: Float
+  confidence_gte: Float
+  end: Int
+  end_not: Int
+  end_in: [Int!]
+  end_not_in: [Int!]
+  end_lt: Int
+  end_lte: Int
+  end_gt: Int
+  end_gte: Int
+  start: Int
+  start_not: Int
+  start_in: [Int!]
+  start_not_in: [Int!]
+  start_lt: Int
+  start_lte: Int
+  start_gt: Int
+  start_gte: Int
+  AND: [TranscriptionWordScalarWhereInput!]
+  OR: [TranscriptionWordScalarWhereInput!]
+  NOT: [TranscriptionWordScalarWhereInput!]
+}
+
+type TranscriptionWordSubscriptionPayload {
+  mutation: MutationType!
+  node: TranscriptionWord
+  updatedFields: [String!]
+  previousValues: TranscriptionWordPreviousValues
+}
+
+input TranscriptionWordSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: TranscriptionWordWhereInput
+  AND: [TranscriptionWordSubscriptionWhereInput!]
+  OR: [TranscriptionWordSubscriptionWhereInput!]
+  NOT: [TranscriptionWordSubscriptionWhereInput!]
+}
+
+input TranscriptionWordUpdateInput {
+  transcription: TranscriptionUpdateOneWithoutWordsInput
+  text: String
+  confidence: Float
+  end: Int
+  start: Int
+}
+
+input TranscriptionWordUpdateManyDataInput {
+  text: String
+  confidence: Float
+  end: Int
+  start: Int
+}
+
+input TranscriptionWordUpdateManyMutationInput {
+  text: String
+  confidence: Float
+  end: Int
+  start: Int
+}
+
+input TranscriptionWordUpdateManyWithoutTranscriptionInput {
+  create: [TranscriptionWordCreateWithoutTranscriptionInput!]
+  delete: [TranscriptionWordWhereUniqueInput!]
+  connect: [TranscriptionWordWhereUniqueInput!]
+  set: [TranscriptionWordWhereUniqueInput!]
+  disconnect: [TranscriptionWordWhereUniqueInput!]
+  update: [TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput!]
+  upsert: [TranscriptionWordUpsertWithWhereUniqueWithoutTranscriptionInput!]
+  deleteMany: [TranscriptionWordScalarWhereInput!]
+  updateMany: [TranscriptionWordUpdateManyWithWhereNestedInput!]
+}
+
+input TranscriptionWordUpdateManyWithWhereNestedInput {
+  where: TranscriptionWordScalarWhereInput!
+  data: TranscriptionWordUpdateManyDataInput!
+}
+
+input TranscriptionWordUpdateWithoutTranscriptionDataInput {
+  text: String
+  confidence: Float
+  end: Int
+  start: Int
+}
+
+input TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput {
+  where: TranscriptionWordWhereUniqueInput!
+  data: TranscriptionWordUpdateWithoutTranscriptionDataInput!
+}
+
+input TranscriptionWordUpsertWithWhereUniqueWithoutTranscriptionInput {
+  where: TranscriptionWordWhereUniqueInput!
+  update: TranscriptionWordUpdateWithoutTranscriptionDataInput!
+  create: TranscriptionWordCreateWithoutTranscriptionInput!
+}
+
+input TranscriptionWordWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  transcription: TranscriptionWhereInput
+  text: String
+  text_not: String
+  text_in: [String!]
+  text_not_in: [String!]
+  text_lt: String
+  text_lte: String
+  text_gt: String
+  text_gte: String
+  text_contains: String
+  text_not_contains: String
+  text_starts_with: String
+  text_not_starts_with: String
+  text_ends_with: String
+  text_not_ends_with: String
+  confidence: Float
+  confidence_not: Float
+  confidence_in: [Float!]
+  confidence_not_in: [Float!]
+  confidence_lt: Float
+  confidence_lte: Float
+  confidence_gt: Float
+  confidence_gte: Float
+  end: Int
+  end_not: Int
+  end_in: [Int!]
+  end_not_in: [Int!]
+  end_lt: Int
+  end_lte: Int
+  end_gt: Int
+  end_gte: Int
+  start: Int
+  start_not: Int
+  start_in: [Int!]
+  start_not_in: [Int!]
+  start_lt: Int
+  start_lte: Int
+  start_gt: Int
+  start_gte: Int
+  AND: [TranscriptionWordWhereInput!]
+  OR: [TranscriptionWordWhereInput!]
+  NOT: [TranscriptionWordWhereInput!]
+}
+
+input TranscriptionWordWhereUniqueInput {
+  id: ID
 }
 
 type TrunkedCall {
@@ -629,7 +1165,7 @@ type TrunkedCall {
   frequencyList(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime!]
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: Transcription
   remotePath: String
 }
 
@@ -654,7 +1190,7 @@ input TrunkedCallCreateInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionCreateOneWithoutCallIdInput
   remotePath: String
 }
 
@@ -666,6 +1202,11 @@ input TrunkedCallCreateManyWithoutSystemInput {
 input TrunkedCallCreateManyWithoutTalkgroupInput {
   create: [TrunkedCallCreateWithoutTalkgroupInput!]
   connect: [TrunkedCallWhereUniqueInput!]
+}
+
+input TrunkedCallCreateOneWithoutTranscriptionInput {
+  create: TrunkedCallCreateWithoutTranscriptionInput
+  connect: TrunkedCallWhereUniqueInput
 }
 
 input TrunkedCallCreateWithoutSystemInput {
@@ -682,7 +1223,7 @@ input TrunkedCallCreateWithoutSystemInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionCreateOneWithoutCallIdInput
   remotePath: String
 }
 
@@ -700,7 +1241,25 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionCreateOneWithoutCallIdInput
+  remotePath: String
+}
+
+input TrunkedCallCreateWithoutTranscriptionInput {
+  id: ID
+  frequency: Int!
+  startTime: DateTime!
+  endTime: DateTime!
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupCreateOneWithoutCallsInput
+  system: TrunkedSystemCreateOneWithoutCallsInput
+  sources: TrunkedCallSourceCreateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeCreateManyInput
+  callHash: String
+  wavPath: String
   remotePath: String
 }
 
@@ -1059,8 +1618,6 @@ enum TrunkedCallOrderByInput {
   callHash_DESC
   wavPath_ASC
   wavPath_DESC
-  transcription_ASC
-  transcription_DESC
   remotePath_ASC
   remotePath_DESC
 }
@@ -1078,7 +1635,6 @@ type TrunkedCallPreviousValues {
   audioPath: String
   callHash: String
   wavPath: String
-  transcription: String
   remotePath: String
 }
 
@@ -1197,20 +1753,6 @@ input TrunkedCallScalarWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
-  transcription: String
-  transcription_not: String
-  transcription_in: [String!]
-  transcription_not_in: [String!]
-  transcription_lt: String
-  transcription_lte: String
-  transcription_gt: String
-  transcription_gte: String
-  transcription_contains: String
-  transcription_not_contains: String
-  transcription_starts_with: String
-  transcription_not_starts_with: String
-  transcription_ends_with: String
-  transcription_not_ends_with: String
   remotePath: String
   remotePath_not: String
   remotePath_in: [String!]
@@ -1512,7 +2054,7 @@ input TrunkedCallUpdateInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionUpdateOneWithoutCallIdInput
   remotePath: String
 }
 
@@ -1526,7 +2068,6 @@ input TrunkedCallUpdateManyDataInput {
   audioPath: String
   callHash: String
   wavPath: String
-  transcription: String
   remotePath: String
 }
 
@@ -1540,7 +2081,6 @@ input TrunkedCallUpdateManyMutationInput {
   audioPath: String
   callHash: String
   wavPath: String
-  transcription: String
   remotePath: String
 }
 
@@ -1573,6 +2113,13 @@ input TrunkedCallUpdateManyWithWhereNestedInput {
   data: TrunkedCallUpdateManyDataInput!
 }
 
+input TrunkedCallUpdateOneRequiredWithoutTranscriptionInput {
+  create: TrunkedCallCreateWithoutTranscriptionInput
+  update: TrunkedCallUpdateWithoutTranscriptionDataInput
+  upsert: TrunkedCallUpsertWithoutTranscriptionInput
+  connect: TrunkedCallWhereUniqueInput
+}
+
 input TrunkedCallUpdateWithoutSystemDataInput {
   frequency: Int
   startTime: DateTime
@@ -1586,7 +2133,7 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionUpdateOneWithoutCallIdInput
   remotePath: String
 }
 
@@ -1603,7 +2150,24 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: String
+  transcription: TranscriptionUpdateOneWithoutCallIdInput
+  remotePath: String
+}
+
+input TrunkedCallUpdateWithoutTranscriptionDataInput {
+  frequency: Int
+  startTime: DateTime
+  endTime: DateTime
+  emergency: Boolean
+  talkgroup: TrunkedTalkgroupUpdateOneWithoutCallsInput
+  system: TrunkedSystemUpdateOneWithoutCallsInput
+  sources: TrunkedCallSourceUpdateManyInput
+  duration: Float
+  source: Int
+  audioPath: String
+  frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
+  callHash: String
+  wavPath: String
   remotePath: String
 }
 
@@ -1615,6 +2179,11 @@ input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
 input TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput {
   where: TrunkedCallWhereUniqueInput!
   data: TrunkedCallUpdateWithoutTalkgroupDataInput!
+}
+
+input TrunkedCallUpsertWithoutTranscriptionInput {
+  update: TrunkedCallUpdateWithoutTranscriptionDataInput!
+  create: TrunkedCallCreateWithoutTranscriptionInput!
 }
 
 input TrunkedCallUpsertWithWhereUniqueWithoutSystemInput {
@@ -1752,20 +2321,7 @@ input TrunkedCallWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
-  transcription: String
-  transcription_not: String
-  transcription_in: [String!]
-  transcription_not_in: [String!]
-  transcription_lt: String
-  transcription_lte: String
-  transcription_gt: String
-  transcription_gte: String
-  transcription_contains: String
-  transcription_not_contains: String
-  transcription_starts_with: String
-  transcription_not_starts_with: String
-  transcription_ends_with: String
-  transcription_not_ends_with: String
+  transcription: TranscriptionWhereInput
   remotePath: String
   remotePath_not: String
   remotePath_in: [String!]

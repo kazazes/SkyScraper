@@ -110,14 +110,19 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       },
     };
 
-    const c = await prisma.upsertTrunkedCall({
-      where: { callHash },
-      create: call,
-      update: {},
-    });
-    return processTrunkedVoice(c).catch((e) => {
-      log.error(e);
-    });
+    try {
+      const c = await prisma.upsertTrunkedCall({
+        where: { callHash },
+        create: call,
+        update: {},
+      });
+
+      await processTrunkedVoice(c).catch((e) => {
+        log.error(e);
+      });
+    } catch (e) {
+      throw e;
+    }
   }
 }
 

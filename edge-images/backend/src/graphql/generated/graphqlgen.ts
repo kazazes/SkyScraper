@@ -116,7 +116,11 @@ export type TranscriptionWordOrderByInput =
   | "end_ASC"
   | "end_DESC"
   | "start_ASC"
-  | "start_DESC";
+  | "start_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};

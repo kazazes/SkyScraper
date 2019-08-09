@@ -50,7 +50,7 @@
                 >{{ formatFrequency(selected.frequency) }}</span>
                 <v-flex>
                   <h5 class="caption">Transcription:</h5>
-                  <code class="code" v-text="selected.transcription || 'Processing...'"></code>
+                  <code class="code" v-text="selected.transcription ? selected.transcription.body : 'Processing...'"></code>
                 </v-flex>
               </v-card-text>
               <v-card-text v-else style="min-height: 200px;"></v-card-text>

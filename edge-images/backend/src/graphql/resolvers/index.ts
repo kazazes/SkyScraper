@@ -6,6 +6,8 @@ import { TrunkedCallFrequencyTime } from "./TrunkedCallFrequencyTime";
 import { TrunkedCallSource } from "./TrunkedCallSource";
 import { TrunkedSystem } from "./TrunkedSystem";
 import { TrunkedTalkgroup } from "./TrunkedTalkgroup";
+import { Transcription } from "./Transcription"
+import { TranscriptionWord } from "./TranscriptionWord"
 
 export const resolvers: Resolvers = {
   Query,
@@ -14,5 +16,7 @@ export const resolvers: Resolvers = {
   TrunkedSystem,
   TrunkedCallSource,
   TrunkedCallFrequencyTime,
-  Subscription
+  Subscription,
+  Transcription,
+  TranscriptionWord
 };

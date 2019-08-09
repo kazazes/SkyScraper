@@ -15,5 +15,8 @@ export const TrunkedCall: TrunkedCallResolvers.Type = {
   },
   frequencyList: (parent, args, { prisma }) => {
     return prisma.trunkedCall({ id: parent.id }).frequencyList();
+  },
+  transcription: (parent, args, { prisma }) => {
+    return prisma.trunkedCall({ id: parent.id }).transcription();
   }
 };

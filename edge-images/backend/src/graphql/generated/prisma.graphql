@@ -79,6 +79,10 @@ enum Dump1090AircraftOrderByInput {
   id_DESC
   IcaoID_ASC
   IcaoID_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type Dump1090AircraftPreviousValues {
@@ -257,6 +261,10 @@ enum Dump1090MessageOrderByInput {
   callsign_DESC
   altitude_ASC
   altitude_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type Dump1090MessagePreviousValues {
@@ -716,6 +724,10 @@ enum TranscriptionOrderByInput {
   duration_DESC
   alpha_ASC
   alpha_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type TranscriptionPreviousValues {
@@ -942,6 +954,10 @@ enum TranscriptionWordOrderByInput {
   end_DESC
   start_ASC
   start_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
 }
 
 type TranscriptionWordPreviousValues {

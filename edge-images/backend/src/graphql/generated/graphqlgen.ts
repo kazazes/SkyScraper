@@ -6,7 +6,9 @@ import {
   TrunkedTalkgroup,
   TrunkedSystem,
   TrunkedCallSource,
-  TrunkedCallFrequencyTime
+  TrunkedCallFrequencyTime,
+  Transcription,
+  TranscriptionWord
 } from "./prisma-client";
 import { Context } from "../types";
 
@@ -47,8 +49,6 @@ export type TrunkedCallOrderByInput =
   | "callHash_DESC"
   | "wavPath_ASC"
   | "wavPath_DESC"
-  | "transcription_ASC"
-  | "transcription_DESC"
   | "remotePath_ASC"
   | "remotePath_DESC";
 export type TrunkedTalkgroupOrderByInput =
@@ -106,6 +106,17 @@ export type TrunkedCallFrequencyTimeOrderByInput =
   | "errors_DESC"
   | "spikes_ASC"
   | "spikes_DESC";
+export type TranscriptionWordOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "text_ASC"
+  | "text_DESC"
+  | "confidence_ASC"
+  | "confidence_DESC"
+  | "end_ASC"
+  | "end_DESC"
+  | "start_ASC"
+  | "start_DESC";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -233,20 +244,7 @@ export namespace QueryResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
-    transcription?: string | null;
-    transcription_not?: string | null;
-    transcription_in?: string[] | null;
-    transcription_not_in?: string[] | null;
-    transcription_lt?: string | null;
-    transcription_lte?: string | null;
-    transcription_gt?: string | null;
-    transcription_gte?: string | null;
-    transcription_contains?: string | null;
-    transcription_not_contains?: string | null;
-    transcription_starts_with?: string | null;
-    transcription_not_starts_with?: string | null;
-    transcription_ends_with?: string | null;
-    transcription_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     remotePath?: string | null;
     remotePath_not?: string | null;
     remotePath_in?: string[] | null;
@@ -671,6 +669,139 @@ export namespace QueryResolvers {
     OR?: TrunkedCallFrequencyTimeWhereInput[] | null;
     NOT?: TrunkedCallFrequencyTimeWhereInput[] | null;
   }
+  export interface TranscriptionWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    callId?: TrunkedCallWhereInput | null;
+    languageModel?: string | null;
+    languageModel_not?: string | null;
+    languageModel_in?: string[] | null;
+    languageModel_not_in?: string[] | null;
+    languageModel_lt?: string | null;
+    languageModel_lte?: string | null;
+    languageModel_gt?: string | null;
+    languageModel_gte?: string | null;
+    languageModel_contains?: string | null;
+    languageModel_not_contains?: string | null;
+    languageModel_starts_with?: string | null;
+    languageModel_not_starts_with?: string | null;
+    languageModel_ends_with?: string | null;
+    languageModel_not_ends_with?: string | null;
+    beta?: number | null;
+    beta_not?: number | null;
+    beta_in?: number[] | null;
+    beta_not_in?: number[] | null;
+    beta_lt?: number | null;
+    beta_lte?: number | null;
+    beta_gt?: number | null;
+    beta_gte?: number | null;
+    body?: string | null;
+    body_not?: string | null;
+    body_in?: string[] | null;
+    body_not_in?: string[] | null;
+    body_lt?: string | null;
+    body_lte?: string | null;
+    body_gt?: string | null;
+    body_gte?: string | null;
+    body_contains?: string | null;
+    body_not_contains?: string | null;
+    body_starts_with?: string | null;
+    body_not_starts_with?: string | null;
+    body_ends_with?: string | null;
+    body_not_ends_with?: string | null;
+    words_every?: TranscriptionWordWhereInput | null;
+    words_some?: TranscriptionWordWhereInput | null;
+    words_none?: TranscriptionWordWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    alpha?: number | null;
+    alpha_not?: number | null;
+    alpha_in?: number[] | null;
+    alpha_not_in?: number[] | null;
+    alpha_lt?: number | null;
+    alpha_lte?: number | null;
+    alpha_gt?: number | null;
+    alpha_gte?: number | null;
+    AND?: TranscriptionWhereInput[] | null;
+    OR?: TranscriptionWhereInput[] | null;
+    NOT?: TranscriptionWhereInput[] | null;
+  }
+  export interface TranscriptionWordWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordWhereInput[] | null;
+    OR?: TranscriptionWordWhereInput[] | null;
+    NOT?: TranscriptionWordWhereInput[] | null;
+  }
 
   export interface ArgsTrunkedCalls {
     where?: TrunkedCallWhereInput | null;
@@ -739,8 +870,6 @@ export namespace TrunkedCallResolvers {
       parent.callHash === undefined ? null : parent.callHash,
     wavPath: (parent: TrunkedCall) =>
       parent.wavPath === undefined ? null : parent.wavPath,
-    transcription: (parent: TrunkedCall) =>
-      parent.transcription === undefined ? null : parent.transcription,
     remotePath: (parent: TrunkedCall) =>
       parent.remotePath === undefined ? null : parent.remotePath
   };
@@ -1193,7 +1322,7 @@ export namespace TrunkedCallResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => string | null | Promise<string | null>)
+      ) => Transcription | null | Promise<Transcription | null>)
     | {
         fragment: string;
         resolve: (
@@ -1201,7 +1330,7 @@ export namespace TrunkedCallResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>;
+        ) => Transcription | null | Promise<Transcription | null>;
       };
 
   export type RemotePathResolver =
@@ -1507,7 +1636,7 @@ export namespace TrunkedCallResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>)
+        ) => Transcription | null | Promise<Transcription | null>)
       | {
           fragment: string;
           resolve: (
@@ -1515,7 +1644,7 @@ export namespace TrunkedCallResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => string | null | Promise<string | null>;
+          ) => Transcription | null | Promise<Transcription | null>;
         };
 
     remotePath:
@@ -1680,20 +1809,7 @@ export namespace TrunkedTalkgroupResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
-    transcription?: string | null;
-    transcription_not?: string | null;
-    transcription_in?: string[] | null;
-    transcription_not_in?: string[] | null;
-    transcription_lt?: string | null;
-    transcription_lte?: string | null;
-    transcription_gt?: string | null;
-    transcription_gte?: string | null;
-    transcription_contains?: string | null;
-    transcription_not_contains?: string | null;
-    transcription_starts_with?: string | null;
-    transcription_not_starts_with?: string | null;
-    transcription_ends_with?: string | null;
-    transcription_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     remotePath?: string | null;
     remotePath_not?: string | null;
     remotePath_in?: string[] | null;
@@ -2117,6 +2233,139 @@ export namespace TrunkedTalkgroupResolvers {
     AND?: TrunkedCallFrequencyTimeWhereInput[] | null;
     OR?: TrunkedCallFrequencyTimeWhereInput[] | null;
     NOT?: TrunkedCallFrequencyTimeWhereInput[] | null;
+  }
+  export interface TranscriptionWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    callId?: TrunkedCallWhereInput | null;
+    languageModel?: string | null;
+    languageModel_not?: string | null;
+    languageModel_in?: string[] | null;
+    languageModel_not_in?: string[] | null;
+    languageModel_lt?: string | null;
+    languageModel_lte?: string | null;
+    languageModel_gt?: string | null;
+    languageModel_gte?: string | null;
+    languageModel_contains?: string | null;
+    languageModel_not_contains?: string | null;
+    languageModel_starts_with?: string | null;
+    languageModel_not_starts_with?: string | null;
+    languageModel_ends_with?: string | null;
+    languageModel_not_ends_with?: string | null;
+    beta?: number | null;
+    beta_not?: number | null;
+    beta_in?: number[] | null;
+    beta_not_in?: number[] | null;
+    beta_lt?: number | null;
+    beta_lte?: number | null;
+    beta_gt?: number | null;
+    beta_gte?: number | null;
+    body?: string | null;
+    body_not?: string | null;
+    body_in?: string[] | null;
+    body_not_in?: string[] | null;
+    body_lt?: string | null;
+    body_lte?: string | null;
+    body_gt?: string | null;
+    body_gte?: string | null;
+    body_contains?: string | null;
+    body_not_contains?: string | null;
+    body_starts_with?: string | null;
+    body_not_starts_with?: string | null;
+    body_ends_with?: string | null;
+    body_not_ends_with?: string | null;
+    words_every?: TranscriptionWordWhereInput | null;
+    words_some?: TranscriptionWordWhereInput | null;
+    words_none?: TranscriptionWordWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    alpha?: number | null;
+    alpha_not?: number | null;
+    alpha_in?: number[] | null;
+    alpha_not_in?: number[] | null;
+    alpha_lt?: number | null;
+    alpha_lte?: number | null;
+    alpha_gt?: number | null;
+    alpha_gte?: number | null;
+    AND?: TranscriptionWhereInput[] | null;
+    OR?: TranscriptionWhereInput[] | null;
+    NOT?: TranscriptionWhereInput[] | null;
+  }
+  export interface TranscriptionWordWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordWhereInput[] | null;
+    OR?: TranscriptionWordWhereInput[] | null;
+    NOT?: TranscriptionWordWhereInput[] | null;
   }
 
   export interface ArgsCalls {
@@ -2879,20 +3128,7 @@ export namespace TrunkedSystemResolvers {
     wavPath_not_starts_with?: string | null;
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
-    transcription?: string | null;
-    transcription_not?: string | null;
-    transcription_in?: string[] | null;
-    transcription_not_in?: string[] | null;
-    transcription_lt?: string | null;
-    transcription_lte?: string | null;
-    transcription_gt?: string | null;
-    transcription_gte?: string | null;
-    transcription_contains?: string | null;
-    transcription_not_contains?: string | null;
-    transcription_starts_with?: string | null;
-    transcription_not_starts_with?: string | null;
-    transcription_ends_with?: string | null;
-    transcription_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     remotePath?: string | null;
     remotePath_not?: string | null;
     remotePath_in?: string[] | null;
@@ -3177,6 +3413,139 @@ export namespace TrunkedSystemResolvers {
     AND?: TrunkedCallFrequencyTimeWhereInput[] | null;
     OR?: TrunkedCallFrequencyTimeWhereInput[] | null;
     NOT?: TrunkedCallFrequencyTimeWhereInput[] | null;
+  }
+  export interface TranscriptionWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    callId?: TrunkedCallWhereInput | null;
+    languageModel?: string | null;
+    languageModel_not?: string | null;
+    languageModel_in?: string[] | null;
+    languageModel_not_in?: string[] | null;
+    languageModel_lt?: string | null;
+    languageModel_lte?: string | null;
+    languageModel_gt?: string | null;
+    languageModel_gte?: string | null;
+    languageModel_contains?: string | null;
+    languageModel_not_contains?: string | null;
+    languageModel_starts_with?: string | null;
+    languageModel_not_starts_with?: string | null;
+    languageModel_ends_with?: string | null;
+    languageModel_not_ends_with?: string | null;
+    beta?: number | null;
+    beta_not?: number | null;
+    beta_in?: number[] | null;
+    beta_not_in?: number[] | null;
+    beta_lt?: number | null;
+    beta_lte?: number | null;
+    beta_gt?: number | null;
+    beta_gte?: number | null;
+    body?: string | null;
+    body_not?: string | null;
+    body_in?: string[] | null;
+    body_not_in?: string[] | null;
+    body_lt?: string | null;
+    body_lte?: string | null;
+    body_gt?: string | null;
+    body_gte?: string | null;
+    body_contains?: string | null;
+    body_not_contains?: string | null;
+    body_starts_with?: string | null;
+    body_not_starts_with?: string | null;
+    body_ends_with?: string | null;
+    body_not_ends_with?: string | null;
+    words_every?: TranscriptionWordWhereInput | null;
+    words_some?: TranscriptionWordWhereInput | null;
+    words_none?: TranscriptionWordWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    alpha?: number | null;
+    alpha_not?: number | null;
+    alpha_in?: number[] | null;
+    alpha_not_in?: number[] | null;
+    alpha_lt?: number | null;
+    alpha_lte?: number | null;
+    alpha_gt?: number | null;
+    alpha_gte?: number | null;
+    AND?: TranscriptionWhereInput[] | null;
+    OR?: TranscriptionWhereInput[] | null;
+    NOT?: TranscriptionWhereInput[] | null;
+  }
+  export interface TranscriptionWordWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordWhereInput[] | null;
+    OR?: TranscriptionWordWhereInput[] | null;
+    NOT?: TranscriptionWordWhereInput[] | null;
   }
 
   export interface ArgsTalkgroups {
@@ -4554,6 +4923,1199 @@ export namespace TrunkedCallFrequencyTimeResolvers {
   }
 }
 
+export namespace TranscriptionResolvers {
+  export const defaultResolvers = {
+    id: (parent: Transcription) => parent.id,
+    languageModel: (parent: Transcription) => parent.languageModel,
+    beta: (parent: Transcription) => parent.beta,
+    body: (parent: Transcription) => parent.body,
+    duration: (parent: Transcription) => parent.duration,
+    alpha: (parent: Transcription) => parent.alpha
+  };
+
+  export interface TranscriptionWordWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordWhereInput[] | null;
+    OR?: TranscriptionWordWhereInput[] | null;
+    NOT?: TranscriptionWordWhereInput[] | null;
+  }
+  export interface TranscriptionWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    callId?: TrunkedCallWhereInput | null;
+    languageModel?: string | null;
+    languageModel_not?: string | null;
+    languageModel_in?: string[] | null;
+    languageModel_not_in?: string[] | null;
+    languageModel_lt?: string | null;
+    languageModel_lte?: string | null;
+    languageModel_gt?: string | null;
+    languageModel_gte?: string | null;
+    languageModel_contains?: string | null;
+    languageModel_not_contains?: string | null;
+    languageModel_starts_with?: string | null;
+    languageModel_not_starts_with?: string | null;
+    languageModel_ends_with?: string | null;
+    languageModel_not_ends_with?: string | null;
+    beta?: number | null;
+    beta_not?: number | null;
+    beta_in?: number[] | null;
+    beta_not_in?: number[] | null;
+    beta_lt?: number | null;
+    beta_lte?: number | null;
+    beta_gt?: number | null;
+    beta_gte?: number | null;
+    body?: string | null;
+    body_not?: string | null;
+    body_in?: string[] | null;
+    body_not_in?: string[] | null;
+    body_lt?: string | null;
+    body_lte?: string | null;
+    body_gt?: string | null;
+    body_gte?: string | null;
+    body_contains?: string | null;
+    body_not_contains?: string | null;
+    body_starts_with?: string | null;
+    body_not_starts_with?: string | null;
+    body_ends_with?: string | null;
+    body_not_ends_with?: string | null;
+    words_every?: TranscriptionWordWhereInput | null;
+    words_some?: TranscriptionWordWhereInput | null;
+    words_none?: TranscriptionWordWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    alpha?: number | null;
+    alpha_not?: number | null;
+    alpha_in?: number[] | null;
+    alpha_not_in?: number[] | null;
+    alpha_lt?: number | null;
+    alpha_lte?: number | null;
+    alpha_gt?: number | null;
+    alpha_gte?: number | null;
+    AND?: TranscriptionWhereInput[] | null;
+    OR?: TranscriptionWhereInput[] | null;
+    NOT?: TranscriptionWhereInput[] | null;
+  }
+  export interface TrunkedCallWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    startTime?: string | null;
+    startTime_not?: string | null;
+    startTime_in?: string[] | null;
+    startTime_not_in?: string[] | null;
+    startTime_lt?: string | null;
+    startTime_lte?: string | null;
+    startTime_gt?: string | null;
+    startTime_gte?: string | null;
+    endTime?: string | null;
+    endTime_not?: string | null;
+    endTime_in?: string[] | null;
+    endTime_not_in?: string[] | null;
+    endTime_lt?: string | null;
+    endTime_lte?: string | null;
+    endTime_gt?: string | null;
+    endTime_gte?: string | null;
+    emergency?: boolean | null;
+    emergency_not?: boolean | null;
+    talkgroup?: TrunkedTalkgroupWhereInput | null;
+    system?: TrunkedSystemWhereInput | null;
+    sources_every?: TrunkedCallSourceWhereInput | null;
+    sources_some?: TrunkedCallSourceWhereInput | null;
+    sources_none?: TrunkedCallSourceWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    source?: number | null;
+    source_not?: number | null;
+    source_in?: number[] | null;
+    source_not_in?: number[] | null;
+    source_lt?: number | null;
+    source_lte?: number | null;
+    source_gt?: number | null;
+    source_gte?: number | null;
+    audioPath?: string | null;
+    audioPath_not?: string | null;
+    audioPath_in?: string[] | null;
+    audioPath_not_in?: string[] | null;
+    audioPath_lt?: string | null;
+    audioPath_lte?: string | null;
+    audioPath_gt?: string | null;
+    audioPath_gte?: string | null;
+    audioPath_contains?: string | null;
+    audioPath_not_contains?: string | null;
+    audioPath_starts_with?: string | null;
+    audioPath_not_starts_with?: string | null;
+    audioPath_ends_with?: string | null;
+    audioPath_not_ends_with?: string | null;
+    frequencyList_every?: TrunkedCallFrequencyTimeWhereInput | null;
+    frequencyList_some?: TrunkedCallFrequencyTimeWhereInput | null;
+    frequencyList_none?: TrunkedCallFrequencyTimeWhereInput | null;
+    callHash?: string | null;
+    callHash_not?: string | null;
+    callHash_in?: string[] | null;
+    callHash_not_in?: string[] | null;
+    callHash_lt?: string | null;
+    callHash_lte?: string | null;
+    callHash_gt?: string | null;
+    callHash_gte?: string | null;
+    callHash_contains?: string | null;
+    callHash_not_contains?: string | null;
+    callHash_starts_with?: string | null;
+    callHash_not_starts_with?: string | null;
+    callHash_ends_with?: string | null;
+    callHash_not_ends_with?: string | null;
+    wavPath?: string | null;
+    wavPath_not?: string | null;
+    wavPath_in?: string[] | null;
+    wavPath_not_in?: string[] | null;
+    wavPath_lt?: string | null;
+    wavPath_lte?: string | null;
+    wavPath_gt?: string | null;
+    wavPath_gte?: string | null;
+    wavPath_contains?: string | null;
+    wavPath_not_contains?: string | null;
+    wavPath_starts_with?: string | null;
+    wavPath_not_starts_with?: string | null;
+    wavPath_ends_with?: string | null;
+    wavPath_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    remotePath?: string | null;
+    remotePath_not?: string | null;
+    remotePath_in?: string[] | null;
+    remotePath_not_in?: string[] | null;
+    remotePath_lt?: string | null;
+    remotePath_lte?: string | null;
+    remotePath_gt?: string | null;
+    remotePath_gte?: string | null;
+    remotePath_contains?: string | null;
+    remotePath_not_contains?: string | null;
+    remotePath_starts_with?: string | null;
+    remotePath_not_starts_with?: string | null;
+    remotePath_ends_with?: string | null;
+    remotePath_not_ends_with?: string | null;
+    AND?: TrunkedCallWhereInput[] | null;
+    OR?: TrunkedCallWhereInput[] | null;
+    NOT?: TrunkedCallWhereInput[] | null;
+  }
+  export interface TrunkedTalkgroupWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    decimal?: number | null;
+    decimal_not?: number | null;
+    decimal_in?: number[] | null;
+    decimal_not_in?: number[] | null;
+    decimal_lt?: number | null;
+    decimal_lte?: number | null;
+    decimal_gt?: number | null;
+    decimal_gte?: number | null;
+    mode?: string | null;
+    mode_not?: string | null;
+    mode_in?: string[] | null;
+    mode_not_in?: string[] | null;
+    mode_lt?: string | null;
+    mode_lte?: string | null;
+    mode_gt?: string | null;
+    mode_gte?: string | null;
+    mode_contains?: string | null;
+    mode_not_contains?: string | null;
+    mode_starts_with?: string | null;
+    mode_not_starts_with?: string | null;
+    mode_ends_with?: string | null;
+    mode_not_ends_with?: string | null;
+    alphaTag?: string | null;
+    alphaTag_not?: string | null;
+    alphaTag_in?: string[] | null;
+    alphaTag_not_in?: string[] | null;
+    alphaTag_lt?: string | null;
+    alphaTag_lte?: string | null;
+    alphaTag_gt?: string | null;
+    alphaTag_gte?: string | null;
+    alphaTag_contains?: string | null;
+    alphaTag_not_contains?: string | null;
+    alphaTag_starts_with?: string | null;
+    alphaTag_not_starts_with?: string | null;
+    alphaTag_ends_with?: string | null;
+    alphaTag_not_ends_with?: string | null;
+    description?: string | null;
+    description_not?: string | null;
+    description_in?: string[] | null;
+    description_not_in?: string[] | null;
+    description_lt?: string | null;
+    description_lte?: string | null;
+    description_gt?: string | null;
+    description_gte?: string | null;
+    description_contains?: string | null;
+    description_not_contains?: string | null;
+    description_starts_with?: string | null;
+    description_not_starts_with?: string | null;
+    description_ends_with?: string | null;
+    description_not_ends_with?: string | null;
+    tag?: string | null;
+    tag_not?: string | null;
+    tag_in?: string[] | null;
+    tag_not_in?: string[] | null;
+    tag_lt?: string | null;
+    tag_lte?: string | null;
+    tag_gt?: string | null;
+    tag_gte?: string | null;
+    tag_contains?: string | null;
+    tag_not_contains?: string | null;
+    tag_starts_with?: string | null;
+    tag_not_starts_with?: string | null;
+    tag_ends_with?: string | null;
+    tag_not_ends_with?: string | null;
+    group?: string | null;
+    group_not?: string | null;
+    group_in?: string[] | null;
+    group_not_in?: string[] | null;
+    group_lt?: string | null;
+    group_lte?: string | null;
+    group_gt?: string | null;
+    group_gte?: string | null;
+    group_contains?: string | null;
+    group_not_contains?: string | null;
+    group_starts_with?: string | null;
+    group_not_starts_with?: string | null;
+    group_ends_with?: string | null;
+    group_not_ends_with?: string | null;
+    priority?: number | null;
+    priority_not?: number | null;
+    priority_in?: number[] | null;
+    priority_not_in?: number[] | null;
+    priority_lt?: number | null;
+    priority_lte?: number | null;
+    priority_gt?: number | null;
+    priority_gte?: number | null;
+    system?: TrunkedSystemWhereInput | null;
+    calls_every?: TrunkedCallWhereInput | null;
+    calls_some?: TrunkedCallWhereInput | null;
+    calls_none?: TrunkedCallWhereInput | null;
+    hash?: string | null;
+    hash_not?: string | null;
+    hash_in?: string[] | null;
+    hash_not_in?: string[] | null;
+    hash_lt?: string | null;
+    hash_lte?: string | null;
+    hash_gt?: string | null;
+    hash_gte?: string | null;
+    hash_contains?: string | null;
+    hash_not_contains?: string | null;
+    hash_starts_with?: string | null;
+    hash_not_starts_with?: string | null;
+    hash_ends_with?: string | null;
+    hash_not_ends_with?: string | null;
+    AND?: TrunkedTalkgroupWhereInput[] | null;
+    OR?: TrunkedTalkgroupWhereInput[] | null;
+    NOT?: TrunkedTalkgroupWhereInput[] | null;
+  }
+  export interface TrunkedSystemWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    type?: TrunkedSystemType | null;
+    type_not?: TrunkedSystemType | null;
+    type_in?: TrunkedSystemType[] | null;
+    type_not_in?: TrunkedSystemType[] | null;
+    talkgroups_every?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_some?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_none?: TrunkedTalkgroupWhereInput | null;
+    recordUnknown?: boolean | null;
+    recordUnknown_not?: boolean | null;
+    shortName?: string | null;
+    shortName_not?: string | null;
+    shortName_in?: string[] | null;
+    shortName_not_in?: string[] | null;
+    shortName_lt?: string | null;
+    shortName_lte?: string | null;
+    shortName_gt?: string | null;
+    shortName_gte?: string | null;
+    shortName_contains?: string | null;
+    shortName_not_contains?: string | null;
+    shortName_starts_with?: string | null;
+    shortName_not_starts_with?: string | null;
+    shortName_ends_with?: string | null;
+    shortName_not_ends_with?: string | null;
+    uploadScript?: string | null;
+    uploadScript_not?: string | null;
+    uploadScript_in?: string[] | null;
+    uploadScript_not_in?: string[] | null;
+    uploadScript_lt?: string | null;
+    uploadScript_lte?: string | null;
+    uploadScript_gt?: string | null;
+    uploadScript_gte?: string | null;
+    uploadScript_contains?: string | null;
+    uploadScript_not_contains?: string | null;
+    uploadScript_starts_with?: string | null;
+    uploadScript_not_starts_with?: string | null;
+    uploadScript_ends_with?: string | null;
+    uploadScript_not_ends_with?: string | null;
+    audioArchive?: boolean | null;
+    audioArchive_not?: boolean | null;
+    callLog?: boolean | null;
+    callLog_not?: boolean | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplan_not?: TrunkedSmartnetBandplan | null;
+    bandplan_in?: TrunkedSmartnetBandplan[] | null;
+    bandplan_not_in?: TrunkedSmartnetBandplan[] | null;
+    bandplanBase?: number | null;
+    bandplanBase_not?: number | null;
+    bandplanBase_in?: number[] | null;
+    bandplanBase_not_in?: number[] | null;
+    bandplanBase_lt?: number | null;
+    bandplanBase_lte?: number | null;
+    bandplanBase_gt?: number | null;
+    bandplanBase_gte?: number | null;
+    bandplanHigh?: number | null;
+    bandplanHigh_not?: number | null;
+    bandplanHigh_in?: number[] | null;
+    bandplanHigh_not_in?: number[] | null;
+    bandplanHigh_lt?: number | null;
+    bandplanHigh_lte?: number | null;
+    bandplanHigh_gt?: number | null;
+    bandplanHigh_gte?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanSpacing_not?: number | null;
+    bandplanSpacing_in?: number[] | null;
+    bandplanSpacing_not_in?: number[] | null;
+    bandplanSpacing_lt?: number | null;
+    bandplanSpacing_lte?: number | null;
+    bandplanSpacing_gt?: number | null;
+    bandplanSpacing_gte?: number | null;
+    bandplanOffset?: number | null;
+    bandplanOffset_not?: number | null;
+    bandplanOffset_in?: number[] | null;
+    bandplanOffset_not_in?: number[] | null;
+    bandplanOffset_lt?: number | null;
+    bandplanOffset_lte?: number | null;
+    bandplanOffset_gt?: number | null;
+    bandplanOffset_gte?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_not?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    talkgroupDisplayFormat_not_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    delayCreateOutput?: boolean | null;
+    delayCreateOutput_not?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideEncrypted_not?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+    hideUnknownTalkgroups_not?: boolean | null;
+    calls_every?: TrunkedCallWhereInput | null;
+    calls_some?: TrunkedCallWhereInput | null;
+    calls_none?: TrunkedCallWhereInput | null;
+    AND?: TrunkedSystemWhereInput[] | null;
+    OR?: TrunkedSystemWhereInput[] | null;
+    NOT?: TrunkedSystemWhereInput[] | null;
+  }
+  export interface TrunkedCallSourceWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    sourceId?: number | null;
+    sourceId_not?: number | null;
+    sourceId_in?: number[] | null;
+    sourceId_not_in?: number[] | null;
+    sourceId_lt?: number | null;
+    sourceId_lte?: number | null;
+    sourceId_gt?: number | null;
+    sourceId_gte?: number | null;
+    time?: string | null;
+    time_not?: string | null;
+    time_in?: string[] | null;
+    time_not_in?: string[] | null;
+    time_lt?: string | null;
+    time_lte?: string | null;
+    time_gt?: string | null;
+    time_gte?: string | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    AND?: TrunkedCallSourceWhereInput[] | null;
+    OR?: TrunkedCallSourceWhereInput[] | null;
+    NOT?: TrunkedCallSourceWhereInput[] | null;
+  }
+  export interface TrunkedCallFrequencyTimeWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    time?: number | null;
+    time_not?: number | null;
+    time_in?: number[] | null;
+    time_not_in?: number[] | null;
+    time_lt?: number | null;
+    time_lte?: number | null;
+    time_gt?: number | null;
+    time_gte?: number | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    length?: number | null;
+    length_not?: number | null;
+    length_in?: number[] | null;
+    length_not_in?: number[] | null;
+    length_lt?: number | null;
+    length_lte?: number | null;
+    length_gt?: number | null;
+    length_gte?: number | null;
+    errors?: number | null;
+    errors_not?: number | null;
+    errors_in?: number[] | null;
+    errors_not_in?: number[] | null;
+    errors_lt?: number | null;
+    errors_lte?: number | null;
+    errors_gt?: number | null;
+    errors_gte?: number | null;
+    spikes?: number | null;
+    spikes_not?: number | null;
+    spikes_in?: number[] | null;
+    spikes_not_in?: number[] | null;
+    spikes_lt?: number | null;
+    spikes_lte?: number | null;
+    spikes_gt?: number | null;
+    spikes_gte?: number | null;
+    AND?: TrunkedCallFrequencyTimeWhereInput[] | null;
+    OR?: TrunkedCallFrequencyTimeWhereInput[] | null;
+    NOT?: TrunkedCallFrequencyTimeWhereInput[] | null;
+  }
+
+  export interface ArgsWords {
+    where?: TranscriptionWordWhereInput | null;
+    orderBy?: TranscriptionWordOrderByInput | null;
+    skip?: number | null;
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+  }
+
+  export type IdResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type CallIdResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedCall | Promise<TrunkedCall>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedCall | Promise<TrunkedCall>;
+      };
+
+  export type LanguageModelResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type BetaResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type BodyResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type WordsResolver =
+    | ((
+        parent: Transcription,
+        args: ArgsWords,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TranscriptionWord[] | null | Promise<TranscriptionWord[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: ArgsWords,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TranscriptionWord[] | null | Promise<TranscriptionWord[] | null>;
+      };
+
+  export type DurationResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type AlphaResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    callId:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedCall | Promise<TrunkedCall>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedCall | Promise<TrunkedCall>;
+        };
+
+    languageModel:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    beta:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    body:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    words:
+      | ((
+          parent: Transcription,
+          args: ArgsWords,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TranscriptionWord[] | null | Promise<TranscriptionWord[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: ArgsWords,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TranscriptionWord[] | null | Promise<TranscriptionWord[] | null>;
+        };
+
+    duration:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    alpha:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+  }
+}
+
+export namespace TranscriptionWordResolvers {
+  export const defaultResolvers = {
+    id: (parent: TranscriptionWord) => parent.id,
+    text: (parent: TranscriptionWord) => parent.text,
+    confidence: (parent: TranscriptionWord) => parent.confidence,
+    end: (parent: TranscriptionWord) => parent.end,
+    start: (parent: TranscriptionWord) => parent.start
+  };
+
+  export type IdResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type TranscriptionResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Transcription | null | Promise<Transcription | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Transcription | null | Promise<Transcription | null>;
+      };
+
+  export type TextResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type ConfidenceResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type EndResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type StartResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    transcription:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Transcription | null | Promise<Transcription | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Transcription | null | Promise<Transcription | null>;
+        };
+
+    text:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    confidence:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    end:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    start:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+  }
+}
+
 export namespace SubscriptionResolvers {
   export const defaultResolvers = {};
 
@@ -4601,6 +6163,8 @@ export interface Resolvers {
   TrunkedSystem: TrunkedSystemResolvers.Type;
   TrunkedCallSource: TrunkedCallSourceResolvers.Type;
   TrunkedCallFrequencyTime: TrunkedCallFrequencyTimeResolvers.Type;
+  Transcription: TranscriptionResolvers.Type;
+  TranscriptionWord: TranscriptionWordResolvers.Type;
   Subscription: SubscriptionResolvers.Type;
 }
 

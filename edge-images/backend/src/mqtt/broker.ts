@@ -14,8 +14,7 @@ export async function connect() {
   try {
     client = await mqtt.connect(mqttServer, {
       username: process.env.MQTT_USERNAME,
-      password: process.env.MQTT_PASSWORD,
-      clientId: `ss-backend-${process.env.BALENA_DEVICE_UUID || hostname()}-${new Date().getMilliseconds}`,
+      password: process.env.MQTT_PASSWORD
     });
   } catch (e) {
     log.emerg("Could not connect to local MQTT server @ " + mqttServer, e);
@@ -31,7 +30,7 @@ export async function connect() {
     log.error(`Closed connection to local MQTT server @ ${mqttServer}`);
   });
 
-  client.on("error", (e) => {
+  client.on("error", e => {
     log.error("MQTT client error", e);
   });
 }
@@ -39,10 +38,10 @@ export async function connect() {
 export async function publish(
   topic: string,
   message: string | Buffer,
-  qos?: QoS,
+  qos?: QoS
 ) {
   const defaultOptions: IClientPublishOptions = {
-    qos: qos || 0,
+    qos: qos || 0
   };
   try {
     return client.publish(topic, message, defaultOptions);

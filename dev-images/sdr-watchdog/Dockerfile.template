@@ -1,5 +1,7 @@
 FROM ubuntu:xenial
 
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+
 RUN apt-get update && \
   apt-get install -y software-properties-common --no-install-recommends && \
   add-apt-repository -y ppa:bladerf/bladerf && \
@@ -10,14 +12,16 @@ RUN apt-get update && \
   apt-get update && \
   apt-get install -y --no-install-recommends \
   bladerf \
-  nodejs \
+  build-essential \
+  libcairo2 \
   libbladerf-dev \
   librtlsdr-dev \
-  yarn \
-  python-dev \
-  python3-soapysdr \
+  pkg-config \
+  python3-dev \
   python3 \
-  build-essential \
+  python3-pip \
+  python3-setuptools \
+  python3-soapysdr \
   rtl-sdr \
   soapysdr-module-bladerf \
   soapysdr-module-rtlsdr \
@@ -25,8 +29,12 @@ RUN apt-get update && \
   swig && \
   rm -rf /var/apt/lists/*
 
+RUN pip3 install --upgrade pip
+
 WORKDIR /usr/app
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 COPY *.py .
+
+RUN python main.py

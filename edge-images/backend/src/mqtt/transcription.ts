@@ -1,10 +1,13 @@
 import { AsyncMqttClient } from "async-mqtt";
-
-import { prisma, Transcription } from "../graphql/generated/prisma-client";
+import {
+  prisma,
+  TranscriptionWordCreateInput,
+} from "../graphql/generated/prisma-client";
+import { TranscriptionCreateWithoutCallIdInput } from "../graphql/generated/prisma-client/index";
 import log from "../log";
 import {
   ApplicationListener,
-  ApplicationMessageHandler
+  ApplicationMessageHandler,
 } from "./applicationListener";
 
 const rootTopic = "transcription";
@@ -13,40 +16,73 @@ export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
     rootTopic,
     client,
-    new TranscriptionHandler(rootTopic)
+    new TranscriptionHandler(rootTopic),
   );
   return l.listen();
 };
 
 class TranscriptionHandler extends ApplicationMessageHandler {
   public callback = async (topic: string, payload: any, packet: any) => {
-    if (!topic.indexOf("result")) {
+    if (!topic.indexOf("transcribed")) {
       return;
     }
     log.info(
-      `Transcription: processing on topic ${topic} ${
-        Buffer.from(payload).length
-      }`
+      `Transcription: received on topic ${topic} ${Buffer.from(payload).length}`,
     );
 
-    let parsed: Transcription;
+    let parsed: any;
 
     try {
-      parsed = JSON.parse(payload) as Transcription;
+      parsed = JSON.parse(payload) as any;
+      if (parsed.words.length === 0 || parsed.languageModel === "") {
+        return;
+      }
     } catch {
       log.error(
         new Error(`Malformed JSON received on MQTT topic ${topic}:
 
-      ${payload.toString()}`)
+      ${payload.toString()}`),
       );
       return;
     }
 
-    await prisma.updateTrunkedCall({
-      data: { transcription: { create: parsed } },
-      where: { id: parsed.id }
-    });
+    const createWordsInput: TranscriptionWordCreateInput[] = parsed.words
+      ? parsed.words.map((word: any) => {
+          const w: TranscriptionWordCreateInput = {
+            confidence: word.confidence,
+            end: word.end,
+            start: word.start,
+            text: word.text,
+          };
+          return w;
+        })
+      : [];
 
-    log.debug("Added a transcription to " + parsed.id);
-  };
+    const createTranscriptionInput: TranscriptionCreateWithoutCallIdInput = {
+      body: parsed.body,
+      duration: parsed.duration,
+      alpha: parsed.alpha,
+      beta: parsed.beta,
+      languageModel: parsed.languageModel || "",
+      words: { create: createWordsInput },
+    };
+
+    try {
+      await prisma.updateTrunkedCall({
+        where: { id: parsed.callId },
+        data: { transcription: { create: createTranscriptionInput } },
+      });
+    } catch (e) {
+      log.error(
+        `Error adding transcript to trunked call \n ${JSON.stringify(
+          createTranscriptionInput,
+          null,
+          2,
+        )}`,
+        e,
+      );
+    }
+
+    log.debug("Added a transcription to " + parsed.callId);
+  }
 }

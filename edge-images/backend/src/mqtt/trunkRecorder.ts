@@ -117,9 +117,9 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
         update: {},
       });
 
-      await processTrunkedVoice(c).catch((e) => {
-        log.error(e);
-      });
+      return processTrunkedVoice(c).then(() =>
+        log.info(`Requested transcription for ${c.id}`),
+      );
     } catch (e) {
       throw e;
     }

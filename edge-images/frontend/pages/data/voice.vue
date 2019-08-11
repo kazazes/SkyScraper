@@ -50,7 +50,10 @@
                 >{{ formatFrequency(selected.frequency) }}</span>
                 <v-flex>
                   <h5 class="caption">Transcription:</h5>
-                  <code class="code" v-text="selected.transcription ? selected.transcription.body : 'Processing...'"></code>
+                  <code
+                    class="code"
+                    v-text="selected.transcription ? selected.transcription.body : 'Processing...'"
+                  ></code>
                 </v-flex>
               </v-card-text>
               <v-card-text v-else style="min-height: 200px;"></v-card-text>
@@ -100,7 +103,7 @@
             <div v-if="data || loading" class="result apollo">
               <v-card-text>
                 <v-data-table
-                  :items="data.trunkedCalls || []"
+                  :items="data ? data.trunkedCalls : []"
                   :headers="headers"
                   :rows-per-page-items="[25,50,100]"
                   :loading="loading"

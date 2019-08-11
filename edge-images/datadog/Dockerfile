@@ -33,9 +33,11 @@ RUN ln -s /usr/app/build/agent/dist/ /etc/datadog-agent
 
 RUN mkdir /etc/datadog-agent/conf.d/disk.d
 RUN mkdir /etc/datadog-agent/conf.d/network.d
+RUN mkdir /etc/datadog-agent/conf.d/nginx.d
 
 RUN ln -s /usr/app/files/disk.yaml /etc/datadog-agent/conf.d/disk.d/conf.yaml.default
 RUN ln -s /usr/app/files/network.yaml /etc/datadog-agent/conf.d/network.d/conf.yaml.default
+RUN ln -s /usr/app/files/nginx.yaml /etc/datadog-agent/conf.d/nginx.d/conf.yaml.default
 
 RUN install_packages sysstat python libpython2.7
 

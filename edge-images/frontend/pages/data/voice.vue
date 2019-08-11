@@ -25,16 +25,16 @@
           </v-btn>
         </v-btn-toggle>
       </v-flex>
-      <v-flex xs12 v-if="selected">
+      <v-flex xs12>
         <v-layout row align-start justify-start wrap>
           <v-flex md8 px-3 mt-2>
             <v-card>
               <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
                 <h4
-                  class="subtitle mt-2 pl-2"
-                >{{ (selected.talkgroup && selected.talkgroup.description) || "Loading..."}}</h4>
+                  class="subtitle mt-2"
+                >{{ selected ? selected.talkgroup.description : "Loading..."}}</h4>
               </v-card-title>
-              <v-card-text v-if="selected.startTime">
+              <v-card-text v-if="selected">
                 {{selected.talkgroup.alphaTag}} @
                 {{formatDate(selected.startTime)}} on
                 <span
@@ -51,6 +51,7 @@
               <v-card-text v-else style="min-height: 200px;"></v-card-text>
               <v-card-actions class="mx-0 px-0 pb-0">
                 <Player
+                  v-if="selected"
                   :toggleAutoPlay="toggleAutoPlay"
                   :file="'https://edge.sibyl.vision' + selected.audioPath"
                   v-on:play-live-audio="playLiveAudio"

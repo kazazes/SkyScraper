@@ -116,11 +116,7 @@ export type TranscriptionWordOrderByInput =
   | "end_ASC"
   | "end_DESC"
   | "start_ASC"
-  | "start_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC";
+  | "start_DESC";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -688,7 +684,7 @@ export namespace QueryResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    callId?: TrunkedCallWhereInput | null;
+    call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
     languageModel_in?: string[] | null;
@@ -763,7 +759,6 @@ export namespace QueryResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    transcription?: TranscriptionWhereInput | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -778,6 +773,7 @@ export namespace QueryResolvers {
     text_not_starts_with?: string | null;
     text_ends_with?: string | null;
     text_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     confidence?: number | null;
     confidence_not?: number | null;
     confidence_in?: number[] | null;
@@ -2253,7 +2249,7 @@ export namespace TrunkedTalkgroupResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    callId?: TrunkedCallWhereInput | null;
+    call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
     languageModel_in?: string[] | null;
@@ -2328,7 +2324,6 @@ export namespace TrunkedTalkgroupResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    transcription?: TranscriptionWhereInput | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -2343,6 +2338,7 @@ export namespace TrunkedTalkgroupResolvers {
     text_not_starts_with?: string | null;
     text_ends_with?: string | null;
     text_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     confidence?: number | null;
     confidence_not?: number | null;
     confidence_in?: number[] | null;
@@ -3433,7 +3429,7 @@ export namespace TrunkedSystemResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    callId?: TrunkedCallWhereInput | null;
+    call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
     languageModel_in?: string[] | null;
@@ -3508,7 +3504,6 @@ export namespace TrunkedSystemResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    transcription?: TranscriptionWhereInput | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -3523,6 +3518,7 @@ export namespace TrunkedSystemResolvers {
     text_not_starts_with?: string | null;
     text_ends_with?: string | null;
     text_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     confidence?: number | null;
     confidence_not?: number | null;
     confidence_in?: number[] | null;
@@ -4952,7 +4948,6 @@ export namespace TranscriptionResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    transcription?: TranscriptionWhereInput | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -4967,6 +4962,7 @@ export namespace TranscriptionResolvers {
     text_not_starts_with?: string | null;
     text_ends_with?: string | null;
     text_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
     confidence?: number | null;
     confidence_not?: number | null;
     confidence_in?: number[] | null;
@@ -5010,7 +5006,7 @@ export namespace TranscriptionResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
-    callId?: TrunkedCallWhereInput | null;
+    call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
     languageModel_in?: string[] | null;
@@ -5646,7 +5642,7 @@ export namespace TranscriptionResolvers {
         ) => string | Promise<string>;
       };
 
-  export type CallIdResolver =
+  export type CallResolver =
     | ((
         parent: Transcription,
         args: {},
@@ -5783,7 +5779,7 @@ export namespace TranscriptionResolvers {
           ) => string | Promise<string>;
         };
 
-    callId:
+    call:
       | ((
           parent: Transcription,
           args: {},
@@ -5930,23 +5926,6 @@ export namespace TranscriptionWordResolvers {
         ) => string | Promise<string>;
       };
 
-  export type TranscriptionResolver =
-    | ((
-        parent: TranscriptionWord,
-        args: {},
-        ctx: Context,
-        info: GraphQLResolveInfo
-      ) => Transcription | null | Promise<Transcription | null>)
-    | {
-        fragment: string;
-        resolve: (
-          parent: TranscriptionWord,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => Transcription | null | Promise<Transcription | null>;
-      };
-
   export type TextResolver =
     | ((
         parent: TranscriptionWord,
@@ -5962,6 +5941,23 @@ export namespace TranscriptionWordResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => string | Promise<string>;
+      };
+
+  export type TranscriptionResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Transcription | Promise<Transcription>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Transcription | Promise<Transcription>;
       };
 
   export type ConfidenceResolver =
@@ -6033,23 +6029,6 @@ export namespace TranscriptionWordResolvers {
           ) => string | Promise<string>;
         };
 
-    transcription:
-      | ((
-          parent: TranscriptionWord,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => Transcription | null | Promise<Transcription | null>)
-      | {
-          fragment: string;
-          resolve: (
-            parent: TranscriptionWord,
-            args: {},
-            ctx: Context,
-            info: GraphQLResolveInfo
-          ) => Transcription | null | Promise<Transcription | null>;
-        };
-
     text:
       | ((
           parent: TranscriptionWord,
@@ -6065,6 +6044,23 @@ export namespace TranscriptionWordResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => string | Promise<string>;
+        };
+
+    transcription:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Transcription | Promise<Transcription>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => Transcription | Promise<Transcription>;
         };
 
     confidence:
@@ -6140,8 +6136,42 @@ export namespace SubscriptionResolvers {
     ) => TrunkedCall | null | Promise<TrunkedCall | null>;
   };
 
+  export type UpdatedCallsResolver = {
+    subscribe: (
+      parent: undefined,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) =>
+      | AsyncIterator<TrunkedCall | null>
+      | Promise<AsyncIterator<TrunkedCall | null>>;
+    resolve?: (
+      parent: undefined,
+      args: {},
+      ctx: Context,
+      info: GraphQLResolveInfo
+    ) => TrunkedCall | null | Promise<TrunkedCall | null>;
+  };
+
   export interface Type {
     trunkedCalls: {
+      subscribe: (
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) =>
+        | AsyncIterator<TrunkedCall | null>
+        | Promise<AsyncIterator<TrunkedCall | null>>;
+      resolve?: (
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedCall | null | Promise<TrunkedCall | null>;
+    };
+
+    updatedCalls: {
       subscribe: (
         parent: undefined,
         args: {},

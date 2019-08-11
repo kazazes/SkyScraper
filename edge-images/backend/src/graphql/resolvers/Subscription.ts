@@ -8,13 +8,26 @@ export const Subscription: SubscriptionResolvers.Type = {
   trunkedCalls: {
     subscribe: (parent, args, ctx: Context) => {
       return ctx.prisma.$subscribe
+        .trunkedCall({ mutation_in: ["CREATED"] })
+        .node();
+    },
+    resolve: (payload) => {
+      return payload;
+    },
+  },
+  updatedCalls: {
+    subscribe: (parent, args, ctx: Context) => {
+      return ctx.prisma.$subscribe
         .trunkedCall({
-          mutation_in: ["CREATED", "UPDATED"]
+          AND: {
+            updatedFields_contains_every: "transcription.body",
+            node: { transcription: { body_not: null } },
+          },
         })
         .node();
     },
-    resolve: payload => {
+    resolve: (payload) => {
       return payload;
-    }
-  }
+    },
+  },
 };

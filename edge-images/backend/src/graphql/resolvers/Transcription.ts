@@ -6,10 +6,10 @@ import { TranscriptionResolvers } from "../generated/graphqlgen";
 export const Transcription: TranscriptionResolvers.Type = {
   ...TranscriptionResolvers.defaultResolvers,
 
-  callId: (parent, args, {prisma}) => {
-    return prisma.transcription({ id: parent.id }).callId();
+  call: (parent, args, { prisma }) => {
+    return prisma.transcription({ id: parent.id }).call();
   },
-  words: (parent, args, {prisma}) => {
+  words: (parent, args, { prisma }) => {
     return prisma.transcription({ id: parent.id }).words();
-  }
+  },
 };

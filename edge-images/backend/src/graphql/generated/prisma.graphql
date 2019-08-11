@@ -79,10 +79,6 @@ enum Dump1090AircraftOrderByInput {
   id_DESC
   IcaoID_ASC
   IcaoID_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type Dump1090AircraftPreviousValues {
@@ -261,10 +257,6 @@ enum Dump1090MessageOrderByInput {
   callsign_DESC
   altitude_ASC
   altitude_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type Dump1090MessagePreviousValues {
@@ -650,7 +642,7 @@ type Subscription {
 
 type Transcription {
   id: ID!
-  callId: TrunkedCall!
+  call: TrunkedCall!
   languageModel: String!
   beta: Float!
   body: String!
@@ -667,7 +659,7 @@ type TranscriptionConnection {
 
 input TranscriptionCreateInput {
   id: ID
-  callId: TrunkedCallCreateOneWithoutTranscriptionInput!
+  call: TrunkedCallCreateOneWithoutTranscriptionInput!
   languageModel: String!
   beta: Float!
   body: String!
@@ -676,8 +668,8 @@ input TranscriptionCreateInput {
   alpha: Float!
 }
 
-input TranscriptionCreateOneWithoutCallIdInput {
-  create: TranscriptionCreateWithoutCallIdInput
+input TranscriptionCreateOneWithoutCallInput {
+  create: TranscriptionCreateWithoutCallInput
   connect: TranscriptionWhereUniqueInput
 }
 
@@ -686,7 +678,7 @@ input TranscriptionCreateOneWithoutWordsInput {
   connect: TranscriptionWhereUniqueInput
 }
 
-input TranscriptionCreateWithoutCallIdInput {
+input TranscriptionCreateWithoutCallInput {
   id: ID
   languageModel: String!
   beta: Float!
@@ -698,7 +690,7 @@ input TranscriptionCreateWithoutCallIdInput {
 
 input TranscriptionCreateWithoutWordsInput {
   id: ID
-  callId: TrunkedCallCreateOneWithoutTranscriptionInput!
+  call: TrunkedCallCreateOneWithoutTranscriptionInput!
   languageModel: String!
   beta: Float!
   body: String!
@@ -724,10 +716,6 @@ enum TranscriptionOrderByInput {
   duration_DESC
   alpha_ASC
   alpha_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type TranscriptionPreviousValues {
@@ -758,7 +746,7 @@ input TranscriptionSubscriptionWhereInput {
 }
 
 input TranscriptionUpdateInput {
-  callId: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
+  call: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
   languageModel: String
   beta: Float
   body: String
@@ -775,25 +763,23 @@ input TranscriptionUpdateManyMutationInput {
   alpha: Float
 }
 
-input TranscriptionUpdateOneWithoutCallIdInput {
-  create: TranscriptionCreateWithoutCallIdInput
-  update: TranscriptionUpdateWithoutCallIdDataInput
-  upsert: TranscriptionUpsertWithoutCallIdInput
-  delete: Boolean
-  disconnect: Boolean
-  connect: TranscriptionWhereUniqueInput
-}
-
-input TranscriptionUpdateOneWithoutWordsInput {
+input TranscriptionUpdateOneRequiredWithoutWordsInput {
   create: TranscriptionCreateWithoutWordsInput
   update: TranscriptionUpdateWithoutWordsDataInput
   upsert: TranscriptionUpsertWithoutWordsInput
+  connect: TranscriptionWhereUniqueInput
+}
+
+input TranscriptionUpdateOneWithoutCallInput {
+  create: TranscriptionCreateWithoutCallInput
+  update: TranscriptionUpdateWithoutCallDataInput
+  upsert: TranscriptionUpsertWithoutCallInput
   delete: Boolean
   disconnect: Boolean
   connect: TranscriptionWhereUniqueInput
 }
 
-input TranscriptionUpdateWithoutCallIdDataInput {
+input TranscriptionUpdateWithoutCallDataInput {
   languageModel: String
   beta: Float
   body: String
@@ -803,7 +789,7 @@ input TranscriptionUpdateWithoutCallIdDataInput {
 }
 
 input TranscriptionUpdateWithoutWordsDataInput {
-  callId: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
+  call: TrunkedCallUpdateOneRequiredWithoutTranscriptionInput
   languageModel: String
   beta: Float
   body: String
@@ -811,9 +797,9 @@ input TranscriptionUpdateWithoutWordsDataInput {
   alpha: Float
 }
 
-input TranscriptionUpsertWithoutCallIdInput {
-  update: TranscriptionUpdateWithoutCallIdDataInput!
-  create: TranscriptionCreateWithoutCallIdInput!
+input TranscriptionUpsertWithoutCallInput {
+  update: TranscriptionUpdateWithoutCallDataInput!
+  create: TranscriptionCreateWithoutCallInput!
 }
 
 input TranscriptionUpsertWithoutWordsInput {
@@ -836,7 +822,7 @@ input TranscriptionWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  callId: TrunkedCallWhereInput
+  call: TrunkedCallWhereInput
   languageModel: String
   languageModel_not: String
   languageModel_in: [String!]
@@ -903,8 +889,8 @@ input TranscriptionWhereUniqueInput {
 
 type TranscriptionWord {
   id: ID!
-  transcription: Transcription
   text: String!
+  transcription: Transcription!
   confidence: Float!
   end: Int!
   start: Int!
@@ -918,8 +904,8 @@ type TranscriptionWordConnection {
 
 input TranscriptionWordCreateInput {
   id: ID
-  transcription: TranscriptionCreateOneWithoutWordsInput
   text: String!
+  transcription: TranscriptionCreateOneWithoutWordsInput!
   confidence: Float!
   end: Int!
   start: Int!
@@ -954,10 +940,6 @@ enum TranscriptionWordOrderByInput {
   end_DESC
   start_ASC
   start_DESC
-  createdAt_ASC
-  createdAt_DESC
-  updatedAt_ASC
-  updatedAt_DESC
 }
 
 type TranscriptionWordPreviousValues {
@@ -1045,8 +1027,8 @@ input TranscriptionWordSubscriptionWhereInput {
 }
 
 input TranscriptionWordUpdateInput {
-  transcription: TranscriptionUpdateOneWithoutWordsInput
   text: String
+  transcription: TranscriptionUpdateOneRequiredWithoutWordsInput
   confidence: Float
   end: Int
   start: Int
@@ -1116,7 +1098,6 @@ input TranscriptionWordWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
-  transcription: TranscriptionWhereInput
   text: String
   text_not: String
   text_in: [String!]
@@ -1131,6 +1112,7 @@ input TranscriptionWordWhereInput {
   text_not_starts_with: String
   text_ends_with: String
   text_not_ends_with: String
+  transcription: TranscriptionWhereInput
   confidence: Float
   confidence_not: Float
   confidence_in: [Float!]
@@ -1206,7 +1188,7 @@ input TrunkedCallCreateInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionCreateOneWithoutCallIdInput
+  transcription: TranscriptionCreateOneWithoutCallInput
   remotePath: String
 }
 
@@ -1239,7 +1221,7 @@ input TrunkedCallCreateWithoutSystemInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionCreateOneWithoutCallIdInput
+  transcription: TranscriptionCreateOneWithoutCallInput
   remotePath: String
 }
 
@@ -1257,7 +1239,7 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionCreateOneWithoutCallIdInput
+  transcription: TranscriptionCreateOneWithoutCallInput
   remotePath: String
 }
 
@@ -2070,7 +2052,7 @@ input TrunkedCallUpdateInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionUpdateOneWithoutCallIdInput
+  transcription: TranscriptionUpdateOneWithoutCallInput
   remotePath: String
 }
 
@@ -2149,7 +2131,7 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionUpdateOneWithoutCallIdInput
+  transcription: TranscriptionUpdateOneWithoutCallInput
   remotePath: String
 }
 
@@ -2166,7 +2148,7 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  transcription: TranscriptionUpdateOneWithoutCallIdInput
+  transcription: TranscriptionUpdateOneWithoutCallInput
   remotePath: String
 }
 

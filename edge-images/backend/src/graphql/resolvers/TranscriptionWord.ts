@@ -5,8 +5,7 @@ import { TranscriptionWordResolvers } from "../generated/graphqlgen";
 
 export const TranscriptionWord: TranscriptionWordResolvers.Type = {
   ...TranscriptionWordResolvers.defaultResolvers,
-
   transcription: (parent, args, { prisma }) => {
     return prisma.transcriptionWord({ id: parent.id }).transcription();
-  }
+  },
 };

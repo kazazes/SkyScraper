@@ -1,6 +1,6 @@
 type Transcription {
     id: ID! @id
-    callId: TrunkedCall @relation(name: "TranscriptionOnCall")
+    call: TrunkedCall!
     languageModel: String!
     beta: Float!
     body: String!
@@ -12,6 +12,7 @@ type Transcription {
 type TranscriptionWord {
     id: ID! @id
     text: String!
+    transcription: Transcription! @relation(name: "WordsOnTranscription")
     confidence: Float!
     end: Int!
     start: Int!

@@ -5,30 +5,25 @@
       "type": "chrome",
       "request": "launch",
       "name": "client: chrome",
-      "url": "http://localhost:3000",
+      "url": "http://127.0.0.1:3000",
       "webRoot": "${workspaceFolder}",
-      "linux": {
-        "runtimeExecutable": "/opt/google/chrome/chrome"
-      }
+      "userDataDir": false
     },
     {
       "type": "node",
       "request": "launch",
       "name": "server: nuxt",
-      "args": [
-        "dev"
-      ],
+      "args": ["dev"],
       "program": "${workspaceFolder}/node_modules/.bin/nuxt",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "cwd": "${workspaceFolder}"
     }
   ],
   "compounds": [
     {
       "name": "fullstack: nuxt",
-      "configurations": [
-        "server: nuxt",
-        "client: chrome"
-      ]
+      "configurations": ["server: nuxt", "client: chrome"]
     }
   ]
 }

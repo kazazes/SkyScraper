@@ -12,15 +12,7 @@
     grid-list-xs
   >
     <v-layout row align-start justify-start wrap>
-      <v-flex xs12>
-        <v-alert :value="error" type="error">
-          There was an error fetching that data.
-          <v-card class="my-2">
-            <v-card-text>{{ error }}</v-card-text>
-          </v-card>
-        </v-alert>
-      </v-flex>
-      <v-flex text-xs-center>
+      <v-flex text-xs-center mt-3>
         <v-btn-toggle v-model="toggleAutoPlay">
           <v-btn color="red lighten-2">
             <v-icon class="my-2">mdi-numeric-1</v-icon>
@@ -33,7 +25,7 @@
           </v-btn>
         </v-btn-toggle>
       </v-flex>
-      <v-flex xs12>
+      <v-flex xs12 v-if="selected">
         <v-layout row align-start justify-start wrap>
           <v-flex md8 px-3 mt-2>
             <v-card>
@@ -52,8 +44,8 @@
                   <h5 class="caption">Transcription:</h5>
                   <code
                     class="code"
-                    v-text="selected.transcription ? selected.transcription.body : 'Processing...'"
-                  ></code>
+                    ref="transcript"
+                  >{{selected.transcription ? selected.transcription.body : ''}}</code>
                 </v-flex>
               </v-card-text>
               <v-card-text v-else style="min-height: 200px;"></v-card-text>
@@ -89,51 +81,11 @@
         </v-layout>
       </v-flex>
       <v-flex>
-        <ApolloQuery
-          :query="require('~/assets/apollo/queries/getTrunkedCalls.gql')"
-          :variables="{first: pagination.rowsPerPage, skip: 0}"
-          v-on:result="voiceResults"
-          v-on:error="apolloError"
-        >
-          <template slot-scope="{ result: { loading, error, data } }">
-            <ApolloSubscribeToMore
-              :document="require('~/assets/apollo/subscriptions/subTrunkedCalls.gql')"
-              :updateQuery="onMessageAdded"
-            />
-            <div v-if="data || loading" class="result apollo">
-              <v-card-text>
-                <v-data-table
-                  :items="data ? data.trunkedCalls : []"
-                  :headers="headers"
-                  :rows-per-page-items="[25,50,100]"
-                  :loading="loading"
-                  :pagination.sync="pagination"
-                  class="elevation-3"
-                  prev-icon="mdi-menu-left"
-                  next-icon="mdi-menu-right"
-                  sort-icon="mdi-menu-down"
-                >
-                  <template v-slot:items="props">
-                    <tr
-                      :active="(!!selected && selected.id === props.item.id)"
-                      @click="selected = props.item"
-                    >
-                      <td class="hidden-lg-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
-                      <td class="hidden-md-and-down pl-4">
-                        <v-chip>{{ props.item.talkgroup.tag }}</v-chip>
-                      </td>
-                      <td>{{ props.item.talkgroup.description }}</td>
-                      <td>{{ timeAgo(props.item.startTime) }}</td>
-                      <td
-                        class="text-xs-right pr-4 hidden-sm-and-down"
-                      >{{ props.item.duration.toFixed(0) + 's' }}</td>
-                    </tr>
-                  </template>
-                </v-data-table>
-              </v-card-text>
-            </div>
-          </template>
-        </ApolloQuery>
+        <TrunkedCallTable
+          v-on:selection-changed="selectionChanged"
+          v-on:transcript-updated="transcriptUpdated"
+          :real-time-queue-empty="realTimeQueueEmpty"
+        ></TrunkedCallTable>
       </v-flex>
     </v-layout>
   </v-container>
@@ -144,8 +96,9 @@
   import Player from "~/components/audio/Player.vue";
   import Mapbox from "mapbox-gl-vue";
   import moment from "moment";
-  import { VueGoodTable } from "vue-good-table";
   import consola from "consola";
+  import { TrunkedCall } from "../../assets/prisma-client";
+  import TrunkedCallTable from "../../components/tables/TrunkedCallTable.vue";
 
   if (process.client) {
     (window as any).mapboxgl = require("mapbox-gl");
@@ -158,80 +111,16 @@
   }
 
   @Component({
-    name: "DataStream",
+    name: "TrunkedVoiceData",
     components: {
       Player,
-      VueGoodTable,
       Mapbox,
+      TrunkedCallTable,
     },
     data() {
-      return {
-        pagination: {
-          descending: true,
-          page: 1,
-          rowsPerPage: 25,
-          sortBy: "startTime",
-        },
-        columns: [
-          {
-            label: "Alpha Tag",
-            field: "talkgroup.alphaTag",
-          },
-          {
-            label: "",
-            field: "talkgroup.tag",
-          },
-          {
-            label: "Description",
-            field: "talkgroup.description",
-          },
-          {
-            label: "Time",
-            field: "startTime",
-            sortable: true,
-          },
-          {
-            label: "Duration",
-            field: "duration",
-            formatFn: (val) => Number(val).toFixed(2) + "s",
-          },
-        ],
-        headers: [
-          {
-            text: "Alpha Tag",
-            value: "talkgroup.alphaTag",
-            sortable: true,
-            class: "hidden-lg-and-down pl-4",
-          },
-          {
-            text: "",
-            value: "talkgroup.tag",
-            class: "hidden-md-and-down pl-2",
-            sortable: true,
-          },
-          {
-            text: "Description",
-            value: "description",
-            sortable: false,
-          },
-          {
-            text: "Time",
-            value: "startTime",
-            sortable: true,
-          },
-          {
-            text: "Duration",
-            value: "duration",
-            sortable: true,
-            class: "hidden-sm-and-down text-xs-right",
-          },
-        ],
-      };
+      return { selected: undefined };
     },
     methods: {
-      timeAgo(d: string) {
-        return moment(d).fromNow();
-      },
       formatDate(d: string) {
         return moment(d).format("lll");
       },
@@ -244,12 +133,23 @@
     },
   })
   export default class DataStream extends Vue {
-    protected selected = { id: undefined, description: "Loading..." };
+    protected selected: any;
     protected error: any = false;
     protected toggleAutoPlay: toggleAutoPlay = 0;
     protected returnedCalls: any[] = [];
     protected paused = true;
     realTimeQueueEmpty: boolean = false;
+
+    transcriptUpdated(updated: any) {
+      consola.debug("caught transcript-updated");
+      if (updated.id === this.selected.id) {
+        this.selected.transcription = updated.transcription;
+      }
+    }
+
+    selectionChanged(newSel: any) {
+      this.selected = newSel;
+    }
 
     protected playerStatePause(isPaused: Boolean) {
       this.paused = isPaused.valueOf();
@@ -276,11 +176,6 @@
         default:
           break;
       }
-    }
-
-    protected apolloError(e: any) {
-      consola.error(e);
-      this.error = e;
     }
 
     protected mapLoaded(map: any) {
@@ -356,27 +251,6 @@
     }
 
     protected playRealtimeAudio() {}
-
-    protected onMessageAdded(previousResult, { subscriptionData }) {
-      const newResult = {
-        trunkedCalls: [
-          subscriptionData.data.trunkedCalls,
-          ...previousResult.trunkedCalls,
-        ],
-      };
-      return newResult;
-    }
-
-    protected voiceResults(result) {
-      if (
-        (typeof this.selected.id === "undefined" && result.data) ||
-        this.realTimeQueueEmpty
-      ) {
-        this.selected = result.data.trunkedCalls[0];
-      }
-
-      this.returnedCalls = result.data.trunkedCalls;
-    }
   }
 </script>
 

@@ -1,9 +1,9 @@
 import { AsyncMqttClient } from "async-mqtt";
+import { TranscriptionWordCreateWithoutTranscriptionInput } from "../../../frontend/assets/prisma-client/index";
 import {
   prisma,
-  TranscriptionWordCreateInput,
+  TranscriptionCreateWithoutCallInput,
 } from "../graphql/generated/prisma-client";
-import { TranscriptionCreateWithoutCallIdInput } from "../graphql/generated/prisma-client/index";
 import log from "../log";
 import {
   ApplicationListener,
@@ -46,9 +46,9 @@ class TranscriptionHandler extends ApplicationMessageHandler {
       return;
     }
 
-    const createWordsInput: TranscriptionWordCreateInput[] = parsed.words
+    const createWordsInput: TranscriptionWordCreateWithoutTranscriptionInput[] = parsed.words
       ? parsed.words.map((word: any) => {
-          const w: TranscriptionWordCreateInput = {
+          const w: TranscriptionWordCreateWithoutTranscriptionInput = {
             confidence: word.confidence,
             end: word.end,
             start: word.start,
@@ -58,7 +58,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
         })
       : [];
 
-    const createTranscriptionInput: TranscriptionCreateWithoutCallIdInput = {
+    const createTranscriptionInput: TranscriptionCreateWithoutCallInput = {
       body: parsed.body,
       duration: parsed.duration,
       alpha: parsed.alpha,
@@ -81,8 +81,8 @@ class TranscriptionHandler extends ApplicationMessageHandler {
         )}`,
         e,
       );
+    } finally {
+      log.debug("Added a transcription to " + parsed.callId);
     }
-
-    log.debug("Added a transcription to " + parsed.callId);
   }
 }

@@ -32,10 +32,9 @@ export class ApplicationListener {
   }
 
   public async listen() {
-    await this.client.subscribe(this.rootTopic + "/#");
+    await this.client.subscribe(this.rootTopic + "/#", { qos: 2 });
     log.info(`Subscribed to root topic ${this.rootTopic}/#`);
     this.client.on("message", (topic: string, payload: string, packet: any) => {
-      log.debug(`MQTT: Root listener received ${topic}`);
       if (topic.indexOf(this.rootTopic) >= 0) {
         this.handler.callback(topic, payload, packet);
       }

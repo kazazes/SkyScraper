@@ -6283,11 +6283,6 @@ env-paths@^1.0.0:
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-1.0.0.tgz#4168133b42bb05c38a35b1ae4397c8298ab369e0"
   integrity sha1-QWgTO0K7BcOKNbGuQ5fIKYqzaeA=
 
-epic-spinners@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/epic-spinners/-/epic-spinners-1.1.0.tgz#293d67593557572b02ca2f503c49706fc2a57cb8"
-  integrity sha512-nFyHmFuBFO6LpT37Xu68lQqKDYK50gXoZ6Yj/mpoS1Uslku0YkMtAGDzH8nbeFSiifAIoT1rUDB3S7e/ifnnxg==
-
 err-code@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
@@ -10284,10 +10279,10 @@ pako@^1.0.5, pako@~1.0.5:
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
   integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
 
-papaparse@^4.6.3:
-  version "4.6.3"
-  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-4.6.3.tgz#742e5eaaa97fa6c7e1358d2934d8f18f44aee781"
-  integrity sha512-LRq7BrHC2kHPBYSD50aKuw/B/dGcg29omyJbKWY3KsYUZU69RKwaBHu13jGmCYBtOc4odsLCrFyk6imfyNubJQ==
+papaparse@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/papaparse/-/papaparse-5.0.1.tgz#5243710e5468e659e23c77db0e0b010912960c15"
+  integrity sha512-LoM77aP/xSfZP645H3x1X0Qrf7klhGqHUfJH2KHIPvmB4uzezB/1bfvJKI0vp6zD5AfQF46J3URB7uz4Iqe0lg==
 
 parallel-transform@^1.1.0:
   version "1.1.0"

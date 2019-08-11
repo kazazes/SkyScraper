@@ -5,6 +5,8 @@ balenaOS
 .idea
 /data/
 .env
+venv/
+.venv/
 
 cloudflare.ini
 
@@ -59,3 +61,4 @@ Dockerfiles
 .venv/
 registry-secrets.yml
 *.iml
+.vscode/tags

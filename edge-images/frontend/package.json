@@ -32,7 +32,7 @@
     "apollo-cache-persist": "^0.1.1",
     "axios": "^0.18.0",
     "chartist": "^0.11.0",
-    "consola": "^2.6.0",
+    "consola": "^2.10.1",
     "core-js": "^2.6.5",
     "cross-env": "^5.2.0",
     "dotenv": "^7.0.0",

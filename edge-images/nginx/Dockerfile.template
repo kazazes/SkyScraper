@@ -2,8 +2,7 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-alpine:3.9
 
 RUN apk add nginx && rm -rf /tmp/* /var/cache/apk/* && mkdir -p /run/nginx/
 
-COPY mime.types nginx.conf proxy.conf /etc/nginx/
-COPY status.conf /etc/nginx/conf.d/
+COPY mime.types nginx.conf proxy.conf status.conf /etc/nginx/
 
 EXPOSE 80 443 81
 

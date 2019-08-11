@@ -1,8 +1,8 @@
 import { AsyncMqttClient } from "async-mqtt";
-import { TranscriptionWordCreateWithoutTranscriptionInput } from "../../../frontend/assets/prisma-client/index";
 import {
   prisma,
   TranscriptionCreateWithoutCallInput,
+  TranscriptionWordCreateWithoutTranscriptionInput,
 } from "../graphql/generated/prisma-client";
 import log from "../log";
 import {

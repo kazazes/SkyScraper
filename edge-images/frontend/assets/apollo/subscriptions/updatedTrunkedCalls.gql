@@ -2,7 +2,14 @@ subscription {
   updatedCalls {
     id
     transcription {
+      id
       body
+      words {
+        text
+        confidence
+        start
+        end
+      }
     }
   }
 }

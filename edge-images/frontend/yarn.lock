@@ -6283,11 +6283,6 @@ env-paths@^1.0.0:
   resolved "https://registry.yarnpkg.com/env-paths/-/env-paths-1.0.0.tgz#4168133b42bb05c38a35b1ae4397c8298ab369e0"
   integrity sha1-QWgTO0K7BcOKNbGuQ5fIKYqzaeA=
 
-epic-spinners@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/epic-spinners/-/epic-spinners-1.1.0.tgz#293d67593557572b02ca2f503c49706fc2a57cb8"
-  integrity sha512-nFyHmFuBFO6LpT37Xu68lQqKDYK50gXoZ6Yj/mpoS1Uslku0YkMtAGDzH8nbeFSiifAIoT1rUDB3S7e/ifnnxg==
-
 err-code@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/err-code/-/err-code-1.1.2.tgz#06e0116d3028f6aef4806849eb0ea6a748ae6960"
@@ -13913,6 +13908,16 @@ vuex-persist@^2.0.0:
   dependencies:
     flatted "^2.0.0"
     lodash.merge "^4.6.1"
+
+vuex-simple@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/vuex-simple/-/vuex-simple-2.1.1.tgz#b1a64d5203fe0eb4e5198a99c67d5b90722179ff"
+  integrity sha512-C977eML5QbgPB3lgV9MIe5OeCmAxm835s5116qqrkGrzo0+MHK4fceVcfj6Gm08G4RFgiqXxieswckO5St4clw==
+
+vuex-typescript@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/vuex-typescript/-/vuex-typescript-3.0.2.tgz#d0b23acf7c046bce36ddfef756a7110d4551f9a9"
+  integrity sha512-0imJZMdUs60pNRPgESA+nAR+q4qK0G9odoq3g7BE8AlCJ+61NdYicoyrVSTIb5oc79+R6PFLWbzf25bO0GxZtQ==
 
 vuex@^3.1.1:
   version "3.1.1"

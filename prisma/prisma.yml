@@ -16,6 +16,6 @@ generate:
 
 hooks:
   post-deploy:
-    - graphqlgen
+    - gg
 
 secret: scrapingskies

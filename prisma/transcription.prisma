@@ -1,5 +1,7 @@
 type Transcription {
     id: ID! @id
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
     call: TrunkedCall!
     languageModel: String!
     beta: Float!
@@ -11,6 +13,8 @@ type Transcription {
 
 type TranscriptionWord {
     id: ID! @id
+    updatedAt: DateTime! @updatedAt
+    createdAt: DateTime! @createdAt
     text: String!
     transcription: Transcription! @relation(name: "WordsOnTranscription")
     confidence: Float!

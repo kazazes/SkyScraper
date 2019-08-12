@@ -20,7 +20,14 @@ query trunkedCalls($first: Int, $skip: Int) {
     duration
     audioPath
     transcription {
+      id
       body
+      words {
+        text
+        confidence
+        start
+        end
+      }
     }
   }
 }

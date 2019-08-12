@@ -20,7 +20,14 @@ subscription {
     duration
     audioPath
     transcription {
+      id
       body
+      words {
+        text
+        confidence
+        start
+        end
+      }
     }
   }
 }

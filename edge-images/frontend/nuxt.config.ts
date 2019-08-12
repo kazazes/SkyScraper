@@ -38,10 +38,7 @@ const config = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: "~/plugins/segment", ssr: false },
-    { src: "~/plugins/vuex-persist", ssr: false },
-  ],
+  plugins: [{ src: "~/plugins/segment", ssr: false }],
   /*
    ** Nuxt.js modules
    */

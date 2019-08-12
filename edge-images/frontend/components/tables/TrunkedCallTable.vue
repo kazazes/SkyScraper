@@ -25,7 +25,7 @@
       <div v-if="data || loading" class="result apollo">
         <v-card-text>
           <v-data-table
-            :items="data ? data.trunkedCalls : []"
+            :items="trunkedCalls"
             :headers="headers"
             :rows-per-page-items="[25,50,100]"
             :loading="loading"
@@ -38,7 +38,7 @@
             <template v-slot:items="props">
               <tr
                 :active="(!!selected && selected.id === props.item.id)"
-                @click="selected = props.item"
+                @click="$store.commit('trunked/setSelected', props.item)"
               >
                 <td class="hidden-lg-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
                 <td class="hidden-md-and-down pl-4">
@@ -47,7 +47,7 @@
                 <td>{{ props.item.talkgroup.description }}</td>
                 <td>{{ timeAgo(props.item.startTime) }}</td>
                 <td class="pr-4 hidden-sm-and-down">{{ props.item.duration.toFixed(0) + 's' }}</td>
-                <td class="text-xs-center">
+                <td class="text-xs-center hidden-md-and-down">
                   <v-icon
                     small
                     v-if="props.item.transcription && props.item.transcription.body"
@@ -66,10 +66,10 @@
 </template>
 <script lang="ts">
   import Vue from "vue";
-  import { Component, Prop, Watch } from "vue-property-decorator";
+  import { Component, Prop, Watch } from "nuxt-property-decorator";
   import moment from "moment";
   import consola from "consola";
-  import { TrunkedCall } from "../../assets/prisma-client";
+  import { TrunkedCall } from "~/assets/prisma-client";
   import { MoonLoader } from "@saeris/vue-spinners";
 
   @Component({
@@ -109,6 +109,7 @@
           {
             label: "Transcription",
             field: "transcription",
+            class: "hidden-md-and-down",
           },
         ],
         headers: [
@@ -144,7 +145,7 @@
             text: "Transcription",
             value: "transcription",
             sortable: false,
-            class: "hidden-sm-and-down text-xs-center ",
+            class: "hidden-md-and-down text-xs-center ",
           },
         ],
       };
@@ -159,41 +160,47 @@
       formatFrequency(hertz: number) {
         return Number(hertz / 1000000).toFixed(3) + " MHz";
       },
-      onCallUpdate(prev, { subscriptionData }) {
-        consola.info("emit transcript-updated");
-        const updated = subscriptionData.data.updatedCalls as TrunkedCall;
-        this.$emit("transcript-updated", updated);
-      },
-      onCallAdded(previousResult, { subscriptionData }) {
-        // The previous result is immutable
-        const newResult = {
-          trunkedCalls: [...previousResult.trunkedCalls],
-        };
-        newResult.trunkedCalls.push(subscriptionData.data.trunkedCalls);
-        return newResult;
-      },
     },
   })
   export default class TrunkedCallTable extends Vue {
     result: { data: { trunkedCalls: TrunkedCall[] } } = {
       data: { trunkedCalls: [] },
     };
-    selected: Partial<TrunkedCall> | TrunkedCall = {
-      id: undefined,
-    };
     error: any = false;
-
-    @Watch("selected", { deep: true })
-    selectedUpdated() {
-      this.$emit("selection-changed", this.selected);
-    }
 
     @Prop({ required: true })
     realTimeQueueEmpty: boolean = false;
 
+    get trunkedCalls() {
+      return this.$store.getters["trunked/trunkedCalls"];
+    }
+
+    get selected() {
+      const stored = this.$store.getters["trunked/selected"];
+      return stored;
+    }
+
     protected apolloError(e: any) {
       consola.error(e);
       this.error = e;
+    }
+
+    onCallUpdate(prev, { subscriptionData }) {
+      const updated = subscriptionData.data.updatedCalls as TrunkedCall;
+      this.$store.commit("trunked/update", updated);
+      this.$emit("transcript-updated", updated);
+    }
+
+    onCallAdded(previousResult, { subscriptionData }) {
+      const newCall = subscriptionData.data.trunkedCalls;
+      // The previous result is immutable
+      const newResult = {
+        trunkedCalls: [previousResult.trunkedCalls],
+      };
+
+      newResult.trunkedCalls.push(newCall);
+      this.$store.commit("trunked/add", newCall);
+      return newResult;
     }
 
     protected voiceResults(result: { data: { trunkedCalls: TrunkedCall[] } }) {
@@ -201,7 +208,8 @@
         (typeof this.selected.id === "undefined" && result.data) ||
         this.realTimeQueueEmpty
       ) {
-        this.selected = result.data.trunkedCalls[0];
+        this.$store.commit("trunked/add", result.data.trunkedCalls);
+        this.$store.commit("trunked/setSelected", result.data.trunkedCalls[0]);
       }
     }
   }

@@ -43,6 +43,7 @@ export async function publish(
 ) {
   const defaultOptions: IClientPublishOptions = {
     qos: qos || 1,
+    retain: false,
   };
   try {
     return client.publish(topic, message, defaultOptions);

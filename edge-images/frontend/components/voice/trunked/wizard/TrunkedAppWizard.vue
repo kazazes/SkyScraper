@@ -22,8 +22,8 @@
   </v-container>
 </template>
 <script lang="ts">
-  import Vue from "~/node_modules/vue";
-  import Component from "~/node_modules/vue-class-component";
+  import Vue from "vue";
+  import Component from "vue-class-component";
   import {trunkedConfigs} from "./queries";
   import ChannelsWizard from "./TrunkedWizardChannels.vue";
   import SystemWizard from "./TrunkedWizardSystem.vue";

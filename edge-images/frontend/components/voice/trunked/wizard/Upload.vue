@@ -106,9 +106,9 @@
 
 <script lang="ts">
   import Papa, { ParseResult } from "papaparse";
-  import Vue from "~/node_modules/vue";
-  import {Component, Prop} from "~/node_modules/vue-property-decorator";
-  import axios from "~/node_modules/axios";
+  import Vue from "vue";
+  import {Component, Prop} from "vue-property-decorator";
+  import axios from "axios";
   import { IInputtedTalkgroup, TalkgroupValidator } from "./talkgroupValidator";
 
   @Component({

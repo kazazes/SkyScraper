@@ -1,0 +1,11 @@
+overwrite: true
+schema: "../edge-images/backend/src/graphql/**/*.graphql"
+documents: "../edge-images/frontend/assets/apollo/**/*.gql"
+generates:
+  ../edge-images/frontend/assets/gql.types.d.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

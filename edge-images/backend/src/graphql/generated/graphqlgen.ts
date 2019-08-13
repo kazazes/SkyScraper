@@ -6408,21 +6408,21 @@ export namespace SubscriptionResolvers {
     ) => TrunkedCall | null | Promise<TrunkedCall | null>;
   };
 
-  export type UpdatedCallsResolver = {
+  export type TranscriptionsResolver = {
     subscribe: (
       parent: undefined,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
     ) =>
-      | AsyncIterator<TrunkedCall | null>
-      | Promise<AsyncIterator<TrunkedCall | null>>;
+      | AsyncIterator<Transcription | null>
+      | Promise<AsyncIterator<Transcription | null>>;
     resolve?: (
       parent: undefined,
       args: {},
       ctx: Context,
       info: GraphQLResolveInfo
-    ) => TrunkedCall | null | Promise<TrunkedCall | null>;
+    ) => Transcription | null | Promise<Transcription | null>;
   };
 
   export interface Type {
@@ -6443,21 +6443,21 @@ export namespace SubscriptionResolvers {
       ) => TrunkedCall | null | Promise<TrunkedCall | null>;
     };
 
-    updatedCalls: {
+    transcriptions: {
       subscribe: (
         parent: undefined,
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
       ) =>
-        | AsyncIterator<TrunkedCall | null>
-        | Promise<AsyncIterator<TrunkedCall | null>>;
+        | AsyncIterator<Transcription | null>
+        | Promise<AsyncIterator<Transcription | null>>;
       resolve?: (
         parent: undefined,
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => TrunkedCall | null | Promise<TrunkedCall | null>;
+      ) => Transcription | null | Promise<Transcription | null>;
     };
   }
 }

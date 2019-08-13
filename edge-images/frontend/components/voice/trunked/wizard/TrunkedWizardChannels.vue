@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts">
-  import Vue from "~/node_modules/vue";
-  import {Component} from "~/node_modules/vue-property-decorator";
+  import Vue from "vue";
+  import {Component} from "vue-property-decorator";
     import TalkgroupsTable from "./TalkgroupsTable.vue";
 
     @Component({

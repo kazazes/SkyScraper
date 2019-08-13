@@ -19,8 +19,8 @@
         :updateQuery="onCallAdded"
       />
       <ApolloSubscribeToMore
-        :document="require('~/assets/apollo/subscriptions/updatedTrunkedCalls.gql')"
-        :updateQuery="onCallUpdate"
+        :document="require('~/assets/apollo/subscriptions/transcriptions.gql')"
+        :updateQuery="onTranscriptionAdded"
       />
       <div v-if="data || loading" class="result apollo">
         <v-card-text>
@@ -47,11 +47,12 @@
                 <td>{{ props.item.talkgroup.description }}</td>
                 <td>{{ timeAgo(props.item.startTime) }}</td>
                 <td class="pr-4 hidden-sm-and-down">{{ props.item.duration.toFixed(0) + 's' }}</td>
-                <td class="text-xs-center hidden-md-and-down">
+                <td class="text-xs-center hidden-sm-and-down">
                   <v-icon
                     small
                     v-if="props.item.transcription && props.item.transcription.body"
-                  >mdi-script-text-outline</v-icon>
+                  >mdi-script-text-outline
+                  </v-icon>
                   <span v-else>
                     <moon-loader :size="16" style="margin: auto;"></moon-loader>
                   </span>
@@ -65,12 +66,12 @@
   </ApolloQuery>
 </template>
 <script lang="ts">
-  import Vue from "vue";
-  import { Component, Prop, Watch } from "nuxt-property-decorator";
-  import moment from "moment";
-  import consola from "consola";
-  import { TrunkedCall } from "~/assets/prisma-client";
   import { MoonLoader } from "@saeris/vue-spinners";
+  import consola from "consola";
+  import moment from "moment";
+  import { Component, Prop } from "nuxt-property-decorator";
+  import Vue from "vue";
+  import { Transcription, TrunkedCall } from "../../assets/gql.types";
 
   @Component({
     name: "TrunkedCallTable",
@@ -145,7 +146,7 @@
             text: "Transcription",
             value: "transcription",
             sortable: false,
-            class: "hidden-md-and-down text-xs-center ",
+            class: "hidden-sm-and-down text-xs-center ",
           },
         ],
       };
@@ -185,21 +186,39 @@
       this.error = e;
     }
 
-    onCallUpdate(prev, { subscriptionData }) {
-      const updated = subscriptionData.data.updatedCalls as TrunkedCall;
-      this.$store.commit("trunked/update", updated);
-      this.$emit("transcript-updated", updated);
-    }
-
     onCallAdded(previousResult, { subscriptionData }) {
-      const newCall = subscriptionData.data.trunkedCalls;
+      const newCall = subscriptionData.data.trunkedCalls as TrunkedCall;
       // The previous result is immutable
       const newResult = {
-        trunkedCalls: [previousResult.trunkedCalls],
+        trunkedCalls: previousResult ? [newCall, ...previousResult.trunkedCalls] : [] as TrunkedCall[],
       };
 
+      if (!newCall.id) debugger;
       newResult.trunkedCalls.push(newCall);
       this.$store.commit("trunked/add", newCall);
+      return newResult;
+    }
+
+    onTranscriptionAdded(previousResult, { subscriptionData }) {
+      const newTranscript = subscriptionData.data.transcriptions as Transcription;
+      const calls = previousResult ? [...previousResult.trunkedCalls as TrunkedCall[]] : [] as TrunkedCall[];
+      const idx = calls.findIndex(
+        (c: TrunkedCall) => c.id === newTranscript.call.id,
+      );
+      if (idx === -1) {
+        debugger;
+        consola.warn("transcript but no call");
+        return previousResult;
+      }
+      const copy = calls[idx];
+      copy.transcription = newTranscript;
+
+      // The previous result is immutable
+      const newResult = {
+        trunkedCalls: [copy, ...previousResult.trunkedCalls],
+      };
+
+      this.$store.commit("trunked/setTranscription", newTranscript);
       return newResult;
     }
 

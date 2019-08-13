@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "NUXT_HOST=0.0.0.0 nuxt",
+    "dev": "nuxt",
     "build": "nuxt build",
     "dev-debug": "node --inspect node_modules/.bin/nuxt",
     "generate": "nuxt generate",
@@ -33,6 +33,7 @@
     "apollo-cache-persist": "^0.1.1",
     "axios": "^0.18.0",
     "chartist": "^0.11.0",
+    "chroma-js": "^2.0.4",
     "consola": "^2.6.0",
     "core-js": "^2.6.5",
     "cross-env": "^5.2.0",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "@nuxt/typescript": "^2.7.1",
+    "@types/chroma-js": "^1.4.1",
     "@types/graphql": "^14.2.0",
     "@types/howler": "^2.1.1",
     "@types/http-proxy-middleware": "^0.19.2",

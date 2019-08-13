@@ -17,20 +17,11 @@
     ],
     "pretty": true,
     "paths": {
-      "~/*": [
-        "./*"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
-    "target": "esnext",
-    "lib": [
-      "esnext",
-      "esnext.asynciterable",
-      "dom.iterable",
-      "dom"
-    ],
+    "target": "es5",
+    "lib": ["esnext", "esnext.asynciterable", "dom.iterable", "dom"],
     "allowJs": true,
     "strict": true,
     "noEmit": true,

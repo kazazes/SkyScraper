@@ -108,11 +108,15 @@
     }
 
     createHowl() {
-      if (this.sound) this.sound.unload();
+      let playing = false;
+      if (this.sound) {
+        playing = this.sound.playing();
+        this.sound.unload();
+      }
       this.sound = new Howl({
         mute: this.muted,
         src: this.file,
-        autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE,
+        autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE || playing,
         volume: this.volume / 100,
         onpause: () => {
           this.$emit("player-state-paused", true);
@@ -124,7 +128,7 @@
         },
         onload: () => {
           this.durationTime = String(
-            convertTimeHHMMSS(this.sound.duration() || 0)
+            convertTimeHHMMSS(this.sound.duration() || 0),
           );
           this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
         },

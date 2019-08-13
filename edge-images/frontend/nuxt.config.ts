@@ -38,7 +38,7 @@ const config = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/segment", ssr: false }],
+  // plugins: [{ src: "~/plugins/segment", ssr: false }],
   /*
    ** Nuxt.js modules
    */
@@ -48,7 +48,6 @@ const config = {
     "@nuxtjs/vuetify",
     "@nuxtjs/apollo",
     "@nuxtjs/proxy",
-    "@nuxtjs/localforage",
     "@nuxtjs/pwa",
     [
       "@nuxtjs/robots",
@@ -97,6 +96,12 @@ const config = {
   build: {
     devtools: true,
     transpile: [/^vuetify/],
+    extend(config, ctx) {
+      // https://medium.com/js-dojo/debugging-nuxt-js-with-vs-code-60a1a9e75cf6
+      if (ctx.isDev) {
+        config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
+      }
+    },
     plugins: [
       new webpack.ProvidePlugin({
         mapboxgl: "mapbox-gl",

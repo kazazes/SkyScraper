@@ -119,17 +119,11 @@
 <script lang="ts">
   import { MAX_TRUNKED_RANGE_MHZ } from "~/assets/constants";
   import { validFrequencyKHz, validFrequencyMHz } from "~/utils/frequencies";
-  import {
-    TrunkedConfigCreateInput,
-    TrunkedSmartnetBandplan,
-    TrunkedSystemCreateInput,
-    TrunkedSystemType,
-  } from "~/assets/prisma-client";
   import { randomBytes } from "crypto";
-  import { FieldFlags, ValidationObserver } from "~/node_modules/vee-validate";
-  import Vue from "~/node_modules/vue";
-  import { Component, Prop } from "~/node_modules/vue-property-decorator";
-  import { ErrorBag } from "~/node_modules/vee-validate";
+  import { FieldFlags, ValidationObserver } from "vee-validate";
+  import Vue from "vue";
+  import { Component, Prop } from "vue-property-decorator";
+  import { ErrorBag } from "vee-validate";
 
   @Component({
     methods: {
@@ -148,19 +142,19 @@
     conventionalChannels: string[] = [];
     conventionalChannelErrors: string[] = [];
     nameInput = "";
-    bandplan: TrunkedSmartnetBandplan = "CUSTOM_400";
+    bandplan = "CUSTOM_400";
     bandplanBase: string = "";
     bandplanHigh: string = "";
     bandplanOffset = "";
     bandplanSpacing = "25";
-    bandplans: { value: TrunkedSmartnetBandplan; text: string }[] = [
+    bandplans: { value: string; text: string }[] = [
       { value: "STANDARD_800", text: "800 Standard" },
       { value: "REBAND_800", text: "800 Reband" },
       { value: "SPLINTER_800", text: "800 Splinter" },
       { value: "CUSTOM_400", text: "400 Custom" },
     ];
-    systemType: TrunkedSystemType = "SMARTNET";
-    systemTypes: { value: TrunkedSystemType; text: string }[] = [
+    systemType = "SMARTNET";
+    systemTypes: { value: string; text: string }[] = [
       { value: "CONVENTIONAL", text: "Conventional" },
       { value: "P25", text: "P25" },
       { value: "SMARTNET", text: "Motorola" },
@@ -168,8 +162,8 @@
     ];
 
     // Get the fragment made by this step of the wizard
-    get fragment(): Partial<TrunkedConfigCreateInput> {
-      const systemInput: TrunkedSystemCreateInput = {
+    get fragment(): Partial<any> {
+      const systemInput: any = {
         bandplan: this.bandplan,
         bandplanBase: Number(this.bandplanBase),
         bandplanHigh: Number(this.bandplanHigh),
@@ -183,7 +177,7 @@
       return {
         name: this.nameInput,
         systems: {
-          create: systemInput,
+          create: [systemInput],
         },
       };
     }

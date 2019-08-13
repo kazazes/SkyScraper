@@ -5,9 +5,15 @@
       "type": "chrome",
       "request": "launch",
       "name": "client: chrome",
-      "url": "http://127.0.0.1:3000",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
-      "userDataDir": false
+      "userDataDir": false,
+      "sourceMapPathOverrides": {
+        "webpack:///./src/*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///*": "*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      }
     },
     {
       "type": "node",

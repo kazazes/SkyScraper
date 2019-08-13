@@ -48,7 +48,7 @@
   import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
   import consola from "consola";
-  import { TrunkedCall } from "../../assets/prisma-client";
+  import { TrunkedCall } from "~/assets/gql.types";
   import TrunkedCallTable from "../../components/tables/TrunkedCallTable.vue";
   import TrunkedCallCard from "../../components/cards/TrunkedCallCard.vue";
 

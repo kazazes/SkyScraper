@@ -15,16 +15,9 @@ export const Subscription: SubscriptionResolvers.Type = {
       return payload;
     },
   },
-  updatedCalls: {
+  transcriptions: {
     subscribe: (parent, args, ctx: Context) => {
-      return ctx.prisma.$subscribe
-        .trunkedCall({
-          AND: {
-            updatedFields_contains_every: "transcription.body",
-            node: { transcription: { body_not: null } },
-          },
-        })
-        .node();
+      return ctx.prisma.$subscribe.transcription().node();
     },
     resolve: (payload) => {
       return payload;

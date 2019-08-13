@@ -14,5 +14,5 @@ type Query {
 
 type Subscription {
   trunkedCalls: TrunkedCall
-  updatedCalls: TrunkedCall
+  transcriptions: Transcription
 }

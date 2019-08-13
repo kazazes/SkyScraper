@@ -69,9 +69,9 @@
 
 <script lang="ts">
   import { IInputtedTalkgroup } from "./talkgroupValidator";
-  import { TrunkedTalkgroup } from "~/assets/prisma-client";
-  import Vue from "~/node_modules/vue";
-  import {Component, Prop} from "~/node_modules/vue-property-decorator"
+  import { TrunkedTalkgroup } from "~/assets/gql.types";
+  import Vue from "vue";
+  import { Component, Prop } from "vue-property-decorator";
   import Upload from "./Upload.vue";
 
   @Component({
@@ -86,7 +86,6 @@
         val || (this as any).close();
       },
     },
-
   })
   export default class TalkgroupsTable extends Vue {
     noDataText = "No talkgroups added.";
@@ -133,7 +132,7 @@
       this.initialize();
     }
 
-    initialize() { }
+    initialize() {}
 
     editItem(item: Partial<TrunkedTalkgroup>) {
       this.editedIndex = this.talkgroups.indexOf(item);

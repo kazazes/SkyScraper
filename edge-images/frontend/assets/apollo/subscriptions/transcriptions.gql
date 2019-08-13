@@ -1,15 +1,15 @@
 subscription {
-  updatedCalls {
-    id
-    transcription {
-      id
+  transcriptions {
+      call {
+        id
+        createdAt
+      }
       body
       words {
         text
         confidence
-        start
         end
+        start
       }
-    }
   }
 }

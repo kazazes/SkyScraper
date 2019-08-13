@@ -5,10 +5,15 @@
     "deploy:prod": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/prod prisma deploy",
     "generate:prod": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/prod prisma generate",
     "generate:dev": "PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev prisma generate",
-    "admin": "prisma admin"
+    "admin": "prisma admin",
+    "nuxt-codegen": "graphql-codegen --config codegen.yml"
   },
   "author": "Peter Kazazes",
   "devDependencies": {
+    "@graphql-codegen/cli": "^1.5.0",
+    "@graphql-codegen/introspection": "1.5.0",
+    "@graphql-codegen/typescript": "^1.5.0",
+    "@graphql-codegen/typescript-operations": "1.5.0",
     "graphqlgen": "^0.6.0-rc9",
     "prisma": "^1.31.1"
   }

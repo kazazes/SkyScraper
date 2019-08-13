@@ -572,6 +572,10 @@ export interface ClientConstructor<T> {
 export type TranscriptionWordOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
   | "text_ASC"
   | "text_DESC"
   | "confidence_ASC"
@@ -813,6 +817,10 @@ export type TrunkedFrequencyFormat = "EXP" | "MHZ" | "HZ";
 export type TranscriptionOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
   | "languageModel_ASC"
   | "languageModel_DESC"
   | "beta_ASC"
@@ -1444,6 +1452,22 @@ export interface TranscriptionWordWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
   text?: Maybe<String>;
   text_not?: Maybe<String>;
   text_in?: Maybe<String[] | String>;
@@ -3065,6 +3089,22 @@ export interface TranscriptionWordScalarWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
   text?: Maybe<String>;
   text_not?: Maybe<String>;
   text_in?: Maybe<String[] | String>;
@@ -3444,6 +3484,22 @@ export interface TranscriptionWhereInput {
   id_not_starts_with?: Maybe<ID_Input>;
   id_ends_with?: Maybe<ID_Input>;
   id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
   call?: Maybe<TrunkedCallWhereInput>;
   languageModel?: Maybe<String>;
   languageModel_not?: Maybe<String>;
@@ -4486,6 +4542,8 @@ export interface AggregateDump1090MessageSubscription
 
 export interface TranscriptionWord {
   id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
   text: String;
   confidence: Float;
   end: Int;
@@ -4496,6 +4554,8 @@ export interface TranscriptionWordPromise
   extends Promise<TranscriptionWord>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   transcription: <T = TranscriptionPromise>() => T;
   confidence: () => Promise<Float>;
@@ -4507,6 +4567,8 @@ export interface TranscriptionWordSubscription
   extends Promise<AsyncIterator<TranscriptionWord>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
   transcription: <T = TranscriptionSubscription>() => T;
   confidence: () => Promise<AsyncIterator<Float>>;
@@ -4518,6 +4580,8 @@ export interface TranscriptionWordNullablePromise
   extends Promise<TranscriptionWord | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   transcription: <T = TranscriptionPromise>() => T;
   confidence: () => Promise<Float>;
@@ -5369,6 +5433,8 @@ export interface TrunkedCallFrequencyTimeConnectionSubscription
 
 export interface TranscriptionPreviousValues {
   id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
   languageModel: String;
   beta: Float;
   body: String;
@@ -5380,6 +5446,8 @@ export interface TranscriptionPreviousValuesPromise
   extends Promise<TranscriptionPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   languageModel: () => Promise<String>;
   beta: () => Promise<Float>;
   body: () => Promise<String>;
@@ -5391,6 +5459,8 @@ export interface TranscriptionPreviousValuesSubscription
   extends Promise<AsyncIterator<TranscriptionPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   languageModel: () => Promise<AsyncIterator<String>>;
   beta: () => Promise<AsyncIterator<Float>>;
   body: () => Promise<AsyncIterator<String>>;
@@ -5506,6 +5576,8 @@ export interface TranscriptionWordConnectionSubscription
 
 export interface TranscriptionWordPreviousValues {
   id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
   text: String;
   confidence: Float;
   end: Int;
@@ -5516,6 +5588,8 @@ export interface TranscriptionWordPreviousValuesPromise
   extends Promise<TranscriptionWordPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   text: () => Promise<String>;
   confidence: () => Promise<Float>;
   end: () => Promise<Int>;
@@ -5526,6 +5600,8 @@ export interface TranscriptionWordPreviousValuesSubscription
   extends Promise<AsyncIterator<TranscriptionWordPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   text: () => Promise<AsyncIterator<String>>;
   confidence: () => Promise<AsyncIterator<Float>>;
   end: () => Promise<AsyncIterator<Int>>;
@@ -5903,6 +5979,8 @@ export interface Dump1090MessageConnectionSubscription
 
 export interface Transcription {
   id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
   languageModel: String;
   beta: Float;
   body: String;
@@ -5914,6 +5992,8 @@ export interface TranscriptionPromise
   extends Promise<Transcription>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   call: <T = TrunkedCallPromise>() => T;
   languageModel: () => Promise<String>;
   beta: () => Promise<Float>;
@@ -5935,6 +6015,8 @@ export interface TranscriptionSubscription
   extends Promise<AsyncIterator<Transcription>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   call: <T = TrunkedCallSubscription>() => T;
   languageModel: () => Promise<AsyncIterator<String>>;
   beta: () => Promise<AsyncIterator<Float>>;
@@ -5956,6 +6038,8 @@ export interface TranscriptionNullablePromise
   extends Promise<Transcription | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
   call: <T = TrunkedCallPromise>() => T;
   languageModel: () => Promise<String>;
   beta: () => Promise<Float>;

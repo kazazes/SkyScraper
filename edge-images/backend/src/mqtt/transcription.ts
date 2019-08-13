@@ -1,7 +1,7 @@
 import { AsyncMqttClient } from "async-mqtt";
 import {
   prisma,
-  TranscriptionCreateWithoutCallInput,
+  TranscriptionCreateInput,
   TranscriptionWordCreateWithoutTranscriptionInput,
 } from "../graphql/generated/prisma-client";
 import log from "../log";
@@ -58,20 +58,21 @@ class TranscriptionHandler extends ApplicationMessageHandler {
         })
       : [];
 
-    const createTranscriptionInput: TranscriptionCreateWithoutCallInput = {
+    const createTranscriptionInput: TranscriptionCreateInput = {
       body: parsed.body,
       duration: parsed.duration,
       alpha: parsed.alpha,
       beta: parsed.beta,
       languageModel: parsed.languageModel || "",
       words: { create: createWordsInput },
+      call: { connect: { id: parsed.callId } },
     };
 
     try {
-      await prisma.updateTrunkedCall({
-        where: { id: parsed.callId },
-        data: { transcription: { create: createTranscriptionInput } },
+      await prisma.deleteManyTranscriptions({
+        call: { id: parsed.callId },
       });
+      await prisma.createTranscription(createTranscriptionInput);
     } catch (e) {
       log.error(
         `Error adding transcript to trunked call \n ${JSON.stringify(

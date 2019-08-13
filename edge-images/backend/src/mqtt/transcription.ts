@@ -12,7 +12,7 @@ import {
 
 const rootTopic = "transcription";
 
-export default (client: AsyncMqttClient) => {
+export default (client: AsyncMqttClient)=> {
   const l = new ApplicationListener(
     rootTopic,
     client,
@@ -22,8 +22,8 @@ export default (client: AsyncMqttClient) => {
 };
 
 class TranscriptionHandler extends ApplicationMessageHandler {
-  public callback = async (topic: string, payload: any, packet: any) => {
-    if (topic.indexOf("transcribed") == -1) {
+  public callback = async (topic: string, payload: any, packet: any)=> {
+    if (topic.indexOf("transcribed")== -1){
       return;
     }
     log.info(
@@ -33,10 +33,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
     let parsed: any;
 
     try {
-      parsed = JSON.parse(payload) as any;
-      if (parsed.words.length === 0 || parsed.languageModel === "") {
-        return;
-      }
+      parsed = JSON.parse(payload)as any;
     } catch {
       log.error(
         new Error(`Malformed JSON received on MQTT topic ${topic}:
@@ -46,8 +43,10 @@ class TranscriptionHandler extends ApplicationMessageHandler {
       return;
     }
 
-    const createWordsInput: TranscriptionWordCreateWithoutTranscriptionInput[] = parsed.words
-      ? parsed.words.map((word: any) => {
+    const createWordsInput:
+      | TranscriptionWordCreateWithoutTranscriptionInput[]
+      | null = parsed.words
+      ? parsed.words.map((word: any)=> {
           const w: TranscriptionWordCreateWithoutTranscriptionInput = {
             confidence: word.confidence,
             end: word.end,
@@ -56,7 +55,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
           };
           return w;
         })
-      : [];
+      : null;
 
     const createTranscriptionInput: TranscriptionCreateInput = {
       body: parsed.body,
@@ -64,7 +63,8 @@ class TranscriptionHandler extends ApplicationMessageHandler {
       alpha: parsed.alpha,
       beta: parsed.beta,
       languageModel: parsed.languageModel || "",
-      words: { create: createWordsInput },
+      words:
+        createWordsInput !== null ? { create: createWordsInput } : undefined,
       call: { connect: { id: parsed.callId } },
     };
 
@@ -73,7 +73,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
         call: { id: parsed.callId },
       });
       await prisma.createTranscription(createTranscriptionInput);
-    } catch (e) {
+    } catch (e){
       log.error(
         `Error adding transcript to trunked call \n ${JSON.stringify(
           createTranscriptionInput,

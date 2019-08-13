@@ -69,7 +69,7 @@ def on_message(client, userdata, msg):
 def publishTranscription(response):
     serialized = json.dumps(response)
     topic = 'transcription/' + response['callId'] + '/transcribed'
-    client.publish(topic, payload=serialized, qos=2)
+    client.publish(topic, payload=serialized, qos=2, retain=False)
     log.info(f'Published transcription result to {topic}')
 
 

@@ -23,7 +23,7 @@ export default (client: AsyncMqttClient) => {
 
 class TranscriptionHandler extends ApplicationMessageHandler {
   public callback = async (topic: string, payload: any, packet: any) => {
-    if (!topic.indexOf("transcribed")) {
+    if (topic.indexOf("transcribed") == -1) {
       return;
     }
     log.info(

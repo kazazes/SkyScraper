@@ -1,3 +1,13 @@
+import * as debugAgent from "@google-cloud/debug-agent";
+import log from "./log";
+import { short } from "./util/git";
+const debug = debugAgent.start({
+  serviceContext: { service: "skyscraper-backend", version: short() },
+  description: "SkyScraper Edge backend provider.",
+  keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
+  appPathRelativeToRepository: "edge-images/backend/",
+  allowExpressions: true,
+});
 import * as Sentry from "@sentry/node";
 Sentry.init({ dsn: process.env.SENTRY_URI });
 
@@ -14,4 +24,4 @@ async function start() {
   return;
 }
 
-start();
+debug.isReady().then(() => start());

@@ -109,6 +109,10 @@ export type TrunkedCallFrequencyTimeOrderByInput =
 export type TranscriptionWordOrderByInput =
   | "id_ASC"
   | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
   | "text_ASC"
   | "text_DESC"
   | "confidence_ASC"
@@ -684,6 +688,22 @@ export namespace QueryResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
@@ -759,6 +779,22 @@ export namespace QueryResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -2249,6 +2285,22 @@ export namespace TrunkedTalkgroupResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
@@ -2324,6 +2376,22 @@ export namespace TrunkedTalkgroupResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -3429,6 +3497,22 @@ export namespace TrunkedSystemResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
@@ -3504,6 +3588,22 @@ export namespace TrunkedSystemResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -4926,6 +5026,8 @@ export namespace TrunkedCallFrequencyTimeResolvers {
 export namespace TranscriptionResolvers {
   export const defaultResolvers = {
     id: (parent: Transcription) => parent.id,
+    updatedAt: (parent: Transcription) => parent.updatedAt,
+    createdAt: (parent: Transcription) => parent.createdAt,
     languageModel: (parent: Transcription) => parent.languageModel,
     beta: (parent: Transcription) => parent.beta,
     body: (parent: Transcription) => parent.body,
@@ -4948,6 +5050,22 @@ export namespace TranscriptionResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     text?: string | null;
     text_not?: string | null;
     text_in?: string[] | null;
@@ -5006,6 +5124,22 @@ export namespace TranscriptionResolvers {
     id_not_starts_with?: string | null;
     id_ends_with?: string | null;
     id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
     call?: TrunkedCallWhereInput | null;
     languageModel?: string | null;
     languageModel_not?: string | null;
@@ -5642,6 +5776,40 @@ export namespace TranscriptionResolvers {
         ) => string | Promise<string>;
       };
 
+  export type UpdatedAtResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type CreatedAtResolver =
+    | ((
+        parent: Transcription,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
   export type CallResolver =
     | ((
         parent: Transcription,
@@ -5763,6 +5931,40 @@ export namespace TranscriptionResolvers {
 
   export interface Type {
     id:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    updatedAt:
+      | ((
+          parent: Transcription,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: Transcription,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    createdAt:
       | ((
           parent: Transcription,
           args: {},
@@ -5903,6 +6105,8 @@ export namespace TranscriptionResolvers {
 export namespace TranscriptionWordResolvers {
   export const defaultResolvers = {
     id: (parent: TranscriptionWord) => parent.id,
+    updatedAt: (parent: TranscriptionWord) => parent.updatedAt,
+    createdAt: (parent: TranscriptionWord) => parent.createdAt,
     text: (parent: TranscriptionWord) => parent.text,
     confidence: (parent: TranscriptionWord) => parent.confidence,
     end: (parent: TranscriptionWord) => parent.end,
@@ -5910,6 +6114,40 @@ export namespace TranscriptionWordResolvers {
   };
 
   export type IdResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type UpdatedAtResolver =
+    | ((
+        parent: TranscriptionWord,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type CreatedAtResolver =
     | ((
         parent: TranscriptionWord,
         args: {},
@@ -6013,6 +6251,40 @@ export namespace TranscriptionWordResolvers {
 
   export interface Type {
     id:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    updatedAt:
+      | ((
+          parent: TranscriptionWord,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TranscriptionWord,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    createdAt:
       | ((
           parent: TranscriptionWord,
           args: {},

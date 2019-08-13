@@ -646,6 +646,8 @@ type Subscription {
 
 type Transcription {
   id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   call: TrunkedCall!
   languageModel: String!
   beta: Float!
@@ -710,6 +712,10 @@ type TranscriptionEdge {
 enum TranscriptionOrderByInput {
   id_ASC
   id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   languageModel_ASC
   languageModel_DESC
   beta_ASC
@@ -724,6 +730,8 @@ enum TranscriptionOrderByInput {
 
 type TranscriptionPreviousValues {
   id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   languageModel: String!
   beta: Float!
   body: String!
@@ -826,6 +834,22 @@ input TranscriptionWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   call: TrunkedCallWhereInput
   languageModel: String
   languageModel_not: String
@@ -893,6 +917,8 @@ input TranscriptionWhereUniqueInput {
 
 type TranscriptionWord {
   id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   text: String!
   transcription: Transcription!
   confidence: Float!
@@ -936,6 +962,10 @@ type TranscriptionWordEdge {
 enum TranscriptionWordOrderByInput {
   id_ASC
   id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
   text_ASC
   text_DESC
   confidence_ASC
@@ -948,6 +978,8 @@ enum TranscriptionWordOrderByInput {
 
 type TranscriptionWordPreviousValues {
   id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
   text: String!
   confidence: Float!
   end: Int!
@@ -969,6 +1001,22 @@ input TranscriptionWordScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]
@@ -1102,6 +1150,22 @@ input TranscriptionWordWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
   text: String
   text_not: String
   text_in: [String!]

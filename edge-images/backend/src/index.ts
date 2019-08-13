@@ -1,8 +1,6 @@
 import * as debugAgent from "@google-cloud/debug-agent";
-import log from "./log";
-import { short } from "./util/git";
 const debug = debugAgent.start({
-  serviceContext: { service: "skyscraper-backend", version: short() },
+  serviceContext: { service: "skyscraper-backend" },
   description: "SkyScraper Edge backend provider.",
   keyFilename: process.env.GOOGLE_APPLICATION_CREDENTIALS,
   appPathRelativeToRepository: "edge-images/backend/",

@@ -6,7 +6,7 @@ type Transcription {
     languageModel: String!
     beta: Float!
     body: String!
-    words: [TranscriptionWord]! @relation(name: "WordsOnTranscription" onDelete: CASCADE)
+    words: [TranscriptionWord] @relation(name: "WordsOnTranscription" onDelete: CASCADE)
     duration: Float!
     alpha: Float!
 }

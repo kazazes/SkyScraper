@@ -18,7 +18,7 @@ FROM node:10-alpine
 ENV NODE_ENV production
 
 WORKDIR /usr/src/app
-COPY package.json yarn.lock .env.example ./
+COPY package.json yarn.lock .env.example .git ./
 RUN yarn install --pure-lockfile --prod --network-timeout 1000000000 && \
   touch .env && yarn cache clean
 COPY --from=build /usr/src/app/dist/ ./dist

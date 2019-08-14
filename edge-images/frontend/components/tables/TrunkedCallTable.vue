@@ -1,11 +1,6 @@
 <template>
-  <ApolloQuery
-    :query="require('~/assets/apollo/queries/getTrunkedCalls.gql')"
-    :variables="{first: pagination.rowsPerPage, skip: 0}"
-    v-on:result="voiceResults"
-    v-on:error="apolloError"
-  >
-    <v-flex xs12>
+  <div>
+    <v-flex xs12 v-if="error">
       <v-alert :value="error" type="error">
         There was an error fetching that data.
         <v-card class="my-2">
@@ -13,22 +8,14 @@
         </v-card>
       </v-alert>
     </v-flex>
-    <template slot-scope="{ result: { loading, error, data } }">
-      <ApolloSubscribeToMore
-        :document="require('~/assets/apollo/subscriptions/newTrunkedCalls.gql')"
-        :updateQuery="onCallAdded"
-      />
-      <ApolloSubscribeToMore
-        :document="require('~/assets/apollo/subscriptions/transcriptions.gql')"
-        :updateQuery="onTranscriptionAdded"
-      />
-      <div v-if="data || loading" class="result apollo">
-        <v-card-text>
+    <div class="result apollo">
+      <v-card-text class="py-0">
+        <template>
           <v-data-table
-            :items="trunkedCalls"
             :headers="headers"
             :rows-per-page-items="[25,50,100]"
-            :loading="loading"
+            :loading="$apollo.loading"
+            :items="trunkedCalls"
             :pagination.sync="pagination"
             class="elevation-3"
             prev-icon="mdi-menu-left"
@@ -51,8 +38,7 @@
                   <v-icon
                     small
                     v-if="props.item.transcription && props.item.transcription.body"
-                  >mdi-script-text-outline
-                  </v-icon>
+                  >mdi-script-text-outline</v-icon>
                   <span v-else>
                     <moon-loader :size="16" style="margin: auto;"></moon-loader>
                   </span>
@@ -60,30 +46,98 @@
               </tr>
             </template>
           </v-data-table>
-        </v-card-text>
-      </div>
-    </template>
-  </ApolloQuery>
+        </template>
+      </v-card-text>
+    </div>
+  </div>
 </template>
 <script lang="ts">
   import { MoonLoader } from "@saeris/vue-spinners";
   import consola from "consola";
   import moment from "moment";
-  import { Component, Prop } from "nuxt-property-decorator";
   import Vue from "vue";
-  import { Transcription, TrunkedCall } from "../../assets/gql.types";
+  import { Prop, Component } from "nuxt-property-decorator";
+  import { Transcription, TrunkedCall } from "~/assets/gql.types";
+  import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
+  import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
+  import { NEW_TRANSCRIPTIONS } from "~/assets/apollo/subscriptions/transcriptions";
 
   @Component({
     name: "TrunkedCallTable",
+    apollo: {
+      trunkedCalls: {
+        query: TRUNKED_CALLS,
+        subscribeToMore: [
+          {
+            document: NEW_TRUNKED_CALLS,
+            updateQuery(
+              previousResult: { trunkedCalls: TrunkedCall[] },
+              {
+                subscriptionData,
+              }: { subscriptionData: { data: { trunkedCalls: TrunkedCall } } }
+            ): { trunkedCalls: TrunkedCall[] } {
+              const newCall = subscriptionData.data.trunkedCalls;
+              const t = this as any;
+              const existingIdx = previousResult.trunkedCalls.findIndex(
+                (c) => c.id === newCall.id
+              );
+              if (existingIdx !== -1) {
+                t.$set(previousResult.trunkedCalls, existingIdx, newCall);
+                return { trunkedCalls: previousResult.trunkedCalls };
+              } else {
+                if (t.realTimeQueueEmpty || !t.selected) {
+                  t.$store.commit("trunked/setSelected", newCall);
+                }
+                return {
+                  trunkedCalls: [newCall, ...previousResult.trunkedCalls],
+                };
+              }
+            },
+          },
+          {
+            document: NEW_TRANSCRIPTIONS,
+            updateQuery(
+              previousResult: { trunkedCalls: TrunkedCall[] },
+              {
+                subscriptionData,
+              }: { subscriptionData: { data: { transcriptions: Transcription } } }
+            ): { trunkedCalls: TrunkedCall[] } {
+              const trans = subscriptionData.data.transcriptions;
+              const existingIdx = previousResult.trunkedCalls.findIndex(
+                (c) => c.id === trans.call.id
+              );
+              if (existingIdx !== -1) {
+                const t = this as any;
+                t.$set(
+                  previousResult.trunkedCalls[existingIdx],
+                  "transcription",
+                  trans
+                );
+                return { trunkedCalls: previousResult.trunkedCalls };
+              }
+              return previousResult;
+            },
+          },
+        ],
+        variables() {
+          const t = this as any;
+          return {
+            first: t.pagination.rowsPerPage,
+            skip: t.page * t.rowsPerPage,
+          };
+        },
+        update(data) {
+          const t = this as any;
+          t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
+
+          return data.trunkedCalls;
+        },
+      },
+    },
     components: { "moon-loader": MoonLoader },
     data() {
       return {
-        pagination: {
-          descending: true,
-          page: 1,
-          rowsPerPage: 25,
-          sortBy: "startTime",
-        },
+        error: undefined,
         columns: [
           {
             label: "Alpha Tag",
@@ -151,35 +205,27 @@
         ],
       };
     },
-    methods: {
-      timeAgo(d: string) {
-        return moment(d).fromNow();
-      },
-      formatDate(d: string) {
-        return moment(d).format("lll");
-      },
-      formatFrequency(hertz: number) {
-        return Number(hertz / 1000000).toFixed(3) + " MHz";
-      },
+    props: {
+      realTimeQueueEmpty: { default: false },
     },
-  })
+  } as any)
   export default class TrunkedCallTable extends Vue {
-    result: { data: { trunkedCalls: TrunkedCall[] } } = {
-      data: { trunkedCalls: [] },
+    error: any = undefined;
+    pagination = {
+      descending: true,
+      page: 1,
+      rowsPerPage: 25,
+      sortBy: "startTime",
     };
-    error: any = false;
-
-    @Prop({ required: true })
-    realTimeQueueEmpty: boolean = false;
-
-    get trunkedCalls() {
-      return this.$store.getters["trunked/trunkedCalls"];
-    }
+    trunkedCalls!: TrunkedCall[];
 
     get selected() {
       const stored = this.$store.getters["trunked/selected"];
       return stored;
     }
+
+    @Prop({ required: true })
+    realTimeQueueEmpty: boolean = false;
 
     protected apolloError(e: any) {
       consola.error(e);
@@ -190,20 +236,23 @@
       const newCall = subscriptionData.data.trunkedCalls as TrunkedCall;
       // The previous result is immutable
       const newResult = {
-        trunkedCalls: previousResult ? [newCall, ...previousResult.trunkedCalls] : [] as TrunkedCall[],
+        trunkedCalls: previousResult
+          ? [newCall, ...previousResult.trunkedCalls]
+          : ([] as TrunkedCall[]),
       };
 
       if (!newCall.id) debugger;
       newResult.trunkedCalls.push(newCall);
-      this.$store.commit("trunked/add", newCall);
       return newResult;
     }
 
     onTranscriptionAdded(previousResult, { subscriptionData }) {
       const newTranscript = subscriptionData.data.transcriptions as Transcription;
-      const calls = previousResult ? [...previousResult.trunkedCalls as TrunkedCall[]] : [] as TrunkedCall[];
+      const calls = previousResult
+        ? [...(previousResult.trunkedCalls as TrunkedCall[])]
+        : ([] as TrunkedCall[]);
       const idx = calls.findIndex(
-        (c: TrunkedCall) => c.id === newTranscript.call.id,
+        (c: TrunkedCall) => c.id === newTranscript.call.id
       );
       if (idx === -1) {
         debugger;
@@ -218,19 +267,14 @@
         trunkedCalls: [copy, ...previousResult.trunkedCalls],
       };
 
-      this.$store.commit("trunked/setTranscription", newTranscript);
       return newResult;
     }
 
-    protected voiceResults(result: { data: { trunkedCalls: TrunkedCall[] } }) {
-      if (
-        (typeof this.selected.id === "undefined" && result.data) ||
-        this.realTimeQueueEmpty
-      ) {
-        this.$store.commit("trunked/add", result.data.trunkedCalls);
-        this.$store.commit("trunked/setSelected", result.data.trunkedCalls[0]);
-      }
+    timeAgo(d: string) {
+      return moment(d).fromNow();
     }
+
+    protected voiceResults(result: { data: { trunkedCalls: TrunkedCall[] } }) {}
   }
 </script>
 

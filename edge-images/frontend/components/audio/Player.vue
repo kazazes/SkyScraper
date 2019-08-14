@@ -81,8 +81,8 @@
     currentSeconds = 0;
     durationSeconds = 0;
     volume = 100;
-    currentTime: string = "0:00";
-    durationTime: string = "0:00";
+    currentTime: string = "00:00";
+    durationTime: string = "00:00";
     paused: boolean = true;
     percentComplete: number = 0;
     muted = false;
@@ -102,7 +102,7 @@
 
     @Watch("file")
     fileChanged() {
-      this.currentTime = "0:00";
+      this.currentTime = "00:00";
       this.percentComplete = 0;
       this.createHowl();
     }
@@ -128,7 +128,7 @@
         },
         onload: () => {
           this.durationTime = String(
-            convertTimeHHMMSS(this.sound.duration() || 0),
+            convertTimeHHMMSS(this.sound.duration() || 0)
           );
           this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
         },

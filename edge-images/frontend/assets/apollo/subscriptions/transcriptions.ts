@@ -1,5 +1,7 @@
-subscription {
-  transcriptions {
+import gql from "graphql-tag";
+export const NEW_TRANSCRIPTIONS = gql`
+  subscription transcriptions {
+    transcriptions {
       call {
         id
         createdAt
@@ -11,5 +13,6 @@ subscription {
         end
         start
       }
+    }
   }
-}
+`;

@@ -8,13 +8,7 @@
     "importHelpers": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": [
-      "@types/node",
-      "@nuxt/vue-app",
-      "./types",
-      "vuetify",
-      "vue-apollo"
-    ],
+    "types": ["@types/node", "@nuxt/vue-app", "./types", "vuetify"],
     "pretty": true,
     "paths": {
       "~/*": ["./*"],

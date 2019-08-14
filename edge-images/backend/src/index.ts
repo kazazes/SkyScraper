@@ -22,4 +22,5 @@ async function start() {
   return;
 }
 
-debug.isReady().then(() => start());
+if (process.env.NODE_ENV === "production") debug.isReady().then(() => start());
+else start();

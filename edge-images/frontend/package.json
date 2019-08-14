@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
+    "@nuxt/config": "^2.8.1",
     "@nuxt/typescript": "^2.7.1",
     "@nuxtjs/apollo": "^4.0.0-rc9",
     "@nuxtjs/axios": "^5.5.0",

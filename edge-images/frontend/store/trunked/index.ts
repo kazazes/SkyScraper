@@ -1,4 +1,4 @@
-import { TrunkedCall, Transcription, Maybe } from "~/assets/gql.types";
+import { TrunkedCall, Transcription, Maybe } from "~/types/gql.types";
 
 interface TrunkedState {
   selected?: Maybe<TrunkedCall>;

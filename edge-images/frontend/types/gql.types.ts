@@ -932,6 +932,7 @@ export type PageInfo = {
 export type Query = {
   __typename?: "Query";
   trunkedCalls: Array<Maybe<TrunkedCall>>;
+  trunkedCallCount: Scalars["Int"];
   dump1090Aircraft?: Maybe<Dump1090Aircraft>;
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>;
   dump1090AircraftsConnection: Dump1090AircraftConnection;
@@ -5103,6 +5104,7 @@ export type TrunkedTalkgroupWhereUniqueInput = {
 export type TrunkedCallsQueryVariables = {
   first?: Maybe<Scalars["Int"]>;
   skip?: Maybe<Scalars["Int"]>;
+  orderBy?: Maybe<TrunkedCallOrderByInput>;
 };
 
 export type TrunkedCallsQuery = { __typename?: "Query" } & {
@@ -5132,10 +5134,7 @@ export type TrunkedCallsQuery = { __typename?: "Query" } & {
             >
           >;
           transcription: Maybe<
-            { __typename?: "Transcription" } & Pick<
-              Transcription,
-              "id" | "body"
-            > & {
+            { __typename?: "Transcription" } & Pick<Transcription, "body"> & {
                 words: Maybe<
                   Array<
                     { __typename?: "TranscriptionWord" } & Pick<
@@ -5151,9 +5150,9 @@ export type TrunkedCallsQuery = { __typename?: "Query" } & {
   >;
 };
 
-export type Unnamed_1_SubscriptionVariables = {};
+export type NewTrunkedCallsSubscriptionVariables = {};
 
-export type Unnamed_1_Subscription = { __typename?: "Subscription" } & {
+export type NewTrunkedCallsSubscription = { __typename?: "Subscription" } & {
   trunkedCalls: Maybe<
     { __typename?: "TrunkedCall" } & Pick<
       TrunkedCall,
@@ -5179,10 +5178,7 @@ export type Unnamed_1_Subscription = { __typename?: "Subscription" } & {
           >
         >;
         transcription: Maybe<
-          { __typename?: "Transcription" } & Pick<
-            Transcription,
-            "id" | "body"
-          > & {
+          { __typename?: "Transcription" } & Pick<Transcription, "body"> & {
               words: Maybe<
                 Array<
                   { __typename?: "TranscriptionWord" } & Pick<
@@ -5197,9 +5193,9 @@ export type Unnamed_1_Subscription = { __typename?: "Subscription" } & {
   >;
 };
 
-export type Unnamed_2_SubscriptionVariables = {};
+export type TranscriptionsSubscriptionVariables = {};
 
-export type Unnamed_2_Subscription = { __typename?: "Subscription" } & {
+export type TranscriptionsSubscription = { __typename?: "Subscription" } & {
   transcriptions: Maybe<
     { __typename?: "Transcription" } & Pick<Transcription, "body"> & {
         call: { __typename?: "TrunkedCall" } & Pick<

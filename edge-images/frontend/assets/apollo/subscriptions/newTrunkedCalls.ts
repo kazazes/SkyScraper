@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
 export const NEW_TRUNKED_CALLS = gql`
-  subscription trunkedCalls {
+  subscription newTrunkedCalls {
     trunkedCalls {
       id
       createdAt

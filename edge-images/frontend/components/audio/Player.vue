@@ -64,7 +64,7 @@
 <script lang="ts">
   import { Howl, Howler } from "howler";
   import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-  import { toggleAutoPlay } from "../../pages/data/voice.vue";
+  import { toggleAutoPlay } from "~/utils/enums";
 
   const convertTimeHHMMSS = (val) => {
     try {

@@ -13,14 +13,11 @@
         <template>
           <v-data-table
             :headers="headers"
-            :rows-per-page-items="[25,50,100]"
-            :loading="$apollo.loading"
+            :rows-per-page-items="[10,25,50]"
             :items="trunkedCalls"
             :pagination.sync="pagination"
+            :total-items="trunkedCallCount"
             class="elevation-3"
-            prev-icon="mdi-menu-left"
-            next-icon="mdi-menu-right"
-            sort-icon="mdi-menu-down"
           >
             <template v-slot:items="props">
               <tr
@@ -57,10 +54,15 @@
   import moment from "moment";
   import Vue from "vue";
   import { Prop, Component } from "nuxt-property-decorator";
-  import { Transcription, TrunkedCall } from "~/assets/gql.types";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
   import { NEW_TRANSCRIPTIONS } from "~/assets/apollo/subscriptions/transcriptions";
+  import gql from "graphql-tag";
+  import {
+    TrunkedCall,
+    TrunkedCallOrderByInput,
+    Transcription,
+  } from "~/types/gql.types";
 
   @Component({
     name: "TrunkedCallTable",
@@ -82,15 +84,28 @@
                 (c) => c.id === newCall.id
               );
               if (existingIdx !== -1) {
+                // update existing
                 t.$set(previousResult.trunkedCalls, existingIdx, newCall);
                 return { trunkedCalls: previousResult.trunkedCalls };
               } else {
+                // create new
+                t.trunkedCallCount++;
                 if (t.realTimeQueueEmpty || !t.selected) {
                   t.$store.commit("trunked/setSelected", newCall);
                 }
-                return {
-                  trunkedCalls: [newCall, ...previousResult.trunkedCalls],
-                };
+                if (
+                  Array.isArray(previousResult.trunkedCalls) &&
+                  previousResult.trunkedCalls.length >= t.pagination.rowsPerPage
+                ) {
+                  previousResult.trunkedCalls.pop();
+                }
+                if (t.pagination.page == 1) {
+                  return {
+                    trunkedCalls: [newCall, ...previousResult.trunkedCalls],
+                  };
+                } else {
+                  return previousResult;
+                }
               }
             },
           },
@@ -123,7 +138,8 @@
           const t = this as any;
           return {
             first: t.pagination.rowsPerPage,
-            skip: t.page * t.rowsPerPage,
+            skip: t.pagination.page * t.pagination.rowsPerPage,
+            orderBy: TrunkedCallOrderByInput.StartTimeDesc,
           };
         },
         update(data) {
@@ -131,6 +147,16 @@
           t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
 
           return data.trunkedCalls;
+        },
+      },
+      trunkedCallCount: {
+        query: gql`
+          query trunkedCallCount {
+            trunkedCallCount
+          }
+        `,
+        update({ trunkedCallCount }) {
+          return trunkedCallCount;
         },
       },
     },
@@ -154,7 +180,6 @@
           {
             label: "Time",
             field: "startTime",
-            sortable: true,
           },
           {
             label: "Duration",
@@ -171,14 +196,13 @@
           {
             text: "Alpha Tag",
             value: "talkgroup.alphaTag",
-            sortable: true,
             class: "hidden-lg-and-down pl-4",
           },
           {
             text: "",
             value: "talkgroup.tag",
             class: "hidden-md-and-down pl-2",
-            sortable: true,
+            sortable: false,
           },
           {
             text: "Description",
@@ -188,12 +212,12 @@
           {
             text: "Time",
             value: "startTime",
-            sortable: true,
+            sortable: false,
           },
           {
             text: "Duration",
             value: "duration",
-            sortable: true,
+            sortable: false,
             class: "hidden-sm-and-down",
           },
           {
@@ -211,13 +235,16 @@
   } as any)
   export default class TrunkedCallTable extends Vue {
     error: any = undefined;
+
+    trunkedCallCount = 0;
+    trunkedCalls!: TrunkedCall[];
+
     pagination = {
       descending: true,
       page: 1,
-      rowsPerPage: 25,
+      rowsPerPage: 10,
       sortBy: "startTime",
     };
-    trunkedCalls!: TrunkedCall[];
 
     get selected() {
       const stored = this.$store.getters["trunked/selected"];

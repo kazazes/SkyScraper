@@ -1,8 +1,9 @@
 import webpack from "webpack";
+import NuxtConfiguration from "@nuxt/config";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-const config = {
+const config: NuxtConfiguration = {
   /*
    ** Headers of the page
    */
@@ -32,7 +33,7 @@ const config = {
   /*
    ** Global CSS
    */
-  css: [{ src: "~/assets/style/index.scss", lang: "scss" }],
+  css: ["~/assets/style/index.scss"],
 
   // css: ["~/assets/style/index.scss", "@mdi/font/css/materialdesignicons.css"],
   /*
@@ -42,27 +43,41 @@ const config = {
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    "@nuxtjs/sentry",
-    "@nuxtjs/axios",
-    "@nuxtjs/vuetify",
-    "@nuxtjs/apollo",
-    "@nuxtjs/proxy",
-    "@nuxtjs/pwa",
-    [
-      "@nuxtjs/robots",
-      {
-        UserAgent: "*",
-        Disallow: "/",
-      },
-    ],
-    [
-      "nuxt-validate",
-      {
-        lang: "en",
-      },
-    ],
-  ],
+  modules: isDev
+    ? [
+        "@nuxtjs/axios",
+        "@nuxtjs/vuetify",
+        "@nuxtjs/apollo",
+        "@nuxtjs/proxy",
+        "@nuxtjs/pwa",
+        [
+          "nuxt-validate",
+          {
+            lang: "en",
+          },
+        ],
+      ]
+    : [
+        "@nuxtjs/sentry",
+        "@nuxtjs/axios",
+        "@nuxtjs/vuetify",
+        "@nuxtjs/apollo",
+        "@nuxtjs/proxy",
+        "@nuxtjs/pwa",
+        [
+          "@nuxtjs/robots",
+          {
+            UserAgent: "*",
+            Disallow: "/",
+          },
+        ],
+        [
+          "nuxt-validate",
+          {
+            lang: "en",
+          },
+        ],
+      ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config

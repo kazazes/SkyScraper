@@ -1,10 +1,10 @@
 <template>
-  <v-layout column fill-height>
+  <v-layout row fill-height pb-5>
     <v-container fluid pa-0>
       <v-flex>
         <v-tabs
-          :scroll-off-screen=true
-          :scroll-threshold=1
+          :scroll-off-screen="true"
+          :scroll-threshold="1"
           centered
           fixed-tabs
           dark
@@ -12,7 +12,7 @@
           z-index="10"
           slider-color="white"
         >
-          <v-tab nuxt to="/data/voice" value="true">
+          <v-tab nuxt to="/data/trunked" value="true">
             <v-icon class="pr-2">mdi-microphone</v-icon>
             <span class="text-uppercase">Voice</span>
           </v-tab>

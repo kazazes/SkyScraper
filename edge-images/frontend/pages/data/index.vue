@@ -6,7 +6,7 @@
 
   @Component({
     fetch({ params, redirect }) {
-      redirect(307, "/data/voice");
+      redirect(307, "/data/trunked");
     },
   })
   export default class DataIndex extends Vue {}

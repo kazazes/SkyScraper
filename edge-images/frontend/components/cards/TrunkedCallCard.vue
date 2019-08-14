@@ -46,9 +46,9 @@
   import Vue from "vue";
   import Component from "vue-class-component";
   import { Prop } from "vue-property-decorator";
-  import { TranscriptionWord, TrunkedCall } from "~/assets/gql.types";
+  import { TranscriptionWord, TrunkedCall } from "~/types/gql.types";
   import Player from "~/components/audio/Player.vue";
-  import { toggleAutoPlay } from "../../pages/data/voice.vue";
+  import { toggleAutoPlay } from "~/utils/enums";
 
   const redScale = scale(["red", "black"])
     .domain([0.5, 1])
@@ -69,7 +69,6 @@
   export default class TrunkedCallCard extends Vue {
     @Prop()
     toggleAutoPlay: toggleAutoPlay = 0;
-
     get selected(): TrunkedCall {
       return this.$store.getters["trunked/selected"];
     }

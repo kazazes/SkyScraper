@@ -69,7 +69,7 @@
 
 <script lang="ts">
   import { IInputtedTalkgroup } from "./talkgroupValidator";
-  import { TrunkedTalkgroup } from "~/assets/gql.types";
+  import { TrunkedTalkgroup } from "~/types/gql.types";
   import Vue from "vue";
   import { Component, Prop } from "vue-property-decorator";
   import Upload from "./Upload.vue";

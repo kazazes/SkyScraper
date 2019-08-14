@@ -1,6 +1,6 @@
 <template>
   <v-container
-    id="voice"
+    id="trunked_data"
     fill-height
     row
     wrap
@@ -25,7 +25,7 @@
           </v-btn>
         </v-btn-toggle>
       </v-flex>
-      <v-flex xs12>
+      <v-flex xs12 py-4>
         <TrunkedCallCard
           v-on:play-live-audio="playLiveAudio"
           v-on:play-next-audio="playRealtimeAudio"
@@ -48,15 +48,10 @@
   import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
   import consola from "consola";
-  import { TrunkedCall } from "~/assets/gql.types";
+  import { TrunkedCall } from "~/types/gql.types";
   import TrunkedCallTable from "../../components/tables/TrunkedCallTable.vue";
   import TrunkedCallCard from "../../components/cards/TrunkedCallCard.vue";
-
-  export enum toggleAutoPlay {
-    SINGLE = 0,
-    REALTIME = 1,
-    LIVE = 2,
-  }
+  import { toggleAutoPlay } from "~/utils/enums";
 
   @Component({
     name: "TrunkedVoiceData",
@@ -65,10 +60,10 @@
       TrunkedCallCard,
     },
     head: {
-      title: "Voice Data | SkyScraper",
+      title: "Trunked System | SkyScraper",
     },
   })
-  export default class DataStream extends Vue {
+  export default class TrunkedVoiceData extends Vue {
     protected error: any = false;
     protected toggleAutoPlay: toggleAutoPlay = 0;
     protected returnedCalls: any[] = [];

@@ -104,8 +104,8 @@
             {
               disabled: false,
               icon: "mdi-microphone",
-              text: "Voice",
-              group: "/voice",
+              text: "Trunked Radio",
+              group: "/trunked",
               children: [
                 {
                   to: "/voice/trunked",

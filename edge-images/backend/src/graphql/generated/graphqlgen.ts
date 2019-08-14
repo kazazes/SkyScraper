@@ -866,6 +866,23 @@ export namespace QueryResolvers {
         ) => Array<TrunkedCall | null> | Promise<Array<TrunkedCall | null>>;
       };
 
+  export type TrunkedCallCountResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
   export interface Type {
     trunkedCalls:
       | ((
@@ -882,6 +899,23 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Array<TrunkedCall | null> | Promise<Array<TrunkedCall | null>>;
+        };
+
+    trunkedCallCount:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
         };
   }
 }

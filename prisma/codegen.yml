@@ -1,8 +1,8 @@
 overwrite: true
 schema: "../edge-images/backend/src/graphql/**/*.graphql"
-documents: "../edge-images/frontend/assets/apollo/**/*.gql"
+documents: "../edge-images/frontend/assets/apollo/**/*.ts"
 generates:
-  ../edge-images/frontend/assets/gql.types.d.ts:
+  ../edge-images/frontend/types/gql.types.d.ts:
     plugins:
       - "typescript"
       - "typescript-operations"

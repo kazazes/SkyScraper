@@ -12,7 +12,7 @@ import {
 
 const rootTopic = "transcription";
 
-export default (client: AsyncMqttClient) => {
+export default (client: AsyncMqttClient)=> {
   const l = new ApplicationListener(
     rootTopic,
     client,

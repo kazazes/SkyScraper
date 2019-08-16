@@ -14,7 +14,10 @@ import {
   ApplicationMessageHandler,
 } from "./applicationListener";
 
-const rootTopic = "/trunk-recorder";
+const rootTopic =
+  process.env.NODE_ENV === "production"
+    ? "trunk-recorder"
+    : "+/trunk-recorder/#";
 
 export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
@@ -92,9 +95,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       audioPath: parsed.audioPath,
       wavPath: parsed.wavPath,
       duration: parsed.duration,
-      remotePath: `https://${process.env.EDGE_HOSTNAME}${
-        parsed.wavPath
-      }`,
+      remotePath: `https://${process.env.EDGE_HOSTNAME}${parsed.wavPath}`,
       frequencyList: {
         create: parsed.freqList.map((fs) => {
           const f: TrunkedCallFrequencyTimeCreateInput = {

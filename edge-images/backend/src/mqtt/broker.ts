@@ -2,6 +2,7 @@ import mqtt, { AsyncMqttClient, IClientPublishOptions, QoS } from "async-mqtt";
 
 import { hostname } from "os";
 import log from "../log";
+import debugAll from "./debugAll";
 import dump1090 from "./dump1090";
 import transcription from "./transcription";
 import trunkRecorder from "./trunkRecorder";
@@ -57,6 +58,7 @@ async function subscribeListeners() {
     await trunkRecorder(client);
     await dump1090(client);
     await transcription(client);
+    if (process.env.NODE_ENV !== "production") { await debugAll(client); }
     log.debug("Subscribed listeners");
   } catch (e) {
     log.error("Couldn't subscribe mqtt backend listeners", e);

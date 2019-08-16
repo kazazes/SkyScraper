@@ -53,7 +53,7 @@
   import consola from "consola";
   import moment from "moment";
   import Vue from "vue";
-  import { Prop, Component } from "nuxt-property-decorator";
+  import { Prop, Component, Watch } from "nuxt-property-decorator";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
   import { NEW_TRANSCRIPTIONS } from "~/assets/apollo/subscriptions/transcriptions";
@@ -91,7 +91,6 @@
                 // create new
                 t.trunkedCallCount++;
                 if (t.realTimeQueueEmpty || !t.selected) {
-                  debugger;
                   t.$store.commit("trunked/setSelected", newCall);
                 }
                 if (
@@ -241,7 +240,13 @@
     error: any = undefined;
 
     trunkedCallCount = 0;
+
     trunkedCalls!: TrunkedCall[];
+
+    @Watch('trunkedCalls', { deep: true})
+    emitTrunkedCalls() {
+      this.$emit('trunked-calls-updated', this.trunkedCalls)
+    }
 
     pagination = {
       descending: true,

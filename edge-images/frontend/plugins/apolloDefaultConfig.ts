@@ -1,9 +1,9 @@
-const server = `${process.env.EDGE_HOSTNAME}/graphql`;
+import { ApolloClientClientConfig } from "vue-cli-plugin-apollo/graphql-client";
 
 export default () => {
   const isDev = process.env.NODE_ENV !== "production";
 
-  return {
+  const config: ApolloClientClientConfig = {
     persisting: true,
     httpEndpoint: isDev
       ? "http://127.0.0.1:4000/graphql"
@@ -16,4 +16,6 @@ export default () => {
       : `wss://edge.sibyl.vision/graphql`,
     websocketsOnly: false,
   };
+
+  return config;
 };

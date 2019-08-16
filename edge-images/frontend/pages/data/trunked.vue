@@ -12,7 +12,7 @@
     grid-list-xs
   >
     <v-layout row align-start justify-start wrap>
-      <v-flex text-xs-center mt-3>
+      <v-flex text-xs-center mt-4>
         <v-btn-toggle v-model="toggleAutoPlay">
           <v-btn color="red lighten-2">
             <v-icon class="my-2">mdi-numeric-1</v-icon>
@@ -38,6 +38,7 @@
       <v-flex>
         <TrunkedCallTable
           v-on:selection-changed="$forceUpdate()"
+          v-on:trunked-calls-updated="trunkedCallsUpdated"
           :real-time-queue-empty="realTimeQueueEmpty"
         ></TrunkedCallTable>
       </v-flex>
@@ -48,9 +49,10 @@
   import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
   import consola from "consola";
+  import { doc } from "~/node_modules/@types/prettier";
   import { TrunkedCall } from "~/types/gql.types";
-  import TrunkedCallTable from "../../components/tables/TrunkedCallTable.vue";
-  import TrunkedCallCard from "../../components/cards/TrunkedCallCard.vue";
+  import TrunkedCallTable from "~/components/tables/TrunkedCallTable.vue";
+  import TrunkedCallCard from "~/components/cards/TrunkedCallCard.vue";
   import { toggleAutoPlay } from "~/utils/enums";
 
   @Component({
@@ -69,17 +71,18 @@
     protected returnedCalls: any[] = [];
     protected paused = true;
     realTimeQueueEmpty: boolean = false;
+    trunkedCalls: TrunkedCall[] = [];
 
     get selected() {
       return this.$store.getters["trunked/selected"];
     }
 
-    get trunkedCalls() {
-      return this.$store.getters["trunked/trunkedCalls"];
-    }
-
     protected playLiveAudio() {
       this.$store.commit("trunked/setSelected", this.trunkedCalls[0]);
+    }
+
+    protected trunkedCallsUpdated(calls: TrunkedCall[]) {
+      this.trunkedCalls = calls;
     }
 
     protected playRealtimeAudio() {

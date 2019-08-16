@@ -115,7 +115,7 @@ services:
       - mqtt
   netdata:
     image: skyscraperai/netdata
-    hostname: ${EDGE_HOSTNAME}
+    hostname: $EDGE_HOSTNAME
     ports:
       - 19999:19999
     cap_add:
@@ -163,7 +163,7 @@ services:
     privileged: false
     depends_on:
       - nginx
-    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=${EDGE_HOSTNAME} nginx:443
+    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=$EDGE_HOSTNAME nginx:443
   frontend:
     build:
       dockerfile: Dockerfile
@@ -174,9 +174,9 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NETDATA_HTTP=https://${EDGE_HOSTNAME}/netdata/
-      - GRAPHQL_HTTP=https://${EDGE_HOSTNAME}/graphql/
-      - GRAPHQL_WS=wss://${EDGE_HOSTNAME}/graphql/
+      - NETDATA_HTTP=https://$EDGE_HOSTNAME/netdata/
+      - GRAPHQL_HTTP=https://$EDGE_HOSTNAME/graphql/
+      - GRAPHQL_WS=wss://$EDGE_HOSTNAME/graphql/
     restart: always
   redis:
     build:

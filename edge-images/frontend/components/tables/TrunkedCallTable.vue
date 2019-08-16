@@ -139,7 +139,7 @@
           const t = this as any;
           return {
             first: t.pagination.rowsPerPage,
-            skip: t.pagination.page * t.pagination.rowsPerPage,
+            skip: (t.pagination.page - 1) * t.pagination.rowsPerPage,
             orderBy: TrunkedCallOrderByInput.StartTimeDesc,
           };
         },

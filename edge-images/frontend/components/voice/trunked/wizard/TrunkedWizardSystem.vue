@@ -117,13 +117,14 @@
   </v-container>
 </template>
 <script lang="ts">
-  import { MAX_TRUNKED_RANGE_MHZ } from "~/assets/constants";
   import { validFrequencyKHz, validFrequencyMHz } from "~/utils/frequencies";
   import { randomBytes } from "crypto";
   import { FieldFlags, ValidationObserver } from "vee-validate";
   import Vue from "vue";
   import { Component, Prop } from "vue-property-decorator";
   import { ErrorBag } from "vee-validate";
+
+  const MAX_TRUNKED_RANGE_MHZ = 15;
 
   @Component({
     methods: {

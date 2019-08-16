@@ -35,16 +35,19 @@
           </v-flex>
         </v-card-title>
         <v-card-text class="white">
-          <blockquote v-if="selected && selected.transcription && selected.transcription.body"
-                      class="blockquote py-0"
-                      ref="transcript"
-                      v-html="stylizeTranscription(selected.transcription.body)"
+          <blockquote
+            v-if="selectedTranscription !== undefined"
+            class="blockquote pa-0 ma-1"
+            ref="transcript"
+            v-html="stylizeTranscription(selectedTranscription)"
           ></blockquote>
+          <span v-else>processing...</span>
         </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
+
 
 <script lang="ts">
   import { scale } from "chroma-js";
@@ -54,7 +57,7 @@
   import Component from "vue-class-component";
   import { Prop } from "vue-property-decorator";
   import Player from "~/components/audio/Player.vue";
-  import { TranscriptionWord, TrunkedCall } from "~/types/gql.types";
+  import { Transcription, TranscriptionWord, TrunkedCall } from "~/types/gql.types";
   import { toggleAutoPlay } from "~/utils/enums";
 
   const redScale = scale(["red", "black"])
@@ -73,24 +76,28 @@
     toggleAutoPlay: toggleAutoPlay = 0;
 
     get edgeHostname() {
-      return this.$store.getters['edgeHostname'];
+      return this.$store.getters["edgeHostname"];
     }
 
     get selected(): TrunkedCall {
       return this.$store.getters["trunked/selected"];
     }
 
-    stylizeTranscription(transcript) {
-      if (!this.selected.transcription) return;
+    get selectedTranscription(): Transcription {
+      return this.$store.getters["trunked/selectedTranscription"];
+    }
+
+    stylizeTranscription(transcription: Transcription) {
       if (
-        this.selected.transcription.words &&
-        this.selected.transcription.words.length == 0
+        !transcription || (
+        transcription.words &&
+        transcription.words.length == 0)
       )
         return;
       const words = [
-        ...(this.selected.transcription.words as TranscriptionWord[]),
+        ...(transcription.words as TranscriptionWord[]),
       ];
-      const split = this.selected.transcription.body
+      const split = transcription.body
         .replace(/[^\w\s]/, "")
         .split(" ");
       const newWords: string[] = [];
@@ -100,7 +107,7 @@
           (z) => z.text.replace(/[^\w\s]/, "") === word.replace(/[^\w\s]/, ""),
         );
         if (wIdx == -1) {
-          consola.warn(`Couldn't find ${ word } in "${ transcript }"`);
+          consola.warn(`Couldn't find ${ word } in "${ transcription.body }"`);
           return;
         }
         const w = words[wIdx];
@@ -120,70 +127,6 @@
 
     formatFrequency(hertz: number) {
       return Number(hertz / 1000000).toFixed(3) + " MHz";
-    }
-
-    protected mapLoaded(map: any) {
-      const framesPerSecond = 15;
-      const initialOpacity = 1;
-      let opacity = initialOpacity;
-      const initialRadius = 8;
-      let radius = initialRadius;
-      const maxRadius = 18;
-
-      // Add a source and layer displaying a point which will be animated in a circle.
-      map.addSource("point", {
-        type: "geojson",
-        data: {
-          type: "Point",
-          coordinates: [-122.4239597, 37.7776025],
-        },
-      });
-
-      map.addLayer({
-        id: "point",
-        source: "point",
-        type: "circle",
-        paint: {
-          "circle-radius": initialRadius,
-          "circle-radius-transition": { duration: 0 },
-          "circle-opacity-transition": { duration: 0 },
-          "circle-color": "#e53935",
-        },
-      });
-
-      map.addLayer({
-        id: "point1",
-        source: "point",
-        type: "circle",
-        paint: {
-          "circle-radius": initialRadius,
-          "circle-color": "#e53935",
-        },
-      });
-
-      function animateMarker(timestamp) {
-        const i = setTimeout(function () {
-          requestAnimationFrame(animateMarker);
-
-          radius += (maxRadius - radius) / framesPerSecond;
-          opacity -= 0.9 / framesPerSecond;
-
-          try {
-            map.setPaintProperty("point", "circle-radius", radius);
-            map.setPaintProperty("point", "circle-opacity", opacity);
-
-            if (opacity <= 0) {
-              radius = initialRadius;
-              opacity = initialOpacity;
-            }
-          } catch (e) {
-            clearTimeout(i);
-          }
-        }, 1000 / framesPerSecond);
-      }
-
-      // Start the animation.
-      animateMarker(0);
     }
   }
 </script>

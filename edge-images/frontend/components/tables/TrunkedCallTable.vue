@@ -35,7 +35,8 @@
                   <v-icon
                     small
                     v-if="props.item.transcription && props.item.transcription.body"
-                  >mdi-script-text-outline</v-icon>
+                  >mdi-script-text-outline
+                  </v-icon>
                   <span v-else>
                     <moon-loader :size="16" style="margin: auto;"></moon-loader>
                   </span>
@@ -51,18 +52,13 @@
 <script lang="ts">
   import { MoonLoader } from "@saeris/vue-spinners";
   import consola from "consola";
+  import gql from "graphql-tag";
   import moment from "moment";
+  import { Component, Prop, Watch } from "nuxt-property-decorator";
   import Vue from "vue";
-  import { Prop, Component, Watch } from "nuxt-property-decorator";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
-  import { NEW_TRANSCRIPTIONS } from "~/assets/apollo/subscriptions/transcriptions";
-  import gql from "graphql-tag";
-  import {
-    TrunkedCall,
-    TrunkedCallOrderByInput,
-    Transcription,
-  } from "~/types/gql.types";
+  import { Transcription, TrunkedCall, TrunkedCallOrderByInput } from "~/types/gql.types";
 
   @Component({
     name: "TrunkedCallTable",
@@ -76,13 +72,16 @@
               previousResult: { trunkedCalls: TrunkedCall[] },
               {
                 subscriptionData,
-              }: { subscriptionData: { data: { trunkedCalls: TrunkedCall } } }
+              }: { subscriptionData: { data: { trunkedCalls: TrunkedCall } } },
             ): { trunkedCalls: TrunkedCall[] } {
               const newCall = subscriptionData.data.trunkedCalls;
               const t = this as any;
               const existingIdx = previousResult.trunkedCalls.findIndex(
-                (c) => c.id === newCall.id
+                (c) => c.id === newCall.id,
               );
+              if (newCall.id === t.selected.id) {
+                t.$store.commit('trunked/setSelectedTranscription', newCall.transcription);
+              }
               if (existingIdx !== -1) {
                 // update existing
                 t.$set(previousResult.trunkedCalls, existingIdx, newCall);
@@ -99,6 +98,7 @@
                 ) {
                   previousResult.trunkedCalls.pop();
                 }
+
                 if (t.pagination.page == 1) {
                   return {
                     trunkedCalls: [newCall, ...previousResult.trunkedCalls],
@@ -107,30 +107,6 @@
                   return previousResult;
                 }
               }
-            },
-          },
-          {
-            document: NEW_TRANSCRIPTIONS,
-            updateQuery(
-              previousResult: { trunkedCalls: TrunkedCall[] },
-              {
-                subscriptionData,
-              }: { subscriptionData: { data: { transcriptions: Transcription } } }
-            ): { trunkedCalls: TrunkedCall[] } {
-              const trans = subscriptionData.data.transcriptions;
-              const existingIdx = previousResult.trunkedCalls.findIndex(
-                (c) => c.id === trans.call.id
-              );
-              if (existingIdx !== -1) {
-                const t = this as any;
-                t.$set(
-                  previousResult.trunkedCalls[existingIdx],
-                  "transcription",
-                  trans
-                );
-                return { trunkedCalls: previousResult.trunkedCalls };
-              }
-              return previousResult;
             },
           },
         ],
@@ -243,9 +219,9 @@
 
     trunkedCalls!: TrunkedCall[];
 
-    @Watch('trunkedCalls', { deep: true})
+    @Watch("trunkedCalls", { deep: true })
     emitTrunkedCalls() {
-      this.$emit('trunked-calls-updated', this.trunkedCalls)
+      this.$emit("trunked-calls-updated", this.trunkedCalls);
     }
 
     pagination = {

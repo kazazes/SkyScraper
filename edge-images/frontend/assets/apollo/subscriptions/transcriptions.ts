@@ -4,7 +4,6 @@ export const NEW_TRANSCRIPTIONS = gql`
     transcriptions {
       call {
         id
-        createdAt
       }
       body
       words {

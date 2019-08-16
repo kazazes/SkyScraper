@@ -20,9 +20,7 @@ NGROK_HOSTNAME=$EDGE_HOSTNAME
 ARGS="ngrok"
 
 # Set the protocol.
-if [ "$NGROK_PROTOCOL" = "TCP" ]; then
-  ARGS="$ARGS tcp"
-elif ["$NGROK_PROTOCOL" = "TLS"]; then
+if [ "$NGROK_PROTOCOL" = "TLS" ]; then
   ARGS="$ARGS tls"
 else
   ARGS="$ARGS http"

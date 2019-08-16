@@ -4,9 +4,7 @@ import { Bucket, Storage } from "@google-cloud/storage";
 
 export default class CloudStorage {
   public static getBucket(bucketName: string) {
-    return new Storage({
-      keyFile: process.env.GCP_KEY_FILE
-    }).bucket(bucketName);
+    return new Storage({}).bucket(bucketName);
   }
 
   private storage: Storage;

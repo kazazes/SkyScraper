@@ -92,7 +92,7 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       audioPath: parsed.audioPath,
       wavPath: parsed.wavPath,
       duration: parsed.duration,
-      remotePath: `${process.env.HOSTNAME || "https://edge.sibyl.vision"}${
+      remotePath: `https://${process.env.EDGE_HOSTNAME}${
         parsed.wavPath
       }`,
       frequencyList: {

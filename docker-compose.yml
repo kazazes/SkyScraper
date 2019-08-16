@@ -146,6 +146,7 @@ services:
     restart: always
     volumes:
       - "resin-data:/data"
+    network_mode: host
   nodered:
     build:
       dockerfile: Dockerfile

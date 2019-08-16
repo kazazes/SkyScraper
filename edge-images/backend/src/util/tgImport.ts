@@ -4,7 +4,7 @@ import { createHash } from "crypto";
 import { Prisma } from "../graphql/generated/prisma-client";
 
 const prisma = new Prisma({
-  endpoint: "https://us1.prisma.sh/peter-k/skyscraper/prod",
+  endpoint: "http://http://192.168.1.102:4466",
   secret: "scrapingskies",
 });
 

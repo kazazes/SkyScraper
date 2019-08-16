@@ -7,13 +7,13 @@ export default () => {
     persisting: true,
     httpEndpoint: isDev
       ? "http://127.0.0.1:4000/graphql"
-      : `https://edge.sibyl.vision`,
+      : `https://edge.sibyl.vision/graphql`,
     httpLinkOptions: {
       credentials: "same-origin",
     },
     wsEndpoint: isDev
       ? "ws://127.0.0.1:4000/graphql"
-      : `wss://edge.sibyl.vision`,
+      : `wss://edge.sibyl.vision/graphql`,
     websocketsOnly: false,
   };
 };

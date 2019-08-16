@@ -1,7 +1,6 @@
 import { AsyncMqttClient } from "async-mqtt";
 import {
   prisma,
-  TranscriptionCreateInput,
   TranscriptionWordCreateWithoutTranscriptionInput,
 } from "../graphql/generated/prisma-client";
 import log from "../log";
@@ -11,7 +10,7 @@ import {
 } from "./applicationListener";
 
 const rootTopic =
-  process.env.NODE_ENV === "production" ? "transcription" : "+/transcription/#";
+  process.env.NODE_ENV === "production" ? "transcription/#" : "+/transcription/#";
 
 export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(

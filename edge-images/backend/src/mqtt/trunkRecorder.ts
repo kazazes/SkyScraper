@@ -16,7 +16,7 @@ import {
 
 const rootTopic =
   process.env.NODE_ENV === "production"
-    ? "trunk-recorder"
+    ? "trunk-recorder/#"
     : "+/trunk-recorder/#";
 
 export default (client: AsyncMqttClient) => {

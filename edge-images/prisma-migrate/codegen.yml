@@ -2,7 +2,7 @@ overwrite: true
 schema: "../backend/src/graphql/**/*.graphql"
 documents: "../frontend/assets/apollo/**/*.ts"
 generates:
-  ../frontend/types/gql.types.d.ts:
+  ../frontend/types/gql.types.ts:
     plugins:
       - "typescript"
       - "typescript-operations"

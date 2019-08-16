@@ -167,6 +167,7 @@ services:
       - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
       - NGROK_REGION=us
       - NGROK_PORT=nginx:443
+      - NGROK_PROTOCOL=TLS
   frontend:
     build:
       dockerfile: Dockerfile

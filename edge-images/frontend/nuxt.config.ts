@@ -1,5 +1,6 @@
 import webpack from "webpack";
 import NuxtConfiguration from "@nuxt/config";
+import apolloDefaultConfig from "./plugins/apolloDefaultConfig";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -83,25 +84,11 @@ const config: NuxtConfiguration = {
     config: {}, // Additional config
   },
   axios: {},
-  apollo: () => {
-    return {
-      incldueNodeModules: true,
-      clientConfigs: {
-        default: {
-          persisting: true,
-          httpEndpoint: isDev
-            ? "http://127.0.0.1:4000/graphql"
-            : `https://${process.env.EDGE_HOSTNAME}/graphql`,
-          httpLinkOptions: {
-            credentials: "same-origin",
-          },
-          wsEndpoint: isDev
-            ? "ws://127.0.0.1:4000/graphql"
-            : `wss://${process.env.EDGE_HOSTNAME}/graphql`,
-          websocketsOnly: false,
-        },
-      },
-    };
+  apollo: {
+    incldueNodeModules: true,
+    clientConfigs: {
+      default: apolloDefaultConfig(),
+    },
   },
   vuetify: {
     materialIcons: false,

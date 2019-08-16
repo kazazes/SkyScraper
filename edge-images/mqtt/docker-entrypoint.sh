@@ -7,7 +7,7 @@ touch /data/log/mosquitto.log
 chown mosquitto:mosquitto -R /data/mosquitto/
 chmod 0666 /data/mosquitto
 
-envsubst < /mosquitto/config/mosquitto.conf > /mosquitto/config/mosquitto.conf
+envsubst < mosquitto.conf.template > mosquitto.conf  
 
 tail -f /data/log/mosquitto.log &
 

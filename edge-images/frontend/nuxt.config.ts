@@ -21,11 +21,10 @@ const config: NuxtConfiguration = {
     ],
     link: [
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href: "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css",
-      },
     ],
+  },
+  env: {
+    EDGE_HOSTNAME: process.env.EDGE_HOSTNAME as string
   },
   /*
    ** Customize the progress-bar color
@@ -107,11 +106,6 @@ const config: NuxtConfiguration = {
         config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
       }
     },
-    plugins: [
-      new webpack.ProvidePlugin({
-        mapboxgl: "mapbox-gl",
-      }),
-    ],
   },
   vue: {
     config: {

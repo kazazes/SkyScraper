@@ -48,8 +48,6 @@
 <script lang="ts">
   import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
-  import consola from "consola";
-  import { doc } from "~/node_modules/@types/prettier";
   import { TrunkedCall } from "~/types/gql.types";
   import TrunkedCallTable from "~/components/tables/TrunkedCallTable.vue";
   import TrunkedCallCard from "~/components/cards/TrunkedCallCard.vue";

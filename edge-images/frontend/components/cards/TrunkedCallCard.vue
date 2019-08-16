@@ -26,7 +26,7 @@
         <v-card-actions class="mx-0 px-0 pb-0">
           <Player
             :toggleAutoPlay="toggleAutoPlay"
-            :file="selected ? 'https://edge.sibyl.vision' + selected.audioPath : ''"
+            :file="selected ? `https://${process.env.EDGE_HOSTNAME}` + selected.audioPath : ''"
             v-on:play-live-audio="$emit('play-live-audio')"
             v-on:play-next-audio="$emit('play-next-audio')"
             v-on:player-state-pause="$emit('player-state-pause')"
@@ -41,7 +41,6 @@
 <script lang="ts">
   import { scale } from "chroma-js";
   import consola from "consola";
-  import Mapbox from "mapbox-gl-vue";
   import moment from "moment";
   import Vue from "vue";
   import Component from "vue-class-component";
@@ -54,13 +53,8 @@
     .domain([0.5, 1])
     .mode("lab");
 
-  if (process.client) {
-    (window as any).mapboxgl = require("mapbox-gl");
-  }
-
   @Component({
     components: {
-      Mapbox,
       Player,
     },
     methods: {},
@@ -179,8 +173,6 @@
 </script>
 
 <style scoped>
-  @import url("https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css");
-
   #map {
     width: 100%;
     height: 100%;

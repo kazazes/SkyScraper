@@ -12,11 +12,8 @@ services:
     environment:
       - PRISMA_MANAGEMENT_API_SECRET=scrapingskies
       - PRISMA_ENDPOINT=http://prisma:4466
-    links:
-      - "prisma"
   prisma:
     image: prismagraphql/prisma:1.34
-    hostname: prisma
     restart: always
     ports:
       - '4466:4466'

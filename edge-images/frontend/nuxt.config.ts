@@ -1,4 +1,3 @@
-import webpack from "webpack";
 import NuxtConfiguration from "@nuxt/config";
 import apolloDefaultConfig from "./plugins/apolloDefaultConfig";
 
@@ -23,9 +22,6 @@ const config: NuxtConfiguration = {
       { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
     ],
   },
-  env: {
-    EDGE_HOSTNAME: process.env.EDGE_HOSTNAME as string
-  },
   /*
    ** Customize the progress-bar color
    */
@@ -45,39 +41,41 @@ const config: NuxtConfiguration = {
    */
   modules: isDev
     ? [
-        "@nuxtjs/axios",
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/pwa",
+      "@nuxtjs/axios",
+      "@nuxtjs/vuetify",
+      "@nuxtjs/apollo",
+      "@nuxtjs/proxy",
+      "@nuxtjs/pwa",
+      ['@nuxtjs/dotenv', { systemvars: true, only: ['EDGE_HOSTNAME']}],
         [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
-        ],
-      ]
-    : [
-        "@nuxtjs/sentry",
-        "@nuxtjs/axios",
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/pwa",
-        [
-          "@nuxtjs/robots",
-          {
-            UserAgent: "*",
-            Disallow: "/",
-          },
-        ],
-        [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
-        ],
+        "nuxt-validate",
+        {
+          lang: "en",
+        },
       ],
+    ]
+    : [
+      ['@nuxtjs/dotenv', { systemvars: true, only: ['EDGE_HOSTNAME']}],
+      "@nuxtjs/sentry",
+      "@nuxtjs/axios",
+      "@nuxtjs/vuetify",
+      "@nuxtjs/apollo",
+      "@nuxtjs/proxy",
+      "@nuxtjs/pwa",
+      [
+        "@nuxtjs/robots",
+        {
+          UserAgent: "*",
+          Disallow: "/",
+        },
+      ],
+      [
+        "nuxt-validate",
+        {
+          lang: "en",
+        },
+      ],
+    ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config

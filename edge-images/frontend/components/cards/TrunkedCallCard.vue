@@ -1,6 +1,6 @@
 <template>
-  <v-layout row align-start justify-start wrap>
-    <v-flex px-3 mt-2>
+  <v-layout wrap align-start justify-start>
+    <v-flex px-3 mt-2 md6 class="full-height">
       <v-card>
         <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
           <h4
@@ -13,26 +13,33 @@
           <span
             class="monospaced"
           >{{ formatFrequency(selected.frequency) }}</span>
-          <v-flex v-if="selected.transcription && selected.transcription.body">
-            <h5 class="caption">Transcript: (beta)</h5>
-            <blockquote
-              class="blockquote py-0"
-              ref="transcript"
-              v-html="stylizeTranscription(selected.transcription.body)"
-            ></blockquote>
-          </v-flex>
         </v-card-text>
         <v-card-text v-else></v-card-text>
         <v-card-actions class="mx-0 px-0 pb-0">
           <Player
             :toggleAutoPlay="toggleAutoPlay"
-            :file="selected ? `https://${process.env.EDGE_HOSTNAME}` + selected.audioPath : ''"
+            :file="selected ? `https://${edgeHostname}` + selected.audioPath : ''"
             v-on:play-live-audio="$emit('play-live-audio')"
             v-on:play-next-audio="$emit('play-next-audio')"
             v-on:player-state-pause="$emit('player-state-pause')"
             v-on:player-state-ended="$emit('player-state-ended')"
           ></Player>
         </v-card-actions>
+      </v-card>
+    </v-flex>
+    <v-flex px-0 mx-0 mt-2 md6 class="full-height">
+      <v-card>
+        <v-card-title class="primary py-1 align-baseline white--text">
+          <h5 class="subtitle mt-2">Transcription</h5>
+          <h5 class="caption">&nbsp;(beta)</h5>
+        </v-card-title>
+        <v-card-text class="white">
+          <blockquote v-if="selected && selected.transcription && selected.transcription.body"
+                      class="blockquote py-0"
+                      ref="transcript"
+                      v-html="stylizeTranscription(selected.transcription.body)"
+          ></blockquote>
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
@@ -45,8 +52,8 @@
   import Vue from "vue";
   import Component from "vue-class-component";
   import { Prop } from "vue-property-decorator";
-  import { TranscriptionWord, TrunkedCall } from "~/types/gql.types";
   import Player from "~/components/audio/Player.vue";
+  import { TranscriptionWord, TrunkedCall } from "~/types/gql.types";
   import { toggleAutoPlay } from "~/utils/enums";
 
   const redScale = scale(["red", "black"])
@@ -63,6 +70,9 @@
   export default class TrunkedCallCard extends Vue {
     @Prop()
     toggleAutoPlay: toggleAutoPlay = 0;
+
+    edgeHostname = process.env.EDGE_HOSTNAME;
+
     get selected(): TrunkedCall {
       return this.$store.getters["trunked/selected"];
     }
@@ -84,10 +94,10 @@
 
       split.forEach((word) => {
         const wIdx = words.findIndex(
-          (z) => z.text.replace(/[^\w\s]/, "") === word.replace(/[^\w\s]/, "")
+          (z) => z.text.replace(/[^\w\s]/, "") === word.replace(/[^\w\s]/, ""),
         );
         if (wIdx == -1) {
-          consola.warn(`Couldn't find ${word} in "${transcript}"`);
+          consola.warn(`Couldn't find ${ word } in "${ transcript }"`);
           return;
         }
         const w = words[wIdx];
@@ -95,17 +105,20 @@
 
         const color = redScale(w.confidence).hex();
         newWords.push(
-          w.text.replace(word, `<span style="color: ${color}">${word}</span>`)
+          w.text.replace(word, `<span style="color: ${ color }">${ word }</span>`),
         );
       });
       return newWords.join(" ");
     }
+
     formatDate(d: string) {
       return moment(d).format("lll");
     }
+
     formatFrequency(hertz: number) {
       return Number(hertz / 1000000).toFixed(3) + " MHz";
     }
+
     protected mapLoaded(map: any) {
       const framesPerSecond = 15;
       const initialOpacity = 1;
@@ -146,7 +159,7 @@
       });
 
       function animateMarker(timestamp) {
-        const i = setTimeout(function() {
+        const i = setTimeout(function () {
           requestAnimationFrame(animateMarker);
 
           radius += (maxRadius - radius) / framesPerSecond;
@@ -173,8 +186,11 @@
 </script>
 
 <style scoped>
-  #map {
-    width: 100%;
-    height: 100%;
+  .full-height .flex {
+    display: flex
+  }
+
+  .full-height .flex > .card {
+    flex: 1 1 auto
   }
 </style>

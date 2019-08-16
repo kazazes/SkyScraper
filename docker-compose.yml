@@ -163,7 +163,10 @@ services:
     privileged: false
     depends_on:
       - nginx
-    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=$EDGE_HOSTNAME nginx:443
+    environment:
+      - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
+      - NGROK_REGION=us
+      - NGROK_PORT=nginx:443
   frontend:
     build:
       dockerfile: Dockerfile

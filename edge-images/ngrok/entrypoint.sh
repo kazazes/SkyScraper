@@ -15,6 +15,7 @@ if [ -z "$NGROK_PORT" ]; then
   fi
 fi
 
+NGROK_HOSTNAME=$EDGE_HOSTNAME
 
 ARGS="ngrok"
 

@@ -1,4 +1,4 @@
-const server = `${process.env.EDGE_HOSTNAME}/graphql`,
+const server = `${process.env.EDGE_HOSTNAME}/graphql`;
 
 export default () => {
   const isDev = process.env.NODE_ENV !== "production";
@@ -7,13 +7,13 @@ export default () => {
     persisting: true,
     httpEndpoint: isDev
       ? "http://127.0.0.1:4000/graphql"
-      : `https://edge.sibyl.vision`
+      : `https://edge.sibyl.vision`,
     httpLinkOptions: {
       credentials: "same-origin",
     },
     wsEndpoint: isDev
       ? "ws://127.0.0.1:4000/graphql"
-      : `wss://edge.sibyl.vision`
+      : `wss://edge.sibyl.vision`,
     websocketsOnly: false,
   };
 };

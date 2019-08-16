@@ -2,6 +2,43 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  prisma-migrate:
+    build:
+      context: edge-images/prisma-migrate
+      dockerfile: Dockerfile
+    depends_on:
+      - prisma
+      - postgres
+    environment:
+      - PRISMA_MANAGEMENT_API_SECRET=scrapingskies
+      - PRISMA_ENDPOINT=http://prisma:4466
+  prisma:
+    image: prismagraphql/prisma:1.34
+    restart: always
+    ports:
+      - '4466:4466'
+    environment:
+      PRISMA_CONFIG: |
+        managementApiSecret: scrapingskies
+        port: 4466
+        databases:
+          default:
+            connector: postgres
+            host: postgres
+            port: 5432
+            user: prisma
+            password: prisma
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:10.3
+    restart: always
+    environment:
+      POSTGRES_USER: prisma
+      POSTGRES_PASSWORD: prisma
+      PGDATA: /data/postgres/pgdata
+    volumes:
+      - "resin-data:/data"
   jupyter:
     restart: always
     build:
@@ -62,20 +99,20 @@ services:
       - ENABLE_UPLOAD=0
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
-      - ENGINE_API_KEY=service:skyscraper:vzyaqidtNPEdZasGdbPdaA
       - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
       - MQTT_HOST=mqtt
       - MQTT_PASSWORD=Ur6yANnx@ZD
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
-      - PRISMA_ENDPOINT=https://us1.prisma.sh/peter-k/skyscraper/dev
+      - PRISMA_ENDPOINT=http://prisma:4466
       - PRISMA_SECRET=scrapingskies
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
       - ENABLE_TRANSCRIPTION=1
     depends_on:
       - redis
+      - mqtt
   netdata:
     image: skyscraperai/netdata
     hostname: edge.sibyl.vision

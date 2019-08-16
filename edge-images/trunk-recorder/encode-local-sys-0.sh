@@ -14,16 +14,16 @@ system=${SHORTNAME}
 len=$(soxi -D $filename)
 lame --preset voice $filename $mp3encoded
 
-head -n-2 $json >$json.new
-echo "\"duration\": $len," >>$json.new
-echo "\"source\": 0," >>$json.new
-echo "\"system\": \"$system\"," >>$json.new
-echo "\"audioPath\": \"$mp3encoded\"," >>$json.new
+head -n-2 $json > $json.new
+echo "\"duration\": $len," >> $json.new
+echo "\"source\": 0," >> $json.new
+echo "\"system\": \"$system\"," >> $json.new
+echo "\"audioPath\": \"$mp3encoded\"," >> $json.new
 echo "\"wavPath\": \"$basename.wav\"," >> $json.new
-tail -n2 $json >>$json.new
+tail -n2 $json >> $json.new
 mv $json.new $json
 
 chmod -R 755 $json
 chmod -R 755 $mp3encoded
 
-mosquitto_pub -h $MQTT_HOST -f $json -t /trunk-recorder/system/$system
+mosquitto_pub -h $MQTT_HOST -f $json -t trunk-recorder/system/$system

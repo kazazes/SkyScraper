@@ -16,8 +16,6 @@ RUN apk update && \
 RUN mkdir -p /mosquitto/config /mosquitto/data /mosquitto/log && \
   chown -R mosquitto:mosquitto /mosquitto
 
-COPY mosquitto.conf /mosquitto/config/
-
 COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/usr/sbin/mosquitto", "-c", "/mosquitto/config/mosquitto.conf"]

@@ -99,7 +99,6 @@ services:
       - ENABLE_UPLOAD=0
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
-      - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
       - MQTT_HOST=mqtt
       - MQTT_PASSWORD=Ur6yANnx@ZD
@@ -178,9 +177,6 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NETDATA_HTTP=https://$EDGE_HOSTNAME/netdata/
-      - GRAPHQL_HTTP=https://$EDGE_HOSTNAME/graphql/
-      - GRAPHQL_WS=wss://$EDGE_HOSTNAME/graphql/
     restart: always
   redis:
     build:

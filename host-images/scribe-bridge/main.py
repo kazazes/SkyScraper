@@ -103,6 +103,7 @@ def transcribe(payload: dict, wavUrl: str) -> None:
         mqttResponse['duration'] = resp['duration']
         mqttResponse['alpha'] = resp['alpha']
         mqttResponse['callId'] = payload['id']
+        mqttResponse['callHash'] = payload['callHash']
         publishTranscription(mqttResponse)
 
 

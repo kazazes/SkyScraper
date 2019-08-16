@@ -71,7 +71,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
                 createWordsInput !== null ? { create: createWordsInput } : undefined,
             }
           }
-        }, where: { id: parsed.callId }
+        }, where: { callHash: parsed.callHash }
       });
     } catch (e) {
       log.error(

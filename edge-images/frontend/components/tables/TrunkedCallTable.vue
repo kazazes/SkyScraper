@@ -91,6 +91,7 @@
                 // create new
                 t.trunkedCallCount++;
                 if (t.realTimeQueueEmpty || !t.selected) {
+                  debugger;
                   t.$store.commit("trunked/setSelected", newCall);
                 }
                 if (
@@ -144,7 +145,9 @@
         },
         update(data) {
           const t = this as any;
-          t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
+          if (!t.selected) {
+            t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
+          }
 
           return data.trunkedCalls;
         },
@@ -197,6 +200,7 @@
             text: "Alpha Tag",
             value: "talkgroup.alphaTag",
             class: "hidden-lg-and-down pl-4",
+            sortable: false,
           },
           {
             text: "",
@@ -259,49 +263,9 @@
       this.error = e;
     }
 
-    onCallAdded(previousResult, { subscriptionData }) {
-      const newCall = subscriptionData.data.trunkedCalls as TrunkedCall;
-      // The previous result is immutable
-      const newResult = {
-        trunkedCalls: previousResult
-          ? [newCall, ...previousResult.trunkedCalls]
-          : ([] as TrunkedCall[]),
-      };
-
-      if (!newCall.id) debugger;
-      newResult.trunkedCalls.push(newCall);
-      return newResult;
-    }
-
-    onTranscriptionAdded(previousResult, { subscriptionData }) {
-      const newTranscript = subscriptionData.data.transcriptions as Transcription;
-      const calls = previousResult
-        ? [...(previousResult.trunkedCalls as TrunkedCall[])]
-        : ([] as TrunkedCall[]);
-      const idx = calls.findIndex(
-        (c: TrunkedCall) => c.id === newTranscript.call.id
-      );
-      if (idx === -1) {
-        debugger;
-        consola.warn("transcript but no call");
-        return previousResult;
-      }
-      const copy = calls[idx];
-      copy.transcription = newTranscript;
-
-      // The previous result is immutable
-      const newResult = {
-        trunkedCalls: [copy, ...previousResult.trunkedCalls],
-      };
-
-      return newResult;
-    }
-
     timeAgo(d: string) {
       return moment(d).fromNow();
     }
-
-    protected voiceResults(result: { data: { trunkedCalls: TrunkedCall[] } }) {}
   }
 </script>
 

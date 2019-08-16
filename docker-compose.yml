@@ -115,7 +115,6 @@ services:
       - mqtt
   netdata:
     image: skyscraperai/netdata
-    hostname: edge.sibyl.vision
     ports:
       - 19999:19999
     cap_add:
@@ -123,8 +122,8 @@ services:
     security_opt:
       - apparmor:unconfined
     privileged: true
-    restart: always
     network_mode: host
+    restart: always
     labels:
       io.balena.features.dbus: true
       io.balena.features.balena-socket: true

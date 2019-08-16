@@ -162,12 +162,10 @@ services:
     build:
       dockerfile: Dockerfile
       context: edge-images/ngrok
-    links:
-      - nginx:https
     privileged: false
     depends_on:
       - nginx
-    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
+    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision https://nginx
   frontend:
     build:
       dockerfile: Dockerfile

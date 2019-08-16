@@ -2108,14 +2108,6 @@
   dependencies:
     lru-cache "^5.1.1"
 
-"@nuxtjs/dotenv@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/dotenv/-/dotenv-1.4.0.tgz#900dae02dd6f89800374dcf4f1a559ee5dbfe911"
-  integrity sha512-uD0jLbNJcgmifByVwT6nhTwFWPPPe4DjXC3AvHAOQtR6msT9g1n9ckBZaBY+pJZsQLcYtwoA6EDJNP1a6Ja42g==
-  dependencies:
-    consola "^2.9.0"
-    dotenv "^8.0.0"
-
 "@nuxtjs/google-tag-manager@^2.2.0":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@nuxtjs/google-tag-manager/-/google-tag-manager-2.2.1.tgz#8029953dcc1d09a430fc5f961a48555017c875d0"

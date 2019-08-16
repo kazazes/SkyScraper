@@ -1,7 +1,7 @@
 <template>
   <v-layout wrap align-start justify-start>
-    <v-flex px-3 mt-2 md6 class="full-height">
-      <v-card>
+    <v-flex px-3 mt-2 md6>
+      <v-card class="card">
         <v-card-title primary-title class="red darken-1 white--text py-1 align-baseline">
           <h4
             class="subtitle mt-2"
@@ -27,11 +27,12 @@
         </v-card-actions>
       </v-card>
     </v-flex>
-    <v-flex px-0 mx-0 mt-2 md6 class="full-height">
-      <v-card>
+    <v-flex px-3 mx-0 mt-2 md6>
+      <v-card class="card">
         <v-card-title class="primary py-1 align-baseline white--text">
-          <h5 class="subtitle mt-2">Transcription</h5>
-          <h5 class="caption">&nbsp;(beta)</h5>
+          <v-flex>
+            <h5 class="subtitle mt-2">Transcription (beta)</h5>
+          </v-flex>
         </v-card-title>
         <v-card-text class="white">
           <blockquote v-if="selected && selected.transcription && selected.transcription.body"
@@ -71,7 +72,9 @@
     @Prop()
     toggleAutoPlay: toggleAutoPlay = 0;
 
-    edgeHostname = process.env.EDGE_HOSTNAME;
+    get edgeHostname() {
+      return this.$store.getters['edgeHostname'];
+    }
 
     get selected(): TrunkedCall {
       return this.$store.getters["trunked/selected"];
@@ -185,12 +188,6 @@
   }
 </script>
 
-<style scoped>
-  .full-height .flex {
-    display: flex
-  }
+<style lang="css">
 
-  .full-height .flex > .card {
-    flex: 1 1 auto
-  }
 </style>

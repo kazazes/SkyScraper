@@ -46,8 +46,7 @@ const config: NuxtConfiguration = {
       "@nuxtjs/apollo",
       "@nuxtjs/proxy",
       "@nuxtjs/pwa",
-      ['@nuxtjs/dotenv', { systemvars: true, only: ['EDGE_HOSTNAME']}],
-        [
+      [
         "nuxt-validate",
         {
           lang: "en",
@@ -55,7 +54,6 @@ const config: NuxtConfiguration = {
       ],
     ]
     : [
-      ['@nuxtjs/dotenv', { systemvars: true, only: ['EDGE_HOSTNAME']}],
       "@nuxtjs/sentry",
       "@nuxtjs/axios",
       "@nuxtjs/vuetify",
@@ -84,7 +82,7 @@ const config: NuxtConfiguration = {
   apollo: {
     incldueNodeModules: true,
     clientConfigs: {
-      default: apolloDefaultConfig(),
+      default: '~/plugins/apolloDefaultConfig.ts'
     },
   },
   vuetify: {

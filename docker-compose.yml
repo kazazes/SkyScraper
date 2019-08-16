@@ -116,7 +116,6 @@ services:
   netdata:
     image: skyscraperai/netdata
     hostname: edge.sibyl.vision
-    network_mode: host
     ports:
       - 19999:19999
     cap_add:

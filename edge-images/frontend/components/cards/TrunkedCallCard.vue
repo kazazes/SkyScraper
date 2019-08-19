@@ -18,7 +18,7 @@
         <v-card-actions class="mx-0 px-0 pb-0">
           <Player
             :toggleAutoPlay="toggleAutoPlay"
-            :file="selected ? `https://${edgeHostname}` + selected.audioPath : ''"
+            :file="fileSource"
             v-on:play-live-audio="$emit('play-live-audio')"
             v-on:play-next-audio="$emit('play-next-audio')"
             v-on:player-state-pause="$emit('player-state-pause')"
@@ -36,12 +36,14 @@
         </v-card-title>
         <v-card-text class="white">
           <blockquote
-            v-if="selectedTranscription !== undefined"
+            v-if="selectedTranscription !== undefined && selectedTranscription.body.length > 0"
             class="blockquote pa-0 ma-1"
             ref="transcript"
             v-html="stylizeTranscription(selectedTranscription)"
           ></blockquote>
-          <span v-else>processing...</span>
+          <v-flex justify-space-around v-else>
+            <v-progress-circular style="width: 100%" color="primary" indeterminate></v-progress-circular>
+          </v-flex>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -57,7 +59,11 @@
   import Component from "vue-class-component";
   import { Prop } from "vue-property-decorator";
   import Player from "~/components/audio/Player.vue";
-  import { Transcription, TranscriptionWord, TrunkedCall } from "~/types/gql.types";
+  import {
+    Transcription,
+    TranscriptionWord,
+    TrunkedCall,
+  } from "~/types/gql.types";
   import { toggleAutoPlay } from "~/utils/enums";
 
   const redScale = scale(["red", "black"])
@@ -75,8 +81,15 @@
     @Prop()
     toggleAutoPlay: toggleAutoPlay = 0;
 
-    get edgeHostname() {
-      return this.$store.getters["edgeHostname"];
+    isDev!: boolean;
+
+    get fileHostname() {
+      return this.$store.getters["trunked/fileHostname"];
+    }
+
+    get fileSource() {
+      if (!this.selected) return;
+      return this.selected.remotePaths;
     }
 
     get selected(): TrunkedCall {
@@ -89,25 +102,20 @@
 
     stylizeTranscription(transcription: Transcription) {
       if (
-        !transcription || (
-        transcription.words &&
-        transcription.words.length == 0)
+        !transcription ||
+        (transcription.words && transcription.words.length == 0)
       )
-        return;
-      const words = [
-        ...(transcription.words as TranscriptionWord[]),
-      ];
-      const split = transcription.body
-        .replace(/[^\w\s]/, "")
-        .split(" ");
+        return "No transcription available.";
+      const words = [...(transcription.words as TranscriptionWord[])];
+      const split = transcription.body.replace(/[^\w\s]/, "").split(" ");
       const newWords: string[] = [];
 
       split.forEach((word) => {
         const wIdx = words.findIndex(
-          (z) => z.text.replace(/[^\w\s]/, "") === word.replace(/[^\w\s]/, ""),
+          (z) => z.text.replace(/[^\w\s]/, "") === word.replace(/[^\w\s]/, "")
         );
         if (wIdx == -1) {
-          consola.warn(`Couldn't find ${ word } in "${ transcription.body }"`);
+          consola.warn(`Couldn't find ${word} in "${transcription.body}"`);
           return;
         }
         const w = words[wIdx];
@@ -115,7 +123,7 @@
 
         const color = redScale(w.confidence).hex();
         newWords.push(
-          w.text.replace(word, `<span style="color: ${ color }">${ word }</span>`),
+          w.text.replace(word, `<span style="color: ${color}">${word}</span>`)
         );
       });
       return newWords.join(" ");
@@ -132,5 +140,4 @@
 </script>
 
 <style lang="css">
-
 </style>

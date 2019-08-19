@@ -48,9 +48,7 @@ export type TrunkedCallOrderByInput =
   | "callHash_ASC"
   | "callHash_DESC"
   | "wavPath_ASC"
-  | "wavPath_DESC"
-  | "remotePath_ASC"
-  | "remotePath_DESC";
+  | "wavPath_DESC";
 export type TrunkedTalkgroupOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -249,20 +247,6 @@ export namespace QueryResolvers {
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
     transcription?: TranscriptionWhereInput | null;
-    remotePath?: string | null;
-    remotePath_not?: string | null;
-    remotePath_in?: string[] | null;
-    remotePath_not_in?: string[] | null;
-    remotePath_lt?: string | null;
-    remotePath_lte?: string | null;
-    remotePath_gt?: string | null;
-    remotePath_gte?: string | null;
-    remotePath_contains?: string | null;
-    remotePath_not_contains?: string | null;
-    remotePath_starts_with?: string | null;
-    remotePath_not_starts_with?: string | null;
-    remotePath_ends_with?: string | null;
-    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
@@ -940,8 +924,7 @@ export namespace TrunkedCallResolvers {
       parent.callHash === undefined ? null : parent.callHash,
     wavPath: (parent: TrunkedCall) =>
       parent.wavPath === undefined ? null : parent.wavPath,
-    remotePath: (parent: TrunkedCall) =>
-      parent.remotePath === undefined ? null : parent.remotePath
+    remotePaths: (parent: TrunkedCall) => parent.remotePaths
   };
 
   export interface TrunkedCallSourceWhereInput {
@@ -1386,6 +1369,23 @@ export namespace TrunkedCallResolvers {
         ) => string | null | Promise<string | null>;
       };
 
+  export type RemotePathsResolver =
+    | ((
+        parent: TrunkedCall,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string[] | Promise<string[]>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string[] | Promise<string[]>;
+      };
+
   export type TranscriptionResolver =
     | ((
         parent: TrunkedCall,
@@ -1401,23 +1401,6 @@ export namespace TrunkedCallResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => Transcription | null | Promise<Transcription | null>;
-      };
-
-  export type RemotePathResolver =
-    | ((
-        parent: TrunkedCall,
-        args: {},
-        ctx: Context,
-        info: GraphQLResolveInfo
-      ) => string | null | Promise<string | null>)
-    | {
-        fragment: string;
-        resolve: (
-          parent: TrunkedCall,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>;
       };
 
   export interface Type {
@@ -1700,6 +1683,23 @@ export namespace TrunkedCallResolvers {
           ) => string | null | Promise<string | null>;
         };
 
+    remotePaths:
+      | ((
+          parent: TrunkedCall,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string[] | Promise<string[]>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedCall,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string[] | Promise<string[]>;
+        };
+
     transcription:
       | ((
           parent: TrunkedCall,
@@ -1715,23 +1715,6 @@ export namespace TrunkedCallResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => Transcription | null | Promise<Transcription | null>;
-        };
-
-    remotePath:
-      | ((
-          parent: TrunkedCall,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>)
-      | {
-          fragment: string;
-          resolve: (
-            parent: TrunkedCall,
-            args: {},
-            ctx: Context,
-            info: GraphQLResolveInfo
-          ) => string | null | Promise<string | null>;
         };
   }
 }
@@ -1880,20 +1863,6 @@ export namespace TrunkedTalkgroupResolvers {
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
     transcription?: TranscriptionWhereInput | null;
-    remotePath?: string | null;
-    remotePath_not?: string | null;
-    remotePath_in?: string[] | null;
-    remotePath_not_in?: string[] | null;
-    remotePath_lt?: string | null;
-    remotePath_lte?: string | null;
-    remotePath_gt?: string | null;
-    remotePath_gte?: string | null;
-    remotePath_contains?: string | null;
-    remotePath_not_contains?: string | null;
-    remotePath_starts_with?: string | null;
-    remotePath_not_starts_with?: string | null;
-    remotePath_ends_with?: string | null;
-    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
@@ -3231,20 +3200,6 @@ export namespace TrunkedSystemResolvers {
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
     transcription?: TranscriptionWhereInput | null;
-    remotePath?: string | null;
-    remotePath_not?: string | null;
-    remotePath_in?: string[] | null;
-    remotePath_not_in?: string[] | null;
-    remotePath_lt?: string | null;
-    remotePath_lte?: string | null;
-    remotePath_gt?: string | null;
-    remotePath_gte?: string | null;
-    remotePath_contains?: string | null;
-    remotePath_not_contains?: string | null;
-    remotePath_starts_with?: string | null;
-    remotePath_not_starts_with?: string | null;
-    remotePath_ends_with?: string | null;
-    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
@@ -5358,20 +5313,6 @@ export namespace TranscriptionResolvers {
     wavPath_ends_with?: string | null;
     wavPath_not_ends_with?: string | null;
     transcription?: TranscriptionWhereInput | null;
-    remotePath?: string | null;
-    remotePath_not?: string | null;
-    remotePath_in?: string[] | null;
-    remotePath_not_in?: string[] | null;
-    remotePath_lt?: string | null;
-    remotePath_lte?: string | null;
-    remotePath_gt?: string | null;
-    remotePath_gte?: string | null;
-    remotePath_contains?: string | null;
-    remotePath_not_contains?: string | null;
-    remotePath_starts_with?: string | null;
-    remotePath_not_starts_with?: string | null;
-    remotePath_ends_with?: string | null;
-    remotePath_not_ends_with?: string | null;
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;

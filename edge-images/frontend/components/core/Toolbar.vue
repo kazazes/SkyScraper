@@ -3,8 +3,8 @@
     app
     dense
     dark
-    :scroll-threshold=100
-    :scroll-off-screen=true
+    :scroll-threshold="300"
+    :scroll-off-screen="true"
     id="core-toolbar"
     flat
     color="primary"

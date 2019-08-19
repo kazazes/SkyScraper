@@ -18,9 +18,7 @@ const config: NuxtConfiguration = {
         content: "Admin | SkyScraper",
       },
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-    ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*
    ** Customize the progress-bar color
@@ -41,39 +39,53 @@ const config: NuxtConfiguration = {
    */
   modules: isDev
     ? [
-      "@nuxtjs/axios",
-      "@nuxtjs/vuetify",
-      "@nuxtjs/apollo",
-      "@nuxtjs/proxy",
-      "@nuxtjs/pwa",
-      [
-        "nuxt-validate",
-        {
-          lang: "en",
-        },
-      ],
-    ]
+        "@nuxtjs/axios",
+        "@nuxtjs/vuetify",
+        "@nuxtjs/apollo",
+        "@nuxtjs/proxy",
+        "@nuxtjs/pwa",
+        [
+          "@nuxtjs/dotenv",
+          {
+            systemVars: true,
+            only: ["EDGE_HOSTNAME", "FILE_HOSTNAME", "NODE_ENV"],
+          },
+        ],
+        [
+          "nuxt-validate",
+          {
+            lang: "en",
+          },
+        ],
+      ]
     : [
-      "@nuxtjs/sentry",
-      "@nuxtjs/axios",
-      "@nuxtjs/vuetify",
-      "@nuxtjs/apollo",
-      "@nuxtjs/proxy",
-      "@nuxtjs/pwa",
-      [
-        "@nuxtjs/robots",
-        {
-          UserAgent: "*",
-          Disallow: "/",
-        },
+        "@nuxtjs/sentry",
+        "@nuxtjs/axios",
+        [
+          "@nuxtjs/dotenv",
+          {
+            systemVars: true,
+            only: ["EDGE_HOSTNAME", "FILE_HOSTNAME", "NODE_ENV"],
+          },
+        ],
+        "@nuxtjs/vuetify",
+        "@nuxtjs/apollo",
+        "@nuxtjs/proxy",
+        "@nuxtjs/pwa",
+        [
+          "@nuxtjs/robots",
+          {
+            UserAgent: "*",
+            Disallow: "/",
+          },
+        ],
+        [
+          "nuxt-validate",
+          {
+            lang: "en",
+          },
+        ],
       ],
-      [
-        "nuxt-validate",
-        {
-          lang: "en",
-        },
-      ],
-    ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config
@@ -82,7 +94,7 @@ const config: NuxtConfiguration = {
   apollo: {
     incldueNodeModules: true,
     clientConfigs: {
-      default: '~/plugins/apolloDefaultConfig.ts'
+      default: "~/plugins/apolloDefaultConfig.ts",
     },
   },
   vuetify: {

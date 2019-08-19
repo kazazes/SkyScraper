@@ -35,8 +35,7 @@
                   <v-icon
                     small
                     v-if="props.item.transcription && props.item.transcription.body"
-                  >mdi-script-text-outline
-                  </v-icon>
+                  >mdi-script-text-outline</v-icon>
                   <span v-else>
                     <moon-loader :size="16" style="margin: auto;"></moon-loader>
                   </span>
@@ -58,7 +57,11 @@
   import Vue from "vue";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
-  import { Transcription, TrunkedCall, TrunkedCallOrderByInput } from "~/types/gql.types";
+  import {
+    Transcription,
+    TrunkedCall,
+    TrunkedCallOrderByInput,
+  } from "~/types/gql.types";
 
   @Component({
     name: "TrunkedCallTable",
@@ -72,15 +75,20 @@
               previousResult: { trunkedCalls: TrunkedCall[] },
               {
                 subscriptionData,
-              }: { subscriptionData: { data: { trunkedCalls: TrunkedCall } } },
+              }: { subscriptionData: { data: { trunkedCalls: TrunkedCall } } }
             ): { trunkedCalls: TrunkedCall[] } {
               const newCall = subscriptionData.data.trunkedCalls;
               const t = this as any;
-              const existingIdx = previousResult.trunkedCalls.findIndex(
-                (c) => c.id === newCall.id,
-              );
+              const existingIdx = previousResult
+                ? previousResult.trunkedCalls.findIndex(
+                    (c) => c.id === newCall.id
+                  )
+                : -1;
               if (newCall.id === t.selected.id) {
-                t.$store.commit('trunked/setSelectedTranscription', newCall.transcription);
+                t.$store.commit(
+                  "trunked/setSelectedTranscription",
+                  newCall.transcription
+                );
               }
               if (existingIdx !== -1) {
                 // update existing
@@ -93,6 +101,7 @@
                   t.$store.commit("trunked/setSelected", newCall);
                 }
                 if (
+                  previousResult.trunkedCalls &&
                   Array.isArray(previousResult.trunkedCalls) &&
                   previousResult.trunkedCalls.length >= t.pagination.rowsPerPage
                 ) {
@@ -120,7 +129,7 @@
         },
         update(data) {
           const t = this as any;
-          if (!t.selected) {
+          if (!t.selected && data.trunkedCalls) {
             t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
           }
 

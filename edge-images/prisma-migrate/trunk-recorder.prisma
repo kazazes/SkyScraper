@@ -90,8 +90,8 @@ type TrunkedCall {
   frequencyList: [TrunkedCallFrequencyTime]
   callHash: String @unique # The MD5 of talkgroupDec + frequency + startTime
   wavPath: String
+  remotePaths: [String!]! @scalarList(strategy: RELATION)
   transcription: Transcription @relation(link: INLINE onDelete: CASCADE)
-  remotePath: String
 }
 
 type TrunkedCallSource {

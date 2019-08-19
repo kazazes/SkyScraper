@@ -1227,8 +1227,8 @@ type TrunkedCall {
   frequencyList(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime!]
   callHash: String
   wavPath: String
+  remotePaths: [String!]!
   transcription: Transcription
-  remotePath: String
 }
 
 type TrunkedCallConnection {
@@ -1252,8 +1252,8 @@ input TrunkedCallCreateInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateManyWithoutSystemInput {
@@ -1271,6 +1271,10 @@ input TrunkedCallCreateOneWithoutTranscriptionInput {
   connect: TrunkedCallWhereUniqueInput
 }
 
+input TrunkedCallCreateremotePathsInput {
+  set: [String!]
+}
+
 input TrunkedCallCreateWithoutSystemInput {
   id: ID
   frequency: Int!
@@ -1285,8 +1289,8 @@ input TrunkedCallCreateWithoutSystemInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateWithoutTalkgroupInput {
@@ -1303,8 +1307,8 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateWithoutTranscriptionInput {
@@ -1322,7 +1326,7 @@ input TrunkedCallCreateWithoutTranscriptionInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
 }
 
 type TrunkedCallEdge {
@@ -1680,8 +1684,6 @@ enum TrunkedCallOrderByInput {
   callHash_DESC
   wavPath_ASC
   wavPath_DESC
-  remotePath_ASC
-  remotePath_DESC
 }
 
 type TrunkedCallPreviousValues {
@@ -1697,7 +1699,7 @@ type TrunkedCallPreviousValues {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: [String!]!
 }
 
 input TrunkedCallScalarWhereInput {
@@ -1815,20 +1817,6 @@ input TrunkedCallScalarWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
-  remotePath: String
-  remotePath_not: String
-  remotePath_in: [String!]
-  remotePath_not_in: [String!]
-  remotePath_lt: String
-  remotePath_lte: String
-  remotePath_gt: String
-  remotePath_gte: String
-  remotePath_contains: String
-  remotePath_not_contains: String
-  remotePath_starts_with: String
-  remotePath_not_starts_with: String
-  remotePath_ends_with: String
-  remotePath_not_ends_with: String
   AND: [TrunkedCallScalarWhereInput!]
   OR: [TrunkedCallScalarWhereInput!]
   NOT: [TrunkedCallScalarWhereInput!]
@@ -2116,8 +2104,8 @@ input TrunkedCallUpdateInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateManyDataInput {
@@ -2130,7 +2118,7 @@ input TrunkedCallUpdateManyDataInput {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateManyMutationInput {
@@ -2143,7 +2131,7 @@ input TrunkedCallUpdateManyMutationInput {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateManyWithoutSystemInput {
@@ -2182,6 +2170,10 @@ input TrunkedCallUpdateOneRequiredWithoutTranscriptionInput {
   connect: TrunkedCallWhereUniqueInput
 }
 
+input TrunkedCallUpdateremotePathsInput {
+  set: [String!]
+}
+
 input TrunkedCallUpdateWithoutSystemDataInput {
   frequency: Int
   startTime: DateTime
@@ -2195,8 +2187,8 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateWithoutTalkgroupDataInput {
@@ -2212,8 +2204,8 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateWithoutTranscriptionDataInput {
@@ -2230,7 +2222,7 @@ input TrunkedCallUpdateWithoutTranscriptionDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
@@ -2384,20 +2376,6 @@ input TrunkedCallWhereInput {
   wavPath_ends_with: String
   wavPath_not_ends_with: String
   transcription: TranscriptionWhereInput
-  remotePath: String
-  remotePath_not: String
-  remotePath_in: [String!]
-  remotePath_not_in: [String!]
-  remotePath_lt: String
-  remotePath_lte: String
-  remotePath_gt: String
-  remotePath_gte: String
-  remotePath_contains: String
-  remotePath_not_contains: String
-  remotePath_starts_with: String
-  remotePath_not_starts_with: String
-  remotePath_ends_with: String
-  remotePath_not_ends_with: String
   AND: [TrunkedCallWhereInput!]
   OR: [TrunkedCallWhereInput!]
   NOT: [TrunkedCallWhereInput!]

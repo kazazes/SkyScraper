@@ -73,6 +73,8 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       update: {},
     });
 
+    const fileHostname = process.env.FILE_HOSTNAME || process.env.EDGE_HOSTNAME;
+
     const call: TrunkedCallCreateInput = {
       frequency: parsed.freq,
       startTime: new Date(parsed.start_time * 1000),
@@ -95,7 +97,12 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       audioPath: parsed.audioPath,
       wavPath: parsed.wavPath,
       duration: parsed.duration,
-      remotePath: `https://${process.env.EDGE_HOSTNAME}${parsed.wavPath}`,
+      remotePaths: {
+        set: [
+          `https://${fileHostname}${parsed.wavPath}`,
+          `https://${fileHostname}${parsed.audioPath}`,
+        ],
+      },
       frequencyList: {
         create: parsed.freqList.map((fs) => {
           const f: TrunkedCallFrequencyTimeCreateInput = {
@@ -118,9 +125,13 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
         update: {},
       });
 
-      return processTrunkedVoice(c).then(() =>
-        log.info(`Requested transcription for ${c.id} with hash: ${c.callHash}`),
-      );
+      if (process.env.DISABLE_TRANSCRIPTION !== String(1)) {
+        return processTrunkedVoice(c).then(() =>
+          log.info(
+            `Requested transcription for ${c.id} with hash: ${c.callHash}`,
+          ),
+        );
+      } else { return; }
     } catch (e) {
       throw e;
     }

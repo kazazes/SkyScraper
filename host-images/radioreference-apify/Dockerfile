@@ -1,69 +1,43 @@
-FROM node:10-slim
+FROM apify/actor-node-chrome
 
-LABEL maintainer="support@apify.com" Description="Base image for Apify actors using headless Chrome"
+USER root
+RUN apt-get update \
+   && apt-get install -y --no-install-recommends curl ca-certificates \
+   && rm -rf /var/apt/lists*
 
-# This image is based on https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
+ENV YARN_VERSION 1.17.3
 
-# See https://crbug.com/795759
-#RUN apt-get update \
-# && apt-get install -yq libgconf-2-4
+RUN set -ex \
+   && for key in \
+   6A010C5166006599AA17F08146C2130DFD2497F5 \
+   ; do \
+   gpg --batch --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys "$key" || \
+   gpg --batch --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys "$key" || \
+   gpg --batch --keyserver hkp://pgp.mit.edu:80 --recv-keys "$key" ; \
+   done \
+   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz" \
+   && curl -fsSLO --compressed "https://yarnpkg.com/downloads/$YARN_VERSION/yarn-v$YARN_VERSION.tar.gz.asc" \
+   && gpg --batch --verify yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
+   && mkdir -p /opt \
+   && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
+   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
+   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
+   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
-# Install latest chrome dev package and fonts to support major charsets (Chinese, Japanese, Arabic, Hebrew, Thai and a few others)
-# Note: this installs the necessary libs to make the bundled version of Chromium that Puppeteer installs, work.
-# Also installs Chrome (latest) and ChromeDriver for Selenium (see https://sites.google.com/a/chromium.org/chromedriver/)
-RUN DEBIAN_FRONTEND=noninteractive apt-get update \
-   && DEBIAN_FRONTEND=noninteractive apt-get install -y wget --no-install-recommends \
-   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-   && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-   && DEBIAN_FRONTEND=noninteractive apt-get update \
-   && DEBIAN_FRONTEND=noninteractive apt-get install -y procps unzip git google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst ttf-freefont \
-   --no-install-recommends \
-   && curl -sS http://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip > /tmp.zip \
-   && unzip tmp.zip \
-   && rm tmp.zip \
-   && mv /chromedriver /bin \
-   && rm -rf /var/lib/apt/lists/* \
-   && rm -rf /src/*.deb \
-   && DEBIAN_FRONTEND=noninteractive apt-get purge --auto-remove -y curl unzip
+WORKDIR /usr/local/app
 
-# Add user so we don't need --no-sandbox.
-RUN groupadd -r myuser && useradd -r -g myuser -G audio,video myuser \
-   && mkdir -p /home/myuser/Downloads \
-   && chown -R myuser:myuser /home/myuser
+RUN chown -R myuser:myuser /usr/local/app
 
-# Run everything after as non-privileged user.
 USER myuser
-WORKDIR /home/myuser
+ENV NODE_ENV=
 
-# Uncomment to skip the chromium download when installing puppeteer. If you do,
-# you'll need to launch puppeteer with:
-#     browser.launch({executablePath: 'google-chrome'})
-# ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+COPY --chown=myuser:myuser package.json yarn.lock ./
 
-# Sets path to Chrome executable, this is used by Apify.launchPuppeteer()
-ENV APIFY_CHROME_EXECUTABLE_PATH=/usr/bin/google-chrome
-
-# Enable Node.js process to use a lot of memory (actor has limit of 32GB)
-ENV NODE_OPTIONS="--max_old_space_size=30000"
-
-# Copy source code
-COPY --chown=myuser:myuser package.json yarn.lock start_actor.sh /home/myuser/
-
-RUN yarn install
+RUN yarn global add typescript \
+   && yarn install
 
 COPY --chown=myuser:myuser . .
 
-RUN ls -alh
-ENV NODE_ENV=production
+RUN yarn compile
 
-# Install default dependencies, print versions of everything
-RUN yarn run compile \
-   && echo "Google Chrome version:" \
-   && bash -c "$APIFY_CHROME_EXECUTABLE_PATH --version" \
-   && echo "ChromeDriver version:" \
-   && chromedriver --version
-
-# NOTEs:
-# - This needs to be compatible with CLI.
-# - Using CMD instead of ENTRYPOINT, to allow manual overriding
-CMD ./start_actor.sh
+CMD ["yarn", "start"]

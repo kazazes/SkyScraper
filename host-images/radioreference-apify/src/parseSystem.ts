@@ -211,7 +211,9 @@ function parseInfoTable($: CheerioStatic, page: Page) {
 
   const infoData = zipObject(...infoArrays) as Dictionary<any>;
   infoData.systemId = page.url().replace(/[^\d]/g, '');
-  infoData.state = $('#rrpage td > span > a:nth-child(2)').text();
+  infoData.state = $('#rrpage td > span > a:nth-child(2)')
+    .last()
+    .text();
   return infoData;
 }
 

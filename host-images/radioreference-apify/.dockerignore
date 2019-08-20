@@ -7,3 +7,4 @@ live_view
 dist
 *.zip
 *.log
+data/

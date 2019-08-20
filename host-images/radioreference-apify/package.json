@@ -1,0 +1,33 @@
+{
+  "name": "",
+  "version": "0.0.0",
+  "description": "",
+  "main": "build/src/index.js",
+  "types": "build/src/index.d.ts",
+  "files": [
+    "build/src"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [],
+  "scripts": {
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "start": "node dist/index.js"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.13",
+    "@types/jquery": "^3.3.31",
+    "@types/lodash": "^4.14.137",
+    "@types/node": "^12.7.2",
+    "gts": "^1.1.0",
+    "typescript": "^3.5.3",
+    "@types/puppeteer": "^1.19.1"
+  },
+  "dependencies": {
+    "apify": "^0.15.4",
+    "cheerio": "^1.0.0-rc.3",
+    "cheerio-tableparser": "^1.0.1",
+    "lodash": "^4.17.15",
+    "puppeteer": "^1.19.0"
+  }
+}

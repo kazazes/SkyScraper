@@ -1,0 +1,18 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "rootDir": "./src",
+    "baseUrl": ".",
+    "outDir": "dist",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "module": "commonjs",
+    "lib": ["dom", "es2015"],
+    "skipLibCheck": true,
+    "paths": {
+      "*": ["./types/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts", "types/*.d.ts"]
+}

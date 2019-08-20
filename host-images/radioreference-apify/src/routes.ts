@@ -20,7 +20,6 @@ exports.MAP = async (
   await Apify.utils.puppeteer.injectJQuery(page);
   await page.waitForSelector('select[name=stid]');
 
-  debugger;
   const states = await page.$eval('select[name=stid]', (select: Element) => {
     if (typeof select === 'undefined') return [];
     return $(select)

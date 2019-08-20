@@ -13,6 +13,7 @@ export default async function parseSystem(page: Page) {
   const $ = cheerio.load(content);
 
   const systemInfo = parseInfoTable($, page);
+  log.info(`Parsing ${systemInfo.state} - ${systemInfo.systemName}`);
   const sites = parseSystemFrequencies($);
   const talkgroups = parseTalkgroups($);
 
@@ -48,13 +49,24 @@ function parseTalkgroups($: CheerioStatic) {
         row.forEach((m, i) => {
           switch (m) {
             case 'A':
+            case 'a':
               talkgroups[i].mode = 'ANALOG';
               break;
             case 'D':
+            case 'd':
               talkgroups[i].mode = 'DIGITAL';
               break;
+            case 'De':
             case 'DE':
+            case 'TE':
+            case 'Te':
+            case 'E':
+            case 'Ae':
+            case 'AE':
               talkgroups[i].mode = 'ENCRYPTED';
+              break;
+            case 'T':
+              talkgroups[i].mode = 'TDMA';
               break;
             default:
               log.error(`Could not classify TG mode ${m}`);
@@ -232,7 +244,7 @@ export interface TrunkedSiteFrequency {
 
 export interface TrunkedTalkgroup {
   decimal: string;
-  mode: 'ANALOG' | 'DIGITAL' | 'ENCRYPTED';
+  mode: 'ANALOG' | 'DIGITAL' | 'ENCRYPTED' | 'TDMA';
   alphaTag: string;
   description: string;
   tag: string;

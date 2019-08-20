@@ -19,14 +19,16 @@
     "@types/jquery": "^3.3.31",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
+    "@types/puppeteer": "^1.19.1",
     "gts": "^1.1.0",
     "typescript": "^3.5.3",
-    "@types/puppeteer": "^1.19.1"
+    "@types/dotenv": "^6.1.1"
   },
   "dependencies": {
     "apify": "^0.15.4",
     "cheerio": "^1.0.0-rc.3",
     "cheerio-tableparser": "^1.0.1",
+    "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
     "puppeteer": "^1.19.0"
   }

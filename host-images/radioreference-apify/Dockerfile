@@ -46,14 +46,14 @@ ENV APIFY_CHROME_EXECUTABLE_PATH=/usr/bin/google-chrome
 # Enable Node.js process to use a lot of memory (actor has limit of 32GB)
 ENV NODE_OPTIONS="--max_old_space_size=30000"
 
-
 # Copy source code
 COPY --chown=myuser:myuser package.json yarn.lock start_actor.sh /home/myuser/
 
 RUN yarn install
 
-COPY --chown=myuser:myuser ./* /home/myuser
+COPY --chown=myuser:myuser . .
 
+RUN ls -alh
 ENV NODE_ENV=production
 
 # Install default dependencies, print versions of everything

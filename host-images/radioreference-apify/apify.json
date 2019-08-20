@@ -1,6 +1,6 @@
 {
-	"name": "radioreference-apify",
-	"version": "0.0",
-	"buildTag": "latest",
-	"env": null
+  "name": "radioreference-apify",
+  "version": "0.1",
+  "buildTag": "latest",
+  "env": null
 }

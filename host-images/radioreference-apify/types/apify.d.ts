@@ -64,13 +64,15 @@ declare module 'apify' {
         request: Request;
         page: any;
       }) => any;
-      maxRequestsPerCrawl: number;
-      maxConcurrency: number;
+      minConcurrency?: number;
+      maxRequestsPerCrawl?: number;
+      maxConcurrency?: number;
       puppeteerPoolOptions?: {
-        useLiveView: boolean;
+        useLiveView?: boolean;
         slowMo?: number;
-        launchPuppeteerOptions: any;
       };
+      autoscaledPoolOptions?: any;
+      launchPuppeteerOptions?: any;
     });
 
     run(...args: any[]): void;
@@ -128,6 +130,8 @@ declare module 'apify' {
     reclaimRequest(...args: any[]): void;
 
     addRequest(args: any): void;
+
+    getInfo(): any;
   }
 
   export type RequestQueue = RequestList;

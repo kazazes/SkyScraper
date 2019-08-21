@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@apify/http-request@^1.0.1":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@apify/http-request/-/http-request-1.0.6.tgz#46942f6e65f4aba494b74b44bb8d96e0258243a6"
-  integrity sha512-UiWKyVi5Xl2cAmmeNKdOZfZeUopGLdcKArBqXWf1fllBmue6RQptNtwWrWCKD7Dpx7chWKzRuq2wh+Rb6xUexw==
+"@apify/http-request@^1.0.6":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@apify/http-request/-/http-request-1.0.7.tgz#f6461977eb273e32d44aeeb8cf047aeef478138a"
+  integrity sha512-Ef8uw7TayOnDsy7KjBZEP2wCXs3eRS5hoTCmVL+YMJwYP2rNwZPooTVwTfT/VuyyZgFGY07k1pXj+3/fjGo16g==
   dependencies:
     got "^9.6.0"
     proxy-agent "^3.1.0"
@@ -209,10 +209,10 @@ ansi-styles@^3.2.1:
   dependencies:
     color-convert "^1.9.0"
 
-apify-client@^0.5.22:
-  version "0.5.22"
-  resolved "https://registry.yarnpkg.com/apify-client/-/apify-client-0.5.22.tgz#a02169e9eeea248ccc61683c2516788977f92761"
-  integrity sha512-Y4rdubW4/w2iepMRxG0bK/usXp6M4ReR+NX9r3Tr0ARuqG6gvL3bjo9arexAiDU7hKx/eFpOV+fQNMzv/xQWjg==
+apify-client@^0.5.25:
+  version "0.5.25"
+  resolved "https://registry.yarnpkg.com/apify-client/-/apify-client-0.5.25.tgz#7568aec4569ac60379f14715192b8e8f7a5d0433"
+  integrity sha512-5OfcVz/rlWf5AugZcx0DvEKbSRT5aQzIhHue8V+DirU4vcXGZb7Uu7RpgHagYD4Ng8+TQpjMjvINAqT/53mj/A==
   dependencies:
     apify-shared "^0.1.45"
     content-type "^1.0.4"
@@ -221,7 +221,7 @@ apify-client@^0.5.22:
     type-check "^0.3.2"
     underscore "^1.9.1"
 
-apify-shared@^0.1.45, apify-shared@^0.1.55:
+apify-shared@^0.1.45, apify-shared@^0.1.56:
   version "0.1.56"
   resolved "https://registry.yarnpkg.com/apify-shared/-/apify-shared-0.1.56.tgz#a983ef378e2b2973ae7a1545e608431646f4ee84"
   integrity sha512-j+HVAMkS1QepZ3o555vKgNgvPcDsskBHy9yFBRMQBRTvV7iCPHc+LEGCQbhFKPDkFFZpIxY/ULkzCApB7f2oHg==
@@ -234,16 +234,16 @@ apify-shared@^0.1.45, apify-shared@^0.1.55:
     underscore "^1.8.3"
     url "^0.11.0"
 
-apify@^0.15.4:
-  version "0.15.4"
-  resolved "https://registry.yarnpkg.com/apify/-/apify-0.15.4.tgz#b1d8c59c66a3789f20fdca38cc119f416b84e494"
-  integrity sha512-dmf0QLH/J0DtHFyeau2CAjn+zg8OrKjeNIq1qH/hdrCFQdTG5LjDRmmzGlAgjcmIAgaBN0zTcfqU3oXL0Jjcuw==
+apify@^0.15.5:
+  version "0.15.5"
+  resolved "https://registry.yarnpkg.com/apify/-/apify-0.15.5.tgz#8507400fc2c8da805b2ef50a6cb9787a6b39de3a"
+  integrity sha512-YWPdXjW7cw4AhtqIyddoMoWVvMEUc6ITCTvtlgMiw0nxlUExprQVu6CLU8VzpUioZF+RHRlwPS2bHStdiELnHQ==
   dependencies:
-    "@apify/http-request" "^1.0.1"
+    "@apify/http-request" "^1.0.6"
     "@apify/ps-tree" "^1.1.3"
-    apify-client "^0.5.22"
-    apify-shared "^0.1.55"
-    cheerio "^1.0.0-rc.2"
+    apify-client "^0.5.25"
+    apify-shared "^0.1.56"
+    cheerio "^1.0.0-rc.3"
     content-type "^1.0.4"
     express "^4.17.1"
     fs-extra "^8.1.0"
@@ -560,7 +560,7 @@ cheerio-tableparser@^1.0.1:
   resolved "https://registry.yarnpkg.com/cheerio-tableparser/-/cheerio-tableparser-1.0.1.tgz#e55ad2dcb5361b8c323a6cbb8c0cd46e3cbdf1cd"
   integrity sha1-5VrS3LU2G4wyOmy7jAzUbjy98c0=
 
-cheerio@^1.0.0-rc.2, cheerio@^1.0.0-rc.3:
+cheerio@^1.0.0-rc.3:
   version "1.0.0-rc.3"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.3.tgz#094636d425b2e9c0f4eb91a46c05630c9a1a8bf6"
   integrity sha512-0td5ijfUPuubwLUu0OBoe98gZj8C/AA+RW3v67GPlGOrvxWjZmBXiBCRU+I8VEiNyJzjth40POfHiz2RB3gImA==

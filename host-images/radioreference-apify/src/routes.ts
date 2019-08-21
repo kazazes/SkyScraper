@@ -1,7 +1,11 @@
+import cheerioTableparser from 'cheerio-tableparser';
 import * as Apify from 'apify';
-import { Page, ElementHandle } from 'puppeteer';
-import { url } from 'inspector';
+import { Page } from 'puppeteer';
 import parseSystem from './parseSystem';
+import { Request } from 'apify';
+import * as cheerio from 'cheerio';
+import { zipObject, camelCase } from 'lodash';
+const geocode = require('reverse-geocode');
 
 const {
   utils: { log },
@@ -95,13 +99,41 @@ exports.SYSTEM = async (
     page,
     request,
   }: {
-    page: any;
+    page: Page;
     request: Apify.Request;
   },
   { requestQueue }: { requestQueue: Apify.RequestList }
 ) => {
   const id = request.url.split('?')[1].replace('id=', '-');
-  await Apify.utils.puppeteer.injectJQuery(page);
+
+  const content = await page.content();
+  const $ = cheerio.load(content);
+  $('table.rrtable a')
+    .toArray()
+    .filter(el => {
+      const url = $(el).attr('href');
+      if (url && url.includes('siteId')) {
+        requestQueue.addRequest(
+          {
+            url: `https://www.radioreference.com${url}`,
+            userData: {
+              label: 'SITE_DETAILS',
+            },
+          },
+          { forefront: true }
+        );
+      }
+    });
+
+  await Apify.utils.puppeteer.enqueueLinks({
+    page,
+    selector: 'table a',
+    pseudoUrls: ['https://www.radioreference.com/apps/db/?siteId=[d+]'],
+    requestQueue,
+    transformRequestFunction: (ctx: any) => {
+      ctx.userData.label = 'SITE_DETAILS';
+    },
+  });
 
   log.debug('Scraping results.');
   let results = (await parseSystem(page)) as any;
@@ -115,4 +147,48 @@ exports.SYSTEM = async (
 
   log.debug('Pushing data to dataset.');
   await Apify.pushData(results);
+};
+
+exports.SITE_DETAILS = async (
+  {
+    page,
+    request,
+  }: {
+    page: Page;
+    request: Apify.Request;
+  },
+  { requestQueue }: { requestQueue: Apify.RequestList }
+) => {
+  const siteDataset = await Apify.openDataset('radioref-sites', {
+    forceCloud: process.env.APIFY_CLOUD === '1',
+  });
+  const content = await page.content();
+  const $ = cheerio.load(content);
+  cheerioTableparser($);
+  const systemInfoTable = ($(
+    'td.main table.layout table.rrtable:nth-child(1)'
+  ).first() as any).parsetable(false, false, true);
+  systemInfoTable[0] = systemInfoTable[0].map((k: string) => {
+    return camelCase(k.replace(':', '').trim());
+  });
+  const systemInfo = zipObject(systemInfoTable[0], systemInfoTable[1]) as {
+    [key: string]: any;
+  };
+
+  if (systemInfo.latitude && systemInfo.longitude) {
+    const latNumber = Number(systemInfo.latitude.replace(/[^-\d\.]/g, ''));
+    const longNumber = Number(systemInfo.longitude.replace(/[^-\d\.]/g, ''));
+    const g = geocode.lookup(latNumber, longNumber, 'us');
+
+    systemInfo.location = g;
+  }
+
+  if (systemInfo.range) {
+    systemInfo.range = {
+      distance: Number(systemInfo.range.replace(/[^\d\.]+/g, '')),
+      units: systemInfo.range.replace(/[\d\.\s]+/g, '').toLowerCase(),
+    };
+  }
+
+  await siteDataset.pushData(systemInfo);
 };

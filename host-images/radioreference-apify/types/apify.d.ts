@@ -129,7 +129,7 @@ declare module 'apify' {
 
     reclaimRequest(...args: any[]): void;
 
-    addRequest(args: any): void;
+    addRequest(...args: any): void;
 
     getInfo(): any;
   }
@@ -537,7 +537,7 @@ declare module 'apify' {
         selector: string;
         pseudoUrls: PseudoUrl[] | string[];
         requestQueue: RequestList;
-        transformRequestFunction: any;
+        transformRequestFunction?: any;
       }): any;
 
       function enqueueLinksByClickingElements(options: any): any;

@@ -15,21 +15,28 @@
     "start": "node dist/index.js"
   },
   "devDependencies": {
+    "@types/archiver": "^3.0.0",
     "@types/cheerio": "^0.22.13",
+    "@types/consola": "^1.0.0",
     "@types/dotenv": "^6.1.1",
     "@types/jquery": "^3.3.31",
     "@types/lodash": "^4.14.137",
     "@types/node": "^12.7.2",
     "@types/puppeteer": "^1.19.1",
+    "@types/rimraf": "^2.0.2",
     "gts": "^1.1.0",
     "ts-node": "^8.3.0",
     "typescript": "^3.5.3"
   },
   "dependencies": {
     "apify": "^0.15.4",
+    "archiver": "^3.1.1",
     "cheerio": "^1.0.0-rc.3",
     "cheerio-tableparser": "^1.0.1",
+    "consola": "^2.10.1",
     "dotenv": "^8.1.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "reverse-geocode": "github:kazazes/reverse-geocode",
+    "rimraf": "^3.0.0"
   }
 }

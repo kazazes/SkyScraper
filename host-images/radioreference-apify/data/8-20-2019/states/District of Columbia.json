@@ -1,0 +1,769 @@
+[
+  {
+    "county": "Washington DC",
+    "lastUpdated": "May 22, 2016, 11:20 am (Changed Site # 003 (On-Site) to 003 (On-Site))",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.8375
+          },
+          {
+            "control": false,
+            "frequency": 461.9625
+          },
+          {
+            "control": false,
+            "frequency": 451.975
+          }
+        ],
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "siteUniqueDBID": "26012",
+          "siteDescription": "On-Site",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 26012,
+        "siteLink": "/apps/db/?siteId=26012",
+        "siteName": "On-Site"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.2625
+          },
+          {
+            "control": false,
+            "frequency": 463.925
+          },
+          {
+            "control": false,
+            "frequency": 463.6125
+          }
+        ],
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "siteUniqueDBID": "25912",
+          "siteDescription": "Wide-Area",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 25912,
+        "siteLink": "/apps/db/?siteId=25912",
+        "siteName": "Wide-Area"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.175
+          },
+          {
+            "control": false,
+            "frequency": 452.4
+          }
+        ],
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "siteUniqueDBID": "27103",
+          "siteDescription": "On-Site",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 27103,
+        "siteLink": "/apps/db/?siteId=27103",
+        "siteName": "On-Site"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "8429",
+    "systemName": "Marriott Marquis (Washington)",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-8429&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8429&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "description": "Engineering",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "2",
+          "description": "Security",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Security"
+        },
+        {
+          "decimal": "3",
+          "description": "Housekeeping",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "4",
+          "description": "Room Service",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "5",
+          "description": "Bellmen",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "6",
+          "description": "Banquets",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "7",
+          "description": "Valet Parking",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "8",
+          "description": "Banquets",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "9",
+          "description": "Banquets",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "10",
+          "description": "Audio/Visual",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington DC",
+    "lastUpdated": "May 22, 2017, 3:10 pm (Added Site # 2 (1225 Connecticut Ave.))",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.75
+          }
+        ],
+        "site": {
+          "systemName": "World Bank",
+          "siteUniqueDBID": "28601",
+          "siteDescription": "1818 H St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 28601,
+        "siteLink": "/apps/db/?siteId=28601",
+        "siteName": "1818 H St. NW"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.8375
+          }
+        ],
+        "site": {
+          "systemName": "World Bank",
+          "siteUniqueDBID": "29835",
+          "siteDescription": "1225 Connecticut Ave.",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 29835,
+        "siteLink": "/apps/db/?siteId=29835",
+        "siteName": "1225 Connecticut Ave."
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.975
+          }
+        ],
+        "site": {
+          "systemName": "World Bank",
+          "siteUniqueDBID": "29131",
+          "siteDescription": "600 19th St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 29131,
+        "siteLink": "/apps/db/?siteId=29131",
+        "siteName": "600 19th St. NW"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.2625
+          }
+        ],
+        "site": {
+          "systemName": "World Bank",
+          "siteUniqueDBID": "29114",
+          "siteDescription": "1850 I St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 29114,
+        "siteLink": "/apps/db/?siteId=29114",
+        "siteName": "1850 I St. NW"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.1
+          }
+        ],
+        "site": {
+          "systemName": "World Bank",
+          "siteUniqueDBID": "29132",
+          "siteDescription": "701 18th St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 29132,
+        "siteLink": "/apps/db/?siteId=29132",
+        "siteName": "701 18th St. NW"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "9050",
+    "systemName": "World Bank",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9050&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9050&opt=all_tg"
+  },
+  {
+    "county": "Washington DC",
+    "lastUpdated": "May 4, 2018, 3:07 pm (Added Talkgroup 111 Recreation/Yates Field House?(All))",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.375
+          },
+          {
+            "control": false,
+            "frequency": 452.625
+          }
+        ],
+        "site": {
+          "systemName": "Georgetown University",
+          "siteUniqueDBID": "31948",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "2, 3, 4",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 31948,
+        "siteLink": "/apps/db/?siteId=31948",
+        "siteName": "Site 1"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.075
+          },
+          {
+            "control": false,
+            "frequency": 461.6
+          }
+        ],
+        "site": {
+          "systemName": "Georgetown University",
+          "siteUniqueDBID": "31990",
+          "siteDescription": "Site 4",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "1, 2, 3",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 31990,
+        "siteLink": "/apps/db/?siteId=31990",
+        "siteName": "Site 4"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "9957",
+    "systemName": "Georgetown University",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9957&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9957&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "description": "Security",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Security"
+        },
+        {
+          "decimal": "104",
+          "description": "Maintenance",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "105",
+          "description": "Maintenance",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "106",
+          "description": "Transportation (GUTS)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "111",
+          "description": "Recreation/Yates Field House?",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Schools"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington DC",
+    "lastUpdated": "May 4, 2018, 1:37 pm ((1) Talkgroups Updated (All))",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.7875
+          },
+          {
+            "control": false,
+            "frequency": 461.8125
+          },
+          {
+            "control": false,
+            "frequency": 461.9875
+          },
+          {
+            "control": false,
+            "frequency": 463.9375
+          },
+          {
+            "control": false,
+            "frequency": 461.6625
+          }
+        ],
+        "site": {
+          "systemName": "Nationals Park",
+          "siteUniqueDBID": "25911",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 25911,
+        "siteLink": "/apps/db/?siteId=25911",
+        "siteName": "Confirmed LCN"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "8428",
+    "systemName": "Nationals Park",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-8428&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8428&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "description": "Ballpark Operations",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "2",
+          "description": "Nationals Staff",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "3",
+          "description": "Engineering",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "5",
+          "description": "Guest Services",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "6",
+          "description": "Guest Services",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "8",
+          "description": "Ticketing/Box Office",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "9",
+          "description": "Parking",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "10",
+          "description": "Housekeeping",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "11",
+          "description": "Security",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Security"
+        },
+        {
+          "decimal": "13",
+          "description": "Scoreboard/Announcer",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "14",
+          "description": "Ch. 6 (from Group 13)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "16",
+          "description": "Guest Services - Wheelchairs",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "17",
+          "description": "Concessions",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "19",
+          "description": "Concessions - Warehouse",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "23",
+          "description": "Concessions - Premium",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "24",
+          "description": "Concessions - IT/Cashroom (Ch. 8)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "28",
+          "description": "Audio/Visual",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "29",
+          "description": "Merchandise",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "255",
+          "description": "All Call",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington DC",
+    "lastUpdated": "July 15, 2018, 9:37 am (General text description updated)",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.05
+          },
+          {
+            "control": false,
+            "frequency": 464.4
+          }
+        ],
+        "site": {
+          "systemName": "Audi Field",
+          "siteUniqueDBID": "32613",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 32613,
+        "siteLink": "/apps/db/?siteId=32613",
+        "siteName": "Confirmed LCN"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "10100",
+    "systemName": "Audi Field",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-10100&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=10100&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "109",
+          "description": "Information Technology",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington DC",
+    "lastUpdated": "July 19, 2018, 10:53 am (Updated General Trunked System Information)",
+    "location": "Washington, DC",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.5875
+          },
+          {
+            "control": false,
+            "frequency": 464.7875
+          }
+        ],
+        "site": {
+          "systemName": "Hillwood Estate, Museum and Gardens",
+          "siteUniqueDBID": "19534",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 19534,
+        "siteLink": "/apps/db/?siteId=19534",
+        "siteName": "Confirmed LCN"
+      }
+    ],
+    "state": "District of Columbia",
+    "systemID": "7230",
+    "systemName": "Hillwood Estate, Museum and Gardens",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-7230&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7230&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "description": "Security (Ch. 1)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Security"
+        },
+        {
+          "decimal": "102",
+          "description": "Parking (Ch. 2)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "103",
+          "description": "(Ch. 3)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "104",
+          "description": "Volunteers/Tour Guides?",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  }
+]

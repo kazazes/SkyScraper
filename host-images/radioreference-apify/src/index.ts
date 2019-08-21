@@ -1,9 +1,13 @@
 import * as Apify from 'apify';
-import { config } from 'dotenv';
+import * as dotenv from 'dotenv';
 import { Page, Request } from 'puppeteer';
 import { createRouter, getSources } from './tools';
+import { readFileSync } from 'fs';
 
-config();
+const envConfig = dotenv.parse(readFileSync('.env'));
+for (const k in envConfig) {
+  process.env[k] = envConfig[k];
+}
 
 const {
   utils: { log },
@@ -12,18 +16,16 @@ const {
 Apify.main(async () => {
   log.info('Starting actor.');
   const sources = getSources();
-  const requestQueue = await Apify.openRequestQueue('radioref-usa', {
+  const requestQueue = await Apify.openRequestQueue('radioref', {
     forceCloud: process.env.APIFY_CLOUD === '1',
   });
-  const dataset = await Apify.openDataset('radioref-usa', {
+
+  await Apify.openDataset('radioref', {
     forceCloud: process.env.APIFY_CLOUD === '1',
   });
+
   sources.forEach(s => requestQueue.addRequest(s));
   const router = await createRouter({ requestQueue });
-
-  setInterval(() => {
-    log.info(JSON.stringify(requestQueue.getInfo()));
-  }, 30000);
 
   log.debug('Setting up crawler.');
   const crawler = new Apify.PuppeteerCrawler({

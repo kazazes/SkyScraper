@@ -12,15 +12,18 @@
       "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
       "sourceMaps": true,
       "cwd": "${workspaceRoot}",
-      "protocol": "inspector"
+      "protocol": "inspector",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "Launch Scraper",
       "program": "${workspaceFolder}/dist/index.js",
       "preLaunchTask": "tsc: build - tsconfig.json",
-      "outFiles": ["${workspaceFolder}/dist/**/*.js"]
+      "outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "sourceMaps": true,
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }

@@ -1,0 +1,491 @@
+[
+  {
+    "county": "Tunica",
+    "lastUpdated": "August 29, 2015, 6:25 pm (Changed Site # 001 (North) to 002 (Backup Site (North)))",
+    "location": "Tunica, MS",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.9875
+          },
+          {
+            "control": false,
+            "frequency": 855.9875
+          },
+          {
+            "control": false,
+            "frequency": 856.9875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 857.9875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.9875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.9875
+          }
+        ],
+        "site": {
+          "systemName": "Tunica County",
+          "siteUniqueDBID": "2123",
+          "siteDescription": "Primary (South)",
+          "siteCountyLocation": "Tunica",
+          "siteNeighbors": "N/A",
+          "siteLocation": "2225 Fitzgerald's Blvd.",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 17,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "rebanded": "Yes"
+        },
+        "siteCounty": {},
+        "siteID": 2123,
+        "siteLink": "/apps/db/?siteId=2123",
+        "siteName": "Primary (South)"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.9875
+          },
+          {
+            "control": false,
+            "frequency": 855.9875
+          }
+        ],
+        "site": {
+          "systemName": "Tunica County",
+          "siteUniqueDBID": "25988",
+          "siteDescription": "Backup Site (North)",
+          "siteCountyLocation": "Tunica",
+          "siteNeighbors": "N/A",
+          "siteLocation": ".6 Miles W of Highway 61 on Casino Center Drive",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 17,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "rebanded": "Yes"
+        },
+        "siteCounty": {},
+        "siteID": 25988,
+        "siteLink": "/apps/db/?siteId=25988",
+        "siteName": "Backup Site (North)"
+      }
+    ],
+    "state": "Mississippi",
+    "systemID": "1570",
+    "systemName": "Tunica County",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1570&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1570&opt=all_tg",
+    "talkgroups": {
+      "Sheriffs Office": [
+        {
+          "decimal": "144",
+          "description": "Dispatch",
+          "group": "Sheriffs Office",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "176",
+          "description": "Car-to-Car",
+          "group": "Sheriffs Office",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "272",
+          "description": "Law Enforcement",
+          "group": "Sheriffs Office",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        }
+      ],
+      "EMS": [
+        {
+          "decimal": "624",
+          "description": "EMS",
+          "group": "EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "752",
+          "description": "EMS Tunica/Robinsville Ops",
+          "group": "EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "784",
+          "description": "EMS-Tunica/Robinsville Car to Car CH-2",
+          "group": "EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Talk"
+        }
+      ],
+      "Tunica Police": [
+        {
+          "decimal": "848",
+          "description": "Dispatch",
+          "group": "Tunica Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        }
+      ],
+      "Public Services": [
+        {
+          "decimal": "944",
+          "description": "Tunica County Highway Department",
+          "group": "Public Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "1616",
+          "description": "Tunica County Airport Operations",
+          "group": "Public Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        }
+      ],
+      "Tunica City Government": [
+        {
+          "decimal": "1296",
+          "description": "Expo Center",
+          "group": "Tunica City Government",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Yazoo",
+    "lastUpdated": "August 22, 2015, 7:28 am (Updated Talkgroups (1 Updated))",
+    "location": "Yazoo City, MS",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 155.1525
+          },
+          {
+            "control": false,
+            "frequency": 155.6175
+          },
+          {
+            "control": false,
+            "frequency": 154.3625
+          }
+        ],
+        "site": {
+          "systemName": "Yazoo County E-911 District",
+          "siteUniqueDBID": "7261",
+          "siteDescription": "Yazoo County *Confirmed LCN*",
+          "siteCountyLocation": "Yazoo",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Highway 49, Lintonia Avenue, East Broadway",
+          "siteModulation": "11K2F3E",
+          "siteNotes": "Confirmed LCN",
+          "range": {
+            "distance": 24,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 7261,
+        "siteLink": "/apps/db/?siteId=7261",
+        "siteName": "Yazoo County *Confirmed LCN*"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 155.2575
+          },
+          {
+            "control": false,
+            "frequency": 154.3625
+          },
+          {
+            "control": false,
+            "frequency": 155.6175
+          }
+        ],
+        "site": {
+          "systemName": "Yazoo County E-911 District",
+          "siteUniqueDBID": "21566",
+          "siteDescription": "Broadway Street (Unconfirmed LCN )",
+          "siteCountyLocation": "Yazoo",
+          "siteNeighbors": "N/A",
+          "siteLocation": "211 E BROADWAY STREET  Yazoo City",
+          "siteModulation": "11K2F3E",
+          "siteNotes": "None",
+          "range": {
+            "distance": 20,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 21566,
+        "siteLink": "/apps/db/?siteId=21566",
+        "siteName": "Broadway Street (Unconfirmed LCN )"
+      }
+    ],
+    "state": "Mississippi",
+    "systemID": "3914",
+    "systemName": "Yazoo County E-911 District",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3914&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3914&opt=all_tg",
+    "talkgroups": {
+      "Yazoo City": [
+        {
+          "decimal": "0-02-020",
+          "description": "Police Dispatch",
+          "group": "Yazoo City",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-04-021",
+          "description": "Police Secondary/Tactical",
+          "group": "Yazoo City",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "0-04-023",
+          "description": "Fire Secondary/Tactical",
+          "group": "Yazoo City",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "0-06-021",
+          "description": "Fire Dispatch",
+          "group": "Yazoo City",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "0-06-024",
+          "description": "Fire Car to Car",
+          "group": "Yazoo City",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        }
+      ],
+      "Yazoo County": [
+        {
+          "decimal": "0-02-021",
+          "description": "Sheriff Secondary/Countywide Law Enforcement",
+          "group": "Yazoo County",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-04-020",
+          "description": "Sheriff Primary",
+          "group": "Yazoo County",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-04-025",
+          "description": "Sheriff Car to Car",
+          "group": "Yazoo County",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        }
+      ],
+      "MedSTAT EMS": [
+        {
+          "decimal": "0-04-024",
+          "description": "MedSTAT EMS Dispatch *Currently Not In Use*",
+          "group": "MedSTAT EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Lafayette",
+    "lastUpdated": "February 22, 2011, 11:35 pm (Deleted news entry ID=1527)",
+    "location": "University, MS",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 855.2125
+          },
+          {
+            "control": false,
+            "frequency": 856.7375
+          }
+        ],
+        "site": {
+          "systemName": "University of Mississippi Physical Plant",
+          "siteUniqueDBID": "4746",
+          "siteDescription": "U of M *Confirmed LCN*",
+          "siteCountyLocation": "Lafayette",
+          "siteNeighbors": "N/A",
+          "siteLocation": "280 Ft. N of intersection of Rebel Dr. & Dormitory Row W",
+          "siteModulation": "20K0F3E, 13K6F3E",
+          "siteNotes": "Tank",
+          "range": {
+            "distance": 1,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 4746,
+        "siteLink": "/apps/db/?siteId=4746",
+        "siteName": "U of M *Confirmed LCN*"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 855.9625
+          },
+          {
+            "control": false,
+            "frequency": 857.7375
+          },
+          {
+            "control": false,
+            "frequency": 858.7375
+          },
+          {
+            "control": false,
+            "frequency": 859.7375
+          },
+          {
+            "control": false,
+            "frequency": 860.7375
+          }
+        ],
+        "site": {
+          "systemName": "University of Mississippi Physical Plant",
+          "siteUniqueDBID": "4053",
+          "siteDescription": "Unconfirmed LCN",
+          "siteCountyLocation": "Lafayette",
+          "siteNeighbors": "N/A",
+          "siteLocation": "280 Ft. N of intersection of Rebel Dr. & Dormitory Row W",
+          "siteModulation": "20K0F3E, 13K6F3E",
+          "siteNotes": "Tank",
+          "range": {
+            "distance": 1,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 4053,
+        "siteLink": "/apps/db/?siteId=4053",
+        "siteName": "Unconfirmed LCN"
+      }
+    ],
+    "state": "Mississippi",
+    "systemID": "2662",
+    "systemName": "University of Mississippi Physical Plant",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-2662&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=2662&opt=all_tg",
+    "talkgroups": {
+      "Physical Plant": [
+        {
+          "decimal": "0-05-240",
+          "description": "University Physical Plant 1",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-001",
+          "description": "University Landscaping",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-002",
+          "description": "University Physical Plant 2",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-004",
+          "description": "University Heating and Cooling",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-005",
+          "description": "University Physical Plant 3",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-006",
+          "description": "University Physical Plant 4",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-012",
+          "description": "University Physical Plant 5",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-100",
+          "description": "University Physical Plant 6",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-225",
+          "description": "University Electricians",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-06-230",
+          "description": "University Physical Plant 6",
+          "group": "Physical Plant",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        }
+      ]
+    }
+  }
+]

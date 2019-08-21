@@ -1,0 +1,2373 @@
+[
+  {
+    "county": "Lassen",
+    "lastUpdated": "August 9, 2015, 10:32 pm (Changed Site # 001 (Site 1) to 001 (Site 1))",
+    "location": "Herlong, CA",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 138.0625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 138.0875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 138.2375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 138.4125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 139.0375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 139.3375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 139.6375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 139.7875
+          }
+        ],
+        "site": {
+          "systemName": "Sierra Army Depot",
+          "siteUniqueDBID": "25928",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Lassen",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Herlong",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 25928,
+        "siteLink": "/apps/db/?siteId=25928",
+        "siteName": "Site 1"
+      }
+    ],
+    "state": "California",
+    "systemID": "8431",
+    "systemName": "Sierra Army Depot",
+    "systemType": "Project 25 Phase I",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "uniqueIdentifier": "s-8431&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8431&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "80",
+          "description": "Security",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Security"
+        },
+        {
+          "decimal": "144",
+          "description": "Possibly Security?",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Security"
+        },
+        {
+          "decimal": "240",
+          "description": "Emergency Operations Center",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Emergency Ops"
+        },
+        {
+          "decimal": "272",
+          "description": "Fire 1",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "336",
+          "description": "Security 1",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Security"
+        },
+        {
+          "decimal": "368",
+          "description": "Security 2",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Security"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Kern",
+    "lastUpdated": "December 11, 2016, 9:39 pm (Changed Site # 001 (Bear Mountain) to 001 (Bear Mountain))",
+    "location": "Bear Valley Springs, CA",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.95
+          },
+          {
+            "control": false,
+            "frequency": 464.075
+          }
+        ],
+        "site": {
+          "systemName": "Gilcomm (Bear Mountain)",
+          "siteUniqueDBID": "26663",
+          "siteDescription": "Bear Mountain",
+          "siteCountyLocation": "Kern",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Bear Valley Springs",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 26663,
+        "siteLink": "/apps/db/?siteId=26663",
+        "siteName": "Bear Mountain"
+      }
+    ],
+    "state": "California",
+    "systemID": "8565",
+    "systemName": "Gilcomm (Bear Mountain)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-8565&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8565&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-01-128",
+          "description": "Kern Regional Transit Bus Operations",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Transportation"
+        }
+      ]
+    }
+  },
+  {
+    "county": "San Diego",
+    "lastUpdated": "July 10, 2019, 4:26 pm (Changed Site # 002 (San Diego Simulcast) to 002 (San Diego Simulcast))",
+    "location": "San Diego, CA",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.0125
+          },
+          {
+            "control": false,
+            "frequency": 855.0625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 854.1125
+          },
+          {
+            "control": false,
+            "frequency": 855.0875
+          },
+          {
+            "control": false,
+            "frequency": 854.2375
+          },
+          {
+            "control": false,
+            "frequency": 855.2625
+          },
+          {
+            "control": false,
+            "frequency": 854.3625
+          },
+          {
+            "control": false,
+            "frequency": 855.5875
+          },
+          {
+            "control": false,
+            "frequency": 854.6375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 855.6875
+          },
+          {
+            "control": false,
+            "frequency": 854.6625
+          },
+          {
+            "control": false,
+            "frequency": 855.9125
+          },
+          {
+            "control": false,
+            "frequency": 854.7375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 856.1875
+          },
+          {
+            "control": false,
+            "frequency": 854.9625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 856.3125
+          }
+        ],
+        "site": {
+          "systemName": "San Diego City 800MHz",
+          "siteUniqueDBID": "332",
+          "siteDescription": "San Diego Simulcast",
+          "siteCountyLocation": "San Diego",
+          "siteNeighbors": "003",
+          "siteLocation": "San Diego",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 22,
+            "units": "miles"
+          },
+          "siteConnectTone": "138.46",
+          "siteNac": "2E7",
+          "rebanded": "Yes"
+        },
+        "siteCounty": {},
+        "siteID": 332,
+        "siteLink": "/apps/db/?siteId=332",
+        "siteName": "San Diego Simulcast"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.8375
+          },
+          {
+            "control": false,
+            "frequency": 856.8875
+          },
+          {
+            "control": false,
+            "frequency": 857.0875
+          },
+          {
+            "control": false,
+            "frequency": 857.1375
+          }
+        ],
+        "siteCounty": {}
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 859.075
+          }
+        ],
+        "site": {
+          "systemName": "San Diego City 800MHz",
+          "siteUniqueDBID": "13312",
+          "siteDescription": "San Pasqual (Valley)",
+          "siteCountyLocation": "San Diego",
+          "siteNeighbors": "1",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 22,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 13312,
+        "siteLink": "/apps/db/?siteId=13312",
+        "siteName": "San Pasqual (Valley)"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.3875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 855.1875
+          },
+          {
+            "control": false,
+            "frequency": 856.0125
+          },
+          {
+            "control": false,
+            "frequency": 856.5625
+          },
+          {
+            "control": false,
+            "frequency": 857.1125
+          }
+        ],
+        "site": {
+          "systemName": "San Diego City 800MHz",
+          "siteUniqueDBID": "33907",
+          "siteDescription": "Point Loma",
+          "siteCountyLocation": "San Diego",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Point Loma Wastewater Treatment Plant",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A",
+          "rebanded": "Yes"
+        },
+        "siteCounty": {},
+        "siteID": 33907,
+        "siteLink": "/apps/db/?siteId=33907",
+        "siteName": "Point Loma "
+      }
+    ],
+    "state": "California",
+    "systemID": "330",
+    "systemName": "San Diego City 800MHz",
+    "systemType": "Motorola Type II SmartZone",
+    "systemVoice": "Analog and APCO-25 Common Air Interface",
+    "uniqueIdentifier": "s-330&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=330&opt=all_tg",
+    "talkgroups": {
+      "Police": [
+        {
+          "decimal": "208",
+          "description": "Northern Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "272",
+          "description": "Northern Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "432",
+          "description": "Tac 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "528",
+          "description": "Tac 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "592",
+          "description": "Tac 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "688",
+          "description": "Tac 4",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "752",
+          "description": "Tac 5",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "848",
+          "description": "Tac 6",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "912",
+          "description": "Tac 7",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "1008",
+          "description": "City Tac 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "1072",
+          "description": "City Tac 2 (Gangs)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "1104",
+          "description": "City Tac 3 (Gangs)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "1296",
+          "description": "Southern Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1360",
+          "description": "Southern Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1456",
+          "description": "Eastern Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1520",
+          "description": "Eastern Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1616",
+          "description": "Western Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1680",
+          "description": "Western Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1776",
+          "description": "Central Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1840",
+          "description": "Central Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "1936",
+          "description": "Northeast Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2000",
+          "description": "Northeast Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2096",
+          "description": "Southeast Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2160",
+          "description": "Southeast Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2256",
+          "description": "Mid-City Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2320",
+          "description": "Mid-City Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2416",
+          "description": "North City West Dispatch 1 (Future Use)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2480",
+          "description": "North City West Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "2576",
+          "description": "SWAT 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "2608",
+          "description": "SWAT 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "2736",
+          "description": "Narcotics 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "2800",
+          "description": "Narcotics 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "2896",
+          "description": "Narcotics 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3056",
+          "description": "Police Patch",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3216",
+          "description": "CHP Calling",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3280",
+          "description": "SDSO Calling",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3344",
+          "description": "Other Calling",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3376",
+          "description": "Border Patrol Calling",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3408",
+          "description": "Border 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3440",
+          "description": "Border 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3472",
+          "description": "Border 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3568",
+          "description": "Internal Affairs 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3600",
+          "description": "Internal Affairs 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3696",
+          "description": "Criminal Intelligence Unit",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3792",
+          "description": "SIU 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3824",
+          "description": "SIU 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3888",
+          "description": "Air Tac 1 (A.B.L.E.)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3920",
+          "description": "Air Tac 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "3984",
+          "description": "Training (Police Academy)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "4048",
+          "description": "Training (Police Academy)",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4080",
+          "description": "Narcotics Task Force",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4176",
+          "description": "Vice 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4208",
+          "description": "Vice 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4272",
+          "description": "Emergency Negotiating Team",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4336",
+          "description": "Gang Task Force 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4368",
+          "description": "Gang Task Force 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4432",
+          "description": "Robbery 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4464",
+          "description": "Robbery 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4496",
+          "description": "Inquiry 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "4560",
+          "description": "Parking Enforcement Tac 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4592",
+          "description": "Parking Enforcement Tac 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "4624",
+          "description": "Parking Enforcement Tac 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "13040",
+          "description": "Parking Enforcement Dispatch",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "15568",
+          "description": "Events Tac 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15600",
+          "description": "Events Tac 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15632",
+          "description": "Events Tac 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15664",
+          "description": "Events Tac 4",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15696",
+          "description": "Events Tac 5",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15728",
+          "description": "Events Tac 6",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15760",
+          "description": "Events Tac 7",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15888",
+          "description": "Event Dispatch 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "15920",
+          "description": "Event Dispatch 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46416",
+          "description": "Inquiry (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "46576",
+          "description": "Northern Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46608",
+          "description": "Northeast Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46640",
+          "description": "Eastern Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46672",
+          "description": "Southeast Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46704",
+          "description": "Central Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46736",
+          "description": "Western Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46768",
+          "description": "Southern Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46800",
+          "description": "Mid City Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "46832",
+          "description": "Northwest Tac (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48144",
+          "description": "Investigations Tac Calling",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48176",
+          "description": "INV Tac 1",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48208",
+          "description": "INV Tac 2",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48240",
+          "description": "INV Tac 3",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48272",
+          "description": "INV Tac 4",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48304",
+          "description": "INV Tac 5",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48336",
+          "description": "INV Tac 6",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48368",
+          "description": "INV Tac 7",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48400",
+          "description": "INV Tac 8",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48432",
+          "description": "INV Tac 9",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48464",
+          "description": "INV Tac 10",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48496",
+          "description": "INV Tac 11",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48528",
+          "description": "INV Tac 12",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "48560",
+          "description": "INV Tac 13",
+          "group": "Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49200",
+          "description": "Gang Task Force 3D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49232",
+          "description": "Gang Task Force 4D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49264",
+          "description": "Gang Task Force 5D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49296",
+          "description": "Gang Task Force 6D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49360",
+          "description": "Narcotics 4D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49392",
+          "description": "Narcotics 5D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49424",
+          "description": "Narcotics 6D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49456",
+          "description": "Narcotics 7D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49488",
+          "description": "Narcotics 8D",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49520",
+          "description": "Narcotics Task Force 2D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49648",
+          "description": "SWAT 2D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49712",
+          "description": "Criminal Intelligence Unit 2D (Encrypted)",
+          "group": "Police",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49776",
+          "description": "Robbery 3D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49808",
+          "description": "Robbery 4D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49872",
+          "description": "Vice 3D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49968",
+          "description": "Vice 4D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "49984",
+          "description": "INV Tac 14D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "50000",
+          "description": "INV Tac 15D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "50032",
+          "description": "INV Tac 16D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "50064",
+          "description": "INV Tac 17D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "50096",
+          "description": "INV Tac 18D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "50256",
+          "description": "INV Tac 23D",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        }
+      ],
+      "Mutual Aid": [
+        {
+          "decimal": "2960",
+          "description": "Mutual Aid 10 (Fire 7O)",
+          "group": "Mutual Aid",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "2992",
+          "description": "Mutual Aid 20 (Fire 8O)",
+          "group": "Mutual Aid",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "3024",
+          "description": "Mutual Aid 30 (Fire 9O)",
+          "group": "Mutual Aid",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        }
+      ],
+      "Fire/EMS": [
+        {
+          "decimal": "4688",
+          "description": "Dispatch Simulcast",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "5008",
+          "description": "Dispatch",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "5136",
+          "description": "Fire Emergency",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Emergency Ops"
+        },
+        {
+          "decimal": "5168",
+          "description": "Administration",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "5232",
+          "description": "System Status Controller (ALS Medic Dispatch)",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "5328",
+          "description": "Command 9D - Metro Command",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "5392",
+          "description": "Tac 9E - Metro Primary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5488",
+          "description": "Command 9G - Citywide & San Pasqual Command",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "5552",
+          "description": "Tac 7M",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5648",
+          "description": "Tac 7K",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5712",
+          "description": "Tac 8J - Battalion 1 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5808",
+          "description": "Tac 7L",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5872",
+          "description": "Tac 9B - North of I-8 (+Poway)",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5968",
+          "description": "Command 9A - North of I-8 (+Poway)",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "6032",
+          "description": "Tac 9C - North of I-8 (+Poway)",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6128",
+          "description": "Tac 9H - Citywide & San Pasqual Primary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6352",
+          "description": "Rapid Intervention Crew 8N",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6448",
+          "description": "Tac 7I - Traffic Accidents & Grass Primary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6512",
+          "description": "Command 7H - Traffic Accidents & Grass Command",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "6608",
+          "description": "Tac 7J - Traffic Accidents & Grass Secondary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6768",
+          "description": "Tac 8B - South Bay",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6832",
+          "description": "Command 8A - South Bay",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "6928",
+          "description": "Tac 8C - South Bay",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "6992",
+          "description": "Tac 9J - Battalion 3 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7088",
+          "description": "Tac 8H - E of I-805 & S of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7152",
+          "description": "Command 8G - E of I-805 & S of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "7248",
+          "description": "Tac 8I - E of I-805 & S of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7312",
+          "description": "Tac 8K - Battalion 2 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7408",
+          "description": "Tac 7F - Medical Primary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7472",
+          "description": "Command 7E - Medical Command",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "7568",
+          "description": "Tac 7G - Medical Secondary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7632",
+          "description": "Tac 8L - Battalion 4 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7728",
+          "description": "Tac 8E - West of I-805 & South of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7792",
+          "description": "Command 8D - West of I-805 & South of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "7888",
+          "description": "Tac 8F - West of I-805 & South of I-8",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "7952",
+          "description": "Tac 8M - Battalion 6 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8112",
+          "description": "Tac 9N",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8208",
+          "description": "BLS Medic Dispatch",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "8272",
+          "description": "Tac 9F - Metro Secondary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8432",
+          "description": "Tac 7N",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8528",
+          "description": "Tac 9I - Citywide & San Pasqual Secondary Tac",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8592",
+          "description": "Tac 9K - Battalion 5 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8688",
+          "description": "Tac 9L - Battalion 7 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8752",
+          "description": "Tac 9M",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "8816",
+          "description": "Battalion 1 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "8848",
+          "description": "Battalion 2 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "8880",
+          "description": "Battalion 3 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "8912",
+          "description": "Battalion 4 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "8944",
+          "description": "Battalion 5 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "8976",
+          "description": "Battalion 6 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9008",
+          "description": "Battalion 7 Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9040",
+          "description": "Open Channel",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9072",
+          "description": "NTC Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9104",
+          "description": "NTC Training",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9136",
+          "description": "Special Events",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9168",
+          "description": "Special Events",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9200",
+          "description": "Special Events",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9232",
+          "description": "Special Events",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "9360",
+          "description": "Rural-Metro General Dispatch",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "9424",
+          "description": "Rural-Metro General Tac 1",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "9456",
+          "description": "Rural-Metro General Tac 2",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "9488",
+          "description": "Rural-Metro General Tac 3",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "9520",
+          "description": "Rural-Metro General Tac 4",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "25680",
+          "description": "UCSD Hospital",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "25744",
+          "description": "Sharp Hospital",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "25808",
+          "description": "Mercy Hospital",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "25872",
+          "description": "Scripps Memorial Hospital Chula Vista",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "25936",
+          "description": "Scripps Hospital La Jolla",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "26000",
+          "description": "Grossmont Hospital",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "26064",
+          "description": "Palomar Hospital",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Hospital"
+        }
+      ],
+      "Lifeguard": [
+        {
+          "decimal": "4752",
+          "description": "Dispatch 1",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Dispatch"
+        },
+        {
+          "decimal": "19280",
+          "description": "Dispatch 2",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "19312",
+          "description": "Dispatch 3",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "19344",
+          "description": "Inquiry",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "19408",
+          "description": "Tac 1",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19472",
+          "description": "Tac 2",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19536",
+          "description": "Tac 3",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19600",
+          "description": "Tac 4",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19664",
+          "description": "Tac 5",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19728",
+          "description": "Tac 6",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19792",
+          "description": "Tac 7",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19856",
+          "description": "River Command",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "19920",
+          "description": "River Tac",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Tac"
+        },
+        {
+          "decimal": "19984",
+          "description": "Admin",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20080",
+          "description": "Dispatch 2 Tac",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20112",
+          "description": "Dispatch 3 Tac",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20176",
+          "description": "Special 1",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20208",
+          "description": "Special 2",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20272",
+          "description": "Junior Guards Ops",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20304",
+          "description": "Junior Guards Tac",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20336",
+          "description": "Training 1",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        },
+        {
+          "decimal": "20368",
+          "description": "Training 2",
+          "group": "Lifeguard",
+          "mode": "ANALOG",
+          "tag": "Multi-Talk"
+        }
+      ],
+      "City Services": [
+        {
+          "decimal": "9392",
+          "description": "Adult Protective Services",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "11536",
+          "description": "DYN Regroup for Lost or Stolen Radios",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "16144",
+          "description": "Communications & Electronics 1",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "16176",
+          "description": "Communications & Electronics 2",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "16208",
+          "description": "Communications & Electronics 3",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "16240",
+          "description": "Communications & Electronics 4",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20496",
+          "description": "Park Ranger Tac 1",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20528",
+          "description": "Park Ranger Tac 2",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20624",
+          "description": "Parks",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20784",
+          "description": "Mount Hope Cemetery",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20816",
+          "description": "Parks",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20912",
+          "description": "Water 1B",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20944",
+          "description": "Public Works Station 38 (evenings, nights, weekends)",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "20976",
+          "description": "Water 1A",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21104",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21136",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21168",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21200",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21232",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21264",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21296",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21328",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21392",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21488",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "21520",
+          "description": "Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "22416",
+          "description": "Radio Shop",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "22480",
+          "description": "Public Works",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23184",
+          "description": "Public Works",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23216",
+          "description": "Maintenance",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23472",
+          "description": "Maintenance",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23504",
+          "description": "Public Works",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23536",
+          "description": "Public Works - Storm Water",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23760",
+          "description": "Wastewater - South Bay Water Reclamation Plant",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "23856",
+          "description": "Water 1E",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "24080",
+          "description": "Water 2D",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "24144",
+          "description": "Public Works Maintenance 2B",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "24368",
+          "description": "Public Works Maintenance 2C",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "24624",
+          "description": "Water - Alvarado Water Treatment Plant",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "25168",
+          "description": "Park Rangers",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27216",
+          "description": "Building Inspection A",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27312",
+          "description": "Building Inspection B",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27344",
+          "description": "Building Inspection C",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27408",
+          "description": "Building Inspection D",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27536",
+          "description": "Code Enforcement 1A",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27568",
+          "description": "Code Enforcement 1B",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27600",
+          "description": "Code Enforcement 1C",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "27664",
+          "description": "Code Enforcement 1D",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "28016",
+          "description": "Public Works",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "28048",
+          "description": "Public Works",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "32688",
+          "description": "Miramar Landfill",
+          "group": "City Services",
+          "mode": "DIGITAL",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "33136",
+          "description": "SDCCU Stadium Security",
+          "group": "City Services",
+          "mode": "DIGITAL",
+          "tag": "Security"
+        }
+      ],
+      "San Diego Unified School District": [
+        {
+          "decimal": "9808",
+          "description": "Police Administration",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "9968",
+          "description": "Police Dispatch",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10000",
+          "description": "Transportation A",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10032",
+          "description": "Transportation A (84 passenger Buses)",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10128",
+          "description": "Transportation C (48 Passenger Buses)",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10192",
+          "description": "Transportation D (48 Passenger Wheelchair Buses)",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10352",
+          "description": "Transportation",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10416",
+          "description": "Maintenance",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10480",
+          "description": "Security",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10672",
+          "description": "Transportation - Info",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "10864",
+          "description": "Transportation EMERGENCY",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "11056",
+          "description": "Safety and Training",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "11152",
+          "description": "Maintenance",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "11248",
+          "description": "Police Tac 1",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "11344",
+          "description": "Police Tac 2",
+          "group": "San Diego Unified School District",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        }
+      ],
+      "San Diego Community College District": [
+        {
+          "decimal": "12528",
+          "description": "Police Dispatch",
+          "group": "San Diego Community College District",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "27888",
+          "description": "Police Dispatch",
+          "group": "San Diego Community College District",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "27920",
+          "description": "Police Tactical 1",
+          "group": "San Diego Community College District",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "27952",
+          "description": "Police Tactical 2",
+          "group": "San Diego Community College District",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "27984",
+          "description": "Police Tactical 3",
+          "group": "San Diego Community College District",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        }
+      ]
+    }
+  }
+]

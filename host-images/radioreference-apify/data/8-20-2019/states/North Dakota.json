@@ -1,0 +1,1531 @@
+[
+  {
+    "county": "Grand Forks",
+    "lastUpdated": "December 3, 2011, 3:19 pm (Updated Talkgroups (1 Updated))",
+    "location": "Grand Forks, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 406.35
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 406.55
+          },
+          {
+            "control": false,
+            "frequency": 407.15
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 407.35
+          },
+          {
+            "control": false,
+            "frequency": 407.95
+          },
+          {
+            "control": false,
+            "frequency": 408.15
+          },
+          {
+            "control": false,
+            "frequency": 408.75
+          }
+        ],
+        "site": {
+          "systemName": "Grand Forks Air Force Base",
+          "siteUniqueDBID": "7882",
+          "siteDescription": "Site-1",
+          "siteCountyLocation": "Grand Forks",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 7882,
+        "siteLink": "/apps/db/?siteId=7882",
+        "siteName": "Site-1"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "4147",
+    "systemName": "Grand Forks Air Force Base",
+    "systemType": "Motorola Type II SmartZone",
+    "systemVoice": "Analog and APCO-25 Common Air Interface",
+    "uniqueIdentifier": "s-4147&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4147&opt=all_tg",
+    "talkgroups": {
+      "Medical": [
+        {
+          "decimal": "16496",
+          "description": "Med Patch (155.34)",
+          "group": "Medical",
+          "mode": "DIGITAL",
+          "tag": "EMS Dispatch"
+        }
+      ],
+      "Aircraft Operations": [
+        {
+          "decimal": "18576",
+          "description": "Aircraft Ground Crew",
+          "group": "Aircraft Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "19024",
+          "description": "Air Traffic Control",
+          "group": "Aircraft Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "29632",
+          "description": "Aircraft Ground Crew",
+          "group": "Aircraft Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        }
+      ],
+      "Force Protection": [
+        {
+          "decimal": "19248",
+          "description": "Force Protection",
+          "group": "Force Protection",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        }
+      ],
+      "Base Operations": [
+        {
+          "decimal": "20048",
+          "description": "Base Utilities",
+          "group": "Base Operations",
+          "mode": "DIGITAL",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "20112",
+          "description": "Snow Control",
+          "group": "Base Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "23632",
+          "description": "Post Command (all call)",
+          "group": "Base Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        }
+      ],
+      "Fire Protection": [
+        {
+          "decimal": "21648",
+          "description": "Fire Dispatch",
+          "group": "Fire Protection",
+          "mode": "DIGITAL",
+          "tag": "Fire Dispatch"
+        }
+      ]
+    }
+  },
+  {
+    "county": "5 counties",
+    "lastUpdated": "October 28, 2010, 4:07 pm (Default Location Data Updated to 48.1 / -97.8 / 70)",
+    "location": "Various, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.1875
+          },
+          {
+            "control": false,
+            "frequency": 451.4875
+          },
+          {
+            "control": false,
+            "frequency": 451.7625
+          },
+          {
+            "control": false,
+            "frequency": 452.0625
+          },
+          {
+            "control": false,
+            "frequency": 452.4
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2374",
+          "siteDescription": "Nekoma",
+          "siteCountyLocation": "Cavalier",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=1996",
+          "name": "Cavalier"
+        },
+        "siteID": 2374,
+        "siteLink": "/apps/db/?siteId=2374",
+        "siteName": "Nekoma"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.1875
+          },
+          {
+            "control": false,
+            "frequency": 461.225
+          },
+          {
+            "control": false,
+            "frequency": 451.45
+          },
+          {
+            "control": false,
+            "frequency": 461.5375
+          },
+          {
+            "control": false,
+            "frequency": 451.7125
+          },
+          {
+            "control": false,
+            "frequency": 461.8125
+          },
+          {
+            "control": false,
+            "frequency": 451.9625
+          },
+          {
+            "control": false,
+            "frequency": 452.2125
+          },
+          {
+            "control": false,
+            "frequency": 452.4875
+          },
+          {
+            "control": false,
+            "frequency": 452.7875
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2375",
+          "siteDescription": "Grand Forks",
+          "siteCountyLocation": "Grand Forks",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2004",
+          "name": "Grand Forks"
+        },
+        "siteID": 2375,
+        "siteLink": "/apps/db/?siteId=2375",
+        "siteName": "Grand Forks"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.5125
+          },
+          {
+            "control": false,
+            "frequency": 451.8625
+          },
+          {
+            "control": false,
+            "frequency": 452.1375
+          },
+          {
+            "control": false,
+            "frequency": 452.4375
+          },
+          {
+            "control": false,
+            "frequency": 452.7125
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2376",
+          "siteDescription": "Grand Forks",
+          "siteCountyLocation": "Grand Forks",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2004",
+          "name": "Grand Forks"
+        },
+        "siteID": 2376,
+        "siteLink": "/apps/db/?siteId=2376",
+        "siteName": "Grand Forks"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.4625
+          },
+          {
+            "control": false,
+            "frequency": 451.7625
+          },
+          {
+            "control": false,
+            "frequency": 452.0625
+          },
+          {
+            "control": false,
+            "frequency": 452.3625
+          },
+          {
+            "control": false,
+            "frequency": 452.6625
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2377",
+          "siteDescription": "Petersburg",
+          "siteCountyLocation": "Nelson",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2018",
+          "name": "Nelson"
+        },
+        "siteID": 2377,
+        "siteLink": "/apps/db/?siteId=2377",
+        "siteName": "Petersburg"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.3125
+          },
+          {
+            "control": false,
+            "frequency": 451.6125
+          },
+          {
+            "control": false,
+            "frequency": 451.9125
+          },
+          {
+            "control": false,
+            "frequency": 452.5
+          },
+          {
+            "control": false,
+            "frequency": 452.75
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2378",
+          "siteDescription": "Saint Thomas",
+          "siteCountyLocation": "Pembina",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2020",
+          "name": "Pembina"
+        },
+        "siteID": 2378,
+        "siteLink": "/apps/db/?siteId=2378",
+        "siteName": "Saint Thomas"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.3625
+          },
+          {
+            "control": false,
+            "frequency": 451.6625
+          },
+          {
+            "control": false,
+            "frequency": 451.9875
+          },
+          {
+            "control": false,
+            "frequency": 452.2875
+          },
+          {
+            "control": false,
+            "frequency": 452.625
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio",
+          "siteUniqueDBID": "2379",
+          "siteDescription": "Hatton",
+          "siteCountyLocation": "Traill",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2035",
+          "name": "Traill"
+        },
+        "siteID": 2379,
+        "siteLink": "/apps/db/?siteId=2379",
+        "siteName": "Hatton"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "1670",
+    "systemName": "Stones Mobile Radio",
+    "systemType": "Motorola Type II",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1670&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1670&opt=all_tg"
+  },
+  {
+    "county": "Richland",
+    "lastUpdated": "December 1, 2011, 1:29 pm (Updated General Trunked System Information)",
+    "location": "Wahpeton, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.2125
+          },
+          {
+            "control": false,
+            "frequency": 463.6375
+          },
+          {
+            "control": false,
+            "frequency": 464.0875
+          },
+          {
+            "control": false,
+            "frequency": 464.5875
+          },
+          {
+            "control": false,
+            "frequency": 464.9625
+          }
+        ],
+        "site": {
+          "systemName": "Electronic Communications",
+          "siteUniqueDBID": "19048",
+          "siteDescription": "Wahpeton",
+          "siteCountyLocation": "Richland",
+          "siteNeighbors": "N/A",
+          "siteLocation": "3 M Drive",
+          "siteModulation": "Analog: 11K2F3E",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 19048,
+        "siteLink": "/apps/db/?siteId=19048",
+        "siteName": "Wahpeton"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "7130",
+    "systemName": "Electronic Communications",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-7130&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7130&opt=all_tg"
+  },
+  {
+    "county": "Grand Forks",
+    "lastUpdated": "March 26, 2014, 8:26 pm (Updated Function Tag assignments for 1 talkgroups)",
+    "location": "Grand Forks, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.3875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 855.4375
+          },
+          {
+            "control": false,
+            "frequency": 855.8625
+          },
+          {
+            "control": false,
+            "frequency": 856.8125
+          },
+          {
+            "control": false,
+            "frequency": 857.8125
+          },
+          {
+            "control": false,
+            "frequency": 858.8125
+          },
+          {
+            "control": false,
+            "frequency": 859.9375
+          }
+        ],
+        "site": {
+          "systemName": "Stones Mobile Radio (800 MHz)",
+          "siteUniqueDBID": "23045",
+          "siteDescription": "Grand Forks",
+          "siteCountyLocation": "Grand Forks",
+          "siteNeighbors": "N/A",
+          "siteLocation": "NW corner of 47th Ave & Hwy 81 S",
+          "siteModulation": "Analog",
+          "siteNotes": "Covers the entire Grand Forks area.",
+          "range": {
+            "distance": 32,
+            "units": "miles"
+          },
+          "siteConnectTone": "105.88"
+        },
+        "siteCounty": {},
+        "siteID": 23045,
+        "siteLink": "/apps/db/?siteId=23045",
+        "siteName": "Grand Forks"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "7889",
+    "systemName": "Stones Mobile Radio (800 MHz)",
+    "systemType": "Motorola Type II",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-7889&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7889&opt=all_tg",
+    "talkgroups": {
+      "Business": [
+        {
+          "decimal": "17488",
+          "description": "Cab Company",
+          "group": "Business",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "58000",
+          "description": "Production/Manufacturing Company",
+          "group": "Business",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "58048",
+          "description": "Receiving/Warehouse/Materials",
+          "group": "Business",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Cass",
+    "lastUpdated": "July 28, 2017, 12:32 pm (Updated General Trunked System Information)",
+    "location": "Fargo, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 855.0375
+          },
+          {
+            "control": false,
+            "frequency": 855.5125
+          }
+        ],
+        "site": {
+          "systemName": "Sanford Health",
+          "siteUniqueDBID": "30257",
+          "siteDescription": "Broadway Campus",
+          "siteCountyLocation": "Cass",
+          "siteNeighbors": "N/A",
+          "siteLocation": "720 4th St N",
+          "siteModulation": "DMR Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 30257,
+        "siteLink": "/apps/db/?siteId=30257",
+        "siteName": "Broadway Campus"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.3125
+          },
+          {
+            "control": false,
+            "frequency": 857.3125
+          }
+        ],
+        "site": {
+          "systemName": "Sanford Health",
+          "siteUniqueDBID": "30258",
+          "siteDescription": "South Campus",
+          "siteCountyLocation": "Cass",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1720 South University",
+          "siteModulation": "DMR Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 30258,
+        "siteLink": "/apps/db/?siteId=30258",
+        "siteName": "South Campus"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 858.3125
+          },
+          {
+            "control": false,
+            "frequency": 859.3125
+          }
+        ],
+        "site": {
+          "systemName": "Sanford Health",
+          "siteUniqueDBID": "30259",
+          "siteDescription": "West Campus",
+          "siteCountyLocation": "Cass",
+          "siteNeighbors": "N/A",
+          "siteLocation": "5225 23RD AVE S",
+          "siteModulation": "DMR Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 30259,
+        "siteLink": "/apps/db/?siteId=30259",
+        "siteName": "West Campus"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "9503",
+    "systemName": "Sanford Health",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9503&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9503&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "1",
+          "description": "Security",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "31",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "51",
+          "description": "Operations/Maintenance",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "4 counties",
+    "lastUpdated": "October 7, 2014, 7:19 am (Updated Function Tag assignments for 1 talkgroups)",
+    "location": "Various, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.3375
+          },
+          {
+            "control": false,
+            "frequency": 451.7
+          },
+          {
+            "control": false,
+            "frequency": 452.0125
+          },
+          {
+            "control": false,
+            "frequency": 451.4625
+          },
+          {
+            "control": false,
+            "frequency": 461.3875
+          }
+        ],
+        "site": {
+          "systemName": "Mid States Wireless Inc.",
+          "siteUniqueDBID": "1133",
+          "siteDescription": "Fargo",
+          "siteCountyLocation": "Cass",
+          "siteNeighbors": "N/A",
+          "siteLocation": "4th and Main  Fargo",
+          "siteModulation": "NFM",
+          "siteNotes": "License Says Moorhead MN.",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=1995",
+          "name": "Cass"
+        },
+        "siteID": 1133,
+        "siteLink": "/apps/db/?siteId=1133",
+        "siteName": "Fargo"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.9875
+          },
+          {
+            "control": false,
+            "frequency": 461.7125
+          },
+          {
+            "control": false,
+            "frequency": 461.4125
+          },
+          {
+            "control": false,
+            "frequency": 452.2625
+          },
+          {
+            "control": false,
+            "frequency": 451.7875
+          }
+        ],
+        "site": {
+          "systemName": "Mid States Wireless Inc.",
+          "siteUniqueDBID": "7451",
+          "siteDescription": "Amenia",
+          "siteCountyLocation": "Cass",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1.2 MI E 1/4 MI N OF CR",
+          "siteModulation": "NFM",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=1995",
+          "name": "Cass"
+        },
+        "siteID": 7451,
+        "siteLink": "/apps/db/?siteId=7451",
+        "siteName": "Amenia"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.175
+          },
+          {
+            "control": false,
+            "frequency": 451.3625
+          },
+          {
+            "control": false,
+            "frequency": 451.6
+          },
+          {
+            "control": false,
+            "frequency": 451.7375
+          },
+          {
+            "control": false,
+            "frequency": 451.8625
+          }
+        ],
+        "site": {
+          "systemName": "Mid States Wireless Inc.",
+          "siteUniqueDBID": "2372",
+          "siteDescription": "Jamestown",
+          "siteCountyLocation": "Stutsman",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "NFM",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2033",
+          "name": "Stutsman"
+        },
+        "siteID": 2372,
+        "siteLink": "/apps/db/?siteId=2372",
+        "siteName": "Jamestown"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.2875
+          },
+          {
+            "control": false,
+            "frequency": 451.5875
+          },
+          {
+            "control": false,
+            "frequency": 451.8875
+          },
+          {
+            "control": false,
+            "frequency": 452.1875
+          },
+          {
+            "control": false,
+            "frequency": 452.4625
+          }
+        ],
+        "site": {
+          "systemName": "Mid States Wireless Inc.",
+          "siteUniqueDBID": "2373",
+          "siteDescription": "Hillsboro",
+          "siteCountyLocation": "Traill",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "NFM",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2035",
+          "name": "Traill"
+        },
+        "siteID": 2373,
+        "siteLink": "/apps/db/?siteId=2373",
+        "siteName": "Hillsboro"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.1875
+          },
+          {
+            "control": false,
+            "frequency": 451.2875
+          },
+          {
+            "control": false,
+            "frequency": 451.3125
+          },
+          {
+            "control": false,
+            "frequency": 451.4125
+          },
+          {
+            "control": false,
+            "frequency": 451.6125
+          }
+        ],
+        "site": {
+          "systemName": "Mid States Wireless Inc.",
+          "siteUniqueDBID": "2371",
+          "siteDescription": "Valley City",
+          "siteCountyLocation": "Barnes",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "NFM",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=1988",
+          "name": "Barnes"
+        },
+        "siteID": 2371,
+        "siteLink": "/apps/db/?siteId=2371",
+        "siteName": "Valley City"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "1669",
+    "systemName": "Mid States Wireless Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1669&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1669&opt=all_tg",
+    "talkgroups": {
+      "Talkgroups": [
+        {
+          "decimal": "0-02-001",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-002",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-003",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-004",
+          "description": "900RIDES",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-005",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-006",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-007",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-008",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-009",
+          "description": "DELIVERY",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-010",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-011",
+          "description": "YMCA",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-012",
+          "description": "Y WEST",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-013",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-014",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-015",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-016",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-017",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-018",
+          "description": "ROTO ROOT",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-019",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-020",
+          "description": "DELIVERY",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-021",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-022",
+          "description": "HVAC",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-023",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-024",
+          "description": "S GRAVEL",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-025",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-026",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-027",
+          "description": "AUTO DL",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-028",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-029",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-030",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-031",
+          "description": "AUTO DL",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-032",
+          "description": "TOW / AAA",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-033",
+          "description": "Midwest Patrol",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "0-02-034",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-035",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-036",
+          "description": "ELECT.?",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-037",
+          "description": "AUTO DL",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-038",
+          "description": "SR RIDE S",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-039",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-040",
+          "description": "PLUMBING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-041",
+          "description": "TRK RPR.",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-042",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-043",
+          "description": "MED VANS",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-044",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-045",
+          "description": "DELIVERY",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-046",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-047",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-048",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-049",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-050",
+          "description": "DATA",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-052",
+          "description": "FARMING",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-250",
+          "description": "Group",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1-02-007",
+          "description": "Farm",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "2 counties",
+    "lastUpdated": "April 26, 2014, 3:41 am (Changed Talkgroup Category: All to Talkgroups)",
+    "location": "Bismarck, ND",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.0125
+          },
+          {
+            "control": false,
+            "frequency": 857.0125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.0125
+          },
+          {
+            "control": false,
+            "frequency": 859.0125
+          },
+          {
+            "control": false,
+            "frequency": 860.0125
+          }
+        ],
+        "site": {
+          "systemName": "Dakota Communication Service, Inc.",
+          "siteUniqueDBID": "10069",
+          "siteDescription": "Bismarck",
+          "siteCountyLocation": "Burleigh",
+          "siteNeighbors": "N/A",
+          "siteLocation": "16 Street & Divide Avenue",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=1994",
+          "name": "Burleigh"
+        },
+        "siteID": 10069,
+        "siteLink": "/apps/db/?siteId=10069",
+        "siteName": "Bismarck"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.0375
+          },
+          {
+            "control": false,
+            "frequency": 857.0375
+          },
+          {
+            "control": false,
+            "frequency": 858.0375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.0375
+          },
+          {
+            "control": false,
+            "frequency": 860.0375
+          }
+        ],
+        "site": {
+          "systemName": "Dakota Communication Service, Inc.",
+          "siteUniqueDBID": "10070",
+          "siteDescription": "Hazen",
+          "siteCountyLocation": "Mercer",
+          "siteNeighbors": "N/A",
+          "siteLocation": "16 km N of Hazen",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=2015",
+          "name": "Mercer"
+        },
+        "siteID": 10070,
+        "siteLink": "/apps/db/?siteId=10070",
+        "siteName": "Hazen"
+      }
+    ],
+    "state": "North Dakota",
+    "systemID": "4943",
+    "systemName": "Dakota Communication Service, Inc.",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog and APCO-25 Common Air Interface",
+    "uniqueIdentifier": "s-4943&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4943&opt=all_tg",
+    "talkgroups": {
+      "Talkgroups": [
+        {
+          "decimal": "784",
+          "description": "Outdoor Services Inc. (OSI)",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "21616",
+          "description": "Waste Management",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "24128",
+          "description": "Fertilawn",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "24144",
+          "description": "Fertilawn",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42112",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42144",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42160",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42176",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42192",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42208",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "42224",
+          "description": "Aggregate Co",
+          "group": "Talkgroups",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  }
+]

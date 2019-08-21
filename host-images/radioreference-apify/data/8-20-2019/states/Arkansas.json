@@ -1,0 +1,6564 @@
+[
+  {
+    "county": "Faulkner",
+    "lastUpdated": "April 17, 2019, 6:33 pm ((2) Talkgroups Updated (Public Works))",
+    "location": "Conway, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 854.3625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 854.6125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 856.9625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 857.7375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.2375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.7375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.2375
+          }
+        ],
+        "site": {
+          "systemName": "Conway Wireless Information Network (CWIN)",
+          "siteUniqueDBID": "28615",
+          "siteDescription": "Clearwell Road",
+          "siteCountyLocation": "Faulkner",
+          "siteNeighbors": "N/A",
+          "siteLocation": "4099 Clearwell Rd",
+          "siteModulation": "P25 Phase II",
+          "siteNotes": "Harris P25 IP Upgrade of the Motorola TRS",
+          "range": {
+            "distance": 20,
+            "units": "miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 28615,
+        "siteLink": "/apps/db/?siteId=28615",
+        "siteName": "Clearwell Road"
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 854.3875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 856.0125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.9625
+          }
+        ],
+        "site": {
+          "systemName": "Conway Wireless Information Network (CWIN)",
+          "siteUniqueDBID": "28622",
+          "siteDescription": "Collins Drive",
+          "siteCountyLocation": "Faulkner",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Collins Drive on Water Tank",
+          "siteModulation": "P25 Phase II",
+          "siteNotes": "None",
+          "range": {
+            "distance": 20,
+            "units": "miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 28622,
+        "siteLink": "/apps/db/?siteId=28622",
+        "siteName": "Collins Drive"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9054",
+    "systemName": "Conway Wireless Information Network (CWIN)",
+    "systemType": "Project 25 Phase II",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "uniqueIdentifier": "s-9054&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9054&opt=all_tg",
+    "talkgroups": {
+      "System Testing": [
+        {
+          "decimal": "1",
+          "description": "System Quality and Range Testing",
+          "group": "System Testing",
+          "mode": "DIGITAL",
+          "tag": "Deprecated"
+        }
+      ],
+      "Conway Police Department": [
+        {
+          "decimal": "101",
+          "description": "Dispatch",
+          "group": "Conway Police Department",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "102",
+          "description": "Tactical 1",
+          "group": "Conway Police Department",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "103",
+          "description": "Tactical 1",
+          "group": "Conway Police Department",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "201",
+          "description": "Police - Sheriff's Office Interop",
+          "group": "Conway Police Department",
+          "mode": "ENCRYPTED",
+          "tag": "Interop"
+        }
+      ],
+      "Conway Fire Department": [
+        {
+          "decimal": "301",
+          "description": "Dispatch",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "302",
+          "description": "Fireground 1",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "303",
+          "description": "Fireground 2",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "304",
+          "description": "Fireground 3",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "305",
+          "description": "Fireground 4",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "306",
+          "description": "Fireground 5",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "307",
+          "description": "Fireground 6",
+          "group": "Conway Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        }
+      ],
+      "EMS/Hospital": [
+        {
+          "decimal": "504",
+          "description": "EMS-to-Conway Regional",
+          "group": "EMS/Hospital",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "554",
+          "description": "EMS-to-Baptist Conway",
+          "group": "EMS/Hospital",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        }
+      ],
+      "Schools": [
+        {
+          "decimal": "604",
+          "description": "School Resource Officers - Operations",
+          "group": "Schools",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "605",
+          "description": "Primary",
+          "group": "Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "610",
+          "description": "School Buses",
+          "group": "Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ],
+      "Public Works": [
+        {
+          "decimal": "851",
+          "description": "Conway Streets",
+          "group": "Public Works",
+          "mode": "DIGITAL",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "852",
+          "description": "Conway Sanitation",
+          "group": "Public Works",
+          "mode": "DIGITAL",
+          "tag": "Public Works"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Crawford",
+    "lastUpdated": "February 19, 2010, 7:26 pm (Updated General Trunked System Information)",
+    "location": "Van Buren, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.7125
+          },
+          {
+            "control": false,
+            "frequency": 463.2375
+          },
+          {
+            "control": false,
+            "frequency": 462.1375
+          },
+          {
+            "control": false,
+            "frequency": 463.4875
+          }
+        ],
+        "site": {
+          "systemName": "PEI Communications (Van Buren)",
+          "siteUniqueDBID": "5143",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "None Specified",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 197,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 5143,
+        "siteLink": "/apps/db/?siteId=5143",
+        "siteName": "Primary"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.7375
+          }
+        ],
+        "siteCounty": {}
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3216",
+    "systemName": "PEI Communications (Van Buren)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3216&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3216&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-06-002",
+          "description": "Angel Care Ambulance Service",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Statewide",
+    "lastUpdated": "May 18, 2019, 11:00 am ((1) Talkgroups Updated (Systemwide))",
+    "location": "Varioius, AR",
+    "sites": [],
+    "state": "Arkansas",
+    "systemID": "9789",
+    "systemName": "Arkansas Brandmeister DMR",
+    "systemType": "DMR Conventional Networked",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9789&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9789&opt=all_tg",
+    "talkgroups": {
+      "Systemwide": [
+        {
+          "decimal": "2",
+          "description": "Conway Tactical UHF",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "91",
+          "description": "Worldwide",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "93",
+          "description": "North America",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310",
+          "description": "Tactical 310",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "311",
+          "description": "Tactical 311",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "312",
+          "description": "Tactical 312",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3100",
+          "description": "United States Bridge",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3105",
+          "description": "Arkansas Statewide",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3148",
+          "description": "Texas Statewide",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31055",
+          "description": "Arkansas Weather (SkyWARN)",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31095",
+          "description": "Region 5",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31471",
+          "description": "Memphis NOAA NWS Main *Linked to Bono*",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31472",
+          "description": "Memphis NOAA NWS Chat",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310501",
+          "description": "Little Rock FOX",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310502",
+          "description": "Harrison FOX",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310508",
+          "description": "Conway FOX 1",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310512",
+          "description": "Cabot FOX",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310514",
+          "description": "Jonesboro FOX",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310515",
+          "description": "Russellville FOX",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310522",
+          "description": "Conway FOX 2",
+          "group": "Systemwide",
+          "mode": "TDMA",
+          "tag": "Ham"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Garland",
+    "lastUpdated": "April 17, 2019, 6:58 pm (Updated General Trunked System Information)",
+    "location": "Hot Springs, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 770.84375
+          },
+          {
+            "control": false,
+            "frequency": 771.09375
+          },
+          {
+            "control": false,
+            "frequency": 771.85625
+          },
+          {
+            "control": false,
+            "frequency": 772.31875
+          },
+          {
+            "control": false,
+            "frequency": 772.61875
+          },
+          {
+            "control": false,
+            "frequency": 772.99375
+          }
+        ],
+        "site": {
+          "systemName": "Hot Springs Public Safety",
+          "siteUniqueDBID": "34342",
+          "siteDescription": "City Simulcast",
+          "siteCountyLocation": "Garland",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Three Site Simulcast",
+          "siteModulation": "C4FM, H-QDPSK",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 34342,
+        "siteLink": "/apps/db/?siteId=34342",
+        "siteName": "City Simulcast"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "10546",
+    "systemName": "Hot Springs Public Safety",
+    "systemType": "Project 25 Phase II",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "uniqueIdentifier": "s-10546&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=10546&opt=all_tg"
+  },
+  {
+    "county": "Sebastian",
+    "lastUpdated": "March 22, 2017, 11:48 am (Updated General Trunked System Information)",
+    "location": ", AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 409.5875
+          }
+        ],
+        "site": {
+          "systemName": "Arkansas National Guard: Fort Chaffee (P25)",
+          "siteUniqueDBID": "29524",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "Upgrade/Conversion of Motorola Type II System",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 29524,
+        "siteLink": "/apps/db/?siteId=29524",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9308",
+    "systemName": "Arkansas National Guard: Fort Chaffee (P25)",
+    "systemType": "Project 25 Phase I",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "uniqueIdentifier": "s-9308&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9308&opt=all_tg"
+  },
+  {
+    "county": "2 counties",
+    "lastUpdated": "July 30, 2008, 1:51 pm (Added Site # 3 (Poplar Grove))",
+    "location": "Almyra, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 861.9125
+          },
+          {
+            "control": false,
+            "frequency": 862.9125
+          },
+          {
+            "control": false,
+            "frequency": 863.9125
+          }
+        ],
+        "site": {
+          "systemName": "21st Century Wireless Group, Inc.",
+          "siteUniqueDBID": "13700",
+          "siteDescription": "Almyra",
+          "siteCountyLocation": "Arkansas",
+          "siteNeighbors": "N/A",
+          "siteLocation": "10.1 km SE of Stuttgart & 1.6 km W of State Hwy 130",
+          "siteModulation": "Analog",
+          "siteNotes": "Serves all of Arkansas County",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=108",
+          "name": "Arkansas"
+        },
+        "siteID": 13700,
+        "siteLink": "/apps/db/?siteId=13700",
+        "siteName": "Almyra"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 861.7875
+          },
+          {
+            "control": false,
+            "frequency": 862.7875
+          },
+          {
+            "control": false,
+            "frequency": 863.7875
+          }
+        ],
+        "site": {
+          "systemName": "21st Century Wireless Group, Inc.",
+          "siteUniqueDBID": "13706",
+          "siteDescription": "West Helena",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "2.5 km E of State Hwy 242, on Storm Creek Road",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=161",
+          "name": "Phillips"
+        },
+        "siteID": 13706,
+        "siteLink": "/apps/db/?siteId=13706",
+        "siteName": "West Helena"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 861.9875
+          },
+          {
+            "control": false,
+            "frequency": 862.9875
+          }
+        ],
+        "site": {
+          "systemName": "21st Century Wireless Group, Inc.",
+          "siteUniqueDBID": "13707",
+          "siteDescription": "Poplar Grove",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "400 meters W of JCT US Hwy 49 & State Hwy 316",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=161",
+          "name": "Phillips"
+        },
+        "siteID": 13707,
+        "siteLink": "/apps/db/?siteId=13707",
+        "siteName": "Poplar Grove"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5948",
+    "systemName": "21st Century Wireless Group, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5948&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5948&opt=all_tg"
+  },
+  {
+    "county": "2 counties",
+    "lastUpdated": "September 7, 2018, 10:18 am (Updated Sites)",
+    "location": "Various, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 855.4125
+          },
+          {
+            "control": false,
+            "frequency": 859.9125
+          },
+          {
+            "control": false,
+            "frequency": 855.6875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 856.2875
+          },
+          {
+            "control": false,
+            "frequency": 856.9125
+          },
+          {
+            "control": false,
+            "frequency": 858.9125
+          },
+          {
+            "control": false,
+            "frequency": 859.2875
+          }
+        ],
+        "site": {
+          "systemName": "American Electric Power (Arkansas)",
+          "siteUniqueDBID": "6429",
+          "siteDescription": "Rogers, AR",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 234,
+            "units": ".miles"
+          },
+          "zoneID": "1 (Arkansas)"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=111",
+          "name": "Benton"
+        },
+        "siteID": 6429,
+        "siteLink": "/apps/db/?siteId=6429",
+        "siteName": "Rogers, AR"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.8625
+          },
+          {
+            "control": false,
+            "frequency": 855.1875
+          },
+          {
+            "control": false,
+            "frequency": 855.3875
+          },
+          {
+            "control": false,
+            "frequency": 855.4375
+          },
+          {
+            "control": false,
+            "frequency": 857.4125
+          },
+          {
+            "control": false,
+            "frequency": 858.8625
+          }
+        ],
+        "site": {
+          "systemName": "American Electric Power (Arkansas)",
+          "siteUniqueDBID": "5928",
+          "siteDescription": "Hartford, AR",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "zoneID": "1 (Arkansas)"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=173",
+          "name": "Sebastian"
+        },
+        "siteID": 5928,
+        "siteLink": "/apps/db/?siteId=5928",
+        "siteName": "Hartford, AR"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.8625
+          },
+          {
+            "control": false,
+            "frequency": 855.1625
+          },
+          {
+            "control": false,
+            "frequency": 855.8025
+          },
+          {
+            "control": false,
+            "frequency": 857.2875
+          },
+          {
+            "control": false,
+            "frequency": 858.8625
+          }
+        ],
+        "site": {
+          "systemName": "American Electric Power (Arkansas)",
+          "siteUniqueDBID": "5927",
+          "siteDescription": "Greenwood, AR",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "zoneID": "1 (Arkansas)"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=173",
+          "name": "Sebastian"
+        },
+        "siteID": 5927,
+        "siteLink": "/apps/db/?siteId=5927",
+        "siteName": "Greenwood, AR"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3531",
+    "systemName": "American Electric Power (Arkansas)",
+    "systemType": "EDACS Networked Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3531&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3531&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "218",
+          "description": "Radio Techs",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "259",
+          "description": "Transformers",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "262",
+          "description": "Rogers Service",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "263",
+          "description": "Meter Readers",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "264",
+          "description": "Fayetteville Service",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Sebastian",
+    "lastUpdated": "March 23, 2018, 1:58 pm (Updated General Trunked System Information)",
+    "location": "Fort Smith, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.95
+          },
+          {
+            "control": false,
+            "frequency": 462.25
+          }
+        ],
+        "site": {
+          "systemName": "Georgia Pacific",
+          "siteUniqueDBID": "31596",
+          "siteDescription": "Fort Smith",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "4411 Midland Ave.",
+          "siteModulation": "DMR Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 2,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 31596,
+        "siteLink": "/apps/db/?siteId=31596",
+        "siteName": "Fort Smith"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9867",
+    "systemName": "Georgia Pacific",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9867&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9867&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "101",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Business"
+        },
+        {
+          "decimal": "102",
+          "description": "Maintenance",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Benton",
+    "lastUpdated": "October 25, 2018, 3:23 pm (Added System ID: 124)",
+    "location": "Bella Vista, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.24375
+          },
+          {
+            "control": false,
+            "frequency": 453.5625
+          },
+          {
+            "control": false,
+            "frequency": 453.84375
+          },
+          {
+            "control": false,
+            "frequency": 460.1
+          },
+          {
+            "control": false,
+            "frequency": 463.6875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 462.11875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 463.29375
+          }
+        ],
+        "site": {
+          "systemName": "Bella Vista",
+          "siteUniqueDBID": "30752",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAN 1",
+          "range": {
+            "distance": 234,
+            "units": ".miles"
+          },
+          "siteRan": "1"
+        },
+        "siteCounty": {},
+        "siteID": 30752,
+        "siteLink": "/apps/db/?siteId=30752",
+        "siteName": "Site 1"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.2
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 454.35
+          }
+        ],
+        "site": {
+          "systemName": "Bella Vista",
+          "siteUniqueDBID": "32879",
+          "siteDescription": "Site 2",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "BELLA VISTA ON TRAFALGAR WATER TOWER",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          },
+          "siteRan": "2"
+        },
+        "siteCounty": {},
+        "siteID": 32879,
+        "siteLink": "/apps/db/?siteId=32879",
+        "siteName": "Site 2"
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 453.5625
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 460.4
+          }
+        ],
+        "site": {
+          "systemName": "Bella Vista",
+          "siteUniqueDBID": "32880",
+          "siteDescription": "Site 3",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "BELLA VISTA ON HIGHLANDS WATER TOWER",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          },
+          "siteRan": "3"
+        },
+        "siteCounty": {},
+        "siteID": 32880,
+        "siteLink": "/apps/db/?siteId=32880",
+        "siteName": "Site 3"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9640",
+    "systemName": "Bella Vista",
+    "systemType": "NXDN NEXEDGE 4800",
+    "systemVoice": "NXDN Digital",
+    "uniqueIdentifier": "s-9640&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9640&opt=all_tg",
+    "talkgroups": {
+      "Fire and EMS": [
+        {
+          "decimal": "1",
+          "description": "EMS Dispatch",
+          "group": "Fire and EMS",
+          "mode": "DIGITAL",
+          "tag": "EMS Dispatch"
+        }
+      ],
+      "Police": [
+        {
+          "decimal": "15",
+          "description": "Police Dispatch",
+          "group": "Police",
+          "mode": "DIGITAL",
+          "tag": "Law Dispatch"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Greene",
+    "lastUpdated": "December 8, 2013, 6:42 pm (Changed Site # 001 (Paragould) to 001 (Paragould))",
+    "location": "Pargould, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.025
+          },
+          {
+            "control": false,
+            "frequency": 461.775
+          },
+          {
+            "control": false,
+            "frequency": 462.325
+          },
+          {
+            "control": false,
+            "frequency": 463.45
+          },
+          {
+            "control": false,
+            "frequency": 463.85
+          },
+          {
+            "control": false,
+            "frequency": 464.8
+          }
+        ],
+        "site": {
+          "systemName": "American Railcar Industries",
+          "siteUniqueDBID": "22727",
+          "siteDescription": "Paragould",
+          "siteCountyLocation": "Greene",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 22727,
+        "siteLink": "/apps/db/?siteId=22727",
+        "siteName": "Paragould"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7820",
+    "systemName": "American Railcar Industries",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-7820&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7820&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 17, 2006, 1:31 pm (Updated General System Info)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 462.4625
+          },
+          {
+            "control": false,
+            "frequency": 463.5125
+          },
+          {
+            "control": false,
+            "frequency": 463.7875
+          },
+          {
+            "control": false,
+            "frequency": 464.4375
+          },
+          {
+            "control": false,
+            "frequency": 464.7125
+          }
+        ],
+        "site": {
+          "systemName": "Doyle Brown SMR",
+          "siteUniqueDBID": "10333",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1614 Straw Floor Road",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10333,
+        "siteLink": "/apps/db/?siteId=10333",
+        "siteName": "Jonesboro"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "4993",
+    "systemName": "Doyle Brown SMR",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-4993&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4993&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 17, 2006, 12:47 pm (Updated General System Info)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.475
+          },
+          {
+            "control": false,
+            "frequency": 451.7875
+          },
+          {
+            "control": false,
+            "frequency": 452.2125
+          },
+          {
+            "control": false,
+            "frequency": 452.7375
+          },
+          {
+            "control": false,
+            "frequency": 453.0125
+          }
+        ],
+        "site": {
+          "systemName": "Kearbys Radio Shop",
+          "siteUniqueDBID": "10329",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "9583 Hwy 63 North",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10329,
+        "siteLink": "/apps/db/?siteId=10329",
+        "siteName": "Jonesboro"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "4988",
+    "systemName": "Kearbys Radio Shop",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-4988&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4988&opt=all_tg"
+  },
+  {
+    "county": "Sebastian",
+    "lastUpdated": "October 22, 2011, 3:42 pm (Updated Talkgroups (1 Updated))",
+    "location": "Fort Smith, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.7375
+          },
+          {
+            "control": false,
+            "frequency": 461.9875
+          },
+          {
+            "control": false,
+            "frequency": 463.2125
+          },
+          {
+            "control": false,
+            "frequency": 463.8875
+          }
+        ],
+        "site": {
+          "systemName": "Total Radio Arkansas: Fort Smith",
+          "siteUniqueDBID": "18540",
+          "siteDescription": "Hartford",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Poteau Mountain",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 18540,
+        "siteLink": "/apps/db/?siteId=18540",
+        "siteName": "Hartford"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7007",
+    "systemName": "Total Radio Arkansas: Fort Smith",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-7007&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7007&opt=all_tg",
+    "talkgroups": {
+      "Business": [
+        {
+          "decimal": "0-10-008",
+          "description": "Trucking and Delivery Service",
+          "group": "Business",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Greene",
+    "lastUpdated": "September 21, 2008, 4:44 pm (Updated Talkgroups (8 Updated, 0 Deleted))",
+    "location": "Paragould, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 859.2875
+          },
+          {
+            "control": false,
+            "frequency": 855.9375
+          },
+          {
+            "control": false,
+            "frequency": 860.2875
+          }
+        ],
+        "site": {
+          "systemName": "Paragould Light, Water, and Cable",
+          "siteUniqueDBID": "13189",
+          "siteDescription": "Confirmed",
+          "siteCountyLocation": "Greene",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 179,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13189,
+        "siteLink": "/apps/db/?siteId=13189",
+        "siteName": "Confirmed"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5778",
+    "systemName": "Paragould Light, Water, and Cable",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5778&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5778&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "0-03-001",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-03-003",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-03-253",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-05-005",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-07-007",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-25-073",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "1-04-076",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "1-12-164",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        }
+      ]
+    }
+  },
+  {
+    "county": "2 counties",
+    "lastUpdated": "December 14, 2018, 5:05 pm ((1) Talkgroups Updated (All))",
+    "location": "Springdale, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "ALTERNATE",
+            "frequency": 453.225
+          },
+          {
+            "control": false,
+            "frequency": 453.6
+          },
+          {
+            "control": false,
+            "frequency": 460.425
+          },
+          {
+            "control": false,
+            "frequency": 460.525
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 453.8125
+          }
+        ],
+        "site": {
+          "systemName": "Springdale",
+          "siteUniqueDBID": "26734",
+          "siteDescription": "South Repeater",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "2 North Repeater",
+          "siteLocation": "417A Carlock Road",
+          "siteModulation": "NXDN",
+          "siteNotes": "Confirmed LCN",
+          "range": {
+            "distance": 15,
+            "units": "miles"
+          },
+          "siteRan": "1"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=179",
+          "name": "Washington"
+        },
+        "siteID": 26734,
+        "siteLink": "/apps/db/?siteId=26734",
+        "siteName": "South Repeater"
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 453.3
+          },
+          {
+            "control": false,
+            "frequency": 453.3375
+          },
+          {
+            "control": false,
+            "frequency": 453.55
+          },
+          {
+            "control": false,
+            "frequency": 453.65
+          },
+          {
+            "control": false,
+            "frequency": 453.875
+          }
+        ],
+        "site": {
+          "systemName": "Springdale",
+          "siteUniqueDBID": "26733",
+          "siteDescription": "North Repeater",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "1 South Rpeater",
+          "siteLocation": "Grimsley Road",
+          "siteModulation": "NXDN",
+          "siteNotes": "Confirmed LCN",
+          "range": {
+            "distance": 15,
+            "units": "miles"
+          },
+          "siteRan": "2"
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=111",
+          "name": "Benton"
+        },
+        "siteID": 26733,
+        "siteLink": "/apps/db/?siteId=26733",
+        "siteName": "North Repeater"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "8585",
+    "systemName": "Springdale",
+    "systemType": "NXDN NEXEDGE 4800",
+    "systemVoice": "NXDN Digital",
+    "uniqueIdentifier": "s-8585&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8585&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "description": "Fire/EMS Dispatch",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "2",
+          "description": "Fire/EMS Tactical 1",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "3",
+          "description": "Fire/EMS Tactical 2",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "5",
+          "description": "Fire/EMS Tactical Operations",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "11",
+          "description": "Police Ch. 1 Dispatch",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "12",
+          "description": "Police Ch. 2 Records",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "23",
+          "description": "Interoperability",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Interop"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Phillips",
+    "lastUpdated": "July 30, 2008, 2:12 pm (Updated General Trunked System Information)",
+    "location": "Helena, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 153.08
+          },
+          {
+            "control": false,
+            "frequency": 153.35
+          }
+        ],
+        "site": {
+          "systemName": "TE Products Pipeline, LLC.",
+          "siteUniqueDBID": "13709",
+          "siteDescription": "Helena",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Ramsey Road",
+          "siteModulation": "Analog",
+          "siteNotes": "Has large coverage area into eastern Mississippi.",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13709,
+        "siteLink": "/apps/db/?siteId=13709",
+        "siteName": "Helena"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5952",
+    "systemName": "TE Products Pipeline, LLC.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5952&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5952&opt=all_tg"
+  },
+  {
+    "county": "Pulaski",
+    "lastUpdated": "September 21, 2008, 4:05 pm (Updated Function Tag assignments for 13 talkgroups)",
+    "location": "Little Rock, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 937.2625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 937.275
+          },
+          {
+            "control": false,
+            "frequency": 937.2875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 937.3
+          },
+          {
+            "control": false,
+            "frequency": 937.3125
+          },
+          {
+            "control": false,
+            "frequency": 937.3375
+          }
+        ],
+        "site": {
+          "systemName": "Central Flying Service",
+          "siteUniqueDBID": "4835",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "None Specified",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 259,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 4835,
+        "siteLink": "/apps/db/?siteId=4835",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3016",
+    "systemName": "Central Flying Service",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3016&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3016&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "64",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "336",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "400",
+          "description": "Operations",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "704",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "784",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "896",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1024",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1472",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1520",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1600",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1648",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1920",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "2208",
+          "description": "Unknown",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Mississippi",
+    "lastUpdated": "November 19, 2018, 7:59 am (Changed Site # 001 (Blytheville) to 001 (Blytheville))",
+    "location": "Blytheville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 935.4
+          },
+          {
+            "control": false,
+            "frequency": 938.9
+          },
+          {
+            "control": false,
+            "frequency": 935.9
+          },
+          {
+            "control": false,
+            "frequency": 939.4
+          },
+          {
+            "control": false,
+            "frequency": 936.4
+          },
+          {
+            "control": false,
+            "frequency": 939.9
+          },
+          {
+            "control": false,
+            "frequency": 936.9
+          },
+          {
+            "control": false,
+            "frequency": 937.4
+          },
+          {
+            "control": false,
+            "frequency": 937.9
+          },
+          {
+            "control": false,
+            "frequency": 938.4
+          }
+        ],
+        "site": {
+          "systemName": "Nucor Yamato Steel",
+          "siteUniqueDBID": "33321",
+          "siteDescription": "Blytheville",
+          "siteCountyLocation": "Mississippi",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "DMR MotoTRBO 2 Slot TDMA",
+          "siteNotes": "None",
+          "range": {
+            "distance": 3,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 33321,
+        "siteLink": "/apps/db/?siteId=33321",
+        "siteName": "Blytheville"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "10302",
+    "systemName": "Nucor Yamato Steel",
+    "systemType": "DMR Motorola Connect Plus (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-10302&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=10302&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 17, 2006, 1:26 pm (Updated General System Info)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.2875
+          },
+          {
+            "control": false,
+            "frequency": 463.9875
+          },
+          {
+            "control": false,
+            "frequency": 464.6375
+          },
+          {
+            "control": false,
+            "frequency": 464.9625
+          },
+          {
+            "control": false,
+            "frequency": 462.1125
+          }
+        ],
+        "site": {
+          "systemName": "R.C.C. Wireless, Inc.",
+          "siteUniqueDBID": "10331",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1614 Straw Floor Road",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10331,
+        "siteLink": "/apps/db/?siteId=10331",
+        "siteName": "Jonesboro"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "4992",
+    "systemName": "R.C.C. Wireless, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-4992&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4992&opt=all_tg"
+  },
+  {
+    "county": "Independence",
+    "lastUpdated": "March 25, 2008, 3:12 am (Updated General Trunked System Information)",
+    "location": "Batesville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.3375
+          },
+          {
+            "control": false,
+            "frequency": 857.3375
+          },
+          {
+            "control": false,
+            "frequency": 858.3375
+          },
+          {
+            "control": false,
+            "frequency": 859.3375
+          }
+        ],
+        "site": {
+          "systemName": "FutureFuel Company",
+          "siteUniqueDBID": "13238",
+          "siteDescription": "Eastman Company",
+          "siteCountyLocation": "Independence",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Arkansas Eastman Co. Bldg 3N01",
+          "siteModulation": "Analog",
+          "siteNotes": "Located at the old Eastman Kodak Chemical Company complex.",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13238,
+        "siteLink": "/apps/db/?siteId=13238",
+        "siteName": "Eastman Company"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5799",
+    "systemName": "FutureFuel Company",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5799&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5799&opt=all_tg"
+  },
+  {
+    "county": "Garland",
+    "lastUpdated": "July 18, 2018, 12:55 pm (Updated General Trunked System Information)",
+    "location": "Hot Springs, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 861.6625
+          },
+          {
+            "control": false,
+            "frequency": 856.5375
+          },
+          {
+            "control": false,
+            "frequency": 861.9625
+          },
+          {
+            "control": false,
+            "frequency": 859.8625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 854.4375
+          },
+          {
+            "control": false,
+            "frequency": 860.6125
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 857.0875
+          },
+          {
+            "control": false,
+            "frequency": 854.1375
+          },
+          {
+            "control": false,
+            "frequency": 858.0875
+          },
+          {
+            "control": false,
+            "frequency": 856.6125
+          },
+          {
+            "control": false,
+            "frequency": 859.0875
+          }
+        ],
+        "site": {
+          "systemName": "C and W Communications (Hot Springs)",
+          "siteUniqueDBID": "20620",
+          "siteDescription": "Hot Springs (New Freqs)",
+          "siteCountyLocation": "Garland",
+          "siteNeighbors": "N/A",
+          "siteLocation": "W MOUNTAIN 1/4 MI W, HOT SPRINGS (GARLAND) AR",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 20620,
+        "siteLink": "/apps/db/?siteId=20620",
+        "siteName": "Hot Springs (New Freqs)"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5394",
+    "systemName": "C and W Communications (Hot Springs)",
+    "systemType": "Motorola Type IIi Hybrid",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5394&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5394&opt=all_tg",
+    "talkgroups": {
+      "Law Enforcement": [
+        {
+          "decimal": "0",
+          "description": "Unknown Law Enforcement Investigations",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        }
+      ],
+      "All": [
+        {
+          "decimal": "0",
+          "description": "Arkansas 911 News",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Media"
+        },
+        {
+          "decimal": "43072",
+          "description": "National Park Tour Shuttle",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ],
+      "Garland County": [
+        {
+          "decimal": "0",
+          "description": "Jessieville School",
+          "group": "Garland County",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Garland County Roads Alternate",
+          "group": "Garland County",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "5712",
+          "description": "Garland County Sanitation",
+          "group": "Garland County",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        }
+      ],
+      "Lake Hamilton Schools": [
+        {
+          "decimal": "0",
+          "description": "Emergency ATG",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1A",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1B",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1C",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1D",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1E",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1F",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0",
+          "description": "Channel 1G",
+          "group": "Lake Hamilton Schools",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        }
+      ],
+      "Harps Security": [
+        {
+          "decimal": "704",
+          "description": "Harps Security Ops",
+          "group": "Harps Security",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ],
+      "McHenry Excavating": [
+        {
+          "decimal": "6272",
+          "description": "McHenry Excavating",
+          "group": "McHenry Excavating",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ],
+      "Ferrell Gas": [
+        {
+          "decimal": "36928",
+          "description": "Ferrell Gas",
+          "group": "Ferrell Gas",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Pulaski",
+    "lastUpdated": "July 18, 2018, 3:29 pm (Updated General Trunked System Information)",
+    "location": "Little Rock, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.0375
+          },
+          {
+            "control": false,
+            "frequency": 859.5875
+          },
+          {
+            "control": false,
+            "frequency": 857.0375
+          },
+          {
+            "control": false,
+            "frequency": 860.5875
+          },
+          {
+            "control": false,
+            "frequency": 858.0375
+          },
+          {
+            "control": false,
+            "frequency": 859.0375
+          },
+          {
+            "control": false,
+            "frequency": 860.0375
+          },
+          {
+            "control": false,
+            "frequency": 856.5875
+          },
+          {
+            "control": false,
+            "frequency": 857.5875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.5875
+          }
+        ],
+        "site": {
+          "systemName": "M and J Communications",
+          "siteUniqueDBID": "4079",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "None Specified",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 259,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 4079,
+        "siteLink": "/apps/db/?siteId=4079",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "2670",
+    "systemName": "M and J Communications",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-2670&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=2670&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1552",
+          "description": "Local Hotel",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1600",
+          "description": "Car Rental Company",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "1936",
+          "description": "Central Arkansas Library - Security",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "4816",
+          "description": "Possibly a Private Security Company",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "57472",
+          "description": "Arkansas Children's Hospital - Maintenance & Security",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Security"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Greene",
+    "lastUpdated": "November 11, 2018, 8:29 pm (Changed Site # 001 (Primary) to 001 (Primary))",
+    "location": "Paragould, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 453.275
+          },
+          {
+            "control": false,
+            "frequency": 453.325
+          },
+          {
+            "control": false,
+            "frequency": 453.55
+          },
+          {
+            "control": false,
+            "frequency": 453.825
+          },
+          {
+            "control": false,
+            "frequency": 453.95
+          },
+          {
+            "control": false,
+            "frequency": 460.05
+          },
+          {
+            "control": false,
+            "frequency": 460.35
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 453.375
+          }
+        ],
+        "site": {
+          "systemName": "Paragould City Services",
+          "siteUniqueDBID": "13221",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Greene",
+          "siteNeighbors": "N/A",
+          "siteLocation": "130 Greene County Road 636.",
+          "siteModulation": "NXDN Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 15,
+            "units": "miles"
+          },
+          "siteRan": "(* Any)"
+        },
+        "siteCounty": {},
+        "siteID": 13221,
+        "siteLink": "/apps/db/?siteId=13221",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5791",
+    "systemName": "Paragould City Services",
+    "systemType": "NXDN NEXEDGE 9600",
+    "systemVoice": "NXDN Digital",
+    "uniqueIdentifier": "s-5791&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5791&opt=all_tg",
+    "talkgroups": {
+      "Arkansas Methodist Medical Center": [
+        {
+          "decimal": "74",
+          "description": "Operations 1",
+          "group": "Arkansas Methodist Medical Center",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 17, 2006, 3:10 pm (Changed Site-001)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.2875
+          },
+          {
+            "control": false,
+            "frequency": 451.5125
+          },
+          {
+            "control": false,
+            "frequency": 451.9375
+          },
+          {
+            "control": false,
+            "frequency": 452.1875
+          },
+          {
+            "control": false,
+            "frequency": 452.9875
+          }
+        ],
+        "site": {
+          "systemName": "Jonesboro Communications, Inc.",
+          "siteUniqueDBID": "2054",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "7.5 km N of Jonesboro",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 2054,
+        "siteLink": "/apps/db/?siteId=2054",
+        "siteName": "Jonesboro"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.35
+          },
+          {
+            "control": false,
+            "frequency": 464.6625
+          },
+          {
+            "control": false,
+            "frequency": 451.45
+          },
+          {
+            "control": false,
+            "frequency": 451.65
+          },
+          {
+            "control": false,
+            "frequency": 451.8375
+          },
+          {
+            "control": false,
+            "frequency": 451.8625
+          },
+          {
+            "control": false,
+            "frequency": 452.0125
+          },
+          {
+            "control": false,
+            "frequency": 461.5125
+          }
+        ],
+        "site": {
+          "systemName": "Jonesboro Communications, Inc.",
+          "siteUniqueDBID": "10335",
+          "siteDescription": "Bono",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "2966 C.R. 324",
+          "siteModulation": "N/A",
+          "siteNotes": "WPNZ395 Also.",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10335,
+        "siteLink": "/apps/db/?siteId=10335",
+        "siteName": "Bono"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "1512",
+    "systemName": "Jonesboro Communications, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1512&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1512&opt=all_tg"
+  },
+  {
+    "county": "Benton",
+    "lastUpdated": "September 21, 2008, 4:49 pm (Updated Function Tag assignments for 1 talkgroups)",
+    "location": "Bentonville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.2875
+          },
+          {
+            "control": false,
+            "frequency": 461.4125
+          },
+          {
+            "control": false,
+            "frequency": 452.6375
+          },
+          {
+            "control": false,
+            "frequency": 452.225
+          }
+        ],
+        "site": {
+          "systemName": "Smith Two-Way Radio (Bentonville)",
+          "siteUniqueDBID": "6788",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 234,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 6788,
+        "siteLink": "/apps/db/?siteId=6788",
+        "siteName": "Confirmed LCN"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.5625
+          }
+        ],
+        "siteCounty": {}
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3771",
+    "systemName": "Smith Two-Way Radio (Bentonville)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3771&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3771&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-04-011",
+          "description": "Centurian Security",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "0-04-016",
+          "description": "Ozark Transit",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Transportation"
+        },
+        {
+          "decimal": "0-08-012",
+          "description": "Benton County Sheriff - Command",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-08-014",
+          "description": "Benton County Sheriff - Criminal Investigations Division (CID)",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-08-015",
+          "description": "Bentonville School Buses",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-12-006",
+          "description": "Lawn Care Service",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Faulkner",
+    "lastUpdated": "November 11, 2017, 6:56 pm (Updated Function Tag assignments for 21 talkgroups(All))",
+    "location": "Conway, AR",
+    "sites": [],
+    "state": "Arkansas",
+    "systemID": "9616",
+    "systemName": "Faulkner County Ham DMR",
+    "systemType": "DMR Conventional Networked",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9616&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9616&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "2",
+          "description": "Secondary Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "91",
+          "description": "WorldWide (Short QSO)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "93",
+          "description": "North America",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310",
+          "description": "Wide Area QSO / MARC",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "311",
+          "description": "Wide Area QSO / MARC",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "311",
+          "description": "Wide Area QSO / MARC",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "312",
+          "description": "Wide Area QSO / MARC",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3100",
+          "description": "USA / Brandmeister & MARC",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3101",
+          "description": "Arkansas DMR Net (Thursdays at 8:00 PM)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3105",
+          "description": "AR Statewide",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "3148",
+          "description": "On Tuesdays, 6-9pm for BrandMeister net",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "9990",
+          "description": "Echo Test (Voice Test)",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31051",
+          "description": "Arkansas Wx/Emergency",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "31095",
+          "description": "FCC Region 5",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310501",
+          "description": "Little Rock Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310502",
+          "description": "Harrison Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310503",
+          "description": "Springdale Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310504",
+          "description": "Jonesboro Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310508",
+          "description": "Primary Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310512",
+          "description": "Cabot Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        },
+        {
+          "decimal": "310515",
+          "description": "Russellville Local",
+          "group": "All",
+          "mode": "TDMA",
+          "tag": "Ham"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Arkansas",
+    "lastUpdated": "July 20, 2018, 7:03 am (Updated General Trunked System Information)",
+    "location": "Stuttgart, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.1875
+          },
+          {
+            "control": false,
+            "frequency": 460.6
+          }
+        ],
+        "site": {
+          "systemName": "Stuttgart Fire and Rescue",
+          "siteUniqueDBID": "32687",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Arkansas",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1011 WEST 10TH",
+          "siteModulation": "DMR TDMA (MOTOTRBO)",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 32687,
+        "siteLink": "/apps/db/?siteId=32687",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "10114",
+    "systemName": "Stuttgart Fire and Rescue",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-10114&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=10114&opt=all_tg"
+  },
+  {
+    "county": "Phillips",
+    "lastUpdated": "July 30, 2008, 2:04 pm (Changed Site # 001 (Barton) to 001 (Barton))",
+    "location": "West Helena, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.0375
+          },
+          {
+            "control": false,
+            "frequency": 451.2125
+          },
+          {
+            "control": false,
+            "frequency": 451.2625
+          },
+          {
+            "control": false,
+            "frequency": 451.9125
+          }
+        ],
+        "site": {
+          "systemName": "Woodruff Electrical Co-Op",
+          "siteUniqueDBID": "13708",
+          "siteDescription": "Barton",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "NW of the INT of US Hwy 49 Co. Rd. 261",
+          "siteModulation": "Analog",
+          "siteNotes": "Covers all of Phillips County",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13708,
+        "siteLink": "/apps/db/?siteId=13708",
+        "siteName": "Barton"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5951",
+    "systemName": "Woodruff Electrical Co-Op",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5951&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5951&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 17, 2006, 2:51 pm (Added a system news entry)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.8125
+          },
+          {
+            "control": false,
+            "frequency": 462.0625
+          },
+          {
+            "control": false,
+            "frequency": 463.3375
+          },
+          {
+            "control": false,
+            "frequency": 463.6125
+          },
+          {
+            "control": false,
+            "frequency": 461.4
+          }
+        ],
+        "site": {
+          "systemName": "Nestle Foods, Inc.",
+          "siteUniqueDBID": "10334",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "One Nestle Way",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10334,
+        "siteLink": "/apps/db/?siteId=10334",
+        "siteName": "Jonesboro"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "4994",
+    "systemName": "Nestle Foods, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-4994&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4994&opt=all_tg"
+  },
+  {
+    "county": "Garland",
+    "lastUpdated": "August 9, 2019, 8:18 am (Updated Function Tag assignments for 1 talkgroups(Hot Springs Police))",
+    "location": "Hot Springs, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 855.4875
+          },
+          {
+            "control": false,
+            "frequency": 855.9875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 857.4375
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 858.4375
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 859.4375
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.2625
+          }
+        ],
+        "site": {
+          "systemName": "Hot Springs",
+          "siteUniqueDBID": "2593",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Garland",
+          "siteNeighbors": "None",
+          "siteLocation": "West Mountian, Hot Springs, AR",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 397678,
+            "units": ".miles"
+          },
+          "siteConnectTone": "128.57"
+        },
+        "siteCounty": {},
+        "siteID": 2593,
+        "siteLink": "/apps/db/?siteId=2593",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "1802",
+    "systemName": "Hot Springs",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1802&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1802&opt=all_tg",
+    "talkgroups": {
+      "Hot Springs Police": [
+        {
+          "decimal": "16",
+          "description": "Primary Dispatch",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "48",
+          "description": "Secondary Dispatch",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "80",
+          "description": "Criminal Investigations Division",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "144",
+          "description": "SWAT",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "176",
+          "description": "K-9 Units Tactical",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "208",
+          "description": "Pursuit Tactical",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "240",
+          "description": "Primary Tactical",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "272",
+          "description": "Events Tactical",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "304",
+          "description": "Administrative",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "816",
+          "description": "Announcements 1",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "848",
+          "description": "Announcements 2",
+          "group": "Hot Springs Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        }
+      ],
+      "Intracity Transit": [
+        {
+          "decimal": "912",
+          "description": "Transit Primary Operations",
+          "group": "Intracity Transit",
+          "mode": "ANALOG",
+          "tag": "Transportation"
+        },
+        {
+          "decimal": "944",
+          "description": "Transit Handi-Lift Buses",
+          "group": "Intracity Transit",
+          "mode": "ANALOG",
+          "tag": "Transportation"
+        }
+      ],
+      "City Services": [
+        {
+          "decimal": "1616",
+          "description": "Animal Control",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Mississippi",
+    "lastUpdated": "June 21, 2008, 4:21 pm (Changed Site # 001 (Primary) to 001 (Primary))",
+    "location": "Hickman, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 854.7875
+          },
+          {
+            "control": false,
+            "frequency": 857.3625
+          },
+          {
+            "control": false,
+            "frequency": 854.8875
+          },
+          {
+            "control": false,
+            "frequency": 857.8125
+          },
+          {
+            "control": false,
+            "frequency": 855.3375
+          },
+          {
+            "control": false,
+            "frequency": 858.2875
+          },
+          {
+            "control": false,
+            "frequency": 855.8125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.3625
+          },
+          {
+            "control": false,
+            "frequency": 856.3625
+          },
+          {
+            "control": false,
+            "frequency": 859.3625
+          },
+          {
+            "control": false,
+            "frequency": 856.8125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.3625
+          },
+          {
+            "control": false,
+            "frequency": 856.8625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.8375
+          },
+          {
+            "control": false,
+            "frequency": 857.2875
+          }
+        ],
+        "site": {
+          "systemName": "Nucor Steel - Arkansas",
+          "siteUniqueDBID": "11317",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Mississippi",
+          "siteNeighbors": "N/A",
+          "siteLocation": "4 km W of Mississippi River.",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 253,
+            "units": ".miles"
+          },
+          "siteConnectTone": "105.88"
+        },
+        "siteCounty": {},
+        "siteID": 11317,
+        "siteLink": "/apps/db/?siteId=11317",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5255",
+    "systemName": "Nucor Steel - Arkansas",
+    "systemType": "Motorola Type II",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5255&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5255&opt=all_tg"
+  },
+  {
+    "county": "Logan",
+    "lastUpdated": "July 19, 2011, 4:24 pm (Updated General Trunked System Information)",
+    "location": "Paris, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.4625
+          },
+          {
+            "control": false,
+            "frequency": 461.8875
+          },
+          {
+            "control": false,
+            "frequency": 462.0625
+          },
+          {
+            "control": false,
+            "frequency": 463.5875
+          },
+          {
+            "control": false,
+            "frequency": 464.4625
+          }
+        ],
+        "site": {
+          "systemName": "Total Radio Arkansas: Paris",
+          "siteUniqueDBID": "18541",
+          "siteDescription": "Paris",
+          "siteCountyLocation": "Logan",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Magazine Mountain",
+          "siteModulation": "Analog: 11K2F3E",
+          "siteNotes": "None",
+          "range": {
+            "distance": 262,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 18541,
+        "siteLink": "/apps/db/?siteId=18541",
+        "siteName": "Paris"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7008",
+    "systemName": "Total Radio Arkansas: Paris",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-7008&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7008&opt=all_tg"
+  },
+  {
+    "county": "4 counties",
+    "lastUpdated": "July 30, 2008, 1:39 pm (Changed News Entry ID=4810)",
+    "location": "Pine Bluff, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.075
+          },
+          {
+            "control": false,
+            "frequency": 461.425
+          },
+          {
+            "control": false,
+            "frequency": 461.975
+          },
+          {
+            "control": false,
+            "frequency": 462.375
+          },
+          {
+            "control": false,
+            "frequency": 464.825
+          }
+        ],
+        "site": {
+          "systemName": "Douthits Radio Service, Inc.",
+          "siteUniqueDBID": "13702",
+          "siteDescription": "Stuttgart",
+          "siteCountyLocation": "Arkansas",
+          "siteNeighbors": "N/A",
+          "siteLocation": "On Cable Road, at Cable TV tower",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 35,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=108",
+          "name": "Arkansas"
+        },
+        "siteID": 13702,
+        "siteLink": "/apps/db/?siteId=13702",
+        "siteName": "Stuttgart"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.6875
+          },
+          {
+            "control": false,
+            "frequency": 462.2
+          },
+          {
+            "control": false,
+            "frequency": 463.2125
+          },
+          {
+            "control": false,
+            "frequency": 463.7875
+          },
+          {
+            "control": false,
+            "frequency": 463.9125
+          }
+        ],
+        "site": {
+          "systemName": "Douthits Radio Service, Inc.",
+          "siteUniqueDBID": "13703",
+          "siteDescription": "Pine Bluff",
+          "siteCountyLocation": "Jefferson",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1301 E. Martin Ave.",
+          "siteModulation": "Analog",
+          "siteNotes": "Covers most of Jefferson County",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=142",
+          "name": "Jefferson"
+        },
+        "siteID": 13703,
+        "siteLink": "/apps/db/?siteId=13703",
+        "siteName": "Pine Bluff"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.7875
+          },
+          {
+            "control": false,
+            "frequency": 452.2125
+          },
+          {
+            "control": false,
+            "frequency": 452.4625
+          },
+          {
+            "control": false,
+            "frequency": 452.7375
+          },
+          {
+            "control": false,
+            "frequency": 461.3875
+          }
+        ],
+        "site": {
+          "systemName": "Douthits Radio Service, Inc.",
+          "siteUniqueDBID": "13704",
+          "siteDescription": "Tillar",
+          "siteCountyLocation": "Drew",
+          "siteNeighbors": "N/A",
+          "siteLocation": "5 km SE of Tillar, off US Hwy 65",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=129",
+          "name": "Drew"
+        },
+        "siteID": 13704,
+        "siteLink": "/apps/db/?siteId=13704",
+        "siteName": "Tillar"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.1875
+          },
+          {
+            "control": false,
+            "frequency": 451.4125
+          },
+          {
+            "control": false,
+            "frequency": 451.7125
+          },
+          {
+            "control": false,
+            "frequency": 452.0875
+          },
+          {
+            "control": false,
+            "frequency": 452.3375
+          }
+        ],
+        "site": {
+          "systemName": "Douthits Radio Service, Inc.",
+          "siteUniqueDBID": "13705",
+          "siteDescription": "Helena",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "On Fern Hill at Senate Street",
+          "siteModulation": "Analog",
+          "siteNotes": "Covers the Phillips County area, east into the state of Mississippi.",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {
+          "link": "/apps/db/?ctid=161",
+          "name": "Phillips"
+        },
+        "siteID": 13705,
+        "siteLink": "/apps/db/?siteId=13705",
+        "siteName": "Helena"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5950",
+    "systemName": "Douthits Radio Service, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5950&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5950&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 20, 2011, 12:02 am (Updated General Trunked System Information)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.4875
+          },
+          {
+            "control": false,
+            "frequency": 857.4875
+          },
+          {
+            "control": false,
+            "frequency": 858.4875
+          },
+          {
+            "control": false,
+            "frequency": 859.4875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.4875
+          }
+        ],
+        "site": {
+          "systemName": "Jonesboro Public Safety (MOTOTRBO)",
+          "siteUniqueDBID": "18910",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1624 W. Strawfloor Road",
+          "siteModulation": "MOTOTRBO Digital",
+          "siteNotes": "None",
+          "range": {
+            "distance": 23,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 18910,
+        "siteLink": "/apps/db/?siteId=18910",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7090",
+    "systemName": "Jonesboro Public Safety (MOTOTRBO)",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-7090&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7090&opt=all_tg"
+  },
+  {
+    "county": "Baxter",
+    "lastUpdated": "December 28, 2018, 1:37 pm (Added Talkgroup 9  Water and Sewer(Services))",
+    "location": "Mountain Home, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 856.2625
+          },
+          {
+            "control": false,
+            "frequency": 856.6125
+          },
+          {
+            "control": false,
+            "frequency": 857.2625
+          },
+          {
+            "control": false,
+            "frequency": 858.2625
+          },
+          {
+            "control": false,
+            "frequency": 859.2625
+          }
+        ],
+        "site": {
+          "systemName": "Mountain Home (NexEDGE)",
+          "siteUniqueDBID": "30172",
+          "siteDescription": "City Repeater",
+          "siteCountyLocation": "Baxter",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Highway 5 North",
+          "siteModulation": "NXDN NexEDGE",
+          "siteNotes": "Conversion of Motorola SmartNet",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          },
+          "siteRan": "(* Any)"
+        },
+        "siteCounty": {},
+        "siteID": 30172,
+        "siteLink": "/apps/db/?siteId=30172",
+        "siteName": "City Repeater"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9471",
+    "systemName": "Mountain Home (NexEDGE)",
+    "systemType": "NXDN NEXEDGE 4800",
+    "systemVoice": "NXDN Digital",
+    "uniqueIdentifier": "s-9471&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9471&opt=all_tg",
+    "talkgroups": {
+      "Police Department": [
+        {
+          "decimal": "1",
+          "description": "Dispatch",
+          "group": "Police Department",
+          "mode": "DIGITAL",
+          "tag": "Law Dispatch"
+        }
+      ],
+      "Fire Department": [
+        {
+          "decimal": "4",
+          "description": "Dispatch",
+          "group": "Fire Department",
+          "mode": "DIGITAL",
+          "tag": "Fire Dispatch"
+        }
+      ],
+      "Services": [
+        {
+          "decimal": "9",
+          "description": "Water and Sewer",
+          "group": "Services",
+          "mode": "DIGITAL",
+          "tag": "Utilities"
+        }
+      ],
+      "Interoperability": [
+        {
+          "decimal": "15",
+          "description": "Baxter County Sheriff Patch",
+          "group": "Interoperability",
+          "mode": "DIGITAL",
+          "tag": "Interop"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Crittenden",
+    "lastUpdated": "May 2, 2018, 10:50 am (Changed Site # 001 (West Memphis) to 001 (West Memphis))",
+    "location": "West Memphis, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.525
+          },
+          {
+            "control": false,
+            "frequency": 453.1
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 453.3625
+          }
+        ],
+        "site": {
+          "systemName": "West Memphis Police",
+          "siteUniqueDBID": "20343",
+          "siteDescription": "West Memphis",
+          "siteCountyLocation": "Crittenden",
+          "siteNeighbors": "N/A",
+          "siteLocation": "350 Afco Road",
+          "siteModulation": "MOTOTRBO Digital",
+          "siteNotes": "Covers the city of West Memphis and large portion of the Memphis Metro area.",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 20343,
+        "siteLink": "/apps/db/?siteId=20343",
+        "siteName": "West Memphis"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7397",
+    "systemName": "West Memphis Police",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-7397&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7397&opt=all_tg",
+    "talkgroups": {
+      "Police Operations": [
+        {
+          "decimal": "1",
+          "description": "Primary Dispatch",
+          "group": "Police Operations",
+          "mode": "TDMA",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "11",
+          "description": "Secondary",
+          "group": "Police Operations",
+          "mode": "TDMA",
+          "tag": "Law Tac"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Boone",
+    "lastUpdated": "March 23, 2008, 3:24 pm (Added a new news entry)",
+    "location": "Harrison, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.9875
+          },
+          {
+            "control": false,
+            "frequency": 452.0625
+          },
+          {
+            "control": false,
+            "frequency": 461.4375
+          },
+          {
+            "control": false,
+            "frequency": 462.0375
+          },
+          {
+            "control": false,
+            "frequency": 463.2625
+          }
+        ],
+        "site": {
+          "systemName": "Smith Two-Way Radio (Harrison)",
+          "siteUniqueDBID": "13234",
+          "siteDescription": "Harrison",
+          "siteCountyLocation": "Boone",
+          "siteNeighbors": "N/A",
+          "siteLocation": "West of Hwy 43, 500 meters SW of Robinson Cemetary",
+          "siteModulation": "N/A",
+          "siteNotes": "Serves the entire Boone County area",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13234,
+        "siteLink": "/apps/db/?siteId=13234",
+        "siteName": "Harrison"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5796",
+    "systemName": "Smith Two-Way Radio (Harrison)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5796&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5796&opt=all_tg"
+  },
+  {
+    "county": "Pulaski",
+    "lastUpdated": "July 18, 2018, 12:56 pm (Updated General Trunked System Information)",
+    "location": "Little Rock, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 857.0125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.6375
+          },
+          {
+            "control": false,
+            "frequency": 857.5375
+          },
+          {
+            "control": false,
+            "frequency": 860.0125
+          },
+          {
+            "control": false,
+            "frequency": 857.6375
+          },
+          {
+            "control": false,
+            "frequency": 860.5375
+          },
+          {
+            "control": false,
+            "frequency": 858.0125
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 860.6375
+          },
+          {
+            "control": false,
+            "frequency": 858.5375
+          },
+          {
+            "control": false,
+            "frequency": 861.4625
+          },
+          {
+            "control": false,
+            "frequency": 858.6375
+          },
+          {
+            "control": false,
+            "frequency": 861.7375
+          },
+          {
+            "control": false,
+            "frequency": 859.0125
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 861.8125
+          },
+          {
+            "control": false,
+            "frequency": 859.5375
+          }
+        ],
+        "site": {
+          "systemName": "C and W Communications (Little Rock)",
+          "siteUniqueDBID": "4589",
+          "siteDescription": "Site-1",
+          "siteCountyLocation": "Pulaski",
+          "siteNeighbors": "N/A",
+          "siteLocation": "11 km west of Little Rock, near Pinnacle Mountain.",
+          "siteModulation": "Analog: 20K0F3E",
+          "siteNotes": "Covers the Metro Little Rock area.",
+          "range": {
+            "distance": 259,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None",
+          "rebanded": "Yes"
+        },
+        "siteCounty": {},
+        "siteID": 4589,
+        "siteLink": "/apps/db/?siteId=4589",
+        "siteName": "Site-1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "2886",
+    "systemName": "C and W Communications (Little Rock)",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-2886&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=2886&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "6224",
+          "description": "METRO Wrecker Service - Talk-Around",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "49152",
+          "description": "METRO Wrecker Service - Dispatch",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Benton",
+    "lastUpdated": "July 18, 2018, 3:31 pm (Updated General Trunked System Information)",
+    "location": "Springdale, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.7625
+          },
+          {
+            "control": false,
+            "frequency": 463.525
+          },
+          {
+            "control": false,
+            "frequency": 452.2375
+          }
+        ],
+        "site": {
+          "systemName": "Smith Two-Way Radio (Springdale 1)",
+          "siteUniqueDBID": "6784",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 234,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 6784,
+        "siteLink": "/apps/db/?siteId=6784",
+        "siteName": "Confirmed LCN"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.9125
+          }
+        ],
+        "siteCounty": {}
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3767",
+    "systemName": "Smith Two-Way Radio (Springdale 1)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3767&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3767&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-06-003",
+          "description": "Jim's Express Shuttle",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-08-005",
+          "description": "Central Ready Mix",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Mississippi",
+    "lastUpdated": "December 8, 2013, 6:33 pm (Updated General Trunked System Information)",
+    "location": "Blytheville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.3125
+          },
+          {
+            "control": false,
+            "frequency": 463.7375
+          },
+          {
+            "control": false,
+            "frequency": 464.7375
+          }
+        ],
+        "site": {
+          "systemName": "Pargould Communications (Blytheville)",
+          "siteUniqueDBID": "22725",
+          "siteDescription": "Blytheville",
+          "siteCountyLocation": "Mississippi",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 22725,
+        "siteLink": "/apps/db/?siteId=22725",
+        "siteName": "Blytheville"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7818",
+    "systemName": "Pargould Communications (Blytheville)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog and NXDN Digital",
+    "uniqueIdentifier": "s-7818&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7818&opt=all_tg"
+  },
+  {
+    "county": "Hempstead",
+    "lastUpdated": "July 18, 2018, 3:28 pm (Updated General Trunked System Information)",
+    "location": "Hope, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.0625
+          },
+          {
+            "control": false,
+            "frequency": 451.2625
+          },
+          {
+            "control": false,
+            "frequency": 451.5375
+          },
+          {
+            "control": false,
+            "frequency": 452.4125
+          },
+          {
+            "control": false,
+            "frequency": 452.8125
+          }
+        ],
+        "site": {
+          "systemName": "Hope Water and Light Commission",
+          "siteUniqueDBID": "1614",
+          "siteDescription": "Site-1",
+          "siteCountyLocation": "None Specified",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 207,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 1614,
+        "siteLink": "/apps/db/?siteId=1614",
+        "siteName": "Site-1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "1215",
+    "systemName": "Hope Water and Light Commission",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-1215&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=1215&opt=all_tg"
+  },
+  {
+    "county": "Mississippi",
+    "lastUpdated": "April 3, 2018, 7:37 pm (Added Talkgroup 36 Sanitation 1(Operations))",
+    "location": "Blytheville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.5
+          },
+          {
+            "control": false,
+            "frequency": 460.275
+          },
+          {
+            "control": false,
+            "frequency": 460.0625
+          }
+        ],
+        "site": {
+          "systemName": "Blytheville",
+          "siteUniqueDBID": "30262",
+          "siteDescription": "1",
+          "siteCountyLocation": "Mississippi",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1301 June Gosnell Drive",
+          "siteModulation": "DMR TDMA (MOTOTRBO)",
+          "siteNotes": "None",
+          "range": {
+            "distance": 253,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 30262,
+        "siteLink": "/apps/db/?siteId=30262",
+        "siteName": "1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9504",
+    "systemName": "Blytheville",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "uniqueIdentifier": "s-9504&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9504&opt=all_tg",
+    "talkgroups": {
+      "Police Department": [
+        {
+          "decimal": "11",
+          "description": "Dispatch 1",
+          "group": "Police Department",
+          "mode": "TDMA",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "12",
+          "description": "Dispatch 2",
+          "group": "Police Department",
+          "mode": "TDMA",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "34",
+          "description": "Car to Car",
+          "group": "Police Department",
+          "mode": "TDMA",
+          "tag": "Law Talk"
+        }
+      ],
+      "Fire Department": [
+        {
+          "decimal": "24",
+          "description": "Dispatch 1",
+          "group": "Fire Department",
+          "mode": "TDMA",
+          "tag": "Fire Dispatch"
+        }
+      ],
+      "Operations": [
+        {
+          "decimal": "36",
+          "description": "Sanitation 1",
+          "group": "Operations",
+          "mode": "TDMA",
+          "tag": "Public Works"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington",
+    "lastUpdated": "September 21, 2008, 4:50 pm (Updated Function Tag assignments for 1 talkgroups)",
+    "location": "Fayetteville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.6875
+          },
+          {
+            "control": false,
+            "frequency": 452.825
+          },
+          {
+            "control": false,
+            "frequency": 451.3125
+          },
+          {
+            "control": false,
+            "frequency": 461.725
+          }
+        ],
+        "site": {
+          "systemName": "Smith Two-Way Radio (Fayetteville)",
+          "siteUniqueDBID": "6789",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 237,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 6789,
+        "siteLink": "/apps/db/?siteId=6789",
+        "siteName": "Confirmed LCN"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3772",
+    "systemName": "Smith Two-Way Radio (Fayetteville)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3772&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3772&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-04-007",
+          "description": "Springdale School Buses",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-04-011",
+          "description": "Washington County Road Department",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-04-015",
+          "description": "Roll Off Services",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-08-003",
+          "description": "Dump Trucks",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-12-005",
+          "description": "Fayetteville School Buses",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-12-012",
+          "description": "Cardinal Cab",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Lawrence",
+    "lastUpdated": "December 8, 2013, 6:32 pm (Updated Function Tag assignments for 1 talkgroups)",
+    "location": "Black Rock, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.075
+          },
+          {
+            "control": false,
+            "frequency": 461.45
+          },
+          {
+            "control": false,
+            "frequency": 461.75
+          },
+          {
+            "control": false,
+            "frequency": 462.3
+          }
+        ],
+        "site": {
+          "systemName": "Paragould Communications (Black Rock)",
+          "siteUniqueDBID": "22726",
+          "siteDescription": "Black Rock",
+          "siteCountyLocation": "Lawrence",
+          "siteNeighbors": "WQOL333",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 25,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 22726,
+        "siteLink": "/apps/db/?siteId=22726",
+        "siteName": "Black Rock"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "7819",
+    "systemName": "Paragould Communications (Black Rock)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog and NXDN Digital",
+    "uniqueIdentifier": "s-7819&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=7819&opt=all_tg",
+    "talkgroups": {
+      "Severe Weather and Disaster": [
+        {
+          "decimal": "0-01-026",
+          "description": "Northeast Arkansas Disaster Response Team Channel 3",
+          "group": "Severe Weather and Disaster",
+          "mode": "ANALOG",
+          "tag": "Emergency Ops"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington",
+    "lastUpdated": "February 4, 2019, 1:56 pm (Changed Site # 006 (Winslow) to 006 (Winslow))",
+    "location": "Fayetteville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.0625
+          },
+          {
+            "control": false,
+            "frequency": 460.3875
+          },
+          {
+            "control": false,
+            "frequency": 460.4125
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "11431",
+          "siteDescription": "Springdale",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "417A Carlock Road",
+          "siteModulation": "Analog",
+          "siteNotes": "36-10-48.0 N, 094-05-10.0 W",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 11431,
+        "siteLink": "/apps/db/?siteId=11431",
+        "siteName": "Springdale"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.2625
+          },
+          {
+            "control": false,
+            "frequency": 453.575
+          },
+          {
+            "control": false,
+            "frequency": 453.7625
+          },
+          {
+            "control": false,
+            "frequency": 453.7875
+          },
+          {
+            "control": false,
+            "frequency": 453.05
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "11524",
+          "siteDescription": "Fayetteville",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "13915 Hazel Valley",
+          "siteModulation": "Analog",
+          "siteNotes": "35-54-06.4 N, 093-59-29.5 W",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 11524,
+        "siteLink": "/apps/db/?siteId=11524",
+        "siteName": "Fayetteville"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.1625
+          },
+          {
+            "control": false,
+            "frequency": 453.175
+          },
+          {
+            "control": false,
+            "frequency": 460.1625
+          },
+          {
+            "control": false,
+            "frequency": 460.3125
+          },
+          {
+            "control": false,
+            "frequency": 460.9
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "12360",
+          "siteDescription": "Prairie Grove",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Skylight Mountain",
+          "siteModulation": "11K2F3E, Analog",
+          "siteNotes": "35-51-00.0 N, 094-23-00.0 W",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 12360,
+        "siteLink": "/apps/db/?siteId=12360",
+        "siteName": "Prairie Grove"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.1875
+          },
+          {
+            "control": false,
+            "frequency": 460.3375
+          },
+          {
+            "control": false,
+            "frequency": 460.6
+          },
+          {
+            "control": false,
+            "frequency": 460.625
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "12361",
+          "siteDescription": "Lincoln",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "13409 N. Jackson Hwy",
+          "siteModulation": "11K2F3E, Analog",
+          "siteNotes": "36-02-59.0 N, 094-25-37.0 W",
+          "range": {
+            "distance": 237,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 12361,
+        "siteLink": "/apps/db/?siteId=12361",
+        "siteName": "Lincoln"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.3125
+          },
+          {
+            "control": false,
+            "frequency": 453.5375
+          },
+          {
+            "control": false,
+            "frequency": 460.2625
+          },
+          {
+            "control": false,
+            "frequency": 453.75
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "14414",
+          "siteDescription": "Fayetteville 2",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "779 Ruth Ave.",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 14414,
+        "siteLink": "/apps/db/?siteId=14414",
+        "siteName": "Fayetteville 2"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.4375
+          },
+          {
+            "control": false,
+            "frequency": 453.1875
+          },
+          {
+            "control": false,
+            "frequency": 453.425
+          },
+          {
+            "control": false,
+            "frequency": 453.475
+          },
+          {
+            "control": false,
+            "frequency": 453.7375
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "22854",
+          "siteDescription": "Winslow",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "12395 Signal Hill Road",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 22854,
+        "siteLink": "/apps/db/?siteId=22854",
+        "siteName": "Winslow"
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.1125
+          },
+          {
+            "control": false,
+            "frequency": 460.4375
+          },
+          {
+            "control": false,
+            "frequency": 460.1375
+          }
+        ],
+        "site": {
+          "systemName": "Washington County Dept. of Emergency Management",
+          "siteUniqueDBID": "25358",
+          "siteDescription": "Elm Springs",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "293 JAYROE AVE.",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 12,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 25358,
+        "siteLink": "/apps/db/?siteId=25358",
+        "siteName": "Elm Springs"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5267",
+    "systemName": "Washington County Dept. of Emergency Management",
+    "systemType": "LTR Passport",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5267&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5267&opt=all_tg",
+    "talkgroups": {
+      "Law Enforcement": [
+        {
+          "decimal": "14001",
+          "description": "Police Dispatch",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Deprecated"
+        },
+        {
+          "decimal": "35001",
+          "description": "Sheriff Dispatch",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "35002",
+          "description": "Sheriff Records",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "35008",
+          "description": "Sheriff to Small Towns",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "35015",
+          "description": "Farmington Police",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "35022",
+          "description": "Sheriff Car-to-Car",
+          "group": "Law Enforcement",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        }
+      ],
+      "Fire/EMS": [
+        {
+          "decimal": "36000",
+          "description": "Firecom Tone Out",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "36002",
+          "description": "Fire Tactical 1",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "36006",
+          "description": "Fire Tactical East",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "36007",
+          "description": "Fire Tactical South",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "36008",
+          "description": "Fire Tactical West",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "36009",
+          "description": "Fire Tactical North",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "37000",
+          "description": "Central EMS Dispatch",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "37006",
+          "description": "Central EMS Med Transports",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "EMS-Tac"
+        },
+        {
+          "decimal": "39009",
+          "description": "Fire Tactical",
+          "group": "Fire/EMS",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Phillips",
+    "lastUpdated": "July 18, 2018, 3:29 pm (Updated General Trunked System Information)",
+    "location": "Helena, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452
+          },
+          {
+            "control": false,
+            "frequency": 462.475
+          }
+        ],
+        "site": {
+          "systemName": "Planters Sales and Service, Inc.",
+          "siteUniqueDBID": "13710",
+          "siteDescription": "Helena",
+          "siteCountyLocation": "Phillips",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1463 Hwy 20",
+          "siteModulation": "Analog",
+          "siteNotes": "Has large coverage area into eastern Mississippi.",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13710,
+        "siteLink": "/apps/db/?siteId=13710",
+        "siteName": "Helena"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5953",
+    "systemName": "Planters Sales and Service, Inc.",
+    "systemType": "SmarTrunk Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5953&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5953&opt=all_tg"
+  },
+  {
+    "county": "Mississippi",
+    "lastUpdated": "July 5, 2008, 1:16 pm (Updated General Trunked System Information)",
+    "location": "Blytheville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.1875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 857.1875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 858.1875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 859.1875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.1875
+          }
+        ],
+        "site": {
+          "systemName": "West Tennessee Communications (Blytheville)",
+          "siteUniqueDBID": "13577",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Mississippi",
+          "siteNeighbors": "N/A",
+          "siteLocation": "2974 E CR 262",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 253,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 13577,
+        "siteLink": "/apps/db/?siteId=13577",
+        "siteName": "Site 1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5914",
+    "systemName": "West Tennessee Communications (Blytheville)",
+    "systemType": "Motorola Type II",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5914&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5914&opt=all_tg"
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "December 8, 2013, 6:34 pm (Updated 3 Talkgroup Categories)",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.1875
+          },
+          {
+            "control": false,
+            "frequency": 451.5875
+          },
+          {
+            "control": false,
+            "frequency": 452.1375
+          },
+          {
+            "control": false,
+            "frequency": 452.6875
+          },
+          {
+            "control": false,
+            "frequency": 452.8875
+          }
+        ],
+        "site": {
+          "systemName": "Paragould Communications (Jonesboro)",
+          "siteUniqueDBID": "13456",
+          "siteDescription": "Jonesboro",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "End of Carter Lane, Off N. Caraway Road",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13456,
+        "siteLink": "/apps/db/?siteId=13456",
+        "siteName": "Jonesboro"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5869",
+    "systemName": "Paragould Communications (Jonesboro)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5869&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5869&opt=all_tg",
+    "talkgroups": {
+      "Severe Weather and Disaster": [
+        {
+          "decimal": "0-02-055",
+          "description": "Northeast Arkansas Disaster Response Team Channel 2 (NEADRT 2)",
+          "group": "Severe Weather and Disaster",
+          "mode": "ANALOG",
+          "tag": "Emergency Ops"
+        }
+      ],
+      "EMS": [
+        {
+          "decimal": "0-02-091",
+          "description": "Medic 1 Ambulance Service (Encrypted)",
+          "group": "EMS",
+          "mode": "ENCRYPTED",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "0-02-093",
+          "description": "Emerson Ambulance Service (Encrypted)",
+          "group": "EMS",
+          "mode": "ENCRYPTED",
+          "tag": "EMS Dispatch"
+        }
+      ],
+      "Turtle Creek Mall": [
+        {
+          "decimal": "0-04-060",
+          "description": "Turtle Creek Mall Securtiy",
+          "group": "Turtle Creek Mall",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "0-04-062",
+          "description": "Turtle Creek Mall Security",
+          "group": "Turtle Creek Mall",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "0-04-063",
+          "description": "Turtle Creek Mall Security",
+          "group": "Turtle Creek Mall",
+          "mode": "ANALOG",
+          "tag": "Security"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Crittenden",
+    "lastUpdated": "November 23, 2017, 10:23 am (Deleted 5 talkgroup(s))",
+    "location": "West Memphis, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.5875
+          },
+          {
+            "control": false,
+            "frequency": 461.8125
+          },
+          {
+            "control": false,
+            "frequency": 463.2375
+          },
+          {
+            "control": false,
+            "frequency": 451.7125
+          },
+          {
+            "control": false,
+            "frequency": 463.4125
+          },
+          {
+            "control": false,
+            "frequency": 452.2875
+          },
+          {
+            "control": false,
+            "frequency": 452.4125
+          },
+          {
+            "control": false,
+            "frequency": 452.6625
+          },
+          {
+            "control": false,
+            "frequency": 461.6625
+          }
+        ],
+        "site": {
+          "systemName": "Southland Racing Corporation",
+          "siteUniqueDBID": "13375",
+          "siteDescription": "Racetrack",
+          "siteCountyLocation": "Crittenden",
+          "siteNeighbors": "N/A",
+          "siteLocation": "Southland Greyhound Park, off Ingram Blvd.",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13375,
+        "siteLink": "/apps/db/?siteId=13375",
+        "siteName": "Racetrack"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5843",
+    "systemName": "Southland Racing Corporation",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5843&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5843&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "0-00-010",
+          "description": "Unknown",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-040",
+          "description": "Floor Attendants",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-050",
+          "description": "Game Technicians",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-090",
+          "description": "Unknown",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-100",
+          "description": "Valet",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-110",
+          "description": "Marketing",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-120",
+          "description": "Beverage",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-130",
+          "description": "Unknown",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-140",
+          "description": "I.T.",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-150",
+          "description": "Tote/Racing",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-00-160",
+          "description": "Manager on Duty",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-020",
+          "description": "Security",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Security"
+        },
+        {
+          "decimal": "0-03-030",
+          "description": "Maintenance",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-03-060",
+          "description": "Maintenance",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-03-070",
+          "description": "Maintenance",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-03-080",
+          "description": "Maintenance",
+          "group": "Operations",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Craighead",
+    "lastUpdated": "October 19, 2011, 11:57 pm (Changed Site # 001 (Site-1) to 001 (Site-1))",
+    "location": "Jonesboro, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.4875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 857.4875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 858.4875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 859.4875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.4875
+          }
+        ],
+        "site": {
+          "systemName": "Jonesboro Public Safety",
+          "siteUniqueDBID": "8745",
+          "siteDescription": "Site-1",
+          "siteCountyLocation": "Craighead",
+          "siteNeighbors": "N/A",
+          "siteLocation": "1624 W. Strawfloor Road",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 233,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 8745,
+        "siteLink": "/apps/db/?siteId=8745",
+        "siteName": "Site-1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "998",
+    "systemName": "Jonesboro Public Safety",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-998&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=998&opt=all_tg",
+    "talkgroups": {
+      "Jonesboro Fire": [
+        {
+          "decimal": "16",
+          "description": "Fire Dispatch",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "32",
+          "description": "Fire Administration",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Talk"
+        },
+        {
+          "decimal": "48",
+          "description": "Fireground",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "64",
+          "description": "Fire Comm",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "80",
+          "description": "Fireground 2",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "96",
+          "description": "Fire Tactical",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "112",
+          "description": "Fireground 3",
+          "group": "Jonesboro Fire",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        }
+      ],
+      "Jonesboro Police": [
+        {
+          "decimal": "272",
+          "description": "Police Dispatch",
+          "group": "Jonesboro Police",
+          "mode": "ANALOG",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "304",
+          "description": "PD 1",
+          "group": "Jonesboro Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "400",
+          "description": "Desk",
+          "group": "Jonesboro Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "608",
+          "description": "Comm",
+          "group": "Jonesboro Police",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Arkansas",
+    "lastUpdated": "July 18, 2018, 12:58 pm (Updated General Trunked System Information)",
+    "location": "Stuttgart, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.1625
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 857.1625
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 858.1625
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 859.1625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 860.1625
+          }
+        ],
+        "site": {
+          "systemName": "C and W Communications (Stuttgart)",
+          "siteUniqueDBID": "13701",
+          "siteDescription": "Stuttgart",
+          "siteCountyLocation": "Arkansas",
+          "siteNeighbors": "N/A",
+          "siteLocation": "6.5 km NE of Stuttgart",
+          "siteModulation": "Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 30,
+            "units": "miles"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteCounty": {},
+        "siteID": 13701,
+        "siteLink": "/apps/db/?siteId=13701",
+        "siteName": "Stuttgart"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5949",
+    "systemName": "C and W Communications (Stuttgart)",
+    "systemType": "Motorola Type II",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5949&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5949&opt=all_tg"
+  },
+  {
+    "county": "Benton",
+    "lastUpdated": "February 4, 2017, 9:42 am ((3) Talkgroups Updated (Public Safety))",
+    "location": "Siloam Springs, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.3875
+          },
+          {
+            "control": false,
+            "frequency": 460.6125
+          },
+          {
+            "control": false,
+            "frequency": 453.6625
+          },
+          {
+            "control": false,
+            "frequency": 460.175
+          },
+          {
+            "control": false,
+            "frequency": 460.225
+          }
+        ],
+        "site": {
+          "systemName": "Siloam Springs Community Services",
+          "siteUniqueDBID": "26937",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "Narrowband FM Analog",
+          "siteNotes": "None",
+          "range": {
+            "distance": 5,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 26937,
+        "siteLink": "/apps/db/?siteId=26937",
+        "siteName": "Primary"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "8623",
+    "systemName": "Siloam Springs Community Services",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-8623&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=8623&opt=all_tg",
+    "talkgroups": {
+      "City Services": [
+        {
+          "decimal": "0-02-001",
+          "description": "Electric Department",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-02-002",
+          "description": "Water Department",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-02-003",
+          "description": "Street Department",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-02-004",
+          "description": "Parks and Recreation",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-02-005",
+          "description": "Water Department Meter Readers???",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-02-007",
+          "description": "Airport Operations",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-02-008",
+          "description": "Sanitation",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-02-009",
+          "description": "City Services Dispatch",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Multi-Dispatch"
+        },
+        {
+          "decimal": "0-02-012",
+          "description": "Waste Water Treatment Facility",
+          "group": "City Services",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        }
+      ],
+      "Public Safety": [
+        {
+          "decimal": "0-02-006",
+          "description": "Animal Control",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Law Talk"
+        },
+        {
+          "decimal": "0-02-010",
+          "description": "Department of Emergency Management 1",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Emergency Ops"
+        },
+        {
+          "decimal": "0-02-011",
+          "description": "Department of Emergency Management 2",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Emergency Ops"
+        },
+        {
+          "decimal": "0-10-001",
+          "description": "Fire Dpartment Dispatch",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "0-10-002",
+          "description": "Fire Department Secondary",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "0-10-003",
+          "description": "Fire Department - Tactical 1",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "0-10-004",
+          "description": "Fire Department - Tactical 2",
+          "group": "Public Safety",
+          "mode": "ANALOG",
+          "tag": "Fire-Tac"
+        },
+        {
+          "decimal": "0-14-001",
+          "description": "Police - Dispatch Primary (Full Time Voice Inversion)",
+          "group": "Public Safety",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-14-002",
+          "description": "Police - 2 (Full Time Voice Inversion)",
+          "group": "Public Safety",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "0-14-003",
+          "description": "Police - 3 (Full Time Voice Inversion)",
+          "group": "Public Safety",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "0-14-004",
+          "description": "Police - 4 (Full Time Voice Inversion)",
+          "group": "Public Safety",
+          "mode": "ENCRYPTED",
+          "tag": "Law Tac"
+        }
+      ],
+      "Backup/Event": [
+        {
+          "decimal": "0-06-001",
+          "description": "Police - Dispatch Backup (Full Time Voice Inversion)",
+          "group": "Backup/Event",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "0-06-002",
+          "description": "Fire - Dispatch Backup",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "0-06-003",
+          "description": "Electric Department Backup",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-06-004",
+          "description": "Utility Backup",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        },
+        {
+          "decimal": "0-06-005",
+          "description": "Events 1",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "0-06-006",
+          "description": "Events 2",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "0-06-007",
+          "description": "Events 3",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "0-06-008",
+          "description": "Events 4",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "0-06-009",
+          "description": "Events 5",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        },
+        {
+          "decimal": "0-06-010",
+          "description": "Events 6",
+          "group": "Backup/Event",
+          "mode": "ANALOG",
+          "tag": "Interop"
+        }
+      ]
+    }
+  },
+  {
+    "county": "St. Francis",
+    "lastUpdated": "October 29, 2008, 8:19 pm (Updated General Trunked System Information)",
+    "location": "Forrest City, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 406.8125
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 407.0125
+          },
+          {
+            "control": false,
+            "frequency": 407.4125
+          },
+          {
+            "control": false,
+            "frequency": 408.2125
+          },
+          {
+            "control": false,
+            "frequency": 408.8125
+          },
+          {
+            "control": false,
+            "frequency": 409.675
+          },
+          {
+            "control": false,
+            "frequency": 410.525
+          }
+        ],
+        "site": {
+          "systemName": "Federal Correctional Complex Forrest City",
+          "siteUniqueDBID": "14115",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "St. Francis",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 229,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 14115,
+        "siteLink": "/apps/db/?siteId=14115",
+        "siteName": "Site 1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "6092",
+    "systemName": "Federal Correctional Complex Forrest City",
+    "systemType": "Motorola Type II SmartZone",
+    "systemVoice": "Analog and APCO-25 Common Air Interface",
+    "uniqueIdentifier": "s-6092&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=6092&opt=all_tg"
+  },
+  {
+    "county": "Greene",
+    "lastUpdated": "July 29, 2019, 8:49 am ((1) Talkgroups Updated (Greene County Schools))",
+    "location": "Paragould, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.4875
+          },
+          {
+            "control": false,
+            "frequency": 452.3625
+          },
+          {
+            "control": false,
+            "frequency": 463.7125
+          },
+          {
+            "control": false,
+            "frequency": 464.4625
+          },
+          {
+            "control": false,
+            "frequency": 463.9625
+          },
+          {
+            "control": false,
+            "frequency": 464.9375
+          },
+          {
+            "control": false,
+            "frequency": 461.8375
+          },
+          {
+            "control": false,
+            "frequency": 461.9375
+          },
+          {
+            "control": false,
+            "frequency": 451.375
+          }
+        ],
+        "site": {
+          "systemName": "Paragould Communications (Paragould)",
+          "siteUniqueDBID": "10388",
+          "siteDescription": "Paragould",
+          "siteCountyLocation": "Greene",
+          "siteNeighbors": "N/A",
+          "siteLocation": "130 Greene Co. Road 636",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 179,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 10388,
+        "siteLink": "/apps/db/?siteId=10388",
+        "siteName": "Paragould"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "4991",
+    "systemName": "Paragould Communications (Paragould)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog and NXDN Digital",
+    "uniqueIdentifier": "s-4991&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=4991&opt=all_tg",
+    "talkgroups": {
+      "Paragould Schools": [
+        {
+          "decimal": "0-01-004",
+          "description": "Paragould School District Central Office",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-01-029",
+          "description": "Paragould School District Middle School Operations",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-002",
+          "description": "Paragould School District Jr High Ops",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-003",
+          "description": "Paragould School District Maintenance",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-005",
+          "description": "Paragould School District Administration",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-008",
+          "description": "Paragould School District Buses",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-013",
+          "description": "Paragould School District Elementary School Operations",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-03-014",
+          "description": "Paragould School District Sr. High Operations",
+          "group": "Paragould Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ],
+      "Agricultural": [
+        {
+          "decimal": "0-01-006",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-028",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-042",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-046",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-063",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-067",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-087",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-096",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-097",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-099",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-100",
+          "description": "Crop Dusting Service",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-11-026",
+          "description": "Agricultural/Farmer",
+          "group": "Agricultural",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ],
+      "Businesses": [
+        {
+          "decimal": "0-01-007",
+          "description": "Laubach/Mellow Moon Trucking Company",
+          "group": "Businesses",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-01-055",
+          "description": "Shelton Sanitation Services",
+          "group": "Businesses",
+          "mode": "ANALOG",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-01-068",
+          "description": "Roto Rooter Professional Plumbing Service",
+          "group": "Businesses",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ],
+      "Greene County Government": [
+        {
+          "decimal": "0-01-021",
+          "description": "County Courthouse Maintenance Crew",
+          "group": "Greene County Government",
+          "mode": "DIGITAL",
+          "tag": "Public Works"
+        },
+        {
+          "decimal": "0-11-035",
+          "description": "Sheriff - Constables",
+          "group": "Greene County Government",
+          "mode": "ANALOG",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "0-11-040",
+          "description": "Sheriff - Tactical",
+          "group": "Greene County Government",
+          "mode": "DIGITAL",
+          "tag": "Law Tac"
+        },
+        {
+          "decimal": "0-11-072",
+          "description": "Road Department Operations",
+          "group": "Greene County Government",
+          "mode": "ENCRYPTED",
+          "tag": "Public Works"
+        }
+      ],
+      "Fire and EMS": [
+        {
+          "decimal": "0-01-091",
+          "description": "Medic One EMS *Encrypted Full Time*",
+          "group": "Fire and EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "0-01-093",
+          "description": "Emerson EMS *Encrypted Full Time*",
+          "group": "Fire and EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "0-01-138",
+          "description": "FireText.Net Notification Network",
+          "group": "Fire and EMS",
+          "mode": "ANALOG",
+          "tag": "Fire Dispatch"
+        },
+        {
+          "decimal": "0-03-052",
+          "description": "Operations (Full time encryption used.)",
+          "group": "Fire and EMS",
+          "mode": "ANALOG",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "0-11-042",
+          "description": "Arkansas Methodist Medical Center EMS Dispatch",
+          "group": "Fire and EMS",
+          "mode": "DIGITAL",
+          "tag": "EMS Dispatch"
+        },
+        {
+          "decimal": "0-11-043",
+          "description": "Arkansas Methodist Medical Center Grounds Security",
+          "group": "Fire and EMS",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "0-11-046",
+          "description": "Arkansas Methodist Medical Center Patient Reports To Hospital",
+          "group": "Fire and EMS",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        },
+        {
+          "decimal": "0-11-048",
+          "description": "Arkansas Methodist Medical Center Crew Channel",
+          "group": "Fire and EMS",
+          "mode": "DIGITAL",
+          "tag": "Hospital"
+        }
+      ],
+      "Utilities": [
+        {
+          "decimal": "0-01-107",
+          "description": "Craighead County Electric Cooperative",
+          "group": "Utilities",
+          "mode": "ANALOG",
+          "tag": "Utilities"
+        }
+      ],
+      "Severe Weather and Disaster": [
+        {
+          "decimal": "0-01-129",
+          "description": "Northeast Arkansas Disaster Response Team Channel 1 (NEADRT 1)",
+          "group": "Severe Weather and Disaster",
+          "mode": "ANALOG",
+          "tag": "Other"
+        },
+        {
+          "decimal": "0-11-037",
+          "description": "KAIT/Region 8 Storm Tracker",
+          "group": "Severe Weather and Disaster",
+          "mode": "ANALOG",
+          "tag": "Media"
+        }
+      ],
+      "Arkansas State University - Jonesboro": [
+        {
+          "decimal": "0-04-002",
+          "description": "ASU Security",
+          "group": "Arkansas State University - Jonesboro",
+          "mode": "ANALOG",
+          "tag": "Schools"
+        }
+      ],
+      "Greene County Schools": [
+        {
+          "decimal": "0-11-003",
+          "description": "Tech School District District Administration",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-004",
+          "description": "Tech School District Maintenance",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-005",
+          "description": "Tech School District Administration",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-006",
+          "description": "Tech School District Buses (1)-",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-007",
+          "description": "Tech School District Buses (2)-",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-008",
+          "description": "Tech School District Buses (3)",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-009",
+          "description": "Tech School District Administration",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-016",
+          "description": "Tech School District Buses",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-021",
+          "description": "Tech School District Bus Talkaround Operations",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-031",
+          "description": "Tech School District Administration",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "0-11-038",
+          "description": "Tech School District Buses",
+          "group": "Greene County Schools",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Sebastian",
+    "lastUpdated": "April 6, 2018, 2:38 am (Updated mode assignments for 1 talkgroups(Operations))",
+    "location": "Fort Chaffee, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 406.3625
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 406.9875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 408.7625
+          },
+          {
+            "control": false,
+            "frequency": 409.5875
+          }
+        ],
+        "site": {
+          "systemName": "Arkansas National Guard: Fort Chaffee (Motorola)",
+          "siteUniqueDBID": "6136",
+          "siteDescription": "West",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 6136,
+        "siteLink": "/apps/db/?siteId=6136",
+        "siteName": "West"
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 407.5875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 408.3625
+          },
+          {
+            "control": false,
+            "frequency": 407.1625
+          },
+          {
+            "control": false,
+            "frequency": 406.7875
+          }
+        ],
+        "site": {
+          "systemName": "Arkansas National Guard: Fort Chaffee (Motorola)",
+          "siteUniqueDBID": "18533",
+          "siteDescription": "Central",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 18533,
+        "siteLink": "/apps/db/?siteId=18533",
+        "siteName": "Central"
+      },
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 407.3875
+          },
+          {
+            "control": false,
+            "frequency": 406.1875
+          },
+          {
+            "control": false,
+            "frequency": 406.975
+          }
+        ],
+        "site": {
+          "systemName": "Arkansas National Guard: Fort Chaffee (Motorola)",
+          "siteUniqueDBID": "18534",
+          "siteDescription": "East",
+          "siteCountyLocation": "Sebastian",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 208,
+            "units": ".miles"
+          },
+          "siteConnectTone": "None",
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 18534,
+        "siteLink": "/apps/db/?siteId=18534",
+        "siteName": "East"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3588",
+    "systemName": "Arkansas National Guard: Fort Chaffee (Motorola)",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog and APCO-25 Common Air Interface",
+    "uniqueIdentifier": "s-3588&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3588&opt=all_tg",
+    "talkgroups": {
+      "Operations": [
+        {
+          "decimal": "3248",
+          "description": "Range Control",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "3376",
+          "description": "Operations",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "6416",
+          "description": "Range Control",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "6448",
+          "description": "Range Control",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "8064",
+          "description": "Range Control",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        },
+        {
+          "decimal": "8080",
+          "description": "Range Control",
+          "group": "Operations",
+          "mode": "DIGITAL",
+          "tag": "Military"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Crittenden",
+    "lastUpdated": "May 11, 2009, 12:08 pm (Added Talkgroup 101110 Maintenance)",
+    "location": "Marion, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.3875
+          },
+          {
+            "control": false,
+            "frequency": 461.9125
+          },
+          {
+            "control": false,
+            "frequency": 463.6375
+          },
+          {
+            "control": false,
+            "frequency": 464.1625
+          },
+          {
+            "control": false,
+            "frequency": 464.8375
+          }
+        ],
+        "site": {
+          "systemName": "Hino Motor Manufacturing USA, Inc.",
+          "siteUniqueDBID": "13374",
+          "siteDescription": "Marion",
+          "siteCountyLocation": "Crittenden",
+          "siteNeighbors": "N/A",
+          "siteLocation": "100 Hino Blvd.",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 13374,
+        "siteLink": "/apps/db/?siteId=13374",
+        "siteName": "Marion"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "5842",
+    "systemName": "Hino Motor Manufacturing USA, Inc.",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-5842&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=5842&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1-01-110",
+          "description": "Maintenance",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Benton",
+    "lastUpdated": "July 18, 2018, 3:31 pm (Updated General Trunked System Information)",
+    "location": "Springdale, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453
+          },
+          {
+            "control": false,
+            "frequency": 460.65
+          },
+          {
+            "control": false,
+            "frequency": 452.175
+          },
+          {
+            "control": false,
+            "frequency": 452.45
+          }
+        ],
+        "site": {
+          "systemName": "Smith Two-Way Radio (Springdale 2)",
+          "siteUniqueDBID": "6801",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Benton",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 234,
+            "units": ".miles"
+          }
+        },
+        "siteCounty": {},
+        "siteID": 6801,
+        "siteLink": "/apps/db/?siteId=6801",
+        "siteName": "Confirmed LCN"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "3778",
+    "systemName": "Smith Two-Way Radio (Springdale 2)",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "uniqueIdentifier": "s-3778&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=3778&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-02-009",
+          "description": "Embassy Suites Shuttle",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-02-015",
+          "description": "Dump Trucks",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        },
+        {
+          "decimal": "0-04-020",
+          "description": "Beaver Lake Concrete",
+          "group": "All",
+          "mode": "ANALOG",
+          "tag": "Business"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington",
+    "lastUpdated": "December 14, 2018, 5:10 pm (Updated General Trunked System Information)",
+    "location": "Fayetteville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.1
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 453.25
+          },
+          {
+            "control": false,
+            "frequency": 453.7
+          },
+          {
+            "control": false,
+            "frequency": 460.375
+          },
+          {
+            "control": false,
+            "frequency": 463.8
+          },
+          {
+            "control": false,
+            "frequency": 453.5
+          },
+          {
+            "control": false,
+            "frequency": 453.275
+          }
+        ],
+        "site": {
+          "systemName": "University of Arkansas at Fayetteville",
+          "siteUniqueDBID": "31261",
+          "siteDescription": "Campus Repeater",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "235 Ozark Avenue",
+          "siteModulation": "4K00F1E (NXDN)",
+          "siteNotes": "Confirmed LCN",
+          "range": {
+            "distance": 248548,
+            "units": ".miles"
+          },
+          "siteRan": "1"
+        },
+        "siteCounty": {},
+        "siteID": 31261,
+        "siteLink": "/apps/db/?siteId=31261",
+        "siteName": "Campus Repeater"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "9777",
+    "systemName": "University of Arkansas at Fayetteville",
+    "systemType": "NXDN NEXEDGE 4800",
+    "systemVoice": "NXDN Digital",
+    "uniqueIdentifier": "s-9777&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=9777&opt=all_tg",
+    "talkgroups": {
+      "Campus Police": [
+        {
+          "decimal": "101",
+          "description": "Dispatch",
+          "group": "Campus Police",
+          "mode": "DIGITAL",
+          "tag": "Law Dispatch"
+        }
+      ],
+      "Residence Services": [
+        {
+          "decimal": "202",
+          "description": "Housing",
+          "group": "Residence Services",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "203",
+          "description": "Arkansas Union Operations",
+          "group": "Residence Services",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ],
+      "Facilities": [
+        {
+          "decimal": "301",
+          "description": "Facilities/Maintenance (Systemwide Interoperability)",
+          "group": "Facilities",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "601",
+          "description": "Custodial/Guest Services",
+          "group": "Facilities",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ],
+      "Transportation": [
+        {
+          "decimal": "401",
+          "description": "Transit",
+          "group": "Transportation",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "403",
+          "description": "Parking",
+          "group": "Transportation",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "411",
+          "description": "Bus Operations 2",
+          "group": "Transportation",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        },
+        {
+          "decimal": "713",
+          "description": "Special Event Buses",
+          "group": "Transportation",
+          "mode": "DIGITAL",
+          "tag": "Schools"
+        }
+      ]
+    }
+  },
+  {
+    "county": "Washington",
+    "lastUpdated": "November 12, 2018, 4:52 pm (Updated encryption settings for 1 talkgroups(All))",
+    "location": "Fayetteville, AR",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 408
+          }
+        ],
+        "site": {
+          "systemName": "Veterans Health Care System of the Ozarks",
+          "siteUniqueDBID": "33364",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Washington",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "range": {
+            "distance": 237,
+            "units": ".miles"
+          },
+          "siteNac": "N/A"
+        },
+        "siteCounty": {},
+        "siteID": 33364,
+        "siteLink": "/apps/db/?siteId=33364",
+        "siteName": "Site 1"
+      }
+    ],
+    "state": "Arkansas",
+    "systemID": "10314",
+    "systemName": "Veterans Health Care System of the Ozarks",
+    "systemType": "Project 25 Phase I",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "uniqueIdentifier": "s-10314&opt=all_tg",
+    "url": "https://www.radioreference.com/apps/db/?sid=10314&opt=all_tg",
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "10",
+          "description": "Police",
+          "group": "All",
+          "mode": "ENCRYPTED",
+          "tag": "Law Dispatch"
+        },
+        {
+          "decimal": "710",
+          "description": "Maintenance",
+          "group": "All",
+          "mode": "DIGITAL",
+          "tag": "Federal"
+        }
+      ]
+    }
+  }
+]

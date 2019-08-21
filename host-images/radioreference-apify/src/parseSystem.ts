@@ -101,6 +101,7 @@ function parseSystemFrequencies($: CheerioStatic) {
 
   const frequencyTable = getTableByTitle('System Frequencies', $);
   const frequencyArray = (frequencyTable as any).parsetable(true, true, false);
+  if (!frequencyArray) return;
   const freqs = (new Array(frequencyArray[0].length - 1).fill(null).map(() => ({
     frequencies: [],
     siteCounty: {},

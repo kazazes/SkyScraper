@@ -883,10 +883,10 @@ async-listener@^0.6.0:
     semver "^5.3.0"
     shimmer "^1.1.0"
 
-async-mqtt@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/async-mqtt/-/async-mqtt-2.2.1.tgz#51c39d2b67c1b2c6b90800c5ed4fb47e7ddcc774"
-  integrity sha512-KUGmjOUlYT+KLj3TLPNOsXgsPddagHwCw4xLFrv9I14g1M/lbmTsfvaOxPo5W0GgUGlzBO+OyFpruwecG15KJw==
+async-mqtt@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/async-mqtt/-/async-mqtt-2.4.2.tgz#0462acda332e92a139c889d18b31afc09dc3fd26"
+  integrity sha512-w7f8oTXMpQyhtrxJiCEtOaEA6oHRINGHWSyq/xuricfihWEAr9fCanfDN1Jy5m7WqiC/iZ66YUSh5NhWfS3a0A==
   dependencies:
     mqtt "^2.3.1"
 

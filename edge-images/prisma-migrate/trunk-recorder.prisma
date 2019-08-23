@@ -1,10 +1,10 @@
-type TrunkedConfig implements IApplicationConfig {
+type TrunkedConfig {
   id: ID! @id
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
   name: String! @unique
-  sources: [TrunkedSource]!
-  systems: [TrunkedSystem]!
+  sources: [TrunkedSource!]!
+  systems: [TrunkedSystem!]!
   defaultMode: TrunkedDefaultMode! @default(value: ANALOG)
   captureDir: String!
   callTimeout: Int! @default(value: 3)
@@ -24,10 +24,10 @@ type TrunkedSource {
   error: Float! @default(value: 0)
   gain: Float! @default(value: 30)
   digitalRecorders: Float! @default(value: 3)
-  digitalLevels: Float
+  digitalLevels: Float! @default(value: 8.0)
   analogRecorders: Float! @default(value: 3)
-  analogLevels: Float
-  device: String!
+  analogLevels: Float! @default(value: 8.0)
+  device: String
   modulation: TrunkedModulation!
 }
 
@@ -40,20 +40,21 @@ type TrunkedSystem {
   type: TrunkedSystemType!
   alphatags: [String] @scalarList(strategy: RELATION)
   talkgroups: [TrunkedTalkgroup]
-  recordUnknown: Boolean @default(value: false)
-  shortName: String @unique
-  uploadScript: String
-  audioArchive: Boolean @default(value: true)
-  callLog: Boolean @default(value: true)
+  recordUnknown: Boolean! @default(value: false)
+  shortName: String! @unique
+  uploadScript: String!
+  audioArchive: Boolean! @default(value: true)
+  callLog: Boolean! @default(value: true)
+  minDuration: Float! @default(value: 2.0)
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
   bandplanSpacing: Float
   bandplanOffset: Float
-  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat @default(value: ID)
-  delayCreateOutput: Boolean
-  hideEncrypted: Boolean @default(value: false)
-  hideUnknownTalkgroups: Boolean @default(value: false)
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat! @default(value: ID)
+  delayCreateOutput: Boolean @default(value: false)
+  hideEncrypted: Boolean! @default(value: false)
+  hideUnknownTalkgroups: Boolean! @default(value: false)
   calls: [TrunkedCall]!
 }
 
@@ -62,13 +63,14 @@ type TrunkedTalkgroup {
   updatedAt: DateTime! @updatedAt
   createdAt: DateTime! @createdAt
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int! @default(value: 1)
-  system: TrunkedSystem
+  system: TrunkedSystem!
   calls: [TrunkedCall]!
   hash: String! @unique # The MD5 of system.shortName + tg.decimal
 }

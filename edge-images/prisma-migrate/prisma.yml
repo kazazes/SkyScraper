@@ -1,6 +1,5 @@
 endpoint: ${env:PRISMA_ENDPOINT}
 datamodel:
-  - ./datamodel.prisma
   - ./trunk-recorder.prisma
   - ./dump1090.prisma
   - ./transcription.prisma

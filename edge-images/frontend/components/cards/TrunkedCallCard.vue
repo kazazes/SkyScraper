@@ -35,15 +35,15 @@
           </v-flex>
         </v-card-title>
         <v-card-text class="white">
-          <blockquote
-            v-if="selectedTranscription !== undefined && selectedTranscription.body.length > 0"
-            class="blockquote pa-0 ma-1"
-            ref="transcript"
-            v-html="stylizeTranscription(selectedTranscription)"
-          ></blockquote>
-          <v-flex justify-space-around v-else>
-            <v-progress-circular style="width: 100%" color="primary" indeterminate></v-progress-circular>
-          </v-flex>
+            <blockquote
+              v-if="selectedTranscription !== undefined && selectedTranscription.body.length > 0"
+              class="blockquote pa-0 ma-1"
+              ref="transcript"
+              v-html="stylizeTranscription(selectedTranscription)"
+            ></blockquote>
+            <v-flex justify-space-around v-else>
+              <v-progress-circular style="width: 100%" color="primary" indeterminate></v-progress-circular>
+            </v-flex>
         </v-card-text>
       </v-card>
     </v-flex>

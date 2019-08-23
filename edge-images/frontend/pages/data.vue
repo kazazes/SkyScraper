@@ -1,13 +1,15 @@
 <template>
   <v-layout row fill-height pb-5>
-    <v-container fluid pa-0>
+    <v-container fluid pa-0 style="min-height: 100%;">
       <v-flex>
         <v-tabs
           :scroll-off-screen="true"
           :scroll-threshold="1"
           centered
           fixed-tabs
+          mandatory
           dark
+          grow
           color="primary lighten-1"
           z-index="10"
           slider-color="white"

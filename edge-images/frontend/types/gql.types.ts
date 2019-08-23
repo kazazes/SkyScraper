@@ -5198,7 +5198,7 @@ export type TrunkedCallsQuery = ({ __typename?: 'Query' } & { trunkedCalls: Arra
 export type NewTrunkedCallsSubscriptionVariables = {};
 
 
-export type NewTrunkedCallsSubscription = ({ __typename?: 'Subscription' } & { trunkedCalls: Maybe<({ __typename?: 'TrunkedCall' } & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath'> & { talkgroup: Maybe<({ __typename?: 'TrunkedTalkgroup' } & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>)>, system: Maybe<({ __typename?: 'TrunkedSystem' } & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>)>, transcription: Maybe<({ __typename?: 'Transcription' } & Pick<Transcription, 'body'> & { words: Maybe<Array<({ __typename?: 'TranscriptionWord' } & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>)>> })> })> });
+export type NewTrunkedCallsSubscription = ({ __typename?: 'Subscription' } & { trunkedCalls: Maybe<({ __typename?: 'TrunkedCall' } & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath' | 'remotePaths'> & { talkgroup: Maybe<({ __typename?: 'TrunkedTalkgroup' } & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>)>, system: Maybe<({ __typename?: 'TrunkedSystem' } & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>)>, transcription: Maybe<({ __typename?: 'Transcription' } & Pick<Transcription, 'body'> & { words: Maybe<Array<({ __typename?: 'TranscriptionWord' } & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>)>> })> })> });
 
 export type TranscriptionsSubscriptionVariables = {};
 

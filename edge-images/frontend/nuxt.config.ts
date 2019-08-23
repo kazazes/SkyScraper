@@ -1,5 +1,6 @@
 import NuxtConfiguration from "@nuxt/config";
 import apolloDefaultConfig from "./plugins/apolloDefaultConfig";
+import webpack from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -104,6 +105,7 @@ const config: NuxtConfiguration = {
     },
     customProperties: true,
     iconfont: "mdi",
+    treeShake: !isDev,
   },
   build: {
     devtools: true,
@@ -114,6 +116,7 @@ const config: NuxtConfiguration = {
         config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
       }
     },
+    plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)],
   },
   vue: {
     config: {

@@ -9,6 +9,8 @@
 
 export interface TrunkedSite {
   systemName: string;
+  systemLocation: string;
+  siteNumber: string;
   siteUniqueDBID: string;
   siteDescription: string;
   siteCountyLocation: string;
@@ -16,12 +18,14 @@ export interface TrunkedSite {
   siteLocation: string;
   siteModulation: string;
   siteNotes: string;
-  range?: Range;
-  siteConnectTone?: string;
-  siteRan?: string;
   siteNac?: string;
+  latitude?: string;
+  longitude?: string;
+  range?: Range;
   systemID?: string;
   rebanded?: string;
+  siteConnectTone?: string;
+  siteRan?: string;
   zoneID?: string;
 }
 
@@ -33,12 +37,12 @@ export interface Range {
 // Converts JSON strings to/from your types
 // and asserts the results of JSON.parse at runtime
 export class Convert {
-  static toTrunkedSite(json: string): TrunkedSite[] {
-    return cast(JSON.parse(json), a(r('TrunkedSite')));
+  static toTrunkedSites(json: string): TrunkedSite[] {
+    return cast(JSON.parse(json), a(r('TrunkedSites')));
   }
 
-  static trunkedSiteToJson(value: TrunkedSite[]): string {
-    return JSON.stringify(uncast(value, a(r('TrunkedSite'))), null, 2);
+  static trunkedSitesToJson(value: TrunkedSite[]): string {
+    return JSON.stringify(uncast(value, a(r('TrunkedSites'))), null, 2);
   }
 }
 
@@ -183,9 +187,11 @@ function r(name: string) {
 }
 
 const typeMap: any = {
-  TrunkedSite: o(
+  TrunkedSites: o(
     [
       { json: 'systemName', js: 'systemName', typ: '' },
+      { json: 'systemLocation', js: 'systemLocation', typ: '' },
+      { json: 'siteNumber', js: 'siteNumber', typ: '' },
       { json: 'siteUniqueDbId', js: 'siteUniqueDBID', typ: '' },
       { json: 'siteDescription', js: 'siteDescription', typ: '' },
       { json: 'siteCountyLocation', js: 'siteCountyLocation', typ: '' },
@@ -193,19 +199,21 @@ const typeMap: any = {
       { json: 'siteLocation', js: 'siteLocation', typ: '' },
       { json: 'siteModulation', js: 'siteModulation', typ: '' },
       { json: 'siteNotes', js: 'siteNotes', typ: '' },
-      { json: 'range', js: 'range', typ: u(undefined, r('Range')) },
-      { json: 'siteConnectTone', js: 'siteConnectTone', typ: u(undefined, '') },
-      { json: 'siteRan', js: 'siteRan', typ: u(undefined, '') },
       { json: 'siteNac', js: 'siteNac', typ: u(undefined, '') },
+      { json: 'latitude', js: 'latitude', typ: u(undefined, '') },
+      { json: 'longitude', js: 'longitude', typ: u(undefined, '') },
+      { json: 'range', js: 'range', typ: u(undefined, r('Range')) },
       { json: 'systemId', js: 'systemID', typ: u(undefined, '') },
       { json: 'rebanded', js: 'rebanded', typ: u(undefined, '') },
+      { json: 'siteConnectTone', js: 'siteConnectTone', typ: u(undefined, '') },
+      { json: 'siteRan', js: 'siteRan', typ: u(undefined, '') },
       { json: 'zoneId', js: 'zoneID', typ: u(undefined, '') },
     ],
     false
   ),
   Range: o(
     [
-      { json: 'distance', js: 'distance', typ: 0 },
+      { json: 'distance', js: 'distance', typ: 3.14 },
       { json: 'units', js: 'units', typ: '' },
     ],
     false

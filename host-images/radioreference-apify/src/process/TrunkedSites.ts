@@ -4,11 +4,11 @@ export default class TrunkedSites {
   serialized: TrunkedSite[];
   constructor(data: string | object | Buffer) {
     if (typeof data === 'string') {
-      this.serialized = Convert.toTrunkedSite(data);
+      this.serialized = Convert.toTrunkedSites(data);
     } else if (Buffer.isBuffer(data)) {
-      this.serialized = Convert.toTrunkedSite(data.toString());
+      this.serialized = Convert.toTrunkedSites(data.toString());
     } else {
-      this.serialized = Convert.toTrunkedSite(JSON.stringify(data));
+      this.serialized = Convert.toTrunkedSites(JSON.stringify(data));
     }
     console.log(`Serialized ${this.serialized.length} trunked sites`);
   }

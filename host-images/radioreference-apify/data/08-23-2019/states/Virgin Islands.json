@@ -1,0 +1,44 @@
+[
+  {
+    "systemName": "Water and Power Authority",
+    "location": "Various, VI",
+    "county": "3 counties",
+    "systemType": "DMR Tier 3",
+    "systemVoice": "DMR",
+    "lastUpdated": "December 15, 2018, 4:44 pm (Updated General Trunked System Information)",
+    "systemID": "10371",
+    "state": "Virgin Islands",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 152.3
+          }
+        ],
+        "siteCounty": {
+          "link": "/apps/db/?ctid=5592",
+          "name": "St. Thomas"
+        },
+        "site": {
+          "systemName": "Water and Power Authority",
+          "systemLocation": "Various, Virgin Islands",
+          "siteNumber": "Decimal: 003 / Hex: 3",
+          "siteUniqueDBID": "33518",
+          "siteDescription": "St. Thomas",
+          "siteCountyLocation": "St. Thomas",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "zoneID": "3 ()"
+        },
+        "siteLink": "/apps/db/?siteId=33518",
+        "siteName": "St. Thomas",
+        "siteID": 33518
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=10371&opt=all_tg",
+    "uniqueIdentifier": "s-10371&opt=all_tg"
+  }
+]

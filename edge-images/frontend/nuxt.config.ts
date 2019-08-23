@@ -38,6 +38,7 @@ const config: NuxtConfiguration = {
   /*
    ** Nuxt.js modules
    */
+  buildModules: ["@nuxt/typescript-build"],
   modules: isDev
     ? [
         "@nuxtjs/axios",
@@ -124,6 +125,10 @@ const config: NuxtConfiguration = {
       devtools: isDev,
       performance: isDev,
     },
+  },
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true,
   },
 };
 

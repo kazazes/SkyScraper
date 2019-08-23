@@ -6,19 +6,19 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "dev-debug": "node --inspect node_modules/.bin/nuxt",
-    "generate": "nuxt generate",
+    "dev": "nuxt-ts",
+    "build": "nuxt-ts build",
+    "dev-debug": "node --inspect node_modules/.bin/nuxt-ts",
+    "generate": "nuxt-ts generate",
     "lint": "tslint --project .",
     "precommit": "yarn run lint",
-    "start": "nuxt start",
+    "start": "nuxt-ts start",
     "now-build": "yarn run generate"
   },
   "dependencies": {
     "@mdi/font": "^4.1.95",
     "@nuxt/config": "^2.9.1",
-    "@nuxt/typescript": "^2.7.1",
+    "@nuxt/typescript-runtime": "^0.1.3",
     "@nuxtjs/apollo": "^4.0.0-rc11",
     "@nuxtjs/axios": "^5.6.0",
     "@nuxtjs/component-cache": "^1.1.4",
@@ -48,7 +48,7 @@
     "moment": "^2.24.0",
     "newrelic": "^5.6.4",
     "node-sass": "^4.12.0",
-    "nuxt": "^2.6.2",
+    "nuxt": "^2.9.1",
     "nuxt-class-component": "^1.3.0",
     "nuxt-segment-analytics": "^0.0.1",
     "nuxt-validate": "^1.0.1",
@@ -65,7 +65,7 @@
     "wavesurfer.js": "^2.2.1"
   },
   "devDependencies": {
-    "@nuxt/typescript": "^2.7.1",
+    "@nuxt/typescript-build": "^0.1.11",
     "@types/chroma-js": "^1.4.1",
     "@types/graphql": "^14.2.0",
     "@types/howler": "^2.1.1",

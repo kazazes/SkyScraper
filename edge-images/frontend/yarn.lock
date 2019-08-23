@@ -2906,10 +2906,10 @@
   dependencies:
     "@types/webpack" "*"
 
-"@types/papaparse@^4.5.9":
-  version "4.5.11"
-  resolved "https://registry.yarnpkg.com/@types/papaparse/-/papaparse-4.5.11.tgz#dcd4f64da55f768c2e2cf92ccac1973c67a73890"
-  integrity sha512-zOw6K7YyA/NuZ2yZ8lzZFe2U3fn+vFfcRfiQp4ZJHG6y8WYWy2SYFbq6mp4yUgpIruJHBjKZtgyE0vvCoWEq+A==
+"@types/papaparse@^5.0.1":
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/@types/papaparse/-/papaparse-5.0.1.tgz#bf8ee3a144c77ffda7cf1e8f65be7e0de7472d35"
+  integrity sha512-neEiIoeNezVK5yAWuO0El6056BBt+SPy0BtDmggcy1fSdfxLltE4WXaSsnPI2V4SxoRGIEAtkZyeDRxHXhcAKQ==
   dependencies:
     "@types/node" "*"
 

@@ -3,6 +3,7 @@ import * as dotenv from 'dotenv';
 import { Page, Request } from 'puppeteer';
 import { createRouter, getSources } from './tools';
 import { readFileSync } from 'fs';
+import moment = require('moment');
 
 const envConfig = dotenv.parse(readFileSync('.env'));
 for (const k in envConfig) {
@@ -13,14 +14,18 @@ const {
   utils: { log },
 } = Apify;
 
+const dateStr = moment()
+  .utc()
+  .format('MM-DD-YYYY');
+
 Apify.main(async () => {
   log.info('Starting actor.');
   const sources = getSources();
-  const requestQueue = await Apify.openRequestQueue('radioref', {
+  const requestQueue = await Apify.openRequestQueue(`radioref-${dateStr}`, {
     forceCloud: process.env.APIFY_CLOUD === '1',
   });
 
-  await Apify.openDataset('radioref', {
+  await Apify.openDataset(`radioref-${dateStr}`, {
     forceCloud: process.env.APIFY_CLOUD === '1',
   });
 

@@ -5,11 +5,16 @@ import parseSystem from './parseSystem';
 import { Request } from 'apify';
 import * as cheerio from 'cheerio';
 import { zipObject, camelCase } from 'lodash';
+import moment = require('moment');
 const geocode = require('reverse-geocode');
 
 const {
   utils: { log },
 } = Apify;
+
+const dateStr = moment()
+  .utc()
+  .format('MM-DD-YYYY');
 
 exports.MAP = async (
   {
@@ -32,7 +37,7 @@ exports.MAP = async (
       .map((v: any) => [v.value, v.innerText]);
   });
 
-  log.info(JSON.stringify(states, null, 2));
+  log.info(`Scraped ${states.length} states`);
 
   states.forEach((stateTupple: any) => {
     requestQueue.addRequest({
@@ -55,6 +60,14 @@ exports.STATE = async (
   { requestQueue }: { requestQueue: Apify.RequestList }
 ) => {
   const id = request.url.split('?')[1].replace('id=', '-');
+
+  const state = await page.evaluate(() => {
+    return $('table h1')
+      .text()
+      .trim();
+  });
+
+  log.info(`Scraping ${state}`);
 
   const systems = await page.evaluate(() => {
     return $('#tabcontents > table > tbody tr')
@@ -91,7 +104,10 @@ exports.STATE = async (
 
   log.debug(`Scraping ${results.url}`);
   log.debug('Pushing data to dataset.');
-  await Apify.pushData(results);
+  const stateDataset = await Apify.openDataset(`radioref-states-${dateStr}`, {
+    forceCloud: process.env.APIFY_CLOUD === '1',
+  });
+  await stateDataset.pushData(results);
 };
 
 exports.SYSTEM = async (
@@ -145,8 +161,11 @@ exports.SYSTEM = async (
     owner: request.userData.owner,
   };
 
-  log.debug('Pushing data to dataset.');
-  await Apify.pushData(results);
+  const systemDataset = await Apify.openDataset(`radioref-systems-${dateStr}`, {
+    forceCloud: process.env.APIFY_CLOUD === '1',
+  });
+  log.debug('Pushing system data to dataset.');
+  await systemDataset.pushData(results);
 };
 
 exports.SITE_DETAILS = async (
@@ -159,9 +178,6 @@ exports.SITE_DETAILS = async (
   },
   { requestQueue }: { requestQueue: Apify.RequestList }
 ) => {
-  const siteDataset = await Apify.openDataset('radioref-sites', {
-    forceCloud: process.env.APIFY_CLOUD === '1',
-  });
   const content = await page.content();
   const $ = cheerio.load(content);
   cheerioTableparser($);
@@ -190,5 +206,8 @@ exports.SITE_DETAILS = async (
     };
   }
 
+  const siteDataset = await Apify.openDataset(`radioref-sites-${dateStr}`, {
+    forceCloud: process.env.APIFY_CLOUD === '1',
+  });
   await siteDataset.pushData(systemInfo);
 };

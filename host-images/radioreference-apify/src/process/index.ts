@@ -5,24 +5,25 @@ import { Dictionary } from 'lodash';
 import { TrunkedSystem } from './parsers/systemParser';
 import {
   writeFileSync,
-  writeFile,
   readFileSync,
   mkdirSync,
   existsSync,
-  PathLike,
   createWriteStream,
 } from 'fs';
 import { promisify } from 'util';
 import dotenv from 'dotenv';
 import consola from 'consola';
 import archiver from 'archiver';
+import moment from 'moment';
 
 const envConfig = dotenv.parse(readFileSync('.env'));
 for (const k in envConfig) {
   process.env[k] = envConfig[k];
 }
 
-const dateStr = new Date().toLocaleDateString().replace(/\//g, '-');
+const dateStr = moment()
+  .utc()
+  .format('MM-DD-YYYY');
 const dataDir = `data/${dateStr}`;
 const sitesFile = `${dataDir}/sites.json`;
 const systemsFile = `${dataDir}/systems.json`;

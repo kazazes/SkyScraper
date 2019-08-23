@@ -10,7 +10,9 @@ import {
 } from "./applicationListener";
 
 const rootTopic =
-  process.env.NODE_ENV === "production" ? "transcription/#" : "+/transcription/#";
+  process.env.NODE_ENV === "production"
+    ? "transcription/#"
+    : "+/transcription/#";
 
 export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
@@ -58,6 +60,10 @@ class TranscriptionHandler extends ApplicationMessageHandler {
       : null;
 
     try {
+      const exists = await prisma.$exists.trunkedCall({
+        callHash: parsed.callHash,
+      });
+      if (!exists) { return; }
       await prisma.updateTrunkedCall({
         data: {
           transcription: {

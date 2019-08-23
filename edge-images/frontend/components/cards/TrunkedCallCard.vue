@@ -35,6 +35,7 @@
           </v-flex>
         </v-card-title>
         <v-card-text class="white">
+          <no-ssr>
             <blockquote
               v-if="selectedTranscription !== undefined && selectedTranscription.body.length > 0"
               class="blockquote pa-0 ma-1"
@@ -44,6 +45,7 @@
             <v-flex justify-space-around v-else>
               <v-progress-circular style="width: 100%" color="primary" indeterminate></v-progress-circular>
             </v-flex>
+          </no-ssr>
         </v-card-text>
       </v-card>
     </v-flex>

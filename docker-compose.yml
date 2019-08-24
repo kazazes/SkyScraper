@@ -12,6 +12,8 @@ services:
     environment:
       - KIOSK_URL=http://nginx/
     privileged: true
+    depends_on:
+      - nginx
   prisma-migrate:
     build:
       context: edge-images/prisma-migrate

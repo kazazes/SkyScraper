@@ -42,20 +42,21 @@ type TrunkedSystem {
   talkgroups: [TrunkedTalkgroup]
   recordUnknown: Boolean! @default(value: false)
   shortName: String! @unique
-  uploadScript: String!
+  name: String! @default(value: "(no name)")
   audioArchive: Boolean! @default(value: true)
   callLog: Boolean! @default(value: true)
   minDuration: Float! @default(value: 2.0)
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat! @default(value: ID)
   delayCreateOutput: Boolean @default(value: false)
   hideEncrypted: Boolean! @default(value: false)
   hideUnknownTalkgroups: Boolean! @default(value: false)
-  calls: [TrunkedCall]!
+  calls: [TrunkedCall]
 }
 
 type TrunkedTalkgroup {
@@ -70,8 +71,8 @@ type TrunkedTalkgroup {
   tag: String!
   group: String!
   priority: Int! @default(value: 1)
-  system: TrunkedSystem!
-  calls: [TrunkedCall]!
+  system: TrunkedSystem
+  calls: [TrunkedCall]
   hash: String! @unique # The MD5 of system.shortName + tg.decimal
 }
 

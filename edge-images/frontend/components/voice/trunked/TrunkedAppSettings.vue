@@ -73,7 +73,7 @@
   @Component({
     name: "TrunkedAppSettings",
     components: {},
-    data: () => {
+    data() {
       return {
         radios: {
           headers: [

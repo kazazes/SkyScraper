@@ -537,6 +537,7 @@ export enum Dump1090TransmissionType {
 
 export type Mutation = {
   __typename?: 'Mutation',
+  createTrunkedSystem: TrunkedSystem,
   createDump1090Aircraft: Dump1090Aircraft,
   updateDump1090Aircraft?: Maybe<Dump1090Aircraft>,
   updateManyDump1090Aircrafts: BatchPayload,
@@ -591,7 +592,6 @@ export type Mutation = {
   upsertTrunkedSource: TrunkedSource,
   deleteTrunkedSource?: Maybe<TrunkedSource>,
   deleteManyTrunkedSources: BatchPayload,
-  createTrunkedSystem: TrunkedSystem,
   updateTrunkedSystem?: Maybe<TrunkedSystem>,
   updateManyTrunkedSystems: BatchPayload,
   upsertTrunkedSystem: TrunkedSystem,
@@ -603,6 +603,12 @@ export type Mutation = {
   upsertTrunkedTalkgroup: TrunkedTalkgroup,
   deleteTrunkedTalkgroup?: Maybe<TrunkedTalkgroup>,
   deleteManyTrunkedTalkgroups: BatchPayload,
+};
+
+
+export type MutationCreateTrunkedSystemArgs = {
+  system?: Maybe<TrunkedSystemCreateInput>,
+  data: TrunkedSystemCreateInput
 };
 
 
@@ -912,11 +918,6 @@ export type MutationDeleteManyTrunkedSourcesArgs = {
 };
 
 
-export type MutationCreateTrunkedSystemArgs = {
-  data: TrunkedSystemCreateInput
-};
-
-
 export type MutationUpdateTrunkedSystemArgs = {
   data: TrunkedSystemUpdateInput,
   where: TrunkedSystemWhereUniqueInput
@@ -1001,6 +1002,7 @@ export type Query = {
   __typename?: 'Query',
   trunkedCalls: Array<Maybe<TrunkedCall>>,
   trunkedCallCount: Scalars['Int'],
+  trunkedSystems: Array<Maybe<TrunkedSystem>>,
   dump1090Aircraft?: Maybe<Dump1090Aircraft>,
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>,
   dump1090AircraftsConnection: Dump1090AircraftConnection,
@@ -1028,7 +1030,6 @@ export type Query = {
   trunkedSources: Array<Maybe<TrunkedSource>>,
   trunkedSourcesConnection: TrunkedSourceConnection,
   trunkedSystem?: Maybe<TrunkedSystem>,
-  trunkedSystems: Array<Maybe<TrunkedSystem>>,
   trunkedSystemsConnection: TrunkedSystemConnection,
   trunkedTalkgroup?: Maybe<TrunkedTalkgroup>,
   trunkedTalkgroups: Array<Maybe<TrunkedTalkgroup>>,
@@ -1040,6 +1041,17 @@ export type Query = {
 export type QueryTrunkedCallsArgs = {
   where?: Maybe<TrunkedCallWhereInput>,
   orderBy?: Maybe<TrunkedCallOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryTrunkedSystemsArgs = {
+  where?: Maybe<TrunkedSystemWhereInput>,
+  orderBy?: Maybe<TrunkedSystemOrderByInput>,
   skip?: Maybe<Scalars['Int']>,
   after?: Maybe<Scalars['String']>,
   before?: Maybe<Scalars['String']>,
@@ -1282,17 +1294,6 @@ export type QueryTrunkedSourcesConnectionArgs = {
 
 export type QueryTrunkedSystemArgs = {
   where: TrunkedSystemWhereUniqueInput
-};
-
-
-export type QueryTrunkedSystemsArgs = {
-  where?: Maybe<TrunkedSystemWhereInput>,
-  orderBy?: Maybe<TrunkedSystemOrderByInput>,
-  skip?: Maybe<Scalars['Int']>,
-  after?: Maybe<Scalars['String']>,
-  before?: Maybe<Scalars['String']>,
-  first?: Maybe<Scalars['Int']>,
-  last?: Maybe<Scalars['Int']>
 };
 
 
@@ -3500,10 +3501,10 @@ export type TrunkedSource = {
   error: Scalars['Float'],
   gain: Scalars['Float'],
   digitalRecorders: Scalars['Float'],
-  digitalLevels?: Maybe<Scalars['Float']>,
+  digitalLevels: Scalars['Float'],
   analogRecorders: Scalars['Float'],
-  analogLevels?: Maybe<Scalars['Float']>,
-  device: Scalars['String'],
+  analogLevels: Scalars['Float'],
+  device?: Maybe<Scalars['String']>,
   modulation: TrunkedModulation,
 };
 
@@ -3525,7 +3526,7 @@ export type TrunkedSourceCreateInput = {
   digitalLevels?: Maybe<Scalars['Float']>,
   analogRecorders?: Maybe<Scalars['Float']>,
   analogLevels?: Maybe<Scalars['Float']>,
-  device: Scalars['String'],
+  device?: Maybe<Scalars['String']>,
   modulation: TrunkedModulation,
 };
 
@@ -3582,10 +3583,10 @@ export type TrunkedSourcePreviousValues = {
   error: Scalars['Float'],
   gain: Scalars['Float'],
   digitalRecorders: Scalars['Float'],
-  digitalLevels?: Maybe<Scalars['Float']>,
+  digitalLevels: Scalars['Float'],
   analogRecorders: Scalars['Float'],
-  analogLevels?: Maybe<Scalars['Float']>,
-  device: Scalars['String'],
+  analogLevels: Scalars['Float'],
+  device?: Maybe<Scalars['String']>,
   modulation: TrunkedModulation,
 };
 
@@ -3958,20 +3959,22 @@ export type TrunkedSystem = {
   type: TrunkedSystemType,
   alphatags: Array<Scalars['String']>,
   talkgroups?: Maybe<Array<TrunkedTalkgroup>>,
-  recordUnknown?: Maybe<Scalars['Boolean']>,
-  shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
-  audioArchive?: Maybe<Scalars['Boolean']>,
-  callLog?: Maybe<Scalars['Boolean']>,
+  recordUnknown: Scalars['Boolean'],
+  shortName: Scalars['String'],
+  name: Scalars['String'],
+  audioArchive: Scalars['Boolean'],
+  callLog: Scalars['Boolean'],
+  minDuration: Scalars['Float'],
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
-  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat,
   delayCreateOutput?: Maybe<Scalars['Boolean']>,
-  hideEncrypted?: Maybe<Scalars['Boolean']>,
-  hideUnknownTalkgroups?: Maybe<Scalars['Boolean']>,
+  hideEncrypted: Scalars['Boolean'],
+  hideUnknownTalkgroups: Scalars['Boolean'],
   calls?: Maybe<Array<TrunkedCall>>,
 };
 
@@ -4024,13 +4027,15 @@ export type TrunkedSystemCreateInput = {
   alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>,
   talkgroups?: Maybe<TrunkedTalkgroupCreateManyWithoutSystemInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
-  shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  shortName: Scalars['String'],
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4063,13 +4068,15 @@ export type TrunkedSystemCreateWithoutCallsInput = {
   alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>,
   talkgroups?: Maybe<TrunkedTalkgroupCreateManyWithoutSystemInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
-  shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  shortName: Scalars['String'],
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4085,13 +4092,15 @@ export type TrunkedSystemCreateWithoutTalkgroupsInput = {
   type: TrunkedSystemType,
   alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
-  shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  shortName: Scalars['String'],
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4120,18 +4129,22 @@ export enum TrunkedSystemOrderByInput {
   RecordUnknownDesc = 'recordUnknown_DESC',
   ShortNameAsc = 'shortName_ASC',
   ShortNameDesc = 'shortName_DESC',
-  UploadScriptAsc = 'uploadScript_ASC',
-  UploadScriptDesc = 'uploadScript_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
   AudioArchiveAsc = 'audioArchive_ASC',
   AudioArchiveDesc = 'audioArchive_DESC',
   CallLogAsc = 'callLog_ASC',
   CallLogDesc = 'callLog_DESC',
+  MinDurationAsc = 'minDuration_ASC',
+  MinDurationDesc = 'minDuration_DESC',
   BandplanAsc = 'bandplan_ASC',
   BandplanDesc = 'bandplan_DESC',
   BandplanBaseAsc = 'bandplanBase_ASC',
   BandplanBaseDesc = 'bandplanBase_DESC',
   BandplanHighAsc = 'bandplanHigh_ASC',
   BandplanHighDesc = 'bandplanHigh_DESC',
+  BandplanLowAsc = 'bandplanLow_ASC',
+  BandplanLowDesc = 'bandplanLow_DESC',
   BandplanSpacingAsc = 'bandplanSpacing_ASC',
   BandplanSpacingDesc = 'bandplanSpacing_DESC',
   BandplanOffsetAsc = 'bandplanOffset_ASC',
@@ -4155,20 +4168,22 @@ export type TrunkedSystemPreviousValues = {
   channels: Array<Scalars['Float']>,
   type: TrunkedSystemType,
   alphatags: Array<Scalars['String']>,
-  recordUnknown?: Maybe<Scalars['Boolean']>,
-  shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
-  audioArchive?: Maybe<Scalars['Boolean']>,
-  callLog?: Maybe<Scalars['Boolean']>,
+  recordUnknown: Scalars['Boolean'],
+  shortName: Scalars['String'],
+  name: Scalars['String'],
+  audioArchive: Scalars['Boolean'],
+  callLog: Scalars['Boolean'],
+  minDuration: Scalars['Float'],
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
-  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat,
   delayCreateOutput?: Maybe<Scalars['Boolean']>,
-  hideEncrypted?: Maybe<Scalars['Boolean']>,
-  hideUnknownTalkgroups?: Maybe<Scalars['Boolean']>,
+  hideEncrypted: Scalars['Boolean'],
+  hideUnknownTalkgroups: Scalars['Boolean'],
 };
 
 export type TrunkedSystemScalarWhereInput = {
@@ -4222,24 +4237,32 @@ export type TrunkedSystemScalarWhereInput = {
   shortName_not_starts_with?: Maybe<Scalars['String']>,
   shortName_ends_with?: Maybe<Scalars['String']>,
   shortName_not_ends_with?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
-  uploadScript_not?: Maybe<Scalars['String']>,
-  uploadScript_in?: Maybe<Array<Scalars['String']>>,
-  uploadScript_not_in?: Maybe<Array<Scalars['String']>>,
-  uploadScript_lt?: Maybe<Scalars['String']>,
-  uploadScript_lte?: Maybe<Scalars['String']>,
-  uploadScript_gt?: Maybe<Scalars['String']>,
-  uploadScript_gte?: Maybe<Scalars['String']>,
-  uploadScript_contains?: Maybe<Scalars['String']>,
-  uploadScript_not_contains?: Maybe<Scalars['String']>,
-  uploadScript_starts_with?: Maybe<Scalars['String']>,
-  uploadScript_not_starts_with?: Maybe<Scalars['String']>,
-  uploadScript_ends_with?: Maybe<Scalars['String']>,
-  uploadScript_not_ends_with?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
+  name_not?: Maybe<Scalars['String']>,
+  name_in?: Maybe<Array<Scalars['String']>>,
+  name_not_in?: Maybe<Array<Scalars['String']>>,
+  name_lt?: Maybe<Scalars['String']>,
+  name_lte?: Maybe<Scalars['String']>,
+  name_gt?: Maybe<Scalars['String']>,
+  name_gte?: Maybe<Scalars['String']>,
+  name_contains?: Maybe<Scalars['String']>,
+  name_not_contains?: Maybe<Scalars['String']>,
+  name_starts_with?: Maybe<Scalars['String']>,
+  name_not_starts_with?: Maybe<Scalars['String']>,
+  name_ends_with?: Maybe<Scalars['String']>,
+  name_not_ends_with?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   audioArchive_not?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
   callLog_not?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
+  minDuration_not?: Maybe<Scalars['Float']>,
+  minDuration_in?: Maybe<Array<Scalars['Float']>>,
+  minDuration_not_in?: Maybe<Array<Scalars['Float']>>,
+  minDuration_lt?: Maybe<Scalars['Float']>,
+  minDuration_lte?: Maybe<Scalars['Float']>,
+  minDuration_gt?: Maybe<Scalars['Float']>,
+  minDuration_gte?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplan_not?: Maybe<TrunkedSmartnetBandplan>,
   bandplan_in?: Maybe<Array<TrunkedSmartnetBandplan>>,
@@ -4260,6 +4283,14 @@ export type TrunkedSystemScalarWhereInput = {
   bandplanHigh_lte?: Maybe<Scalars['Float']>,
   bandplanHigh_gt?: Maybe<Scalars['Float']>,
   bandplanHigh_gte?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
+  bandplanLow_not?: Maybe<Scalars['Float']>,
+  bandplanLow_in?: Maybe<Array<Scalars['Float']>>,
+  bandplanLow_not_in?: Maybe<Array<Scalars['Float']>>,
+  bandplanLow_lt?: Maybe<Scalars['Float']>,
+  bandplanLow_lte?: Maybe<Scalars['Float']>,
+  bandplanLow_gt?: Maybe<Scalars['Float']>,
+  bandplanLow_gte?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanSpacing_not?: Maybe<Scalars['Float']>,
   bandplanSpacing_in?: Maybe<Array<Scalars['Float']>>,
@@ -4338,12 +4369,14 @@ export type TrunkedSystemUpdateDataInput = {
   talkgroups?: Maybe<TrunkedTalkgroupUpdateManyWithoutSystemInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4361,12 +4394,14 @@ export type TrunkedSystemUpdateInput = {
   talkgroups?: Maybe<TrunkedTalkgroupUpdateManyWithoutSystemInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4383,12 +4418,14 @@ export type TrunkedSystemUpdateManyDataInput = {
   alphatags?: Maybe<TrunkedSystemUpdatealphatagsInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4416,12 +4453,14 @@ export type TrunkedSystemUpdateManyMutationInput = {
   alphatags?: Maybe<TrunkedSystemUpdatealphatagsInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4461,12 +4500,14 @@ export type TrunkedSystemUpdateWithoutCallsDataInput = {
   talkgroups?: Maybe<TrunkedTalkgroupUpdateManyWithoutSystemInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4482,12 +4523,14 @@ export type TrunkedSystemUpdateWithoutTalkgroupsDataInput = {
   alphatags?: Maybe<TrunkedSystemUpdatealphatagsInput>,
   recordUnknown?: Maybe<Scalars['Boolean']>,
   shortName?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplanBase?: Maybe<Scalars['Float']>,
   bandplanHigh?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanOffset?: Maybe<Scalars['Float']>,
   talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>,
@@ -4572,24 +4615,32 @@ export type TrunkedSystemWhereInput = {
   shortName_not_starts_with?: Maybe<Scalars['String']>,
   shortName_ends_with?: Maybe<Scalars['String']>,
   shortName_not_ends_with?: Maybe<Scalars['String']>,
-  uploadScript?: Maybe<Scalars['String']>,
-  uploadScript_not?: Maybe<Scalars['String']>,
-  uploadScript_in?: Maybe<Array<Scalars['String']>>,
-  uploadScript_not_in?: Maybe<Array<Scalars['String']>>,
-  uploadScript_lt?: Maybe<Scalars['String']>,
-  uploadScript_lte?: Maybe<Scalars['String']>,
-  uploadScript_gt?: Maybe<Scalars['String']>,
-  uploadScript_gte?: Maybe<Scalars['String']>,
-  uploadScript_contains?: Maybe<Scalars['String']>,
-  uploadScript_not_contains?: Maybe<Scalars['String']>,
-  uploadScript_starts_with?: Maybe<Scalars['String']>,
-  uploadScript_not_starts_with?: Maybe<Scalars['String']>,
-  uploadScript_ends_with?: Maybe<Scalars['String']>,
-  uploadScript_not_ends_with?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
+  name_not?: Maybe<Scalars['String']>,
+  name_in?: Maybe<Array<Scalars['String']>>,
+  name_not_in?: Maybe<Array<Scalars['String']>>,
+  name_lt?: Maybe<Scalars['String']>,
+  name_lte?: Maybe<Scalars['String']>,
+  name_gt?: Maybe<Scalars['String']>,
+  name_gte?: Maybe<Scalars['String']>,
+  name_contains?: Maybe<Scalars['String']>,
+  name_not_contains?: Maybe<Scalars['String']>,
+  name_starts_with?: Maybe<Scalars['String']>,
+  name_not_starts_with?: Maybe<Scalars['String']>,
+  name_ends_with?: Maybe<Scalars['String']>,
+  name_not_ends_with?: Maybe<Scalars['String']>,
   audioArchive?: Maybe<Scalars['Boolean']>,
   audioArchive_not?: Maybe<Scalars['Boolean']>,
   callLog?: Maybe<Scalars['Boolean']>,
   callLog_not?: Maybe<Scalars['Boolean']>,
+  minDuration?: Maybe<Scalars['Float']>,
+  minDuration_not?: Maybe<Scalars['Float']>,
+  minDuration_in?: Maybe<Array<Scalars['Float']>>,
+  minDuration_not_in?: Maybe<Array<Scalars['Float']>>,
+  minDuration_lt?: Maybe<Scalars['Float']>,
+  minDuration_lte?: Maybe<Scalars['Float']>,
+  minDuration_gt?: Maybe<Scalars['Float']>,
+  minDuration_gte?: Maybe<Scalars['Float']>,
   bandplan?: Maybe<TrunkedSmartnetBandplan>,
   bandplan_not?: Maybe<TrunkedSmartnetBandplan>,
   bandplan_in?: Maybe<Array<TrunkedSmartnetBandplan>>,
@@ -4610,6 +4661,14 @@ export type TrunkedSystemWhereInput = {
   bandplanHigh_lte?: Maybe<Scalars['Float']>,
   bandplanHigh_gt?: Maybe<Scalars['Float']>,
   bandplanHigh_gte?: Maybe<Scalars['Float']>,
+  bandplanLow?: Maybe<Scalars['Float']>,
+  bandplanLow_not?: Maybe<Scalars['Float']>,
+  bandplanLow_in?: Maybe<Array<Scalars['Float']>>,
+  bandplanLow_not_in?: Maybe<Array<Scalars['Float']>>,
+  bandplanLow_lt?: Maybe<Scalars['Float']>,
+  bandplanLow_lte?: Maybe<Scalars['Float']>,
+  bandplanLow_gt?: Maybe<Scalars['Float']>,
+  bandplanLow_gte?: Maybe<Scalars['Float']>,
   bandplanSpacing?: Maybe<Scalars['Float']>,
   bandplanSpacing_not?: Maybe<Scalars['Float']>,
   bandplanSpacing_in?: Maybe<Array<Scalars['Float']>>,
@@ -4655,11 +4714,12 @@ export type TrunkedTalkgroup = {
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
   decimal: Scalars['Int'],
-  mode?: Maybe<Scalars['String']>,
-  alphaTag?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  tag?: Maybe<Scalars['String']>,
-  group?: Maybe<Scalars['String']>,
+  hex: Scalars['String'],
+  mode: Scalars['String'],
+  alphaTag: Scalars['String'],
+  description: Scalars['String'],
+  tag: Scalars['String'],
+  group: Scalars['String'],
   priority: Scalars['Int'],
   system?: Maybe<TrunkedSystem>,
   calls?: Maybe<Array<TrunkedCall>>,
@@ -4687,11 +4747,12 @@ export type TrunkedTalkgroupConnection = {
 export type TrunkedTalkgroupCreateInput = {
   id?: Maybe<Scalars['ID']>,
   decimal: Scalars['Int'],
-  mode?: Maybe<Scalars['String']>,
-  alphaTag?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  tag?: Maybe<Scalars['String']>,
-  group?: Maybe<Scalars['String']>,
+  hex: Scalars['String'],
+  mode: Scalars['String'],
+  alphaTag: Scalars['String'],
+  description: Scalars['String'],
+  tag: Scalars['String'],
+  group: Scalars['String'],
   priority?: Maybe<Scalars['Int']>,
   system?: Maybe<TrunkedSystemCreateOneWithoutTalkgroupsInput>,
   calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>,
@@ -4711,11 +4772,12 @@ export type TrunkedTalkgroupCreateOneWithoutCallsInput = {
 export type TrunkedTalkgroupCreateWithoutCallsInput = {
   id?: Maybe<Scalars['ID']>,
   decimal: Scalars['Int'],
-  mode?: Maybe<Scalars['String']>,
-  alphaTag?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  tag?: Maybe<Scalars['String']>,
-  group?: Maybe<Scalars['String']>,
+  hex: Scalars['String'],
+  mode: Scalars['String'],
+  alphaTag: Scalars['String'],
+  description: Scalars['String'],
+  tag: Scalars['String'],
+  group: Scalars['String'],
   priority?: Maybe<Scalars['Int']>,
   system?: Maybe<TrunkedSystemCreateOneWithoutTalkgroupsInput>,
   hash: Scalars['String'],
@@ -4724,11 +4786,12 @@ export type TrunkedTalkgroupCreateWithoutCallsInput = {
 export type TrunkedTalkgroupCreateWithoutSystemInput = {
   id?: Maybe<Scalars['ID']>,
   decimal: Scalars['Int'],
-  mode?: Maybe<Scalars['String']>,
-  alphaTag?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  tag?: Maybe<Scalars['String']>,
-  group?: Maybe<Scalars['String']>,
+  hex: Scalars['String'],
+  mode: Scalars['String'],
+  alphaTag: Scalars['String'],
+  description: Scalars['String'],
+  tag: Scalars['String'],
+  group: Scalars['String'],
   priority?: Maybe<Scalars['Int']>,
   calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>,
   hash: Scalars['String'],
@@ -4755,6 +4818,8 @@ export enum TrunkedTalkgroupOrderByInput {
   CreatedAtDesc = 'createdAt_DESC',
   DecimalAsc = 'decimal_ASC',
   DecimalDesc = 'decimal_DESC',
+  HexAsc = 'hex_ASC',
+  HexDesc = 'hex_DESC',
   ModeAsc = 'mode_ASC',
   ModeDesc = 'mode_DESC',
   AlphaTagAsc = 'alphaTag_ASC',
@@ -4777,11 +4842,12 @@ export type TrunkedTalkgroupPreviousValues = {
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
   decimal: Scalars['Int'],
-  mode?: Maybe<Scalars['String']>,
-  alphaTag?: Maybe<Scalars['String']>,
-  description?: Maybe<Scalars['String']>,
-  tag?: Maybe<Scalars['String']>,
-  group?: Maybe<Scalars['String']>,
+  hex: Scalars['String'],
+  mode: Scalars['String'],
+  alphaTag: Scalars['String'],
+  description: Scalars['String'],
+  tag: Scalars['String'],
+  group: Scalars['String'],
   priority: Scalars['Int'],
   hash: Scalars['String'],
 };
@@ -4825,6 +4891,20 @@ export type TrunkedTalkgroupScalarWhereInput = {
   decimal_lte?: Maybe<Scalars['Int']>,
   decimal_gt?: Maybe<Scalars['Int']>,
   decimal_gte?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
+  hex_not?: Maybe<Scalars['String']>,
+  hex_in?: Maybe<Array<Scalars['String']>>,
+  hex_not_in?: Maybe<Array<Scalars['String']>>,
+  hex_lt?: Maybe<Scalars['String']>,
+  hex_lte?: Maybe<Scalars['String']>,
+  hex_gt?: Maybe<Scalars['String']>,
+  hex_gte?: Maybe<Scalars['String']>,
+  hex_contains?: Maybe<Scalars['String']>,
+  hex_not_contains?: Maybe<Scalars['String']>,
+  hex_starts_with?: Maybe<Scalars['String']>,
+  hex_not_starts_with?: Maybe<Scalars['String']>,
+  hex_ends_with?: Maybe<Scalars['String']>,
+  hex_not_ends_with?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   mode_not?: Maybe<Scalars['String']>,
   mode_in?: Maybe<Array<Scalars['String']>>,
@@ -4943,6 +5023,7 @@ export type TrunkedTalkgroupSubscriptionWhereInput = {
 
 export type TrunkedTalkgroupUpdateInput = {
   decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   alphaTag?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
@@ -4956,6 +5037,7 @@ export type TrunkedTalkgroupUpdateInput = {
 
 export type TrunkedTalkgroupUpdateManyDataInput = {
   decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   alphaTag?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
@@ -4967,6 +5049,7 @@ export type TrunkedTalkgroupUpdateManyDataInput = {
 
 export type TrunkedTalkgroupUpdateManyMutationInput = {
   decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   alphaTag?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
@@ -5004,6 +5087,7 @@ export type TrunkedTalkgroupUpdateOneWithoutCallsInput = {
 
 export type TrunkedTalkgroupUpdateWithoutCallsDataInput = {
   decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   alphaTag?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
@@ -5016,6 +5100,7 @@ export type TrunkedTalkgroupUpdateWithoutCallsDataInput = {
 
 export type TrunkedTalkgroupUpdateWithoutSystemDataInput = {
   decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   alphaTag?: Maybe<Scalars['String']>,
   description?: Maybe<Scalars['String']>,
@@ -5081,6 +5166,20 @@ export type TrunkedTalkgroupWhereInput = {
   decimal_lte?: Maybe<Scalars['Int']>,
   decimal_gt?: Maybe<Scalars['Int']>,
   decimal_gte?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
+  hex_not?: Maybe<Scalars['String']>,
+  hex_in?: Maybe<Array<Scalars['String']>>,
+  hex_not_in?: Maybe<Array<Scalars['String']>>,
+  hex_lt?: Maybe<Scalars['String']>,
+  hex_lte?: Maybe<Scalars['String']>,
+  hex_gt?: Maybe<Scalars['String']>,
+  hex_gte?: Maybe<Scalars['String']>,
+  hex_contains?: Maybe<Scalars['String']>,
+  hex_not_contains?: Maybe<Scalars['String']>,
+  hex_starts_with?: Maybe<Scalars['String']>,
+  hex_not_starts_with?: Maybe<Scalars['String']>,
+  hex_ends_with?: Maybe<Scalars['String']>,
+  hex_not_ends_with?: Maybe<Scalars['String']>,
   mode?: Maybe<Scalars['String']>,
   mode_not?: Maybe<Scalars['String']>,
   mode_in?: Maybe<Array<Scalars['String']>>,
@@ -5193,14 +5292,78 @@ export type TrunkedCallsQueryVariables = {
 };
 
 
-export type TrunkedCallsQuery = ({ __typename?: 'Query' } & { trunkedCalls: Array<Maybe<({ __typename?: 'TrunkedCall' } & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath' | 'remotePaths'> & { talkgroup: Maybe<({ __typename?: 'TrunkedTalkgroup' } & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>)>, system: Maybe<({ __typename?: 'TrunkedSystem' } & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>)>, transcription: Maybe<({ __typename?: 'Transcription' } & Pick<Transcription, 'body'> & { words: Maybe<Array<({ __typename?: 'TranscriptionWord' } & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>)>> })> })>> });
+export type TrunkedCallsQuery = (
+  { __typename?: 'Query' }
+  & { trunkedCalls: Array<Maybe<(
+    { __typename?: 'TrunkedCall' }
+    & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath' | 'remotePaths'>
+    & { talkgroup: Maybe<(
+      { __typename?: 'TrunkedTalkgroup' }
+      & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>
+    )>, system: Maybe<(
+      { __typename?: 'TrunkedSystem' }
+      & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>
+    )>, transcription: Maybe<(
+      { __typename?: 'Transcription' }
+      & Pick<Transcription, 'body'>
+      & { words: Maybe<Array<(
+        { __typename?: 'TranscriptionWord' }
+        & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>
+      )>> }
+    )> }
+  )>> }
+);
+
+export type TrunkedSystemsQueryVariables = {};
+
+
+export type TrunkedSystemsQuery = (
+  { __typename?: 'Query' }
+  & { trunkedSystems: Array<Maybe<(
+    { __typename?: 'TrunkedSystem' }
+    & Pick<TrunkedSystem, 'type' | 'createdAt' | 'shortName' | 'id'>
+  )>> }
+);
 
 export type NewTrunkedCallsSubscriptionVariables = {};
 
 
-export type NewTrunkedCallsSubscription = ({ __typename?: 'Subscription' } & { trunkedCalls: Maybe<({ __typename?: 'TrunkedCall' } & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath' | 'remotePaths'> & { talkgroup: Maybe<({ __typename?: 'TrunkedTalkgroup' } & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>)>, system: Maybe<({ __typename?: 'TrunkedSystem' } & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>)>, transcription: Maybe<({ __typename?: 'Transcription' } & Pick<Transcription, 'body'> & { words: Maybe<Array<({ __typename?: 'TranscriptionWord' } & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>)>> })> })> });
+export type NewTrunkedCallsSubscription = (
+  { __typename?: 'Subscription' }
+  & { trunkedCalls: Maybe<(
+    { __typename?: 'TrunkedCall' }
+    & Pick<TrunkedCall, 'id' | 'createdAt' | 'frequency' | 'startTime' | 'endTime' | 'emergency' | 'duration' | 'audioPath' | 'remotePaths'>
+    & { talkgroup: Maybe<(
+      { __typename?: 'TrunkedTalkgroup' }
+      & Pick<TrunkedTalkgroup, 'decimal' | 'alphaTag' | 'description' | 'tag'>
+    )>, system: Maybe<(
+      { __typename?: 'TrunkedSystem' }
+      & Pick<TrunkedSystem, 'id' | 'shortName' | 'type'>
+    )>, transcription: Maybe<(
+      { __typename?: 'Transcription' }
+      & Pick<Transcription, 'body'>
+      & { words: Maybe<Array<(
+        { __typename?: 'TranscriptionWord' }
+        & Pick<TranscriptionWord, 'text' | 'confidence' | 'start' | 'end'>
+      )>> }
+    )> }
+  )> }
+);
 
 export type TranscriptionsSubscriptionVariables = {};
 
 
-export type TranscriptionsSubscription = ({ __typename?: 'Subscription' } & { transcriptions: Maybe<({ __typename?: 'Transcription' } & Pick<Transcription, 'body'> & { call: ({ __typename?: 'TrunkedCall' } & Pick<TrunkedCall, 'id'>), words: Maybe<Array<({ __typename?: 'TranscriptionWord' } & Pick<TranscriptionWord, 'text' | 'confidence' | 'end' | 'start'>)>> })> });
+export type TranscriptionsSubscription = (
+  { __typename?: 'Subscription' }
+  & { transcriptions: Maybe<(
+    { __typename?: 'Transcription' }
+    & Pick<Transcription, 'body'>
+    & { call: (
+      { __typename?: 'TrunkedCall' }
+      & Pick<TrunkedCall, 'id'>
+    ), words: Maybe<Array<(
+      { __typename?: 'TranscriptionWord' }
+      & Pick<TranscriptionWord, 'text' | 'confidence' | 'end' | 'start'>
+    )>> }
+  )> }
+);

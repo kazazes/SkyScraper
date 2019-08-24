@@ -1,4 +1,6 @@
 endpoint: ${env:PRISMA_ENDPOINT}
+secret: scrapingskies
+
 datamodel:
   - ./trunk-recorder.prisma
   - ./dump1090.prisma
@@ -15,5 +17,3 @@ hooks:
   post-deploy:
     - graphqlgen
     - graphql-codegen --config codegen.yml
-
-secret: scrapingskies

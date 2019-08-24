@@ -40,7 +40,6 @@ export const trunkedConfigs = gql`
         }
         recordUnknown
         shortName
-        uploadScript
         audioArchive
         callLog
         bandplan

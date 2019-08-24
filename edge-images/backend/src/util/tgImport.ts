@@ -3,12 +3,9 @@ import { createHash } from "crypto";
 
 import { Prisma } from "../graphql/generated/prisma-client";
 
-const prisma = new Prisma({
-  endpoint: "http://http://192.168.1.102:4466",
-  secret: "scrapingskies",
-});
+const prisma = new Prisma();
 
-const shortname = "SFPD";
+const shortName = "SFPD";
 const tg: TGJson[] = require("./tg.json");
 
 export interface TGJson {
@@ -28,13 +25,27 @@ const mapped = tg.map(async (tg) => {
     .update("SFPD" + tg.decimal)
     .digest("hex");
 
-  delete tg.hex;
+  tg.hex = tg.decimal.toString(16);
   tg.hash = hash;
 
   await prisma.deleteManyTrunkedTalkgroups({ hash });
   return prisma.createTrunkedTalkgroup(tg);
 });
 
-Promise.all(mapped)
+createSystem()
+  .then(() => {
+    return Promise.all(mapped);
+  })
   .then(() => consola.success(`Imported ${mapped.length} talkgroups`))
   .catch((e) => consola.error(e));
+
+async function createSystem() {
+  return prisma.upsertTrunkedSystem({
+    where: { shortName },
+    create: {
+      shortName,
+      type: "SMARTNET",
+    },
+    update: {},
+  });
+}

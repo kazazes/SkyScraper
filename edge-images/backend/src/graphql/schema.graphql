@@ -12,9 +12,14 @@ type Query {
     last: Int
   ): [TrunkedCall]!
   trunkedCallCount: Int!
+  trunkedSystems: [TrunkedSystem]
 }
 
 type Subscription {
   trunkedCalls: TrunkedCall
   transcriptions: Transcription
+}
+
+type Mutation {
+  createTrunkedSystem(system: TrunkedSystemCreateInput): TrunkedSystem!
 }

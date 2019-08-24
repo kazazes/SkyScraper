@@ -69,6 +69,12 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
         decimal: parsed.talkgroup,
         hash: tgHash,
         system: { connect: { shortName: parsed.system } },
+        hex: parsed.talkgroup.toString(16),
+        description: "",
+        alphaTag: "UNKNOWN",
+        group: "UNKNOWN",
+        tag: "",
+        mode: "A",
       },
       update: {},
     });
@@ -131,7 +137,9 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
             `Requested transcription for ${c.id} with hash: ${c.callHash}`,
           ),
         );
-      } else { return; }
+      } else {
+        return;
+      }
     } catch (e) {
       throw e;
     }

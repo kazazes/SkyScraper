@@ -9,7 +9,7 @@ filename_only=$(basename $basename)
 mp3encoded="$basename.mp3"
 json="$basename.json"
 web_dir=$(dirname $filename | cut -d/ -f6-)"/"
-system=${SHORTNAME}
+system="$(dirname filename | cut -d/ -f4)"
 
 # Hack the JSON to add play length and source
 len=$(soxi -D $filename)

@@ -71,7 +71,7 @@ type TrunkedTalkgroup {
   tag: String!
   group: String!
   priority: Int! @default(value: 1)
-  system: TrunkedSystem
+  system: TrunkedSystem!
   calls: [TrunkedCall]
   hash: String! @unique # The MD5 of system.shortName + tg.decimal
 }

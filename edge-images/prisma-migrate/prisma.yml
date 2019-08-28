@@ -1,5 +1,4 @@
 endpoint: ${env:PRISMA_ENDPOINT}
-secret: scrapingskies
 
 datamodel:
   - ./trunk-recorder.prisma

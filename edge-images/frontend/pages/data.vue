@@ -18,10 +18,12 @@
             <v-icon class="pr-2">mdi-microphone</v-icon>
             <span class="text-uppercase">Voice</span>
           </v-tab>
-          <v-tab nuxt to="/data/logs">
-            <v-icon class="pr-2">mdi-toolbox</v-icon>
-            <span class="text-uppercase">Logs</span>
-          </v-tab>
+          <client-only>
+            <v-tab nuxt to="/data/logs">
+              <v-icon class="pr-2">mdi-toolbox</v-icon>
+              <span class="text-uppercase">Logs</span>
+            </v-tab>
+          </client-only>
         </v-tabs>
       </v-flex>
       <nuxt-child></nuxt-child>

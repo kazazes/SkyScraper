@@ -45,7 +45,7 @@ export const actions = {
     );
     commit(
       "setWsEndpoint",
-      process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}`
+      process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}/api`
     );
   },
 };

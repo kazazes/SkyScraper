@@ -51,6 +51,8 @@
 
   @Component({})
   export default class LogViewer extends Vue {
+    ws: WebSocket | undefined;
+
     fetch({ store, $axios }) {
       return $axios
         .get(`${store.getters.apiEndpoint}/device/docker/containers`)
@@ -85,12 +87,16 @@
 
     mounted() {
       const wsEndpoint = this.$store.getters["wsEndpoint"];
-      this.$connect(`${wsEndpoint}/logs/docker`);
-      this.$options.sockets.onmessage = ({ data }) => {
+      this.ws = new WebSocket(`${wsEndpoint}/logs/docker`);
+      this.ws.onmessage = ({ data }) => {
         const d = JSON.parse(data);
         const id = d.long_id;
         this.$store.commit("docker/pushLog", d);
       };
+    }
+
+    beforeDestroy() {
+      if (this.ws) this.ws.close();
     }
 
     formatDockerLog(log: any, global?: boolean) {

@@ -51,11 +51,6 @@
 
   @Component({})
   export default class LogViewer extends Vue {
-    selectedLog: string | undefined = "";
-
-    @Watch("selectedLog")
-    setSelectedLog() {}
-
     fetch({ store, $axios }) {
       return $axios
         .get(`${store.getters.apiEndpoint}/device/docker/containers`)

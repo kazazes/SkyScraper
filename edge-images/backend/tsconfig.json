@@ -10,7 +10,7 @@
     "baseUrl": ".",
     "rootDir": "src",
     "paths": {
-      "*": ["types/*"]
+      "*": ["./types/*"]
     }
   },
   "include": ["src/**/*"],

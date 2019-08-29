@@ -54,11 +54,9 @@
     ws: WebSocket | undefined;
 
     fetch({ store, $axios }) {
-      return $axios
-        .get(`${store.getters.apiEndpoint}/device/docker/containers`)
-        .then((res) => {
-          store.commit("docker/setContainers", res.data);
-        });
+      return $axios.get(`/device/docker/containers`).then((res) => {
+        store.commit("docker/setContainers", res.data);
+      });
     }
 
     get containers() {

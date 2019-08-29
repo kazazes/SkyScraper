@@ -84,15 +84,14 @@
     }
 
     mounted() {
-      if (window) {
-        const wsEndpoint = this.$store.getters["wsEndpoint"];
-        this.$connect(`${wsEndpoint}/logs/docker`);
-        this.$options.sockets.onmessage = ({ data }) => {
-          const d = JSON.parse(data);
-          const id = d.long_id;
-          this.$store.commit("docker/pushLog", d);
-        };
-      }
+      const wsEndpoint = this.$store.getters["wsEndpoint"];
+      debugger;
+      this.$connect(`${wsEndpoint}/logs/docker`);
+      this.$options.sockets.onmessage = ({ data }) => {
+        const d = JSON.parse(data);
+        const id = d.long_id;
+        this.$store.commit("docker/pushLog", d);
+      };
     }
 
     formatDockerLog(log: any, global?: boolean) {

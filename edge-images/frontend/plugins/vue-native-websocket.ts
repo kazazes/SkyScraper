@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueNativeWebsocket from "vue-native-websocket";
 
-Vue.use(VueNativeWebsocket, process.env.API_ENDPOINT, {
-  format: "json",
-  connectManually: true,
-});
+export default function({ env }) {
+  Vue.use(VueNativeWebsocket, env.API_WS_ENDPOINT, {
+    format: "json",
+    connectManually: true,
+  });
+}

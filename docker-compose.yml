@@ -121,6 +121,7 @@ services:
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
       - ENABLE_TRANSCRIPTION=1
+      - DOCKER_SOCK=/var/run/balena.sock
     depends_on:
       - redis
       - mqtt

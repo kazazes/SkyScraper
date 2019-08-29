@@ -5,7 +5,7 @@ import log from "../../log";
 import stream, { PassThrough } from "stream";
 const loghose = require("docker-loghose");
 
-const socketPath = process.env.DOCKER_HOST || "/var/run/docker.sock";
+const socketPath = process.env.DOCKER_SOCK || "/var/run/docker.sock";
 const stats = statSync(socketPath);
 
 if (!stats.isSocket()) {

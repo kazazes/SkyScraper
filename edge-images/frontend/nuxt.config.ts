@@ -37,7 +37,7 @@ const config: NuxtConfiguration = {
   plugins: [
     { src: "~/plugins/vee-validate" },
     { src: "~/plugins/axios", ssr: false },
-    { src: "~/plugins/vue-native-websocket" },
+    { src: "~/plugins/vue-native-websocket", ssr: false },
   ],
   /*
    ** Nuxt.js modules

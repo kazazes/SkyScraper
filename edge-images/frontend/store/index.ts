@@ -2,6 +2,7 @@ export const state = () => ({
   edgeHostname: null,
   fileHostname: null,
   apiEndpoint: null,
+  wsEndpoint: null,
 });
 
 export const mutations = {
@@ -13,6 +14,9 @@ export const mutations = {
   },
   setApiEndpoint(state, value) {
     state.apiEndpoint = value;
+  },
+  setWsEndpoint(state, value) {
+    state.wsEndpoint = value;
   },
 };
 
@@ -26,12 +30,22 @@ export const getters = {
   apiEndpoint(state) {
     return state.apiEndpoint;
   },
+  wsEndpoint(state) {
+    return state.wsEndpoint;
+  },
 };
 
 export const actions = {
   nuxtServerInit({ commit }) {
     commit("setEdgeHostname", process.env.EDGE_HOSTNAME);
     commit("setFileHostname", process.env.FILE_HOSTNAME);
-    commit("setApiEndpoint", process.env.API_ENDPOINT);
+    commit(
+      "setApiEndpoint",
+      process.env.API_ENDPOINT || process.env.EDGE_HOSTNAME
+    );
+    commit(
+      "setWsEndpoint",
+      process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}`
+    );
   },
 };

@@ -41,7 +41,7 @@ export const actions = {
     commit("setFileHostname", process.env.FILE_HOSTNAME);
     commit(
       "setApiEndpoint",
-      process.env.API_ENDPOINT || process.env.EDGE_HOSTNAME
+      process.env.API_ENDPOINT
     );
     commit(
       "setWsEndpoint",

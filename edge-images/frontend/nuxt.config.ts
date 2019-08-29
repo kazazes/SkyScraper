@@ -1,5 +1,4 @@
 import NuxtConfiguration from "@nuxt/config";
-import apolloDefaultConfig from "./plugins/apolloDefaultConfig";
 import webpack from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
@@ -36,7 +35,7 @@ const config: NuxtConfiguration = {
    */
   plugins: [
     { src: "~/plugins/vee-validate" },
-    { src: "~/plugins/axios", ssr: false },
+    { src: "~/plugins/axios" },
   ],
   /*
    ** Nuxt.js modules
@@ -44,67 +43,67 @@ const config: NuxtConfiguration = {
   buildModules: ["@nuxt/typescript-build"],
   modules: isDev
     ? [
-        "@nuxtjs/axios",
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/auth",
-        "@nuxtjs/pwa",
-        [
-          "@nuxtjs/dotenv",
-          {
-            systemVars: true,
-            only: [
-              "EDGE_HOSTNAME",
-              "FILE_HOSTNAME",
-              "NODE_ENV",
-              "API_ENDPOINT",
-              "API_WS_ENDPOINT",
-            ],
-          },
-        ],
-        [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
-        ],
-      ]
-    : [
-        "@nuxtjs/sentry",
-        "@nuxtjs/axios",
-        [
-          "@nuxtjs/dotenv",
-          {
-            systemVars: true,
-            only: [
-              "EDGE_HOSTNAME",
-              "FILE_HOSTNAME",
-              "NODE_ENV",
-              "API_ENDPOINT",
-              "API_WS_ENDPOINT",
-            ],
-          },
-        ],
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/pwa",
-        "@nuxtjs/auth",
-        [
-          "@nuxtjs/robots",
-          {
-            UserAgent: "*",
-            Disallow: "/",
-          },
-        ],
-        [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
-        ],
+      "@nuxtjs/axios",
+      "@nuxtjs/vuetify",
+      "@nuxtjs/apollo",
+      "@nuxtjs/proxy",
+      "@nuxtjs/auth",
+      "@nuxtjs/pwa",
+      [
+        "@nuxtjs/dotenv",
+        {
+          systemVars: true,
+          only: [
+            "EDGE_HOSTNAME",
+            "FILE_HOSTNAME",
+            "NODE_ENV",
+            "API_ENDPOINT",
+            "API_WS_ENDPOINT",
+          ],
+        },
       ],
+      [
+        "nuxt-validate",
+        {
+          lang: "en",
+        },
+      ],
+    ]
+    : [
+      "@nuxtjs/sentry",
+      "@nuxtjs/axios",
+      [
+        "@nuxtjs/dotenv",
+        {
+          systemVars: true,
+          only: [
+            "EDGE_HOSTNAME",
+            "FILE_HOSTNAME",
+            "NODE_ENV",
+            "API_ENDPOINT",
+            "API_WS_ENDPOINT",
+          ],
+        },
+      ],
+      "@nuxtjs/vuetify",
+      "@nuxtjs/apollo",
+      "@nuxtjs/proxy",
+      "@nuxtjs/pwa",
+      "@nuxtjs/auth",
+      [
+        "@nuxtjs/robots",
+        {
+          UserAgent: "*",
+          Disallow: "/",
+        },
+      ],
+      [
+        "nuxt-validate",
+        {
+          lang: "en",
+        },
+      ],
+    ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config
@@ -143,7 +142,7 @@ const config: NuxtConfiguration = {
     },
   },
   typescript: {
-    typeCheck: true,
+    typeCheck: false,
     ignoreNotFoundWarnings: true,
   },
   auth: {
@@ -154,10 +153,6 @@ const config: NuxtConfiguration = {
         audience: "edge.sibyl.vision",
       },
     },
-  },
-  axios: {
-    baseUrl: process.env.API_ENDPOINT,
-    credentials: true,
   },
 };
 

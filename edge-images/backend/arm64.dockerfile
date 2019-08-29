@@ -12,6 +12,7 @@ ENV NODE_ENV production
 
 # Bundle app source
 COPY ./src /usr/src/app/src
+COPY ./types /usr/src/app/types
 RUN yarn build
 
 FROM node:10-alpine

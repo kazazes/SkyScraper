@@ -34,7 +34,11 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/vee-validate" }],
+  plugins: [
+    { src: "~/plugins/vee-validate" },
+    { src: "~/plugins/axios", ssr: false },
+    { src: "~/plugins/vue-native-websocket" },
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -45,12 +49,19 @@ const config: NuxtConfiguration = {
         "@nuxtjs/vuetify",
         "@nuxtjs/apollo",
         "@nuxtjs/proxy",
+        "@nuxtjs/auth",
         "@nuxtjs/pwa",
         [
           "@nuxtjs/dotenv",
           {
             systemVars: true,
-            only: ["EDGE_HOSTNAME", "FILE_HOSTNAME", "NODE_ENV"],
+            only: [
+              "EDGE_HOSTNAME",
+              "FILE_HOSTNAME",
+              "NODE_ENV",
+              "API_ENDPOINT",
+              "API_WS_ENDPOINT",
+            ],
           },
         ],
         [
@@ -67,13 +78,20 @@ const config: NuxtConfiguration = {
           "@nuxtjs/dotenv",
           {
             systemVars: true,
-            only: ["EDGE_HOSTNAME", "FILE_HOSTNAME", "NODE_ENV"],
+            only: [
+              "EDGE_HOSTNAME",
+              "FILE_HOSTNAME",
+              "NODE_ENV",
+              "API_ENDPOINT",
+              "API_WS_ENDPOINT",
+            ],
           },
         ],
         "@nuxtjs/vuetify",
         "@nuxtjs/apollo",
         "@nuxtjs/proxy",
         "@nuxtjs/pwa",
+        "@nuxtjs/auth",
         [
           "@nuxtjs/robots",
           {
@@ -92,7 +110,6 @@ const config: NuxtConfiguration = {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config
   },
-  axios: {},
   apollo: {
     incldueNodeModules: true,
     clientConfigs: {
@@ -129,6 +146,19 @@ const config: NuxtConfiguration = {
   typescript: {
     typeCheck: true,
     ignoreNotFoundWarnings: true,
+  },
+  auth: {
+    strategies: {
+      auth0: {
+        domain: "skyscraper.auth0.com",
+        client_id: "Uaz6l2GikGK9BuRoXAK7L7jGPmVNYMSB",
+        audience: "edge.sibyl.vision",
+      },
+    },
+  },
+  axios: {
+    baseUrl: process.env.API_ENDPOINT,
+    credentials: true,
   },
 };
 

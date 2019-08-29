@@ -18,6 +18,10 @@
             <v-icon class="pr-2">mdi-pipe</v-icon>
             <span class="text-uppercase">Pipelines</span>
           </v-tab>
+          <v-tab nuxt to="/configure/admin">
+            <v-icon class="pr-2">mdi-account</v-icon>
+            <span class="text-uppercase">Account</span>
+          </v-tab>
         </v-tabs>
       </v-flex>
       <n-child></n-child>
@@ -31,6 +35,9 @@
 
   @Component({
     components: {},
+    data() {
+      return {};
+    },
   })
   export default class Configure extends Vue {}
 </script>

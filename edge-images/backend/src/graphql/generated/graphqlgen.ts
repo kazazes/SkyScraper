@@ -2748,7 +2748,7 @@ export namespace TrunkedTalkgroupResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => TrunkedSystem | null | Promise<TrunkedSystem | null>)
+      ) => TrunkedSystem | Promise<TrunkedSystem>)
     | {
         fragment: string;
         resolve: (
@@ -2756,7 +2756,7 @@ export namespace TrunkedTalkgroupResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => TrunkedSystem | null | Promise<TrunkedSystem | null>;
+        ) => TrunkedSystem | Promise<TrunkedSystem>;
       };
 
   export type CallsResolver =
@@ -2987,7 +2987,7 @@ export namespace TrunkedTalkgroupResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => TrunkedSystem | null | Promise<TrunkedSystem | null>)
+        ) => TrunkedSystem | Promise<TrunkedSystem>)
       | {
           fragment: string;
           resolve: (
@@ -2995,7 +2995,7 @@ export namespace TrunkedTalkgroupResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => TrunkedSystem | null | Promise<TrunkedSystem | null>;
+          ) => TrunkedSystem | Promise<TrunkedSystem>;
         };
 
     calls:
@@ -6753,7 +6753,7 @@ export namespace MutationResolvers {
     tag: string;
     group: string;
     priority?: number | null;
-    system?: TrunkedSystemCreateOneWithoutTalkgroupsInput | null;
+    system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
     hash: string;
   }
   export interface TrunkedCallSourceCreateInput {

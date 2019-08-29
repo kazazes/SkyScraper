@@ -4474,19 +4474,17 @@ export type TrunkedSystemUpdateManyWithWhereNestedInput = {
   data: TrunkedSystemUpdateManyDataInput,
 };
 
+export type TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput = {
+  create?: Maybe<TrunkedSystemCreateWithoutTalkgroupsInput>,
+  update?: Maybe<TrunkedSystemUpdateWithoutTalkgroupsDataInput>,
+  upsert?: Maybe<TrunkedSystemUpsertWithoutTalkgroupsInput>,
+  connect?: Maybe<TrunkedSystemWhereUniqueInput>,
+};
+
 export type TrunkedSystemUpdateOneWithoutCallsInput = {
   create?: Maybe<TrunkedSystemCreateWithoutCallsInput>,
   update?: Maybe<TrunkedSystemUpdateWithoutCallsDataInput>,
   upsert?: Maybe<TrunkedSystemUpsertWithoutCallsInput>,
-  delete?: Maybe<Scalars['Boolean']>,
-  disconnect?: Maybe<Scalars['Boolean']>,
-  connect?: Maybe<TrunkedSystemWhereUniqueInput>,
-};
-
-export type TrunkedSystemUpdateOneWithoutTalkgroupsInput = {
-  create?: Maybe<TrunkedSystemCreateWithoutTalkgroupsInput>,
-  update?: Maybe<TrunkedSystemUpdateWithoutTalkgroupsDataInput>,
-  upsert?: Maybe<TrunkedSystemUpsertWithoutTalkgroupsInput>,
   delete?: Maybe<Scalars['Boolean']>,
   disconnect?: Maybe<Scalars['Boolean']>,
   connect?: Maybe<TrunkedSystemWhereUniqueInput>,
@@ -4721,7 +4719,7 @@ export type TrunkedTalkgroup = {
   tag: Scalars['String'],
   group: Scalars['String'],
   priority: Scalars['Int'],
-  system?: Maybe<TrunkedSystem>,
+  system: TrunkedSystem,
   calls?: Maybe<Array<TrunkedCall>>,
   hash: Scalars['String'],
 };
@@ -4754,7 +4752,7 @@ export type TrunkedTalkgroupCreateInput = {
   tag: Scalars['String'],
   group: Scalars['String'],
   priority?: Maybe<Scalars['Int']>,
-  system?: Maybe<TrunkedSystemCreateOneWithoutTalkgroupsInput>,
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput,
   calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>,
   hash: Scalars['String'],
 };
@@ -4779,7 +4777,7 @@ export type TrunkedTalkgroupCreateWithoutCallsInput = {
   tag: Scalars['String'],
   group: Scalars['String'],
   priority?: Maybe<Scalars['Int']>,
-  system?: Maybe<TrunkedSystemCreateOneWithoutTalkgroupsInput>,
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput,
   hash: Scalars['String'],
 };
 
@@ -5030,7 +5028,7 @@ export type TrunkedTalkgroupUpdateInput = {
   tag?: Maybe<Scalars['String']>,
   group?: Maybe<Scalars['String']>,
   priority?: Maybe<Scalars['Int']>,
-  system?: Maybe<TrunkedSystemUpdateOneWithoutTalkgroupsInput>,
+  system?: Maybe<TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput>,
   calls?: Maybe<TrunkedCallUpdateManyWithoutTalkgroupInput>,
   hash?: Maybe<Scalars['String']>,
 };
@@ -5094,7 +5092,7 @@ export type TrunkedTalkgroupUpdateWithoutCallsDataInput = {
   tag?: Maybe<Scalars['String']>,
   group?: Maybe<Scalars['String']>,
   priority?: Maybe<Scalars['Int']>,
-  system?: Maybe<TrunkedSystemUpdateOneWithoutTalkgroupsInput>,
+  system?: Maybe<TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput>,
   hash?: Maybe<Scalars['String']>,
 };
 

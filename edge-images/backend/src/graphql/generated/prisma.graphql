@@ -3586,19 +3586,17 @@ input TrunkedSystemUpdateManyWithWhereNestedInput {
   data: TrunkedSystemUpdateManyDataInput!
 }
 
+input TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput {
+  create: TrunkedSystemCreateWithoutTalkgroupsInput
+  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput
+  upsert: TrunkedSystemUpsertWithoutTalkgroupsInput
+  connect: TrunkedSystemWhereUniqueInput
+}
+
 input TrunkedSystemUpdateOneWithoutCallsInput {
   create: TrunkedSystemCreateWithoutCallsInput
   update: TrunkedSystemUpdateWithoutCallsDataInput
   upsert: TrunkedSystemUpsertWithoutCallsInput
-  delete: Boolean
-  disconnect: Boolean
-  connect: TrunkedSystemWhereUniqueInput
-}
-
-input TrunkedSystemUpdateOneWithoutTalkgroupsInput {
-  create: TrunkedSystemCreateWithoutTalkgroupsInput
-  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput
-  upsert: TrunkedSystemUpsertWithoutTalkgroupsInput
   delete: Boolean
   disconnect: Boolean
   connect: TrunkedSystemWhereUniqueInput
@@ -3832,7 +3830,7 @@ type TrunkedTalkgroup {
   tag: String!
   group: String!
   priority: Int!
-  system: TrunkedSystem
+  system: TrunkedSystem!
   calls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall!]
   hash: String!
 }
@@ -3853,7 +3851,7 @@ input TrunkedTalkgroupCreateInput {
   tag: String!
   group: String!
   priority: Int
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput!
   calls: TrunkedCallCreateManyWithoutTalkgroupInput
   hash: String!
 }
@@ -3878,7 +3876,7 @@ input TrunkedTalkgroupCreateWithoutCallsInput {
   tag: String!
   group: String!
   priority: Int
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput!
   hash: String!
 }
 
@@ -4126,7 +4124,7 @@ input TrunkedTalkgroupUpdateInput {
   tag: String
   group: String
   priority: Int
-  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  system: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput
   calls: TrunkedCallUpdateManyWithoutTalkgroupInput
   hash: String
 }
@@ -4190,7 +4188,7 @@ input TrunkedTalkgroupUpdateWithoutCallsDataInput {
   tag: String
   group: String
   priority: Int
-  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  system: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput
   hash: String
 }
 

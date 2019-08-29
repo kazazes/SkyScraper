@@ -1,0 +1,6 @@
+{
+  "type": "SMARTNET",
+  "shortName": "sfcers",
+  "name": "San Francisco CERS",
+  "controlChannels": { "set": [851400000, 851425000] }
+}

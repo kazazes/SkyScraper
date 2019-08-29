@@ -8,11 +8,12 @@
     "importHelpers": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["@types/node", "@nuxt/types", "./types", "vuetify"],
+    "types": ["@types/node", "@nuxt/types", "./types/vue", "vuetify"],
     "pretty": true,
     "paths": {
       "~/*": ["./*"],
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "*": ["./types"]
     },
     "target": "es5",
     "lib": ["esnext", "esnext.asynciterable", "dom.iterable", "dom"],

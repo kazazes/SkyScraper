@@ -124,6 +124,8 @@ services:
     depends_on:
       - redis
       - mqtt
+    labels:
+      io.balena.features.balena-socket: true
   netdata:
     image: skyscraperai/netdata
     hostname: $EDGE_HOSTNAME

@@ -18,9 +18,9 @@
             <v-icon class="pr-2">mdi-microphone</v-icon>
             <span class="text-uppercase">Voice</span>
           </v-tab>
-          <v-tab nuxt disabled>
+          <v-tab nuxt to="/data/logs">
             <v-icon class="pr-2">mdi-toolbox</v-icon>
-            <span class="text-uppercase">Raw Stream</span>
+            <span class="text-uppercase">Logs</span>
           </v-tab>
         </v-tabs>
       </v-flex>

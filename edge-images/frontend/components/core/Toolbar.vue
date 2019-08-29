@@ -10,11 +10,26 @@
     color="primary"
   >
     <v-layout align-center justify-space-around wrap row>
-      <v-flex md6 text-xs-center>
+      <v-flex md6 text-xs-center offset-md3>
         <v-btn round flat small active-class="active-nav" nuxt to="/data">Data</v-btn>
         <v-btn round flat small active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
         <v-btn round flat small active-class="active-nav" nuxt to="/configure">Configure</v-btn>
       </v-flex>
+      <client-only>
+        <v-flex md3 text-xs-right>
+          <nuxt-link to="/configure/admin">
+            <v-avatar size="32" color="white" v-if="$auth.loggedIn">
+              <img
+                v-if="$auth.user.picture"
+                :src="$auth.user.picture"
+                :alt="$auth.user.name"
+                style="padding: 1px;"
+              />
+              <v-icon v-else color="primary">mdi-account</v-icon>
+            </v-avatar>
+          </nuxt-link>
+        </v-flex>
+      </client-only>
     </v-layout>
   </v-toolbar>
 </template>

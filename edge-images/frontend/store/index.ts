@@ -36,7 +36,7 @@ export const getters = {
 };
 
 export const actions = {
-  nuxtServerInit({ commit }) {
+  nuxtServerInit({ commit, state }) {
     commit("setEdgeHostname", process.env.EDGE_HOSTNAME);
     commit("setFileHostname", process.env.FILE_HOSTNAME);
     commit(
@@ -47,5 +47,6 @@ export const actions = {
       "setWsEndpoint",
       process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}/api`
     );
+    console.log(JSON.stringify(state, null, 2));
   },
 };

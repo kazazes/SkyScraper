@@ -5,9 +5,7 @@ import websockify from "koa-websocket";
 import { hostname } from "os";
 import log from "../log";
 import { routes } from "./routes";
-import { containerLogs, containerLogsWs, mqttWs } from "./routes/ws/logSocket";
-const health = require("koa-ping-healthcheck");
-const jwksRsa = require("jwks-rsa");
+import { containerLogs, mqttWs } from "./routes/ws/logSocket";
 
 export const listen = async () => {
   const app = websockify(new Koa());

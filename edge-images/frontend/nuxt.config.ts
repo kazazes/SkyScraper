@@ -7,6 +7,13 @@ const config: NuxtConfiguration = {
   /*
    ** Headers of the page
    */
+  meta: {
+    mobileAppIOS: true,
+    theme_color: "#010015",
+    lang: "en",
+    ogSiteName: "SkyScraper Edge",
+    nativeUI: true,
+  },
   head: {
     title: "SkyScraper",
     meta: [
@@ -33,77 +40,39 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [
-    { src: "~/plugins/vee-validate" },
-    { src: "~/plugins/axios" },
-  ],
+  plugins: [{ src: "~/plugins/vee-validate" }, { src: "~/plugins/axios" }],
   /*
    ** Nuxt.js modules
    */
   buildModules: ["@nuxt/typescript-build"],
-  modules: isDev
-    ? [
-      "@nuxtjs/axios",
-      "@nuxtjs/vuetify",
-      "@nuxtjs/apollo",
-      "@nuxtjs/proxy",
-      "@nuxtjs/auth",
-      "@nuxtjs/pwa",
-      [
-        "@nuxtjs/dotenv",
-        {
-          systemVars: true,
-          only: [
-            "EDGE_HOSTNAME",
-            "FILE_HOSTNAME",
-            "NODE_ENV",
-            "API_ENDPOINT",
-            "API_WS_ENDPOINT",
-          ],
-        },
-      ],
-      [
-        "nuxt-validate",
-        {
-          lang: "en",
-        },
-      ],
-    ]
-    : [
-      "@nuxtjs/sentry",
-      "@nuxtjs/axios",
-      [
-        "@nuxtjs/dotenv",
-        {
-          systemVars: true,
-          only: [
-            "EDGE_HOSTNAME",
-            "FILE_HOSTNAME",
-            "NODE_ENV",
-            "API_ENDPOINT",
-            "API_WS_ENDPOINT",
-          ],
-        },
-      ],
-      "@nuxtjs/vuetify",
-      "@nuxtjs/apollo",
-      "@nuxtjs/proxy",
-      "@nuxtjs/pwa",
-      "@nuxtjs/auth",
-      [
-        "@nuxtjs/robots",
-        {
-          UserAgent: "*",
-          Disallow: "/",
-        },
-      ],
-      [
-        "nuxt-validate",
-        {
-          lang: "en",
-        },
-      ],
+  modules: [
+    "@nuxtjs/sentry",
+    "@nuxtjs/axios",
+    [
+      "@nuxtjs/dotenv",
+      {
+        systemVars: true,
+        only: [
+          "EDGE_HOSTNAME",
+          "FILE_HOSTNAME",
+          "NODE_ENV",
+          "API_ENDPOINT",
+          "API_WS_ENDPOINT",
+        ],
+      },
     ],
+    "@nuxtjs/vuetify",
+    "@nuxtjs/apollo",
+    "@nuxtjs/proxy",
+    "@nuxtjs/pwa",
+    "@nuxtjs/auth",
+    [
+      "nuxt-validate",
+      {
+        lang: "en",
+      },
+    ],
+  ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config

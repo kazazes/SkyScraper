@@ -13,20 +13,20 @@ export default () => {
     typeDefs: "./src/graphql/schema.graphql",
   });
 
-  const placeholderQuery = `
-  # watch new calls as they come in
+  const placeholderQuery = `# watch new calls as they come in
   subscription {
       trunkedCalls {
         createdAt
         frequency
         startTime
         duration
-        emergency
         talkgroup {
-          alphaTag
+          description
         }
         emergency
-        transcription
+        transcription {
+          body
+        }
       }
     }
 `;
@@ -40,6 +40,9 @@ export default () => {
         defaultPlaygroundQuery: placeholderQuery,
         port: process.env.GRAPHQL_PORT || 4000,
         subscriptions: "/graphql",
+        cors: {
+          origin: "*",
+        },
       },
       () => {
         log.info(

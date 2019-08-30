@@ -79,19 +79,27 @@
 
     mounted() {
       this.$axios
-        .get(`${this.$store.getters['apiEndpoint']}/device/docker/containers`)
+        .get(`${this.$store.getters["apiEndpoint"]}/device/docker/containers`)
         .then((res) => {
           this.$store.commit("docker/setContainers", res.data);
         })
         .catch((e: any) => {
           console.error(e);
         });
+      this.openLogWs();
+    }
+
+    private openLogWs() {
       const wsEndpoint = this.$store.getters["wsEndpoint"];
       this.ws = new WebSocket(`${wsEndpoint}/logs/docker`);
       this.ws.onmessage = ({ data }) => {
         const d = JSON.parse(data);
         const id = d.long_id;
         this.$store.commit("docker/pushLog", d);
+      };
+      this.ws.onerror = (ev: Event) => {
+        console.error(`Websocket error: ${ev}`);
+        return null;
       };
     }
 

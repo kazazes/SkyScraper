@@ -50,7 +50,8 @@ services:
       POSTGRES_PASSWORD: prisma
       PGDATA: /data/postgres/pgdata
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   jupyter:
     restart: always
     build:
@@ -66,7 +67,8 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     command: "start-notebook.sh \
       --NotebookApp.base_url=/jupyter \
       --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
@@ -91,17 +93,20 @@ services:
     ports:
       - "1883:1883"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   config:
     build:
       dockerfile: Dockerfile
       context: edge-images/config
     restart: "on-failure"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   backend:
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     build:
       dockerfile: Dockerfile
       context: edge-images/backend
@@ -158,13 +163,15 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   nodered:
     build:
       dockerfile: Dockerfile
       context: edge-images/node-red
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     ports:
       - "1880:1880"
     environment:
@@ -187,7 +194,8 @@ services:
       dockerfile: Dockerfile
       context: edge-images/frontend
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     ports:
       - "3000:3000"
     environment:
@@ -208,7 +216,8 @@ services:
       context: edge-images/trunk-recorder
     privileged: true
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     environment:
       - RECORDER_CONF=sites/SF-PK/config.json
       - SHORTNAME=SFPD
@@ -231,7 +240,8 @@ services:
       io.balena.features.dbus: "1"
       io.balena.features.balena-socket: "1"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   # kiosk:
   #   restart: always
   #   build:

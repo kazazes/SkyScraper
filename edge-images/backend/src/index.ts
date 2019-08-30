@@ -18,9 +18,9 @@ import { connect as connectMqtt } from "./mqtt/broker";
 async function start() {
   await connectMqtt();
   graphServer();
-  apiServer();
+  await apiServer();
   return;
 }
 
-if (process.env.NODE_ENV === "production") debug.isReady().then(() => start());
-else start();
+if (process.env.NODE_ENV === "production") { debug.isReady().then(() => start()); }
+else { start(); }

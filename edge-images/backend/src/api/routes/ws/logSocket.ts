@@ -36,7 +36,7 @@ export const containerLogsWs = route.get("/logs/:containerId", async (ctx) => {
   });
 });
 
-export const containerLogs = route.get("/ws/logs/docker", (ctx) => {
+export const containerLogs = route.all("/ws", (ctx) => {
   const hose = getLoghose();
   hose.pipe(
     through.obj((chunk, enc, cb) => {

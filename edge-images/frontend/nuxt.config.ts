@@ -142,7 +142,7 @@ const config: NuxtConfiguration = {
     },
   },
   typescript: {
-    typeCheck: false,
+    typeCheck: true,
     ignoreNotFoundWarnings: true,
   },
   auth: {

@@ -36,7 +36,7 @@
                 v-html="formatDockerLog(log)"
               ></p>
             </v-card-text>
-            <v-card-text v-else style="overflow-y: scroll; height: 300px;">Waiting for logs...</v-card-text>
+            <v-card-text v-else>Waiting for logs...</v-card-text>
           </v-card>
         </v-expansion-panel-content>
       </v-expansion-panel>
@@ -91,7 +91,7 @@
 
     private openLogWs() {
       const wsEndpoint = this.$store.getters["wsEndpoint"];
-      this.ws = new WebSocket(`${wsEndpoint}/logs/docker`);
+      this.ws = new WebSocket(`${wsEndpoint}/logs`);
       this.ws.onmessage = ({ data }) => {
         const d = JSON.parse(data);
         const id = d.long_id;

@@ -10,7 +10,7 @@
   },
   "author": "Peter Kazazes",
   "devDependencies": {
-    "@graphql-codegen/cli": "^1.6.1",
+    "@graphql-codegen/cli": "^1.7.0",
     "@graphql-codegen/introspection": "^1.7.0",
     "@graphql-codegen/typescript": "^1.7.0",
     "@graphql-codegen/typescript-operations": "1.6.1",

@@ -1514,10 +1514,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
-"@mdi/font@^4.1.95":
-  version "4.1.95"
-  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-4.1.95.tgz#8a1ee05601757c57eb073f21c28e259ca2fe1102"
-  integrity sha512-/XhFVHkaBEVSaskmfhe/9sne+Sxkl8rUVdtSk5SCUAiPlFKidzYPDOWi9WGRiYYy8/OC4KuAHTRHvCNPywCxgg==
+"@mdi/font@^4.3.95":
+  version "4.3.95"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-4.3.95.tgz#0d546839c4be387eb11754c63a0ed0c966110fbf"
+  integrity sha512-J5l+3bQLBGwYA8EVeazA+YgNTIBpfRgviti8Jyjk2yMAiRDVNlafFbv1j1xlttFLMigXoxZ9J7plyfOYAuyjGA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"

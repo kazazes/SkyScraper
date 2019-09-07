@@ -61,7 +61,7 @@
     "vue-class-component": "^7.1.0",
     "vue-material-design-icons": "^3.2.0",
     "vue-native-websocket": "^2.0.13",
-    "vue-property-decorator": "^8.1.1",
+    "vue-property-decorator": "^8.2.2",
     "vue-server-renderer": "2.6.10",
     "vuetify": "^1.5.6"
   },

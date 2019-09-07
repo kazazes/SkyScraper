@@ -1,0 +1,4108 @@
+[
+  {
+    "systemName": "Capital One Arena",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "June 5, 2018, 6:38 am (Changed Site # 001 (Confirmed LCN) to 001 (Confirmed LCN))",
+    "systemID": "7845",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.15
+          },
+          {
+            "control": false,
+            "frequency": 461.275
+          },
+          {
+            "control": false,
+            "frequency": 461.425
+          },
+          {
+            "control": false,
+            "frequency": 461.075
+          },
+          {
+            "control": false,
+            "frequency": 461.525
+          },
+          {
+            "control": false,
+            "frequency": 461.6
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Capital One Arena",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "22796",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=22796",
+        "siteName": "Confirmed LCN",
+        "siteID": 22796
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=7845&opt=all_tg",
+    "uniqueIdentifier": "s-7845&opt=all_tg"
+  },
+  {
+    "systemName": "Audi Field",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "July 15, 2018, 9:37 am (General text description updated)",
+    "systemID": "10100",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.05
+          },
+          {
+            "control": false,
+            "frequency": 464.4
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Audi Field",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "32613",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=32613",
+        "siteName": "Confirmed LCN",
+        "siteID": 32613
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "109",
+          "mode": "TDMA",
+          "description": "Information Technology",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=10100&opt=all_tg",
+    "uniqueIdentifier": "s-10100&opt=all_tg"
+  },
+  {
+    "systemName": "American University",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "October 26, 2018, 9:57 am (Changed Site # 004 (Katzan Arts Center (Confirmed LCN)) to 004 (Katzan Arts Center))",
+    "systemID": "7678",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 489.2375
+          },
+          {
+            "control": false,
+            "frequency": 490.325
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "American University",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "22044",
+          "siteDescription": "Anderson Hall",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=22044",
+        "siteName": "Anderson Hall",
+        "siteID": 22044
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 489.2375
+          },
+          {
+            "control": false,
+            "frequency": 490.325
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "American University",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 004 / Hex: 4",
+          "siteUniqueDBID": "22045",
+          "siteDescription": "Katzan Arts Center",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=22045",
+        "siteName": "Katzan Arts Center",
+        "siteID": 22045
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "201",
+          "mode": "ENCRYPTED",
+          "description": "Police Dispatch",
+          "tag": "Law Dispatch",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7678&opt=all_tg",
+    "uniqueIdentifier": "s-7678&opt=all_tg"
+  },
+  {
+    "systemName": "Catholic University of America",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 4, 2018, 2:12 pm ((1) Talkgroups Updated (All))",
+    "systemID": "7051",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.55
+          },
+          {
+            "control": false,
+            "frequency": 462.1
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Catholic University of America",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "18717",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440",
+          "longitude": "W -77.041374",
+          "range": {
+            "distance": 7,
+            "units": "miles"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=18717",
+        "siteName": "Confirmed LCN",
+        "siteID": 18717
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Engineering (Ch. 1)",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "3",
+          "mode": "TDMA",
+          "description": "Engineering (Ch. 2)",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "5",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "8",
+          "mode": "TDMA",
+          "description": "Parking Enforcement",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "9",
+          "mode": "TDMA",
+          "description": "Pryzbyla University Center",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "10",
+          "mode": "TDMA",
+          "description": "Conference Services/Catering",
+          "tag": "Schools",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7051&opt=all_tg",
+    "uniqueIdentifier": "s-7051&opt=all_tg"
+  },
+  {
+    "systemName": "Capitol Complex",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "January 22, 2017, 2:01 pm (General text description updated)",
+    "systemID": "7525",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 406.3875
+          },
+          {
+            "control": false,
+            "frequency": 408.5125
+          },
+          {
+            "control": false,
+            "frequency": 409.8375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Capitol Complex",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "21337",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=21337",
+        "siteName": "Confirmed LCN",
+        "siteID": 21337
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=7525&opt=all_tg",
+    "uniqueIdentifier": "s-7525&opt=all_tg"
+  },
+  {
+    "systemName": "Capitol Police",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "Project 25 Phase I",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "lastUpdated": "February 8, 2019, 6:06 am (Updated encryption settings for 5 talkgroups(All))",
+    "systemID": "7790",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 169.575
+          },
+          {
+            "control": false,
+            "frequency": 172.3875
+          },
+          {
+            "control": false,
+            "frequency": 169.8375
+          },
+          {
+            "control": false,
+            "frequency": 172.6875
+          },
+          {
+            "control": false,
+            "frequency": 170.1375
+          },
+          {
+            "control": false,
+            "frequency": 172.9625
+          },
+          {
+            "control": false,
+            "frequency": 170.375
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 173.1625
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 170.575
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 173.475
+          },
+          {
+            "control": false,
+            "frequency": 171
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 173.8125
+          },
+          {
+            "control": false,
+            "frequency": 171.4125
+          },
+          {
+            "control": false,
+            "frequency": 171.7875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Capitol Police",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "22575",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "siteNac": "580",
+          "latitude": "N 38.8951118",
+          "longitude": "W -77.0363658",
+          "range": {
+            "distance": 10,
+            "units": "miles"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=22575",
+        "siteName": "Site 1",
+        "siteID": 22575
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "ENCRYPTED",
+          "description": "Encrypted",
+          "tag": "Federal",
+          "group": "All"
+        },
+        {
+          "decimal": "3",
+          "mode": "ENCRYPTED",
+          "description": "Encrypted",
+          "tag": "Federal",
+          "group": "All"
+        },
+        {
+          "decimal": "11",
+          "mode": "ENCRYPTED",
+          "description": "Encrypted",
+          "tag": "Federal",
+          "group": "All"
+        },
+        {
+          "decimal": "18",
+          "mode": "ENCRYPTED",
+          "description": "Encrypted",
+          "tag": "Federal",
+          "group": "All"
+        },
+        {
+          "decimal": "33",
+          "mode": "ENCRYPTED",
+          "description": "Encrypted",
+          "tag": "Federal",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7790&opt=all_tg",
+    "uniqueIdentifier": "s-7790&opt=all_tg"
+  },
+  {
+    "systemName": "DC Correctional Treatment Facility",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "April 3, 2017, 6:14 pm (Added Talkgroup 2 Ch. 2)",
+    "systemID": "9288",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 460.025
+          },
+          {
+            "control": false,
+            "frequency": 460.1
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "DC Correctional Treatment Facility",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "29460",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29460",
+        "siteName": "Confirmed LCN",
+        "siteID": 29460
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Ch. 1",
+          "tag": "Corrections",
+          "group": "All"
+        },
+        {
+          "decimal": "2",
+          "mode": "TDMA",
+          "description": "Ch. 2",
+          "tag": "Corrections",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=9288&opt=all_tg",
+    "uniqueIdentifier": "s-9288&opt=all_tg"
+  },
+  {
+    "systemName": "Four Seasons Hotel Washington",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 22, 2016, 11:13 am (Changed Site # 001 (Confirmed LCN) to 001 (Confirmed LCN))",
+    "systemID": "8647",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.425
+          },
+          {
+            "control": false,
+            "frequency": 461.9375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Four Seasons Hotel Washington",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "27072",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=27072",
+        "siteName": "Confirmed LCN",
+        "siteID": 27072
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "102",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "103",
+          "mode": "TDMA",
+          "description": "Bellmen",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8647&opt=all_tg",
+    "uniqueIdentifier": "s-8647&opt=all_tg"
+  },
+  {
+    "systemName": "District of Columbia",
+    "location": "District of Columbia, DC",
+    "county": "Washington DC",
+    "systemType": "Project 25 Phase II",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "lastUpdated": "August 15, 2019, 4:58 pm ((2) Talkgroups Updated (Fire/EMS))",
+    "systemID": "7508",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 769.90625
+          },
+          {
+            "control": false,
+            "frequency": 774.28125
+          },
+          {
+            "control": false,
+            "frequency": 769.96875
+          },
+          {
+            "control": false,
+            "frequency": 774.34375
+          },
+          {
+            "control": false,
+            "frequency": 770.40625
+          },
+          {
+            "control": false,
+            "frequency": 854.8625
+          },
+          {
+            "control": false,
+            "frequency": 770.46875
+          },
+          {
+            "control": false,
+            "frequency": 855.2125
+          },
+          {
+            "control": false,
+            "frequency": 770.71875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 855.2375
+          },
+          {
+            "control": false,
+            "frequency": 770.96875
+          },
+          {
+            "control": "PRIMARY",
+            "frequency": 855.4625
+          },
+          {
+            "control": false,
+            "frequency": 773.34375
+          },
+          {
+            "control": false,
+            "frequency": 856.1875
+          },
+          {
+            "control": false,
+            "frequency": 774.03125
+          },
+          {
+            "control": false,
+            "frequency": 856.5875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "District of Columbia",
+          "systemLocation": "District of Columbia, District of Columbia",
+          "siteNumber": "Decimal: 003 / Hex: 3",
+          "siteUniqueDBID": "20886",
+          "siteDescription": "Site 103",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "siteNac": "443",
+          "latitude": "N 38.89244 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=20886",
+        "siteName": "Site 103",
+        "siteID": 20886
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 856.9875
+          },
+          {
+            "control": false,
+            "frequency": 857.1875
+          },
+          {
+            "control": false,
+            "frequency": 857.5875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 857.9875
+          },
+          {
+            "control": false,
+            "frequency": 858.5875
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 858.9875
+          },
+          {
+            "control": false,
+            "frequency": 859.0375
+          },
+          {
+            "control": false,
+            "frequency": 859.0875
+          }
+        ],
+        "siteCounty": {}
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 860.9875
+          }
+        ],
+        "siteCounty": {}
+      }
+    ],
+    "talkgroups": {
+      "Fire/EMS": [
+        {
+          "decimal": "101",
+          "mode": "DIGITAL",
+          "description": "Fire Dispatch",
+          "tag": "Fire Dispatch",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "102",
+          "mode": "DIGITAL",
+          "description": "Main Operations",
+          "tag": "Fire Dispatch",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "700",
+          "mode": "DIGITAL",
+          "description": "Incident 10",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "701",
+          "mode": "DIGITAL",
+          "description": "Incident 11",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "702",
+          "mode": "DIGITAL",
+          "description": "Incident 12",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "703",
+          "mode": "DIGITAL",
+          "description": "Incident 20",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "704",
+          "mode": "DIGITAL",
+          "description": "Incident 21",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "705",
+          "mode": "DIGITAL",
+          "description": "Incident 22",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "706",
+          "mode": "DIGITAL",
+          "description": "Special Events 1",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "707",
+          "mode": "DIGITAL",
+          "description": "Special Events 2",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "708",
+          "mode": "ENCRYPTED",
+          "description": "Special Events 3",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "709",
+          "mode": "ENCRYPTED",
+          "description": "Special Events 4",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "710",
+          "mode": "DIGITAL",
+          "description": "Incident 30",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "711",
+          "mode": "DIGITAL",
+          "description": "Incident 31",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "712",
+          "mode": "DIGITAL",
+          "description": "Incident 32",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "713",
+          "mode": "DIGITAL",
+          "description": "Incident 40",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "714",
+          "mode": "DIGITAL",
+          "description": "Incident 41",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "715",
+          "mode": "DIGITAL",
+          "description": "Incident 42",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "716",
+          "mode": "ENCRYPTED",
+          "description": "EMS 3",
+          "tag": "EMS-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "717",
+          "mode": "ENCRYPTED",
+          "description": "EMS 4",
+          "tag": "EMS-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "718",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations 3",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "719",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations 4",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "720",
+          "mode": "ENCRYPTED",
+          "description": "Incident 50",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "721",
+          "mode": "ENCRYPTED",
+          "description": "Incident 51",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "722",
+          "mode": "ENCRYPTED",
+          "description": "Incident 52",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "723",
+          "mode": "ENCRYPTED",
+          "description": "Incident 60",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "724",
+          "mode": "ENCRYPTED",
+          "description": "Incident 61",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "725",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations 1",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "726",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations 2",
+          "tag": "Fire-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "728",
+          "mode": "DIGITAL",
+          "description": "EMS 1 (East)",
+          "tag": "EMS-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "729",
+          "mode": "DIGITAL",
+          "description": "EMS 2 (West)",
+          "tag": "EMS-Tac",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "730",
+          "mode": "ENCRYPTED",
+          "description": "Logistics 1",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "731",
+          "mode": "ENCRYPTED",
+          "description": "Logistics 2",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "732",
+          "mode": "ENCRYPTED",
+          "description": "Fire Prevention",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "733",
+          "mode": "ENCRYPTED",
+          "description": "Arson",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "734",
+          "mode": "ENCRYPTED",
+          "description": "MPD",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "735",
+          "mode": "ENCRYPTED",
+          "description": "Homeland Security/Special Operations",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "736",
+          "mode": "ENCRYPTED",
+          "description": "Marine",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "737",
+          "mode": "ENCRYPTED",
+          "description": "Training 1",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "738",
+          "mode": "ENCRYPTED",
+          "description": "Training 2",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "739",
+          "mode": "ENCRYPTED",
+          "description": "Chiefs",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "740",
+          "mode": "ENCRYPTED",
+          "description": "FOCC",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "741",
+          "mode": "ENCRYPTED",
+          "description": "Adminstration 1",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "742",
+          "mode": "ENCRYPTED",
+          "description": "Adminstration 2",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "743",
+          "mode": "ENCRYPTED",
+          "description": "Adminstration 3",
+          "tag": "Fire-Talk",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "744",
+          "mode": "DIGITAL",
+          "description": "Marine 1",
+          "tag": "Interop",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "745",
+          "mode": "ENCRYPTED",
+          "description": "Marine 5",
+          "tag": "Interop",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "746",
+          "mode": "DIGITAL",
+          "description": "Marine 2",
+          "tag": "Interop",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "747",
+          "mode": "DIGITAL",
+          "description": "Marine 3",
+          "tag": "Interop",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "748",
+          "mode": "DIGITAL",
+          "description": "Marine 4",
+          "tag": "Interop",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "11618",
+          "mode": "DIGITAL",
+          "description": "AMR Dispatch",
+          "tag": "EMS Dispatch",
+          "group": "Fire/EMS"
+        },
+        {
+          "decimal": "11619",
+          "mode": "DIGITAL",
+          "description": "AMR Tac 1",
+          "tag": "EMS-Tac",
+          "group": "Fire/EMS"
+        }
+      ],
+      "Hospitals": [
+        {
+          "decimal": "142",
+          "mode": "DIGITAL",
+          "description": "United Medical Center",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "143",
+          "mode": "DIGITAL",
+          "description": "Childrens National Medical Center",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "144",
+          "mode": "DIGITAL",
+          "description": "Notify",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "145",
+          "mode": "DIGITAL",
+          "description": "Medstar",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "146",
+          "mode": "DIGITAL",
+          "description": "Howard University",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "147",
+          "mode": "DIGITAL",
+          "description": "Psychiatric Institute of Washington",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "148",
+          "mode": "DIGITAL",
+          "description": "Georgetown University Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "149",
+          "mode": "DIGITAL",
+          "description": "George Washington University Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "150",
+          "mode": "DIGITAL",
+          "description": "United Medical Center Pediatrics",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "151",
+          "mode": "DIGITAL",
+          "description": "Providence Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "152",
+          "mode": "DIGITAL",
+          "description": "Poison Control",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "153",
+          "mode": "DIGITAL",
+          "description": "Sibley Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "154",
+          "mode": "DIGITAL",
+          "description": "Washington Hospital Center",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "155",
+          "mode": "DIGITAL",
+          "description": "Spare Talkgroup",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "156",
+          "mode": "DIGITAL",
+          "description": "Veterans Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "157",
+          "mode": "DIGITAL",
+          "description": "Prince George's Hospital Center",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        },
+        {
+          "decimal": "2293",
+          "mode": "DIGITAL",
+          "description": "Renaissance Sibley Memorial Hospital",
+          "tag": "Hospital",
+          "group": "Hospitals"
+        }
+      ],
+      "Systemwide": [
+        {
+          "decimal": "166",
+          "mode": "DIGITAL",
+          "description": "DC-01 Unified Comm Center 1",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "167",
+          "mode": "DIGITAL",
+          "description": "DC-02 Unified Comm Center 2",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "621",
+          "mode": "DIGITAL",
+          "description": "DC-07 Mutual Aid Fire 1",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "623",
+          "mode": "DIGITAL",
+          "description": "DC-08 Mutual Aid Fire 2",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "1039",
+          "mode": "DIGITAL",
+          "description": "DC-16 MPD Citywide 1",
+          "tag": "Law Dispatch",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "1203",
+          "mode": "DIGITAL",
+          "description": "DC-13 Police Mutual Aid Radio System",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2102",
+          "mode": "ENCRYPTED",
+          "description": "DC-11 Executive 1 (Senior City Officials)",
+          "tag": "Public Works",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2103",
+          "mode": "DIGITAL",
+          "description": "DC-12 Executive 2 (City Officials)",
+          "tag": "Public Works",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2221",
+          "mode": "DIGITAL",
+          "description": "DC-09 Emergency Management Agency 1",
+          "tag": "Emergency Ops",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2223",
+          "mode": "DIGITAL",
+          "description": "DC-10 Emergency Management Agency 2",
+          "tag": "Emergency Ops",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2341",
+          "mode": "DIGITAL",
+          "description": "DC-03 Unified Comm Center 3",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2343",
+          "mode": "DIGITAL",
+          "description": "DC-04 Unified Comm Center 4",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2353",
+          "mode": "DIGITAL",
+          "description": "DC-14 Spare 1",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "2355",
+          "mode": "DIGITAL",
+          "description": "DC-15 Spare 2",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "3747",
+          "mode": "DIGITAL",
+          "description": "DC-05 Mutual Aid 1",
+          "tag": "Interop",
+          "group": "Systemwide"
+        },
+        {
+          "decimal": "3748",
+          "mode": "DIGITAL",
+          "description": "DC-06 Mutual Aid 2 (also DC Interop 1)",
+          "tag": "Interop",
+          "group": "Systemwide"
+        }
+      ],
+      "Police": [
+        {
+          "decimal": "1201",
+          "mode": "DIGITAL",
+          "description": "Metropolitan Interoperability Radio System",
+          "tag": "Law Talk",
+          "group": "Police"
+        },
+        {
+          "decimal": "1227",
+          "mode": "DIGITAL",
+          "description": "Housing Authority Police",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "1312",
+          "mode": "DIGITAL",
+          "description": "Capitol Police Patch 1",
+          "tag": "Law Talk",
+          "group": "Police"
+        },
+        {
+          "decimal": "1314",
+          "mode": "DIGITAL",
+          "description": "Capitol Police Patch 2",
+          "tag": "Law Talk",
+          "group": "Police"
+        },
+        {
+          "decimal": "1316",
+          "mode": "DIGITAL",
+          "description": "DC Task Force 1",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "1317",
+          "mode": "ENCRYPTED",
+          "description": "DC Task Force SED DES",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "1533",
+          "mode": "DIGITAL",
+          "description": "WMATA Patch 1",
+          "tag": "Interop",
+          "group": "Police"
+        },
+        {
+          "decimal": "1535",
+          "mode": "DIGITAL",
+          "description": "WMATA Patch 2",
+          "tag": "Interop",
+          "group": "Police"
+        },
+        {
+          "decimal": "3749",
+          "mode": "DIGITAL",
+          "description": "Mutual Aid 3",
+          "tag": "Law Talk",
+          "group": "Police"
+        },
+        {
+          "decimal": "3750",
+          "mode": "DIGITAL",
+          "description": "Mutual Aid 4",
+          "tag": "Law Talk",
+          "group": "Police"
+        },
+        {
+          "decimal": "11025",
+          "mode": "ENCRYPTED",
+          "description": "1st District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11027",
+          "mode": "ENCRYPTED",
+          "description": "2nd District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11029",
+          "mode": "ENCRYPTED",
+          "description": "3rd District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11031",
+          "mode": "ENCRYPTED",
+          "description": "4th District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11033",
+          "mode": "ENCRYPTED",
+          "description": "5th District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11035",
+          "mode": "ENCRYPTED",
+          "description": "6th District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11037",
+          "mode": "ENCRYPTED",
+          "description": "7th District",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11041",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations Division 1 Event",
+          "tag": "Law Dispatch",
+          "group": "Police"
+        },
+        {
+          "decimal": "11049",
+          "mode": "ENCRYPTED",
+          "description": "1st District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11051",
+          "mode": "ENCRYPTED",
+          "description": "2nd District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11053",
+          "mode": "ENCRYPTED",
+          "description": "3rd District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11055",
+          "mode": "ENCRYPTED",
+          "description": "4th District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11057",
+          "mode": "ENCRYPTED",
+          "description": "5th District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11059",
+          "mode": "ENCRYPTED",
+          "description": "6th District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11061",
+          "mode": "ENCRYPTED",
+          "description": "7th District Tac",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11115",
+          "mode": "ENCRYPTED",
+          "description": "Force Investigation Team/Office of Professional Responsibility",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11117",
+          "mode": "ENCRYPTED",
+          "description": "Office of Internal Affairs",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11123",
+          "mode": "ENCRYPTED",
+          "description": "Office of the Superintendent of Detectives 1",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11131",
+          "mode": "ENCRYPTED",
+          "description": "Major Narcotics Division 1",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11133",
+          "mode": "ENCRYPTED",
+          "description": "Major Narcotics Division 2",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11139",
+          "mode": "ENCRYPTED",
+          "description": "Executive Protection Unit",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11143",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations Division 3 Ops",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11151",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations Division 2 Emergency Response Team",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11155",
+          "mode": "ENCRYPTED",
+          "description": "Special Operations Division 4 Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11281",
+          "mode": "ENCRYPTED",
+          "description": "1st District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11283",
+          "mode": "ENCRYPTED",
+          "description": "2nd District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11285",
+          "mode": "ENCRYPTED",
+          "description": "3rd District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11287",
+          "mode": "ENCRYPTED",
+          "description": "4th District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11289",
+          "mode": "ENCRYPTED",
+          "description": "5th District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11291",
+          "mode": "ENCRYPTED",
+          "description": "6th District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11293",
+          "mode": "ENCRYPTED",
+          "description": "7th District Secure",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11300",
+          "mode": "ENCRYPTED",
+          "description": "Harbor Patrol",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11302",
+          "mode": "ENCRYPTED",
+          "description": "Homeland Security/Counter-Terrorism",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11321",
+          "mode": "ENCRYPTED",
+          "description": "MPD1",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11323",
+          "mode": "ENCRYPTED",
+          "description": "MPD2",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11327",
+          "mode": "ENCRYPTED",
+          "description": "MPD3",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11343",
+          "mode": "ENCRYPTED",
+          "description": "Senior Commanders",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11540",
+          "mode": "ENCRYPTED",
+          "description": "1st District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11541",
+          "mode": "ENCRYPTED",
+          "description": "2nd District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11542",
+          "mode": "ENCRYPTED",
+          "description": "3rd District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11543",
+          "mode": "ENCRYPTED",
+          "description": "4th District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11545",
+          "mode": "ENCRYPTED",
+          "description": "6th District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11546",
+          "mode": "ENCRYPTED",
+          "description": "7th District Ops A",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11554",
+          "mode": "ENCRYPTED",
+          "description": "5th District Ops B",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11555",
+          "mode": "ENCRYPTED",
+          "description": "6th District Ops B",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11556",
+          "mode": "ENCRYPTED",
+          "description": "7th District Ops B",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11560",
+          "mode": "ENCRYPTED",
+          "description": "Narcotics and Special Investigations Division 1",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11561",
+          "mode": "ENCRYPTED",
+          "description": "Narcotics and Special Investigations Division 2",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11601",
+          "mode": "ENCRYPTED",
+          "description": "Unknown",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11602",
+          "mode": "ENCRYPTED",
+          "description": "Unknown",
+          "tag": "Law Tac",
+          "group": "Police"
+        },
+        {
+          "decimal": "11605",
+          "mode": "ENCRYPTED",
+          "description": "Unknown",
+          "tag": "Law Tac",
+          "group": "Police"
+        }
+      ],
+      "Future (WMATA?)": [
+        {
+          "decimal": "1617",
+          "mode": "DIGITAL",
+          "description": "Channel 0-1",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1619",
+          "mode": "DIGITAL",
+          "description": "Channel 0-3",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1620",
+          "mode": "DIGITAL",
+          "description": "Channel 0-4",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1631",
+          "mode": "DIGITAL",
+          "description": "Channel 1-5",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1632",
+          "mode": "DIGITAL",
+          "description": "Channel 1-6",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1633",
+          "mode": "DIGITAL",
+          "description": "Channel 1-7",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1634",
+          "mode": "DIGITAL",
+          "description": "Channel 1-8",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1635",
+          "mode": "DIGITAL",
+          "description": "Channel 1-9",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1636",
+          "mode": "DIGITAL",
+          "description": "Channel 2-0",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1637",
+          "mode": "DIGITAL",
+          "description": "Channel 2-1",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1638",
+          "mode": "DIGITAL",
+          "description": "Channel 2-2",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1639",
+          "mode": "DIGITAL",
+          "description": "Channel 2-3",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1640",
+          "mode": "DIGITAL",
+          "description": "Channel 2-4",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1641",
+          "mode": "DIGITAL",
+          "description": "Channel 2-5",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        },
+        {
+          "decimal": "1642",
+          "mode": "DIGITAL",
+          "description": "Channel 2-6",
+          "tag": "Public Works",
+          "group": "Future (WMATA?)"
+        }
+      ],
+      "Services": [
+        {
+          "decimal": "2099",
+          "mode": "DIGITAL",
+          "description": "Department of Health",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2117",
+          "mode": "DIGITAL",
+          "description": "Emergency Management Agency",
+          "tag": "Emergency Ops",
+          "group": "Services"
+        },
+        {
+          "decimal": "2121",
+          "mode": "DIGITAL",
+          "description": "School Police 2",
+          "tag": "Security",
+          "group": "Services"
+        },
+        {
+          "decimal": "2133",
+          "mode": "DIGITAL",
+          "description": "School Police 1",
+          "tag": "Security",
+          "group": "Services"
+        },
+        {
+          "decimal": "2143",
+          "mode": "DIGITAL",
+          "description": "Department of Human Services",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2145",
+          "mode": "DIGITAL",
+          "description": "DC Jail - Exterior Security",
+          "tag": "Corrections",
+          "group": "Services"
+        },
+        {
+          "decimal": "2146",
+          "mode": "DIGITAL",
+          "description": "Fugitive Apprehension",
+          "tag": "Law Talk",
+          "group": "Services"
+        },
+        {
+          "decimal": "2147",
+          "mode": "DIGITAL",
+          "description": "DC Jail - Interior Security",
+          "tag": "Corrections",
+          "group": "Services"
+        },
+        {
+          "decimal": "2148",
+          "mode": "DIGITAL",
+          "description": "DC Jail - Maintenance",
+          "tag": "Corrections",
+          "group": "Services"
+        },
+        {
+          "decimal": "2149",
+          "mode": "DIGITAL",
+          "description": "DC Jail",
+          "tag": "Corrections",
+          "group": "Services"
+        },
+        {
+          "decimal": "2150",
+          "mode": "DIGITAL",
+          "description": "Department of Health",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2151",
+          "mode": "DIGITAL",
+          "description": "Department of Human Services",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2152",
+          "mode": "DIGITAL",
+          "description": "Department of Human Services",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2157",
+          "mode": "DIGITAL",
+          "description": "Department of Transportation",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2161",
+          "mode": "DIGITAL",
+          "description": "Department of Transportation",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2163",
+          "mode": "DIGITAL",
+          "description": "Parking Enforcement",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2175",
+          "mode": "DIGITAL",
+          "description": "Parking Enforcement Tac 2",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2177",
+          "mode": "DIGITAL",
+          "description": "DC Protective Services",
+          "tag": "Security",
+          "group": "Services"
+        },
+        {
+          "decimal": "2179",
+          "mode": "DIGITAL",
+          "description": "DC National Guard",
+          "tag": "Military",
+          "group": "Services"
+        },
+        {
+          "decimal": "2189",
+          "mode": "TDMA",
+          "description": "Water and Sewer Authority 1",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2191",
+          "mode": "TDMA",
+          "description": "Water and Sewer Authority 2",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2193",
+          "mode": "TDMA",
+          "description": "Water and Sewer Authority 3",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2197",
+          "mode": "DIGITAL",
+          "description": "Library Security",
+          "tag": "Security",
+          "group": "Services"
+        },
+        {
+          "decimal": "2203",
+          "mode": "DIGITAL",
+          "description": "Parks and Recreation",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2204",
+          "mode": "DIGITAL",
+          "description": "Parks and Recreation",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2205",
+          "mode": "TDMA",
+          "description": "DC Water - Security?",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2206",
+          "mode": "TDMA",
+          "description": "DC Water",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2207",
+          "mode": "TDMA",
+          "description": "DC Water - McMillan Reservoir Security",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2208",
+          "mode": "TDMA",
+          "description": "DC Water",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2213",
+          "mode": "DIGITAL",
+          "description": "University of the District of Columbia Police 1",
+          "tag": "Law Dispatch",
+          "group": "Services"
+        },
+        {
+          "decimal": "2225",
+          "mode": "DIGITAL",
+          "description": "Traffic Management Center (TMC)",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2227",
+          "mode": "DIGITAL",
+          "description": "Streetcar Yard",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2229",
+          "mode": "DIGITAL",
+          "description": "Paratransit",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2231",
+          "mode": "DIGITAL",
+          "description": "Paratransit",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2237",
+          "mode": "DIGITAL",
+          "description": "Streetcar Dispatch",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2245",
+          "mode": "DIGITAL",
+          "description": "Streetcar Ambassadors",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2261",
+          "mode": "DIGITAL",
+          "description": "Transportation Mutual Aid Radio System (TMARS)",
+          "tag": "Transportation",
+          "group": "Services"
+        },
+        {
+          "decimal": "2305",
+          "mode": "DIGITAL",
+          "description": "Department of Health Emergency Healthcare Radio Network",
+          "tag": "Hospital",
+          "group": "Services"
+        },
+        {
+          "decimal": "2315",
+          "mode": "DIGITAL",
+          "description": "Motor Pool",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2325",
+          "mode": "DIGITAL",
+          "description": "Office of the Chief Medical Examiner",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2327",
+          "mode": "DIGITAL",
+          "description": "University of the District of Columbia Police 2",
+          "tag": "Law Tac",
+          "group": "Services"
+        },
+        {
+          "decimal": "2360",
+          "mode": "DIGITAL",
+          "description": "CERT Team (7/20/15)",
+          "tag": "Emergency Ops",
+          "group": "Services"
+        },
+        {
+          "decimal": "2361",
+          "mode": "DIGITAL",
+          "description": "CERT Team (7/20/15)",
+          "tag": "Emergency Ops",
+          "group": "Services"
+        },
+        {
+          "decimal": "2369",
+          "mode": "DIGITAL",
+          "description": "Health Department? (5/13/15 Drill)",
+          "tag": "Public Works",
+          "group": "Services"
+        },
+        {
+          "decimal": "2505",
+          "mode": "DIGITAL",
+          "description": "Taxicab Commission",
+          "tag": "Public Works",
+          "group": "Services"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7508&opt=all_tg",
+    "uniqueIdentifier": "s-7508&opt=all_tg"
+  },
+  {
+    "systemName": "Hillwood Estate, Museum and Gardens",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "July 19, 2018, 10:53 am (Updated General Trunked System Information)",
+    "systemID": "7230",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.5875
+          },
+          {
+            "control": false,
+            "frequency": 464.7875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Hillwood Estate, Museum and Gardens",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "19534",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=19534",
+        "siteName": "Confirmed LCN",
+        "siteID": 19534
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "mode": "TDMA",
+          "description": "Security (Ch. 1)",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "102",
+          "mode": "TDMA",
+          "description": "Parking (Ch. 2)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "103",
+          "mode": "TDMA",
+          "description": "(Ch. 3)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "104",
+          "mode": "TDMA",
+          "description": "Volunteers/Tour Guides?",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7230&opt=all_tg",
+    "uniqueIdentifier": "s-7230&opt=all_tg"
+  },
+  {
+    "systemName": "Jefferson Hotel",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 22, 2016, 11:17 am (Changed Site # 001 (Confirmed LCN) to 001 (Confirmed LCN))",
+    "systemID": "7844",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.9625
+          },
+          {
+            "control": false,
+            "frequency": 463.8625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Jefferson Hotel",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "22795",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=22795",
+        "siteName": "Confirmed LCN",
+        "siteID": 22795
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "20",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "21",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "22",
+          "mode": "TDMA",
+          "description": "In-Room Dining",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7844&opt=all_tg",
+    "uniqueIdentifier": "s-7844&opt=all_tg"
+  },
+  {
+    "systemName": "Georgetown University",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 4, 2018, 3:07 pm (Added Talkgroup 111 Recreation/Yates Field House?(All))",
+    "systemID": "9957",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.375
+          },
+          {
+            "control": false,
+            "frequency": 452.625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Georgetown University",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "31948",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "2, 3, 4",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=31948",
+        "siteName": "Site 1",
+        "siteID": 31948
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.075
+          },
+          {
+            "control": false,
+            "frequency": 461.6
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Georgetown University",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 004 / Hex: 4",
+          "siteUniqueDBID": "31990",
+          "siteDescription": "Site 4",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "1, 2, 3",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=31990",
+        "siteName": "Site 4",
+        "siteID": 31990
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "104",
+          "mode": "TDMA",
+          "description": "Maintenance",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "105",
+          "mode": "TDMA",
+          "description": "Maintenance",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "106",
+          "mode": "TDMA",
+          "description": "Transportation (GUTS)",
+          "tag": "Schools",
+          "group": "All"
+        },
+        {
+          "decimal": "111",
+          "mode": "TDMA",
+          "description": "Recreation/Yates Field House?",
+          "tag": "Schools",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=9957&opt=all_tg",
+    "uniqueIdentifier": "s-9957&opt=all_tg"
+  },
+  {
+    "systemName": "International Monetary Fund",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 19, 2017, 5:52 pm (Added Talkgroup 7 Housekeeping)",
+    "systemID": "8656",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 935.7125
+          },
+          {
+            "control": false,
+            "frequency": 936.9
+          },
+          {
+            "control": false,
+            "frequency": 938.1375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "International Monetary Fund",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "27129",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=27129",
+        "siteName": "Confirmed LCN",
+        "siteID": 27129
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "7",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8656&opt=all_tg",
+    "uniqueIdentifier": "s-8656&opt=all_tg"
+  },
+  {
+    "systemName": "Marriott Marquis (Washington)",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 22, 2016, 11:20 am (Changed Site # 003 (On-Site) to 003 (On-Site))",
+    "systemID": "8429",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.8375
+          },
+          {
+            "control": false,
+            "frequency": 461.9625
+          },
+          {
+            "control": false,
+            "frequency": 451.975
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "26012",
+          "siteDescription": "On-Site",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=26012",
+        "siteName": "On-Site",
+        "siteID": 26012
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.2625
+          },
+          {
+            "control": false,
+            "frequency": 463.925
+          },
+          {
+            "control": false,
+            "frequency": 463.6125
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 002 / Hex: 2",
+          "siteUniqueDBID": "25912",
+          "siteDescription": "Wide-Area",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=25912",
+        "siteName": "Wide-Area",
+        "siteID": 25912
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.175
+          },
+          {
+            "control": false,
+            "frequency": 452.4
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Marriott Marquis (Washington)",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 003 / Hex: 3",
+          "siteUniqueDBID": "27103",
+          "siteDescription": "On-Site",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=27103",
+        "siteName": "On-Site",
+        "siteID": 27103
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "2",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "3",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4",
+          "mode": "TDMA",
+          "description": "Room Service",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5",
+          "mode": "TDMA",
+          "description": "Bellmen",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "6",
+          "mode": "TDMA",
+          "description": "Banquets",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "7",
+          "mode": "TDMA",
+          "description": "Valet Parking",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "8",
+          "mode": "TDMA",
+          "description": "Banquets",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "9",
+          "mode": "TDMA",
+          "description": "Banquets",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "10",
+          "mode": "TDMA",
+          "description": "Audio/Visual",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8429&opt=all_tg",
+    "uniqueIdentifier": "s-8429&opt=all_tg"
+  },
+  {
+    "systemName": "Nationals Park",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 4, 2018, 1:37 pm ((1) Talkgroups Updated (All))",
+    "systemID": "8428",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.7875
+          },
+          {
+            "control": false,
+            "frequency": 461.8125
+          },
+          {
+            "control": false,
+            "frequency": 461.9875
+          },
+          {
+            "control": false,
+            "frequency": 463.9375
+          },
+          {
+            "control": false,
+            "frequency": 461.6625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Nationals Park",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "25911",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=25911",
+        "siteName": "Confirmed LCN",
+        "siteID": 25911
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Ballpark Operations",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "2",
+          "mode": "TDMA",
+          "description": "Nationals Staff",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "3",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5",
+          "mode": "TDMA",
+          "description": "Guest Services",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "6",
+          "mode": "TDMA",
+          "description": "Guest Services",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "8",
+          "mode": "TDMA",
+          "description": "Ticketing/Box Office",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "9",
+          "mode": "TDMA",
+          "description": "Parking",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "10",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "11",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "13",
+          "mode": "TDMA",
+          "description": "Scoreboard/Announcer",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "14",
+          "mode": "TDMA",
+          "description": "Ch. 6 (from Group 13)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "16",
+          "mode": "TDMA",
+          "description": "Guest Services - Wheelchairs",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "17",
+          "mode": "TDMA",
+          "description": "Concessions",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "19",
+          "mode": "TDMA",
+          "description": "Concessions - Warehouse",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "23",
+          "mode": "TDMA",
+          "description": "Concessions - Premium",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "24",
+          "mode": "TDMA",
+          "description": "Concessions - IT/Cashroom (Ch. 8)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "28",
+          "mode": "TDMA",
+          "description": "Audio/Visual",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "29",
+          "mode": "TDMA",
+          "description": "Merchandise",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "255",
+          "mode": "TDMA",
+          "description": "All Call",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8428&opt=all_tg",
+    "uniqueIdentifier": "s-8428&opt=all_tg"
+  },
+  {
+    "systemName": "United States Holocaust Memorial Museum",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "October 8, 2017, 10:55 am (Added Talkgroup 13 Information Technology)",
+    "systemID": "8316",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 407.075
+          },
+          {
+            "control": false,
+            "frequency": 407.375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "United States Holocaust Memorial Museum",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "25349",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=25349",
+        "siteName": "Confirmed LCN",
+        "siteID": 25349
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "11",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "12",
+          "mode": "TDMA",
+          "description": "Guest Services",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "13",
+          "mode": "TDMA",
+          "description": "Information Technology",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "14",
+          "mode": "TDMA",
+          "description": "Maintenance",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8316&opt=all_tg",
+    "uniqueIdentifier": "s-8316&opt=all_tg"
+  },
+  {
+    "systemName": "Knollwood",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "July 16, 2016, 7:20 pm (Changed Site # 001 (Site 1) to 001 (Confirmed LCN))",
+    "systemID": "8828",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.8625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Knollwood",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "27812",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=27812",
+        "siteName": "Confirmed LCN",
+        "siteID": 27812
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=8828&opt=all_tg",
+    "uniqueIdentifier": "s-8828&opt=all_tg"
+  },
+  {
+    "systemName": "Washington Hospital Center (Capacity Plus)",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "April 1, 2019, 6:54 am (Changed Site # 999 (Unconfirmed LCN) to 1 (Confirmed LCN))",
+    "systemID": "10445",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.0625
+          },
+          {
+            "control": false,
+            "frequency": 464.3125
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Washington Hospital Center (Capacity Plus)",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "33840",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "2, 3",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=33840",
+        "siteName": "Confirmed LCN",
+        "siteID": 33840
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=10445&opt=all_tg",
+    "uniqueIdentifier": "s-10445&opt=all_tg"
+  },
+  {
+    "systemName": "Omni Shoreham Hotel",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Single Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 22, 2016, 11:22 am (Changed Site # 001 (Confirmed LCN) to 001 (Confirmed LCN))",
+    "systemID": "8315",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 464.35
+          },
+          {
+            "control": false,
+            "frequency": 464.775
+          },
+          {
+            "control": false,
+            "frequency": 464.825
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Omni Shoreham Hotel",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "25345",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=25345",
+        "siteName": "Confirmed LCN",
+        "siteID": 25345
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "101",
+          "mode": "TDMA",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "102",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "103",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "104",
+          "mode": "TDMA",
+          "description": "Food and Beverage?",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "105",
+          "mode": "TDMA",
+          "description": "Banquets",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=8315&opt=all_tg",
+    "uniqueIdentifier": "s-8315&opt=all_tg"
+  },
+  {
+    "systemName": "Navy Federal Credit Union",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "Motorola Type II Smartnet",
+    "systemVoice": "Analog",
+    "lastUpdated": "March 13, 2012, 1:57 pm (Updated Talkgroups (13 Updated))",
+    "systemID": "5011",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 938.2
+          },
+          {
+            "control": "ALTERNATE",
+            "frequency": 937.2
+          },
+          {
+            "control": false,
+            "frequency": 935.6875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Navy Federal Credit Union",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "10368",
+          "siteDescription": "Primary",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "6116 33RD Street NW",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.89244 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          },
+          "siteConnectTone": "None"
+        },
+        "siteLink": "/apps/db/?siteId=10368",
+        "siteName": "Primary",
+        "siteID": 10368
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "4112",
+          "mode": "ANALOG",
+          "description": "BLD MGT BR (1-1)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4144",
+          "mode": "ANALOG",
+          "description": "BLD OPS SEC (1-2)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4176",
+          "mode": "ANALOG",
+          "description": "TELELIFT (1-3)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4208",
+          "mode": "ANALOG",
+          "description": "BLD MAINT (1-4)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4240",
+          "mode": "ANALOG",
+          "description": "ELECTRICAL (1-5)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4272",
+          "mode": "ANALOG",
+          "description": "GROUNDS (1-6)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4304",
+          "mode": "ANALOG",
+          "description": "FCLTY RESRS (1-7)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4336",
+          "mode": "ANALOG",
+          "description": "MECHANC SEC (1-8)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4368",
+          "mode": "ANALOG",
+          "description": "BMB SUPERV (1-9)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4400",
+          "mode": "ANALOG",
+          "description": "MOTLEYS (1-10)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4432",
+          "mode": "ANALOG",
+          "description": "TRUCKS (1-11)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4464",
+          "mode": "ANALOG",
+          "description": "SPARE 1 (1-12)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4496",
+          "mode": "ANALOG",
+          "description": "SPARE 2 (1-13)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4528",
+          "mode": "ANALOG",
+          "description": "SPARE 3 (1-14)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4656",
+          "mode": "ANALOG",
+          "description": "TELECOM DIV (2-1)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4688",
+          "mode": "ANALOG",
+          "description": "TELECOM SUP (2-2)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4720",
+          "mode": "ANALOG",
+          "description": "DATA TECHS (2-3)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4752",
+          "mode": "ANALOG",
+          "description": "VOICE TECHS (2-4)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4784",
+          "mode": "ANALOG",
+          "description": "NETWORK (2-5)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4816",
+          "mode": "ANALOG",
+          "description": "LAN TECHS (2-6)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4848",
+          "mode": "ANALOG",
+          "description": "SPARE 1 (2-7)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4880",
+          "mode": "ANALOG",
+          "description": "SPARE 2 (2-8)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4912",
+          "mode": "ANALOG",
+          "description": "SPARE 3 (2-9)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5136",
+          "mode": "ANALOG",
+          "description": "SECURITY (3-2)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5168",
+          "mode": "ANALOG",
+          "description": "NURSE (3-3)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5200",
+          "mode": "ANALOG",
+          "description": "SUPPLY (3-4)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5232",
+          "mode": "ANALOG",
+          "description": "SPARE 1 (3-5)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5264",
+          "mode": "ANALOG",
+          "description": "SPARE 2 (3-6)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5296",
+          "mode": "ANALOG",
+          "description": "SPARE 3 (3-7)",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=5011&opt=all_tg",
+    "uniqueIdentifier": "s-5011&opt=all_tg"
+  },
+  {
+    "systemName": "National Law Enforcement Museum",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "Project 25 Phase II",
+    "systemVoice": "APCO-25 Common Air Interface Exclusive",
+    "lastUpdated": "April 4, 2019, 6:39 am (Changed Site # 001 (Site 1) to 001 (Site 1))",
+    "systemID": "10522",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": "PRIMARY",
+            "frequency": 856.3375
+          },
+          {
+            "control": false,
+            "frequency": 857.3375
+          },
+          {
+            "control": false,
+            "frequency": 858.3375
+          },
+          {
+            "control": false,
+            "frequency": 859.3375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "National Law Enforcement Museum",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "34240",
+          "siteDescription": "Site 1",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "siteNac": "9E1",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=34240",
+        "siteName": "Site 1",
+        "siteID": 34240
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Security?",
+          "tag": "Security",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=10522&opt=all_tg",
+    "uniqueIdentifier": "s-10522&opt=all_tg"
+  },
+  {
+    "systemName": "Walter E. Washington Convention Center",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "March 13, 2017, 3:05 pm (Added Site # 4 (Confirmed LCN))",
+    "systemID": "7659",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 453.1125
+          },
+          {
+            "control": false,
+            "frequency": 453.1375
+          },
+          {
+            "control": false,
+            "frequency": 453.7875
+          },
+          {
+            "control": false,
+            "frequency": 453.8875
+          },
+          {
+            "control": false,
+            "frequency": 453.9125
+          },
+          {
+            "control": false,
+            "frequency": 453.9625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Walter E. Washington Convention Center",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "21954",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.904325892736914",
+          "longitude": "W -77.0231294631958",
+          "range": {
+            "distance": 0.4,
+            "units": "miles"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=21954",
+        "siteName": "Confirmed LCN",
+        "siteID": 21954
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.4875
+          },
+          {
+            "control": false,
+            "frequency": 452.9875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Walter E. Washington Convention Center",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 003 / Hex: 3",
+          "siteUniqueDBID": "27102",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.903991926573134 (System)",
+          "longitude": "W -77.02291488647461 (System)",
+          "range": {
+            "distance": 0.4,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=27102",
+        "siteName": "Confirmed LCN",
+        "siteID": 27102
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.2875
+          },
+          {
+            "control": false,
+            "frequency": 452.6875
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Walter E. Washington Convention Center",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 004 / Hex: 4",
+          "siteUniqueDBID": "29459",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.903991926573134 (System)",
+          "longitude": "W -77.02291488647461 (System)",
+          "range": {
+            "distance": 0.4,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29459",
+        "siteName": "Confirmed LCN",
+        "siteID": 29459
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "1",
+          "mode": "TDMA",
+          "description": "Security (Ch. 1)",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "2",
+          "mode": "TDMA",
+          "description": "CES Security (Ch. 2)/Parking",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "3",
+          "mode": "TDMA",
+          "description": "Meeting Services",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "4",
+          "mode": "TDMA",
+          "description": "Housekeeping",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "5",
+          "mode": "TDMA",
+          "description": "Centerplate",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "6",
+          "mode": "TDMA",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "7",
+          "mode": "TDMA",
+          "description": "Information Technology",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "8",
+          "mode": "TDMA",
+          "description": "Information Technology",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "9",
+          "mode": "TDMA",
+          "description": "Electric (Hi-Tech)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "12",
+          "mode": "TDMA",
+          "description": "(Ch. 12?)",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "14",
+          "mode": "TDMA",
+          "description": "Security (Ch. 14)",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "80",
+          "mode": "TDMA",
+          "description": "Food/Catering - Banquet",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "81",
+          "mode": "TDMA",
+          "description": "Food/Catering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "82",
+          "mode": "TDMA",
+          "description": "Food/Catering - Retail",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "83",
+          "mode": "TDMA",
+          "description": "Food/Catering (loading dock?)",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=7659&opt=all_tg",
+    "uniqueIdentifier": "s-7659&opt=all_tg"
+  },
+  {
+    "systemName": "World Bank",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "DMR Motorola Capacity Plus Multi Site (TRBO)",
+    "systemVoice": "DMR",
+    "lastUpdated": "May 22, 2017, 3:10 pm (Added Site # 2 (1225 Connecticut Ave.))",
+    "systemID": "9050",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 463.75
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "World Bank",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "28601",
+          "siteDescription": "1818 H St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "RAS",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=28601",
+        "siteName": "1818 H St. NW",
+        "siteID": 28601
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.8375
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "World Bank",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 002 / Hex: 2",
+          "siteUniqueDBID": "29835",
+          "siteDescription": "1225 Connecticut Ave.",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29835",
+        "siteName": "1225 Connecticut Ave.",
+        "siteID": 29835
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.975
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "World Bank",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 003 / Hex: 3",
+          "siteUniqueDBID": "29131",
+          "siteDescription": "600 19th St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29131",
+        "siteName": "600 19th St. NW",
+        "siteID": 29131
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 452.2625
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "World Bank",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 004 / Hex: 4",
+          "siteUniqueDBID": "29114",
+          "siteDescription": "1850 I St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29114",
+        "siteName": "1850 I St. NW",
+        "siteID": 29114
+      },
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 461.1
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "World Bank",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 005 / Hex: 5",
+          "siteUniqueDBID": "29132",
+          "siteDescription": "701 18th St. NW",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "N/A",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.892440 (System)",
+          "longitude": "W -77.041374 (System)",
+          "range": {
+            "distance": 7,
+            "units": "miles(system)"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=29132",
+        "siteName": "701 18th St. NW",
+        "siteID": 29132
+      }
+    ],
+    "url": "https://www.radioreference.com/apps/db/?sid=9050&opt=all_tg",
+    "uniqueIdentifier": "s-9050&opt=all_tg"
+  },
+  {
+    "systemName": "Washington Hospital Center (LTR)",
+    "location": "Washington, DC",
+    "county": "Washington DC",
+    "systemType": "LTR Standard",
+    "systemVoice": "Analog",
+    "lastUpdated": "February 11, 2019, 1:45 pm (Updated General Trunked System Information)",
+    "systemID": "3390",
+    "state": "District of Columbia",
+    "sites": [
+      {
+        "frequencies": [
+          {
+            "control": false,
+            "frequency": 451.725
+          },
+          {
+            "control": false,
+            "frequency": 452.65
+          },
+          {
+            "control": false,
+            "frequency": 461.6
+          },
+          {
+            "control": false,
+            "frequency": 463.8
+          },
+          {
+            "control": false,
+            "frequency": 464.85
+          }
+        ],
+        "siteCounty": {},
+        "site": {
+          "systemName": "Washington Hospital Center (LTR)",
+          "systemLocation": "Washington, District of Columbia",
+          "siteNumber": "Decimal: 001 / Hex: 1",
+          "siteUniqueDBID": "5475",
+          "siteDescription": "Confirmed LCN",
+          "siteCountyLocation": "Washington DC",
+          "siteNeighbors": "N/A",
+          "siteLocation": "110 Irving Street, NW",
+          "siteModulation": "N/A",
+          "siteNotes": "None",
+          "latitude": "N 38.928804",
+          "longitude": "W -77.014144",
+          "range": {
+            "distance": 1,
+            "units": "miles"
+          }
+        },
+        "siteLink": "/apps/db/?siteId=5475",
+        "siteName": "Confirmed LCN",
+        "siteID": 5475
+      }
+    ],
+    "talkgroups": {
+      "All": [
+        {
+          "decimal": "0-03-017",
+          "mode": "ANALOG",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-03-018",
+          "mode": "ANALOG",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-03-019",
+          "mode": "ANALOG",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-03-020",
+          "mode": "ANALOG",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-03-021",
+          "mode": "ANALOG",
+          "description": "Engineering",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-07-001",
+          "mode": "ANALOG",
+          "description": "Environmental Services?",
+          "tag": "Business",
+          "group": "All"
+        },
+        {
+          "decimal": "0-15-001",
+          "mode": "ANALOG",
+          "description": "Security",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "0-15-002",
+          "mode": "ANALOG",
+          "description": "Security Alternate?",
+          "tag": "Security",
+          "group": "All"
+        },
+        {
+          "decimal": "0-15-008",
+          "mode": "ANALOG",
+          "description": "Administration?",
+          "tag": "Business",
+          "group": "All"
+        }
+      ]
+    },
+    "url": "https://www.radioreference.com/apps/db/?sid=3390&opt=all_tg",
+    "uniqueIdentifier": "s-3390&opt=all_tg"
+  }
+]

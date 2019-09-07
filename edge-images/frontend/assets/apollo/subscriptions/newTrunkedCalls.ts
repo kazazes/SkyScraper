@@ -22,6 +22,7 @@ export const NEW_TRUNKED_CALLS = gql`
       }
       duration
       audioPath
+      remotePaths
       transcription {
         body
         words {

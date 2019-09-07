@@ -1,7 +1,6 @@
 import { AsyncMqttClient } from "async-mqtt";
 import {
   prisma,
-  TranscriptionCreateInput,
   TranscriptionWordCreateWithoutTranscriptionInput,
 } from "../graphql/generated/prisma-client";
 import log from "../log";
@@ -10,9 +9,12 @@ import {
   ApplicationMessageHandler,
 } from "./applicationListener";
 
-const rootTopic = "transcription";
+const rootTopic =
+  process.env.NODE_ENV === "production"
+    ? "transcription/#"
+    : "+/transcription/#";
 
-export default (client: AsyncMqttClient)=> {
+export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
     rootTopic,
     client,
@@ -46,7 +48,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
     const createWordsInput:
       | TranscriptionWordCreateWithoutTranscriptionInput[]
       | null = parsed.words
-        ? parsed.words.map((word: any) => {
+      ? parsed.words.map((word: any) => {
           const w: TranscriptionWordCreateWithoutTranscriptionInput = {
             confidence: word.confidence,
             end: word.end,
@@ -55,9 +57,13 @@ class TranscriptionHandler extends ApplicationMessageHandler {
           };
           return w;
         })
-        : null;
+      : null;
 
     try {
+      const exists = await prisma.$exists.trunkedCall({
+        callHash: parsed.callHash,
+      });
+      if (!exists) { return; }
       await prisma.updateTrunkedCall({
         data: {
           transcription: {
@@ -68,16 +74,16 @@ class TranscriptionHandler extends ApplicationMessageHandler {
               beta: parsed.beta,
               languageModel: parsed.languageModel || "",
               words:
-                createWordsInput !== null ? { create: createWordsInput } : undefined,
-            }
-          }
-        }, where: { id: parsed.callId }
+                createWordsInput !== null
+                  ? { create: createWordsInput }
+                  : undefined,
+            },
+          },
+        },
+        where: { callHash: parsed.callHash },
       });
     } catch (e) {
-      log.error(
-        `Error adding transcript to trunked call`,
-        e,
-      );
+      log.error(`Error adding transcript to trunked call`, e);
     } finally {
       log.debug("Added a transcription to " + parsed.callId);
     }

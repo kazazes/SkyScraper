@@ -11,7 +11,7 @@
           prepend-icon="mdi-briefcase"
         ></v-select>
       </v-flex>
-      <Wizard/>
+      <Wizard />
     </v-layout>
   </v-container>
 </template>
@@ -28,9 +28,12 @@
       Settings,
       Wizard,
     },
-    data: {
-      systemType: "Trunked Voice",
+    data() {
+      return {
+        systemType: "Trunked Voice",
+      };
     },
+    middleware: ["auth"],
   })
   export default class TrunkedPage extends Vue {}
 </script>

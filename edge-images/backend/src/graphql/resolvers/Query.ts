@@ -15,4 +15,7 @@ export const Query: QueryResolvers.Type = {
       .aggregate()
       .count();
   },
+  trunkedSystems: (parent, args, ctx) => {
+    return ctx.prisma.trunkedSystems({ where: { id_not: null } });
+  },
 };

@@ -10,15 +10,15 @@
   </v-container>
 </template>
 <script lang="ts">
-import { Component } from "vue-property-decorator";
-import Vue from "vue";
+  import Vue from "vue";
+  import { Component } from "vue-property-decorator";
 
-@Component({
-  head: {
-    title: "Jupyter | SkyScraper"
+  @Component({
+    head: {
+      title: "Jupyter | SkyScraper",
+    },
+  })
+  export default class JupyterServer extends Vue {
+    protected endpoint = process.env.NODE_ENV === "production" ? "/jupyter" : `https://${ process.env.EDGE_HOSTNAME }/jupyter`;
   }
-})
-export default class JupyterServer extends Vue {
-  protected endpoint = process.env.NODE_ENV === 'production' ? "/jupyter" : "https://edge.sibyl.vision/jupyter";
-}
 </script>

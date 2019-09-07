@@ -10,7 +10,9 @@
   import { Component } from "vue-property-decorator";
   import Vue from "vue";
 
-  @Component({})
+  @Component({
+    middleware: ["auth"],
+  })
   export default class Pipelines extends Vue {
     protected nodeRedEndpoint =
       process.env.NODE_ENV === "production" ? "/red/" : "//127.0.0.1:1880";

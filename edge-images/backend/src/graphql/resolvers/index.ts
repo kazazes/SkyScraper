@@ -3,6 +3,7 @@
 
 import { Resolvers } from "../generated/graphqlgen";
 
+import { Mutation } from "./Mutation";
 import { Query } from "./Query";
 import { Subscription } from "./Subscription";
 import { Transcription } from "./Transcription";
@@ -15,6 +16,7 @@ import { TrunkedTalkgroup } from "./TrunkedTalkgroup";
 
 export const resolvers: Resolvers = {
   Query,
+  Mutation,
   TrunkedCall,
   TrunkedTalkgroup,
   TrunkedSystem,

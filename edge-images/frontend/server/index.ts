@@ -3,8 +3,6 @@ import express from "express";
 
 require("newrelic");
 
-require('dotenv').config();
-
 const { Nuxt, Builder } = require("nuxt");
 const app = express();
 

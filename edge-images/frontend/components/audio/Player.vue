@@ -88,10 +88,9 @@
     muted = false;
 
     @Prop({
-      type: String,
       default: null,
     })
-    file;
+    file?: string | string[];
 
     @Prop({
       type: Number,
@@ -108,6 +107,7 @@
     }
 
     createHowl() {
+      if (!this.file) return;
       let playing = false;
       if (this.sound) {
         playing = this.sound.playing();
@@ -115,7 +115,7 @@
       }
       this.sound = new Howl({
         mute: this.muted,
-        src: this.file,
+        src: this.file as string | string[],
         autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE || playing,
         volume: this.volume / 100,
         onpause: () => {
@@ -178,9 +178,11 @@
 
     // Utility
     download() {
-      window.open(this.file, "_blank");
+      if (!this.file) return;
+      const f = Array.isArray(this.file) ? this.file[0] : this.file;
+      window.open(f, "_blank");
       // also download json metadata
-      const jsonFile = this.file.replace(/\.[^\.]+$/, ".json");
+      const jsonFile = f.replace(/\.[^\.]+$/, ".json");
       window.open(jsonFile, "_blank");
     }
   }

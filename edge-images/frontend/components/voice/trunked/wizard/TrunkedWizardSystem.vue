@@ -1,25 +1,34 @@
 <template>
   <v-container fluid grid-list-xl py-0>
-    <ValidationObserver>
-      <v-form @submit.prevent="submit">
+    <ValidationObserver ref="observer" tag="form" v-slot="{ invalid, validate, errors }">
+      <v-form @submit.prevent="validate().then(submit)">
         <v-layout row wrap>
           <v-flex xs12 md6>
-            <v-text-field
-              v-model="nameInput"
-              v-validate="'required|alpha_spaces|min:4|max:30'"
-              data-vv-name="name"
-              :error-messages="errors.collect('name')"
-              label="Profile name"
-              placeholder="City - State, Network"
-              required
-            ></v-text-field>
+            <ValidationProvider name="name" rules="required|alpha_spaces|min:4|max:30">
+              <v-text-field
+                slot-scope="{
+                errors,
+                valid
+              }"
+                v-model="nameInput"
+                v-validate
+                data-vv-name="name"
+                :error-messages="errors"
+                :success="valid"
+                label="Profile name"
+                placeholder="City - State, Network"
+                key="name"
+                required
+              ></v-text-field>
+            </ValidationProvider>
+            <!-- TODO: CHANGE ALL TO VALDATION PROVIDER -->
             <v-select
               :items="systemTypes"
               v-model="systemType"
               label="System type"
               v-validate="'required'"
               data-vv-name="systemType"
-              :error-messages="errors.collect('systemType')"
+              :error-messages="errors['systemType']"
               required
             ></v-select>
             <v-select
@@ -29,38 +38,26 @@
               label="Bandplan"
               v-validate="'required'"
               data-vv-name="bandplan"
-              :error-messages="errors.collect('bandplan')"
+              :error-messages="errors['bandplan']"
               key="bandplan"
               required
             ></v-select>
           </v-flex>
           <v-flex xs12 md6>
-            <v-layout v-if="bandplan === 'CUSTOM_400' && systemType === 'SMARTNET'">
-              <v-flex md6>
+            <v-layout row wrap v-if="systemType === 'SMARTNET'">
+              <v-flex md6 v-if="bandplan === 'CUSTOM_400'" key="base">
                 <v-text-field
                   v-model="bandplanBase"
                   label="Base frequency"
                   suffix="MHz"
                   v-validate="'required|decimal:5|max_value:6000|min_value:80'"
                   data-vv-name="base"
-                  :error-messages="errors.collect('base')"
+                  :error-messages="errors['base']"
                   required
                   hint="The system base frequency."
-                  key="base"
-                ></v-text-field>
-                <v-text-field
-                  label="High frequency"
-                  v-model="bandplanHigh"
-                  suffix="MHz"
-                  v-validate="'required|decimal:5|max_value:6000|min_value:80'"
-                  data-vv-name="high"
-                  :error-messages="errors.collect('high')"
-                  required
-                  hint="The highest channel in the system."
-                  key="high"
                 ></v-text-field>
               </v-flex>
-              <v-flex md6>
+              <v-flex md6 v-if="bandplan === 'CUSTOM_400'" key="spacing">
                 <v-text-field
                   label="Frequency spacing"
                   v-model="bandplanSpacing"
@@ -68,12 +65,13 @@
                     'required|decimal:5|max_value:1000000|min_value:0'
                   "
                   data-vv-name="bandplan spacing"
-                  :error-messages="errors.collect('bandplan spacing')"
+                  :error-messages="errors['bandplan spacing']"
                   suffix="kHz"
                   hint="The system channel spacing."
-                  key="spacing"
                   required
                 ></v-text-field>
+              </v-flex>
+              <v-flex md6 v-if="bandplan === 'CUSTOM_400'" key="offset">
                 <v-text-field
                   label="Offset frequency"
                   v-model="bandplanOffset"
@@ -81,11 +79,38 @@
                     'required|decimal:5|max_value:1000000|min_value:0'
                   "
                   data-vv-name="bandplan offset"
-                  :error-messages="errors.collect('bandplan offset')"
+                  :error-messages="errors['bandplan offset']"
                   suffix="kHz"
-                  key="offset"
                   required
                   hint="The offset used to calculate frequencies."
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <v-flex md6>
+                <v-text-field
+                  label="Highest frequency"
+                  v-model="bandplanHigh"
+                  suffix="MHz"
+                  v-validate="'required|decimal:5|max_value:6000|min_value:80'"
+                  data-vv-name="high"
+                  :error-messages="errors['high']"
+                  required
+                  hint="The highest frequency in the system."
+                  key="high"
+                ></v-text-field>
+              </v-flex>
+              <v-flex md6>
+                <v-text-field
+                  label="Lowest frequency"
+                  v-model="bandplanLow"
+                  suffix="MHz"
+                  v-validate="'required|decimal:5|max_value:6000|min_value:80'"
+                  data-vv-name="low"
+                  :error-messages="errors['low']"
+                  required
+                  hint="The lowest frequency in the system."
+                  key="low"
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -101,15 +126,17 @@
               append-icon
               multiple
               chips
+              small
               :hint="bandwidthString"
               ref="channelInput"
               required
+              key="controlChannels"
             ></v-combobox>
           </v-flex>
         </v-layout>
         <v-layout>
           <v-flex md4 offset-md4>
-            <v-btn block color="accent" :disabled="!formValid">Continue</v-btn>
+            <v-btn block color="accent" :disabled="!invalid">Continue</v-btn>
           </v-flex>
         </v-layout>
       </v-form>
@@ -117,13 +144,23 @@
   </v-container>
 </template>
 <script lang="ts">
-  import { MAX_TRUNKED_RANGE_MHZ } from "~/assets/constants";
   import { validFrequencyKHz, validFrequencyMHz } from "~/utils/frequencies";
   import { randomBytes } from "crypto";
-  import { FieldFlags, ValidationObserver } from "vee-validate";
+  import {
+    FieldFlags,
+    ValidationObserver,
+    ErrorBag,
+    ValidationProvider,
+  } from "vee-validate";
   import Vue from "vue";
   import { Component, Prop } from "vue-property-decorator";
-  import { ErrorBag } from "vee-validate";
+  import {
+    TrunkedSmartnetBandplan,
+    TrunkedSystemType,
+    TrunkedSystemCreateInput,
+  } from "~/types/gql.types";
+
+  const MAX_TRUNKED_RANGE_MHZ = 15;
 
   @Component({
     methods: {
@@ -132,41 +169,42 @@
     },
     components: {
       ValidationObserver,
+      ValidationProvider,
     },
   })
   export default class TrunkedWizardSystem extends Vue {
-    // errors = new ErrorBag();
     @Prop() configs!: any[];
     controlChannels: string[] = [];
     controlChannelErrors: string[] = [];
     conventionalChannels: string[] = [];
     conventionalChannelErrors: string[] = [];
     nameInput = "";
-    bandplan = "CUSTOM_400";
+    bandplan = TrunkedSmartnetBandplan.Reband_800;
     bandplanBase: string = "";
     bandplanHigh: string = "";
+    bandplanLow: string = "";
     bandplanOffset = "";
     bandplanSpacing = "25";
-    bandplans: { value: string; text: string }[] = [
-      { value: "STANDARD_800", text: "800 Standard" },
-      { value: "REBAND_800", text: "800 Reband" },
-      { value: "SPLINTER_800", text: "800 Splinter" },
-      { value: "CUSTOM_400", text: "400 Custom" },
+    bandplans: { value: TrunkedSmartnetBandplan; text: string }[] = [
+      { value: TrunkedSmartnetBandplan.Standard_800, text: "800 Standard" },
+      { value: TrunkedSmartnetBandplan.Reband_800, text: "800 Reband" },
+      { value: TrunkedSmartnetBandplan.Splinter_800, text: "800 Splinter" },
+      { value: TrunkedSmartnetBandplan.Custom_400, text: "400 Custom" },
     ];
-    systemType = "SMARTNET";
-    systemTypes: { value: string; text: string }[] = [
-      { value: "CONVENTIONAL", text: "Conventional" },
-      { value: "P25", text: "P25" },
-      { value: "SMARTNET", text: "Motorola" },
-      { value: "CONVENTIONAL_P25", text: "Conventional P25" },
+    systemType = TrunkedSystemType.Smartnet;
+    systemTypes: { value: TrunkedSystemType; text: string }[] = [
+      { value: TrunkedSystemType.Conventional, text: "Conventional" },
+      { value: TrunkedSystemType.P25, text: "P25" },
+      { value: TrunkedSystemType.Smartnet, text: "Motorola" },
+      { value: TrunkedSystemType.ConventionalP25, text: "Conventional P25" },
     ];
 
-    // Get the fragment made by this step of the wizard
-    get fragment(): Partial<any> {
-      const systemInput: any = {
+    get systemCreateInput(): TrunkedSystemCreateInput {
+      const createInput: TrunkedSystemCreateInput = {
         bandplan: this.bandplan,
         bandplanBase: Number(this.bandplanBase),
         bandplanHigh: Number(this.bandplanHigh),
+        bandplanLow: Number(this.bandplanLow),
         bandplanOffset: Number(this.bandplanOffset),
         bandplanSpacing: Number(this.bandplanSpacing),
         controlChannels: { set: this.controlChannels.map((c) => Number(c)) },
@@ -174,21 +212,12 @@
         type: this.systemType,
         shortName: randomBytes(3).toString("hex"),
       };
-      return {
-        name: this.nameInput,
-        systems: {
-          create: [systemInput],
-        },
-      };
+
+      return createInput;
     }
 
-    get formValid() {
-      return (
-        Object.keys(this.$validator.fields).findIndex((k: string) => {
-          const f = this.$validator.fields[k] as FieldFlags;
-          return f.invalid || f.pending;
-        }) === -1
-      );
+    async validateForm() {
+      return (this.$refs.observer as any).validate();
     }
 
     get channels() {
@@ -224,6 +253,7 @@
     }
 
     get minChannel() {
+      if (this.channels.length < 1) return 400.0;
       const ctrl = this.channelNumbers;
       return ctrl.reduce((prev, current) => {
         if (Number(current) < Number(prev)) return current;
@@ -257,7 +287,9 @@
     }
 
     get bandwidth() {
-      return this.maxChannel - this.minChannel;
+      if (this.maxChannel && this.minChannel)
+        return this.maxChannel - this.minChannel;
+      else return 0;
     }
   }
 </script>

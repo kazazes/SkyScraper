@@ -1227,8 +1227,8 @@ type TrunkedCall {
   frequencyList(where: TrunkedCallFrequencyTimeWhereInput, orderBy: TrunkedCallFrequencyTimeOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCallFrequencyTime!]
   callHash: String
   wavPath: String
+  remotePaths: [String!]!
   transcription: Transcription
-  remotePath: String
 }
 
 type TrunkedCallConnection {
@@ -1252,8 +1252,8 @@ input TrunkedCallCreateInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateManyWithoutSystemInput {
@@ -1271,6 +1271,10 @@ input TrunkedCallCreateOneWithoutTranscriptionInput {
   connect: TrunkedCallWhereUniqueInput
 }
 
+input TrunkedCallCreateremotePathsInput {
+  set: [String!]
+}
+
 input TrunkedCallCreateWithoutSystemInput {
   id: ID
   frequency: Int!
@@ -1285,8 +1289,8 @@ input TrunkedCallCreateWithoutSystemInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateWithoutTalkgroupInput {
@@ -1303,8 +1307,8 @@ input TrunkedCallCreateWithoutTalkgroupInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
   transcription: TranscriptionCreateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallCreateWithoutTranscriptionInput {
@@ -1322,7 +1326,7 @@ input TrunkedCallCreateWithoutTranscriptionInput {
   frequencyList: TrunkedCallFrequencyTimeCreateManyInput
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallCreateremotePathsInput
 }
 
 type TrunkedCallEdge {
@@ -1680,8 +1684,6 @@ enum TrunkedCallOrderByInput {
   callHash_DESC
   wavPath_ASC
   wavPath_DESC
-  remotePath_ASC
-  remotePath_DESC
 }
 
 type TrunkedCallPreviousValues {
@@ -1697,7 +1699,7 @@ type TrunkedCallPreviousValues {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: [String!]!
 }
 
 input TrunkedCallScalarWhereInput {
@@ -1815,20 +1817,6 @@ input TrunkedCallScalarWhereInput {
   wavPath_not_starts_with: String
   wavPath_ends_with: String
   wavPath_not_ends_with: String
-  remotePath: String
-  remotePath_not: String
-  remotePath_in: [String!]
-  remotePath_not_in: [String!]
-  remotePath_lt: String
-  remotePath_lte: String
-  remotePath_gt: String
-  remotePath_gte: String
-  remotePath_contains: String
-  remotePath_not_contains: String
-  remotePath_starts_with: String
-  remotePath_not_starts_with: String
-  remotePath_ends_with: String
-  remotePath_not_ends_with: String
   AND: [TrunkedCallScalarWhereInput!]
   OR: [TrunkedCallScalarWhereInput!]
   NOT: [TrunkedCallScalarWhereInput!]
@@ -2116,8 +2104,8 @@ input TrunkedCallUpdateInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateManyDataInput {
@@ -2130,7 +2118,7 @@ input TrunkedCallUpdateManyDataInput {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateManyMutationInput {
@@ -2143,7 +2131,7 @@ input TrunkedCallUpdateManyMutationInput {
   audioPath: String
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateManyWithoutSystemInput {
@@ -2182,6 +2170,10 @@ input TrunkedCallUpdateOneRequiredWithoutTranscriptionInput {
   connect: TrunkedCallWhereUniqueInput
 }
 
+input TrunkedCallUpdateremotePathsInput {
+  set: [String!]
+}
+
 input TrunkedCallUpdateWithoutSystemDataInput {
   frequency: Int
   startTime: DateTime
@@ -2195,8 +2187,8 @@ input TrunkedCallUpdateWithoutSystemDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateWithoutTalkgroupDataInput {
@@ -2212,8 +2204,8 @@ input TrunkedCallUpdateWithoutTalkgroupDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
   transcription: TranscriptionUpdateOneWithoutCallInput
-  remotePath: String
 }
 
 input TrunkedCallUpdateWithoutTranscriptionDataInput {
@@ -2230,7 +2222,7 @@ input TrunkedCallUpdateWithoutTranscriptionDataInput {
   frequencyList: TrunkedCallFrequencyTimeUpdateManyInput
   callHash: String
   wavPath: String
-  remotePath: String
+  remotePaths: TrunkedCallUpdateremotePathsInput
 }
 
 input TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
@@ -2384,20 +2376,6 @@ input TrunkedCallWhereInput {
   wavPath_ends_with: String
   wavPath_not_ends_with: String
   transcription: TranscriptionWhereInput
-  remotePath: String
-  remotePath_not: String
-  remotePath_in: [String!]
-  remotePath_not_in: [String!]
-  remotePath_lt: String
-  remotePath_lte: String
-  remotePath_gt: String
-  remotePath_gte: String
-  remotePath_contains: String
-  remotePath_not_contains: String
-  remotePath_starts_with: String
-  remotePath_not_starts_with: String
-  remotePath_ends_with: String
-  remotePath_not_ends_with: String
   AND: [TrunkedCallWhereInput!]
   OR: [TrunkedCallWhereInput!]
   NOT: [TrunkedCallWhereInput!]
@@ -2666,10 +2644,10 @@ type TrunkedSource {
   error: Float!
   gain: Float!
   digitalRecorders: Float!
-  digitalLevels: Float
+  digitalLevels: Float!
   analogRecorders: Float!
-  analogLevels: Float
-  device: String!
+  analogLevels: Float!
+  device: String
   modulation: TrunkedModulation!
 }
 
@@ -2690,7 +2668,7 @@ input TrunkedSourceCreateInput {
   digitalLevels: Float
   analogRecorders: Float
   analogLevels: Float
-  device: String!
+  device: String
   modulation: TrunkedModulation!
 }
 
@@ -2745,10 +2723,10 @@ type TrunkedSourcePreviousValues {
   error: Float!
   gain: Float!
   digitalRecorders: Float!
-  digitalLevels: Float
+  digitalLevels: Float!
   analogRecorders: Float!
-  analogLevels: Float
-  device: String!
+  analogLevels: Float!
+  device: String
   modulation: TrunkedModulation!
 }
 
@@ -3119,20 +3097,22 @@ type TrunkedSystem {
   type: TrunkedSystemType!
   alphatags: [String!]!
   talkgroups(where: TrunkedTalkgroupWhereInput, orderBy: TrunkedTalkgroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedTalkgroup!]
-  recordUnknown: Boolean
-  shortName: String
-  uploadScript: String
-  audioArchive: Boolean
-  callLog: Boolean
+  recordUnknown: Boolean!
+  shortName: String!
+  name: String!
+  audioArchive: Boolean!
+  callLog: Boolean!
+  minDuration: Float!
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
-  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat!
   delayCreateOutput: Boolean
-  hideEncrypted: Boolean
-  hideUnknownTalkgroups: Boolean
+  hideEncrypted: Boolean!
+  hideUnknownTalkgroups: Boolean!
   calls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall!]
 }
 
@@ -3162,13 +3142,15 @@ input TrunkedSystemCreateInput {
   alphatags: TrunkedSystemCreatealphatagsInput
   talkgroups: TrunkedTalkgroupCreateManyWithoutSystemInput
   recordUnknown: Boolean
-  shortName: String
-  uploadScript: String
+  shortName: String!
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3201,13 +3183,15 @@ input TrunkedSystemCreateWithoutCallsInput {
   alphatags: TrunkedSystemCreatealphatagsInput
   talkgroups: TrunkedTalkgroupCreateManyWithoutSystemInput
   recordUnknown: Boolean
-  shortName: String
-  uploadScript: String
+  shortName: String!
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3223,13 +3207,15 @@ input TrunkedSystemCreateWithoutTalkgroupsInput {
   type: TrunkedSystemType!
   alphatags: TrunkedSystemCreatealphatagsInput
   recordUnknown: Boolean
-  shortName: String
-  uploadScript: String
+  shortName: String!
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3257,18 +3243,22 @@ enum TrunkedSystemOrderByInput {
   recordUnknown_DESC
   shortName_ASC
   shortName_DESC
-  uploadScript_ASC
-  uploadScript_DESC
+  name_ASC
+  name_DESC
   audioArchive_ASC
   audioArchive_DESC
   callLog_ASC
   callLog_DESC
+  minDuration_ASC
+  minDuration_DESC
   bandplan_ASC
   bandplan_DESC
   bandplanBase_ASC
   bandplanBase_DESC
   bandplanHigh_ASC
   bandplanHigh_DESC
+  bandplanLow_ASC
+  bandplanLow_DESC
   bandplanSpacing_ASC
   bandplanSpacing_DESC
   bandplanOffset_ASC
@@ -3291,20 +3281,22 @@ type TrunkedSystemPreviousValues {
   channels: [Float!]!
   type: TrunkedSystemType!
   alphatags: [String!]!
-  recordUnknown: Boolean
-  shortName: String
-  uploadScript: String
-  audioArchive: Boolean
-  callLog: Boolean
+  recordUnknown: Boolean!
+  shortName: String!
+  name: String!
+  audioArchive: Boolean!
+  callLog: Boolean!
+  minDuration: Float!
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
-  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
+  talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat!
   delayCreateOutput: Boolean
-  hideEncrypted: Boolean
-  hideUnknownTalkgroups: Boolean
+  hideEncrypted: Boolean!
+  hideUnknownTalkgroups: Boolean!
 }
 
 input TrunkedSystemScalarWhereInput {
@@ -3358,24 +3350,32 @@ input TrunkedSystemScalarWhereInput {
   shortName_not_starts_with: String
   shortName_ends_with: String
   shortName_not_ends_with: String
-  uploadScript: String
-  uploadScript_not: String
-  uploadScript_in: [String!]
-  uploadScript_not_in: [String!]
-  uploadScript_lt: String
-  uploadScript_lte: String
-  uploadScript_gt: String
-  uploadScript_gte: String
-  uploadScript_contains: String
-  uploadScript_not_contains: String
-  uploadScript_starts_with: String
-  uploadScript_not_starts_with: String
-  uploadScript_ends_with: String
-  uploadScript_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
   audioArchive: Boolean
   audioArchive_not: Boolean
   callLog: Boolean
   callLog_not: Boolean
+  minDuration: Float
+  minDuration_not: Float
+  minDuration_in: [Float!]
+  minDuration_not_in: [Float!]
+  minDuration_lt: Float
+  minDuration_lte: Float
+  minDuration_gt: Float
+  minDuration_gte: Float
   bandplan: TrunkedSmartnetBandplan
   bandplan_not: TrunkedSmartnetBandplan
   bandplan_in: [TrunkedSmartnetBandplan!]
@@ -3396,6 +3396,14 @@ input TrunkedSystemScalarWhereInput {
   bandplanHigh_lte: Float
   bandplanHigh_gt: Float
   bandplanHigh_gte: Float
+  bandplanLow: Float
+  bandplanLow_not: Float
+  bandplanLow_in: [Float!]
+  bandplanLow_not_in: [Float!]
+  bandplanLow_lt: Float
+  bandplanLow_lte: Float
+  bandplanLow_gt: Float
+  bandplanLow_gte: Float
   bandplanSpacing: Float
   bandplanSpacing_not: Float
   bandplanSpacing_in: [Float!]
@@ -3473,12 +3481,14 @@ input TrunkedSystemUpdateDataInput {
   talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3496,12 +3506,14 @@ input TrunkedSystemUpdateInput {
   talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3518,12 +3530,14 @@ input TrunkedSystemUpdateManyDataInput {
   alphatags: TrunkedSystemUpdatealphatagsInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3551,12 +3565,14 @@ input TrunkedSystemUpdateManyMutationInput {
   alphatags: TrunkedSystemUpdatealphatagsInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3570,19 +3586,17 @@ input TrunkedSystemUpdateManyWithWhereNestedInput {
   data: TrunkedSystemUpdateManyDataInput!
 }
 
+input TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput {
+  create: TrunkedSystemCreateWithoutTalkgroupsInput
+  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput
+  upsert: TrunkedSystemUpsertWithoutTalkgroupsInput
+  connect: TrunkedSystemWhereUniqueInput
+}
+
 input TrunkedSystemUpdateOneWithoutCallsInput {
   create: TrunkedSystemCreateWithoutCallsInput
   update: TrunkedSystemUpdateWithoutCallsDataInput
   upsert: TrunkedSystemUpsertWithoutCallsInput
-  delete: Boolean
-  disconnect: Boolean
-  connect: TrunkedSystemWhereUniqueInput
-}
-
-input TrunkedSystemUpdateOneWithoutTalkgroupsInput {
-  create: TrunkedSystemCreateWithoutTalkgroupsInput
-  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput
-  upsert: TrunkedSystemUpsertWithoutTalkgroupsInput
   delete: Boolean
   disconnect: Boolean
   connect: TrunkedSystemWhereUniqueInput
@@ -3596,12 +3610,14 @@ input TrunkedSystemUpdateWithoutCallsDataInput {
   talkgroups: TrunkedTalkgroupUpdateManyWithoutSystemInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3617,12 +3633,14 @@ input TrunkedSystemUpdateWithoutTalkgroupsDataInput {
   alphatags: TrunkedSystemUpdatealphatagsInput
   recordUnknown: Boolean
   shortName: String
-  uploadScript: String
+  name: String
   audioArchive: Boolean
   callLog: Boolean
+  minDuration: Float
   bandplan: TrunkedSmartnetBandplan
   bandplanBase: Float
   bandplanHigh: Float
+  bandplanLow: Float
   bandplanSpacing: Float
   bandplanOffset: Float
   talkgroupDisplayFormat: TrunkedTalkgroupDisplayFormat
@@ -3707,24 +3725,32 @@ input TrunkedSystemWhereInput {
   shortName_not_starts_with: String
   shortName_ends_with: String
   shortName_not_ends_with: String
-  uploadScript: String
-  uploadScript_not: String
-  uploadScript_in: [String!]
-  uploadScript_not_in: [String!]
-  uploadScript_lt: String
-  uploadScript_lte: String
-  uploadScript_gt: String
-  uploadScript_gte: String
-  uploadScript_contains: String
-  uploadScript_not_contains: String
-  uploadScript_starts_with: String
-  uploadScript_not_starts_with: String
-  uploadScript_ends_with: String
-  uploadScript_not_ends_with: String
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
   audioArchive: Boolean
   audioArchive_not: Boolean
   callLog: Boolean
   callLog_not: Boolean
+  minDuration: Float
+  minDuration_not: Float
+  minDuration_in: [Float!]
+  minDuration_not_in: [Float!]
+  minDuration_lt: Float
+  minDuration_lte: Float
+  minDuration_gt: Float
+  minDuration_gte: Float
   bandplan: TrunkedSmartnetBandplan
   bandplan_not: TrunkedSmartnetBandplan
   bandplan_in: [TrunkedSmartnetBandplan!]
@@ -3745,6 +3771,14 @@ input TrunkedSystemWhereInput {
   bandplanHigh_lte: Float
   bandplanHigh_gt: Float
   bandplanHigh_gte: Float
+  bandplanLow: Float
+  bandplanLow_not: Float
+  bandplanLow_in: [Float!]
+  bandplanLow_not_in: [Float!]
+  bandplanLow_lt: Float
+  bandplanLow_lte: Float
+  bandplanLow_gt: Float
+  bandplanLow_gte: Float
   bandplanSpacing: Float
   bandplanSpacing_not: Float
   bandplanSpacing_in: [Float!]
@@ -3789,13 +3823,14 @@ type TrunkedTalkgroup {
   updatedAt: DateTime!
   createdAt: DateTime!
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int!
-  system: TrunkedSystem
+  system: TrunkedSystem!
   calls(where: TrunkedCallWhereInput, orderBy: TrunkedCallOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedCall!]
   hash: String!
 }
@@ -3809,13 +3844,14 @@ type TrunkedTalkgroupConnection {
 input TrunkedTalkgroupCreateInput {
   id: ID
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput!
   calls: TrunkedCallCreateManyWithoutTalkgroupInput
   hash: String!
 }
@@ -3833,24 +3869,26 @@ input TrunkedTalkgroupCreateOneWithoutCallsInput {
 input TrunkedTalkgroupCreateWithoutCallsInput {
   id: ID
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput!
   hash: String!
 }
 
 input TrunkedTalkgroupCreateWithoutSystemInput {
   id: ID
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int
   calls: TrunkedCallCreateManyWithoutTalkgroupInput
   hash: String!
@@ -3876,6 +3914,8 @@ enum TrunkedTalkgroupOrderByInput {
   createdAt_DESC
   decimal_ASC
   decimal_DESC
+  hex_ASC
+  hex_DESC
   mode_ASC
   mode_DESC
   alphaTag_ASC
@@ -3897,11 +3937,12 @@ type TrunkedTalkgroupPreviousValues {
   updatedAt: DateTime!
   createdAt: DateTime!
   decimal: Int!
-  mode: String
-  alphaTag: String
-  description: String
-  tag: String
-  group: String
+  hex: String!
+  mode: String!
+  alphaTag: String!
+  description: String!
+  tag: String!
+  group: String!
   priority: Int!
   hash: String!
 }
@@ -3945,6 +3986,20 @@ input TrunkedTalkgroupScalarWhereInput {
   decimal_lte: Int
   decimal_gt: Int
   decimal_gte: Int
+  hex: String
+  hex_not: String
+  hex_in: [String!]
+  hex_not_in: [String!]
+  hex_lt: String
+  hex_lte: String
+  hex_gt: String
+  hex_gte: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
   mode: String
   mode_not: String
   mode_in: [String!]
@@ -4062,19 +4117,21 @@ input TrunkedTalkgroupSubscriptionWhereInput {
 
 input TrunkedTalkgroupUpdateInput {
   decimal: Int
+  hex: String
   mode: String
   alphaTag: String
   description: String
   tag: String
   group: String
   priority: Int
-  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  system: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput
   calls: TrunkedCallUpdateManyWithoutTalkgroupInput
   hash: String
 }
 
 input TrunkedTalkgroupUpdateManyDataInput {
   decimal: Int
+  hex: String
   mode: String
   alphaTag: String
   description: String
@@ -4086,6 +4143,7 @@ input TrunkedTalkgroupUpdateManyDataInput {
 
 input TrunkedTalkgroupUpdateManyMutationInput {
   decimal: Int
+  hex: String
   mode: String
   alphaTag: String
   description: String
@@ -4123,18 +4181,20 @@ input TrunkedTalkgroupUpdateOneWithoutCallsInput {
 
 input TrunkedTalkgroupUpdateWithoutCallsDataInput {
   decimal: Int
+  hex: String
   mode: String
   alphaTag: String
   description: String
   tag: String
   group: String
   priority: Int
-  system: TrunkedSystemUpdateOneWithoutTalkgroupsInput
+  system: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput
   hash: String
 }
 
 input TrunkedTalkgroupUpdateWithoutSystemDataInput {
   decimal: Int
+  hex: String
   mode: String
   alphaTag: String
   description: String
@@ -4200,6 +4260,20 @@ input TrunkedTalkgroupWhereInput {
   decimal_lte: Int
   decimal_gt: Int
   decimal_gte: Int
+  hex: String
+  hex_not: String
+  hex_in: [String!]
+  hex_not_in: [String!]
+  hex_lt: String
+  hex_lte: String
+  hex_gt: String
+  hex_gte: String
+  hex_contains: String
+  hex_not_contains: String
+  hex_starts_with: String
+  hex_not_starts_with: String
+  hex_ends_with: String
+  hex_not_ends_with: String
   mode: String
   mode_not: String
   mode_in: [String!]

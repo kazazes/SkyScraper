@@ -1,5 +1,5 @@
-import webpack from "webpack";
 import NuxtConfiguration from "@nuxt/config";
+import webpack from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -7,6 +7,13 @@ const config: NuxtConfiguration = {
   /*
    ** Headers of the page
    */
+  meta: {
+    mobileAppIOS: true,
+    theme_color: "#010015",
+    lang: "en",
+    ogSiteName: "SkyScraper Edge",
+    nativeUI: true,
+  },
   head: {
     title: "SkyScraper",
     meta: [
@@ -18,13 +25,7 @@ const config: NuxtConfiguration = {
         content: "Admin | SkyScraper",
       },
     ],
-    link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
-      {
-        rel: "stylesheet",
-        href: "https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css",
-      },
-    ],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
   },
   /*
    ** Customize the progress-bar color
@@ -39,65 +40,47 @@ const config: NuxtConfiguration = {
   /*
    ** Plugins to load before mounting the App
    */
-  // plugins: [{ src: "~/plugins/segment", ssr: false }],
+  plugins: [{ src: "~/plugins/vee-validate" }, { src: "~/plugins/axios" }],
   /*
    ** Nuxt.js modules
    */
-  modules: isDev
-    ? [
-        "@nuxtjs/axios",
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/pwa",
-        [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
+  buildModules: ["@nuxt/typescript-build"],
+  modules: [
+    "@nuxtjs/sentry",
+    "@nuxtjs/axios",
+    [
+      "@nuxtjs/dotenv",
+      {
+        systemVars: true,
+        only: [
+          "EDGE_HOSTNAME",
+          "FILE_HOSTNAME",
+          "NODE_ENV",
+          "API_ENDPOINT",
+          "API_WS_ENDPOINT",
         ],
-      ]
-    : [
-        "@nuxtjs/sentry",
-        "@nuxtjs/axios",
-        "@nuxtjs/vuetify",
-        "@nuxtjs/apollo",
-        "@nuxtjs/proxy",
-        "@nuxtjs/pwa",
-        [
-          "@nuxtjs/robots",
-          {
-            UserAgent: "*",
-            Disallow: "/",
-          },
-        ],
-        [
-          "nuxt-validate",
-          {
-            lang: "en",
-          },
-        ],
-      ],
+      },
+    ],
+    "@nuxtjs/vuetify",
+    "@nuxtjs/apollo",
+    "@nuxtjs/proxy",
+    "@nuxtjs/pwa",
+    "@nuxtjs/auth",
+    [
+      "nuxt-validate",
+      {
+        lang: "en",
+      },
+    ],
+  ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
     config: {}, // Additional config
   },
-  axios: {},
   apollo: {
     incldueNodeModules: true,
     clientConfigs: {
-      default: {
-        persisting: true,
-        httpEndpoint:
-          process.env.GRAPHQL_HTTP_ENDPOINT ||
-          "https://edge.sibyl.vision/graphql",
-        httpLinkOptions: {
-          credentials: "same-origin",
-        },
-        wsEndpoint:
-          process.env.GRAPHQL_WS_ENDPOINT || "wss://edge.sibyl.vision/graphql",
-        websocketsOnly: false,
-      },
+      default: "~/plugins/apolloDefaultConfig.ts",
     },
   },
   vuetify: {
@@ -107,6 +90,7 @@ const config: NuxtConfiguration = {
     },
     customProperties: true,
     iconfont: "mdi",
+    treeShake: !isDev,
   },
   build: {
     devtools: true,
@@ -117,17 +101,26 @@ const config: NuxtConfiguration = {
         config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
       }
     },
-    plugins: [
-      new webpack.ProvidePlugin({
-        mapboxgl: "mapbox-gl",
-      }),
-    ],
+    plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)],
   },
   vue: {
     config: {
       productionTip: false,
       devtools: isDev,
       performance: isDev,
+    },
+  },
+  typescript: {
+    typeCheck: true,
+    ignoreNotFoundWarnings: true,
+  },
+  auth: {
+    strategies: {
+      auth0: {
+        domain: "skyscraper.auth0.com",
+        client_id: "Uaz6l2GikGK9BuRoXAK7L7jGPmVNYMSB",
+        audience: "edge.sibyl.vision",
+      },
     },
   },
 };

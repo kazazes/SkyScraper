@@ -2,6 +2,18 @@ version: "2"
 volumes:
   resin-data: {}
 services:
+  kiosk:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: edge-images/chromium-kiosk
+    labels:
+      io.balena.features.dbus: "1"
+    environment:
+      - KIOSK_URL=http://nginx/
+    privileged: true
+    depends_on:
+      - nginx
   prisma-migrate:
     build:
       context: edge-images/prisma-migrate
@@ -16,7 +28,7 @@ services:
     image: prismagraphql/prisma:1.34
     restart: always
     ports:
-      - '4466:4466'
+      - "4466:4466"
     environment:
       PRISMA_CONFIG: |
         managementApiSecret: scrapingskies
@@ -88,18 +100,17 @@ services:
     volumes:
       - "resin-data:/data"
   backend:
+    volumes:
+      - "resin-data:/data"
     build:
       dockerfile: Dockerfile
       context: edge-images/backend
-    volumes:
-      - "resin-data:/data"
     ports:
       - "4000:4000"
     environment:
       - ENABLE_UPLOAD=0
       - GCP_PROJECT_ID=methodical-tea-237508
       - GCP_REGION=us-central1
-      - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
       - GRAPHQL_PORT=4000
       - MQTT_HOST=mqtt
       - MQTT_PASSWORD=Ur6yANnx@ZD
@@ -110,12 +121,15 @@ services:
       - SENTRY_URI=https://4ac277bd085b4acbbaa74de8c33202b2@sentry.io/1441821
       - REDIS_HOST=redis
       - ENABLE_TRANSCRIPTION=1
+      - DOCKER_SOCK=/var/run/balena.sock
     depends_on:
       - redis
       - mqtt
+    labels:
+      io.balena.features.balena-socket: true
   netdata:
     image: skyscraperai/netdata
-    hostname: edge.sibyl.vision
+    hostname: $EDGE_HOSTNAME
     ports:
       - 19999:19999
     cap_add:
@@ -124,7 +138,6 @@ services:
       - apparmor:unconfined
     privileged: true
     restart: always
-    network_mode: host
     labels:
       io.balena.features.dbus: true
       io.balena.features.balena-socket: true
@@ -161,12 +174,14 @@ services:
     build:
       dockerfile: Dockerfile
       context: edge-images/ngrok
-    links:
-      - nginx:https
     privileged: false
     depends_on:
       - nginx
-    command: ngrok tls -region=us -authtoken=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L -hostname=edge.sibyl.vision nginx:443
+    environment:
+      - NGROK_AUTH=iiX4RYrrdFWgU9pdDEnR_4qRcocGF5v9E3SjGmys7L
+      - NGROK_REGION=us
+      - NGROK_PORT=nginx:443
+      - NGROK_PROTOCOL=TLS
   frontend:
     build:
       dockerfile: Dockerfile
@@ -177,9 +192,6 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
-      - NETDATA_HTTP=https://edge.sibyl.vision/netdata/
-      - GRAPHQL_HTTP=https://edge.sibyl.vision/graphql/
-      - GRAPHQL_WS=wss://edge.sibyl.vision/graphql/
     restart: always
   redis:
     build:

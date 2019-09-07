@@ -67,15 +67,13 @@
 </template>
 
 <script lang="ts">
-  // import { TrunkedConfig } from "~/assets/prisma-client";
   import Vue from "vue";
   import Component from "vue-class-component";
-  // import { trunkedConfigs } from "./queries";
 
   @Component({
     name: "TrunkedAppSettings",
     components: {},
-    data: () => {
+    data() {
       return {
         radios: {
           headers: [
@@ -83,7 +81,7 @@
               text: "Model",
               value: "model",
               align: "left",
-              sortable: false
+              sortable: false,
             },
             { text: "Device String", value: "deviceString" },
             { text: "Gain", value: "gain" },
@@ -92,7 +90,7 @@
             { text: "Rate", value: "rate" },
             { text: "Analog Recorders", value: "analogRecorders" },
             { text: "Digital Recorders", value: "digitalRecorders" },
-            { text: "Modulation", value: "modulation" }
+            { text: "Modulation", value: "modulation" },
           ],
           data: [
             {
@@ -101,9 +99,9 @@
               gain: 30,
               analogRecorders: 3,
               digitalRecorders: 3,
-              deviceString: "bladerf=0"
-            }
-          ]
+              deviceString: "bladerf=0",
+            },
+          ],
         },
 
         headers: [
@@ -111,13 +109,13 @@
             text: "Dessert (100g serving)",
             align: "left",
             sortable: false,
-            value: "name"
+            value: "name",
           },
           { text: "Calories", value: "calories" },
           { text: "Fat (g)", value: "fat" },
           { text: "Carbs (g)", value: "carbs" },
           { text: "Protein (g)", value: "protein" },
-          { text: "Iron (%)", value: "iron" }
+          { text: "Iron (%)", value: "iron" },
         ],
         desserts: [
           {
@@ -127,7 +125,7 @@
             fat: 6.0,
             carbs: 24,
             protein: 4.0,
-            iron: "1%"
+            iron: "1%",
           },
           {
             value: false,
@@ -136,7 +134,7 @@
             fat: 9.0,
             carbs: 37,
             protein: 4.3,
-            iron: "1%"
+            iron: "1%",
           },
           {
             value: false,
@@ -145,7 +143,7 @@
             fat: 16.0,
             carbs: 23,
             protein: 6.0,
-            iron: "7%"
+            iron: "7%",
           },
           {
             value: false,
@@ -154,7 +152,7 @@
             fat: 3.7,
             carbs: 67,
             protein: 4.3,
-            iron: "8%"
+            iron: "8%",
           },
           {
             value: false,
@@ -163,7 +161,7 @@
             fat: 16.0,
             carbs: 49,
             protein: 3.9,
-            iron: "16%"
+            iron: "16%",
           },
           {
             value: false,
@@ -172,7 +170,7 @@
             fat: 0.0,
             carbs: 94,
             protein: 0.0,
-            iron: "0%"
+            iron: "0%",
           },
           {
             value: false,
@@ -181,7 +179,7 @@
             fat: 0.2,
             carbs: 98,
             protein: 0,
-            iron: "2%"
+            iron: "2%",
           },
           {
             value: false,
@@ -190,7 +188,7 @@
             fat: 3.2,
             carbs: 87,
             protein: 6.5,
-            iron: "45%"
+            iron: "45%",
           },
           {
             value: false,
@@ -199,7 +197,7 @@
             fat: 25.0,
             carbs: 51,
             protein: 4.9,
-            iron: "22%"
+            iron: "22%",
           },
           {
             value: false,
@@ -208,7 +206,7 @@
             fat: 26.0,
             carbs: 65,
             protein: 7,
-            iron: "6%"
+            iron: "6%",
           },
           {
             value: false,
@@ -217,7 +215,7 @@
             fat: 9.0,
             carbs: 37,
             protein: 4.3,
-            iron: "1%"
+            iron: "1%",
           },
           {
             value: false,
@@ -226,7 +224,7 @@
             fat: 16.0,
             carbs: 23,
             protein: 6.0,
-            iron: "7%"
+            iron: "7%",
           },
           {
             value: false,
@@ -235,7 +233,7 @@
             fat: 3.7,
             carbs: 67,
             protein: 4.3,
-            iron: "8%"
+            iron: "8%",
           },
           {
             value: false,
@@ -244,7 +242,7 @@
             fat: 16.0,
             carbs: 49,
             protein: 3.9,
-            iron: "16%"
+            iron: "16%",
           },
           {
             value: false,
@@ -253,7 +251,7 @@
             fat: 0.0,
             carbs: 94,
             protein: 0.0,
-            iron: "0%"
+            iron: "0%",
           },
           {
             value: false,
@@ -262,7 +260,7 @@
             fat: 0.2,
             carbs: 98,
             protein: 0,
-            iron: "2%"
+            iron: "2%",
           },
           {
             value: false,
@@ -271,7 +269,7 @@
             fat: 3.2,
             carbs: 87,
             protein: 6.5,
-            iron: "45%"
+            iron: "45%",
           },
           {
             value: false,
@@ -280,7 +278,7 @@
             fat: 25.0,
             carbs: 51,
             protein: 4.9,
-            iron: "22%"
+            iron: "22%",
           },
           {
             value: false,
@@ -289,12 +287,12 @@
             fat: 26.0,
             carbs: 65,
             protein: 7,
-            iron: "6%"
-          }
+            iron: "6%",
+          },
         ],
         // apollo: { trunkedConfigs: { query: trunkedConfigs } }
       };
-    }
+    },
   })
   export default class TrunkedAppSettings extends Vue {
     configs: any[] = [];

@@ -7,6 +7,7 @@ from time import sleep
 import concurrent.futures
 import logging as log
 import google.cloud.logging
+import re
 
 sentry_sdk.init("https://0bb7658a24dd4665b9a3a09b9af333dc@sentry.io/1527343")
 
@@ -52,7 +53,7 @@ if (transcription_healthcheck() is False):
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         log.info(f"MQTT connected to {MQTT_HOST}")
-        client.subscribe("transcription/+/request")
+        client.subscribe("+/transcription/+/request")
     else:
         print("Bad connection Returned code=", rc)
         exit(1)
@@ -61,14 +62,15 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     log.debug(f'Topic: {msg.topic}')
     parsed = json.loads(msg.payload)
-    remoteFile = 'https://edge.sibyl.vision' + parsed['wavPath']
+    parsed['sourceUuid'] = re.match("^\/?(\w+)", msg.topic)[0]
+    remoteFile = parsed['remotePath']
     log.debug(f'Remote: {remoteFile}')
     executor.submit(transcribe, parsed, remoteFile)
 
 
-def publishTranscription(response):
+def publishTranscription(response, payload):
     serialized = json.dumps(response)
-    topic = 'transcription/' + response['callId'] + '/transcribed'
+    topic = payload['sourceUuid'] + '/transcription/' + response['callId'] + '/transcribed'
     client.publish(topic, payload=serialized, qos=2, retain=False)
     log.info(f'Published transcription result to {topic}')
 
@@ -103,7 +105,8 @@ def transcribe(payload: dict, wavUrl: str) -> None:
         mqttResponse['duration'] = resp['duration']
         mqttResponse['alpha'] = resp['alpha']
         mqttResponse['callId'] = payload['id']
-        publishTranscription(mqttResponse)
+        mqttResponse['callHash'] = payload['callHash']
+        publishTranscription(mqttResponse, payload)
 
 
 client = mqtt.Client()

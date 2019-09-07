@@ -14,7 +14,10 @@ import {
   ApplicationMessageHandler,
 } from "./applicationListener";
 
-const rootTopic = "/trunk-recorder";
+const rootTopic =
+  process.env.NODE_ENV === "production"
+    ? "trunk-recorder/#"
+    : "+/trunk-recorder/#";
 
 export default (client: AsyncMqttClient) => {
   const l = new ApplicationListener(
@@ -66,9 +69,17 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
         decimal: parsed.talkgroup,
         hash: tgHash,
         system: { connect: { shortName: parsed.system } },
+        hex: parsed.talkgroup.toString(16),
+        description: "",
+        alphaTag: "UNKNOWN",
+        group: "UNKNOWN",
+        tag: "",
+        mode: "A",
       },
       update: {},
     });
+
+    const fileHostname = process.env.FILE_HOSTNAME || process.env.EDGE_HOSTNAME;
 
     const call: TrunkedCallCreateInput = {
       frequency: parsed.freq,
@@ -92,9 +103,12 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
       audioPath: parsed.audioPath,
       wavPath: parsed.wavPath,
       duration: parsed.duration,
-      remotePath: `${process.env.HOSTNAME || "https://edge.sibyl.vision"}${
-        parsed.wavPath
-      }`,
+      remotePaths: {
+        set: [
+          `https://${fileHostname}${parsed.wavPath}`,
+          `https://${fileHostname}${parsed.audioPath}`,
+        ],
+      },
       frequencyList: {
         create: parsed.freqList.map((fs) => {
           const f: TrunkedCallFrequencyTimeCreateInput = {
@@ -117,9 +131,15 @@ class TrunkRecorderHandler extends ApplicationMessageHandler {
         update: {},
       });
 
-      return processTrunkedVoice(c).then(() =>
-        log.info(`Requested transcription for ${c.id}`),
-      );
+      if (process.env.DISABLE_TRANSCRIPTION !== String(1)) {
+        return processTrunkedVoice(c).then(() =>
+          log.info(
+            `Requested transcription for ${c.id} with hash: ${c.callHash}`,
+          ),
+        );
+      } else {
+        return;
+      }
     } catch (e) {
       throw e;
     }

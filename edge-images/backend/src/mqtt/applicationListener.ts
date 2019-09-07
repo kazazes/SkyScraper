@@ -32,10 +32,13 @@ export class ApplicationListener {
   }
 
   public async listen() {
-    await this.client.subscribe(this.rootTopic + "/#", { qos: 2 });
-    log.info(`Subscribed to root topic ${this.rootTopic}/#`);
+    await this.client.subscribe(this.rootTopic, { qos: 2 });
+    log.info(`Subscribed to root topic ${this.rootTopic}`);
+    const root = this.rootTopic;
     this.client.on("message", (topic: string, payload: string, packet: any) => {
-      if (topic.indexOf(this.rootTopic) >= 0) {
+      log.silly("got mqtt message on " + topic);
+      const cleanRoot = root.replace(/\/?(\+|#)\/?/g, "");
+      if (topic.indexOf(cleanRoot) >= 0) {
         this.handler.callback(topic, payload, packet);
       }
     });

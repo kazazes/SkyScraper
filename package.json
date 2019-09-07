@@ -1,0 +1,14 @@
+{
+  "name": "@skyscraper/balena",
+  "version": "1.0.0",
+  "repository": "git@github.com:SkyScraperAI/SkyScraper.git",
+  "author": "Peter Kazazes <peter@peterk.co>",
+  "license": "UNLICENSED",
+  "private": true,
+  "workspaces": [
+    "edge-images/frontend",
+    "edge-images/backend",
+    "edge-images/prisma-migrate",
+    "host-images/radioreference-apify"
+  ]
+}

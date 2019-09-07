@@ -1,3 +1,5 @@
+import { InMemoryCache } from "apollo-cache-inmemory";
+
 export default function({ store, isDev }) {
   const hostname = process.server
     ? process.env.EDGE_HOSTNAME
@@ -14,5 +16,6 @@ export default function({ store, isDev }) {
       ? "ws://127.0.0.1:4000/graphql"
       : `wss://${hostname}/graphql`,
     websocketsOnly: false,
+    cache: new InMemoryCache(),
   };
 }

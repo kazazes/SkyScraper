@@ -1,39 +1,70 @@
 <template>
-  <v-container xs12 fluid pa-0 class="primary lighten-3">
-    <v-layout row wrap>
-      <v-flex sm4 mx-4 mt-2>
-        <v-select
-          dark
-          :items="['Trunked Voice']"
-          label="Type"
-          menu-props="auto"
-          value="Trunked Voice"
-          prepend-icon="mdi-briefcase"
-        ></v-select>
+  <v-container fluid pa-0 fill-height>
+    <v-layout :class="{'row wrap': $vuetify.breakpoint.sm}">
+      <v-flex md4 sm12 lg3 class="white">
+        <SystemSelector v-on:system-changed="systemChanged"></SystemSelector>
       </v-flex>
-      <Wizard />
+      <v-flex fill-height>
+        <nuxt-child :systemId="selectedSystem" v-on:system-changed="systemChanged"></nuxt-child>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script lang="ts">
   import Vue from "vue";
-  import Component from "vue-class-component";
-  import Settings from "~/components/voice/trunked/TrunkedAppSettings.vue";
-  import Wizard from "~/components/voice/trunked/wizard/TrunkedAppWizard.vue";
+  import { Component, Watch } from "nuxt-property-decorator";
+  import { TRUNKED_SYSTEM_STATS } from "~/assets/apollo/queries/trunkedSystemStats";
+  import { TrunkedSystemStats, TrunkedSystem } from "~/types/gql.types";
+  import { ApolloQueryResult } from "apollo-client";
+  import SystemSelector from "~/components/tables/SystemSelector.vue";
 
   @Component({
-    name: "Trunked",
-    components: {
-      Settings,
-      Wizard,
-    },
     data() {
       return {
-        systemType: "Trunked Voice",
+        trunkedSystemsStats: [],
       };
     },
+    key: "systemConfig",
+    components: { SystemSelector },
     middleware: ["auth"],
+    apollo: {
+      trunkedSystemsStats() {
+        const t = this as any;
+        return {
+          query: TRUNKED_SYSTEM_STATS,
+          prefetch: true,
+        };
+      },
+    },
+    mounted() {
+      const t = (this as unknown) as SystemsConfig;
+      t.$nextTick(function() {
+        window.addEventListener("resize", t.$forceUpdate);
+      });
+    },
   })
-  export default class TrunkedPage extends Vue {}
+  export default class SystemsConfig extends Vue {
+    trunkedSystemsStats: TrunkedSystemStats[] = [];
+    selectedSystem: string | null = null;
+
+    @Watch("trunkedSystemsStats")
+    settrunkedSystemsStats() {
+      this.$store.commit("systems/setTrunkedSystems", this.trunkedSystemsStats);
+    }
+
+    formatSystemName(item: TrunkedSystem) {
+      return `${item.shortName} - ${item.name}`;
+    }
+
+    systemChanged(systemId: string) {
+      if (
+        typeof systemId !== "string" ||
+        systemId === "undefined" ||
+        systemId === null
+      )
+        return;
+      this.selectedSystem = systemId;
+    }
+  }
 </script>

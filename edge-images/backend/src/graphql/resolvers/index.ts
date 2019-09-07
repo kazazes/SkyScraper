@@ -12,6 +12,7 @@ import { TrunkedCall } from "./TrunkedCall";
 import { TrunkedCallFrequencyTime } from "./TrunkedCallFrequencyTime";
 import { TrunkedCallSource } from "./TrunkedCallSource";
 import { TrunkedSystem } from "./TrunkedSystem";
+import { TrunkedSystemStats } from "./TrunkedSystemStats";
 import { TrunkedTalkgroup } from "./TrunkedTalkgroup";
 
 export const resolvers: Resolvers = {
@@ -19,6 +20,7 @@ export const resolvers: Resolvers = {
   Mutation,
   TrunkedCall,
   TrunkedTalkgroup,
+  TrunkedSystemStats,
   TrunkedSystem,
   TrunkedCallSource,
   TrunkedCallFrequencyTime,

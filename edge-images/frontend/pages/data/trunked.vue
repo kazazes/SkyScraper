@@ -72,11 +72,11 @@
     trunkedCalls: TrunkedCall[] = [];
 
     get selected() {
-      return this.$store.getters["trunked/selected"];
+      return this.$store.getters["trunkedPlayer/selected"];
     }
 
     protected playLiveAudio() {
-      this.$store.commit("trunked/setSelected", this.trunkedCalls[0]);
+      this.$store.commit("trunkedPlayer/setSelected", this.trunkedCalls[0]);
     }
 
     protected trunkedCallsUpdated(calls: TrunkedCall[]) {
@@ -89,7 +89,7 @@
       });
       const next = current - 1;
       if (current - 1 > 0) {
-        this.$store.commit("trunked/setSelected", this.trunkedCalls[next]);
+        this.$store.commit("trunkedPlayer/setSelected", this.trunkedCalls[next]);
         this.realTimeQueueEmpty = false;
       } else {
         this.realTimeQueueEmpty = true;

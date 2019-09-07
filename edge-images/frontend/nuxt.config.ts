@@ -82,11 +82,17 @@ const config: Configuration = {
     clientConfigs: {
       default: "~/plugins/apolloDefaultConfig.ts",
     },
+    defaultOptions: {
+      $query: {
+        loadingKey: "loading",
+        fetchPolicy: "cache-and-network",
+      },
+    },
   },
   vuetify: {
     materialIcons: false,
     theme: {
-      primary: "#2c303a",
+      primary: "#C62828",
     },
     customProperties: true,
     iconfont: "mdi",

@@ -10,6 +10,7 @@ import {
   Transcription,
   TranscriptionWord
 } from "./prisma-client";
+import { TrunkedSystemStats } from "../resolverTypes";
 import { Context } from "../types";
 
 export type TrunkedSystemType =
@@ -121,6 +122,47 @@ export type TranscriptionWordOrderByInput =
   | "end_DESC"
   | "start_ASC"
   | "start_DESC";
+export type TrunkedSystemOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "type_ASC"
+  | "type_DESC"
+  | "recordUnknown_ASC"
+  | "recordUnknown_DESC"
+  | "shortName_ASC"
+  | "shortName_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "audioArchive_ASC"
+  | "audioArchive_DESC"
+  | "callLog_ASC"
+  | "callLog_DESC"
+  | "minDuration_ASC"
+  | "minDuration_DESC"
+  | "bandplan_ASC"
+  | "bandplan_DESC"
+  | "bandplanBase_ASC"
+  | "bandplanBase_DESC"
+  | "bandplanHigh_ASC"
+  | "bandplanHigh_DESC"
+  | "bandplanLow_ASC"
+  | "bandplanLow_DESC"
+  | "bandplanSpacing_ASC"
+  | "bandplanSpacing_DESC"
+  | "bandplanOffset_ASC"
+  | "bandplanOffset_DESC"
+  | "talkgroupDisplayFormat_ASC"
+  | "talkgroupDisplayFormat_DESC"
+  | "delayCreateOutput_ASC"
+  | "delayCreateOutput_DESC"
+  | "hideEncrypted_ASC"
+  | "hideEncrypted_DESC"
+  | "hideUnknownTalkgroups_ASC"
+  | "hideUnknownTalkgroups_DESC";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -252,6 +294,151 @@ export namespace QueryResolvers {
     AND?: TrunkedCallWhereInput[] | null;
     OR?: TrunkedCallWhereInput[] | null;
     NOT?: TrunkedCallWhereInput[] | null;
+  }
+  export interface TrunkedSystemWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    type?: TrunkedSystemType | null;
+    type_not?: TrunkedSystemType | null;
+    type_in?: TrunkedSystemType[] | null;
+    type_not_in?: TrunkedSystemType[] | null;
+    talkgroups_every?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_some?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_none?: TrunkedTalkgroupWhereInput | null;
+    recordUnknown?: boolean | null;
+    recordUnknown_not?: boolean | null;
+    shortName?: string | null;
+    shortName_not?: string | null;
+    shortName_in?: string[] | null;
+    shortName_not_in?: string[] | null;
+    shortName_lt?: string | null;
+    shortName_lte?: string | null;
+    shortName_gt?: string | null;
+    shortName_gte?: string | null;
+    shortName_contains?: string | null;
+    shortName_not_contains?: string | null;
+    shortName_starts_with?: string | null;
+    shortName_not_starts_with?: string | null;
+    shortName_ends_with?: string | null;
+    shortName_not_ends_with?: string | null;
+    name?: string | null;
+    name_not?: string | null;
+    name_in?: string[] | null;
+    name_not_in?: string[] | null;
+    name_lt?: string | null;
+    name_lte?: string | null;
+    name_gt?: string | null;
+    name_gte?: string | null;
+    name_contains?: string | null;
+    name_not_contains?: string | null;
+    name_starts_with?: string | null;
+    name_not_starts_with?: string | null;
+    name_ends_with?: string | null;
+    name_not_ends_with?: string | null;
+    audioArchive?: boolean | null;
+    audioArchive_not?: boolean | null;
+    callLog?: boolean | null;
+    callLog_not?: boolean | null;
+    minDuration?: number | null;
+    minDuration_not?: number | null;
+    minDuration_in?: number[] | null;
+    minDuration_not_in?: number[] | null;
+    minDuration_lt?: number | null;
+    minDuration_lte?: number | null;
+    minDuration_gt?: number | null;
+    minDuration_gte?: number | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplan_not?: TrunkedSmartnetBandplan | null;
+    bandplan_in?: TrunkedSmartnetBandplan[] | null;
+    bandplan_not_in?: TrunkedSmartnetBandplan[] | null;
+    bandplanBase?: number | null;
+    bandplanBase_not?: number | null;
+    bandplanBase_in?: number[] | null;
+    bandplanBase_not_in?: number[] | null;
+    bandplanBase_lt?: number | null;
+    bandplanBase_lte?: number | null;
+    bandplanBase_gt?: number | null;
+    bandplanBase_gte?: number | null;
+    bandplanHigh?: number | null;
+    bandplanHigh_not?: number | null;
+    bandplanHigh_in?: number[] | null;
+    bandplanHigh_not_in?: number[] | null;
+    bandplanHigh_lt?: number | null;
+    bandplanHigh_lte?: number | null;
+    bandplanHigh_gt?: number | null;
+    bandplanHigh_gte?: number | null;
+    bandplanLow?: number | null;
+    bandplanLow_not?: number | null;
+    bandplanLow_in?: number[] | null;
+    bandplanLow_not_in?: number[] | null;
+    bandplanLow_lt?: number | null;
+    bandplanLow_lte?: number | null;
+    bandplanLow_gt?: number | null;
+    bandplanLow_gte?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanSpacing_not?: number | null;
+    bandplanSpacing_in?: number[] | null;
+    bandplanSpacing_not_in?: number[] | null;
+    bandplanSpacing_lt?: number | null;
+    bandplanSpacing_lte?: number | null;
+    bandplanSpacing_gt?: number | null;
+    bandplanSpacing_gte?: number | null;
+    bandplanOffset?: number | null;
+    bandplanOffset_not?: number | null;
+    bandplanOffset_in?: number[] | null;
+    bandplanOffset_not_in?: number[] | null;
+    bandplanOffset_lt?: number | null;
+    bandplanOffset_lte?: number | null;
+    bandplanOffset_gt?: number | null;
+    bandplanOffset_gte?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_not?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    talkgroupDisplayFormat_not_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    delayCreateOutput?: boolean | null;
+    delayCreateOutput_not?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideEncrypted_not?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+    hideUnknownTalkgroups_not?: boolean | null;
+    calls_every?: TrunkedCallWhereInput | null;
+    calls_some?: TrunkedCallWhereInput | null;
+    calls_none?: TrunkedCallWhereInput | null;
+    AND?: TrunkedSystemWhereInput[] | null;
+    OR?: TrunkedSystemWhereInput[] | null;
+    NOT?: TrunkedSystemWhereInput[] | null;
+  }
+  export interface TrunkedSystemWhereUniqueInput {
+    id?: string | null;
+    shortName?: string | null;
   }
   export interface TrunkedTalkgroupWhereInput {
     id?: string | null;
@@ -405,147 +592,6 @@ export namespace QueryResolvers {
     AND?: TrunkedTalkgroupWhereInput[] | null;
     OR?: TrunkedTalkgroupWhereInput[] | null;
     NOT?: TrunkedTalkgroupWhereInput[] | null;
-  }
-  export interface TrunkedSystemWhereInput {
-    id?: string | null;
-    id_not?: string | null;
-    id_in?: string[] | null;
-    id_not_in?: string[] | null;
-    id_lt?: string | null;
-    id_lte?: string | null;
-    id_gt?: string | null;
-    id_gte?: string | null;
-    id_contains?: string | null;
-    id_not_contains?: string | null;
-    id_starts_with?: string | null;
-    id_not_starts_with?: string | null;
-    id_ends_with?: string | null;
-    id_not_ends_with?: string | null;
-    updatedAt?: string | null;
-    updatedAt_not?: string | null;
-    updatedAt_in?: string[] | null;
-    updatedAt_not_in?: string[] | null;
-    updatedAt_lt?: string | null;
-    updatedAt_lte?: string | null;
-    updatedAt_gt?: string | null;
-    updatedAt_gte?: string | null;
-    createdAt?: string | null;
-    createdAt_not?: string | null;
-    createdAt_in?: string[] | null;
-    createdAt_not_in?: string[] | null;
-    createdAt_lt?: string | null;
-    createdAt_lte?: string | null;
-    createdAt_gt?: string | null;
-    createdAt_gte?: string | null;
-    type?: TrunkedSystemType | null;
-    type_not?: TrunkedSystemType | null;
-    type_in?: TrunkedSystemType[] | null;
-    type_not_in?: TrunkedSystemType[] | null;
-    talkgroups_every?: TrunkedTalkgroupWhereInput | null;
-    talkgroups_some?: TrunkedTalkgroupWhereInput | null;
-    talkgroups_none?: TrunkedTalkgroupWhereInput | null;
-    recordUnknown?: boolean | null;
-    recordUnknown_not?: boolean | null;
-    shortName?: string | null;
-    shortName_not?: string | null;
-    shortName_in?: string[] | null;
-    shortName_not_in?: string[] | null;
-    shortName_lt?: string | null;
-    shortName_lte?: string | null;
-    shortName_gt?: string | null;
-    shortName_gte?: string | null;
-    shortName_contains?: string | null;
-    shortName_not_contains?: string | null;
-    shortName_starts_with?: string | null;
-    shortName_not_starts_with?: string | null;
-    shortName_ends_with?: string | null;
-    shortName_not_ends_with?: string | null;
-    name?: string | null;
-    name_not?: string | null;
-    name_in?: string[] | null;
-    name_not_in?: string[] | null;
-    name_lt?: string | null;
-    name_lte?: string | null;
-    name_gt?: string | null;
-    name_gte?: string | null;
-    name_contains?: string | null;
-    name_not_contains?: string | null;
-    name_starts_with?: string | null;
-    name_not_starts_with?: string | null;
-    name_ends_with?: string | null;
-    name_not_ends_with?: string | null;
-    audioArchive?: boolean | null;
-    audioArchive_not?: boolean | null;
-    callLog?: boolean | null;
-    callLog_not?: boolean | null;
-    minDuration?: number | null;
-    minDuration_not?: number | null;
-    minDuration_in?: number[] | null;
-    minDuration_not_in?: number[] | null;
-    minDuration_lt?: number | null;
-    minDuration_lte?: number | null;
-    minDuration_gt?: number | null;
-    minDuration_gte?: number | null;
-    bandplan?: TrunkedSmartnetBandplan | null;
-    bandplan_not?: TrunkedSmartnetBandplan | null;
-    bandplan_in?: TrunkedSmartnetBandplan[] | null;
-    bandplan_not_in?: TrunkedSmartnetBandplan[] | null;
-    bandplanBase?: number | null;
-    bandplanBase_not?: number | null;
-    bandplanBase_in?: number[] | null;
-    bandplanBase_not_in?: number[] | null;
-    bandplanBase_lt?: number | null;
-    bandplanBase_lte?: number | null;
-    bandplanBase_gt?: number | null;
-    bandplanBase_gte?: number | null;
-    bandplanHigh?: number | null;
-    bandplanHigh_not?: number | null;
-    bandplanHigh_in?: number[] | null;
-    bandplanHigh_not_in?: number[] | null;
-    bandplanHigh_lt?: number | null;
-    bandplanHigh_lte?: number | null;
-    bandplanHigh_gt?: number | null;
-    bandplanHigh_gte?: number | null;
-    bandplanLow?: number | null;
-    bandplanLow_not?: number | null;
-    bandplanLow_in?: number[] | null;
-    bandplanLow_not_in?: number[] | null;
-    bandplanLow_lt?: number | null;
-    bandplanLow_lte?: number | null;
-    bandplanLow_gt?: number | null;
-    bandplanLow_gte?: number | null;
-    bandplanSpacing?: number | null;
-    bandplanSpacing_not?: number | null;
-    bandplanSpacing_in?: number[] | null;
-    bandplanSpacing_not_in?: number[] | null;
-    bandplanSpacing_lt?: number | null;
-    bandplanSpacing_lte?: number | null;
-    bandplanSpacing_gt?: number | null;
-    bandplanSpacing_gte?: number | null;
-    bandplanOffset?: number | null;
-    bandplanOffset_not?: number | null;
-    bandplanOffset_in?: number[] | null;
-    bandplanOffset_not_in?: number[] | null;
-    bandplanOffset_lt?: number | null;
-    bandplanOffset_lte?: number | null;
-    bandplanOffset_gt?: number | null;
-    bandplanOffset_gte?: number | null;
-    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
-    talkgroupDisplayFormat_not?: TrunkedTalkgroupDisplayFormat | null;
-    talkgroupDisplayFormat_in?: TrunkedTalkgroupDisplayFormat[] | null;
-    talkgroupDisplayFormat_not_in?: TrunkedTalkgroupDisplayFormat[] | null;
-    delayCreateOutput?: boolean | null;
-    delayCreateOutput_not?: boolean | null;
-    hideEncrypted?: boolean | null;
-    hideEncrypted_not?: boolean | null;
-    hideUnknownTalkgroups?: boolean | null;
-    hideUnknownTalkgroups_not?: boolean | null;
-    calls_every?: TrunkedCallWhereInput | null;
-    calls_some?: TrunkedCallWhereInput | null;
-    calls_none?: TrunkedCallWhereInput | null;
-    AND?: TrunkedSystemWhereInput[] | null;
-    OR?: TrunkedSystemWhereInput[] | null;
-    NOT?: TrunkedSystemWhereInput[] | null;
   }
   export interface TrunkedCallSourceWhereInput {
     id?: string | null;
@@ -865,6 +911,24 @@ export namespace QueryResolvers {
     last?: number | null;
   }
 
+  export interface ArgsTrunkedSystems {
+    where?: TrunkedSystemWhereInput | null;
+    orderBy?: TrunkedSystemOrderByInput | null;
+    skip?: number | null;
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+  }
+
+  export interface ArgsTrunkedSystem {
+    where: TrunkedSystemWhereUniqueInput;
+  }
+
+  export interface ArgsTrunkedSystemStats {
+    where: TrunkedSystemWhereUniqueInput;
+  }
+
   export type TrunkedCallsResolver =
     | ((
         parent: undefined,
@@ -882,34 +946,64 @@ export namespace QueryResolvers {
         ) => Array<TrunkedCall | null> | Promise<Array<TrunkedCall | null>>;
       };
 
-  export type TrunkedCallCountResolver =
-    | ((
-        parent: undefined,
-        args: {},
-        ctx: Context,
-        info: GraphQLResolveInfo
-      ) => number | Promise<number>)
-    | {
-        fragment: string;
-        resolve: (
-          parent: undefined,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => number | Promise<number>;
-      };
-
   export type TrunkedSystemsResolver =
     | ((
         parent: undefined,
+        args: ArgsTrunkedSystems,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => Array<TrunkedSystem | null> | Promise<Array<TrunkedSystem | null>>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsTrunkedSystems,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => Array<TrunkedSystem | null> | Promise<Array<TrunkedSystem | null>>;
+      };
+
+  export type TrunkedSystemResolver =
+    | ((
+        parent: undefined,
+        args: ArgsTrunkedSystem,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedSystem | null | Promise<TrunkedSystem | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsTrunkedSystem,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystem | null | Promise<TrunkedSystem | null>;
+      };
+
+  export type TrunkedSystemStatsResolver =
+    | ((
+        parent: undefined,
+        args: ArgsTrunkedSystemStats,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedSystemStats | null | Promise<TrunkedSystemStats | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsTrunkedSystemStats,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystemStats | null | Promise<TrunkedSystemStats | null>;
+      };
+
+  export type TrunkedSystemsStatsResolver =
+    | ((
+        parent: undefined,
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) =>
-        | Array<TrunkedSystem | null>
-        | null
-        | Promise<Array<TrunkedSystem | null> | null>
-      )
+      ) => TrunkedSystemStats[] | null | Promise<TrunkedSystemStats[] | null>)
     | {
         fragment: string;
         resolve: (
@@ -917,10 +1011,7 @@ export namespace QueryResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) =>
-          | Array<TrunkedSystem | null>
-          | null
-          | Promise<Array<TrunkedSystem | null> | null>;
+        ) => TrunkedSystemStats[] | null | Promise<TrunkedSystemStats[] | null>;
       };
 
   export interface Type {
@@ -941,34 +1032,66 @@ export namespace QueryResolvers {
           ) => Array<TrunkedCall | null> | Promise<Array<TrunkedCall | null>>;
         };
 
-    trunkedCallCount:
+    trunkedSystems:
       | ((
           parent: undefined,
-          args: {},
+          args: ArgsTrunkedSystems,
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => number | Promise<number>)
+        ) => Array<TrunkedSystem | null> | Promise<Array<TrunkedSystem | null>>)
       | {
           fragment: string;
           resolve: (
             parent: undefined,
-            args: {},
+            args: ArgsTrunkedSystems,
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => number | Promise<number>;
+          ) =>
+            | Array<TrunkedSystem | null>
+            | Promise<Array<TrunkedSystem | null>>;
         };
 
-    trunkedSystems:
+    trunkedSystem:
+      | ((
+          parent: undefined,
+          args: ArgsTrunkedSystem,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystem | null | Promise<TrunkedSystem | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsTrunkedSystem,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedSystem | null | Promise<TrunkedSystem | null>;
+        };
+
+    trunkedSystemStats:
+      | ((
+          parent: undefined,
+          args: ArgsTrunkedSystemStats,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystemStats | null | Promise<TrunkedSystemStats | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsTrunkedSystemStats,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedSystemStats | null | Promise<TrunkedSystemStats | null>;
+        };
+
+    trunkedSystemsStats:
       | ((
           parent: undefined,
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) =>
-          | Array<TrunkedSystem | null>
-          | null
-          | Promise<Array<TrunkedSystem | null> | null>
-        )
+        ) => TrunkedSystemStats[] | null | Promise<TrunkedSystemStats[] | null>)
       | {
           fragment: string;
           resolve: (
@@ -977,9 +1100,9 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) =>
-            | Array<TrunkedSystem | null>
+            | TrunkedSystemStats[]
             | null
-            | Promise<Array<TrunkedSystem | null> | null>;
+            | Promise<TrunkedSystemStats[] | null>;
         };
   }
 }
@@ -6620,6 +6743,223 @@ export namespace TranscriptionWordResolvers {
   }
 }
 
+export namespace TrunkedSystemStatsResolvers {
+  export const defaultResolvers = {
+    system: (parent: TrunkedSystemStats) => parent.system,
+    systemId: (parent: TrunkedSystemStats) => parent.systemId,
+    talkgroupCount: (parent: TrunkedSystemStats) => parent.talkgroupCount,
+    callCount: (parent: TrunkedSystemStats) => parent.callCount,
+    calls: (parent: TrunkedSystemStats) => parent.calls,
+    talkgroups: (parent: TrunkedSystemStats) => parent.talkgroups
+  };
+
+  export type SystemResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedSystem | Promise<TrunkedSystem>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystem | Promise<TrunkedSystem>;
+      };
+
+  export type SystemIdResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type TalkgroupsResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>;
+      };
+
+  export type TalkgroupCountResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type CallCountResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export type CallsResolver =
+    | ((
+        parent: TrunkedSystemStats,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedCall[] | null | Promise<TrunkedCall[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedCall[] | null | Promise<TrunkedCall[] | null>;
+      };
+
+  export interface Type {
+    system:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystem | Promise<TrunkedSystem>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedSystem | Promise<TrunkedSystem>;
+        };
+
+    systemId:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    talkgroups:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>;
+        };
+
+    talkgroupCount:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    callCount:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
+        };
+
+    calls:
+      | ((
+          parent: TrunkedSystemStats,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedCall[] | null | Promise<TrunkedCall[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: TrunkedSystemStats,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedCall[] | null | Promise<TrunkedCall[] | null>;
+        };
+  }
+}
+
 export namespace MutationResolvers {
   export const defaultResolvers = {};
 
@@ -6988,6 +7328,7 @@ export interface Resolvers {
   TrunkedCallFrequencyTime: TrunkedCallFrequencyTimeResolvers.Type;
   Transcription: TranscriptionResolvers.Type;
   TranscriptionWord: TranscriptionWordResolvers.Type;
+  TrunkedSystemStats: TrunkedSystemStatsResolvers.Type;
   Mutation: MutationResolvers.Type;
   Subscription: SubscriptionResolvers.Type;
 }

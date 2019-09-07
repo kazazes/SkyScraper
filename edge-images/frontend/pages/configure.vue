@@ -12,7 +12,7 @@
         >
           <v-tab nuxt to="/configure/system" value="true">
             <v-icon class="pr-2">mdi-plus-box</v-icon>
-            <span class="text-uppercase">New System</span>
+            <span class="text-uppercase">Systems</span>
           </v-tab>
           <v-tab nuxt to="/configure/pipelines">
             <v-icon class="pr-2">mdi-pipe</v-icon>

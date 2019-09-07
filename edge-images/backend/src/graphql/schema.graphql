@@ -1,5 +1,7 @@
 # import TrunkedConfigWhereUniqueInput from "./generated/prisma.graphql"
 # import TrunkedCallOrderByInput from "./generated/prisma.graphql"
+# import TrunkedSystem from "./generated/prisma.graphql"
+# import TrunkedTalkgroup from "./generated/prisma.graphql"
 
 type Query {
   trunkedCalls(
@@ -11,8 +13,10 @@ type Query {
     first: Int
     last: Int
   ): [TrunkedCall]!
-  trunkedCallCount: Int!
-  trunkedSystems: [TrunkedSystem]
+  trunkedSystems(where: TrunkedSystemWhereInput, orderBy: TrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedSystem]!
+  trunkedSystem(where: TrunkedSystemWhereUniqueInput!): TrunkedSystem
+  trunkedSystemStats(where: TrunkedSystemWhereUniqueInput!): TrunkedSystemStats
+  trunkedSystemsStats: [TrunkedSystemStats!]
 }
 
 type Subscription {
@@ -22,4 +26,13 @@ type Subscription {
 
 type Mutation {
   createTrunkedSystem(system: TrunkedSystemCreateInput): TrunkedSystem!
+}
+
+type TrunkedSystemStats {
+  system: TrunkedSystem!
+  systemId: ID!
+  talkgroups: [TrunkedTalkgroup!]
+  talkgroupCount: Int!
+  callCount: Int!
+  calls: [TrunkedCall!]
 }

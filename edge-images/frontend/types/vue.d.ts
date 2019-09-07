@@ -4,6 +4,7 @@
 
 import Vue, { ComponentOptions } from "vue";
 import { CookieAttributes } from "js-cookie";
+import { Store } from "vuex/types/index";
 
 // todo: context?
 interface StorageCookieOptions extends CookieAttributes {
@@ -52,6 +53,7 @@ declare module "vue/types/options" {
   interface ComponentOptions<V extends Vue> {
     auth?: boolean;
     sockets?: any;
+    apollo?: any;
   }
 }
 
@@ -59,5 +61,7 @@ declare module "vue/types/vue" {
   interface Vue {
     $auth: Auth<any>;
     $connect: any;
+    $store: Store<any>;
+    $apollo: any;
   }
 }

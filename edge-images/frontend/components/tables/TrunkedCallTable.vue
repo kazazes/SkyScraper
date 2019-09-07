@@ -22,7 +22,7 @@
             <template v-slot:items="props">
               <tr
                 :active="(!!selected && selected.id === props.item.id)"
-                @click="$store.commit('trunked/setSelected', props.item)"
+                @click="$store.commit('trunkedPlayer/setSelected', props.item)"
               >
                 <td class="hidden-lg-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
                 <td class="hidden-md-and-down pl-4">
@@ -56,6 +56,7 @@
   import { Component, Prop, Watch } from "nuxt-property-decorator";
   import Vue from "vue";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
+  import { TRUNKED_SYSTEMS } from "~/assets/apollo/queries/getTrunkedSystems";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
   import {
     Transcription,
@@ -86,7 +87,7 @@
                 : -1;
               if (newCall.id === t.selected.id) {
                 t.$store.commit(
-                  "trunked/setSelectedTranscription",
+                  "trunkedPlayer/setSelectedTranscription",
                   newCall.transcription
                 );
               }
@@ -98,7 +99,7 @@
                 // create new
                 t.trunkedCallCount++;
                 if (t.realTimeQueueEmpty || !t.selected) {
-                  t.$store.commit("trunked/setSelected", newCall);
+                  t.$store.commit("trunkedPlayer/setSelected", newCall);
                 }
                 if (
                   previousResult.trunkedCalls &&
@@ -130,20 +131,22 @@
         update(data) {
           const t = this as any;
           if (!t.selected && data.trunkedCalls) {
-            t.$store.commit("trunked/setSelected", data.trunkedCalls[0]);
+            t.$store.commit("trunkedPlayer/setSelected", data.trunkedCalls[0]);
           }
 
           return data.trunkedCalls;
         },
       },
       trunkedCallCount: {
-        query: gql`
-          query trunkedCallCount {
-            trunkedCallCount
-          }
-        `,
-        update({ trunkedCallCount }) {
-          return trunkedCallCount;
+        query: TRUNKED_SYSTEMS,
+        fetchPolicy: "cache-first",
+        update(data) {
+          const t = this as any;
+          const m = data.trunkedSystems.find((s) => {
+            return s.id === t.system;
+          });
+          if (!m) return 10;
+          return m.trunkedCallCount;
         },
       },
     },
@@ -224,9 +227,8 @@
   export default class TrunkedCallTable extends Vue {
     error: any = undefined;
 
+    trunkedCalls: TrunkedCall[] = [];
     trunkedCallCount = 0;
-
-    trunkedCalls!: TrunkedCall[];
 
     @Watch("trunkedCalls", { deep: true })
     emitTrunkedCalls() {
@@ -241,8 +243,13 @@
     };
 
     get selected() {
-      const stored = this.$store.getters["trunked/selected"];
+      const stored = this.$store.getters["trunkedPlayer/selected"];
       return stored;
+    }
+
+    get system() {
+      const f = this.trunkedCalls[0];
+      return f && f.system ? f.system.id : "";
     }
 
     @Prop({ required: true })

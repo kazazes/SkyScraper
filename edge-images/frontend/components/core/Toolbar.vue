@@ -7,7 +7,7 @@
     :scroll-off-screen="true"
     id="core-toolbar"
     flat
-    color="primary"
+    color="primary darken-1"
   >
     <v-layout align-center justify-space-around wrap row>
       <v-flex md6 text-xs-center offset-md3>
@@ -76,6 +76,8 @@
 </script>
 
 <style lang="scss">
+  @import "@/assets/style/material-dashboard/_variables.scss";
+
   #core-toolbar {
     .v-btn.v-btn--large {
     }
@@ -96,6 +98,6 @@
   }
 
   .active-nav {
-    background-color: #424651 !important;
+    background-color: lighten($color: $brand-primary, $amount: 10) !important;
   }
 </style>

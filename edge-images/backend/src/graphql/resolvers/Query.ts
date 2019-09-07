@@ -1,5 +1,5 @@
 import { QueryResolvers } from "../generated/graphqlgen";
-import { Context } from "../types";
+import { TrunkedSystemStats } from "../resolverTypes";
 
 export const Query: QueryResolvers.Type = {
   ...QueryResolvers.defaultResolvers,
@@ -9,13 +9,65 @@ export const Query: QueryResolvers.Type = {
     }
     return prisma.trunkedCalls(args);
   },
-  trunkedCallCount: (parent, args, ctx: Context) => {
-    return ctx.prisma
-      .trunkedCallsConnection()
-      .aggregate()
-      .count();
-  },
   trunkedSystems: (parent, args, ctx) => {
-    return ctx.prisma.trunkedSystems({ where: { id_not: null } });
+    return ctx.prisma.trunkedSystems(args);
+  },
+  trunkedSystem: async (parent, args, ctx, info) => {
+    const s = ctx.prisma.trunkedSystem(args.where);
+    return s;
+  },
+  trunkedSystemStats: async (parent, args, { prisma }) => {
+    const sys = await prisma.trunkedSystem(args.where);
+    if (!sys) {
+      throw new Error("System not found.");
+    }
+
+    const a: any = {
+      system: sys,
+      callCount: prisma
+        .trunkedCallsConnection({ where: { system: args.where } })
+        .aggregate()
+        .count(),
+      talkgroupCount: prisma
+        .trunkedTalkgroupsConnection({ where: { system: args.where } })
+        .aggregate()
+        .count(),
+      systemId: sys.id,
+      calls: prisma.trunkedCalls({ where: { system: args.where } }),
+      talkgroups: prisma.trunkedTalkgroups({
+        where: { system: args.where },
+      }),
+    };
+
+    return a;
+  },
+  trunkedSystemsStats: async (parent, args, { prisma }) => {
+    const systems = await prisma.trunkedSystems();
+    const all = systems.map(async (sys) => {
+      if (!sys) {
+        throw new Error("System not found.");
+      }
+
+      const a: TrunkedSystemStats = {
+        system: sys,
+        callCount: await prisma
+          .trunkedCallsConnection({ where: { system: { id: sys.id } } })
+          .aggregate()
+          .count(),
+        talkgroupCount: await prisma
+          .trunkedTalkgroupsConnection({
+            where: { system: { id: sys.id } },
+          })
+          .aggregate()
+          .count(),
+        systemId: sys.id,
+        calls: await prisma.trunkedCalls({ where: { system: { id: sys.id } } }),
+        talkgroups: await prisma.trunkedTalkgroups({
+          where: { system: { id: sys.id } },
+        }),
+      };
+      return a;
+    });
+    return Promise.all(all);
   },
 };

@@ -76,8 +76,6 @@
     components: {
       Player,
     },
-    methods: {},
-    computed: {},
   })
   export default class TrunkedCallCard extends Vue {
     @Prop()
@@ -85,21 +83,17 @@
 
     isDev!: boolean;
 
-    get fileHostname() {
-      return this.$store.getters["trunked/fileHostname"];
-    }
-
     get fileSource() {
       if (!this.selected) return;
       return this.selected.remotePaths;
     }
 
     get selected(): TrunkedCall {
-      return this.$store.getters["trunked/selected"];
+      return this.$store.getters["trunkedPlayer/selected"];
     }
 
     get selectedTranscription(): Transcription {
-      return this.$store.getters["trunked/selectedTranscription"];
+      return this.$store.getters["trunkedPlayer/selectedTranscription"];
     }
 
     stylizeTranscription(transcription: Transcription) {

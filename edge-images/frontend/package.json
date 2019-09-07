@@ -67,7 +67,7 @@
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.2.6",
-    "@types/chroma-js": "^1.4.1",
+    "@types/chroma-js": "^1.4.2",
     "@types/graphql": "^14.2.0",
     "@types/howler": "^2.1.1",
     "@types/http-proxy-middleware": "^0.19.3",

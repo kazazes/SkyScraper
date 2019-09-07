@@ -226,7 +226,6 @@
   } as any)
   export default class TrunkedCallTable extends Vue {
     error: any = undefined;
-
     trunkedCalls: TrunkedCall[] = [];
     trunkedCallCount = 0;
 

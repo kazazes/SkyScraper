@@ -1,9 +1,9 @@
-import NuxtConfiguration from "@nuxt/config";
+import { Configuration, Plugin } from "@nuxt/types";
 import webpack from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-const config: NuxtConfiguration = {
+const config: Configuration = {
   /*
    ** Headers of the page
    */
@@ -93,7 +93,6 @@ const config: NuxtConfiguration = {
     treeShake: !isDev,
   },
   build: {
-    devtools: true,
     transpile: [/^vuetify/],
     extend(config, ctx) {
       // https://medium.com/js-dojo/debugging-nuxt-js-with-vs-code-60a1a9e75cf6
@@ -101,7 +100,12 @@ const config: NuxtConfiguration = {
         config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
       }
     },
-    plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)],
+    plugins: [
+      new webpack.ContextReplacementPlugin(
+        /moment[/\\]locale$/,
+        /en/
+      ) as Plugin,
+    ],
   },
   vue: {
     config: {

@@ -21,7 +21,7 @@
     "@types/redis": "^2.8.13",
     "@types/through2": "^2.0.34",
     "@types/ws": "6.0.3",
-    "ts-node-dev": "^1.0.0-pre.41",
+    "ts-node-dev": "^1.0.0-pre.42",
     "typescript": "^3.6.2"
   },
   "dependencies": {

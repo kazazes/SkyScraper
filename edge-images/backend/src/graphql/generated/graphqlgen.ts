@@ -8,9 +8,10 @@ import {
   TrunkedCallSource,
   TrunkedCallFrequencyTime,
   Transcription,
-  TranscriptionWord
+  TranscriptionWord,
+  User
 } from "./prisma-client";
-import { TrunkedSystemStats } from "../resolverTypes";
+import { TrunkedSystemStats, LoginResponse } from "../resolverTypes";
 import { Context } from "../types";
 
 export type TrunkedSystemType =
@@ -163,6 +164,7 @@ export type TrunkedSystemOrderByInput =
   | "hideEncrypted_DESC"
   | "hideUnknownTalkgroups_ASC"
   | "hideUnknownTalkgroups_DESC";
+export type UserRole = "ADMIN" | "USER" | "SUPPORT";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -1014,6 +1016,40 @@ export namespace QueryResolvers {
         ) => TrunkedSystemStats[] | null | Promise<TrunkedSystemStats[] | null>;
       };
 
+  export type CurrentUserResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => User | Promise<User>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | Promise<User>;
+      };
+
+  export type DeviceRegisteredResolver =
+    | ((
+        parent: undefined,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => boolean | Promise<boolean>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>;
+      };
+
   export interface Type {
     trunkedCalls:
       | ((
@@ -1103,6 +1139,40 @@ export namespace QueryResolvers {
             | TrunkedSystemStats[]
             | null
             | Promise<TrunkedSystemStats[] | null>;
+        };
+
+    currentUser:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | Promise<User>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => User | Promise<User>;
+        };
+
+    deviceRegistered:
+      | ((
+          parent: undefined,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => boolean | Promise<boolean>;
         };
   }
 }
@@ -6960,6 +7030,363 @@ export namespace TrunkedSystemStatsResolvers {
   }
 }
 
+export namespace UserResolvers {
+  export const defaultResolvers = {
+    id: (parent: User) => parent.id,
+    updatedAt: (parent: User) => parent.updatedAt,
+    createdAt: (parent: User) => parent.createdAt,
+    name: (parent: User) => parent.name,
+    email: (parent: User) => parent.email,
+    phone: (parent: User) => parent.phone,
+    verified: (parent: User) => parent.verified,
+    password: (parent: User) => parent.password,
+    authyId: (parent: User) => parent.authyId,
+    role: (parent: User) => parent.role
+  };
+
+  export type IdResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type UpdatedAtResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type CreatedAtResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type NameResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type EmailResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type PhoneResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type VerifiedResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => boolean | Promise<boolean>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>;
+      };
+
+  export type PasswordResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type AuthyIdResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type RoleResolver =
+    | ((
+        parent: User,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => UserRole | Promise<UserRole>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => UserRole | Promise<UserRole>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    updatedAt:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    createdAt:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    name:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    email:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    phone:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    verified:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => boolean | Promise<boolean>;
+        };
+
+    password:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    authyId:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    role:
+      | ((
+          parent: User,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => UserRole | Promise<UserRole>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: User,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => UserRole | Promise<UserRole>;
+        };
+  }
+}
+
 export namespace MutationResolvers {
   export const defaultResolvers = {};
 
@@ -7208,6 +7635,17 @@ export namespace MutationResolvers {
     system?: TrunkedSystemCreateInput | null;
   }
 
+  export interface ArgsRegister {
+    email: string;
+    password: string;
+    phone: string;
+  }
+
+  export interface ArgsLogin {
+    username: string;
+    password: string;
+  }
+
   export type CreateTrunkedSystemResolver =
     | ((
         parent: undefined,
@@ -7223,6 +7661,40 @@ export namespace MutationResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => TrunkedSystem | Promise<TrunkedSystem>;
+      };
+
+  export type RegisterResolver =
+    | ((
+        parent: undefined,
+        args: ArgsRegister,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => User | Promise<User>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsRegister,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | Promise<User>;
+      };
+
+  export type LoginResolver =
+    | ((
+        parent: undefined,
+        args: ArgsLogin,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => LoginResponse | Promise<LoginResponse>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsLogin,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | Promise<LoginResponse>;
       };
 
   export interface Type {
@@ -7241,6 +7713,117 @@ export namespace MutationResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => TrunkedSystem | Promise<TrunkedSystem>;
+        };
+
+    register:
+      | ((
+          parent: undefined,
+          args: ArgsRegister,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | Promise<User>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsRegister,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => User | Promise<User>;
+        };
+
+    login:
+      | ((
+          parent: undefined,
+          args: ArgsLogin,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | Promise<LoginResponse>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsLogin,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => LoginResponse | Promise<LoginResponse>;
+        };
+  }
+}
+
+export namespace LoginResponseResolvers {
+  export const defaultResolvers = {
+    token: (parent: LoginResponse) =>
+      parent.token === undefined ? null : parent.token
+  };
+
+  export type TokenResolver =
+    | ((
+        parent: LoginResponse,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type UserResolver =
+    | ((
+        parent: LoginResponse,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => User | null | Promise<User | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | null | Promise<User | null>;
+      };
+
+  export interface Type {
+    token:
+      | ((
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: LoginResponse,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    user:
+      | ((
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | null | Promise<User | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: LoginResponse,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => User | null | Promise<User | null>;
         };
   }
 }
@@ -7329,7 +7912,9 @@ export interface Resolvers {
   Transcription: TranscriptionResolvers.Type;
   TranscriptionWord: TranscriptionWordResolvers.Type;
   TrunkedSystemStats: TrunkedSystemStatsResolvers.Type;
+  User: UserResolvers.Type;
   Mutation: MutationResolvers.Type;
+  LoginResponse: LoginResponseResolvers.Type;
   Subscription: SubscriptionResolvers.Type;
 }
 

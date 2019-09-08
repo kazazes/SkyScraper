@@ -6,10 +6,12 @@
     <v-card v-else-if="trunkedSystem" width="100%">
       <v-card-title>{{trunkedSystem.name}}</v-card-title>
       <v-card-text>
-        <code
-          class="elevation-1"
-          style="width: 100%; max-height: 500px; overflow-y: scroll;"
-        >{{trunkedSystem}}</code>
+        <client-only>
+          <code
+            class="elevation-1"
+            style="width: 100%; max-height: 500px; overflow-y: scroll;"
+          >{{trunkedSystem}}</code>
+        </client-only>
       </v-card-text>
     </v-card>
   </v-layout>
@@ -31,6 +33,7 @@
       trunkedSystem() {
         const t = (this as unknown) as TrunkedSystemEdit;
         return {
+          prefetch: false,
           query: TRUNKED_SYSTEM,
           variables() {
             return {
@@ -46,13 +49,26 @@
   export default class TrunkedSystemEdit extends Vue {
     trunkedSystem?: TrunkedSystem;
 
-    @Watch("$apollo.loading", { deep: true })
-    loadingStateChanged() {
-      if (this.$apollo.loading) {
+    mounted() {
+      this.$nextTick(() => {
+        const l = this.$nuxt.$loading;
+        if (!l) return;
+
         this.$nuxt.$loading.start();
-      } else {
-        this.$nuxt.$loading.finish();
-      }
+      });
+    }
+
+    @Watch("$apollo.loading", { immediate: true })
+    loadingStateChanged() {
+      this.$nextTick(() => {
+        const l = this.$nuxt.$loading;
+        if (!l) return;
+        if (this.$apollo.loading) {
+          this.$nuxt.$loading.start();
+        } else {
+          this.$nuxt.$loading.finish();
+        }
+      });
     }
 
     @Prop({ required: true, default: null })

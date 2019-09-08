@@ -12,3 +12,7 @@ export interface TrunkedSystemStats {
   calls: TrunkedCall[];
   talkgroups: TrunkedTalkgroup[];
 }
+
+export interface LoginResponse {
+  token: string | null;
+}

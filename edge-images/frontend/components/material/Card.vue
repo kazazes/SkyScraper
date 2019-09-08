@@ -31,7 +31,7 @@
 
 <script lang="ts">
   import Vue from "vue";
-  import Component from "vue-class-component";
+  import { Component } from "nuxt-property-decorator";
   import { Prop } from "nuxt-property-decorator";
   import HelperOffset from "~/components/helper/Offset.vue";
 

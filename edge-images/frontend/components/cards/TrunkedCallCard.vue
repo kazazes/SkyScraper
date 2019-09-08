@@ -58,8 +58,7 @@
   import consola from "consola";
   import moment from "moment";
   import Vue from "vue";
-  import Component from "vue-class-component";
-  import { Prop } from "vue-property-decorator";
+  import { Component, Prop } from "nuxt-property-decorator";
   import Player from "~/components/audio/Player.vue";
   import {
     Transcription,

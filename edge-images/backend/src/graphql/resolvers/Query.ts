@@ -1,5 +1,6 @@
 import { QueryResolvers } from "../generated/graphqlgen";
 import { TrunkedSystemStats } from "../resolverTypes";
+import { deviceHasAdmin } from "../helpers/admin";
 
 export const Query: QueryResolvers.Type = {
   ...QueryResolvers.defaultResolvers,
@@ -61,7 +62,9 @@ export const Query: QueryResolvers.Type = {
           .aggregate()
           .count(),
         systemId: sys.id,
-        calls: await prisma.trunkedCalls({ where: { system: { id: sys.id } } }),
+        calls: await prisma.trunkedCalls({
+          where: { system: { id: sys.id } },
+        }),
         talkgroups: await prisma.trunkedTalkgroups({
           where: { system: { id: sys.id } },
         }),
@@ -69,5 +72,11 @@ export const Query: QueryResolvers.Type = {
       return a;
     });
     return Promise.all(all);
+  },
+  deviceRegistered: async (parent, args, { prisma }) => {
+    return deviceHasAdmin();
+  },
+  currentUser: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
   },
 };

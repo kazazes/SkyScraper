@@ -1,4 +1,4 @@
-<template>
+x<template>
   <v-layout column fill-height>
     <v-container fluid pa-0>
       <v-flex>
@@ -47,9 +47,6 @@
 <style lang="scss">
   .v-tabs {
     .v-tabs__item {
-      span.text-uppercase {
-        // font-size: 0.9rem;
-      }
       .v-icon {
         font-size: 22px;
       }

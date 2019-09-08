@@ -29,6 +29,7 @@ export interface Exists {
   trunkedSource: (where?: TrunkedSourceWhereInput) => Promise<boolean>;
   trunkedSystem: (where?: TrunkedSystemWhereInput) => Promise<boolean>;
   trunkedTalkgroup: (where?: TrunkedTalkgroupWhereInput) => Promise<boolean>;
+  user: (where?: UserWhereInput) => Promise<boolean>;
 }
 
 export interface Node {}
@@ -281,6 +282,25 @@ export interface Prisma {
     first?: Int;
     last?: Int;
   }) => TrunkedTalkgroupConnectionPromise;
+  user: (where: UserWhereUniqueInput) => UserNullablePromise;
+  users: (args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => FragmentableArray<User>;
+  usersConnection: (args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => UserConnectionPromise;
   node: (args: { id: ID_Output }) => Node;
 
   /**
@@ -517,6 +537,22 @@ export interface Prisma {
   deleteManyTrunkedTalkgroups: (
     where?: TrunkedTalkgroupWhereInput
   ) => BatchPayloadPromise;
+  createUser: (data: UserCreateInput) => UserPromise;
+  updateUser: (args: {
+    data: UserUpdateInput;
+    where: UserWhereUniqueInput;
+  }) => UserPromise;
+  updateManyUsers: (args: {
+    data: UserUpdateManyMutationInput;
+    where?: UserWhereInput;
+  }) => BatchPayloadPromise;
+  upsertUser: (args: {
+    where: UserWhereUniqueInput;
+    create: UserCreateInput;
+    update: UserUpdateInput;
+  }) => UserPromise;
+  deleteUser: (where: UserWhereUniqueInput) => UserPromise;
+  deleteManyUsers: (where?: UserWhereInput) => BatchPayloadPromise;
 
   /**
    * Subscriptions
@@ -559,6 +595,9 @@ export interface Subscription {
   trunkedTalkgroup: (
     where?: TrunkedTalkgroupSubscriptionWhereInput
   ) => TrunkedTalkgroupSubscriptionPayloadSubscription;
+  user: (
+    where?: UserSubscriptionWhereInput
+  ) => UserSubscriptionPayloadSubscription;
 }
 
 export interface ClientConstructor<T> {
@@ -568,6 +607,31 @@ export interface ClientConstructor<T> {
 /**
  * Types
  */
+
+export type TranscriptionOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "languageModel_ASC"
+  | "languageModel_DESC"
+  | "beta_ASC"
+  | "beta_DESC"
+  | "body_ASC"
+  | "body_DESC"
+  | "duration_ASC"
+  | "duration_DESC"
+  | "alpha_ASC"
+  | "alpha_DESC";
+
+export type TrunkedSystemType =
+  | "SMARTNET"
+  | "P25"
+  | "CONVENTIONAL"
+  | "CONVENTIONAL_P25"
+  | "UNKNOWN";
 
 export type TranscriptionWordOrderByInput =
   | "id_ASC"
@@ -585,12 +649,53 @@ export type TranscriptionWordOrderByInput =
   | "start_ASC"
   | "start_DESC";
 
-export type TrunkedSystemType =
-  | "SMARTNET"
-  | "P25"
-  | "CONVENTIONAL"
-  | "CONVENTIONAL_P25"
-  | "UNKNOWN";
+export type UserOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "name_ASC"
+  | "name_DESC"
+  | "email_ASC"
+  | "email_DESC"
+  | "phone_ASC"
+  | "phone_DESC"
+  | "verified_ASC"
+  | "verified_DESC"
+  | "password_ASC"
+  | "password_DESC"
+  | "authyId_ASC"
+  | "authyId_DESC"
+  | "role_ASC"
+  | "role_DESC";
+
+export type Dump1090MessageType =
+  | "SELECTION_CHANGE"
+  | "NEW_ID"
+  | "NEW_AIRCRAFT"
+  | "STATUS_AIRCRAFT"
+  | "CLICK"
+  | "TRANSMISSION";
+
+export type Dump1090AircraftOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "IcaoID_ASC"
+  | "IcaoID_DESC";
+
+export type Dump1090TransmissionType =
+  | "ES_IDENT_AND_CATEGORY"
+  | "ES_SURFACE_POS"
+  | "ES_AIRBORNE_POS"
+  | "ES_AIRBORNE_VEL"
+  | "SURVEILLANCE_ALT"
+  | "SURVEILLANCE_ID"
+  | "AIR_TO_AIR"
+  | "ALL_CALL_REPLY";
+
+export type TrunkedFrequencyFormat = "EXP" | "MHZ" | "HZ";
 
 export type TrunkedCallFrequencyTimeOrderByInput =
   | "id_ASC"
@@ -611,58 +716,6 @@ export type TrunkedCallFrequencyTimeOrderByInput =
   | "errors_DESC"
   | "spikes_ASC"
   | "spikes_DESC";
-
-export type TrunkedConfigOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "name_ASC"
-  | "name_DESC"
-  | "defaultMode_ASC"
-  | "defaultMode_DESC"
-  | "captureDir_ASC"
-  | "captureDir_DESC"
-  | "callTimeout_ASC"
-  | "callTimeout_DESC"
-  | "logFile_ASC"
-  | "logFile_DESC"
-  | "frequencyFormat_ASC"
-  | "frequencyFormat_DESC"
-  | "controlWarnRate_ASC"
-  | "controlWarnRate_DESC"
-  | "statusAsString_ASC"
-  | "statusAsString_DESC";
-
-export type TrunkedCallSourceOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "sourceId_ASC"
-  | "sourceId_DESC"
-  | "time_ASC"
-  | "time_DESC"
-  | "position_ASC"
-  | "position_DESC";
-
-export type Dump1090AircraftOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "IcaoID_ASC"
-  | "IcaoID_DESC";
-
-export type Dump1090MessageType =
-  | "SELECTION_CHANGE"
-  | "NEW_ID"
-  | "NEW_AIRCRAFT"
-  | "STATUS_AIRCRAFT"
-  | "CLICK"
-  | "TRANSMISSION";
 
 export type TrunkedSystemOrderByInput =
   | "id_ASC"
@@ -706,15 +759,19 @@ export type TrunkedSystemOrderByInput =
   | "hideUnknownTalkgroups_ASC"
   | "hideUnknownTalkgroups_DESC";
 
-export type Dump1090TransmissionType =
-  | "ES_IDENT_AND_CATEGORY"
-  | "ES_SURFACE_POS"
-  | "ES_AIRBORNE_POS"
-  | "ES_AIRBORNE_VEL"
-  | "SURVEILLANCE_ALT"
-  | "SURVEILLANCE_ID"
-  | "AIR_TO_AIR"
-  | "ALL_CALL_REPLY";
+export type TrunkedCallSourceOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "sourceId_ASC"
+  | "sourceId_DESC"
+  | "time_ASC"
+  | "time_DESC"
+  | "position_ASC"
+  | "position_DESC";
 
 export type TrunkedModulation = "QPSK" | "FSK4";
 
@@ -744,13 +801,41 @@ export type TrunkedCallOrderByInput =
   | "wavPath_ASC"
   | "wavPath_DESC";
 
-export type MutationType = "CREATED" | "UPDATED" | "DELETED";
+export type UserRole = "ADMIN" | "USER" | "SUPPORT";
 
 export type TrunkedSmartnetBandplan =
   | "STANDARD_800"
   | "REBAND_800"
   | "SPLINTER_800"
   | "CUSTOM_400";
+
+export type TrunkedTalkgroupDisplayFormat = "ID" | "ID_TAG" | "TAG_ID";
+
+export type TrunkedTalkgroupOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "updatedAt_ASC"
+  | "updatedAt_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "decimal_ASC"
+  | "decimal_DESC"
+  | "hex_ASC"
+  | "hex_DESC"
+  | "mode_ASC"
+  | "mode_DESC"
+  | "alphaTag_ASC"
+  | "alphaTag_DESC"
+  | "description_ASC"
+  | "description_DESC"
+  | "tag_ASC"
+  | "tag_DESC"
+  | "group_ASC"
+  | "group_DESC"
+  | "priority_ASC"
+  | "priority_DESC"
+  | "hash_ASC"
+  | "hash_DESC";
 
 export type Dump1090MessageOrderByInput =
   | "id_ASC"
@@ -788,53 +873,31 @@ export type Dump1090MessageOrderByInput =
   | "altitude_ASC"
   | "altitude_DESC";
 
-export type TrunkedTalkgroupDisplayFormat = "ID" | "ID_TAG" | "TAG_ID";
-
-export type TrunkedTalkgroupOrderByInput =
+export type TrunkedConfigOrderByInput =
   | "id_ASC"
   | "id_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
-  | "decimal_ASC"
-  | "decimal_DESC"
-  | "hex_ASC"
-  | "hex_DESC"
-  | "mode_ASC"
-  | "mode_DESC"
-  | "alphaTag_ASC"
-  | "alphaTag_DESC"
-  | "description_ASC"
-  | "description_DESC"
-  | "tag_ASC"
-  | "tag_DESC"
-  | "group_ASC"
-  | "group_DESC"
-  | "priority_ASC"
-  | "priority_DESC"
-  | "hash_ASC"
-  | "hash_DESC";
+  | "name_ASC"
+  | "name_DESC"
+  | "defaultMode_ASC"
+  | "defaultMode_DESC"
+  | "captureDir_ASC"
+  | "captureDir_DESC"
+  | "callTimeout_ASC"
+  | "callTimeout_DESC"
+  | "logFile_ASC"
+  | "logFile_DESC"
+  | "frequencyFormat_ASC"
+  | "frequencyFormat_DESC"
+  | "controlWarnRate_ASC"
+  | "controlWarnRate_DESC"
+  | "statusAsString_ASC"
+  | "statusAsString_DESC";
 
-export type TrunkedFrequencyFormat = "EXP" | "MHZ" | "HZ";
-
-export type TranscriptionOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "updatedAt_ASC"
-  | "updatedAt_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "languageModel_ASC"
-  | "languageModel_DESC"
-  | "beta_ASC"
-  | "beta_DESC"
-  | "body_ASC"
-  | "body_DESC"
-  | "duration_ASC"
-  | "duration_DESC"
-  | "alpha_ASC"
-  | "alpha_DESC";
+export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export type TrunkedSourceOrderByInput =
   | "id_ASC"
@@ -868,21 +931,11 @@ export type TrunkedSourceOrderByInput =
 
 export type TrunkedDefaultMode = "ANALOG" | "DIGITAL";
 
-export interface TrunkedCallUpdateWithoutTranscriptionDataInput {
-  frequency?: Maybe<Int>;
-  startTime?: Maybe<DateTimeInput>;
-  endTime?: Maybe<DateTimeInput>;
-  emergency?: Maybe<Boolean>;
-  talkgroup?: Maybe<TrunkedTalkgroupUpdateOneWithoutCallsInput>;
-  system?: Maybe<TrunkedSystemUpdateOneWithoutCallsInput>;
-  sources?: Maybe<TrunkedCallSourceUpdateManyInput>;
-  duration?: Maybe<Float>;
-  source?: Maybe<Int>;
-  audioPath?: Maybe<String>;
-  frequencyList?: Maybe<TrunkedCallFrequencyTimeUpdateManyInput>;
-  callHash?: Maybe<String>;
-  wavPath?: Maybe<String>;
-  remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
+export interface TrunkedCallUpdateOneRequiredWithoutTranscriptionInput {
+  create?: Maybe<TrunkedCallCreateWithoutTranscriptionInput>;
+  update?: Maybe<TrunkedCallUpdateWithoutTranscriptionDataInput>;
+  upsert?: Maybe<TrunkedCallUpsertWithoutTranscriptionInput>;
+  connect?: Maybe<TrunkedCallWhereUniqueInput>;
 }
 
 export type Dump1090AircraftWhereUniqueInput = AtLeastOne<{
@@ -890,18 +943,9 @@ export type Dump1090AircraftWhereUniqueInput = AtLeastOne<{
   IcaoID?: Maybe<String>;
 }>;
 
-export interface TrunkedTalkgroupCreateWithoutCallsInput {
-  id?: Maybe<ID_Input>;
-  decimal: Int;
-  hex: String;
-  mode: String;
-  alphaTag: String;
-  description: String;
-  tag: String;
-  group: String;
-  priority?: Maybe<Int>;
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
-  hash: String;
+export interface TrunkedCallCreateOneWithoutTranscriptionInput {
+  create?: Maybe<TrunkedCallCreateWithoutTranscriptionInput>;
+  connect?: Maybe<TrunkedCallWhereUniqueInput>;
 }
 
 export interface TranscriptionCreateWithoutWordsInput {
@@ -914,9 +958,22 @@ export interface TranscriptionCreateWithoutWordsInput {
   alpha: Float;
 }
 
-export interface TrunkedSystemCreateOneWithoutTalkgroupsInput {
-  create?: Maybe<TrunkedSystemCreateWithoutTalkgroupsInput>;
-  connect?: Maybe<TrunkedSystemWhereUniqueInput>;
+export interface TrunkedCallCreateWithoutTranscriptionInput {
+  id?: Maybe<ID_Input>;
+  frequency: Int;
+  startTime: DateTimeInput;
+  endTime: DateTimeInput;
+  emergency?: Maybe<Boolean>;
+  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
+  system?: Maybe<TrunkedSystemCreateOneWithoutCallsInput>;
+  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
+  duration?: Maybe<Float>;
+  source?: Maybe<Int>;
+  audioPath?: Maybe<String>;
+  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
+  callHash?: Maybe<String>;
+  wavPath?: Maybe<String>;
+  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
 }
 
 export interface TrunkedCallSourceUpdateManyInput {
@@ -950,71 +1007,43 @@ export interface TrunkedCallSourceUpdateManyInput {
   >;
 }
 
-export interface TrunkedSystemCreateWithoutTalkgroupsInput {
+export interface TrunkedTalkgroupCreateOneWithoutCallsInput {
+  create?: Maybe<TrunkedTalkgroupCreateWithoutCallsInput>;
+  connect?: Maybe<TrunkedTalkgroupWhereUniqueInput>;
+}
+
+export interface TrunkedTalkgroupSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TrunkedTalkgroupWhereInput>;
+  AND?: Maybe<
+    | TrunkedTalkgroupSubscriptionWhereInput[]
+    | TrunkedTalkgroupSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | TrunkedTalkgroupSubscriptionWhereInput[]
+    | TrunkedTalkgroupSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | TrunkedTalkgroupSubscriptionWhereInput[]
+    | TrunkedTalkgroupSubscriptionWhereInput
+  >;
+}
+
+export interface TrunkedTalkgroupCreateWithoutCallsInput {
   id?: Maybe<ID_Input>;
-  controlChannels?: Maybe<TrunkedSystemCreatecontrolChannelsInput>;
-  channels?: Maybe<TrunkedSystemCreatechannelsInput>;
-  type: TrunkedSystemType;
-  alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>;
-  recordUnknown?: Maybe<Boolean>;
-  shortName: String;
-  name?: Maybe<String>;
-  audioArchive?: Maybe<Boolean>;
-  callLog?: Maybe<Boolean>;
-  minDuration?: Maybe<Float>;
-  bandplan?: Maybe<TrunkedSmartnetBandplan>;
-  bandplanBase?: Maybe<Float>;
-  bandplanHigh?: Maybe<Float>;
-  bandplanLow?: Maybe<Float>;
-  bandplanSpacing?: Maybe<Float>;
-  bandplanOffset?: Maybe<Float>;
-  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
-  delayCreateOutput?: Maybe<Boolean>;
-  hideEncrypted?: Maybe<Boolean>;
-  hideUnknownTalkgroups?: Maybe<Boolean>;
-  calls?: Maybe<TrunkedCallCreateManyWithoutSystemInput>;
-}
-
-export interface TrunkedSystemSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedSystemWhereInput>;
-  AND?: Maybe<
-    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
-  >;
-}
-
-export interface TrunkedSystemCreatecontrolChannelsInput {
-  set?: Maybe<Float[] | Float>;
-}
-
-export interface TrunkedConfigSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedConfigWhereInput>;
-  AND?: Maybe<
-    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
-  >;
-}
-
-export interface TrunkedSystemCreatechannelsInput {
-  set?: Maybe<Float[] | Float>;
+  decimal: Int;
+  hex: String;
+  mode: String;
+  alphaTag: String;
+  description: String;
+  tag: String;
+  group: String;
+  priority?: Maybe<Int>;
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
+  hash: String;
 }
 
 export interface TrunkedTalkgroupWhereInput {
@@ -1171,35 +1200,51 @@ export interface TrunkedTalkgroupWhereInput {
   NOT?: Maybe<TrunkedTalkgroupWhereInput[] | TrunkedTalkgroupWhereInput>;
 }
 
-export interface TrunkedSystemCreatealphatagsInput {
-  set?: Maybe<String[] | String>;
+export interface TrunkedSystemCreateOneWithoutTalkgroupsInput {
+  create?: Maybe<TrunkedSystemCreateWithoutTalkgroupsInput>;
+  connect?: Maybe<TrunkedSystemWhereUniqueInput>;
 }
 
-export interface TrunkedCallFrequencyTimeSubscriptionWhereInput {
+export interface TrunkedSystemSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedCallFrequencyTimeWhereInput>;
+  node?: Maybe<TrunkedSystemWhereInput>;
   AND?: Maybe<
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
   >;
   OR?: Maybe<
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
   >;
   NOT?: Maybe<
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
-    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+    TrunkedSystemSubscriptionWhereInput[] | TrunkedSystemSubscriptionWhereInput
   >;
 }
 
-export interface TrunkedCallCreateManyWithoutSystemInput {
-  create?: Maybe<
-    TrunkedCallCreateWithoutSystemInput[] | TrunkedCallCreateWithoutSystemInput
-  >;
-  connect?: Maybe<TrunkedCallWhereUniqueInput[] | TrunkedCallWhereUniqueInput>;
+export interface TrunkedSystemCreateWithoutTalkgroupsInput {
+  id?: Maybe<ID_Input>;
+  controlChannels?: Maybe<TrunkedSystemCreatecontrolChannelsInput>;
+  channels?: Maybe<TrunkedSystemCreatechannelsInput>;
+  type: TrunkedSystemType;
+  alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>;
+  recordUnknown?: Maybe<Boolean>;
+  shortName: String;
+  name?: Maybe<String>;
+  audioArchive?: Maybe<Boolean>;
+  callLog?: Maybe<Boolean>;
+  minDuration?: Maybe<Float>;
+  bandplan?: Maybe<TrunkedSmartnetBandplan>;
+  bandplanBase?: Maybe<Float>;
+  bandplanHigh?: Maybe<Float>;
+  bandplanLow?: Maybe<Float>;
+  bandplanSpacing?: Maybe<Float>;
+  bandplanOffset?: Maybe<Float>;
+  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
+  delayCreateOutput?: Maybe<Boolean>;
+  hideEncrypted?: Maybe<Boolean>;
+  hideUnknownTalkgroups?: Maybe<Boolean>;
+  calls?: Maybe<TrunkedCallCreateManyWithoutSystemInput>;
 }
 
 export interface TrunkedCallWhereInput {
@@ -1331,22 +1376,8 @@ export interface TrunkedCallWhereInput {
   NOT?: Maybe<TrunkedCallWhereInput[] | TrunkedCallWhereInput>;
 }
 
-export interface TrunkedCallCreateWithoutSystemInput {
-  id?: Maybe<ID_Input>;
-  frequency: Int;
-  startTime: DateTimeInput;
-  endTime: DateTimeInput;
-  emergency?: Maybe<Boolean>;
-  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
-  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
-  duration?: Maybe<Float>;
-  source?: Maybe<Int>;
-  audioPath?: Maybe<String>;
-  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
-  callHash?: Maybe<String>;
-  wavPath?: Maybe<String>;
-  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
-  transcription?: Maybe<TranscriptionCreateOneWithoutCallInput>;
+export interface TrunkedSystemCreatecontrolChannelsInput {
+  set?: Maybe<Float[] | Float>;
 }
 
 export interface TrunkedCallFrequencyTimeWhereInput {
@@ -1439,11 +1470,8 @@ export interface TrunkedCallFrequencyTimeWhereInput {
   >;
 }
 
-export interface TrunkedCallSourceCreateManyInput {
-  create?: Maybe<TrunkedCallSourceCreateInput[] | TrunkedCallSourceCreateInput>;
-  connect?: Maybe<
-    TrunkedCallSourceWhereUniqueInput[] | TrunkedCallSourceWhereUniqueInput
-  >;
+export interface TrunkedSystemCreatechannelsInput {
+  set?: Maybe<Float[] | Float>;
 }
 
 export interface TranscriptionWordWhereInput {
@@ -1521,11 +1549,198 @@ export interface TranscriptionWordWhereInput {
   NOT?: Maybe<TranscriptionWordWhereInput[] | TranscriptionWordWhereInput>;
 }
 
-export interface TrunkedCallSourceCreateInput {
+export interface TrunkedSystemCreatealphatagsInput {
+  set?: Maybe<String[] | String>;
+}
+
+export interface Dump1090MessageWhereInput {
   id?: Maybe<ID_Input>;
-  sourceId?: Maybe<Int>;
-  time?: Maybe<DateTimeInput>;
-  position?: Maybe<Float>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  messageType?: Maybe<Dump1090MessageType>;
+  messageType_not?: Maybe<Dump1090MessageType>;
+  messageType_in?: Maybe<Dump1090MessageType[] | Dump1090MessageType>;
+  messageType_not_in?: Maybe<Dump1090MessageType[] | Dump1090MessageType>;
+  transmissionType?: Maybe<Dump1090TransmissionType>;
+  transmissionType_not?: Maybe<Dump1090TransmissionType>;
+  transmissionType_in?: Maybe<
+    Dump1090TransmissionType[] | Dump1090TransmissionType
+  >;
+  transmissionType_not_in?: Maybe<
+    Dump1090TransmissionType[] | Dump1090TransmissionType
+  >;
+  aircraft?: Maybe<Dump1090AircraftWhereInput>;
+  generated?: Maybe<DateTimeInput>;
+  generated_not?: Maybe<DateTimeInput>;
+  generated_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  generated_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  generated_lt?: Maybe<DateTimeInput>;
+  generated_lte?: Maybe<DateTimeInput>;
+  generated_gt?: Maybe<DateTimeInput>;
+  generated_gte?: Maybe<DateTimeInput>;
+  logged?: Maybe<DateTimeInput>;
+  logged_not?: Maybe<DateTimeInput>;
+  logged_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  logged_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  logged_lt?: Maybe<DateTimeInput>;
+  logged_lte?: Maybe<DateTimeInput>;
+  logged_gt?: Maybe<DateTimeInput>;
+  logged_gte?: Maybe<DateTimeInput>;
+  flightId?: Maybe<String>;
+  flightId_not?: Maybe<String>;
+  flightId_in?: Maybe<String[] | String>;
+  flightId_not_in?: Maybe<String[] | String>;
+  flightId_lt?: Maybe<String>;
+  flightId_lte?: Maybe<String>;
+  flightId_gt?: Maybe<String>;
+  flightId_gte?: Maybe<String>;
+  flightId_contains?: Maybe<String>;
+  flightId_not_contains?: Maybe<String>;
+  flightId_starts_with?: Maybe<String>;
+  flightId_not_starts_with?: Maybe<String>;
+  flightId_ends_with?: Maybe<String>;
+  flightId_not_ends_with?: Maybe<String>;
+  squawk?: Maybe<String>;
+  squawk_not?: Maybe<String>;
+  squawk_in?: Maybe<String[] | String>;
+  squawk_not_in?: Maybe<String[] | String>;
+  squawk_lt?: Maybe<String>;
+  squawk_lte?: Maybe<String>;
+  squawk_gt?: Maybe<String>;
+  squawk_gte?: Maybe<String>;
+  squawk_contains?: Maybe<String>;
+  squawk_not_contains?: Maybe<String>;
+  squawk_starts_with?: Maybe<String>;
+  squawk_not_starts_with?: Maybe<String>;
+  squawk_ends_with?: Maybe<String>;
+  squawk_not_ends_with?: Maybe<String>;
+  alert?: Maybe<Boolean>;
+  alert_not?: Maybe<Boolean>;
+  emergency?: Maybe<Boolean>;
+  emergency_not?: Maybe<Boolean>;
+  isOnGround?: Maybe<Boolean>;
+  isOnGround_not?: Maybe<Boolean>;
+  latitude?: Maybe<Float>;
+  latitude_not?: Maybe<Float>;
+  latitude_in?: Maybe<Float[] | Float>;
+  latitude_not_in?: Maybe<Float[] | Float>;
+  latitude_lt?: Maybe<Float>;
+  latitude_lte?: Maybe<Float>;
+  latitude_gt?: Maybe<Float>;
+  latitude_gte?: Maybe<Float>;
+  longitude?: Maybe<Float>;
+  longitude_not?: Maybe<Float>;
+  longitude_in?: Maybe<Float[] | Float>;
+  longitude_not_in?: Maybe<Float[] | Float>;
+  longitude_lt?: Maybe<Float>;
+  longitude_lte?: Maybe<Float>;
+  longitude_gt?: Maybe<Float>;
+  longitude_gte?: Maybe<Float>;
+  verticalRate?: Maybe<Int>;
+  verticalRate_not?: Maybe<Int>;
+  verticalRate_in?: Maybe<Int[] | Int>;
+  verticalRate_not_in?: Maybe<Int[] | Int>;
+  verticalRate_lt?: Maybe<Int>;
+  verticalRate_lte?: Maybe<Int>;
+  verticalRate_gt?: Maybe<Int>;
+  verticalRate_gte?: Maybe<Int>;
+  track?: Maybe<Int>;
+  track_not?: Maybe<Int>;
+  track_in?: Maybe<Int[] | Int>;
+  track_not_in?: Maybe<Int[] | Int>;
+  track_lt?: Maybe<Int>;
+  track_lte?: Maybe<Int>;
+  track_gt?: Maybe<Int>;
+  track_gte?: Maybe<Int>;
+  groupSpeed?: Maybe<Int>;
+  groupSpeed_not?: Maybe<Int>;
+  groupSpeed_in?: Maybe<Int[] | Int>;
+  groupSpeed_not_in?: Maybe<Int[] | Int>;
+  groupSpeed_lt?: Maybe<Int>;
+  groupSpeed_lte?: Maybe<Int>;
+  groupSpeed_gt?: Maybe<Int>;
+  groupSpeed_gte?: Maybe<Int>;
+  callsign?: Maybe<String>;
+  callsign_not?: Maybe<String>;
+  callsign_in?: Maybe<String[] | String>;
+  callsign_not_in?: Maybe<String[] | String>;
+  callsign_lt?: Maybe<String>;
+  callsign_lte?: Maybe<String>;
+  callsign_gt?: Maybe<String>;
+  callsign_gte?: Maybe<String>;
+  callsign_contains?: Maybe<String>;
+  callsign_not_contains?: Maybe<String>;
+  callsign_starts_with?: Maybe<String>;
+  callsign_not_starts_with?: Maybe<String>;
+  callsign_ends_with?: Maybe<String>;
+  callsign_not_ends_with?: Maybe<String>;
+  altitude?: Maybe<Int>;
+  altitude_not?: Maybe<Int>;
+  altitude_in?: Maybe<Int[] | Int>;
+  altitude_not_in?: Maybe<Int[] | Int>;
+  altitude_lt?: Maybe<Int>;
+  altitude_lte?: Maybe<Int>;
+  altitude_gt?: Maybe<Int>;
+  altitude_gte?: Maybe<Int>;
+  AND?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
+  OR?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
+  NOT?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
+}
+
+export interface TrunkedCallCreateManyWithoutSystemInput {
+  create?: Maybe<
+    TrunkedCallCreateWithoutSystemInput[] | TrunkedCallCreateWithoutSystemInput
+  >;
+  connect?: Maybe<TrunkedCallWhereUniqueInput[] | TrunkedCallWhereUniqueInput>;
+}
+
+export interface TrunkedCallFrequencyTimeSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TrunkedCallFrequencyTimeWhereInput>;
+  AND?: Maybe<
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput[]
+    | TrunkedCallFrequencyTimeSubscriptionWhereInput
+  >;
+}
+
+export interface TrunkedCallCreateWithoutSystemInput {
+  id?: Maybe<ID_Input>;
+  frequency: Int;
+  startTime: DateTimeInput;
+  endTime: DateTimeInput;
+  emergency?: Maybe<Boolean>;
+  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
+  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
+  duration?: Maybe<Float>;
+  source?: Maybe<Int>;
+  audioPath?: Maybe<String>;
+  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
+  callHash?: Maybe<String>;
+  wavPath?: Maybe<String>;
+  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
+  transcription?: Maybe<TranscriptionCreateOneWithoutCallInput>;
 }
 
 export interface TranscriptionWordSubscriptionWhereInput {
@@ -1548,13 +1763,10 @@ export interface TranscriptionWordSubscriptionWhereInput {
   >;
 }
 
-export interface TrunkedCallFrequencyTimeCreateManyInput {
-  create?: Maybe<
-    TrunkedCallFrequencyTimeCreateInput[] | TrunkedCallFrequencyTimeCreateInput
-  >;
+export interface TrunkedCallSourceCreateManyInput {
+  create?: Maybe<TrunkedCallSourceCreateInput[] | TrunkedCallSourceCreateInput>;
   connect?: Maybe<
-    | TrunkedCallFrequencyTimeWhereUniqueInput[]
-    | TrunkedCallFrequencyTimeWhereUniqueInput
+    TrunkedCallSourceWhereUniqueInput[] | TrunkedCallSourceWhereUniqueInput
   >;
 }
 
@@ -1578,14 +1790,11 @@ export interface Dump1090MessageSubscriptionWhereInput {
   >;
 }
 
-export interface TrunkedCallFrequencyTimeCreateInput {
+export interface TrunkedCallSourceCreateInput {
   id?: Maybe<ID_Input>;
-  frequency: Int;
-  time: Int;
-  position: Float;
-  length: Int;
-  errors: Int;
-  spikes: Int;
+  sourceId?: Maybe<Int>;
+  time?: Maybe<DateTimeInput>;
+  position?: Maybe<Float>;
 }
 
 export interface Dump1090AircraftSubscriptionWhereInput {
@@ -1606,6 +1815,47 @@ export interface Dump1090AircraftSubscriptionWhereInput {
     | Dump1090AircraftSubscriptionWhereInput[]
     | Dump1090AircraftSubscriptionWhereInput
   >;
+}
+
+export interface TrunkedCallFrequencyTimeCreateManyInput {
+  create?: Maybe<
+    TrunkedCallFrequencyTimeCreateInput[] | TrunkedCallFrequencyTimeCreateInput
+  >;
+  connect?: Maybe<
+    | TrunkedCallFrequencyTimeWhereUniqueInput[]
+    | TrunkedCallFrequencyTimeWhereUniqueInput
+  >;
+}
+
+export interface UserUpdateInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  verified?: Maybe<Boolean>;
+  password?: Maybe<String>;
+  authyId?: Maybe<String>;
+  role?: Maybe<UserRole>;
+}
+
+export interface TrunkedCallFrequencyTimeCreateInput {
+  id?: Maybe<ID_Input>;
+  frequency: Int;
+  time: Int;
+  position: Float;
+  length: Int;
+  errors: Int;
+  spikes: Int;
+}
+
+export interface UserCreateInput {
+  id?: Maybe<ID_Input>;
+  name: String;
+  email: String;
+  phone: String;
+  verified?: Maybe<Boolean>;
+  password: String;
+  authyId: String;
+  role?: Maybe<UserRole>;
 }
 
 export interface TrunkedCallCreateremotePathsInput {
@@ -1631,11 +1881,37 @@ export interface TranscriptionCreateOneWithoutCallInput {
   connect?: Maybe<TranscriptionWhereUniqueInput>;
 }
 
-export interface TrunkedSystemUpdateManyMutationInput {
+export interface TrunkedTalkgroupCreateInput {
+  id?: Maybe<ID_Input>;
+  decimal: Int;
+  hex: String;
+  mode: String;
+  alphaTag: String;
+  description: String;
+  tag: String;
+  group: String;
+  priority?: Maybe<Int>;
+  system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
+  calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>;
+  hash: String;
+}
+
+export interface TranscriptionCreateWithoutCallInput {
+  id?: Maybe<ID_Input>;
+  languageModel: String;
+  beta: Float;
+  body: String;
+  words?: Maybe<TranscriptionWordCreateManyWithoutTranscriptionInput>;
+  duration: Float;
+  alpha: Float;
+}
+
+export interface TrunkedSystemUpdateInput {
   controlChannels?: Maybe<TrunkedSystemUpdatecontrolChannelsInput>;
   channels?: Maybe<TrunkedSystemUpdatechannelsInput>;
   type?: Maybe<TrunkedSystemType>;
   alphatags?: Maybe<TrunkedSystemUpdatealphatagsInput>;
+  talkgroups?: Maybe<TrunkedTalkgroupUpdateManyWithoutSystemInput>;
   recordUnknown?: Maybe<Boolean>;
   shortName?: Maybe<String>;
   name?: Maybe<String>;
@@ -1652,30 +1928,7 @@ export interface TrunkedSystemUpdateManyMutationInput {
   delayCreateOutput?: Maybe<Boolean>;
   hideEncrypted?: Maybe<Boolean>;
   hideUnknownTalkgroups?: Maybe<Boolean>;
-}
-
-export interface TranscriptionCreateWithoutCallInput {
-  id?: Maybe<ID_Input>;
-  languageModel: String;
-  beta: Float;
-  body: String;
-  words?: Maybe<TranscriptionWordCreateManyWithoutTranscriptionInput>;
-  duration: Float;
-  alpha: Float;
-}
-
-export interface TrunkedSourceUpdateManyMutationInput {
-  center?: Maybe<Float>;
-  rate?: Maybe<Float>;
-  squelch?: Maybe<Float>;
-  error?: Maybe<Float>;
-  gain?: Maybe<Float>;
-  digitalRecorders?: Maybe<Float>;
-  digitalLevels?: Maybe<Float>;
-  analogRecorders?: Maybe<Float>;
-  analogLevels?: Maybe<Float>;
-  device?: Maybe<String>;
-  modulation?: Maybe<TrunkedModulation>;
+  calls?: Maybe<TrunkedCallUpdateManyWithoutSystemInput>;
 }
 
 export interface TranscriptionWordCreateManyWithoutTranscriptionInput {
@@ -1688,7 +1941,7 @@ export interface TranscriptionWordCreateManyWithoutTranscriptionInput {
   >;
 }
 
-export interface TrunkedSourceUpdateInput {
+export interface TrunkedSourceUpdateManyMutationInput {
   center?: Maybe<Float>;
   rate?: Maybe<Float>;
   squelch?: Maybe<Float>;
@@ -1708,6 +1961,22 @@ export interface TranscriptionWordCreateWithoutTranscriptionInput {
   confidence: Float;
   end: Int;
   start: Int;
+}
+
+export interface TrunkedConfigUpdateManyMutationInput {
+  name?: Maybe<String>;
+  defaultMode?: Maybe<TrunkedDefaultMode>;
+  captureDir?: Maybe<String>;
+  callTimeout?: Maybe<Int>;
+  logFile?: Maybe<Boolean>;
+  frequencyFormat?: Maybe<TrunkedFrequencyFormat>;
+  controlWarnRate?: Maybe<Int>;
+  statusAsString?: Maybe<Boolean>;
+}
+
+export interface TrunkedSystemCreateOneWithoutCallsInput {
+  create?: Maybe<TrunkedSystemCreateWithoutCallsInput>;
+  connect?: Maybe<TrunkedSystemWhereUniqueInput>;
 }
 
 export interface TrunkedSystemUpdateManyDataInput {
@@ -1731,16 +2000,6 @@ export interface TrunkedSystemUpdateManyDataInput {
   delayCreateOutput?: Maybe<Boolean>;
   hideEncrypted?: Maybe<Boolean>;
   hideUnknownTalkgroups?: Maybe<Boolean>;
-}
-
-export interface TrunkedSystemCreateOneWithoutCallsInput {
-  create?: Maybe<TrunkedSystemCreateWithoutCallsInput>;
-  connect?: Maybe<TrunkedSystemWhereUniqueInput>;
-}
-
-export interface TrunkedSystemUpdateManyWithWhereNestedInput {
-  where: TrunkedSystemScalarWhereInput;
-  data: TrunkedSystemUpdateManyDataInput;
 }
 
 export interface TrunkedSystemCreateWithoutCallsInput {
@@ -1768,10 +2027,144 @@ export interface TrunkedSystemCreateWithoutCallsInput {
   hideUnknownTalkgroups?: Maybe<Boolean>;
 }
 
-export interface TrunkedSystemUpsertWithWhereUniqueNestedInput {
-  where: TrunkedSystemWhereUniqueInput;
-  update: TrunkedSystemUpdateDataInput;
-  create: TrunkedSystemCreateInput;
+export interface TrunkedSystemScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  type?: Maybe<TrunkedSystemType>;
+  type_not?: Maybe<TrunkedSystemType>;
+  type_in?: Maybe<TrunkedSystemType[] | TrunkedSystemType>;
+  type_not_in?: Maybe<TrunkedSystemType[] | TrunkedSystemType>;
+  recordUnknown?: Maybe<Boolean>;
+  recordUnknown_not?: Maybe<Boolean>;
+  shortName?: Maybe<String>;
+  shortName_not?: Maybe<String>;
+  shortName_in?: Maybe<String[] | String>;
+  shortName_not_in?: Maybe<String[] | String>;
+  shortName_lt?: Maybe<String>;
+  shortName_lte?: Maybe<String>;
+  shortName_gt?: Maybe<String>;
+  shortName_gte?: Maybe<String>;
+  shortName_contains?: Maybe<String>;
+  shortName_not_contains?: Maybe<String>;
+  shortName_starts_with?: Maybe<String>;
+  shortName_not_starts_with?: Maybe<String>;
+  shortName_ends_with?: Maybe<String>;
+  shortName_not_ends_with?: Maybe<String>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  audioArchive?: Maybe<Boolean>;
+  audioArchive_not?: Maybe<Boolean>;
+  callLog?: Maybe<Boolean>;
+  callLog_not?: Maybe<Boolean>;
+  minDuration?: Maybe<Float>;
+  minDuration_not?: Maybe<Float>;
+  minDuration_in?: Maybe<Float[] | Float>;
+  minDuration_not_in?: Maybe<Float[] | Float>;
+  minDuration_lt?: Maybe<Float>;
+  minDuration_lte?: Maybe<Float>;
+  minDuration_gt?: Maybe<Float>;
+  minDuration_gte?: Maybe<Float>;
+  bandplan?: Maybe<TrunkedSmartnetBandplan>;
+  bandplan_not?: Maybe<TrunkedSmartnetBandplan>;
+  bandplan_in?: Maybe<TrunkedSmartnetBandplan[] | TrunkedSmartnetBandplan>;
+  bandplan_not_in?: Maybe<TrunkedSmartnetBandplan[] | TrunkedSmartnetBandplan>;
+  bandplanBase?: Maybe<Float>;
+  bandplanBase_not?: Maybe<Float>;
+  bandplanBase_in?: Maybe<Float[] | Float>;
+  bandplanBase_not_in?: Maybe<Float[] | Float>;
+  bandplanBase_lt?: Maybe<Float>;
+  bandplanBase_lte?: Maybe<Float>;
+  bandplanBase_gt?: Maybe<Float>;
+  bandplanBase_gte?: Maybe<Float>;
+  bandplanHigh?: Maybe<Float>;
+  bandplanHigh_not?: Maybe<Float>;
+  bandplanHigh_in?: Maybe<Float[] | Float>;
+  bandplanHigh_not_in?: Maybe<Float[] | Float>;
+  bandplanHigh_lt?: Maybe<Float>;
+  bandplanHigh_lte?: Maybe<Float>;
+  bandplanHigh_gt?: Maybe<Float>;
+  bandplanHigh_gte?: Maybe<Float>;
+  bandplanLow?: Maybe<Float>;
+  bandplanLow_not?: Maybe<Float>;
+  bandplanLow_in?: Maybe<Float[] | Float>;
+  bandplanLow_not_in?: Maybe<Float[] | Float>;
+  bandplanLow_lt?: Maybe<Float>;
+  bandplanLow_lte?: Maybe<Float>;
+  bandplanLow_gt?: Maybe<Float>;
+  bandplanLow_gte?: Maybe<Float>;
+  bandplanSpacing?: Maybe<Float>;
+  bandplanSpacing_not?: Maybe<Float>;
+  bandplanSpacing_in?: Maybe<Float[] | Float>;
+  bandplanSpacing_not_in?: Maybe<Float[] | Float>;
+  bandplanSpacing_lt?: Maybe<Float>;
+  bandplanSpacing_lte?: Maybe<Float>;
+  bandplanSpacing_gt?: Maybe<Float>;
+  bandplanSpacing_gte?: Maybe<Float>;
+  bandplanOffset?: Maybe<Float>;
+  bandplanOffset_not?: Maybe<Float>;
+  bandplanOffset_in?: Maybe<Float[] | Float>;
+  bandplanOffset_not_in?: Maybe<Float[] | Float>;
+  bandplanOffset_lt?: Maybe<Float>;
+  bandplanOffset_lte?: Maybe<Float>;
+  bandplanOffset_gt?: Maybe<Float>;
+  bandplanOffset_gte?: Maybe<Float>;
+  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
+  talkgroupDisplayFormat_not?: Maybe<TrunkedTalkgroupDisplayFormat>;
+  talkgroupDisplayFormat_in?: Maybe<
+    TrunkedTalkgroupDisplayFormat[] | TrunkedTalkgroupDisplayFormat
+  >;
+  talkgroupDisplayFormat_not_in?: Maybe<
+    TrunkedTalkgroupDisplayFormat[] | TrunkedTalkgroupDisplayFormat
+  >;
+  delayCreateOutput?: Maybe<Boolean>;
+  delayCreateOutput_not?: Maybe<Boolean>;
+  hideEncrypted?: Maybe<Boolean>;
+  hideEncrypted_not?: Maybe<Boolean>;
+  hideUnknownTalkgroups?: Maybe<Boolean>;
+  hideUnknownTalkgroups_not?: Maybe<Boolean>;
+  AND?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
+  OR?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
+  NOT?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
 }
 
 export interface TrunkedTalkgroupCreateManyWithoutSystemInput {
@@ -1782,6 +2175,26 @@ export interface TrunkedTalkgroupCreateManyWithoutSystemInput {
   connect?: Maybe<
     TrunkedTalkgroupWhereUniqueInput[] | TrunkedTalkgroupWhereUniqueInput
   >;
+}
+
+export interface TrunkedSystemUpsertWithWhereUniqueNestedInput {
+  where: TrunkedSystemWhereUniqueInput;
+  update: TrunkedSystemUpdateDataInput;
+  create: TrunkedSystemCreateInput;
+}
+
+export interface TrunkedTalkgroupCreateWithoutSystemInput {
+  id?: Maybe<ID_Input>;
+  decimal: Int;
+  hex: String;
+  mode: String;
+  alphaTag: String;
+  description: String;
+  tag: String;
+  group: String;
+  priority?: Maybe<Int>;
+  calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>;
+  hash: String;
 }
 
 export interface TrunkedSystemUpdateDataInput {
@@ -1809,18 +2222,12 @@ export interface TrunkedSystemUpdateDataInput {
   calls?: Maybe<TrunkedCallUpdateManyWithoutSystemInput>;
 }
 
-export interface TrunkedTalkgroupCreateWithoutSystemInput {
-  id?: Maybe<ID_Input>;
-  decimal: Int;
-  hex: String;
-  mode: String;
-  alphaTag: String;
-  description: String;
-  tag: String;
-  group: String;
-  priority?: Maybe<Int>;
-  calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>;
-  hash: String;
+export interface TrunkedCallCreateManyWithoutTalkgroupInput {
+  create?: Maybe<
+    | TrunkedCallCreateWithoutTalkgroupInput[]
+    | TrunkedCallCreateWithoutTalkgroupInput
+  >;
+  connect?: Maybe<TrunkedCallWhereUniqueInput[] | TrunkedCallWhereUniqueInput>;
 }
 
 export interface TrunkedSystemUpdateManyInput {
@@ -1852,28 +2259,6 @@ export interface TrunkedSystemUpdateManyInput {
   >;
 }
 
-export interface TrunkedCallCreateManyWithoutTalkgroupInput {
-  create?: Maybe<
-    | TrunkedCallCreateWithoutTalkgroupInput[]
-    | TrunkedCallCreateWithoutTalkgroupInput
-  >;
-  connect?: Maybe<TrunkedCallWhereUniqueInput[] | TrunkedCallWhereUniqueInput>;
-}
-
-export interface TrunkedSourceUpdateManyDataInput {
-  center?: Maybe<Float>;
-  rate?: Maybe<Float>;
-  squelch?: Maybe<Float>;
-  error?: Maybe<Float>;
-  gain?: Maybe<Float>;
-  digitalRecorders?: Maybe<Float>;
-  digitalLevels?: Maybe<Float>;
-  analogRecorders?: Maybe<Float>;
-  analogLevels?: Maybe<Float>;
-  device?: Maybe<String>;
-  modulation?: Maybe<TrunkedModulation>;
-}
-
 export interface TrunkedCallCreateWithoutTalkgroupInput {
   id?: Maybe<ID_Input>;
   frequency: Int;
@@ -1892,130 +2277,9 @@ export interface TrunkedCallCreateWithoutTalkgroupInput {
   transcription?: Maybe<TranscriptionCreateOneWithoutCallInput>;
 }
 
-export interface TrunkedSourceScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  center?: Maybe<Float>;
-  center_not?: Maybe<Float>;
-  center_in?: Maybe<Float[] | Float>;
-  center_not_in?: Maybe<Float[] | Float>;
-  center_lt?: Maybe<Float>;
-  center_lte?: Maybe<Float>;
-  center_gt?: Maybe<Float>;
-  center_gte?: Maybe<Float>;
-  rate?: Maybe<Float>;
-  rate_not?: Maybe<Float>;
-  rate_in?: Maybe<Float[] | Float>;
-  rate_not_in?: Maybe<Float[] | Float>;
-  rate_lt?: Maybe<Float>;
-  rate_lte?: Maybe<Float>;
-  rate_gt?: Maybe<Float>;
-  rate_gte?: Maybe<Float>;
-  squelch?: Maybe<Float>;
-  squelch_not?: Maybe<Float>;
-  squelch_in?: Maybe<Float[] | Float>;
-  squelch_not_in?: Maybe<Float[] | Float>;
-  squelch_lt?: Maybe<Float>;
-  squelch_lte?: Maybe<Float>;
-  squelch_gt?: Maybe<Float>;
-  squelch_gte?: Maybe<Float>;
-  error?: Maybe<Float>;
-  error_not?: Maybe<Float>;
-  error_in?: Maybe<Float[] | Float>;
-  error_not_in?: Maybe<Float[] | Float>;
-  error_lt?: Maybe<Float>;
-  error_lte?: Maybe<Float>;
-  error_gt?: Maybe<Float>;
-  error_gte?: Maybe<Float>;
-  gain?: Maybe<Float>;
-  gain_not?: Maybe<Float>;
-  gain_in?: Maybe<Float[] | Float>;
-  gain_not_in?: Maybe<Float[] | Float>;
-  gain_lt?: Maybe<Float>;
-  gain_lte?: Maybe<Float>;
-  gain_gt?: Maybe<Float>;
-  gain_gte?: Maybe<Float>;
-  digitalRecorders?: Maybe<Float>;
-  digitalRecorders_not?: Maybe<Float>;
-  digitalRecorders_in?: Maybe<Float[] | Float>;
-  digitalRecorders_not_in?: Maybe<Float[] | Float>;
-  digitalRecorders_lt?: Maybe<Float>;
-  digitalRecorders_lte?: Maybe<Float>;
-  digitalRecorders_gt?: Maybe<Float>;
-  digitalRecorders_gte?: Maybe<Float>;
-  digitalLevels?: Maybe<Float>;
-  digitalLevels_not?: Maybe<Float>;
-  digitalLevels_in?: Maybe<Float[] | Float>;
-  digitalLevels_not_in?: Maybe<Float[] | Float>;
-  digitalLevels_lt?: Maybe<Float>;
-  digitalLevels_lte?: Maybe<Float>;
-  digitalLevels_gt?: Maybe<Float>;
-  digitalLevels_gte?: Maybe<Float>;
-  analogRecorders?: Maybe<Float>;
-  analogRecorders_not?: Maybe<Float>;
-  analogRecorders_in?: Maybe<Float[] | Float>;
-  analogRecorders_not_in?: Maybe<Float[] | Float>;
-  analogRecorders_lt?: Maybe<Float>;
-  analogRecorders_lte?: Maybe<Float>;
-  analogRecorders_gt?: Maybe<Float>;
-  analogRecorders_gte?: Maybe<Float>;
-  analogLevels?: Maybe<Float>;
-  analogLevels_not?: Maybe<Float>;
-  analogLevels_in?: Maybe<Float[] | Float>;
-  analogLevels_not_in?: Maybe<Float[] | Float>;
-  analogLevels_lt?: Maybe<Float>;
-  analogLevels_lte?: Maybe<Float>;
-  analogLevels_gt?: Maybe<Float>;
-  analogLevels_gte?: Maybe<Float>;
-  device?: Maybe<String>;
-  device_not?: Maybe<String>;
-  device_in?: Maybe<String[] | String>;
-  device_not_in?: Maybe<String[] | String>;
-  device_lt?: Maybe<String>;
-  device_lte?: Maybe<String>;
-  device_gt?: Maybe<String>;
-  device_gte?: Maybe<String>;
-  device_contains?: Maybe<String>;
-  device_not_contains?: Maybe<String>;
-  device_starts_with?: Maybe<String>;
-  device_not_starts_with?: Maybe<String>;
-  device_ends_with?: Maybe<String>;
-  device_not_ends_with?: Maybe<String>;
-  modulation?: Maybe<TrunkedModulation>;
-  modulation_not?: Maybe<TrunkedModulation>;
-  modulation_in?: Maybe<TrunkedModulation[] | TrunkedModulation>;
-  modulation_not_in?: Maybe<TrunkedModulation[] | TrunkedModulation>;
-  AND?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
-  OR?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
-  NOT?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
+export interface TrunkedSourceUpdateManyWithWhereNestedInput {
+  where: TrunkedSourceScalarWhereInput;
+  data: TrunkedSourceUpdateManyDataInput;
 }
 
 export interface TranscriptionUpdateInput {
@@ -2026,118 +2290,6 @@ export interface TranscriptionUpdateInput {
   words?: Maybe<TranscriptionWordUpdateManyWithoutTranscriptionInput>;
   duration?: Maybe<Float>;
   alpha?: Maybe<Float>;
-}
-
-export interface TrunkedSourceUpsertWithWhereUniqueNestedInput {
-  where: TrunkedSourceWhereUniqueInput;
-  update: TrunkedSourceUpdateDataInput;
-  create: TrunkedSourceCreateInput;
-}
-
-export interface TrunkedCallUpdateOneRequiredWithoutTranscriptionInput {
-  create?: Maybe<TrunkedCallCreateWithoutTranscriptionInput>;
-  update?: Maybe<TrunkedCallUpdateWithoutTranscriptionDataInput>;
-  upsert?: Maybe<TrunkedCallUpsertWithoutTranscriptionInput>;
-  connect?: Maybe<TrunkedCallWhereUniqueInput>;
-}
-
-export interface TrunkedSourceUpdateDataInput {
-  center?: Maybe<Float>;
-  rate?: Maybe<Float>;
-  squelch?: Maybe<Float>;
-  error?: Maybe<Float>;
-  gain?: Maybe<Float>;
-  digitalRecorders?: Maybe<Float>;
-  digitalLevels?: Maybe<Float>;
-  analogRecorders?: Maybe<Float>;
-  analogLevels?: Maybe<Float>;
-  device?: Maybe<String>;
-  modulation?: Maybe<TrunkedModulation>;
-}
-
-export interface TranscriptionWordUpdateInput {
-  text?: Maybe<String>;
-  transcription?: Maybe<TranscriptionUpdateOneRequiredWithoutWordsInput>;
-  confidence?: Maybe<Float>;
-  end?: Maybe<Int>;
-  start?: Maybe<Int>;
-}
-
-export interface TrunkedSourceUpdateManyInput {
-  create?: Maybe<TrunkedSourceCreateInput[] | TrunkedSourceCreateInput>;
-  update?: Maybe<
-    | TrunkedSourceUpdateWithWhereUniqueNestedInput[]
-    | TrunkedSourceUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | TrunkedSourceUpsertWithWhereUniqueNestedInput[]
-    | TrunkedSourceUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<
-    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
-  >;
-  connect?: Maybe<
-    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
-  >;
-  set?: Maybe<TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput>;
-  disconnect?: Maybe<
-    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | TrunkedSourceUpdateManyWithWhereNestedInput[]
-    | TrunkedSourceUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface TrunkedTalkgroupUpdateOneWithoutCallsInput {
-  create?: Maybe<TrunkedTalkgroupCreateWithoutCallsInput>;
-  update?: Maybe<TrunkedTalkgroupUpdateWithoutCallsDataInput>;
-  upsert?: Maybe<TrunkedTalkgroupUpsertWithoutCallsInput>;
-  delete?: Maybe<Boolean>;
-  disconnect?: Maybe<Boolean>;
-  connect?: Maybe<TrunkedTalkgroupWhereUniqueInput>;
-}
-
-export interface TrunkedSystemCreateInput {
-  id?: Maybe<ID_Input>;
-  controlChannels?: Maybe<TrunkedSystemCreatecontrolChannelsInput>;
-  channels?: Maybe<TrunkedSystemCreatechannelsInput>;
-  type: TrunkedSystemType;
-  alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>;
-  talkgroups?: Maybe<TrunkedTalkgroupCreateManyWithoutSystemInput>;
-  recordUnknown?: Maybe<Boolean>;
-  shortName: String;
-  name?: Maybe<String>;
-  audioArchive?: Maybe<Boolean>;
-  callLog?: Maybe<Boolean>;
-  minDuration?: Maybe<Float>;
-  bandplan?: Maybe<TrunkedSmartnetBandplan>;
-  bandplanBase?: Maybe<Float>;
-  bandplanHigh?: Maybe<Float>;
-  bandplanLow?: Maybe<Float>;
-  bandplanSpacing?: Maybe<Float>;
-  bandplanOffset?: Maybe<Float>;
-  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
-  delayCreateOutput?: Maybe<Boolean>;
-  hideEncrypted?: Maybe<Boolean>;
-  hideUnknownTalkgroups?: Maybe<Boolean>;
-  calls?: Maybe<TrunkedCallCreateManyWithoutSystemInput>;
-}
-
-export interface TrunkedTalkgroupUpdateWithoutCallsDataInput {
-  decimal?: Maybe<Int>;
-  hex?: Maybe<String>;
-  mode?: Maybe<String>;
-  alphaTag?: Maybe<String>;
-  description?: Maybe<String>;
-  tag?: Maybe<String>;
-  group?: Maybe<String>;
-  priority?: Maybe<Int>;
-  system?: Maybe<TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput>;
-  hash?: Maybe<String>;
 }
 
 export interface TrunkedConfigWhereInput {
@@ -2238,6 +2390,115 @@ export interface TrunkedConfigWhereInput {
   AND?: Maybe<TrunkedConfigWhereInput[] | TrunkedConfigWhereInput>;
   OR?: Maybe<TrunkedConfigWhereInput[] | TrunkedConfigWhereInput>;
   NOT?: Maybe<TrunkedConfigWhereInput[] | TrunkedConfigWhereInput>;
+}
+
+export interface TranscriptionUpdateOneRequiredWithoutWordsInput {
+  create?: Maybe<TranscriptionCreateWithoutWordsInput>;
+  update?: Maybe<TranscriptionUpdateWithoutWordsDataInput>;
+  upsert?: Maybe<TranscriptionUpsertWithoutWordsInput>;
+  connect?: Maybe<TranscriptionWhereUniqueInput>;
+}
+
+export interface TrunkedSourceUpdateDataInput {
+  center?: Maybe<Float>;
+  rate?: Maybe<Float>;
+  squelch?: Maybe<Float>;
+  error?: Maybe<Float>;
+  gain?: Maybe<Float>;
+  digitalRecorders?: Maybe<Float>;
+  digitalLevels?: Maybe<Float>;
+  analogRecorders?: Maybe<Float>;
+  analogLevels?: Maybe<Float>;
+  device?: Maybe<String>;
+  modulation?: Maybe<TrunkedModulation>;
+}
+
+export interface TrunkedCallUpdateWithoutTranscriptionDataInput {
+  frequency?: Maybe<Int>;
+  startTime?: Maybe<DateTimeInput>;
+  endTime?: Maybe<DateTimeInput>;
+  emergency?: Maybe<Boolean>;
+  talkgroup?: Maybe<TrunkedTalkgroupUpdateOneWithoutCallsInput>;
+  system?: Maybe<TrunkedSystemUpdateOneWithoutCallsInput>;
+  sources?: Maybe<TrunkedCallSourceUpdateManyInput>;
+  duration?: Maybe<Float>;
+  source?: Maybe<Int>;
+  audioPath?: Maybe<String>;
+  frequencyList?: Maybe<TrunkedCallFrequencyTimeUpdateManyInput>;
+  callHash?: Maybe<String>;
+  wavPath?: Maybe<String>;
+  remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
+}
+
+export interface TrunkedSourceUpdateManyInput {
+  create?: Maybe<TrunkedSourceCreateInput[] | TrunkedSourceCreateInput>;
+  update?: Maybe<
+    | TrunkedSourceUpdateWithWhereUniqueNestedInput[]
+    | TrunkedSourceUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | TrunkedSourceUpsertWithWhereUniqueNestedInput[]
+    | TrunkedSourceUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<
+    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
+  >;
+  connect?: Maybe<
+    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
+  >;
+  set?: Maybe<TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput>;
+  disconnect?: Maybe<
+    TrunkedSourceWhereUniqueInput[] | TrunkedSourceWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | TrunkedSourceUpdateManyWithWhereNestedInput[]
+    | TrunkedSourceUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface TrunkedTalkgroupUpdateOneWithoutCallsInput {
+  create?: Maybe<TrunkedTalkgroupCreateWithoutCallsInput>;
+  update?: Maybe<TrunkedTalkgroupUpdateWithoutCallsDataInput>;
+  upsert?: Maybe<TrunkedTalkgroupUpsertWithoutCallsInput>;
+  delete?: Maybe<Boolean>;
+  disconnect?: Maybe<Boolean>;
+  connect?: Maybe<TrunkedTalkgroupWhereUniqueInput>;
+}
+
+export interface TrunkedConfigUpdateInput {
+  name?: Maybe<String>;
+  sources?: Maybe<TrunkedSourceUpdateManyInput>;
+  systems?: Maybe<TrunkedSystemUpdateManyInput>;
+  defaultMode?: Maybe<TrunkedDefaultMode>;
+  captureDir?: Maybe<String>;
+  callTimeout?: Maybe<Int>;
+  logFile?: Maybe<Boolean>;
+  frequencyFormat?: Maybe<TrunkedFrequencyFormat>;
+  controlWarnRate?: Maybe<Int>;
+  statusAsString?: Maybe<Boolean>;
+}
+
+export interface TrunkedTalkgroupUpdateWithoutCallsDataInput {
+  decimal?: Maybe<Int>;
+  hex?: Maybe<String>;
+  mode?: Maybe<String>;
+  alphaTag?: Maybe<String>;
+  description?: Maybe<String>;
+  tag?: Maybe<String>;
+  group?: Maybe<String>;
+  priority?: Maybe<Int>;
+  system?: Maybe<TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput>;
+  hash?: Maybe<String>;
+}
+
+export interface TrunkedSystemCreateManyInput {
+  create?: Maybe<TrunkedSystemCreateInput[] | TrunkedSystemCreateInput>;
+  connect?: Maybe<
+    TrunkedSystemWhereUniqueInput[] | TrunkedSystemWhereUniqueInput
+  >;
 }
 
 export interface TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput {
@@ -2363,6 +2624,123 @@ export interface TrunkedCallUpdateManyWithoutSystemInput {
   >;
 }
 
+export interface UserWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  name?: Maybe<String>;
+  name_not?: Maybe<String>;
+  name_in?: Maybe<String[] | String>;
+  name_not_in?: Maybe<String[] | String>;
+  name_lt?: Maybe<String>;
+  name_lte?: Maybe<String>;
+  name_gt?: Maybe<String>;
+  name_gte?: Maybe<String>;
+  name_contains?: Maybe<String>;
+  name_not_contains?: Maybe<String>;
+  name_starts_with?: Maybe<String>;
+  name_not_starts_with?: Maybe<String>;
+  name_ends_with?: Maybe<String>;
+  name_not_ends_with?: Maybe<String>;
+  email?: Maybe<String>;
+  email_not?: Maybe<String>;
+  email_in?: Maybe<String[] | String>;
+  email_not_in?: Maybe<String[] | String>;
+  email_lt?: Maybe<String>;
+  email_lte?: Maybe<String>;
+  email_gt?: Maybe<String>;
+  email_gte?: Maybe<String>;
+  email_contains?: Maybe<String>;
+  email_not_contains?: Maybe<String>;
+  email_starts_with?: Maybe<String>;
+  email_not_starts_with?: Maybe<String>;
+  email_ends_with?: Maybe<String>;
+  email_not_ends_with?: Maybe<String>;
+  phone?: Maybe<String>;
+  phone_not?: Maybe<String>;
+  phone_in?: Maybe<String[] | String>;
+  phone_not_in?: Maybe<String[] | String>;
+  phone_lt?: Maybe<String>;
+  phone_lte?: Maybe<String>;
+  phone_gt?: Maybe<String>;
+  phone_gte?: Maybe<String>;
+  phone_contains?: Maybe<String>;
+  phone_not_contains?: Maybe<String>;
+  phone_starts_with?: Maybe<String>;
+  phone_not_starts_with?: Maybe<String>;
+  phone_ends_with?: Maybe<String>;
+  phone_not_ends_with?: Maybe<String>;
+  verified?: Maybe<Boolean>;
+  verified_not?: Maybe<Boolean>;
+  password?: Maybe<String>;
+  password_not?: Maybe<String>;
+  password_in?: Maybe<String[] | String>;
+  password_not_in?: Maybe<String[] | String>;
+  password_lt?: Maybe<String>;
+  password_lte?: Maybe<String>;
+  password_gt?: Maybe<String>;
+  password_gte?: Maybe<String>;
+  password_contains?: Maybe<String>;
+  password_not_contains?: Maybe<String>;
+  password_starts_with?: Maybe<String>;
+  password_not_starts_with?: Maybe<String>;
+  password_ends_with?: Maybe<String>;
+  password_not_ends_with?: Maybe<String>;
+  authyId?: Maybe<String>;
+  authyId_not?: Maybe<String>;
+  authyId_in?: Maybe<String[] | String>;
+  authyId_not_in?: Maybe<String[] | String>;
+  authyId_lt?: Maybe<String>;
+  authyId_lte?: Maybe<String>;
+  authyId_gt?: Maybe<String>;
+  authyId_gte?: Maybe<String>;
+  authyId_contains?: Maybe<String>;
+  authyId_not_contains?: Maybe<String>;
+  authyId_starts_with?: Maybe<String>;
+  authyId_not_starts_with?: Maybe<String>;
+  authyId_ends_with?: Maybe<String>;
+  authyId_not_ends_with?: Maybe<String>;
+  role?: Maybe<UserRole>;
+  role_not?: Maybe<UserRole>;
+  role_in?: Maybe<UserRole[] | UserRole>;
+  role_not_in?: Maybe<UserRole[] | UserRole>;
+  AND?: Maybe<UserWhereInput[] | UserWhereInput>;
+  OR?: Maybe<UserWhereInput[] | UserWhereInput>;
+  NOT?: Maybe<UserWhereInput[] | UserWhereInput>;
+}
+
+export interface TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
+  where: TrunkedCallWhereUniqueInput;
+  data: TrunkedCallUpdateWithoutSystemDataInput;
+}
+
 export interface TrunkedCallUpdateInput {
   frequency?: Maybe<Int>;
   startTime?: Maybe<DateTimeInput>;
@@ -2379,30 +2757,6 @@ export interface TrunkedCallUpdateInput {
   wavPath?: Maybe<String>;
   remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
   transcription?: Maybe<TranscriptionUpdateOneWithoutCallInput>;
-}
-
-export interface TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
-  where: TrunkedCallWhereUniqueInput;
-  data: TrunkedCallUpdateWithoutSystemDataInput;
-}
-
-export interface TrunkedCallCreateInput {
-  id?: Maybe<ID_Input>;
-  frequency: Int;
-  startTime: DateTimeInput;
-  endTime: DateTimeInput;
-  emergency?: Maybe<Boolean>;
-  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
-  system?: Maybe<TrunkedSystemCreateOneWithoutCallsInput>;
-  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
-  duration?: Maybe<Float>;
-  source?: Maybe<Int>;
-  audioPath?: Maybe<String>;
-  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
-  callHash?: Maybe<String>;
-  wavPath?: Maybe<String>;
-  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
-  transcription?: Maybe<TranscriptionCreateOneWithoutCallInput>;
 }
 
 export interface TrunkedCallUpdateWithoutSystemDataInput {
@@ -2422,14 +2776,20 @@ export interface TrunkedCallUpdateWithoutSystemDataInput {
   transcription?: Maybe<TranscriptionUpdateOneWithoutCallInput>;
 }
 
-export interface TranscriptionUpsertWithoutWordsInput {
-  update: TranscriptionUpdateWithoutWordsDataInput;
-  create: TranscriptionCreateWithoutWordsInput;
+export interface TranscriptionWordUpdateManyMutationInput {
+  text?: Maybe<String>;
+  confidence?: Maybe<Float>;
+  end?: Maybe<Int>;
+  start?: Maybe<Int>;
 }
 
-export type TranscriptionWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface TranscriptionWordUpdateInput {
+  text?: Maybe<String>;
+  transcription?: Maybe<TranscriptionUpdateOneRequiredWithoutWordsInput>;
+  confidence?: Maybe<Float>;
+  end?: Maybe<Int>;
+  start?: Maybe<Int>;
+}
 
 export interface Dump1090AircraftCreateInput {
   id?: Maybe<ID_Input>;
@@ -2451,11 +2811,13 @@ export interface TrunkedCallSourceUpdateDataInput {
   position?: Maybe<Float>;
 }
 
-export interface TranscriptionUpdateOneRequiredWithoutWordsInput {
-  create?: Maybe<TranscriptionCreateWithoutWordsInput>;
-  update?: Maybe<TranscriptionUpdateWithoutWordsDataInput>;
-  upsert?: Maybe<TranscriptionUpsertWithoutWordsInput>;
-  connect?: Maybe<TranscriptionWhereUniqueInput>;
+export interface TranscriptionUpdateWithoutWordsDataInput {
+  call?: Maybe<TrunkedCallUpdateOneRequiredWithoutTranscriptionInput>;
+  languageModel?: Maybe<String>;
+  beta?: Maybe<Float>;
+  body?: Maybe<String>;
+  duration?: Maybe<Float>;
+  alpha?: Maybe<Float>;
 }
 
 export interface TrunkedCallSourceUpsertWithWhereUniqueNestedInput {
@@ -2609,46 +2971,29 @@ export interface TrunkedCallFrequencyTimeUpdateManyInput {
   >;
 }
 
-export interface TrunkedCallCreateWithoutTranscriptionInput {
-  id?: Maybe<ID_Input>;
-  frequency: Int;
-  startTime: DateTimeInput;
-  endTime: DateTimeInput;
-  emergency?: Maybe<Boolean>;
-  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
-  system?: Maybe<TrunkedSystemCreateOneWithoutCallsInput>;
-  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
-  duration?: Maybe<Float>;
-  source?: Maybe<Int>;
-  audioPath?: Maybe<String>;
-  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
-  callHash?: Maybe<String>;
-  wavPath?: Maybe<String>;
-  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
-}
+export type TranscriptionWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface TrunkedCallFrequencyTimeUpdateWithWhereUniqueNestedInput {
   where: TrunkedCallFrequencyTimeWhereUniqueInput;
   data: TrunkedCallFrequencyTimeUpdateDataInput;
 }
 
-export interface TrunkedTalkgroupSubscriptionWhereInput {
+export interface TrunkedSourceSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
   updatedFields_contains_every?: Maybe<String[] | String>;
   updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedTalkgroupWhereInput>;
+  node?: Maybe<TrunkedSourceWhereInput>;
   AND?: Maybe<
-    | TrunkedTalkgroupSubscriptionWhereInput[]
-    | TrunkedTalkgroupSubscriptionWhereInput
+    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
   >;
   OR?: Maybe<
-    | TrunkedTalkgroupSubscriptionWhereInput[]
-    | TrunkedTalkgroupSubscriptionWhereInput
+    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
   >;
   NOT?: Maybe<
-    | TrunkedTalkgroupSubscriptionWhereInput[]
-    | TrunkedTalkgroupSubscriptionWhereInput
+    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
   >;
 }
 
@@ -2659,6 +3004,104 @@ export interface TrunkedCallFrequencyTimeUpdateDataInput {
   length?: Maybe<Int>;
   errors?: Maybe<Int>;
   spikes?: Maybe<Int>;
+}
+
+export interface TranscriptionWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  call?: Maybe<TrunkedCallWhereInput>;
+  languageModel?: Maybe<String>;
+  languageModel_not?: Maybe<String>;
+  languageModel_in?: Maybe<String[] | String>;
+  languageModel_not_in?: Maybe<String[] | String>;
+  languageModel_lt?: Maybe<String>;
+  languageModel_lte?: Maybe<String>;
+  languageModel_gt?: Maybe<String>;
+  languageModel_gte?: Maybe<String>;
+  languageModel_contains?: Maybe<String>;
+  languageModel_not_contains?: Maybe<String>;
+  languageModel_starts_with?: Maybe<String>;
+  languageModel_not_starts_with?: Maybe<String>;
+  languageModel_ends_with?: Maybe<String>;
+  languageModel_not_ends_with?: Maybe<String>;
+  beta?: Maybe<Float>;
+  beta_not?: Maybe<Float>;
+  beta_in?: Maybe<Float[] | Float>;
+  beta_not_in?: Maybe<Float[] | Float>;
+  beta_lt?: Maybe<Float>;
+  beta_lte?: Maybe<Float>;
+  beta_gt?: Maybe<Float>;
+  beta_gte?: Maybe<Float>;
+  body?: Maybe<String>;
+  body_not?: Maybe<String>;
+  body_in?: Maybe<String[] | String>;
+  body_not_in?: Maybe<String[] | String>;
+  body_lt?: Maybe<String>;
+  body_lte?: Maybe<String>;
+  body_gt?: Maybe<String>;
+  body_gte?: Maybe<String>;
+  body_contains?: Maybe<String>;
+  body_not_contains?: Maybe<String>;
+  body_starts_with?: Maybe<String>;
+  body_not_starts_with?: Maybe<String>;
+  body_ends_with?: Maybe<String>;
+  body_not_ends_with?: Maybe<String>;
+  words_every?: Maybe<TranscriptionWordWhereInput>;
+  words_some?: Maybe<TranscriptionWordWhereInput>;
+  words_none?: Maybe<TranscriptionWordWhereInput>;
+  duration?: Maybe<Float>;
+  duration_not?: Maybe<Float>;
+  duration_in?: Maybe<Float[] | Float>;
+  duration_not_in?: Maybe<Float[] | Float>;
+  duration_lt?: Maybe<Float>;
+  duration_lte?: Maybe<Float>;
+  duration_gt?: Maybe<Float>;
+  duration_gte?: Maybe<Float>;
+  alpha?: Maybe<Float>;
+  alpha_not?: Maybe<Float>;
+  alpha_in?: Maybe<Float[] | Float>;
+  alpha_not_in?: Maybe<Float[] | Float>;
+  alpha_lt?: Maybe<Float>;
+  alpha_lte?: Maybe<Float>;
+  alpha_gt?: Maybe<Float>;
+  alpha_gte?: Maybe<Float>;
+  AND?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
+  OR?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
+  NOT?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
+}
+
+export interface TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput {
+  where: TrunkedCallFrequencyTimeWhereUniqueInput;
+  update: TrunkedCallFrequencyTimeUpdateDataInput;
+  create: TrunkedCallFrequencyTimeCreateInput;
 }
 
 export interface TrunkedCallSourceSubscriptionWhereInput {
@@ -2679,157 +3122,6 @@ export interface TrunkedCallSourceSubscriptionWhereInput {
     | TrunkedCallSourceSubscriptionWhereInput[]
     | TrunkedCallSourceSubscriptionWhereInput
   >;
-}
-
-export interface TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput {
-  where: TrunkedCallFrequencyTimeWhereUniqueInput;
-  update: TrunkedCallFrequencyTimeUpdateDataInput;
-  create: TrunkedCallFrequencyTimeCreateInput;
-}
-
-export interface Dump1090MessageWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  messageType?: Maybe<Dump1090MessageType>;
-  messageType_not?: Maybe<Dump1090MessageType>;
-  messageType_in?: Maybe<Dump1090MessageType[] | Dump1090MessageType>;
-  messageType_not_in?: Maybe<Dump1090MessageType[] | Dump1090MessageType>;
-  transmissionType?: Maybe<Dump1090TransmissionType>;
-  transmissionType_not?: Maybe<Dump1090TransmissionType>;
-  transmissionType_in?: Maybe<
-    Dump1090TransmissionType[] | Dump1090TransmissionType
-  >;
-  transmissionType_not_in?: Maybe<
-    Dump1090TransmissionType[] | Dump1090TransmissionType
-  >;
-  aircraft?: Maybe<Dump1090AircraftWhereInput>;
-  generated?: Maybe<DateTimeInput>;
-  generated_not?: Maybe<DateTimeInput>;
-  generated_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  generated_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  generated_lt?: Maybe<DateTimeInput>;
-  generated_lte?: Maybe<DateTimeInput>;
-  generated_gt?: Maybe<DateTimeInput>;
-  generated_gte?: Maybe<DateTimeInput>;
-  logged?: Maybe<DateTimeInput>;
-  logged_not?: Maybe<DateTimeInput>;
-  logged_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  logged_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  logged_lt?: Maybe<DateTimeInput>;
-  logged_lte?: Maybe<DateTimeInput>;
-  logged_gt?: Maybe<DateTimeInput>;
-  logged_gte?: Maybe<DateTimeInput>;
-  flightId?: Maybe<String>;
-  flightId_not?: Maybe<String>;
-  flightId_in?: Maybe<String[] | String>;
-  flightId_not_in?: Maybe<String[] | String>;
-  flightId_lt?: Maybe<String>;
-  flightId_lte?: Maybe<String>;
-  flightId_gt?: Maybe<String>;
-  flightId_gte?: Maybe<String>;
-  flightId_contains?: Maybe<String>;
-  flightId_not_contains?: Maybe<String>;
-  flightId_starts_with?: Maybe<String>;
-  flightId_not_starts_with?: Maybe<String>;
-  flightId_ends_with?: Maybe<String>;
-  flightId_not_ends_with?: Maybe<String>;
-  squawk?: Maybe<String>;
-  squawk_not?: Maybe<String>;
-  squawk_in?: Maybe<String[] | String>;
-  squawk_not_in?: Maybe<String[] | String>;
-  squawk_lt?: Maybe<String>;
-  squawk_lte?: Maybe<String>;
-  squawk_gt?: Maybe<String>;
-  squawk_gte?: Maybe<String>;
-  squawk_contains?: Maybe<String>;
-  squawk_not_contains?: Maybe<String>;
-  squawk_starts_with?: Maybe<String>;
-  squawk_not_starts_with?: Maybe<String>;
-  squawk_ends_with?: Maybe<String>;
-  squawk_not_ends_with?: Maybe<String>;
-  alert?: Maybe<Boolean>;
-  alert_not?: Maybe<Boolean>;
-  emergency?: Maybe<Boolean>;
-  emergency_not?: Maybe<Boolean>;
-  isOnGround?: Maybe<Boolean>;
-  isOnGround_not?: Maybe<Boolean>;
-  latitude?: Maybe<Float>;
-  latitude_not?: Maybe<Float>;
-  latitude_in?: Maybe<Float[] | Float>;
-  latitude_not_in?: Maybe<Float[] | Float>;
-  latitude_lt?: Maybe<Float>;
-  latitude_lte?: Maybe<Float>;
-  latitude_gt?: Maybe<Float>;
-  latitude_gte?: Maybe<Float>;
-  longitude?: Maybe<Float>;
-  longitude_not?: Maybe<Float>;
-  longitude_in?: Maybe<Float[] | Float>;
-  longitude_not_in?: Maybe<Float[] | Float>;
-  longitude_lt?: Maybe<Float>;
-  longitude_lte?: Maybe<Float>;
-  longitude_gt?: Maybe<Float>;
-  longitude_gte?: Maybe<Float>;
-  verticalRate?: Maybe<Int>;
-  verticalRate_not?: Maybe<Int>;
-  verticalRate_in?: Maybe<Int[] | Int>;
-  verticalRate_not_in?: Maybe<Int[] | Int>;
-  verticalRate_lt?: Maybe<Int>;
-  verticalRate_lte?: Maybe<Int>;
-  verticalRate_gt?: Maybe<Int>;
-  verticalRate_gte?: Maybe<Int>;
-  track?: Maybe<Int>;
-  track_not?: Maybe<Int>;
-  track_in?: Maybe<Int[] | Int>;
-  track_not_in?: Maybe<Int[] | Int>;
-  track_lt?: Maybe<Int>;
-  track_lte?: Maybe<Int>;
-  track_gt?: Maybe<Int>;
-  track_gte?: Maybe<Int>;
-  groupSpeed?: Maybe<Int>;
-  groupSpeed_not?: Maybe<Int>;
-  groupSpeed_in?: Maybe<Int[] | Int>;
-  groupSpeed_not_in?: Maybe<Int[] | Int>;
-  groupSpeed_lt?: Maybe<Int>;
-  groupSpeed_lte?: Maybe<Int>;
-  groupSpeed_gt?: Maybe<Int>;
-  groupSpeed_gte?: Maybe<Int>;
-  callsign?: Maybe<String>;
-  callsign_not?: Maybe<String>;
-  callsign_in?: Maybe<String[] | String>;
-  callsign_not_in?: Maybe<String[] | String>;
-  callsign_lt?: Maybe<String>;
-  callsign_lte?: Maybe<String>;
-  callsign_gt?: Maybe<String>;
-  callsign_gte?: Maybe<String>;
-  callsign_contains?: Maybe<String>;
-  callsign_not_contains?: Maybe<String>;
-  callsign_starts_with?: Maybe<String>;
-  callsign_not_starts_with?: Maybe<String>;
-  callsign_ends_with?: Maybe<String>;
-  callsign_not_ends_with?: Maybe<String>;
-  altitude?: Maybe<Int>;
-  altitude_not?: Maybe<Int>;
-  altitude_in?: Maybe<Int[] | Int>;
-  altitude_not_in?: Maybe<Int[] | Int>;
-  altitude_lt?: Maybe<Int>;
-  altitude_lte?: Maybe<Int>;
-  altitude_gt?: Maybe<Int>;
-  altitude_gte?: Maybe<Int>;
-  AND?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
-  OR?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
-  NOT?: Maybe<Dump1090MessageWhereInput[] | Dump1090MessageWhereInput>;
 }
 
 export interface TrunkedCallFrequencyTimeScalarWhereInput {
@@ -2925,103 +3217,6 @@ export interface TrunkedCallFrequencyTimeScalarWhereInput {
   >;
 }
 
-export interface TranscriptionWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  call?: Maybe<TrunkedCallWhereInput>;
-  languageModel?: Maybe<String>;
-  languageModel_not?: Maybe<String>;
-  languageModel_in?: Maybe<String[] | String>;
-  languageModel_not_in?: Maybe<String[] | String>;
-  languageModel_lt?: Maybe<String>;
-  languageModel_lte?: Maybe<String>;
-  languageModel_gt?: Maybe<String>;
-  languageModel_gte?: Maybe<String>;
-  languageModel_contains?: Maybe<String>;
-  languageModel_not_contains?: Maybe<String>;
-  languageModel_starts_with?: Maybe<String>;
-  languageModel_not_starts_with?: Maybe<String>;
-  languageModel_ends_with?: Maybe<String>;
-  languageModel_not_ends_with?: Maybe<String>;
-  beta?: Maybe<Float>;
-  beta_not?: Maybe<Float>;
-  beta_in?: Maybe<Float[] | Float>;
-  beta_not_in?: Maybe<Float[] | Float>;
-  beta_lt?: Maybe<Float>;
-  beta_lte?: Maybe<Float>;
-  beta_gt?: Maybe<Float>;
-  beta_gte?: Maybe<Float>;
-  body?: Maybe<String>;
-  body_not?: Maybe<String>;
-  body_in?: Maybe<String[] | String>;
-  body_not_in?: Maybe<String[] | String>;
-  body_lt?: Maybe<String>;
-  body_lte?: Maybe<String>;
-  body_gt?: Maybe<String>;
-  body_gte?: Maybe<String>;
-  body_contains?: Maybe<String>;
-  body_not_contains?: Maybe<String>;
-  body_starts_with?: Maybe<String>;
-  body_not_starts_with?: Maybe<String>;
-  body_ends_with?: Maybe<String>;
-  body_not_ends_with?: Maybe<String>;
-  words_every?: Maybe<TranscriptionWordWhereInput>;
-  words_some?: Maybe<TranscriptionWordWhereInput>;
-  words_none?: Maybe<TranscriptionWordWhereInput>;
-  duration?: Maybe<Float>;
-  duration_not?: Maybe<Float>;
-  duration_in?: Maybe<Float[] | Float>;
-  duration_not_in?: Maybe<Float[] | Float>;
-  duration_lt?: Maybe<Float>;
-  duration_lte?: Maybe<Float>;
-  duration_gt?: Maybe<Float>;
-  duration_gte?: Maybe<Float>;
-  alpha?: Maybe<Float>;
-  alpha_not?: Maybe<Float>;
-  alpha_in?: Maybe<Float[] | Float>;
-  alpha_not_in?: Maybe<Float[] | Float>;
-  alpha_lt?: Maybe<Float>;
-  alpha_lte?: Maybe<Float>;
-  alpha_gt?: Maybe<Float>;
-  alpha_gte?: Maybe<Float>;
-  AND?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
-  OR?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
-  NOT?: Maybe<TranscriptionWhereInput[] | TranscriptionWhereInput>;
-}
-
-export interface TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput {
-  where: TrunkedCallFrequencyTimeScalarWhereInput;
-  data: TrunkedCallFrequencyTimeUpdateManyDataInput;
-}
-
 export interface TranscriptionSubscriptionWhereInput {
   mutation_in?: Maybe<MutationType[] | MutationType>;
   updatedFields_contains?: Maybe<String>;
@@ -3037,6 +3232,21 @@ export interface TranscriptionSubscriptionWhereInput {
   NOT?: Maybe<
     TranscriptionSubscriptionWhereInput[] | TranscriptionSubscriptionWhereInput
   >;
+}
+
+export interface TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput {
+  where: TrunkedCallFrequencyTimeScalarWhereInput;
+  data: TrunkedCallFrequencyTimeUpdateManyDataInput;
+}
+
+export interface UserUpdateManyMutationInput {
+  name?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  verified?: Maybe<Boolean>;
+  password?: Maybe<String>;
+  authyId?: Maybe<String>;
+  role?: Maybe<UserRole>;
 }
 
 export interface TrunkedCallFrequencyTimeUpdateManyDataInput {
@@ -3064,12 +3274,11 @@ export interface TrunkedCallUpdateremotePathsInput {
   set?: Maybe<String[] | String>;
 }
 
-export interface TrunkedSystemUpdateInput {
+export interface TrunkedSystemUpdateManyMutationInput {
   controlChannels?: Maybe<TrunkedSystemUpdatecontrolChannelsInput>;
   channels?: Maybe<TrunkedSystemUpdatechannelsInput>;
   type?: Maybe<TrunkedSystemType>;
   alphatags?: Maybe<TrunkedSystemUpdatealphatagsInput>;
-  talkgroups?: Maybe<TrunkedTalkgroupUpdateManyWithoutSystemInput>;
   recordUnknown?: Maybe<Boolean>;
   shortName?: Maybe<String>;
   name?: Maybe<String>;
@@ -3086,7 +3295,6 @@ export interface TrunkedSystemUpdateInput {
   delayCreateOutput?: Maybe<Boolean>;
   hideEncrypted?: Maybe<Boolean>;
   hideUnknownTalkgroups?: Maybe<Boolean>;
-  calls?: Maybe<TrunkedCallUpdateManyWithoutSystemInput>;
 }
 
 export interface TranscriptionUpdateOneWithoutCallInput {
@@ -3098,15 +3306,18 @@ export interface TranscriptionUpdateOneWithoutCallInput {
   connect?: Maybe<TranscriptionWhereUniqueInput>;
 }
 
-export interface TrunkedConfigUpdateManyMutationInput {
-  name?: Maybe<String>;
-  defaultMode?: Maybe<TrunkedDefaultMode>;
-  captureDir?: Maybe<String>;
-  callTimeout?: Maybe<Int>;
-  logFile?: Maybe<Boolean>;
-  frequencyFormat?: Maybe<TrunkedFrequencyFormat>;
-  controlWarnRate?: Maybe<Int>;
-  statusAsString?: Maybe<Boolean>;
+export interface TrunkedSourceUpdateInput {
+  center?: Maybe<Float>;
+  rate?: Maybe<Float>;
+  squelch?: Maybe<Float>;
+  error?: Maybe<Float>;
+  gain?: Maybe<Float>;
+  digitalRecorders?: Maybe<Float>;
+  digitalLevels?: Maybe<Float>;
+  analogRecorders?: Maybe<Float>;
+  analogLevels?: Maybe<Float>;
+  device?: Maybe<String>;
+  modulation?: Maybe<TrunkedModulation>;
 }
 
 export interface TranscriptionUpdateWithoutCallDataInput {
@@ -3118,144 +3329,9 @@ export interface TranscriptionUpdateWithoutCallDataInput {
   alpha?: Maybe<Float>;
 }
 
-export interface TrunkedSystemScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  updatedAt?: Maybe<DateTimeInput>;
-  updatedAt_not?: Maybe<DateTimeInput>;
-  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  updatedAt_lt?: Maybe<DateTimeInput>;
-  updatedAt_lte?: Maybe<DateTimeInput>;
-  updatedAt_gt?: Maybe<DateTimeInput>;
-  updatedAt_gte?: Maybe<DateTimeInput>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  type?: Maybe<TrunkedSystemType>;
-  type_not?: Maybe<TrunkedSystemType>;
-  type_in?: Maybe<TrunkedSystemType[] | TrunkedSystemType>;
-  type_not_in?: Maybe<TrunkedSystemType[] | TrunkedSystemType>;
-  recordUnknown?: Maybe<Boolean>;
-  recordUnknown_not?: Maybe<Boolean>;
-  shortName?: Maybe<String>;
-  shortName_not?: Maybe<String>;
-  shortName_in?: Maybe<String[] | String>;
-  shortName_not_in?: Maybe<String[] | String>;
-  shortName_lt?: Maybe<String>;
-  shortName_lte?: Maybe<String>;
-  shortName_gt?: Maybe<String>;
-  shortName_gte?: Maybe<String>;
-  shortName_contains?: Maybe<String>;
-  shortName_not_contains?: Maybe<String>;
-  shortName_starts_with?: Maybe<String>;
-  shortName_not_starts_with?: Maybe<String>;
-  shortName_ends_with?: Maybe<String>;
-  shortName_not_ends_with?: Maybe<String>;
-  name?: Maybe<String>;
-  name_not?: Maybe<String>;
-  name_in?: Maybe<String[] | String>;
-  name_not_in?: Maybe<String[] | String>;
-  name_lt?: Maybe<String>;
-  name_lte?: Maybe<String>;
-  name_gt?: Maybe<String>;
-  name_gte?: Maybe<String>;
-  name_contains?: Maybe<String>;
-  name_not_contains?: Maybe<String>;
-  name_starts_with?: Maybe<String>;
-  name_not_starts_with?: Maybe<String>;
-  name_ends_with?: Maybe<String>;
-  name_not_ends_with?: Maybe<String>;
-  audioArchive?: Maybe<Boolean>;
-  audioArchive_not?: Maybe<Boolean>;
-  callLog?: Maybe<Boolean>;
-  callLog_not?: Maybe<Boolean>;
-  minDuration?: Maybe<Float>;
-  minDuration_not?: Maybe<Float>;
-  minDuration_in?: Maybe<Float[] | Float>;
-  minDuration_not_in?: Maybe<Float[] | Float>;
-  minDuration_lt?: Maybe<Float>;
-  minDuration_lte?: Maybe<Float>;
-  minDuration_gt?: Maybe<Float>;
-  minDuration_gte?: Maybe<Float>;
-  bandplan?: Maybe<TrunkedSmartnetBandplan>;
-  bandplan_not?: Maybe<TrunkedSmartnetBandplan>;
-  bandplan_in?: Maybe<TrunkedSmartnetBandplan[] | TrunkedSmartnetBandplan>;
-  bandplan_not_in?: Maybe<TrunkedSmartnetBandplan[] | TrunkedSmartnetBandplan>;
-  bandplanBase?: Maybe<Float>;
-  bandplanBase_not?: Maybe<Float>;
-  bandplanBase_in?: Maybe<Float[] | Float>;
-  bandplanBase_not_in?: Maybe<Float[] | Float>;
-  bandplanBase_lt?: Maybe<Float>;
-  bandplanBase_lte?: Maybe<Float>;
-  bandplanBase_gt?: Maybe<Float>;
-  bandplanBase_gte?: Maybe<Float>;
-  bandplanHigh?: Maybe<Float>;
-  bandplanHigh_not?: Maybe<Float>;
-  bandplanHigh_in?: Maybe<Float[] | Float>;
-  bandplanHigh_not_in?: Maybe<Float[] | Float>;
-  bandplanHigh_lt?: Maybe<Float>;
-  bandplanHigh_lte?: Maybe<Float>;
-  bandplanHigh_gt?: Maybe<Float>;
-  bandplanHigh_gte?: Maybe<Float>;
-  bandplanLow?: Maybe<Float>;
-  bandplanLow_not?: Maybe<Float>;
-  bandplanLow_in?: Maybe<Float[] | Float>;
-  bandplanLow_not_in?: Maybe<Float[] | Float>;
-  bandplanLow_lt?: Maybe<Float>;
-  bandplanLow_lte?: Maybe<Float>;
-  bandplanLow_gt?: Maybe<Float>;
-  bandplanLow_gte?: Maybe<Float>;
-  bandplanSpacing?: Maybe<Float>;
-  bandplanSpacing_not?: Maybe<Float>;
-  bandplanSpacing_in?: Maybe<Float[] | Float>;
-  bandplanSpacing_not_in?: Maybe<Float[] | Float>;
-  bandplanSpacing_lt?: Maybe<Float>;
-  bandplanSpacing_lte?: Maybe<Float>;
-  bandplanSpacing_gt?: Maybe<Float>;
-  bandplanSpacing_gte?: Maybe<Float>;
-  bandplanOffset?: Maybe<Float>;
-  bandplanOffset_not?: Maybe<Float>;
-  bandplanOffset_in?: Maybe<Float[] | Float>;
-  bandplanOffset_not_in?: Maybe<Float[] | Float>;
-  bandplanOffset_lt?: Maybe<Float>;
-  bandplanOffset_lte?: Maybe<Float>;
-  bandplanOffset_gt?: Maybe<Float>;
-  bandplanOffset_gte?: Maybe<Float>;
-  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
-  talkgroupDisplayFormat_not?: Maybe<TrunkedTalkgroupDisplayFormat>;
-  talkgroupDisplayFormat_in?: Maybe<
-    TrunkedTalkgroupDisplayFormat[] | TrunkedTalkgroupDisplayFormat
-  >;
-  talkgroupDisplayFormat_not_in?: Maybe<
-    TrunkedTalkgroupDisplayFormat[] | TrunkedTalkgroupDisplayFormat
-  >;
-  delayCreateOutput?: Maybe<Boolean>;
-  delayCreateOutput_not?: Maybe<Boolean>;
-  hideEncrypted?: Maybe<Boolean>;
-  hideEncrypted_not?: Maybe<Boolean>;
-  hideUnknownTalkgroups?: Maybe<Boolean>;
-  hideUnknownTalkgroups_not?: Maybe<Boolean>;
-  AND?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
-  OR?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
-  NOT?: Maybe<TrunkedSystemScalarWhereInput[] | TrunkedSystemScalarWhereInput>;
+export interface TrunkedSystemUpdateManyWithWhereNestedInput {
+  where: TrunkedSystemScalarWhereInput;
+  data: TrunkedSystemUpdateManyDataInput;
 }
 
 export interface TranscriptionWordUpdateManyWithoutTranscriptionInput {
@@ -3290,28 +3366,6 @@ export interface TranscriptionWordUpdateManyWithoutTranscriptionInput {
     | TranscriptionWordUpdateManyWithWhereNestedInput[]
     | TranscriptionWordUpdateManyWithWhereNestedInput
   >;
-}
-
-export interface TrunkedSystemUpdateWithWhereUniqueNestedInput {
-  where: TrunkedSystemWhereUniqueInput;
-  data: TrunkedSystemUpdateDataInput;
-}
-
-export interface TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput {
-  where: TranscriptionWordWhereUniqueInput;
-  data: TranscriptionWordUpdateWithoutTranscriptionDataInput;
-}
-
-export interface TrunkedSourceUpdateManyWithWhereNestedInput {
-  where: TrunkedSourceScalarWhereInput;
-  data: TrunkedSourceUpdateManyDataInput;
-}
-
-export interface TranscriptionWordUpdateWithoutTranscriptionDataInput {
-  text?: Maybe<String>;
-  confidence?: Maybe<Float>;
-  end?: Maybe<Int>;
-  start?: Maybe<Int>;
 }
 
 export interface TrunkedSourceWhereInput {
@@ -3440,24 +3494,47 @@ export interface TrunkedSourceWhereInput {
   NOT?: Maybe<TrunkedSourceWhereInput[] | TrunkedSourceWhereInput>;
 }
 
+export interface TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput {
+  where: TranscriptionWordWhereUniqueInput;
+  data: TranscriptionWordUpdateWithoutTranscriptionDataInput;
+}
+
+export interface TrunkedSourceUpdateManyDataInput {
+  center?: Maybe<Float>;
+  rate?: Maybe<Float>;
+  squelch?: Maybe<Float>;
+  error?: Maybe<Float>;
+  gain?: Maybe<Float>;
+  digitalRecorders?: Maybe<Float>;
+  digitalLevels?: Maybe<Float>;
+  analogRecorders?: Maybe<Float>;
+  analogLevels?: Maybe<Float>;
+  device?: Maybe<String>;
+  modulation?: Maybe<TrunkedModulation>;
+}
+
+export interface TranscriptionWordUpdateWithoutTranscriptionDataInput {
+  text?: Maybe<String>;
+  confidence?: Maybe<Float>;
+  end?: Maybe<Int>;
+  start?: Maybe<Int>;
+}
+
+export interface TrunkedSourceUpsertWithWhereUniqueNestedInput {
+  where: TrunkedSourceWhereUniqueInput;
+  update: TrunkedSourceUpdateDataInput;
+  create: TrunkedSourceCreateInput;
+}
+
 export interface TranscriptionWordUpsertWithWhereUniqueWithoutTranscriptionInput {
   where: TranscriptionWordWhereUniqueInput;
   update: TranscriptionWordUpdateWithoutTranscriptionDataInput;
   create: TranscriptionWordCreateWithoutTranscriptionInput;
 }
 
-export interface TrunkedConfigUpdateInput {
-  name?: Maybe<String>;
-  sources?: Maybe<TrunkedSourceUpdateManyInput>;
-  systems?: Maybe<TrunkedSystemUpdateManyInput>;
-  defaultMode?: Maybe<TrunkedDefaultMode>;
-  captureDir?: Maybe<String>;
-  callTimeout?: Maybe<Int>;
-  logFile?: Maybe<Boolean>;
-  frequencyFormat?: Maybe<TrunkedFrequencyFormat>;
-  controlWarnRate?: Maybe<Int>;
-  statusAsString?: Maybe<Boolean>;
-}
+export type TrunkedSourceWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface TranscriptionWordScalarWhereInput {
   id?: Maybe<ID_Input>;
@@ -3539,20 +3616,19 @@ export interface TranscriptionWordScalarWhereInput {
   >;
 }
 
-export interface TrunkedSystemCreateManyInput {
-  create?: Maybe<TrunkedSystemCreateInput[] | TrunkedSystemCreateInput>;
-  connect?: Maybe<
-    TrunkedSystemWhereUniqueInput[] | TrunkedSystemWhereUniqueInput
-  >;
-}
+export type TrunkedSystemWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  shortName?: Maybe<String>;
+}>;
 
 export interface TranscriptionWordUpdateManyWithWhereNestedInput {
   where: TranscriptionWordScalarWhereInput;
   data: TranscriptionWordUpdateManyDataInput;
 }
 
-export type TrunkedSourceWhereUniqueInput = AtLeastOne<{
+export type TrunkedTalkgroupWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  hash?: Maybe<String>;
 }>;
 
 export interface TranscriptionWordUpdateManyDataInput {
@@ -3562,9 +3638,11 @@ export interface TranscriptionWordUpdateManyDataInput {
   start?: Maybe<Int>;
 }
 
-export type TrunkedSystemWhereUniqueInput = AtLeastOne<{
+export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  shortName?: Maybe<String>;
+  email?: Maybe<String>;
+  phone?: Maybe<String>;
+  authyId?: Maybe<String>;
 }>;
 
 export interface TranscriptionUpsertWithoutCallInput {
@@ -3572,10 +3650,18 @@ export interface TranscriptionUpsertWithoutCallInput {
   create: TranscriptionCreateWithoutCallInput;
 }
 
-export type TrunkedTalkgroupWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  hash?: Maybe<String>;
-}>;
+export interface TrunkedCallUpdateManyMutationInput {
+  frequency?: Maybe<Int>;
+  startTime?: Maybe<DateTimeInput>;
+  endTime?: Maybe<DateTimeInput>;
+  emergency?: Maybe<Boolean>;
+  duration?: Maybe<Float>;
+  source?: Maybe<Int>;
+  audioPath?: Maybe<String>;
+  callHash?: Maybe<String>;
+  wavPath?: Maybe<String>;
+  remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
+}
 
 export interface TrunkedCallUpsertWithWhereUniqueWithoutSystemInput {
   where: TrunkedCallWhereUniqueInput;
@@ -3583,13 +3669,9 @@ export interface TrunkedCallUpsertWithWhereUniqueWithoutSystemInput {
   create: TrunkedCallCreateWithoutSystemInput;
 }
 
-export interface TranscriptionUpdateWithoutWordsDataInput {
-  call?: Maybe<TrunkedCallUpdateOneRequiredWithoutTranscriptionInput>;
-  languageModel?: Maybe<String>;
-  beta?: Maybe<Float>;
-  body?: Maybe<String>;
-  duration?: Maybe<Float>;
-  alpha?: Maybe<Float>;
+export interface TranscriptionUpsertWithoutWordsInput {
+  update: TranscriptionUpdateWithoutWordsDataInput;
+  create: TranscriptionCreateWithoutWordsInput;
 }
 
 export interface TrunkedCallScalarWhereInput {
@@ -3769,16 +3851,6 @@ export interface TrunkedCallUpdateManyDataInput {
   remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
 }
 
-export interface TrunkedTalkgroupCreateOneWithoutCallsInput {
-  create?: Maybe<TrunkedTalkgroupCreateWithoutCallsInput>;
-  connect?: Maybe<TrunkedTalkgroupWhereUniqueInput>;
-}
-
-export interface TrunkedSystemUpsertWithoutTalkgroupsInput {
-  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput;
-  create: TrunkedSystemCreateWithoutTalkgroupsInput;
-}
-
 export interface TrunkedSystemWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
@@ -3925,27 +3997,36 @@ export interface TrunkedSystemWhereInput {
   NOT?: Maybe<TrunkedSystemWhereInput[] | TrunkedSystemWhereInput>;
 }
 
+export interface TrunkedSystemUpsertWithoutTalkgroupsInput {
+  update: TrunkedSystemUpdateWithoutTalkgroupsDataInput;
+  create: TrunkedSystemCreateWithoutTalkgroupsInput;
+}
+
+export interface TrunkedConfigSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TrunkedConfigWhereInput>;
+  AND?: Maybe<
+    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TrunkedConfigSubscriptionWhereInput[] | TrunkedConfigSubscriptionWhereInput
+  >;
+}
+
 export interface TrunkedTalkgroupUpsertWithoutCallsInput {
   update: TrunkedTalkgroupUpdateWithoutCallsDataInput;
   create: TrunkedTalkgroupCreateWithoutCallsInput;
 }
 
-export interface TrunkedCallSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedCallWhereInput>;
-  AND?: Maybe<
-    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
-  >;
-}
+export type Dump1090MessageWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+}>;
 
 export interface TrunkedSystemUpdateOneWithoutCallsInput {
   create?: Maybe<TrunkedSystemCreateWithoutCallsInput>;
@@ -3956,20 +4037,10 @@ export interface TrunkedSystemUpdateOneWithoutCallsInput {
   connect?: Maybe<TrunkedSystemWhereUniqueInput>;
 }
 
-export interface TrunkedTalkgroupCreateInput {
-  id?: Maybe<ID_Input>;
-  decimal: Int;
-  hex: String;
-  mode: String;
-  alphaTag: String;
-  description: String;
-  tag: String;
-  group: String;
-  priority?: Maybe<Int>;
-  system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
-  calls?: Maybe<TrunkedCallCreateManyWithoutTalkgroupInput>;
-  hash: String;
-}
+export type TrunkedCallWhereUniqueInput = AtLeastOne<{
+  id: Maybe<ID_Input>;
+  callHash?: Maybe<String>;
+}>;
 
 export interface TrunkedSystemUpdateWithoutCallsDataInput {
   controlChannels?: Maybe<TrunkedSystemUpdatecontrolChannelsInput>;
@@ -3995,9 +4066,8 @@ export interface TrunkedSystemUpdateWithoutCallsDataInput {
   hideUnknownTalkgroups?: Maybe<Boolean>;
 }
 
-export type TrunkedCallWhereUniqueInput = AtLeastOne<{
+export type TrunkedCallSourceWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
-  callHash?: Maybe<String>;
 }>;
 
 export interface TrunkedTalkgroupUpdateManyWithoutSystemInput {
@@ -4034,9 +4104,10 @@ export interface TrunkedTalkgroupUpdateManyWithoutSystemInput {
   >;
 }
 
-export type TrunkedCallSourceWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-}>;
+export interface TrunkedSystemUpdateWithWhereUniqueNestedInput {
+  where: TrunkedSystemWhereUniqueInput;
+  data: TrunkedSystemUpdateDataInput;
+}
 
 export interface TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput {
   where: TrunkedTalkgroupWhereUniqueInput;
@@ -4096,17 +4167,38 @@ export interface TrunkedCallUpdateManyWithoutTalkgroupInput {
   >;
 }
 
-export interface TrunkedCallUpdateManyMutationInput {
-  frequency?: Maybe<Int>;
-  startTime?: Maybe<DateTimeInput>;
-  endTime?: Maybe<DateTimeInput>;
-  emergency?: Maybe<Boolean>;
-  duration?: Maybe<Float>;
-  source?: Maybe<Int>;
-  audioPath?: Maybe<String>;
-  callHash?: Maybe<String>;
-  wavPath?: Maybe<String>;
-  remotePaths?: Maybe<TrunkedCallUpdateremotePathsInput>;
+export interface Dump1090AircraftWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  IcaoID?: Maybe<String>;
+  IcaoID_not?: Maybe<String>;
+  IcaoID_in?: Maybe<String[] | String>;
+  IcaoID_not_in?: Maybe<String[] | String>;
+  IcaoID_lt?: Maybe<String>;
+  IcaoID_lte?: Maybe<String>;
+  IcaoID_gt?: Maybe<String>;
+  IcaoID_gte?: Maybe<String>;
+  IcaoID_contains?: Maybe<String>;
+  IcaoID_not_contains?: Maybe<String>;
+  IcaoID_starts_with?: Maybe<String>;
+  IcaoID_not_starts_with?: Maybe<String>;
+  IcaoID_ends_with?: Maybe<String>;
+  IcaoID_not_ends_with?: Maybe<String>;
+  AND?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
+  OR?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
+  NOT?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
 }
 
 export interface TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput {
@@ -4145,21 +4237,64 @@ export interface TrunkedCallUpsertWithWhereUniqueWithoutTalkgroupInput {
   create: TrunkedCallCreateWithoutTalkgroupInput;
 }
 
-export interface TrunkedSourceSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<TrunkedSourceWhereInput>;
-  AND?: Maybe<
-    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
-  >;
-  OR?: Maybe<
-    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
-  >;
-  NOT?: Maybe<
-    TrunkedSourceSubscriptionWhereInput[] | TrunkedSourceSubscriptionWhereInput
-  >;
+export interface TrunkedCallSourceWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  updatedAt?: Maybe<DateTimeInput>;
+  updatedAt_not?: Maybe<DateTimeInput>;
+  updatedAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  updatedAt_lt?: Maybe<DateTimeInput>;
+  updatedAt_lte?: Maybe<DateTimeInput>;
+  updatedAt_gt?: Maybe<DateTimeInput>;
+  updatedAt_gte?: Maybe<DateTimeInput>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  sourceId?: Maybe<Int>;
+  sourceId_not?: Maybe<Int>;
+  sourceId_in?: Maybe<Int[] | Int>;
+  sourceId_not_in?: Maybe<Int[] | Int>;
+  sourceId_lt?: Maybe<Int>;
+  sourceId_lte?: Maybe<Int>;
+  sourceId_gt?: Maybe<Int>;
+  sourceId_gte?: Maybe<Int>;
+  time?: Maybe<DateTimeInput>;
+  time_not?: Maybe<DateTimeInput>;
+  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  time_lt?: Maybe<DateTimeInput>;
+  time_lte?: Maybe<DateTimeInput>;
+  time_gt?: Maybe<DateTimeInput>;
+  time_gte?: Maybe<DateTimeInput>;
+  position?: Maybe<Float>;
+  position_not?: Maybe<Float>;
+  position_in?: Maybe<Float[] | Float>;
+  position_not_in?: Maybe<Float[] | Float>;
+  position_lt?: Maybe<Float>;
+  position_lte?: Maybe<Float>;
+  position_gt?: Maybe<Float>;
+  position_gte?: Maybe<Float>;
+  AND?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
+  OR?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
+  NOT?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
 }
 
 export interface TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput {
@@ -4168,7 +4303,7 @@ export interface TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput {
   create: TrunkedTalkgroupCreateWithoutSystemInput;
 }
 
-export type Dump1090MessageWhereUniqueInput = AtLeastOne<{
+export type TranscriptionWordWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -4328,8 +4463,9 @@ export interface TrunkedTalkgroupScalarWhereInput {
   >;
 }
 
-export type TrunkedCallFrequencyTimeWhereUniqueInput = AtLeastOne<{
+export type TrunkedConfigWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
+  name?: Maybe<String>;
 }>;
 
 export interface TrunkedTalkgroupUpdateManyWithWhereNestedInput {
@@ -4337,38 +4473,30 @@ export interface TrunkedTalkgroupUpdateManyWithWhereNestedInput {
   data: TrunkedTalkgroupUpdateManyDataInput;
 }
 
-export interface Dump1090AircraftWhereInput {
+export interface TrunkedSystemCreateInput {
   id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  IcaoID?: Maybe<String>;
-  IcaoID_not?: Maybe<String>;
-  IcaoID_in?: Maybe<String[] | String>;
-  IcaoID_not_in?: Maybe<String[] | String>;
-  IcaoID_lt?: Maybe<String>;
-  IcaoID_lte?: Maybe<String>;
-  IcaoID_gt?: Maybe<String>;
-  IcaoID_gte?: Maybe<String>;
-  IcaoID_contains?: Maybe<String>;
-  IcaoID_not_contains?: Maybe<String>;
-  IcaoID_starts_with?: Maybe<String>;
-  IcaoID_not_starts_with?: Maybe<String>;
-  IcaoID_ends_with?: Maybe<String>;
-  IcaoID_not_ends_with?: Maybe<String>;
-  AND?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
-  OR?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
-  NOT?: Maybe<Dump1090AircraftWhereInput[] | Dump1090AircraftWhereInput>;
+  controlChannels?: Maybe<TrunkedSystemCreatecontrolChannelsInput>;
+  channels?: Maybe<TrunkedSystemCreatechannelsInput>;
+  type: TrunkedSystemType;
+  alphatags?: Maybe<TrunkedSystemCreatealphatagsInput>;
+  talkgroups?: Maybe<TrunkedTalkgroupCreateManyWithoutSystemInput>;
+  recordUnknown?: Maybe<Boolean>;
+  shortName: String;
+  name?: Maybe<String>;
+  audioArchive?: Maybe<Boolean>;
+  callLog?: Maybe<Boolean>;
+  minDuration?: Maybe<Float>;
+  bandplan?: Maybe<TrunkedSmartnetBandplan>;
+  bandplanBase?: Maybe<Float>;
+  bandplanHigh?: Maybe<Float>;
+  bandplanLow?: Maybe<Float>;
+  bandplanSpacing?: Maybe<Float>;
+  bandplanOffset?: Maybe<Float>;
+  talkgroupDisplayFormat?: Maybe<TrunkedTalkgroupDisplayFormat>;
+  delayCreateOutput?: Maybe<Boolean>;
+  hideEncrypted?: Maybe<Boolean>;
+  hideUnknownTalkgroups?: Maybe<Boolean>;
+  calls?: Maybe<TrunkedCallCreateManyWithoutSystemInput>;
 }
 
 export interface TrunkedTalkgroupUpdateManyDataInput {
@@ -4383,11 +4511,23 @@ export interface TrunkedTalkgroupUpdateManyDataInput {
   hash?: Maybe<String>;
 }
 
-export interface TranscriptionWordUpdateManyMutationInput {
-  text?: Maybe<String>;
-  confidence?: Maybe<Float>;
-  end?: Maybe<Int>;
-  start?: Maybe<Int>;
+export interface TrunkedCallCreateInput {
+  id?: Maybe<ID_Input>;
+  frequency: Int;
+  startTime: DateTimeInput;
+  endTime: DateTimeInput;
+  emergency?: Maybe<Boolean>;
+  talkgroup?: Maybe<TrunkedTalkgroupCreateOneWithoutCallsInput>;
+  system?: Maybe<TrunkedSystemCreateOneWithoutCallsInput>;
+  sources?: Maybe<TrunkedCallSourceCreateManyInput>;
+  duration?: Maybe<Float>;
+  source?: Maybe<Int>;
+  audioPath?: Maybe<String>;
+  frequencyList?: Maybe<TrunkedCallFrequencyTimeCreateManyInput>;
+  callHash?: Maybe<String>;
+  wavPath?: Maybe<String>;
+  remotePaths?: Maybe<TrunkedCallCreateremotePathsInput>;
+  transcription?: Maybe<TranscriptionCreateOneWithoutCallInput>;
 }
 
 export interface TrunkedSystemUpsertWithoutCallsInput {
@@ -4395,9 +4535,15 @@ export interface TrunkedSystemUpsertWithoutCallsInput {
   create: TrunkedSystemCreateWithoutCallsInput;
 }
 
-export interface TrunkedCallCreateOneWithoutTranscriptionInput {
-  create?: Maybe<TrunkedCallCreateWithoutTranscriptionInput>;
-  connect?: Maybe<TrunkedCallWhereUniqueInput>;
+export interface UserSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<UserWhereInput>;
+  AND?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  OR?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
+  NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
 export interface TranscriptionCreateOneWithoutWordsInput {
@@ -4427,7 +4573,51 @@ export interface TrunkedCallUpsertWithoutTranscriptionInput {
   create: TrunkedCallCreateWithoutTranscriptionInput;
 }
 
-export interface TrunkedCallSourceWhereInput {
+export interface TrunkedCallSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<TrunkedCallWhereInput>;
+  AND?: Maybe<
+    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
+  >;
+  OR?: Maybe<
+    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
+  >;
+  NOT?: Maybe<
+    TrunkedCallSubscriptionWhereInput[] | TrunkedCallSubscriptionWhereInput
+  >;
+}
+
+export interface Dump1090MessageCreateInput {
+  id?: Maybe<ID_Input>;
+  messageType: Dump1090MessageType;
+  transmissionType: Dump1090TransmissionType;
+  aircraft?: Maybe<Dump1090AircraftCreateOneInput>;
+  generated: DateTimeInput;
+  logged: DateTimeInput;
+  flightId?: Maybe<String>;
+  squawk?: Maybe<String>;
+  alert?: Maybe<Boolean>;
+  emergency?: Maybe<Boolean>;
+  isOnGround?: Maybe<Boolean>;
+  latitude?: Maybe<Float>;
+  longitude?: Maybe<Float>;
+  verticalRate?: Maybe<Int>;
+  track?: Maybe<Int>;
+  groupSpeed?: Maybe<Int>;
+  callsign?: Maybe<String>;
+  altitude?: Maybe<Int>;
+}
+
+export interface TrunkedCallSourceUpdateInput {
+  sourceId?: Maybe<Int>;
+  time?: Maybe<DateTimeInput>;
+  position?: Maybe<Float>;
+}
+
+export interface TrunkedSourceScalarWhereInput {
   id?: Maybe<ID_Input>;
   id_not?: Maybe<ID_Input>;
   id_in?: Maybe<ID_Input[] | ID_Input>;
@@ -4458,68 +4648,102 @@ export interface TrunkedCallSourceWhereInput {
   createdAt_lte?: Maybe<DateTimeInput>;
   createdAt_gt?: Maybe<DateTimeInput>;
   createdAt_gte?: Maybe<DateTimeInput>;
-  sourceId?: Maybe<Int>;
-  sourceId_not?: Maybe<Int>;
-  sourceId_in?: Maybe<Int[] | Int>;
-  sourceId_not_in?: Maybe<Int[] | Int>;
-  sourceId_lt?: Maybe<Int>;
-  sourceId_lte?: Maybe<Int>;
-  sourceId_gt?: Maybe<Int>;
-  sourceId_gte?: Maybe<Int>;
-  time?: Maybe<DateTimeInput>;
-  time_not?: Maybe<DateTimeInput>;
-  time_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  time_lt?: Maybe<DateTimeInput>;
-  time_lte?: Maybe<DateTimeInput>;
-  time_gt?: Maybe<DateTimeInput>;
-  time_gte?: Maybe<DateTimeInput>;
-  position?: Maybe<Float>;
-  position_not?: Maybe<Float>;
-  position_in?: Maybe<Float[] | Float>;
-  position_not_in?: Maybe<Float[] | Float>;
-  position_lt?: Maybe<Float>;
-  position_lte?: Maybe<Float>;
-  position_gt?: Maybe<Float>;
-  position_gte?: Maybe<Float>;
-  AND?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
-  OR?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
-  NOT?: Maybe<TrunkedCallSourceWhereInput[] | TrunkedCallSourceWhereInput>;
+  center?: Maybe<Float>;
+  center_not?: Maybe<Float>;
+  center_in?: Maybe<Float[] | Float>;
+  center_not_in?: Maybe<Float[] | Float>;
+  center_lt?: Maybe<Float>;
+  center_lte?: Maybe<Float>;
+  center_gt?: Maybe<Float>;
+  center_gte?: Maybe<Float>;
+  rate?: Maybe<Float>;
+  rate_not?: Maybe<Float>;
+  rate_in?: Maybe<Float[] | Float>;
+  rate_not_in?: Maybe<Float[] | Float>;
+  rate_lt?: Maybe<Float>;
+  rate_lte?: Maybe<Float>;
+  rate_gt?: Maybe<Float>;
+  rate_gte?: Maybe<Float>;
+  squelch?: Maybe<Float>;
+  squelch_not?: Maybe<Float>;
+  squelch_in?: Maybe<Float[] | Float>;
+  squelch_not_in?: Maybe<Float[] | Float>;
+  squelch_lt?: Maybe<Float>;
+  squelch_lte?: Maybe<Float>;
+  squelch_gt?: Maybe<Float>;
+  squelch_gte?: Maybe<Float>;
+  error?: Maybe<Float>;
+  error_not?: Maybe<Float>;
+  error_in?: Maybe<Float[] | Float>;
+  error_not_in?: Maybe<Float[] | Float>;
+  error_lt?: Maybe<Float>;
+  error_lte?: Maybe<Float>;
+  error_gt?: Maybe<Float>;
+  error_gte?: Maybe<Float>;
+  gain?: Maybe<Float>;
+  gain_not?: Maybe<Float>;
+  gain_in?: Maybe<Float[] | Float>;
+  gain_not_in?: Maybe<Float[] | Float>;
+  gain_lt?: Maybe<Float>;
+  gain_lte?: Maybe<Float>;
+  gain_gt?: Maybe<Float>;
+  gain_gte?: Maybe<Float>;
+  digitalRecorders?: Maybe<Float>;
+  digitalRecorders_not?: Maybe<Float>;
+  digitalRecorders_in?: Maybe<Float[] | Float>;
+  digitalRecorders_not_in?: Maybe<Float[] | Float>;
+  digitalRecorders_lt?: Maybe<Float>;
+  digitalRecorders_lte?: Maybe<Float>;
+  digitalRecorders_gt?: Maybe<Float>;
+  digitalRecorders_gte?: Maybe<Float>;
+  digitalLevels?: Maybe<Float>;
+  digitalLevels_not?: Maybe<Float>;
+  digitalLevels_in?: Maybe<Float[] | Float>;
+  digitalLevels_not_in?: Maybe<Float[] | Float>;
+  digitalLevels_lt?: Maybe<Float>;
+  digitalLevels_lte?: Maybe<Float>;
+  digitalLevels_gt?: Maybe<Float>;
+  digitalLevels_gte?: Maybe<Float>;
+  analogRecorders?: Maybe<Float>;
+  analogRecorders_not?: Maybe<Float>;
+  analogRecorders_in?: Maybe<Float[] | Float>;
+  analogRecorders_not_in?: Maybe<Float[] | Float>;
+  analogRecorders_lt?: Maybe<Float>;
+  analogRecorders_lte?: Maybe<Float>;
+  analogRecorders_gt?: Maybe<Float>;
+  analogRecorders_gte?: Maybe<Float>;
+  analogLevels?: Maybe<Float>;
+  analogLevels_not?: Maybe<Float>;
+  analogLevels_in?: Maybe<Float[] | Float>;
+  analogLevels_not_in?: Maybe<Float[] | Float>;
+  analogLevels_lt?: Maybe<Float>;
+  analogLevels_lte?: Maybe<Float>;
+  analogLevels_gt?: Maybe<Float>;
+  analogLevels_gte?: Maybe<Float>;
+  device?: Maybe<String>;
+  device_not?: Maybe<String>;
+  device_in?: Maybe<String[] | String>;
+  device_not_in?: Maybe<String[] | String>;
+  device_lt?: Maybe<String>;
+  device_lte?: Maybe<String>;
+  device_gt?: Maybe<String>;
+  device_gte?: Maybe<String>;
+  device_contains?: Maybe<String>;
+  device_not_contains?: Maybe<String>;
+  device_starts_with?: Maybe<String>;
+  device_not_starts_with?: Maybe<String>;
+  device_ends_with?: Maybe<String>;
+  device_not_ends_with?: Maybe<String>;
+  modulation?: Maybe<TrunkedModulation>;
+  modulation_not?: Maybe<TrunkedModulation>;
+  modulation_in?: Maybe<TrunkedModulation[] | TrunkedModulation>;
+  modulation_not_in?: Maybe<TrunkedModulation[] | TrunkedModulation>;
+  AND?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
+  OR?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
+  NOT?: Maybe<TrunkedSourceScalarWhereInput[] | TrunkedSourceScalarWhereInput>;
 }
 
-export interface Dump1090MessageCreateInput {
-  id?: Maybe<ID_Input>;
-  messageType: Dump1090MessageType;
-  transmissionType: Dump1090TransmissionType;
-  aircraft?: Maybe<Dump1090AircraftCreateOneInput>;
-  generated: DateTimeInput;
-  logged: DateTimeInput;
-  flightId?: Maybe<String>;
-  squawk?: Maybe<String>;
-  alert?: Maybe<Boolean>;
-  emergency?: Maybe<Boolean>;
-  isOnGround?: Maybe<Boolean>;
-  latitude?: Maybe<Float>;
-  longitude?: Maybe<Float>;
-  verticalRate?: Maybe<Int>;
-  track?: Maybe<Int>;
-  groupSpeed?: Maybe<Int>;
-  callsign?: Maybe<String>;
-  altitude?: Maybe<Int>;
-}
-
-export interface TrunkedCallSourceUpdateInput {
-  sourceId?: Maybe<Int>;
-  time?: Maybe<DateTimeInput>;
-  position?: Maybe<Float>;
-}
-
-export type TrunkedConfigWhereUniqueInput = AtLeastOne<{
-  id: Maybe<ID_Input>;
-  name?: Maybe<String>;
-}>;
-
-export type TranscriptionWordWhereUniqueInput = AtLeastOne<{
+export type TrunkedCallFrequencyTimeWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
@@ -4527,1101 +4751,47 @@ export interface NodeNode {
   id: ID_Output;
 }
 
-export interface TrunkedTalkgroupPreviousValues {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  decimal: Int;
-  hex: String;
-  mode: String;
-  alphaTag: String;
-  description: String;
-  tag: String;
-  group: String;
-  priority: Int;
-  hash: String;
-}
-
-export interface TrunkedTalkgroupPreviousValuesPromise
-  extends Promise<TrunkedTalkgroupPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  decimal: () => Promise<Int>;
-  hex: () => Promise<String>;
-  mode: () => Promise<String>;
-  alphaTag: () => Promise<String>;
-  description: () => Promise<String>;
-  tag: () => Promise<String>;
-  group: () => Promise<String>;
-  priority: () => Promise<Int>;
-  hash: () => Promise<String>;
-}
-
-export interface TrunkedTalkgroupPreviousValuesSubscription
-  extends Promise<AsyncIterator<TrunkedTalkgroupPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  decimal: () => Promise<AsyncIterator<Int>>;
-  hex: () => Promise<AsyncIterator<String>>;
-  mode: () => Promise<AsyncIterator<String>>;
-  alphaTag: () => Promise<AsyncIterator<String>>;
-  description: () => Promise<AsyncIterator<String>>;
-  tag: () => Promise<AsyncIterator<String>>;
-  group: () => Promise<AsyncIterator<String>>;
-  priority: () => Promise<AsyncIterator<Int>>;
-  hash: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090AircraftEdge {
-  node: Dump1090Aircraft;
-  cursor: String;
-}
-
-export interface Dump1090AircraftEdgePromise
-  extends Promise<Dump1090AircraftEdge>,
-    Fragmentable {
-  node: <T = Dump1090AircraftPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface Dump1090AircraftEdgeSubscription
-  extends Promise<AsyncIterator<Dump1090AircraftEdge>>,
-    Fragmentable {
-  node: <T = Dump1090AircraftSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateDump1090Message {
-  count: Int;
-}
-
-export interface AggregateDump1090MessagePromise
-  extends Promise<AggregateDump1090Message>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateDump1090MessageSubscription
-  extends Promise<AsyncIterator<AggregateDump1090Message>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TranscriptionWord {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  text: String;
-  confidence: Float;
-  end: Int;
-  start: Int;
-}
-
-export interface TranscriptionWordPromise
-  extends Promise<TranscriptionWord>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  transcription: <T = TranscriptionPromise>() => T;
-  confidence: () => Promise<Float>;
-  end: () => Promise<Int>;
-  start: () => Promise<Int>;
-}
-
-export interface TranscriptionWordSubscription
-  extends Promise<AsyncIterator<TranscriptionWord>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  text: () => Promise<AsyncIterator<String>>;
-  transcription: <T = TranscriptionSubscription>() => T;
-  confidence: () => Promise<AsyncIterator<Float>>;
-  end: () => Promise<AsyncIterator<Int>>;
-  start: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TranscriptionWordNullablePromise
-  extends Promise<TranscriptionWord | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  transcription: <T = TranscriptionPromise>() => T;
-  confidence: () => Promise<Float>;
-  end: () => Promise<Int>;
-  start: () => Promise<Int>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface AggregateDump1090Aircraft {
-  count: Int;
-}
-
-export interface AggregateDump1090AircraftPromise
-  extends Promise<AggregateDump1090Aircraft>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateDump1090AircraftSubscription
-  extends Promise<AsyncIterator<AggregateDump1090Aircraft>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedTalkgroupEdge {
-  node: TrunkedTalkgroup;
-  cursor: String;
-}
-
-export interface TrunkedTalkgroupEdgePromise
-  extends Promise<TrunkedTalkgroupEdge>,
-    Fragmentable {
-  node: <T = TrunkedTalkgroupPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedTalkgroupEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedTalkgroupEdge>>,
-    Fragmentable {
-  node: <T = TrunkedTalkgroupSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TrunkedCallFrequencyTime {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  frequency: Int;
-  time: Int;
-  position: Float;
-  length: Int;
-  errors: Int;
-  spikes: Int;
-}
-
-export interface TrunkedCallFrequencyTimePromise
-  extends Promise<TrunkedCallFrequencyTime>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  frequency: () => Promise<Int>;
-  time: () => Promise<Int>;
-  position: () => Promise<Float>;
-  length: () => Promise<Int>;
-  errors: () => Promise<Int>;
-  spikes: () => Promise<Int>;
-}
-
-export interface TrunkedCallFrequencyTimeSubscription
-  extends Promise<AsyncIterator<TrunkedCallFrequencyTime>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  frequency: () => Promise<AsyncIterator<Int>>;
-  time: () => Promise<AsyncIterator<Int>>;
-  position: () => Promise<AsyncIterator<Float>>;
-  length: () => Promise<AsyncIterator<Int>>;
-  errors: () => Promise<AsyncIterator<Int>>;
-  spikes: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedCallFrequencyTimeNullablePromise
-  extends Promise<TrunkedCallFrequencyTime | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  frequency: () => Promise<Int>;
-  time: () => Promise<Int>;
-  position: () => Promise<Float>;
-  length: () => Promise<Int>;
-  errors: () => Promise<Int>;
-  spikes: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedSystem {
-  count: Int;
-}
-
-export interface AggregateTrunkedSystemPromise
-  extends Promise<AggregateTrunkedSystem>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedSystemSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedSystem>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface AggregateTrunkedTalkgroup {
-  count: Int;
-}
-
-export interface AggregateTrunkedTalkgroupPromise
-  extends Promise<AggregateTrunkedTalkgroup>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedTalkgroupSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedTalkgroup>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedSourcePreviousValues {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  center: Float;
-  rate: Float;
-  squelch: Float;
-  error: Float;
-  gain: Float;
-  digitalRecorders: Float;
-  digitalLevels: Float;
-  analogRecorders: Float;
-  analogLevels: Float;
-  device?: String;
-  modulation: TrunkedModulation;
-}
-
-export interface TrunkedSourcePreviousValuesPromise
-  extends Promise<TrunkedSourcePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  center: () => Promise<Float>;
-  rate: () => Promise<Float>;
-  squelch: () => Promise<Float>;
-  error: () => Promise<Float>;
-  gain: () => Promise<Float>;
-  digitalRecorders: () => Promise<Float>;
-  digitalLevels: () => Promise<Float>;
-  analogRecorders: () => Promise<Float>;
-  analogLevels: () => Promise<Float>;
-  device: () => Promise<String>;
-  modulation: () => Promise<TrunkedModulation>;
-}
-
-export interface TrunkedSourcePreviousValuesSubscription
-  extends Promise<AsyncIterator<TrunkedSourcePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  center: () => Promise<AsyncIterator<Float>>;
-  rate: () => Promise<AsyncIterator<Float>>;
-  squelch: () => Promise<AsyncIterator<Float>>;
-  error: () => Promise<AsyncIterator<Float>>;
-  gain: () => Promise<AsyncIterator<Float>>;
-  digitalRecorders: () => Promise<AsyncIterator<Float>>;
-  digitalLevels: () => Promise<AsyncIterator<Float>>;
-  analogRecorders: () => Promise<AsyncIterator<Float>>;
-  analogLevels: () => Promise<AsyncIterator<Float>>;
-  device: () => Promise<AsyncIterator<String>>;
-  modulation: () => Promise<AsyncIterator<TrunkedModulation>>;
-}
-
-export interface TrunkedTalkgroupConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedTalkgroupEdge[];
-}
-
-export interface TrunkedTalkgroupConnectionPromise
-  extends Promise<TrunkedTalkgroupConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedTalkgroupEdge>>() => T;
-  aggregate: <T = AggregateTrunkedTalkgroupPromise>() => T;
-}
-
-export interface TrunkedTalkgroupConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedTalkgroupConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedTalkgroupEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedTalkgroupSubscription>() => T;
-}
-
-export interface TrunkedSystemConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedSystemEdge[];
-}
-
-export interface TrunkedSystemConnectionPromise
-  extends Promise<TrunkedSystemConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedSystemEdge>>() => T;
-  aggregate: <T = AggregateTrunkedSystemPromise>() => T;
-}
-
-export interface TrunkedSystemConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedSystemConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedSystemEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedSystemSubscription>() => T;
-}
-
-export interface TrunkedSystemEdge {
-  node: TrunkedSystem;
-  cursor: String;
-}
-
-export interface TrunkedSystemEdgePromise
-  extends Promise<TrunkedSystemEdge>,
-    Fragmentable {
-  node: <T = TrunkedSystemPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedSystemEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedSystemEdge>>,
-    Fragmentable {
-  node: <T = TrunkedSystemSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TrunkedSourceConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedSourceEdge[];
-}
-
-export interface TrunkedSourceConnectionPromise
-  extends Promise<TrunkedSourceConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedSourceEdge>>() => T;
-  aggregate: <T = AggregateTrunkedSourcePromise>() => T;
-}
-
-export interface TrunkedSourceConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedSourceConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedSourceEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedSourceSubscription>() => T;
-}
-
-export interface AggregateTrunkedSource {
-  count: Int;
-}
-
-export interface AggregateTrunkedSourcePromise
-  extends Promise<AggregateTrunkedSource>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedSourceSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedSource>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedConfigEdge {
-  node: TrunkedConfig;
-  cursor: String;
-}
-
-export interface TrunkedConfigEdgePromise
-  extends Promise<TrunkedConfigEdge>,
-    Fragmentable {
-  node: <T = TrunkedConfigPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedConfigEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedConfigEdge>>,
-    Fragmentable {
-  node: <T = TrunkedConfigSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090AircraftSubscriptionPayload {
-  mutation: MutationType;
-  node: Dump1090Aircraft;
-  updatedFields: String[];
-  previousValues: Dump1090AircraftPreviousValues;
-}
-
-export interface Dump1090AircraftSubscriptionPayloadPromise
-  extends Promise<Dump1090AircraftSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Dump1090AircraftPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = Dump1090AircraftPreviousValuesPromise>() => T;
-}
-
-export interface Dump1090AircraftSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<Dump1090AircraftSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = Dump1090AircraftSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = Dump1090AircraftPreviousValuesSubscription>() => T;
-}
-
-export interface Dump1090Aircraft {
-  id: ID_Output;
-  IcaoID?: String;
-}
-
-export interface Dump1090AircraftPromise
-  extends Promise<Dump1090Aircraft>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  IcaoID: () => Promise<String>;
-}
-
-export interface Dump1090AircraftSubscription
-  extends Promise<AsyncIterator<Dump1090Aircraft>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  IcaoID: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090AircraftNullablePromise
-  extends Promise<Dump1090Aircraft | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  IcaoID: () => Promise<String>;
-}
-
-export interface Dump1090AircraftPreviousValues {
-  id: ID_Output;
-  IcaoID?: String;
-}
-
-export interface Dump1090AircraftPreviousValuesPromise
-  extends Promise<Dump1090AircraftPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  IcaoID: () => Promise<String>;
-}
-
-export interface Dump1090AircraftPreviousValuesSubscription
-  extends Promise<AsyncIterator<Dump1090AircraftPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  IcaoID: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090AircraftConnection {
-  pageInfo: PageInfo;
-  edges: Dump1090AircraftEdge[];
-}
-
-export interface Dump1090AircraftConnectionPromise
-  extends Promise<Dump1090AircraftConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<Dump1090AircraftEdge>>() => T;
-  aggregate: <T = AggregateDump1090AircraftPromise>() => T;
-}
-
-export interface Dump1090AircraftConnectionSubscription
-  extends Promise<AsyncIterator<Dump1090AircraftConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<Dump1090AircraftEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateDump1090AircraftSubscription>() => T;
-}
-
-export interface TrunkedCallSource {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  sourceId?: Int;
-  time?: DateTimeOutput;
-  position?: Float;
-}
-
-export interface TrunkedCallSourcePromise
-  extends Promise<TrunkedCallSource>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  sourceId: () => Promise<Int>;
-  time: () => Promise<DateTimeOutput>;
-  position: () => Promise<Float>;
-}
-
-export interface TrunkedCallSourceSubscription
-  extends Promise<AsyncIterator<TrunkedCallSource>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  sourceId: () => Promise<AsyncIterator<Int>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  position: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface TrunkedCallSourceNullablePromise
-  extends Promise<TrunkedCallSource | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  sourceId: () => Promise<Int>;
-  time: () => Promise<DateTimeOutput>;
-  position: () => Promise<Float>;
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090MessageSubscriptionPayload {
-  mutation: MutationType;
-  node: Dump1090Message;
-  updatedFields: String[];
-  previousValues: Dump1090MessagePreviousValues;
-}
-
-export interface Dump1090MessageSubscriptionPayloadPromise
-  extends Promise<Dump1090MessageSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = Dump1090MessagePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = Dump1090MessagePreviousValuesPromise>() => T;
-}
-
-export interface Dump1090MessageSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<Dump1090MessageSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = Dump1090MessageSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = Dump1090MessagePreviousValuesSubscription>() => T;
-}
-
-export interface TrunkedConfig {
+export interface UserPreviousValues {
   id: ID_Output;
   updatedAt: DateTimeOutput;
   createdAt: DateTimeOutput;
   name: String;
-  defaultMode: TrunkedDefaultMode;
-  captureDir: String;
-  callTimeout: Int;
-  logFile: Boolean;
-  frequencyFormat: TrunkedFrequencyFormat;
-  controlWarnRate: Int;
-  statusAsString: Boolean;
+  email: String;
+  phone: String;
+  verified: Boolean;
+  password: String;
+  authyId: String;
+  role: UserRole;
 }
 
-export interface TrunkedConfigPromise
-  extends Promise<TrunkedConfig>,
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   updatedAt: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
   name: () => Promise<String>;
-  sources: <T = FragmentableArray<TrunkedSource>>(args?: {
-    where?: TrunkedSourceWhereInput;
-    orderBy?: TrunkedSourceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  systems: <T = FragmentableArray<TrunkedSystem>>(args?: {
-    where?: TrunkedSystemWhereInput;
-    orderBy?: TrunkedSystemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  defaultMode: () => Promise<TrunkedDefaultMode>;
-  captureDir: () => Promise<String>;
-  callTimeout: () => Promise<Int>;
-  logFile: () => Promise<Boolean>;
-  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
-  controlWarnRate: () => Promise<Int>;
-  statusAsString: () => Promise<Boolean>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  verified: () => Promise<Boolean>;
+  password: () => Promise<String>;
+  authyId: () => Promise<String>;
+  role: () => Promise<UserRole>;
 }
 
-export interface TrunkedConfigSubscription
-  extends Promise<AsyncIterator<TrunkedConfig>>,
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   name: () => Promise<AsyncIterator<String>>;
-  sources: <T = Promise<AsyncIterator<TrunkedSourceSubscription>>>(args?: {
-    where?: TrunkedSourceWhereInput;
-    orderBy?: TrunkedSourceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  systems: <T = Promise<AsyncIterator<TrunkedSystemSubscription>>>(args?: {
-    where?: TrunkedSystemWhereInput;
-    orderBy?: TrunkedSystemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  defaultMode: () => Promise<AsyncIterator<TrunkedDefaultMode>>;
-  captureDir: () => Promise<AsyncIterator<String>>;
-  callTimeout: () => Promise<AsyncIterator<Int>>;
-  logFile: () => Promise<AsyncIterator<Boolean>>;
-  frequencyFormat: () => Promise<AsyncIterator<TrunkedFrequencyFormat>>;
-  controlWarnRate: () => Promise<AsyncIterator<Int>>;
-  statusAsString: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface TrunkedConfigNullablePromise
-  extends Promise<TrunkedConfig | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
-  sources: <T = FragmentableArray<TrunkedSource>>(args?: {
-    where?: TrunkedSourceWhereInput;
-    orderBy?: TrunkedSourceOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  systems: <T = FragmentableArray<TrunkedSystem>>(args?: {
-    where?: TrunkedSystemWhereInput;
-    orderBy?: TrunkedSystemOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  defaultMode: () => Promise<TrunkedDefaultMode>;
-  captureDir: () => Promise<String>;
-  callTimeout: () => Promise<Int>;
-  logFile: () => Promise<Boolean>;
-  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
-  controlWarnRate: () => Promise<Int>;
-  statusAsString: () => Promise<Boolean>;
-}
-
-export interface Dump1090MessagePreviousValues {
-  id: ID_Output;
-  messageType: Dump1090MessageType;
-  transmissionType: Dump1090TransmissionType;
-  generated: DateTimeOutput;
-  logged: DateTimeOutput;
-  flightId?: String;
-  squawk?: String;
-  alert?: Boolean;
-  emergency?: Boolean;
-  isOnGround?: Boolean;
-  latitude?: Float;
-  longitude?: Float;
-  verticalRate?: Int;
-  track?: Int;
-  groupSpeed?: Int;
-  callsign?: String;
-  altitude?: Int;
-}
-
-export interface Dump1090MessagePreviousValuesPromise
-  extends Promise<Dump1090MessagePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  messageType: () => Promise<Dump1090MessageType>;
-  transmissionType: () => Promise<Dump1090TransmissionType>;
-  generated: () => Promise<DateTimeOutput>;
-  logged: () => Promise<DateTimeOutput>;
-  flightId: () => Promise<String>;
-  squawk: () => Promise<String>;
-  alert: () => Promise<Boolean>;
-  emergency: () => Promise<Boolean>;
-  isOnGround: () => Promise<Boolean>;
-  latitude: () => Promise<Float>;
-  longitude: () => Promise<Float>;
-  verticalRate: () => Promise<Int>;
-  track: () => Promise<Int>;
-  groupSpeed: () => Promise<Int>;
-  callsign: () => Promise<String>;
-  altitude: () => Promise<Int>;
-}
-
-export interface Dump1090MessagePreviousValuesSubscription
-  extends Promise<AsyncIterator<Dump1090MessagePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  messageType: () => Promise<AsyncIterator<Dump1090MessageType>>;
-  transmissionType: () => Promise<AsyncIterator<Dump1090TransmissionType>>;
-  generated: () => Promise<AsyncIterator<DateTimeOutput>>;
-  logged: () => Promise<AsyncIterator<DateTimeOutput>>;
-  flightId: () => Promise<AsyncIterator<String>>;
-  squawk: () => Promise<AsyncIterator<String>>;
-  alert: () => Promise<AsyncIterator<Boolean>>;
-  emergency: () => Promise<AsyncIterator<Boolean>>;
-  isOnGround: () => Promise<AsyncIterator<Boolean>>;
-  latitude: () => Promise<AsyncIterator<Float>>;
-  longitude: () => Promise<AsyncIterator<Float>>;
-  verticalRate: () => Promise<AsyncIterator<Int>>;
-  track: () => Promise<AsyncIterator<Int>>;
-  groupSpeed: () => Promise<AsyncIterator<Int>>;
-  callsign: () => Promise<AsyncIterator<String>>;
-  altitude: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedCallSourceEdge {
-  node: TrunkedCallSource;
-  cursor: String;
-}
-
-export interface TrunkedCallSourceEdgePromise
-  extends Promise<TrunkedCallSourceEdge>,
-    Fragmentable {
-  node: <T = TrunkedCallSourcePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedCallSourceEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedCallSourceEdge>>,
-    Fragmentable {
-  node: <T = TrunkedCallSourceSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Dump1090Message {
-  id: ID_Output;
-  messageType: Dump1090MessageType;
-  transmissionType: Dump1090TransmissionType;
-  generated: DateTimeOutput;
-  logged: DateTimeOutput;
-  flightId?: String;
-  squawk?: String;
-  alert?: Boolean;
-  emergency?: Boolean;
-  isOnGround?: Boolean;
-  latitude?: Float;
-  longitude?: Float;
-  verticalRate?: Int;
-  track?: Int;
-  groupSpeed?: Int;
-  callsign?: String;
-  altitude?: Int;
-}
-
-export interface Dump1090MessagePromise
-  extends Promise<Dump1090Message>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  messageType: () => Promise<Dump1090MessageType>;
-  transmissionType: () => Promise<Dump1090TransmissionType>;
-  aircraft: <T = Dump1090AircraftPromise>() => T;
-  generated: () => Promise<DateTimeOutput>;
-  logged: () => Promise<DateTimeOutput>;
-  flightId: () => Promise<String>;
-  squawk: () => Promise<String>;
-  alert: () => Promise<Boolean>;
-  emergency: () => Promise<Boolean>;
-  isOnGround: () => Promise<Boolean>;
-  latitude: () => Promise<Float>;
-  longitude: () => Promise<Float>;
-  verticalRate: () => Promise<Int>;
-  track: () => Promise<Int>;
-  groupSpeed: () => Promise<Int>;
-  callsign: () => Promise<String>;
-  altitude: () => Promise<Int>;
-}
-
-export interface Dump1090MessageSubscription
-  extends Promise<AsyncIterator<Dump1090Message>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  messageType: () => Promise<AsyncIterator<Dump1090MessageType>>;
-  transmissionType: () => Promise<AsyncIterator<Dump1090TransmissionType>>;
-  aircraft: <T = Dump1090AircraftSubscription>() => T;
-  generated: () => Promise<AsyncIterator<DateTimeOutput>>;
-  logged: () => Promise<AsyncIterator<DateTimeOutput>>;
-  flightId: () => Promise<AsyncIterator<String>>;
-  squawk: () => Promise<AsyncIterator<String>>;
-  alert: () => Promise<AsyncIterator<Boolean>>;
-  emergency: () => Promise<AsyncIterator<Boolean>>;
-  isOnGround: () => Promise<AsyncIterator<Boolean>>;
-  latitude: () => Promise<AsyncIterator<Float>>;
-  longitude: () => Promise<AsyncIterator<Float>>;
-  verticalRate: () => Promise<AsyncIterator<Int>>;
-  track: () => Promise<AsyncIterator<Int>>;
-  groupSpeed: () => Promise<AsyncIterator<Int>>;
-  callsign: () => Promise<AsyncIterator<String>>;
-  altitude: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Dump1090MessageNullablePromise
-  extends Promise<Dump1090Message | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  messageType: () => Promise<Dump1090MessageType>;
-  transmissionType: () => Promise<Dump1090TransmissionType>;
-  aircraft: <T = Dump1090AircraftPromise>() => T;
-  generated: () => Promise<DateTimeOutput>;
-  logged: () => Promise<DateTimeOutput>;
-  flightId: () => Promise<String>;
-  squawk: () => Promise<String>;
-  alert: () => Promise<Boolean>;
-  emergency: () => Promise<Boolean>;
-  isOnGround: () => Promise<Boolean>;
-  latitude: () => Promise<Float>;
-  longitude: () => Promise<Float>;
-  verticalRate: () => Promise<Int>;
-  track: () => Promise<Int>;
-  groupSpeed: () => Promise<Int>;
-  callsign: () => Promise<String>;
-  altitude: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedCallFrequencyTime {
-  count: Int;
-}
-
-export interface AggregateTrunkedCallFrequencyTimePromise
-  extends Promise<AggregateTrunkedCallFrequencyTime>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedCallFrequencyTimeSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedCallFrequencyTime>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TranscriptionSubscriptionPayload {
-  mutation: MutationType;
-  node: Transcription;
-  updatedFields: String[];
-  previousValues: TranscriptionPreviousValues;
-}
-
-export interface TranscriptionSubscriptionPayloadPromise
-  extends Promise<TranscriptionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TranscriptionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TranscriptionPreviousValuesPromise>() => T;
-}
-
-export interface TranscriptionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TranscriptionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TranscriptionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TranscriptionPreviousValuesSubscription>() => T;
-}
-
-export interface TrunkedCallFrequencyTimeConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedCallFrequencyTimeEdge[];
-}
-
-export interface TrunkedCallFrequencyTimeConnectionPromise
-  extends Promise<TrunkedCallFrequencyTimeConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedCallFrequencyTimeEdge>>() => T;
-  aggregate: <T = AggregateTrunkedCallFrequencyTimePromise>() => T;
-}
-
-export interface TrunkedCallFrequencyTimeConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedCallFrequencyTimeConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <
-    T = Promise<AsyncIterator<TrunkedCallFrequencyTimeEdgeSubscription>>
-  >() => T;
-  aggregate: <T = AggregateTrunkedCallFrequencyTimeSubscription>() => T;
-}
-
-export interface TranscriptionPreviousValues {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  languageModel: String;
-  beta: Float;
-  body: String;
-  duration: Float;
-  alpha: Float;
-}
-
-export interface TranscriptionPreviousValuesPromise
-  extends Promise<TranscriptionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  languageModel: () => Promise<String>;
-  beta: () => Promise<Float>;
-  body: () => Promise<String>;
-  duration: () => Promise<Float>;
-  alpha: () => Promise<Float>;
-}
-
-export interface TranscriptionPreviousValuesSubscription
-  extends Promise<AsyncIterator<TranscriptionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  languageModel: () => Promise<AsyncIterator<String>>;
-  beta: () => Promise<AsyncIterator<Float>>;
-  body: () => Promise<AsyncIterator<String>>;
-  duration: () => Promise<AsyncIterator<Float>>;
-  alpha: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface TrunkedCallEdge {
-  node: TrunkedCall;
-  cursor: String;
-}
-
-export interface TrunkedCallEdgePromise
-  extends Promise<TrunkedCallEdge>,
-    Fragmentable {
-  node: <T = TrunkedCallPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedCallEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedCallEdge>>,
-    Fragmentable {
-  node: <T = TrunkedCallSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TrunkedSystemSubscriptionPayload {
-  mutation: MutationType;
-  node: TrunkedSystem;
-  updatedFields: String[];
-  previousValues: TrunkedSystemPreviousValues;
-}
-
-export interface TrunkedSystemSubscriptionPayloadPromise
-  extends Promise<TrunkedSystemSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TrunkedSystemPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TrunkedSystemPreviousValuesPromise>() => T;
-}
-
-export interface TrunkedSystemSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TrunkedSystemSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TrunkedSystemSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TrunkedSystemPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateTranscriptionWord {
-  count: Int;
-}
-
-export interface AggregateTranscriptionWordPromise
-  extends Promise<AggregateTranscriptionWord>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTranscriptionWordSubscription
-  extends Promise<AsyncIterator<AggregateTranscriptionWord>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TranscriptionWordSubscriptionPayload {
-  mutation: MutationType;
-  node: TranscriptionWord;
-  updatedFields: String[];
-  previousValues: TranscriptionWordPreviousValues;
-}
-
-export interface TranscriptionWordSubscriptionPayloadPromise
-  extends Promise<TranscriptionWordSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TranscriptionWordPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TranscriptionWordPreviousValuesPromise>() => T;
-}
-
-export interface TranscriptionWordSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TranscriptionWordSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TranscriptionWordSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TranscriptionWordPreviousValuesSubscription>() => T;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  verified: () => Promise<AsyncIterator<Boolean>>;
+  password: () => Promise<AsyncIterator<String>>;
+  authyId: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<UserRole>>;
 }
 
 export interface TranscriptionWordConnection {
@@ -5645,57 +4815,100 @@ export interface TranscriptionWordConnectionSubscription
   aggregate: <T = AggregateTranscriptionWordSubscription>() => T;
 }
 
-export interface TranscriptionWordPreviousValues {
+export interface Transcription {
   id: ID_Output;
   updatedAt: DateTimeOutput;
   createdAt: DateTimeOutput;
-  text: String;
-  confidence: Float;
-  end: Int;
-  start: Int;
+  languageModel: String;
+  beta: Float;
+  body: String;
+  duration: Float;
+  alpha: Float;
 }
 
-export interface TranscriptionWordPreviousValuesPromise
-  extends Promise<TranscriptionWordPreviousValues>,
+export interface TranscriptionPromise
+  extends Promise<Transcription>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   updatedAt: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
-  text: () => Promise<String>;
-  confidence: () => Promise<Float>;
-  end: () => Promise<Int>;
-  start: () => Promise<Int>;
+  call: <T = TrunkedCallPromise>() => T;
+  languageModel: () => Promise<String>;
+  beta: () => Promise<Float>;
+  body: () => Promise<String>;
+  words: <T = FragmentableArray<TranscriptionWord>>(args?: {
+    where?: TranscriptionWordWhereInput;
+    orderBy?: TranscriptionWordOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  duration: () => Promise<Float>;
+  alpha: () => Promise<Float>;
 }
 
-export interface TranscriptionWordPreviousValuesSubscription
-  extends Promise<AsyncIterator<TranscriptionWordPreviousValues>>,
+export interface TranscriptionSubscription
+  extends Promise<AsyncIterator<Transcription>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  text: () => Promise<AsyncIterator<String>>;
-  confidence: () => Promise<AsyncIterator<Float>>;
-  end: () => Promise<AsyncIterator<Int>>;
-  start: () => Promise<AsyncIterator<Int>>;
+  call: <T = TrunkedCallSubscription>() => T;
+  languageModel: () => Promise<AsyncIterator<String>>;
+  beta: () => Promise<AsyncIterator<Float>>;
+  body: () => Promise<AsyncIterator<String>>;
+  words: <T = Promise<AsyncIterator<TranscriptionWordSubscription>>>(args?: {
+    where?: TranscriptionWordWhereInput;
+    orderBy?: TranscriptionWordOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  duration: () => Promise<AsyncIterator<Float>>;
+  alpha: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface TranscriptionEdge {
-  node: Transcription;
-  cursor: String;
-}
-
-export interface TranscriptionEdgePromise
-  extends Promise<TranscriptionEdge>,
+export interface TranscriptionNullablePromise
+  extends Promise<Transcription | null>,
     Fragmentable {
-  node: <T = TranscriptionPromise>() => T;
-  cursor: () => Promise<String>;
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  call: <T = TrunkedCallPromise>() => T;
+  languageModel: () => Promise<String>;
+  beta: () => Promise<Float>;
+  body: () => Promise<String>;
+  words: <T = FragmentableArray<TranscriptionWord>>(args?: {
+    where?: TranscriptionWordWhereInput;
+    orderBy?: TranscriptionWordOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  duration: () => Promise<Float>;
+  alpha: () => Promise<Float>;
 }
 
-export interface TranscriptionEdgeSubscription
-  extends Promise<AsyncIterator<TranscriptionEdge>>,
+export interface AggregateTranscription {
+  count: Int;
+}
+
+export interface AggregateTranscriptionPromise
+  extends Promise<AggregateTranscription>,
     Fragmentable {
-  node: <T = TranscriptionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTranscriptionSubscription
+  extends Promise<AsyncIterator<AggregateTranscription>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface TrunkedCall {
@@ -5831,6 +5044,99 @@ export interface TrunkedCallNullablePromise
   transcription: <T = TranscriptionPromise>() => T;
 }
 
+export interface TranscriptionEdge {
+  node: Transcription;
+  cursor: String;
+}
+
+export interface TranscriptionEdgePromise
+  extends Promise<TranscriptionEdge>,
+    Fragmentable {
+  node: <T = TranscriptionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TranscriptionEdgeSubscription
+  extends Promise<AsyncIterator<TranscriptionEdge>>,
+    Fragmentable {
+  node: <T = TranscriptionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TranscriptionConnection {
+  pageInfo: PageInfo;
+  edges: TranscriptionEdge[];
+}
+
+export interface TranscriptionConnectionPromise
+  extends Promise<TranscriptionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TranscriptionEdge>>() => T;
+  aggregate: <T = AggregateTranscriptionPromise>() => T;
+}
+
+export interface TranscriptionConnectionSubscription
+  extends Promise<AsyncIterator<TranscriptionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TranscriptionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTranscriptionSubscription>() => T;
+}
+
+export interface UserConnection {
+  pageInfo: PageInfo;
+  edges: UserEdge[];
+}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
 export interface TrunkedSystemPreviousValues {
   id: ID_Output;
   updatedAt: DateTimeOutput;
@@ -5915,6 +5221,919 @@ export interface TrunkedSystemPreviousValuesSubscription
   hideUnknownTalkgroups: () => Promise<AsyncIterator<Boolean>>;
 }
 
+export interface UserEdge {
+  node: User;
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface User {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  name: String;
+  email: String;
+  phone: String;
+  verified: Boolean;
+  password: String;
+  authyId: String;
+  role: UserRole;
+}
+
+export interface UserPromise extends Promise<User>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  verified: () => Promise<Boolean>;
+  password: () => Promise<String>;
+  authyId: () => Promise<String>;
+  role: () => Promise<UserRole>;
+}
+
+export interface UserSubscription
+  extends Promise<AsyncIterator<User>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  verified: () => Promise<AsyncIterator<Boolean>>;
+  password: () => Promise<AsyncIterator<String>>;
+  authyId: () => Promise<AsyncIterator<String>>;
+  role: () => Promise<AsyncIterator<UserRole>>;
+}
+
+export interface UserNullablePromise
+  extends Promise<User | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  email: () => Promise<String>;
+  phone: () => Promise<String>;
+  verified: () => Promise<Boolean>;
+  password: () => Promise<String>;
+  authyId: () => Promise<String>;
+  role: () => Promise<UserRole>;
+}
+
+export interface Dump1090Aircraft {
+  id: ID_Output;
+  IcaoID?: String;
+}
+
+export interface Dump1090AircraftPromise
+  extends Promise<Dump1090Aircraft>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  IcaoID: () => Promise<String>;
+}
+
+export interface Dump1090AircraftSubscription
+  extends Promise<AsyncIterator<Dump1090Aircraft>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  IcaoID: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Dump1090AircraftNullablePromise
+  extends Promise<Dump1090Aircraft | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  IcaoID: () => Promise<String>;
+}
+
+export interface TrunkedTalkgroupConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedTalkgroupEdge[];
+}
+
+export interface TrunkedTalkgroupConnectionPromise
+  extends Promise<TrunkedTalkgroupConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedTalkgroupEdge>>() => T;
+  aggregate: <T = AggregateTrunkedTalkgroupPromise>() => T;
+}
+
+export interface TrunkedTalkgroupConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedTalkgroupConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedTalkgroupEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedTalkgroupSubscription>() => T;
+}
+
+export interface AggregateTrunkedTalkgroup {
+  count: Int;
+}
+
+export interface AggregateTrunkedTalkgroupPromise
+  extends Promise<AggregateTrunkedTalkgroup>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedTalkgroupSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedTalkgroup>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedSystemEdge {
+  node: TrunkedSystem;
+  cursor: String;
+}
+
+export interface TrunkedSystemEdgePromise
+  extends Promise<TrunkedSystemEdge>,
+    Fragmentable {
+  node: <T = TrunkedSystemPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TrunkedSystemEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedSystemEdge>>,
+    Fragmentable {
+  node: <T = TrunkedSystemSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Dump1090AircraftSubscriptionPayload {
+  mutation: MutationType;
+  node: Dump1090Aircraft;
+  updatedFields: String[];
+  previousValues: Dump1090AircraftPreviousValues;
+}
+
+export interface Dump1090AircraftSubscriptionPayloadPromise
+  extends Promise<Dump1090AircraftSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = Dump1090AircraftPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = Dump1090AircraftPreviousValuesPromise>() => T;
+}
+
+export interface Dump1090AircraftSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<Dump1090AircraftSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = Dump1090AircraftSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = Dump1090AircraftPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateTrunkedSource {
+  count: Int;
+}
+
+export interface AggregateTrunkedSourcePromise
+  extends Promise<AggregateTrunkedSource>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedSourceSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedSource>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Dump1090AircraftPreviousValues {
+  id: ID_Output;
+  IcaoID?: String;
+}
+
+export interface Dump1090AircraftPreviousValuesPromise
+  extends Promise<Dump1090AircraftPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  IcaoID: () => Promise<String>;
+}
+
+export interface Dump1090AircraftPreviousValuesSubscription
+  extends Promise<AsyncIterator<Dump1090AircraftPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  IcaoID: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TrunkedSourceConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedSourceEdge[];
+}
+
+export interface TrunkedSourceConnectionPromise
+  extends Promise<TrunkedSourceConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedSourceEdge>>() => T;
+  aggregate: <T = AggregateTrunkedSourcePromise>() => T;
+}
+
+export interface TrunkedSourceConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedSourceConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedSourceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedSourceSubscription>() => T;
+}
+
+export interface TranscriptionWord {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  text: String;
+  confidence: Float;
+  end: Int;
+  start: Int;
+}
+
+export interface TranscriptionWordPromise
+  extends Promise<TranscriptionWord>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  transcription: <T = TranscriptionPromise>() => T;
+  confidence: () => Promise<Float>;
+  end: () => Promise<Int>;
+  start: () => Promise<Int>;
+}
+
+export interface TranscriptionWordSubscription
+  extends Promise<AsyncIterator<TranscriptionWord>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  text: () => Promise<AsyncIterator<String>>;
+  transcription: <T = TranscriptionSubscription>() => T;
+  confidence: () => Promise<AsyncIterator<Float>>;
+  end: () => Promise<AsyncIterator<Int>>;
+  start: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TranscriptionWordNullablePromise
+  extends Promise<TranscriptionWord | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  transcription: <T = TranscriptionPromise>() => T;
+  confidence: () => Promise<Float>;
+  end: () => Promise<Int>;
+  start: () => Promise<Int>;
+}
+
+export interface TrunkedConfigEdge {
+  node: TrunkedConfig;
+  cursor: String;
+}
+
+export interface TrunkedConfigEdgePromise
+  extends Promise<TrunkedConfigEdge>,
+    Fragmentable {
+  node: <T = TrunkedConfigPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TrunkedConfigEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedConfigEdge>>,
+    Fragmentable {
+  node: <T = TrunkedConfigSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Dump1090MessageSubscriptionPayload {
+  mutation: MutationType;
+  node: Dump1090Message;
+  updatedFields: String[];
+  previousValues: Dump1090MessagePreviousValues;
+}
+
+export interface Dump1090MessageSubscriptionPayloadPromise
+  extends Promise<Dump1090MessageSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = Dump1090MessagePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = Dump1090MessagePreviousValuesPromise>() => T;
+}
+
+export interface Dump1090MessageSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<Dump1090MessageSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = Dump1090MessageSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = Dump1090MessagePreviousValuesSubscription>() => T;
+}
+
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
+}
+
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
+}
+
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
+}
+
+export interface Dump1090MessagePreviousValues {
+  id: ID_Output;
+  messageType: Dump1090MessageType;
+  transmissionType: Dump1090TransmissionType;
+  generated: DateTimeOutput;
+  logged: DateTimeOutput;
+  flightId?: String;
+  squawk?: String;
+  alert?: Boolean;
+  emergency?: Boolean;
+  isOnGround?: Boolean;
+  latitude?: Float;
+  longitude?: Float;
+  verticalRate?: Int;
+  track?: Int;
+  groupSpeed?: Int;
+  callsign?: String;
+  altitude?: Int;
+}
+
+export interface Dump1090MessagePreviousValuesPromise
+  extends Promise<Dump1090MessagePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  messageType: () => Promise<Dump1090MessageType>;
+  transmissionType: () => Promise<Dump1090TransmissionType>;
+  generated: () => Promise<DateTimeOutput>;
+  logged: () => Promise<DateTimeOutput>;
+  flightId: () => Promise<String>;
+  squawk: () => Promise<String>;
+  alert: () => Promise<Boolean>;
+  emergency: () => Promise<Boolean>;
+  isOnGround: () => Promise<Boolean>;
+  latitude: () => Promise<Float>;
+  longitude: () => Promise<Float>;
+  verticalRate: () => Promise<Int>;
+  track: () => Promise<Int>;
+  groupSpeed: () => Promise<Int>;
+  callsign: () => Promise<String>;
+  altitude: () => Promise<Int>;
+}
+
+export interface Dump1090MessagePreviousValuesSubscription
+  extends Promise<AsyncIterator<Dump1090MessagePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  messageType: () => Promise<AsyncIterator<Dump1090MessageType>>;
+  transmissionType: () => Promise<AsyncIterator<Dump1090TransmissionType>>;
+  generated: () => Promise<AsyncIterator<DateTimeOutput>>;
+  logged: () => Promise<AsyncIterator<DateTimeOutput>>;
+  flightId: () => Promise<AsyncIterator<String>>;
+  squawk: () => Promise<AsyncIterator<String>>;
+  alert: () => Promise<AsyncIterator<Boolean>>;
+  emergency: () => Promise<AsyncIterator<Boolean>>;
+  isOnGround: () => Promise<AsyncIterator<Boolean>>;
+  latitude: () => Promise<AsyncIterator<Float>>;
+  longitude: () => Promise<AsyncIterator<Float>>;
+  verticalRate: () => Promise<AsyncIterator<Int>>;
+  track: () => Promise<AsyncIterator<Int>>;
+  groupSpeed: () => Promise<AsyncIterator<Int>>;
+  callsign: () => Promise<AsyncIterator<String>>;
+  altitude: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Dump1090Message {
+  id: ID_Output;
+  messageType: Dump1090MessageType;
+  transmissionType: Dump1090TransmissionType;
+  generated: DateTimeOutput;
+  logged: DateTimeOutput;
+  flightId?: String;
+  squawk?: String;
+  alert?: Boolean;
+  emergency?: Boolean;
+  isOnGround?: Boolean;
+  latitude?: Float;
+  longitude?: Float;
+  verticalRate?: Int;
+  track?: Int;
+  groupSpeed?: Int;
+  callsign?: String;
+  altitude?: Int;
+}
+
+export interface Dump1090MessagePromise
+  extends Promise<Dump1090Message>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  messageType: () => Promise<Dump1090MessageType>;
+  transmissionType: () => Promise<Dump1090TransmissionType>;
+  aircraft: <T = Dump1090AircraftPromise>() => T;
+  generated: () => Promise<DateTimeOutput>;
+  logged: () => Promise<DateTimeOutput>;
+  flightId: () => Promise<String>;
+  squawk: () => Promise<String>;
+  alert: () => Promise<Boolean>;
+  emergency: () => Promise<Boolean>;
+  isOnGround: () => Promise<Boolean>;
+  latitude: () => Promise<Float>;
+  longitude: () => Promise<Float>;
+  verticalRate: () => Promise<Int>;
+  track: () => Promise<Int>;
+  groupSpeed: () => Promise<Int>;
+  callsign: () => Promise<String>;
+  altitude: () => Promise<Int>;
+}
+
+export interface Dump1090MessageSubscription
+  extends Promise<AsyncIterator<Dump1090Message>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  messageType: () => Promise<AsyncIterator<Dump1090MessageType>>;
+  transmissionType: () => Promise<AsyncIterator<Dump1090TransmissionType>>;
+  aircraft: <T = Dump1090AircraftSubscription>() => T;
+  generated: () => Promise<AsyncIterator<DateTimeOutput>>;
+  logged: () => Promise<AsyncIterator<DateTimeOutput>>;
+  flightId: () => Promise<AsyncIterator<String>>;
+  squawk: () => Promise<AsyncIterator<String>>;
+  alert: () => Promise<AsyncIterator<Boolean>>;
+  emergency: () => Promise<AsyncIterator<Boolean>>;
+  isOnGround: () => Promise<AsyncIterator<Boolean>>;
+  latitude: () => Promise<AsyncIterator<Float>>;
+  longitude: () => Promise<AsyncIterator<Float>>;
+  verticalRate: () => Promise<AsyncIterator<Int>>;
+  track: () => Promise<AsyncIterator<Int>>;
+  groupSpeed: () => Promise<AsyncIterator<Int>>;
+  callsign: () => Promise<AsyncIterator<String>>;
+  altitude: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface Dump1090MessageNullablePromise
+  extends Promise<Dump1090Message | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  messageType: () => Promise<Dump1090MessageType>;
+  transmissionType: () => Promise<Dump1090TransmissionType>;
+  aircraft: <T = Dump1090AircraftPromise>() => T;
+  generated: () => Promise<DateTimeOutput>;
+  logged: () => Promise<DateTimeOutput>;
+  flightId: () => Promise<String>;
+  squawk: () => Promise<String>;
+  alert: () => Promise<Boolean>;
+  emergency: () => Promise<Boolean>;
+  isOnGround: () => Promise<Boolean>;
+  latitude: () => Promise<Float>;
+  longitude: () => Promise<Float>;
+  verticalRate: () => Promise<Int>;
+  track: () => Promise<Int>;
+  groupSpeed: () => Promise<Int>;
+  callsign: () => Promise<String>;
+  altitude: () => Promise<Int>;
+}
+
+export interface TrunkedSource {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  center: Float;
+  rate: Float;
+  squelch: Float;
+  error: Float;
+  gain: Float;
+  digitalRecorders: Float;
+  digitalLevels: Float;
+  analogRecorders: Float;
+  analogLevels: Float;
+  device?: String;
+  modulation: TrunkedModulation;
+}
+
+export interface TrunkedSourcePromise
+  extends Promise<TrunkedSource>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  center: () => Promise<Float>;
+  rate: () => Promise<Float>;
+  squelch: () => Promise<Float>;
+  error: () => Promise<Float>;
+  gain: () => Promise<Float>;
+  digitalRecorders: () => Promise<Float>;
+  digitalLevels: () => Promise<Float>;
+  analogRecorders: () => Promise<Float>;
+  analogLevels: () => Promise<Float>;
+  device: () => Promise<String>;
+  modulation: () => Promise<TrunkedModulation>;
+}
+
+export interface TrunkedSourceSubscription
+  extends Promise<AsyncIterator<TrunkedSource>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  center: () => Promise<AsyncIterator<Float>>;
+  rate: () => Promise<AsyncIterator<Float>>;
+  squelch: () => Promise<AsyncIterator<Float>>;
+  error: () => Promise<AsyncIterator<Float>>;
+  gain: () => Promise<AsyncIterator<Float>>;
+  digitalRecorders: () => Promise<AsyncIterator<Float>>;
+  digitalLevels: () => Promise<AsyncIterator<Float>>;
+  analogRecorders: () => Promise<AsyncIterator<Float>>;
+  analogLevels: () => Promise<AsyncIterator<Float>>;
+  device: () => Promise<AsyncIterator<String>>;
+  modulation: () => Promise<AsyncIterator<TrunkedModulation>>;
+}
+
+export interface TrunkedSourceNullablePromise
+  extends Promise<TrunkedSource | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  center: () => Promise<Float>;
+  rate: () => Promise<Float>;
+  squelch: () => Promise<Float>;
+  error: () => Promise<Float>;
+  gain: () => Promise<Float>;
+  digitalRecorders: () => Promise<Float>;
+  digitalLevels: () => Promise<Float>;
+  analogRecorders: () => Promise<Float>;
+  analogLevels: () => Promise<Float>;
+  device: () => Promise<String>;
+  modulation: () => Promise<TrunkedModulation>;
+}
+
+export interface TranscriptionSubscriptionPayload {
+  mutation: MutationType;
+  node: Transcription;
+  updatedFields: String[];
+  previousValues: TranscriptionPreviousValues;
+}
+
+export interface TranscriptionSubscriptionPayloadPromise
+  extends Promise<TranscriptionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TranscriptionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TranscriptionPreviousValuesPromise>() => T;
+}
+
+export interface TranscriptionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TranscriptionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TranscriptionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TranscriptionPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateDump1090Aircraft {
+  count: Int;
+}
+
+export interface AggregateDump1090AircraftPromise
+  extends Promise<AggregateDump1090Aircraft>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateDump1090AircraftSubscription
+  extends Promise<AsyncIterator<AggregateDump1090Aircraft>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TranscriptionPreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  languageModel: String;
+  beta: Float;
+  body: String;
+  duration: Float;
+  alpha: Float;
+}
+
+export interface TranscriptionPreviousValuesPromise
+  extends Promise<TranscriptionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  languageModel: () => Promise<String>;
+  beta: () => Promise<Float>;
+  body: () => Promise<String>;
+  duration: () => Promise<Float>;
+  alpha: () => Promise<Float>;
+}
+
+export interface TranscriptionPreviousValuesSubscription
+  extends Promise<AsyncIterator<TranscriptionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  languageModel: () => Promise<AsyncIterator<String>>;
+  beta: () => Promise<AsyncIterator<Float>>;
+  body: () => Promise<AsyncIterator<String>>;
+  duration: () => Promise<AsyncIterator<Float>>;
+  alpha: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface AggregateTrunkedCallSource {
+  count: Int;
+}
+
+export interface AggregateTrunkedCallSourcePromise
+  extends Promise<AggregateTrunkedCallSource>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedCallSourceSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedCallSource>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedCallFrequencyTime {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  frequency: Int;
+  time: Int;
+  position: Float;
+  length: Int;
+  errors: Int;
+  spikes: Int;
+}
+
+export interface TrunkedCallFrequencyTimePromise
+  extends Promise<TrunkedCallFrequencyTime>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  frequency: () => Promise<Int>;
+  time: () => Promise<Int>;
+  position: () => Promise<Float>;
+  length: () => Promise<Int>;
+  errors: () => Promise<Int>;
+  spikes: () => Promise<Int>;
+}
+
+export interface TrunkedCallFrequencyTimeSubscription
+  extends Promise<AsyncIterator<TrunkedCallFrequencyTime>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  frequency: () => Promise<AsyncIterator<Int>>;
+  time: () => Promise<AsyncIterator<Int>>;
+  position: () => Promise<AsyncIterator<Float>>;
+  length: () => Promise<AsyncIterator<Int>>;
+  errors: () => Promise<AsyncIterator<Int>>;
+  spikes: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedCallFrequencyTimeNullablePromise
+  extends Promise<TrunkedCallFrequencyTime | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  frequency: () => Promise<Int>;
+  time: () => Promise<Int>;
+  position: () => Promise<Float>;
+  length: () => Promise<Int>;
+  errors: () => Promise<Int>;
+  spikes: () => Promise<Int>;
+}
+
+export interface TrunkedCallSourceConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedCallSourceEdge[];
+}
+
+export interface TrunkedCallSourceConnectionPromise
+  extends Promise<TrunkedCallSourceConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedCallSourceEdge>>() => T;
+  aggregate: <T = AggregateTrunkedCallSourcePromise>() => T;
+}
+
+export interface TrunkedCallSourceConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedCallSourceConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedCallSourceEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedCallSourceSubscription>() => T;
+}
+
+export interface TranscriptionWordSubscriptionPayload {
+  mutation: MutationType;
+  node: TranscriptionWord;
+  updatedFields: String[];
+  previousValues: TranscriptionWordPreviousValues;
+}
+
+export interface TranscriptionWordSubscriptionPayloadPromise
+  extends Promise<TranscriptionWordSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TranscriptionWordPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TranscriptionWordPreviousValuesPromise>() => T;
+}
+
+export interface TranscriptionWordSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TranscriptionWordSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TranscriptionWordSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TranscriptionWordPreviousValuesSubscription>() => T;
+}
+
+export interface TrunkedCallFrequencyTimeEdge {
+  node: TrunkedCallFrequencyTime;
+  cursor: String;
+}
+
+export interface TrunkedCallFrequencyTimeEdgePromise
+  extends Promise<TrunkedCallFrequencyTimeEdge>,
+    Fragmentable {
+  node: <T = TrunkedCallFrequencyTimePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TrunkedCallFrequencyTimeEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedCallFrequencyTimeEdge>>,
+    Fragmentable {
+  node: <T = TrunkedCallFrequencyTimeSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TranscriptionWordPreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  text: String;
+  confidence: Float;
+  end: Int;
+  start: Int;
+}
+
+export interface TranscriptionWordPreviousValuesPromise
+  extends Promise<TranscriptionWordPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  text: () => Promise<String>;
+  confidence: () => Promise<Float>;
+  end: () => Promise<Int>;
+  start: () => Promise<Int>;
+}
+
+export interface TranscriptionWordPreviousValuesSubscription
+  extends Promise<AsyncIterator<TranscriptionWordPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  text: () => Promise<AsyncIterator<String>>;
+  confidence: () => Promise<AsyncIterator<Float>>;
+  end: () => Promise<AsyncIterator<Int>>;
+  start: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface AggregateTrunkedCall {
+  count: Int;
+}
+
+export interface AggregateTrunkedCallPromise
+  extends Promise<AggregateTrunkedCall>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedCallSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedCall>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedTalkgroupSubscriptionPayload {
+  mutation: MutationType;
+  node: TrunkedTalkgroup;
+  updatedFields: String[];
+  previousValues: TrunkedTalkgroupPreviousValues;
+}
+
+export interface TrunkedTalkgroupSubscriptionPayloadPromise
+  extends Promise<TrunkedTalkgroupSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TrunkedTalkgroupPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TrunkedTalkgroupPreviousValuesPromise>() => T;
+}
+
+export interface TrunkedTalkgroupSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TrunkedTalkgroupSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TrunkedTalkgroupSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TrunkedTalkgroupPreviousValuesSubscription>() => T;
+}
+
+export interface TrunkedCallConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedCallEdge[];
+}
+
+export interface TrunkedCallConnectionPromise
+  extends Promise<TrunkedCallConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedCallEdge>>() => T;
+  aggregate: <T = AggregateTrunkedCallPromise>() => T;
+}
+
+export interface TrunkedCallConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedCallConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedCallEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedCallSubscription>() => T;
+}
+
 export interface TrunkedCallSubscriptionPayload {
   mutation: MutationType;
   node: TrunkedCall;
@@ -5940,20 +6159,23 @@ export interface TrunkedCallSubscriptionPayloadSubscription
   previousValues: <T = TrunkedCallPreviousValuesSubscription>() => T;
 }
 
-export interface AggregateTrunkedConfig {
-  count: Int;
+export interface TranscriptionWordEdge {
+  node: TranscriptionWord;
+  cursor: String;
 }
 
-export interface AggregateTrunkedConfigPromise
-  extends Promise<AggregateTrunkedConfig>,
+export interface TranscriptionWordEdgePromise
+  extends Promise<TranscriptionWordEdge>,
     Fragmentable {
-  count: () => Promise<Int>;
+  node: <T = TranscriptionWordPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface AggregateTrunkedConfigSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedConfig>>,
+export interface TranscriptionWordEdgeSubscription
+  extends Promise<AsyncIterator<TranscriptionWordEdge>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  node: <T = TranscriptionWordSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface TrunkedCallPreviousValues {
@@ -6008,130 +6230,86 @@ export interface TrunkedCallPreviousValuesSubscription
   remotePaths: () => Promise<AsyncIterator<String[]>>;
 }
 
-export interface TrunkedTalkgroupSubscriptionPayload {
-  mutation: MutationType;
+export interface TrunkedTalkgroupEdge {
   node: TrunkedTalkgroup;
-  updatedFields: String[];
-  previousValues: TrunkedTalkgroupPreviousValues;
+  cursor: String;
 }
 
-export interface TrunkedTalkgroupSubscriptionPayloadPromise
-  extends Promise<TrunkedTalkgroupSubscriptionPayload>,
+export interface TrunkedTalkgroupEdgePromise
+  extends Promise<TrunkedTalkgroupEdge>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
   node: <T = TrunkedTalkgroupPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TrunkedTalkgroupPreviousValuesPromise>() => T;
+  cursor: () => Promise<String>;
 }
 
-export interface TrunkedTalkgroupSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TrunkedTalkgroupSubscriptionPayload>>,
+export interface TrunkedTalkgroupEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedTalkgroupEdge>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
   node: <T = TrunkedTalkgroupSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TrunkedTalkgroupPreviousValuesSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface Dump1090MessageConnection {
-  pageInfo: PageInfo;
-  edges: Dump1090MessageEdge[];
-}
-
-export interface Dump1090MessageConnectionPromise
-  extends Promise<Dump1090MessageConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<Dump1090MessageEdge>>() => T;
-  aggregate: <T = AggregateDump1090MessagePromise>() => T;
-}
-
-export interface Dump1090MessageConnectionSubscription
-  extends Promise<AsyncIterator<Dump1090MessageConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<Dump1090MessageEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateDump1090MessageSubscription>() => T;
-}
-
-export interface Transcription {
+export interface TrunkedCallSource {
   id: ID_Output;
   updatedAt: DateTimeOutput;
   createdAt: DateTimeOutput;
-  languageModel: String;
-  beta: Float;
-  body: String;
-  duration: Float;
-  alpha: Float;
+  sourceId?: Int;
+  time?: DateTimeOutput;
+  position?: Float;
 }
 
-export interface TranscriptionPromise
-  extends Promise<Transcription>,
+export interface TrunkedCallSourcePromise
+  extends Promise<TrunkedCallSource>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   updatedAt: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
-  call: <T = TrunkedCallPromise>() => T;
-  languageModel: () => Promise<String>;
-  beta: () => Promise<Float>;
-  body: () => Promise<String>;
-  words: <T = FragmentableArray<TranscriptionWord>>(args?: {
-    where?: TranscriptionWordWhereInput;
-    orderBy?: TranscriptionWordOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  duration: () => Promise<Float>;
-  alpha: () => Promise<Float>;
+  sourceId: () => Promise<Int>;
+  time: () => Promise<DateTimeOutput>;
+  position: () => Promise<Float>;
 }
 
-export interface TranscriptionSubscription
-  extends Promise<AsyncIterator<Transcription>>,
+export interface TrunkedCallSourceSubscription
+  extends Promise<AsyncIterator<TrunkedCallSource>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  call: <T = TrunkedCallSubscription>() => T;
-  languageModel: () => Promise<AsyncIterator<String>>;
-  beta: () => Promise<AsyncIterator<Float>>;
-  body: () => Promise<AsyncIterator<String>>;
-  words: <T = Promise<AsyncIterator<TranscriptionWordSubscription>>>(args?: {
-    where?: TranscriptionWordWhereInput;
-    orderBy?: TranscriptionWordOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  duration: () => Promise<AsyncIterator<Float>>;
-  alpha: () => Promise<AsyncIterator<Float>>;
+  sourceId: () => Promise<AsyncIterator<Int>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  position: () => Promise<AsyncIterator<Float>>;
 }
 
-export interface TranscriptionNullablePromise
-  extends Promise<Transcription | null>,
+export interface TrunkedCallSourceNullablePromise
+  extends Promise<TrunkedCallSource | null>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   updatedAt: () => Promise<DateTimeOutput>;
   createdAt: () => Promise<DateTimeOutput>;
-  call: <T = TrunkedCallPromise>() => T;
-  languageModel: () => Promise<String>;
-  beta: () => Promise<Float>;
-  body: () => Promise<String>;
-  words: <T = FragmentableArray<TranscriptionWord>>(args?: {
-    where?: TranscriptionWordWhereInput;
-    orderBy?: TranscriptionWordOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
-  duration: () => Promise<Float>;
-  alpha: () => Promise<Float>;
+  sourceId: () => Promise<Int>;
+  time: () => Promise<DateTimeOutput>;
+  position: () => Promise<Float>;
+}
+
+export interface TrunkedSystemConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedSystemEdge[];
+}
+
+export interface TrunkedSystemConnectionPromise
+  extends Promise<TrunkedSystemConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedSystemEdge>>() => T;
+  aggregate: <T = AggregateTrunkedSystemPromise>() => T;
+}
+
+export interface TrunkedSystemConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedSystemConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedSystemEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedSystemSubscription>() => T;
 }
 
 export interface TrunkedCallFrequencyTimeSubscriptionPayload {
@@ -6161,25 +6339,20 @@ export interface TrunkedCallFrequencyTimeSubscriptionPayloadSubscription
   >() => T;
 }
 
-export interface TrunkedCallSourceConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedCallSourceEdge[];
+export interface AggregateTrunkedConfig {
+  count: Int;
 }
 
-export interface TrunkedCallSourceConnectionPromise
-  extends Promise<TrunkedCallSourceConnection>,
+export interface AggregateTrunkedConfigPromise
+  extends Promise<AggregateTrunkedConfig>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedCallSourceEdge>>() => T;
-  aggregate: <T = AggregateTrunkedCallSourcePromise>() => T;
+  count: () => Promise<Int>;
 }
 
-export interface TrunkedCallSourceConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedCallSourceConnection>>,
+export interface AggregateTrunkedConfigSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedConfig>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedCallSourceEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedCallSourceSubscription>() => T;
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface TrunkedCallFrequencyTimePreviousValues {
@@ -6222,156 +6395,25 @@ export interface TrunkedCallFrequencyTimePreviousValuesSubscription
   spikes: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface AggregateTrunkedCall {
-  count: Int;
-}
-
-export interface AggregateTrunkedCallPromise
-  extends Promise<AggregateTrunkedCall>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTrunkedCallSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedCall>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface Dump1090MessageEdge {
-  node: Dump1090Message;
-  cursor: String;
-}
-
-export interface Dump1090MessageEdgePromise
-  extends Promise<Dump1090MessageEdge>,
-    Fragmentable {
-  node: <T = Dump1090MessagePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface Dump1090MessageEdgeSubscription
-  extends Promise<AsyncIterator<Dump1090MessageEdge>>,
-    Fragmentable {
-  node: <T = Dump1090MessageSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TranscriptionWordEdge {
-  node: TranscriptionWord;
-  cursor: String;
-}
-
-export interface TranscriptionWordEdgePromise
-  extends Promise<TranscriptionWordEdge>,
-    Fragmentable {
-  node: <T = TranscriptionWordPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TranscriptionWordEdgeSubscription
-  extends Promise<AsyncIterator<TranscriptionWordEdge>>,
-    Fragmentable {
-  node: <T = TranscriptionWordSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TrunkedCallSourceSubscriptionPayload {
-  mutation: MutationType;
-  node: TrunkedCallSource;
-  updatedFields: String[];
-  previousValues: TrunkedCallSourcePreviousValues;
-}
-
-export interface TrunkedCallSourceSubscriptionPayloadPromise
-  extends Promise<TrunkedCallSourceSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TrunkedCallSourcePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TrunkedCallSourcePreviousValuesPromise>() => T;
-}
-
-export interface TrunkedCallSourceSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TrunkedCallSourceSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TrunkedCallSourceSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TrunkedCallSourcePreviousValuesSubscription>() => T;
-}
-
-export interface TranscriptionConnection {
+export interface Dump1090AircraftConnection {
   pageInfo: PageInfo;
-  edges: TranscriptionEdge[];
+  edges: Dump1090AircraftEdge[];
 }
 
-export interface TranscriptionConnectionPromise
-  extends Promise<TranscriptionConnection>,
+export interface Dump1090AircraftConnectionPromise
+  extends Promise<Dump1090AircraftConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TranscriptionEdge>>() => T;
-  aggregate: <T = AggregateTranscriptionPromise>() => T;
+  edges: <T = FragmentableArray<Dump1090AircraftEdge>>() => T;
+  aggregate: <T = AggregateDump1090AircraftPromise>() => T;
 }
 
-export interface TranscriptionConnectionSubscription
-  extends Promise<AsyncIterator<TranscriptionConnection>>,
+export interface Dump1090AircraftConnectionSubscription
+  extends Promise<AsyncIterator<Dump1090AircraftConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TranscriptionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTranscriptionSubscription>() => T;
-}
-
-export interface TrunkedCallSourcePreviousValues {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  sourceId?: Int;
-  time?: DateTimeOutput;
-  position?: Float;
-}
-
-export interface TrunkedCallSourcePreviousValuesPromise
-  extends Promise<TrunkedCallSourcePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  sourceId: () => Promise<Int>;
-  time: () => Promise<DateTimeOutput>;
-  position: () => Promise<Float>;
-}
-
-export interface TrunkedCallSourcePreviousValuesSubscription
-  extends Promise<AsyncIterator<TrunkedCallSourcePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  sourceId: () => Promise<AsyncIterator<Int>>;
-  time: () => Promise<AsyncIterator<DateTimeOutput>>;
-  position: () => Promise<AsyncIterator<Float>>;
-}
-
-export interface TrunkedConfigConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedConfigEdge[];
-}
-
-export interface TrunkedConfigConnectionPromise
-  extends Promise<TrunkedConfigConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedConfigEdge>>() => T;
-  aggregate: <T = AggregateTrunkedConfigPromise>() => T;
-}
-
-export interface TrunkedConfigConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedConfigConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedConfigEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedConfigSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<Dump1090AircraftEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDump1090AircraftSubscription>() => T;
 }
 
 export interface TrunkedSystem {
@@ -6542,41 +6584,516 @@ export interface TrunkedSystemNullablePromise
   }) => T;
 }
 
-export interface AggregateTrunkedCallSource {
+export interface Dump1090AircraftEdge {
+  node: Dump1090Aircraft;
+  cursor: String;
+}
+
+export interface Dump1090AircraftEdgePromise
+  extends Promise<Dump1090AircraftEdge>,
+    Fragmentable {
+  node: <T = Dump1090AircraftPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface Dump1090AircraftEdgeSubscription
+  extends Promise<AsyncIterator<Dump1090AircraftEdge>>,
+    Fragmentable {
+  node: <T = Dump1090AircraftSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TrunkedCallSourceSubscriptionPayload {
+  mutation: MutationType;
+  node: TrunkedCallSource;
+  updatedFields: String[];
+  previousValues: TrunkedCallSourcePreviousValues;
+}
+
+export interface TrunkedCallSourceSubscriptionPayloadPromise
+  extends Promise<TrunkedCallSourceSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TrunkedCallSourcePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TrunkedCallSourcePreviousValuesPromise>() => T;
+}
+
+export interface TrunkedCallSourceSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TrunkedCallSourceSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TrunkedCallSourceSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TrunkedCallSourcePreviousValuesSubscription>() => T;
+}
+
+export interface TrunkedCallSourceEdge {
+  node: TrunkedCallSource;
+  cursor: String;
+}
+
+export interface TrunkedCallSourceEdgePromise
+  extends Promise<TrunkedCallSourceEdge>,
+    Fragmentable {
+  node: <T = TrunkedCallSourcePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TrunkedCallSourceEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedCallSourceEdge>>,
+    Fragmentable {
+  node: <T = TrunkedCallSourceSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TrunkedCallSourcePreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  sourceId?: Int;
+  time?: DateTimeOutput;
+  position?: Float;
+}
+
+export interface TrunkedCallSourcePreviousValuesPromise
+  extends Promise<TrunkedCallSourcePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  sourceId: () => Promise<Int>;
+  time: () => Promise<DateTimeOutput>;
+  position: () => Promise<Float>;
+}
+
+export interface TrunkedCallSourcePreviousValuesSubscription
+  extends Promise<AsyncIterator<TrunkedCallSourcePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  sourceId: () => Promise<AsyncIterator<Int>>;
+  time: () => Promise<AsyncIterator<DateTimeOutput>>;
+  position: () => Promise<AsyncIterator<Float>>;
+}
+
+export interface TrunkedCallFrequencyTimeConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedCallFrequencyTimeEdge[];
+}
+
+export interface TrunkedCallFrequencyTimeConnectionPromise
+  extends Promise<TrunkedCallFrequencyTimeConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedCallFrequencyTimeEdge>>() => T;
+  aggregate: <T = AggregateTrunkedCallFrequencyTimePromise>() => T;
+}
+
+export interface TrunkedCallFrequencyTimeConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedCallFrequencyTimeConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <
+    T = Promise<AsyncIterator<TrunkedCallFrequencyTimeEdgeSubscription>>
+  >() => T;
+  aggregate: <T = AggregateTrunkedCallFrequencyTimeSubscription>() => T;
+}
+
+export interface Dump1090MessageConnection {
+  pageInfo: PageInfo;
+  edges: Dump1090MessageEdge[];
+}
+
+export interface Dump1090MessageConnectionPromise
+  extends Promise<Dump1090MessageConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<Dump1090MessageEdge>>() => T;
+  aggregate: <T = AggregateDump1090MessagePromise>() => T;
+}
+
+export interface Dump1090MessageConnectionSubscription
+  extends Promise<AsyncIterator<Dump1090MessageConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<Dump1090MessageEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateDump1090MessageSubscription>() => T;
+}
+
+export interface AggregateTranscriptionWord {
   count: Int;
 }
 
-export interface AggregateTrunkedCallSourcePromise
-  extends Promise<AggregateTrunkedCallSource>,
+export interface AggregateTranscriptionWordPromise
+  extends Promise<AggregateTranscriptionWord>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregateTrunkedCallSourceSubscription
-  extends Promise<AsyncIterator<AggregateTrunkedCallSource>>,
+export interface AggregateTranscriptionWordSubscription
+  extends Promise<AsyncIterator<AggregateTranscriptionWord>>,
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-export interface TrunkedCallConnection {
-  pageInfo: PageInfo;
-  edges: TrunkedCallEdge[];
+export interface TrunkedConfigSubscriptionPayload {
+  mutation: MutationType;
+  node: TrunkedConfig;
+  updatedFields: String[];
+  previousValues: TrunkedConfigPreviousValues;
 }
 
-export interface TrunkedCallConnectionPromise
-  extends Promise<TrunkedCallConnection>,
+export interface TrunkedConfigSubscriptionPayloadPromise
+  extends Promise<TrunkedConfigSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TrunkedConfigPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TrunkedConfigPreviousValuesPromise>() => T;
+}
+
+export interface TrunkedConfigSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TrunkedConfigSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TrunkedConfigSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TrunkedConfigPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateTrunkedSystem {
+  count: Int;
+}
+
+export interface AggregateTrunkedSystemPromise
+  extends Promise<AggregateTrunkedSystem>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedSystemSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedSystem>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedConfigPreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  name: String;
+  defaultMode: TrunkedDefaultMode;
+  captureDir: String;
+  callTimeout: Int;
+  logFile: Boolean;
+  frequencyFormat: TrunkedFrequencyFormat;
+  controlWarnRate: Int;
+  statusAsString: Boolean;
+}
+
+export interface TrunkedConfigPreviousValuesPromise
+  extends Promise<TrunkedConfigPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  defaultMode: () => Promise<TrunkedDefaultMode>;
+  captureDir: () => Promise<String>;
+  callTimeout: () => Promise<Int>;
+  logFile: () => Promise<Boolean>;
+  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
+  controlWarnRate: () => Promise<Int>;
+  statusAsString: () => Promise<Boolean>;
+}
+
+export interface TrunkedConfigPreviousValuesSubscription
+  extends Promise<AsyncIterator<TrunkedConfigPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  defaultMode: () => Promise<AsyncIterator<TrunkedDefaultMode>>;
+  captureDir: () => Promise<AsyncIterator<String>>;
+  callTimeout: () => Promise<AsyncIterator<Int>>;
+  logFile: () => Promise<AsyncIterator<Boolean>>;
+  frequencyFormat: () => Promise<AsyncIterator<TrunkedFrequencyFormat>>;
+  controlWarnRate: () => Promise<AsyncIterator<Int>>;
+  statusAsString: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface TrunkedConfigConnection {
+  pageInfo: PageInfo;
+  edges: TrunkedConfigEdge[];
+}
+
+export interface TrunkedConfigConnectionPromise
+  extends Promise<TrunkedConfigConnection>,
     Fragmentable {
   pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<TrunkedCallEdge>>() => T;
-  aggregate: <T = AggregateTrunkedCallPromise>() => T;
+  edges: <T = FragmentableArray<TrunkedConfigEdge>>() => T;
+  aggregate: <T = AggregateTrunkedConfigPromise>() => T;
 }
 
-export interface TrunkedCallConnectionSubscription
-  extends Promise<AsyncIterator<TrunkedCallConnection>>,
+export interface TrunkedConfigConnectionSubscription
+  extends Promise<AsyncIterator<TrunkedConfigConnection>>,
     Fragmentable {
   pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<TrunkedCallEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateTrunkedCallSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<TrunkedConfigEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateTrunkedConfigSubscription>() => T;
+}
+
+export interface Dump1090MessageEdge {
+  node: Dump1090Message;
+  cursor: String;
+}
+
+export interface Dump1090MessageEdgePromise
+  extends Promise<Dump1090MessageEdge>,
+    Fragmentable {
+  node: <T = Dump1090MessagePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface Dump1090MessageEdgeSubscription
+  extends Promise<AsyncIterator<Dump1090MessageEdge>>,
+    Fragmentable {
+  node: <T = Dump1090MessageSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TrunkedConfig {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  name: String;
+  defaultMode: TrunkedDefaultMode;
+  captureDir: String;
+  callTimeout: Int;
+  logFile: Boolean;
+  frequencyFormat: TrunkedFrequencyFormat;
+  controlWarnRate: Int;
+  statusAsString: Boolean;
+}
+
+export interface TrunkedConfigPromise
+  extends Promise<TrunkedConfig>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  sources: <T = FragmentableArray<TrunkedSource>>(args?: {
+    where?: TrunkedSourceWhereInput;
+    orderBy?: TrunkedSourceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  systems: <T = FragmentableArray<TrunkedSystem>>(args?: {
+    where?: TrunkedSystemWhereInput;
+    orderBy?: TrunkedSystemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  defaultMode: () => Promise<TrunkedDefaultMode>;
+  captureDir: () => Promise<String>;
+  callTimeout: () => Promise<Int>;
+  logFile: () => Promise<Boolean>;
+  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
+  controlWarnRate: () => Promise<Int>;
+  statusAsString: () => Promise<Boolean>;
+}
+
+export interface TrunkedConfigSubscription
+  extends Promise<AsyncIterator<TrunkedConfig>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  name: () => Promise<AsyncIterator<String>>;
+  sources: <T = Promise<AsyncIterator<TrunkedSourceSubscription>>>(args?: {
+    where?: TrunkedSourceWhereInput;
+    orderBy?: TrunkedSourceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  systems: <T = Promise<AsyncIterator<TrunkedSystemSubscription>>>(args?: {
+    where?: TrunkedSystemWhereInput;
+    orderBy?: TrunkedSystemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  defaultMode: () => Promise<AsyncIterator<TrunkedDefaultMode>>;
+  captureDir: () => Promise<AsyncIterator<String>>;
+  callTimeout: () => Promise<AsyncIterator<Int>>;
+  logFile: () => Promise<AsyncIterator<Boolean>>;
+  frequencyFormat: () => Promise<AsyncIterator<TrunkedFrequencyFormat>>;
+  controlWarnRate: () => Promise<AsyncIterator<Int>>;
+  statusAsString: () => Promise<AsyncIterator<Boolean>>;
+}
+
+export interface TrunkedConfigNullablePromise
+  extends Promise<TrunkedConfig | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  name: () => Promise<String>;
+  sources: <T = FragmentableArray<TrunkedSource>>(args?: {
+    where?: TrunkedSourceWhereInput;
+    orderBy?: TrunkedSourceOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  systems: <T = FragmentableArray<TrunkedSystem>>(args?: {
+    where?: TrunkedSystemWhereInput;
+    orderBy?: TrunkedSystemOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  defaultMode: () => Promise<TrunkedDefaultMode>;
+  captureDir: () => Promise<String>;
+  callTimeout: () => Promise<Int>;
+  logFile: () => Promise<Boolean>;
+  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
+  controlWarnRate: () => Promise<Int>;
+  statusAsString: () => Promise<Boolean>;
+}
+
+export interface TrunkedCallEdge {
+  node: TrunkedCall;
+  cursor: String;
+}
+
+export interface TrunkedCallEdgePromise
+  extends Promise<TrunkedCallEdge>,
+    Fragmentable {
+  node: <T = TrunkedCallPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface TrunkedCallEdgeSubscription
+  extends Promise<AsyncIterator<TrunkedCallEdge>>,
+    Fragmentable {
+  node: <T = TrunkedCallSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface TrunkedSystemSubscriptionPayload {
+  mutation: MutationType;
+  node: TrunkedSystem;
+  updatedFields: String[];
+  previousValues: TrunkedSystemPreviousValues;
+}
+
+export interface TrunkedSystemSubscriptionPayloadPromise
+  extends Promise<TrunkedSystemSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = TrunkedSystemPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = TrunkedSystemPreviousValuesPromise>() => T;
+}
+
+export interface TrunkedSystemSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<TrunkedSystemSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = TrunkedSystemSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = TrunkedSystemPreviousValuesSubscription>() => T;
+}
+
+export interface AggregateDump1090Message {
+  count: Int;
+}
+
+export interface AggregateDump1090MessagePromise
+  extends Promise<AggregateDump1090Message>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateDump1090MessageSubscription
+  extends Promise<AsyncIterator<AggregateDump1090Message>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface TrunkedSourcePreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  center: Float;
+  rate: Float;
+  squelch: Float;
+  error: Float;
+  gain: Float;
+  digitalRecorders: Float;
+  digitalLevels: Float;
+  analogRecorders: Float;
+  analogLevels: Float;
+  device?: String;
+  modulation: TrunkedModulation;
+}
+
+export interface TrunkedSourcePreviousValuesPromise
+  extends Promise<TrunkedSourcePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  center: () => Promise<Float>;
+  rate: () => Promise<Float>;
+  squelch: () => Promise<Float>;
+  error: () => Promise<Float>;
+  gain: () => Promise<Float>;
+  digitalRecorders: () => Promise<Float>;
+  digitalLevels: () => Promise<Float>;
+  analogRecorders: () => Promise<Float>;
+  analogLevels: () => Promise<Float>;
+  device: () => Promise<String>;
+  modulation: () => Promise<TrunkedModulation>;
+}
+
+export interface TrunkedSourcePreviousValuesSubscription
+  extends Promise<AsyncIterator<TrunkedSourcePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  center: () => Promise<AsyncIterator<Float>>;
+  rate: () => Promise<AsyncIterator<Float>>;
+  squelch: () => Promise<AsyncIterator<Float>>;
+  error: () => Promise<AsyncIterator<Float>>;
+  gain: () => Promise<AsyncIterator<Float>>;
+  digitalRecorders: () => Promise<AsyncIterator<Float>>;
+  digitalLevels: () => Promise<AsyncIterator<Float>>;
+  analogRecorders: () => Promise<AsyncIterator<Float>>;
+  analogLevels: () => Promise<AsyncIterator<Float>>;
+  device: () => Promise<AsyncIterator<String>>;
+  modulation: () => Promise<AsyncIterator<TrunkedModulation>>;
 }
 
 export interface TrunkedSourceSubscriptionPayload {
@@ -6602,6 +7119,71 @@ export interface TrunkedSourceSubscriptionPayloadSubscription
   node: <T = TrunkedSourceSubscription>() => T;
   updatedFields: () => Promise<AsyncIterator<String[]>>;
   previousValues: <T = TrunkedSourcePreviousValuesSubscription>() => T;
+}
+
+export interface TrunkedTalkgroupPreviousValues {
+  id: ID_Output;
+  updatedAt: DateTimeOutput;
+  createdAt: DateTimeOutput;
+  decimal: Int;
+  hex: String;
+  mode: String;
+  alphaTag: String;
+  description: String;
+  tag: String;
+  group: String;
+  priority: Int;
+  hash: String;
+}
+
+export interface TrunkedTalkgroupPreviousValuesPromise
+  extends Promise<TrunkedTalkgroupPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  updatedAt: () => Promise<DateTimeOutput>;
+  createdAt: () => Promise<DateTimeOutput>;
+  decimal: () => Promise<Int>;
+  hex: () => Promise<String>;
+  mode: () => Promise<String>;
+  alphaTag: () => Promise<String>;
+  description: () => Promise<String>;
+  tag: () => Promise<String>;
+  group: () => Promise<String>;
+  priority: () => Promise<Int>;
+  hash: () => Promise<String>;
+}
+
+export interface TrunkedTalkgroupPreviousValuesSubscription
+  extends Promise<AsyncIterator<TrunkedTalkgroupPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  decimal: () => Promise<AsyncIterator<Int>>;
+  hex: () => Promise<AsyncIterator<String>>;
+  mode: () => Promise<AsyncIterator<String>>;
+  alphaTag: () => Promise<AsyncIterator<String>>;
+  description: () => Promise<AsyncIterator<String>>;
+  tag: () => Promise<AsyncIterator<String>>;
+  group: () => Promise<AsyncIterator<String>>;
+  priority: () => Promise<AsyncIterator<Int>>;
+  hash: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateTrunkedCallFrequencyTime {
+  count: Int;
+}
+
+export interface AggregateTrunkedCallFrequencyTimePromise
+  extends Promise<AggregateTrunkedCallFrequencyTime>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateTrunkedCallFrequencyTimeSubscription
+  extends Promise<AsyncIterator<AggregateTrunkedCallFrequencyTime>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface TrunkedTalkgroup {
@@ -6700,186 +7282,6 @@ export interface TrunkedTalkgroupNullablePromise
   hash: () => Promise<String>;
 }
 
-export interface TrunkedConfigPreviousValues {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  name: String;
-  defaultMode: TrunkedDefaultMode;
-  captureDir: String;
-  callTimeout: Int;
-  logFile: Boolean;
-  frequencyFormat: TrunkedFrequencyFormat;
-  controlWarnRate: Int;
-  statusAsString: Boolean;
-}
-
-export interface TrunkedConfigPreviousValuesPromise
-  extends Promise<TrunkedConfigPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  name: () => Promise<String>;
-  defaultMode: () => Promise<TrunkedDefaultMode>;
-  captureDir: () => Promise<String>;
-  callTimeout: () => Promise<Int>;
-  logFile: () => Promise<Boolean>;
-  frequencyFormat: () => Promise<TrunkedFrequencyFormat>;
-  controlWarnRate: () => Promise<Int>;
-  statusAsString: () => Promise<Boolean>;
-}
-
-export interface TrunkedConfigPreviousValuesSubscription
-  extends Promise<AsyncIterator<TrunkedConfigPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  name: () => Promise<AsyncIterator<String>>;
-  defaultMode: () => Promise<AsyncIterator<TrunkedDefaultMode>>;
-  captureDir: () => Promise<AsyncIterator<String>>;
-  callTimeout: () => Promise<AsyncIterator<Int>>;
-  logFile: () => Promise<AsyncIterator<Boolean>>;
-  frequencyFormat: () => Promise<AsyncIterator<TrunkedFrequencyFormat>>;
-  controlWarnRate: () => Promise<AsyncIterator<Int>>;
-  statusAsString: () => Promise<AsyncIterator<Boolean>>;
-}
-
-export interface TrunkedConfigSubscriptionPayload {
-  mutation: MutationType;
-  node: TrunkedConfig;
-  updatedFields: String[];
-  previousValues: TrunkedConfigPreviousValues;
-}
-
-export interface TrunkedConfigSubscriptionPayloadPromise
-  extends Promise<TrunkedConfigSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = TrunkedConfigPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = TrunkedConfigPreviousValuesPromise>() => T;
-}
-
-export interface TrunkedConfigSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<TrunkedConfigSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = TrunkedConfigSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = TrunkedConfigPreviousValuesSubscription>() => T;
-}
-
-export interface AggregateTranscription {
-  count: Int;
-}
-
-export interface AggregateTranscriptionPromise
-  extends Promise<AggregateTranscription>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateTranscriptionSubscription
-  extends Promise<AsyncIterator<AggregateTranscription>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface TrunkedCallFrequencyTimeEdge {
-  node: TrunkedCallFrequencyTime;
-  cursor: String;
-}
-
-export interface TrunkedCallFrequencyTimeEdgePromise
-  extends Promise<TrunkedCallFrequencyTimeEdge>,
-    Fragmentable {
-  node: <T = TrunkedCallFrequencyTimePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface TrunkedCallFrequencyTimeEdgeSubscription
-  extends Promise<AsyncIterator<TrunkedCallFrequencyTimeEdge>>,
-    Fragmentable {
-  node: <T = TrunkedCallFrequencyTimeSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface TrunkedSource {
-  id: ID_Output;
-  updatedAt: DateTimeOutput;
-  createdAt: DateTimeOutput;
-  center: Float;
-  rate: Float;
-  squelch: Float;
-  error: Float;
-  gain: Float;
-  digitalRecorders: Float;
-  digitalLevels: Float;
-  analogRecorders: Float;
-  analogLevels: Float;
-  device?: String;
-  modulation: TrunkedModulation;
-}
-
-export interface TrunkedSourcePromise
-  extends Promise<TrunkedSource>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  center: () => Promise<Float>;
-  rate: () => Promise<Float>;
-  squelch: () => Promise<Float>;
-  error: () => Promise<Float>;
-  gain: () => Promise<Float>;
-  digitalRecorders: () => Promise<Float>;
-  digitalLevels: () => Promise<Float>;
-  analogRecorders: () => Promise<Float>;
-  analogLevels: () => Promise<Float>;
-  device: () => Promise<String>;
-  modulation: () => Promise<TrunkedModulation>;
-}
-
-export interface TrunkedSourceSubscription
-  extends Promise<AsyncIterator<TrunkedSource>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  center: () => Promise<AsyncIterator<Float>>;
-  rate: () => Promise<AsyncIterator<Float>>;
-  squelch: () => Promise<AsyncIterator<Float>>;
-  error: () => Promise<AsyncIterator<Float>>;
-  gain: () => Promise<AsyncIterator<Float>>;
-  digitalRecorders: () => Promise<AsyncIterator<Float>>;
-  digitalLevels: () => Promise<AsyncIterator<Float>>;
-  analogRecorders: () => Promise<AsyncIterator<Float>>;
-  analogLevels: () => Promise<AsyncIterator<Float>>;
-  device: () => Promise<AsyncIterator<String>>;
-  modulation: () => Promise<AsyncIterator<TrunkedModulation>>;
-}
-
-export interface TrunkedSourceNullablePromise
-  extends Promise<TrunkedSource | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  updatedAt: () => Promise<DateTimeOutput>;
-  createdAt: () => Promise<DateTimeOutput>;
-  center: () => Promise<Float>;
-  rate: () => Promise<Float>;
-  squelch: () => Promise<Float>;
-  error: () => Promise<Float>;
-  gain: () => Promise<Float>;
-  digitalRecorders: () => Promise<Float>;
-  digitalLevels: () => Promise<Float>;
-  analogRecorders: () => Promise<Float>;
-  analogLevels: () => Promise<Float>;
-  device: () => Promise<String>;
-  modulation: () => Promise<TrunkedModulation>;
-}
-
 export interface TrunkedSourceEdge {
   node: TrunkedSource;
   cursor: String;
@@ -6904,11 +7306,7 @@ The `String` scalar type represents textual data, represented as UTF-8 character
 */
 export type String = string;
 
-/*
-The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
-*/
-export type ID_Input = string | number;
-export type ID_Output = string;
+export type Long = string;
 
 /*
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
@@ -6920,7 +7318,11 @@ The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
 
-export type Long = string;
+/*
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+*/
+export type ID_Input = string | number;
+export type ID_Output = string;
 
 /*
 DateTime scalar input type, allowing Date
@@ -7016,6 +7418,14 @@ export const models: Model[] = [
   },
   {
     name: "TranscriptionWord",
+    embedded: false
+  },
+  {
+    name: "User",
+    embedded: false
+  },
+  {
+    name: "UserRole",
     embedded: false
   }
 ];

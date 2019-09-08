@@ -7,23 +7,20 @@
     <v-btn fixed bottom left fab round small nuxt to="/configure/system/new">
       <v-icon small color="white">mdi-plus</v-icon>
     </v-btn>
-    <v-flex sm12 mt-2 mx-4 class="hidden-md-and-up" v-if="!$route.path.includes('/new')">
-      <v-layout row wrap>
-        <v-flex sm6 offset-sm3 xs12>
-          <v-overflow-btn
-            dense
-            small
-            :items="trunkedSystems"
-            item-value="systemId"
-            item-name="system.shortName"
-            :item-text="formatSystemName"
-            :label="'Existing systems (' + trunkedSystems.length + ')'"
-            @change="setSelectedSystem"
-            v-model="$route.params.edit"
-            nuxt
-          ></v-overflow-btn>
-        </v-flex>
-      </v-layout>
+    <v-flex sm12 mt-3 mx-4 class="hidden-md-and-up" v-if="!$route.path.includes('/new')">
+      <v-overflow-btn
+        background-color="white"
+        :loading="$apollo.loading"
+        :items="trunkedSystems"
+        item-value="systemId"
+        item-name="system.shortName"
+        :item-text="formatSystemName"
+        prepend-inner-icon="mdi-radio-tower"
+        :label="'Existing systems (' + trunkedSystems.length + ')'"
+        @change="setSelectedSystem"
+        v-model="$route.params.edit"
+        nuxt
+      ></v-overflow-btn>
     </v-flex>
     <v-container pr-1>
       <v-flex xs12 class="hidden-sm-and-down">
@@ -41,7 +38,8 @@
                     <v-list-tile-title>New System</v-list-tile-title>
                     <v-list-tile-title
                       class="text-uppercase text-truncate caption font-weight-light"
-                    >new</v-list-tile-title>
+                    >new
+                    </v-list-tile-title>
                   </v-list-tile-content>
                 </v-list-tile>
                 <v-divider></v-divider>
@@ -58,12 +56,13 @@
                     <v-list-tile-title>{{item.system.name}}</v-list-tile-title>
                     <v-list-tile-title
                       class="text-uppercase text-truncate caption font-weight-light"
-                    >{{ item.system.shortName }}</v-list-tile-title>
+                    >{{ item.system.shortName }}
+                    </v-list-tile-title>
                   </v-list-tile-content>
                   <v-list-tile-action>
                     <v-list-tile-action-text class="text-xs-right">
                       {{item.callCount | formatThousandsAsK}} calls
-                      <br />
+                      <br/>
                       {{ item.talkgroupCount | formatThousandsAsK}} TGs
                     </v-list-tile-action-text>
                   </v-list-tile-action>
@@ -78,7 +77,7 @@
   </v-layout>
 </template>
 <script lang="ts">
-  import { Vue, Component, Watch } from "nuxt-property-decorator";
+  import { Component, Vue } from "nuxt-property-decorator";
   import { TrunkedSystem } from "~/types/gql.types";
 
   @Component({
@@ -102,7 +101,7 @@
     }
 
     formatSystemName(item: { system: TrunkedSystem }) {
-      return `${item.system.shortName} - ${item.system.name}`;
+      return `${ item.system.shortName } - ${ item.system.name }`;
     }
 
     get creatingNewSystem() {
@@ -122,6 +121,7 @@
   .v-btn--floating.v-btn--fixed.v-btn--left.v-btn--round {
     background-color: darken($color: $indigo, $amount: 30) !important;
     color: #fff !important;
+
     .v-list__tile__action-text {
       color: #fff !important;
     }

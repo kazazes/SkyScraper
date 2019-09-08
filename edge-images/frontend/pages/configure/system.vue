@@ -1,7 +1,7 @@
 <template>
   <v-container fluid pa-0 :class="{'fill-height': $vuetify.breakpoint.mdAndUp}">
     <v-layout :class="{'column': $vuetify.breakpoint.smAndDown}">
-      <v-flex md4 sm12 lg3 v-if="!creatingNewSystem">
+      <v-flex md4 lg3 v-if="!creatingNewSystem">
         <SystemSelector v-on:system-changed="systemChanged"></SystemSelector>
       </v-flex>
       <v-flex fill-height>
@@ -12,12 +12,11 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
   import { Component, Watch } from "nuxt-property-decorator";
+  import Vue from "vue";
   import { TRUNKED_SYSTEM_STATS } from "~/assets/apollo/queries/trunkedSystemStats";
-  import { TrunkedSystemStats, TrunkedSystem } from "~/types/gql.types";
-  import { ApolloQueryResult } from "apollo-client";
   import SystemSelector from "~/components/tables/SystemSelector.vue";
+  import { TrunkedSystem, TrunkedSystemStats } from "~/types/gql.types";
 
   @Component({
     head: {
@@ -43,6 +42,13 @@
     },
   })
   export default class SystemsConfig extends Vue {
+    mounted() {
+      this.$nextTick(() => {
+        if (this.$nuxt.$loading && typeof this.$nuxt.$loading.start === "function")
+          this.$nuxt.$loading.start();
+      });
+    }
+
     @Watch("$apollo.loading", { deep: true })
     loadingStateChanged() {
       if (this.$apollo.loading) {
@@ -70,7 +76,7 @@
     }
 
     formatSystemName(item: TrunkedSystem) {
-      return `${item.shortName} - ${item.name}`;
+      return `${ item.shortName } - ${ item.name }`;
     }
 
     systemChanged(systemId: string) {

@@ -65,6 +65,11 @@ export type AggregateTrunkedTalkgroup = {
   count: Scalars['Int'],
 };
 
+export type AggregateUser = {
+   __typename?: 'AggregateUser',
+  count: Scalars['Int'],
+};
+
 export type BatchPayload = {
    __typename?: 'BatchPayload',
   count: Scalars['Long'],
@@ -534,10 +539,18 @@ export enum Dump1090TransmissionType {
   AllCallReply = 'ALL_CALL_REPLY'
 }
 
+export type LoginResponse = {
+   __typename?: 'LoginResponse',
+  token?: Maybe<Scalars['String']>,
+  user?: Maybe<User>,
+};
+
 
 export type Mutation = {
    __typename?: 'Mutation',
   createTrunkedSystem: TrunkedSystem,
+  register: User,
+  login: LoginResponse,
   createDump1090Aircraft: Dump1090Aircraft,
   updateDump1090Aircraft?: Maybe<Dump1090Aircraft>,
   updateManyDump1090Aircrafts: BatchPayload,
@@ -603,12 +616,31 @@ export type Mutation = {
   upsertTrunkedTalkgroup: TrunkedTalkgroup,
   deleteTrunkedTalkgroup?: Maybe<TrunkedTalkgroup>,
   deleteManyTrunkedTalkgroups: BatchPayload,
+  createUser: User,
+  updateUser?: Maybe<User>,
+  updateManyUsers: BatchPayload,
+  upsertUser: User,
+  deleteUser?: Maybe<User>,
+  deleteManyUsers: BatchPayload,
 };
 
 
 export type MutationCreateTrunkedSystemArgs = {
   system?: Maybe<TrunkedSystemCreateInput>,
   data: TrunkedSystemCreateInput
+};
+
+
+export type MutationRegisterArgs = {
+  email: Scalars['String'],
+  password: Scalars['String'],
+  phone: Scalars['String']
+};
+
+
+export type MutationLoginArgs = {
+  username: Scalars['String'],
+  password: Scalars['String']
 };
 
 
@@ -980,6 +1012,40 @@ export type MutationDeleteManyTrunkedTalkgroupsArgs = {
   where?: Maybe<TrunkedTalkgroupWhereInput>
 };
 
+
+export type MutationCreateUserArgs = {
+  data: UserCreateInput
+};
+
+
+export type MutationUpdateUserArgs = {
+  data: UserUpdateInput,
+  where: UserWhereUniqueInput
+};
+
+
+export type MutationUpdateManyUsersArgs = {
+  data: UserUpdateManyMutationInput,
+  where?: Maybe<UserWhereInput>
+};
+
+
+export type MutationUpsertUserArgs = {
+  where: UserWhereUniqueInput,
+  create: UserCreateInput,
+  update: UserUpdateInput
+};
+
+
+export type MutationDeleteUserArgs = {
+  where: UserWhereUniqueInput
+};
+
+
+export type MutationDeleteManyUsersArgs = {
+  where?: Maybe<UserWhereInput>
+};
+
 export enum MutationType {
   Created = 'CREATED',
   Updated = 'UPDATED',
@@ -1005,6 +1071,8 @@ export type Query = {
   trunkedSystem?: Maybe<TrunkedSystem>,
   trunkedSystemStats?: Maybe<TrunkedSystemStats>,
   trunkedSystemsStats?: Maybe<Array<TrunkedSystemStats>>,
+  currentUser: User,
+  deviceRegistered: Scalars['Boolean'],
   dump1090Aircraft?: Maybe<Dump1090Aircraft>,
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>,
   dump1090AircraftsConnection: Dump1090AircraftConnection,
@@ -1035,6 +1103,9 @@ export type Query = {
   trunkedTalkgroup?: Maybe<TrunkedTalkgroup>,
   trunkedTalkgroups: Array<Maybe<TrunkedTalkgroup>>,
   trunkedTalkgroupsConnection: TrunkedTalkgroupConnection,
+  user?: Maybe<User>,
+  users: Array<Maybe<User>>,
+  usersConnection: UserConnection,
   node?: Maybe<Node>,
 };
 
@@ -1341,6 +1412,33 @@ export type QueryTrunkedTalkgroupsConnectionArgs = {
 };
 
 
+export type QueryUserArgs = {
+  where: UserWhereUniqueInput
+};
+
+
+export type QueryUsersArgs = {
+  where?: Maybe<UserWhereInput>,
+  orderBy?: Maybe<UserOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryUsersConnectionArgs = {
+  where?: Maybe<UserWhereInput>,
+  orderBy?: Maybe<UserOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
 export type QueryNodeArgs = {
   id: Scalars['ID']
 };
@@ -1360,6 +1458,7 @@ export type Subscription = {
   trunkedSource?: Maybe<TrunkedSourceSubscriptionPayload>,
   trunkedSystem?: Maybe<TrunkedSystemSubscriptionPayload>,
   trunkedTalkgroup?: Maybe<TrunkedTalkgroupSubscriptionPayload>,
+  user?: Maybe<UserSubscriptionPayload>,
 };
 
 
@@ -1415,6 +1514,11 @@ export type SubscriptionTrunkedSystemArgs = {
 
 export type SubscriptionTrunkedTalkgroupArgs = {
   where?: Maybe<TrunkedTalkgroupSubscriptionWhereInput>
+};
+
+
+export type SubscriptionUserArgs = {
+  where?: Maybe<UserSubscriptionWhereInput>
 };
 
 export type Transcription = {
@@ -5299,6 +5403,245 @@ export type TrunkedTalkgroupWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>,
   hash?: Maybe<Scalars['String']>,
 };
+
+export type User = {
+   __typename?: 'User',
+  id: Scalars['ID'],
+  updatedAt: Scalars['DateTime'],
+  createdAt: Scalars['DateTime'],
+  name: Scalars['String'],
+  email: Scalars['String'],
+  phone: Scalars['String'],
+  verified: Scalars['Boolean'],
+  password: Scalars['String'],
+  authyId: Scalars['String'],
+  role: UserRole,
+};
+
+export type UserConnection = {
+   __typename?: 'UserConnection',
+  pageInfo: PageInfo,
+  edges: Array<Maybe<UserEdge>>,
+  aggregate: AggregateUser,
+};
+
+export type UserCreateInput = {
+  id?: Maybe<Scalars['ID']>,
+  name: Scalars['String'],
+  email: Scalars['String'],
+  phone: Scalars['String'],
+  verified?: Maybe<Scalars['Boolean']>,
+  password: Scalars['String'],
+  authyId: Scalars['String'],
+  role?: Maybe<UserRole>,
+};
+
+export type UserEdge = {
+   __typename?: 'UserEdge',
+  node: User,
+  cursor: Scalars['String'],
+};
+
+export enum UserOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  UpdatedAtAsc = 'updatedAt_ASC',
+  UpdatedAtDesc = 'updatedAt_DESC',
+  CreatedAtAsc = 'createdAt_ASC',
+  CreatedAtDesc = 'createdAt_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  EmailAsc = 'email_ASC',
+  EmailDesc = 'email_DESC',
+  PhoneAsc = 'phone_ASC',
+  PhoneDesc = 'phone_DESC',
+  VerifiedAsc = 'verified_ASC',
+  VerifiedDesc = 'verified_DESC',
+  PasswordAsc = 'password_ASC',
+  PasswordDesc = 'password_DESC',
+  AuthyIdAsc = 'authyId_ASC',
+  AuthyIdDesc = 'authyId_DESC',
+  RoleAsc = 'role_ASC',
+  RoleDesc = 'role_DESC'
+}
+
+export type UserPreviousValues = {
+   __typename?: 'UserPreviousValues',
+  id: Scalars['ID'],
+  updatedAt: Scalars['DateTime'],
+  createdAt: Scalars['DateTime'],
+  name: Scalars['String'],
+  email: Scalars['String'],
+  phone: Scalars['String'],
+  verified: Scalars['Boolean'],
+  password: Scalars['String'],
+  authyId: Scalars['String'],
+  role: UserRole,
+};
+
+export enum UserRole {
+  Admin = 'ADMIN',
+  User = 'USER',
+  Support = 'SUPPORT'
+}
+
+export type UserSubscriptionPayload = {
+   __typename?: 'UserSubscriptionPayload',
+  mutation: MutationType,
+  node?: Maybe<User>,
+  updatedFields?: Maybe<Array<Scalars['String']>>,
+  previousValues?: Maybe<UserPreviousValues>,
+};
+
+export type UserSubscriptionWhereInput = {
+  mutation_in?: Maybe<Array<MutationType>>,
+  updatedFields_contains?: Maybe<Scalars['String']>,
+  updatedFields_contains_every?: Maybe<Array<Scalars['String']>>,
+  updatedFields_contains_some?: Maybe<Array<Scalars['String']>>,
+  node?: Maybe<UserWhereInput>,
+  AND?: Maybe<Array<UserSubscriptionWhereInput>>,
+  OR?: Maybe<Array<UserSubscriptionWhereInput>>,
+  NOT?: Maybe<Array<UserSubscriptionWhereInput>>,
+};
+
+export type UserUpdateInput = {
+  name?: Maybe<Scalars['String']>,
+  email?: Maybe<Scalars['String']>,
+  phone?: Maybe<Scalars['String']>,
+  verified?: Maybe<Scalars['Boolean']>,
+  password?: Maybe<Scalars['String']>,
+  authyId?: Maybe<Scalars['String']>,
+  role?: Maybe<UserRole>,
+};
+
+export type UserUpdateManyMutationInput = {
+  name?: Maybe<Scalars['String']>,
+  email?: Maybe<Scalars['String']>,
+  phone?: Maybe<Scalars['String']>,
+  verified?: Maybe<Scalars['Boolean']>,
+  password?: Maybe<Scalars['String']>,
+  authyId?: Maybe<Scalars['String']>,
+  role?: Maybe<UserRole>,
+};
+
+export type UserWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  updatedAt?: Maybe<Scalars['DateTime']>,
+  updatedAt_not?: Maybe<Scalars['DateTime']>,
+  updatedAt_in?: Maybe<Array<Scalars['DateTime']>>,
+  updatedAt_not_in?: Maybe<Array<Scalars['DateTime']>>,
+  updatedAt_lt?: Maybe<Scalars['DateTime']>,
+  updatedAt_lte?: Maybe<Scalars['DateTime']>,
+  updatedAt_gt?: Maybe<Scalars['DateTime']>,
+  updatedAt_gte?: Maybe<Scalars['DateTime']>,
+  createdAt?: Maybe<Scalars['DateTime']>,
+  createdAt_not?: Maybe<Scalars['DateTime']>,
+  createdAt_in?: Maybe<Array<Scalars['DateTime']>>,
+  createdAt_not_in?: Maybe<Array<Scalars['DateTime']>>,
+  createdAt_lt?: Maybe<Scalars['DateTime']>,
+  createdAt_lte?: Maybe<Scalars['DateTime']>,
+  createdAt_gt?: Maybe<Scalars['DateTime']>,
+  createdAt_gte?: Maybe<Scalars['DateTime']>,
+  name?: Maybe<Scalars['String']>,
+  name_not?: Maybe<Scalars['String']>,
+  name_in?: Maybe<Array<Scalars['String']>>,
+  name_not_in?: Maybe<Array<Scalars['String']>>,
+  name_lt?: Maybe<Scalars['String']>,
+  name_lte?: Maybe<Scalars['String']>,
+  name_gt?: Maybe<Scalars['String']>,
+  name_gte?: Maybe<Scalars['String']>,
+  name_contains?: Maybe<Scalars['String']>,
+  name_not_contains?: Maybe<Scalars['String']>,
+  name_starts_with?: Maybe<Scalars['String']>,
+  name_not_starts_with?: Maybe<Scalars['String']>,
+  name_ends_with?: Maybe<Scalars['String']>,
+  name_not_ends_with?: Maybe<Scalars['String']>,
+  email?: Maybe<Scalars['String']>,
+  email_not?: Maybe<Scalars['String']>,
+  email_in?: Maybe<Array<Scalars['String']>>,
+  email_not_in?: Maybe<Array<Scalars['String']>>,
+  email_lt?: Maybe<Scalars['String']>,
+  email_lte?: Maybe<Scalars['String']>,
+  email_gt?: Maybe<Scalars['String']>,
+  email_gte?: Maybe<Scalars['String']>,
+  email_contains?: Maybe<Scalars['String']>,
+  email_not_contains?: Maybe<Scalars['String']>,
+  email_starts_with?: Maybe<Scalars['String']>,
+  email_not_starts_with?: Maybe<Scalars['String']>,
+  email_ends_with?: Maybe<Scalars['String']>,
+  email_not_ends_with?: Maybe<Scalars['String']>,
+  phone?: Maybe<Scalars['String']>,
+  phone_not?: Maybe<Scalars['String']>,
+  phone_in?: Maybe<Array<Scalars['String']>>,
+  phone_not_in?: Maybe<Array<Scalars['String']>>,
+  phone_lt?: Maybe<Scalars['String']>,
+  phone_lte?: Maybe<Scalars['String']>,
+  phone_gt?: Maybe<Scalars['String']>,
+  phone_gte?: Maybe<Scalars['String']>,
+  phone_contains?: Maybe<Scalars['String']>,
+  phone_not_contains?: Maybe<Scalars['String']>,
+  phone_starts_with?: Maybe<Scalars['String']>,
+  phone_not_starts_with?: Maybe<Scalars['String']>,
+  phone_ends_with?: Maybe<Scalars['String']>,
+  phone_not_ends_with?: Maybe<Scalars['String']>,
+  verified?: Maybe<Scalars['Boolean']>,
+  verified_not?: Maybe<Scalars['Boolean']>,
+  password?: Maybe<Scalars['String']>,
+  password_not?: Maybe<Scalars['String']>,
+  password_in?: Maybe<Array<Scalars['String']>>,
+  password_not_in?: Maybe<Array<Scalars['String']>>,
+  password_lt?: Maybe<Scalars['String']>,
+  password_lte?: Maybe<Scalars['String']>,
+  password_gt?: Maybe<Scalars['String']>,
+  password_gte?: Maybe<Scalars['String']>,
+  password_contains?: Maybe<Scalars['String']>,
+  password_not_contains?: Maybe<Scalars['String']>,
+  password_starts_with?: Maybe<Scalars['String']>,
+  password_not_starts_with?: Maybe<Scalars['String']>,
+  password_ends_with?: Maybe<Scalars['String']>,
+  password_not_ends_with?: Maybe<Scalars['String']>,
+  authyId?: Maybe<Scalars['String']>,
+  authyId_not?: Maybe<Scalars['String']>,
+  authyId_in?: Maybe<Array<Scalars['String']>>,
+  authyId_not_in?: Maybe<Array<Scalars['String']>>,
+  authyId_lt?: Maybe<Scalars['String']>,
+  authyId_lte?: Maybe<Scalars['String']>,
+  authyId_gt?: Maybe<Scalars['String']>,
+  authyId_gte?: Maybe<Scalars['String']>,
+  authyId_contains?: Maybe<Scalars['String']>,
+  authyId_not_contains?: Maybe<Scalars['String']>,
+  authyId_starts_with?: Maybe<Scalars['String']>,
+  authyId_not_starts_with?: Maybe<Scalars['String']>,
+  authyId_ends_with?: Maybe<Scalars['String']>,
+  authyId_not_ends_with?: Maybe<Scalars['String']>,
+  role?: Maybe<UserRole>,
+  role_not?: Maybe<UserRole>,
+  role_in?: Maybe<Array<UserRole>>,
+  role_not_in?: Maybe<Array<UserRole>>,
+  AND?: Maybe<Array<UserWhereInput>>,
+  OR?: Maybe<Array<UserWhereInput>>,
+  NOT?: Maybe<Array<UserWhereInput>>,
+};
+
+export type UserWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>,
+  email?: Maybe<Scalars['String']>,
+  phone?: Maybe<Scalars['String']>,
+  authyId?: Maybe<Scalars['String']>,
+};
 export type TrunkedCallsQueryVariables = {
   first?: Maybe<Scalars['Int']>,
   skip?: Maybe<Scalars['Int']>,
@@ -5364,6 +5707,10 @@ export type TrunkedSystemsStatsQuery = (
   & { trunkedSystemsStats: Maybe<Array<(
     { __typename?: 'TrunkedSystemStats' }
     & Pick<TrunkedSystemStats, 'systemId' | 'callCount' | 'talkgroupCount'>
+    & { system: (
+      { __typename?: 'TrunkedSystem' }
+      & Pick<TrunkedSystem, 'shortName' | 'name' | 'id'>
+    ) }
   )>> }
 );
 

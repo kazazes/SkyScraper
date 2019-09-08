@@ -16,14 +16,14 @@ const config: Configuration = {
   },
   head: {
     title: "SkyScraper",
-    titleTemplate: (t) => t + ' | SkyScraper',
+    titleTemplate: (t) => t + " | SkyScraper",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         hid: "description",
         name: "description",
-        content: "Admin | SkyScraper",
+        content: "SkyScraper Edge data interface.",
       },
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
@@ -36,8 +36,6 @@ const config: Configuration = {
    ** Global CSS
    */
   css: ["~/assets/style/index.scss"],
-
-  // css: ["~/assets/style/index.scss", "@mdi/font/css/materialdesignicons.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -65,7 +63,8 @@ const config: Configuration = {
     "@nuxtjs/vuetify",
     "@nuxtjs/apollo",
     "@nuxtjs/proxy",
-    "@nuxtjs/pwa",
+    ["@nuxtjs/pwa", { icon: !isDev }],
+    ["@nuxtjs/google-tag-manager", { id: "GTM-M7MNMCF" }],
     "@nuxtjs/auth",
     [
       "nuxt-validate",
@@ -111,7 +110,7 @@ const config: Configuration = {
     plugins: [
       new webpack.ContextReplacementPlugin(
         /moment[/\\]locale$/,
-        /en/
+        /en/,
       ) as Plugin,
     ],
   },

@@ -60,7 +60,7 @@
       TrunkedCallCard,
     },
     head: {
-      title: "Trunked System | SkyScraper",
+      title: "Trunked System",
     },
   })
   export default class TrunkedVoiceData extends Vue {

@@ -44,6 +44,5 @@ export const actions = {
       "setWsEndpoint",
       process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}/api/ws`
     );
-    console.log(JSON.stringify(state, null, 2));
   },
 };

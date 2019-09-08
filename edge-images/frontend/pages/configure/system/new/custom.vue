@@ -3,7 +3,6 @@
     <v-flex fill-height>
       <v-flex sm6 md5 lg4>
         <v-select
-          dark
           :items="['Trunked Voice']"
           label="Type"
           menu-props="auto"
@@ -26,5 +25,5 @@
       Wizard,
     },
   })
-  export default class NewSystem extends Vue {}
+  export default class CustomSystem extends Vue {}
 </script>

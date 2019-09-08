@@ -6,7 +6,8 @@
           centered
           fixed-tabs
           dark
-          color="primary lighten-1"
+          mandatory
+          color="primary darken-1"
           z-index="10"
           slider-color="white"
         >
@@ -44,4 +45,14 @@
 
 
 <style lang="scss">
+  .v-tabs {
+    .v-tabs__item {
+      span.text-uppercase {
+        // font-size: 0.9rem;
+      }
+      .v-icon {
+        font-size: 22px;
+      }
+    }
+  }
 </style>

@@ -1,7 +1,7 @@
 <template>
-  <v-container fluid pa-0 fill-height>
-    <v-layout :class="{'row wrap': $vuetify.breakpoint.sm}">
-      <v-flex md4 sm12 lg3 class="white">
+  <v-container fluid pa-0 :class="{'fill-height': $vuetify.breakpoint.mdAndUp}">
+    <v-layout :class="{'column': $vuetify.breakpoint.smAndDown}">
+      <v-flex md4 sm12 lg3 v-if="!creatingNewSystem">
         <SystemSelector v-on:system-changed="systemChanged"></SystemSelector>
       </v-flex>
       <v-flex fill-height>
@@ -20,6 +20,9 @@
   import SystemSelector from "~/components/tables/SystemSelector.vue";
 
   @Component({
+    head: {
+      title: "Systems",
+    },
     data() {
       return {
         trunkedSystemsStats: [],
@@ -34,23 +37,36 @@
         return {
           query: TRUNKED_SYSTEM_STATS,
           prefetch: true,
+          fetchPolicy: "cache-first",
         };
       },
     },
-    mounted() {
-      const t = (this as unknown) as SystemsConfig;
-      t.$nextTick(function() {
-        window.addEventListener("resize", t.$forceUpdate);
-      });
-    },
   })
   export default class SystemsConfig extends Vue {
+    @Watch("$apollo.loading", { deep: true })
+    loadingStateChanged() {
+      if (this.$apollo.loading) {
+        this.$nuxt.$loading.start();
+      } else {
+        this.$nuxt.$loading.finish();
+      }
+    }
+
     trunkedSystemsStats: TrunkedSystemStats[] = [];
     selectedSystem: string | null = null;
 
     @Watch("trunkedSystemsStats")
-    settrunkedSystemsStats() {
+    setTrunkedSystemsStats() {
       this.$store.commit("systems/setTrunkedSystems", this.trunkedSystemsStats);
+      if (
+        this.selectedSystem === null &&
+        !this.$route.path.includes("/new") &&
+        this.trunkedSystemsStats &&
+        this.trunkedSystemsStats[0]
+      ) {
+        this.selectedSystem = this.trunkedSystemsStats[0].systemId;
+        this.$router.push("/configure/system/" + this.selectedSystem);
+      }
     }
 
     formatSystemName(item: TrunkedSystem) {
@@ -65,6 +81,10 @@
       )
         return;
       this.selectedSystem = systemId;
+    }
+
+    get creatingNewSystem() {
+      return this.$route.path.indexOf("/new") >= 0;
     }
   }
 </script>

@@ -7,7 +7,7 @@
     :scroll-off-screen="true"
     id="core-toolbar"
     flat
-    color="primary darken-1"
+    color="primary"
   >
     <v-layout align-center justify-space-around wrap row>
       <v-flex md6 text-xs-center offset-md3>

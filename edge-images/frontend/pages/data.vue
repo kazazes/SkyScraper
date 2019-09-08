@@ -10,7 +10,7 @@
           mandatory
           dark
           grow
-          color="primary lighten-1"
+          color="primary darken-1"
           z-index="10"
           slider-color="white"
         >

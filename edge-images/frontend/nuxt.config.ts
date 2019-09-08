@@ -16,6 +16,7 @@ const config: Configuration = {
   },
   head: {
     title: "SkyScraper",
+    titleTemplate: (t) => t + ' | SkyScraper',
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -93,6 +94,7 @@ const config: Configuration = {
     materialIcons: false,
     theme: {
       primary: "#C62828",
+      accent: "#673AB7",
     },
     customProperties: true,
     iconfont: "mdi",

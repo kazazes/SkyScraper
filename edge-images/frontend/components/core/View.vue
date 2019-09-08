@@ -1,8 +1,8 @@
 <template>
-  <v-content pt-1>
+  <v-content>
     <div id="core-view">
       <transition mode="out-in">
-        <nuxt-child/>
+        <nuxt-child />
       </transition>
     </div>
   </v-content>
@@ -20,7 +20,7 @@
 
 <style>
   #core-view {
-    height: 100%;
-    overflow: visible;
+    max-height: calc(100vh - 48px);
+    overflow: scroll;
   }
 </style>

@@ -14,9 +14,3 @@
   };
 </script>
 
-<style>
-  #core-view {
-    max-height: calc(100vh - 48px);
-    overflow: scroll;
-  }
-</style>

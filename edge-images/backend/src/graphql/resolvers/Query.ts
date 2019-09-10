@@ -1,6 +1,6 @@
 import { QueryResolvers } from "../generated/graphqlgen";
+import { deviceHasAdmin, sendAuthyVerification } from "../helpers/admin";
 import { TrunkedSystemStats } from "../resolverTypes";
-import { deviceHasAdmin } from "../helpers/admin";
 
 export const Query: QueryResolvers.Type = {
   ...QueryResolvers.defaultResolvers,
@@ -78,5 +78,9 @@ export const Query: QueryResolvers.Type = {
   },
   currentUser: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
+  },
+  sendAuthyVerification: async (parent, args, ctx) => {
+    const u = await ctx.prisma.user(args.user);
+    return sendAuthyVerification(u);
   },
 };

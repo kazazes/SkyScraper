@@ -1073,6 +1073,7 @@ export type Query = {
   trunkedSystemsStats?: Maybe<Array<TrunkedSystemStats>>,
   currentUser: User,
   deviceRegistered: Scalars['Boolean'],
+  sendAuthyVerification: Scalars['Boolean'],
   dump1090Aircraft?: Maybe<Dump1090Aircraft>,
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>,
   dump1090AircraftsConnection: Dump1090AircraftConnection,
@@ -1139,6 +1140,11 @@ export type QueryTrunkedSystemArgs = {
 
 export type QueryTrunkedSystemStatsArgs = {
   where: TrunkedSystemWhereUniqueInput
+};
+
+
+export type QuerySendAuthyVerificationArgs = {
+  user: UserWhereUniqueInput
 };
 
 
@@ -5642,6 +5648,29 @@ export type UserWhereUniqueInput = {
   phone?: Maybe<Scalars['String']>,
   authyId?: Maybe<Scalars['String']>,
 };
+export type Unnamed_1_MutationVariables = {
+  email: Scalars['String'],
+  password: Scalars['String'],
+  phone: Scalars['String']
+};
+
+
+export type Unnamed_1_Mutation = (
+  { __typename?: 'Mutation' }
+  & { register: (
+    { __typename?: 'User' }
+    & Pick<User, 'id'>
+  ) }
+);
+
+export type DeviceRegisteredQueryVariables = {};
+
+
+export type DeviceRegisteredQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'deviceRegistered'>
+);
+
 export type TrunkedCallsQueryVariables = {
   first?: Maybe<Scalars['Int']>,
   skip?: Maybe<Scalars['Int']>,

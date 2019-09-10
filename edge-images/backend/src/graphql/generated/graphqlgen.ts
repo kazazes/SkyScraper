@@ -442,6 +442,12 @@ export namespace QueryResolvers {
     id?: string | null;
     shortName?: string | null;
   }
+  export interface UserWhereUniqueInput {
+    id?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    authyId?: string | null;
+  }
   export interface TrunkedTalkgroupWhereInput {
     id?: string | null;
     id_not?: string | null;
@@ -931,6 +937,10 @@ export namespace QueryResolvers {
     where: TrunkedSystemWhereUniqueInput;
   }
 
+  export interface ArgsSendAuthyVerification {
+    user: UserWhereUniqueInput;
+  }
+
   export type TrunkedCallsResolver =
     | ((
         parent: undefined,
@@ -1045,6 +1055,23 @@ export namespace QueryResolvers {
         resolve: (
           parent: undefined,
           args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>;
+      };
+
+  export type SendAuthyVerificationResolver =
+    | ((
+        parent: undefined,
+        args: ArgsSendAuthyVerification,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => boolean | Promise<boolean>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsSendAuthyVerification,
           ctx: Context,
           info: GraphQLResolveInfo
         ) => boolean | Promise<boolean>;
@@ -1170,6 +1197,23 @@ export namespace QueryResolvers {
           resolve: (
             parent: undefined,
             args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => boolean | Promise<boolean>;
+        };
+
+    sendAuthyVerification:
+      | ((
+          parent: undefined,
+          args: ArgsSendAuthyVerification,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => boolean | Promise<boolean>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsSendAuthyVerification,
             ctx: Context,
             info: GraphQLResolveInfo
           ) => boolean | Promise<boolean>;

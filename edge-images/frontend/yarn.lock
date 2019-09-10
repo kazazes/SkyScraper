@@ -763,6 +763,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bachdgvn/vue-otp-input@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@bachdgvn/vue-otp-input/-/vue-otp-input-1.0.2.tgz#f09891cf70d08eb6734e3248eaa6de80eecb852e"
+  integrity sha512-j1Gm9wpCrCNeY94wEzsP809KD74eZV0VMD93heNu4J2K6jrr4LtHZ57cQDnh9bJbfhX+P9Jhf3o95TTi/wT5jg==
+  dependencies:
+    vue "^2.5.22"
+
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
@@ -2669,6 +2676,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/phone@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/phone/-/phone-1.0.3.tgz#4f79b059859cb903a145cb3e9a0e93dff2fefac7"
+  integrity sha1-T3mwWYWcuQOhRcs+mg6T3/L++sc=
+
 "@types/q@^1.5.1":
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
@@ -2782,6 +2794,14 @@
     "@types/uglify-js" "*"
     "@types/webpack-sources" "*"
     source-map "^0.6.0"
+
+"@types/webpackbar@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@types/webpackbar/-/webpackbar-2.6.0.tgz#0fa1b88e2c7ab68919d94fb8a5b3c882e4d7c94c"
+  integrity sha512-5rFY8CRCgBLlG7mimOn0lrf1LUiX6ps52/Lhv9s8mQIpXmiP/iIBdQPqta3FktxoUKDl31rNi0tVEfg5lbOOFA==
+  dependencies:
+    "@types/node" "*"
+    "@types/webpack" "*"
 
 "@types/ws@^6.0.0":
   version "6.0.2"
@@ -10232,6 +10252,11 @@ performance-now@^2.1.0:
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
+phone@^2.3.21:
+  version "2.3.21"
+  resolved "https://registry.yarnpkg.com/phone/-/phone-2.3.21.tgz#77e4edcb7e65995bdd1edd0f5520f7097ced98dc"
+  integrity sha512-weZuRQuXrVhiR+G6nCWEwyZf9WlPVfiwek35+0TBPkUf4Nx5pyv7VR/XRAmyonXaPsHKrM3SqOTK0i/Car8gTQ==
+
 picomatch@^2.0.4, picomatch@^2.0.5:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.0.7.tgz#514169d8c7cd0bdbeecc8a2609e34a7163de69f6"
@@ -13510,7 +13535,7 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue@^2.6.10:
+vue@^2.5.22, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==

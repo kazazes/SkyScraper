@@ -1,9 +1,11 @@
 // This resolver file was scaffolded by github.com/prisma/graphqlgen, DO NOT EDIT.
 // Please do not import this file directly but copy & paste to your application code.
 
-import { MutationResolvers } from "../generated/graphqlgen";
-import { prisma, TrunkedSystemCreateInput } from "../generated/prisma-client";
 import { hash } from "bcryptjs";
+import consola from "consola";
+import { MutationResolvers } from "../generated/graphqlgen";
+import { TrunkedSystemCreateInput } from "../generated/prisma-client";
+import { passwordValidator, validEmail } from "../helpers/admin";
 
 export const Mutation: MutationResolvers.Type = {
   ...MutationResolvers.defaultResolvers,
@@ -13,17 +15,23 @@ export const Mutation: MutationResolvers.Type = {
     );
   },
   register: async (parent, { email, password, phone }, ctx, info) => {
+    if (!passwordValidator(password)) throw new Error("Password must contain 6 characters, a number and symbol.");
+    if (!validEmail(email)) throw new Error("Email is invalid.");
+
     const hashedPassword = await hash(password, 10);
     const authyId = "";
+    const deleted = await ctx.prisma.deleteManyUsers({OR: [{email: email}, {phone: phone}]});
+    consola.warn(`Deleted  ${deleted.count} users to add ${email} ${phone}`)
     const user = await ctx.prisma.createUser({
-      authyId,
-      email,
-      phone,
-      password: hashedPassword,
-      name: "Admin",
-      role: "ADMIN",
-      verified: false,
-    });
+        authyId,
+        email,
+        phone,
+        password: hashedPassword,
+        name: "Admin",
+        role: "ADMIN",
+        verified: false,
+      });
+    consola.warn(`Registered ADMIN user: ${ email } ${ phone }`);
     return user;
   },
   login: (parent, args, ctx) => {

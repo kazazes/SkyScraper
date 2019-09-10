@@ -20,6 +20,7 @@ type Query {
   trunkedSystemsStats: [TrunkedSystemStats!]
   currentUser: User!
   deviceRegistered: Boolean!
+  sendAuthyVerification(user: UserWhereUniqueInput!): Boolean!
 }
 
 type Subscription {

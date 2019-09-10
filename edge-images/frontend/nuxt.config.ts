@@ -66,12 +66,6 @@ const config: Configuration = {
     ["@nuxtjs/pwa", { icon: !isDev }],
     ["@nuxtjs/google-tag-manager", { id: "GTM-M7MNMCF" }],
     "@nuxtjs/auth",
-    [
-      "nuxt-validate",
-      {
-        lang: "en",
-      },
-    ],
   ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
@@ -110,7 +104,7 @@ const config: Configuration = {
     plugins: [
       new webpack.ContextReplacementPlugin(
         /moment[/\\]locale$/,
-        /en/,
+        /en/
       ) as Plugin,
     ],
   },

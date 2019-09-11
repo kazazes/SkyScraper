@@ -19,7 +19,7 @@
     "@mdi/font": "^4.3.95",
     "@nuxt/typescript-runtime": "^0.1.5",
     "@nuxtjs/apollo": "^4.0.0-rc12",
-    "@nuxtjs/auth": "^4.8.2",
+    "@nuxtjs/auth": "^4.8.3",
     "@nuxtjs/axios": "^5.6.0",
     "@nuxtjs/component-cache": "^1.1.4",
     "@nuxtjs/dotenv": "^1.4.0",

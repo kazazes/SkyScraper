@@ -3,7 +3,8 @@
             class="mb-5 text-xs-justify"
             color="transparent"
             max-height="300px"
-            style="overflow-y: scroll"
+            style="overflow-y: auto;"
+            id="setup-welcome"
     >
         <v-card-text>
             <p>
@@ -42,3 +43,24 @@
     name: "admin-registration",
   };
 </script>
+<style scss>
+    #setup-welcome::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: inherit;
+    }
+
+    #setup-welcome::-webkit-scrollbar
+    {
+        width: 8px;
+        background-color: transparent;
+    }
+
+    #setup-welcome::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #D62929;
+    }
+</style>

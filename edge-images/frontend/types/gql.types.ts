@@ -1074,6 +1074,8 @@ export type Query = {
   currentUser: User,
   deviceRegistered: Scalars['Boolean'],
   sendAuthyVerification: Scalars['Boolean'],
+  verifyAuthyToken?: Maybe<LoginResponse>,
+  login?: Maybe<LoginResponse>,
   dump1090Aircraft?: Maybe<Dump1090Aircraft>,
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>,
   dump1090AircraftsConnection: Dump1090AircraftConnection,
@@ -1145,6 +1147,18 @@ export type QueryTrunkedSystemStatsArgs = {
 
 export type QuerySendAuthyVerificationArgs = {
   user: UserWhereUniqueInput
+};
+
+
+export type QueryVerifyAuthyTokenArgs = {
+  user: UserWhereUniqueInput,
+  token: Scalars['String']
+};
+
+
+export type QueryLoginArgs = {
+  user?: Maybe<UserWhereUniqueInput>,
+  password: Scalars['String']
 };
 
 
@@ -5420,7 +5434,7 @@ export type User = {
   phone: Scalars['String'],
   verified: Scalars['Boolean'],
   password: Scalars['String'],
-  authyId: Scalars['String'],
+  authyId?: Maybe<Scalars['String']>,
   role: UserRole,
 };
 
@@ -5438,7 +5452,7 @@ export type UserCreateInput = {
   phone: Scalars['String'],
   verified?: Maybe<Scalars['Boolean']>,
   password: Scalars['String'],
-  authyId: Scalars['String'],
+  authyId?: Maybe<Scalars['String']>,
   role?: Maybe<UserRole>,
 };
 
@@ -5481,7 +5495,7 @@ export type UserPreviousValues = {
   phone: Scalars['String'],
   verified: Scalars['Boolean'],
   password: Scalars['String'],
-  authyId: Scalars['String'],
+  authyId?: Maybe<Scalars['String']>,
   role: UserRole,
 };
 
@@ -5646,7 +5660,6 @@ export type UserWhereUniqueInput = {
   id?: Maybe<Scalars['ID']>,
   email?: Maybe<Scalars['String']>,
   phone?: Maybe<Scalars['String']>,
-  authyId?: Maybe<Scalars['String']>,
 };
 export type Unnamed_1_MutationVariables = {
   email: Scalars['String'],
@@ -5669,6 +5682,34 @@ export type DeviceRegisteredQueryVariables = {};
 export type DeviceRegisteredQuery = (
   { __typename?: 'Query' }
   & Pick<Query, 'deviceRegistered'>
+);
+
+export type SendAuthyTextQueryVariables = {
+  user: UserWhereUniqueInput
+};
+
+
+export type SendAuthyTextQuery = (
+  { __typename?: 'Query' }
+  & Pick<Query, 'sendAuthyVerification'>
+);
+
+export type VerifyAuthCodeQueryVariables = {
+  user: UserWhereUniqueInput,
+  token: Scalars['String']
+};
+
+
+export type VerifyAuthCodeQuery = (
+  { __typename?: 'Query' }
+  & { verifyAuthyToken: Maybe<(
+    { __typename?: 'LoginResponse' }
+    & Pick<LoginResponse, 'token'>
+    & { user: Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'email' | 'id' | 'role'>
+    )> }
+  )> }
 );
 
 export type TrunkedCallsQueryVariables = {

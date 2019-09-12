@@ -1,16 +1,23 @@
+import { Request } from "express";
 import { GraphQLServer } from "graphql-yoga";
 import { hostname } from "os";
 import log from "../log";
 import { prisma } from "./generated/prisma-client";
 import { resolvers } from "./resolvers";
+import { rule, shield, and, or, not } from 'graphql-shield'
+import { getUser, permissions } from "./shield";
+
 
 export default () => {
   const graphQLServer = new GraphQLServer({
-    context: {
+    context: (req: Request) => ({
+      ...req,
       prisma,
-    },
+        user: getUser(req),
+    }),
     resolvers,
     typeDefs: "./src/graphql/schema.graphql",
+    middlewares: [permissions],
   });
 
   const placeholderQuery = `# watch new calls as they come in
@@ -31,7 +38,7 @@ export default () => {
     }
 `;
 
-  graphQLServer
+  return graphQLServer
     .start(
       {
         debug: true,

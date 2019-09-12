@@ -1854,7 +1854,7 @@ export interface UserCreateInput {
   phone: String;
   verified?: Maybe<Boolean>;
   password: String;
-  authyId: String;
+  authyId?: Maybe<String>;
   role?: Maybe<UserRole>;
 }
 
@@ -3642,7 +3642,6 @@ export type UserWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
   email?: Maybe<String>;
   phone?: Maybe<String>;
-  authyId?: Maybe<String>;
 }>;
 
 export interface TranscriptionUpsertWithoutCallInput {
@@ -4760,7 +4759,7 @@ export interface UserPreviousValues {
   phone: String;
   verified: Boolean;
   password: String;
-  authyId: String;
+  authyId?: String;
   role: UserRole;
 }
 
@@ -5247,7 +5246,7 @@ export interface User {
   phone: String;
   verified: Boolean;
   password: String;
-  authyId: String;
+  authyId?: String;
   role: UserRole;
 }
 

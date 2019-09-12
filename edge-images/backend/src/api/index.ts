@@ -46,6 +46,8 @@ export const listen = async () => {
     `SkyScraper API is running on http://${hostname}:${process.env.API_PORT ||
       9090}`,
   );
+
+  return app;
 };
 
 export default listen;

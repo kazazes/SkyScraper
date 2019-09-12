@@ -4,6 +4,7 @@
 
 import Vue, { ComponentOptions } from "vue";
 import { CookieAttributes } from "js-cookie";
+import LocalForage from "localforage";
 import { Store } from "vuex/types/index";
 
 // todo: context?
@@ -63,5 +64,11 @@ declare module "vue/types/vue" {
     $connect: any;
     $store: Store<any>;
     $apollo: any;
+    $apolloHelpers: any;
   }
 }
+
+declare global {
+  interface Window { localforage: LocalForage; }
+}
+

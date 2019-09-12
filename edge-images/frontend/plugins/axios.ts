@@ -6,13 +6,11 @@ declare module "@nuxt/types" {
   }
 }
 
-export default function ({ $axios, app }) {
+export default function ({ $axios, store }) {
   $axios.onRequest((config) => {
-    if (app.$auth.loggedIn) {
-      const t = app.$auth.getToken("auth0");
-      if (t) {
-        config.headers.common.Authorization = t;
-      }
+    const t = store.getters["user/token"];
+    if (t && t.length > 0) {
+      config.headers.common.Authorization = t;
     }
   });
 }

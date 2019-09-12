@@ -4407,7 +4407,7 @@ type User {
   phone: String!
   verified: Boolean!
   password: String!
-  authyId: String!
+  authyId: String
   role: UserRole!
 }
 
@@ -4424,7 +4424,7 @@ input UserCreateInput {
   phone: String!
   verified: Boolean
   password: String!
-  authyId: String!
+  authyId: String
   role: UserRole
 }
 
@@ -4465,7 +4465,7 @@ type UserPreviousValues {
   phone: String!
   verified: Boolean!
   password: String!
-  authyId: String!
+  authyId: String
   role: UserRole!
 }
 
@@ -4629,6 +4629,5 @@ input UserWhereUniqueInput {
   id: ID
   email: String
   phone: String
-  authyId: String
 }
 `

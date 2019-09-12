@@ -1,6 +1,9 @@
 import { Client } from "authy-client";
 import consola from "consola";
+import jwt from "jsonwebtoken";
+import { UserRole } from "../generated/graphqlgen";
 import { prisma, User } from "../generated/prisma-client";
+import { compare } from "bcryptjs";
 
 const authy = new Client({ key: process.env.AUTHY_KEY });
 
@@ -17,12 +20,50 @@ export async function deviceHasAdmin() {
   );
 }
 
-export function passwordValidator(value: string) {
+export function passwordStrengthValid(value: string) {
   const password = value;
   if (value.length < 6) return false;
   const hasNumbers = /\d/.test(password);
   const hasNonAlphas = /\W/.test(password);
   return hasNonAlphas && hasNumbers;
+}
+
+export  function verifyPassword(user: User, password: string) {
+  return  compare(password, user.password);
+}
+
+export interface  JWTPayload {
+  user?: {
+    id: string,
+    email: string,
+    authId?: string,
+    role: UserRole,
+    verified: boolean
+  },
+  token?: string
+}
+
+export function jwtForUser(user: User) {
+  const payload = {
+    user: {
+      id: user.id,
+      email: user.email,
+      authyId: user.authyId,
+      role: user.role,
+      name: user.name,
+      verified: user.verified,
+    },
+  };
+
+  const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    expiresIn: "5d",
+    audience: process.env.EDGE_HOSTNAME,
+  });
+
+  return {
+    user: user,
+    token,
+  };
 }
 
 export function validEmail(email: string) {
@@ -32,20 +73,20 @@ export function validEmail(email: string) {
 }
 
 export async function sendAuthyVerification(user: User) {
-  const {
-    user: { id: authyId },
-  } = await authy.registerUser({
+  const auth = await authy.registerUser({
     countryCode: "US",
     email: user.email,
     phone: user.phone,
   });
 
-  prisma
+  const authyId = auth.user.id;
+
+  await prisma
     .updateUser({ data: { authyId }, where: { id: user.id } })
     .catch((e) => {
       throw e;
     });
-  consola.debug(`Set authyId on ${ user.email }`);
+  consola.debug(`Set authyId on ${user.email}`);
 
   const { cellphone } = await authy.requestSms(
     {
@@ -57,8 +98,12 @@ export async function sendAuthyVerification(user: User) {
         consola.error(err);
         return err;
       }
-      consola.info(`SMS 2FA sent to ${ smsRes }`);
+      consola.info(`SMS 2FA sent to ${smsRes}`);
     },
   );
   return true;
+}
+
+export function verifyAuthyToken(user: User, token: string) {
+  return authy.verifyToken({ authyId: user.authyId, token });
 }

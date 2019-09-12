@@ -446,7 +446,6 @@ export namespace QueryResolvers {
     id?: string | null;
     email?: string | null;
     phone?: string | null;
-    authyId?: string | null;
   }
   export interface TrunkedTalkgroupWhereInput {
     id?: string | null;
@@ -941,6 +940,16 @@ export namespace QueryResolvers {
     user: UserWhereUniqueInput;
   }
 
+  export interface ArgsVerifyAuthyToken {
+    user: UserWhereUniqueInput;
+    token: string;
+  }
+
+  export interface ArgsLogin {
+    user?: UserWhereUniqueInput | null;
+    password: string;
+  }
+
   export type TrunkedCallsResolver =
     | ((
         parent: undefined,
@@ -1075,6 +1084,40 @@ export namespace QueryResolvers {
           ctx: Context,
           info: GraphQLResolveInfo
         ) => boolean | Promise<boolean>;
+      };
+
+  export type VerifyAuthyTokenResolver =
+    | ((
+        parent: undefined,
+        args: ArgsVerifyAuthyToken,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => LoginResponse | null | Promise<LoginResponse | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsVerifyAuthyToken,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | null | Promise<LoginResponse | null>;
+      };
+
+  export type LoginResolver =
+    | ((
+        parent: undefined,
+        args: ArgsLogin,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => LoginResponse | null | Promise<LoginResponse | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsLogin,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | null | Promise<LoginResponse | null>;
       };
 
   export interface Type {
@@ -1217,6 +1260,40 @@ export namespace QueryResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => boolean | Promise<boolean>;
+        };
+
+    verifyAuthyToken:
+      | ((
+          parent: undefined,
+          args: ArgsVerifyAuthyToken,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | null | Promise<LoginResponse | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsVerifyAuthyToken,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => LoginResponse | null | Promise<LoginResponse | null>;
+        };
+
+    login:
+      | ((
+          parent: undefined,
+          args: ArgsLogin,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => LoginResponse | null | Promise<LoginResponse | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsLogin,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => LoginResponse | null | Promise<LoginResponse | null>;
         };
   }
 }
@@ -7084,7 +7161,8 @@ export namespace UserResolvers {
     phone: (parent: User) => parent.phone,
     verified: (parent: User) => parent.verified,
     password: (parent: User) => parent.password,
-    authyId: (parent: User) => parent.authyId,
+    authyId: (parent: User) =>
+      parent.authyId === undefined ? null : parent.authyId,
     role: (parent: User) => parent.role
   };
 
@@ -7230,7 +7308,7 @@ export namespace UserResolvers {
         args: {},
         ctx: Context,
         info: GraphQLResolveInfo
-      ) => string | Promise<string>)
+      ) => string | null | Promise<string | null>)
     | {
         fragment: string;
         resolve: (
@@ -7238,7 +7316,7 @@ export namespace UserResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => string | Promise<string>;
+        ) => string | null | Promise<string | null>;
       };
 
   export type RoleResolver =
@@ -7401,7 +7479,7 @@ export namespace UserResolvers {
           args: {},
           ctx: Context,
           info: GraphQLResolveInfo
-        ) => string | Promise<string>)
+        ) => string | null | Promise<string | null>)
       | {
           fragment: string;
           resolve: (
@@ -7409,7 +7487,7 @@ export namespace UserResolvers {
             args: {},
             ctx: Context,
             info: GraphQLResolveInfo
-          ) => string | Promise<string>;
+          ) => string | null | Promise<string | null>;
         };
 
     role:
@@ -7427,6 +7505,83 @@ export namespace UserResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => UserRole | Promise<UserRole>;
+        };
+  }
+}
+
+export namespace LoginResponseResolvers {
+  export const defaultResolvers = {
+    token: (parent: LoginResponse) =>
+      parent.token === undefined ? null : parent.token
+  };
+
+  export type TokenResolver =
+    | ((
+        parent: LoginResponse,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type UserResolver =
+    | ((
+        parent: LoginResponse,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => User | null | Promise<User | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | null | Promise<User | null>;
+      };
+
+  export interface Type {
+    token:
+      | ((
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: LoginResponse,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    user:
+      | ((
+          parent: LoginResponse,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => User | null | Promise<User | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: LoginResponse,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => User | null | Promise<User | null>;
         };
   }
 }
@@ -7795,83 +7950,6 @@ export namespace MutationResolvers {
   }
 }
 
-export namespace LoginResponseResolvers {
-  export const defaultResolvers = {
-    token: (parent: LoginResponse) =>
-      parent.token === undefined ? null : parent.token
-  };
-
-  export type TokenResolver =
-    | ((
-        parent: LoginResponse,
-        args: {},
-        ctx: Context,
-        info: GraphQLResolveInfo
-      ) => string | null | Promise<string | null>)
-    | {
-        fragment: string;
-        resolve: (
-          parent: LoginResponse,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>;
-      };
-
-  export type UserResolver =
-    | ((
-        parent: LoginResponse,
-        args: {},
-        ctx: Context,
-        info: GraphQLResolveInfo
-      ) => User | null | Promise<User | null>)
-    | {
-        fragment: string;
-        resolve: (
-          parent: LoginResponse,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => User | null | Promise<User | null>;
-      };
-
-  export interface Type {
-    token:
-      | ((
-          parent: LoginResponse,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => string | null | Promise<string | null>)
-      | {
-          fragment: string;
-          resolve: (
-            parent: LoginResponse,
-            args: {},
-            ctx: Context,
-            info: GraphQLResolveInfo
-          ) => string | null | Promise<string | null>;
-        };
-
-    user:
-      | ((
-          parent: LoginResponse,
-          args: {},
-          ctx: Context,
-          info: GraphQLResolveInfo
-        ) => User | null | Promise<User | null>)
-      | {
-          fragment: string;
-          resolve: (
-            parent: LoginResponse,
-            args: {},
-            ctx: Context,
-            info: GraphQLResolveInfo
-          ) => User | null | Promise<User | null>;
-        };
-  }
-}
-
 export namespace SubscriptionResolvers {
   export const defaultResolvers = {};
 
@@ -7957,8 +8035,8 @@ export interface Resolvers {
   TranscriptionWord: TranscriptionWordResolvers.Type;
   TrunkedSystemStats: TrunkedSystemStatsResolvers.Type;
   User: UserResolvers.Type;
-  Mutation: MutationResolvers.Type;
   LoginResponse: LoginResponseResolvers.Type;
+  Mutation: MutationResolvers.Type;
   Subscription: SubscriptionResolvers.Type;
 }
 

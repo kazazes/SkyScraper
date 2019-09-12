@@ -47,6 +47,7 @@
     "graphql-tag": "^2.10.1",
     "howler": "^2.1.2",
     "http-proxy-middleware": "^0.20.0",
+    "js-cookie": "^2.2.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "newrelic": "^5.6.4",
@@ -67,7 +68,8 @@
     "vue-native-websocket": "^2.0.13",
     "vue-property-decorator": "^8.1.1",
     "vue-server-renderer": "2.6.10",
-    "vuetify": "^1.5.6"
+    "vuetify": "^1.5.6",
+    "vuex-persist": "^2.1.0"
   },
   "devDependencies": {
     "@nuxt/typescript-build": "^0.2.6",
@@ -75,6 +77,7 @@
     "@types/graphql": "^14.5.0",
     "@types/howler": "^2.1.1",
     "@types/http-proxy-middleware": "^0.19.3",
+    "@types/localforage": "^0.0.34",
     "@types/lodash": "^4.14.138",
     "@types/papaparse": "^5.0.1",
     "@types/phone": "^1.0.3",

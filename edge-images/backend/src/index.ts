@@ -14,13 +14,25 @@ require("dotenv-safe").config();
 import { listen as apiServer } from "./api";
 import graphServer from "./graphql/server";
 import { connect as connectMqtt } from "./mqtt/broker";
+import consola from "consola";
 
 async function start() {
-  await connectMqtt();
-  graphServer();
-  await apiServer();
-  return;
+  try {
+    await connectMqtt().catch((err) => {
+      consola.error(`MQTT error: ${err}`);
+      throw err;
+    });
+    const graph = graphServer();
+    const app = await apiServer();
+  } catch (e) {
+    consola.error(`Server launch error ${e}`);
+    process.exit(1);
+    throw e;
+  }
 }
 
-if (process.env.NODE_ENV === "production") { debug.isReady().then(() => start()); }
-else { start(); }
+if (process.env.NODE_ENV === "production") {
+  debug.isReady().then(() => start());
+} else {
+  start();
+}

@@ -21,6 +21,8 @@ type Query {
   currentUser: User!
   deviceRegistered: Boolean!
   sendAuthyVerification(user: UserWhereUniqueInput!): Boolean!
+  verifyAuthyToken(user: UserWhereUniqueInput!, token: String!): LoginResponse
+  login(user: UserWhereUniqueInput!, password: String!): LoginResponse
 }
 
 type Subscription {

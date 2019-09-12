@@ -39,7 +39,11 @@ const config: Configuration = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: "~/plugins/vee-validate" }, { src: "~/plugins/axios" }],
+  plugins: [
+    { src: "~/plugins/vee-validate" },
+    { src: "~/plugins/axios" },
+    { src: "~/plugins/vuex-persist", ssr: false },
+  ],
   /*
    ** Nuxt.js modules
    */
@@ -65,7 +69,6 @@ const config: Configuration = {
     "@nuxtjs/proxy",
     ["@nuxtjs/pwa", { icon: !isDev }],
     ["@nuxtjs/google-tag-manager", { id: "GTM-M7MNMCF" }],
-    "@nuxtjs/auth",
   ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
@@ -118,16 +121,7 @@ const config: Configuration = {
   typescript: {
     typeCheck: true,
     ignoreNotFoundWarnings: true,
-  },
-  auth: {
-    strategies: {
-      auth0: {
-        domain: "skyscraper.auth0.com",
-        client_id: "Uaz6l2GikGK9BuRoXAK7L7jGPmVNYMSB",
-        audience: "edge.sibyl.vision",
-      },
-    },
-  },
+  }
 };
 
 export default config;

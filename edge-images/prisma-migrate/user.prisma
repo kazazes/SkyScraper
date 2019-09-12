@@ -7,7 +7,7 @@ type User {
   phone: String! @unique
   verified: Boolean! @default(value: false)
   password: String!
-  authyId: String! @unique
+  authyId: String
   role: UserRole! @default(value: USER)
 }
 

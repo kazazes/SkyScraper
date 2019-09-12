@@ -22,9 +22,8 @@
   </v-container>
 </template>
 <script lang="ts">
-  import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
-  import { trunkedConfigs } from "./queries";
+  import Vue from "vue";
   import ChannelsWizard from "./TrunkedWizardChannels.vue";
   import SystemWizard from "./TrunkedWizardSystem.vue";
 

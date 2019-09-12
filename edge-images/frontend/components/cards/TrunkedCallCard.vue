@@ -57,14 +57,10 @@
   import { scale } from "chroma-js";
   import consola from "consola";
   import moment from "moment";
-  import Vue from "vue";
   import { Component, Prop } from "nuxt-property-decorator";
+  import Vue from "vue";
   import Player from "~/components/audio/Player.vue";
-  import {
-    Transcription,
-    TranscriptionWord,
-    TrunkedCall,
-  } from "~/types/gql.types";
+  import { Transcription, TranscriptionWord, TrunkedCall } from "~/types/gql.types";
   import { toggleAutoPlay } from "~/utils/enums";
 
   const redScale = scale(["red", "black"])

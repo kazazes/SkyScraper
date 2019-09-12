@@ -2,9 +2,9 @@
  * Augment the typings of Vue.js
  */
 
-import Vue, { ComponentOptions } from "vue";
 import { CookieAttributes } from "js-cookie";
 import LocalForage from "localforage";
+import Vue, { ComponentOptions } from "vue";
 import { Store } from "vuex/types/index";
 
 // todo: context?

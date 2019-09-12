@@ -44,9 +44,10 @@
   </v-container>
 </template>
 <script lang="ts">
-  import Vue from "vue";
-  import { Component, Watch } from "nuxt-property-decorator";
   import moment from "moment";
+  import { Component } from "nuxt-property-decorator";
+  import Vue from "vue";
+
   const chroma = require("chroma-js");
 
   @Component({})

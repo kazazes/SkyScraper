@@ -120,7 +120,7 @@
                 <v-flex text-xs-center v-else-if="awaitingVerification" style="height: 49px">
                   <v-btn
                     v-if="!verifyingOtp"
-                    @click="awaitingVerification = false; submitDisabled = false"
+                    @click="awaitingVerification = false"
                     flat
                     small
                   >Back</v-btn>
@@ -162,7 +162,7 @@
   import { VERIFY_AUTHY_CODE } from "~/assets/apollo/queries/auth/verifyAuthyCode";
   import AdminRegistationSettings from "~/components/cards/AdminRegistationSettings.vue";
   import AdminRegistrationMessage from "~/components/cards/AdminRegistrationMessage.vue";
-  import { LoginResponse, VerifyAuthCodeQuery } from "~/types/gql.types";
+  import { LoginResponse } from "~/types/gql.types";
 
   @Component({
     layout: "authenticate",

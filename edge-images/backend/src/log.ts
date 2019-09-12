@@ -14,7 +14,7 @@ if (process.env.NODE_ENV !== "production") {
         winston.format.prettyPrint(),
         winston.format.simple(),
       ),
-      level: "silly",
+      level: "debug",
     }),
   );
 } else {

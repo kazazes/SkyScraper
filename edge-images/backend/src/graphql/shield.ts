@@ -17,10 +17,10 @@ const isAdmin = rule({ cache: "contextual" })(
 const isAdminOrNoAdmin = rule({cache: "contextual"})(
   async (parent, args, ctx) => {
     const admins =await prisma.users({where:{role_in: "ADMIN"}});
-    if (admins.length === 0) return true
+    if (admins.length === 0) return true;
     return ctx.user.role === "admin"
   }
-)
+);
 
 export function getUser(ctx: any) {
   let token: string;
@@ -29,7 +29,7 @@ export function getUser(ctx: any) {
   if (ctx.connection)
     token = ctx.connection.context.authorization;
 
-  if (!token) return
+  if (!token) return;
 
   token = token.replace("Bearer ", "");
   const verified = verify(token, process.env.JWT_SECRET);

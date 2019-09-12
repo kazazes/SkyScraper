@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+
 export const TRUNKED_SYSTEMS = gql`
   query trunkedSystems {
     trunkedSystems {
@@ -9,6 +10,11 @@ export const TRUNKED_SYSTEMS = gql`
       updatedAt
       createdAt
       type
+      talkgroups {
+        id
+        hex
+        decimal
+      }
     }
   }
 `;

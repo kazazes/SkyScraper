@@ -98,7 +98,6 @@
     }
 
     async loginSubmit() {
-      debugger
       this.$nuxt.$loading.start();
       const res = await this.$apollo.query({
           query: LOGIN,
@@ -108,20 +107,23 @@
           },
         })
         .catch((e) => {
+          this.$nuxt.$loading.fail ? this.$nuxt.$loading.fail() : this.$nuxt.$loading.finish();
           consola.error(e);
           this.clear();
           this.submitDisabled = false;
         });
       if (res && res.data.login && res.data.login.token) {
-        const  t =res.data.login.token;
+        const t = res.data.login.token;
         await this.$apolloHelpers.onLogin(t);
-        this.$store.commit('user/setToken', t)
-        this.$store.commit('user/setUser', res.data.user)
+        this.$store.commit("user/setToken", t);
+        debugger;
+        this.$store.commit("user/setUser", res.data.login.user);
         this.$router.replace("/configure/admin");
       } else {
         this.clear();
         this.submitDisabled = false;
       }
+      this.$nuxt.$loading.finish();
     }
 
     clear() {
@@ -132,9 +134,7 @@
     }
 
     mounted() {
-      if (this.$auth.loggedIn) {
-        this.$router.replace("/configure/admin");
-      }
+
     }
   }
 </script>

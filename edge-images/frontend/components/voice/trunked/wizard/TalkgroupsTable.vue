@@ -68,10 +68,10 @@
 </template>
 
 <script lang="ts">
-  import { IInputtedTalkgroup } from "./talkgroupValidator";
-  import { TrunkedTalkgroup } from "~/types/gql.types";
   import Vue from "vue";
-  import { Component, Prop } from "vue-property-decorator";
+  import { Component } from "vue-property-decorator";
+  import { TrunkedTalkgroup } from "~/types/gql.types";
+  import { IInputtedTalkgroup } from "./talkgroupValidator";
   import Upload from "./Upload.vue";
 
   @Component({

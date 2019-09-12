@@ -30,7 +30,7 @@ export default (client: AsyncMqttClient) => {
 
 class TrunkRecorderHandler extends ApplicationMessageHandler {
   public callback = async (topic: string, payload: any, packet: any) => {
-    log.info(
+    log.debug(
       `MQTT: trunk-recorder processing on topic ${rootTopic} ${
         Buffer.from(payload).length
       }`,

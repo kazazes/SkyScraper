@@ -8,8 +8,9 @@ query login($user: UserWhereUniqueInput!, $password: String!) {
       email
       phone
       verified
+      role
     }
     token
   }
 }
-`
+`;

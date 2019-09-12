@@ -36,7 +36,6 @@
         return {
           query: TRUNKED_SYSTEM_STATS,
           prefetch: true,
-          fetchPolicy: "cache-first",
         };
       },
     },

@@ -32,8 +32,8 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
   import Component from "nuxt-class-component";
+  import Vue from "vue";
 
   @Component({
     components: {},

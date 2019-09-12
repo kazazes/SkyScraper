@@ -17,7 +17,7 @@
   </v-container>
 </template>
 <script lang="ts">
-  import { Vue, Component } from "nuxt-property-decorator";
+  import { Component, Vue } from "nuxt-property-decorator";
   import Wizard from "~/components/voice/trunked/wizard/TrunkedAppWizard.vue";
 
   @Component({

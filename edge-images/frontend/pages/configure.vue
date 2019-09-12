@@ -21,7 +21,7 @@ x<template>
           </v-tab>
           <v-tab nuxt to="/configure/admin">
             <v-icon class="pr-2">mdi-account</v-icon>
-            <span class="text-uppercase">Account</span>
+            <span class="text-uppercase">Users</span>
           </v-tab>
         </v-tabs>
       </v-flex>
@@ -31,8 +31,8 @@ x<template>
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
   import Component from "nuxt-class-component";
+  import Vue from "vue";
 
   @Component({
     components: {},

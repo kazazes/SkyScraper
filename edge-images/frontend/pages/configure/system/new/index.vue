@@ -56,7 +56,7 @@
   </v-container>
 </template>
 <script lang="ts">
-  import { Vue, Component } from "nuxt-property-decorator";
+  import { Component, Vue } from "nuxt-property-decorator";
 
   @Component({})
   export default class NewSystem extends Vue {}

@@ -4,12 +4,10 @@
       <client-only>
         <MaterialCard class="v-card-profile">
           <v-avatar slot="offset" class="mx-auto d-block elevation-6" size="100">
-            <img :src="$auth.user.picture" />
+              <v-icon>mdi-user</v-icon>
           </v-avatar>
           <v-card-text class="text-center">
-            <h6 class="overline mb-3" v-text="$auth.user.email"></h6>
-            <h4 class="font-weight-light" v-text="$auth.user.name"></h4>
-            <v-btn color="red darken-1" block class="my-4" href="/logout">Logout</v-btn>
+              <code v-text="$store.getters['user/user']"></code>
           </v-card-text>
         </MaterialCard>
       </client-only>
@@ -18,12 +16,12 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
   import Component from "nuxt-class-component";
+  import Vue from "vue";
   import MaterialCard from "~/components/material/Card.vue";
 
   @Component({
-    middleware: ["auth"],
+    middleware: ["isAdmin"],
     components: {
       MaterialCard,
     },

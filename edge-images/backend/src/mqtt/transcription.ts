@@ -28,7 +28,7 @@ class TranscriptionHandler extends ApplicationMessageHandler {
     if (topic.indexOf("transcribed") == -1) {
       return;
     }
-    log.info(
+    log.debug(
       `Transcription: received on topic ${topic} ${Buffer.from(payload).length}`,
     );
 

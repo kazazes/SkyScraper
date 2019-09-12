@@ -1,5 +1,5 @@
 import Router from "koa-router";
-import location from "../../../util/deviceLocation";
+import location from "../../util/deviceLocation";
 import docker from "./docker";
 
 const router = new Router();

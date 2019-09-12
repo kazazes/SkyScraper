@@ -21,7 +21,7 @@
 </script>
 
 <style lang="scss">
-    @import "~assets/style/index.scss";
+    @import "../assets/style/index.scss";
 
     #auth-layout {
         background-image: linear-gradient(to left top, #0c1124, #101830, #141e3c, #121b36);

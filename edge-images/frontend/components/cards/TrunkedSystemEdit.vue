@@ -17,7 +17,7 @@
   </v-layout>
 </template>
 <script lang="ts">
-  import { Vue, Component, Prop, Watch } from "nuxt-property-decorator";
+  import { Component, Prop, Vue, Watch } from "nuxt-property-decorator";
   import { TRUNKED_SYSTEM } from "~/assets/apollo/queries/getTrunkedSystem";
   import { TrunkedSystem } from "~/types/gql.types";
 

@@ -1,6 +1,6 @@
 import VeeValidate, { Validator } from "vee-validate";
+import { required } from "vee-validate/dist/rules.esm";
 import Vue from "vue";
-import {required } from "vee-validate/dist/rules.esm"
 
 // Add the required rule
 Validator.extend("required", {
@@ -20,7 +20,7 @@ Validator.extend("tel-us", {
   getMessage(field: string, params: any[], data: any): string {
     return "Not a valid US number."
   }
-})
+});
 
 function passwordValidator(value: string, args) {
   const password = value;
@@ -29,8 +29,7 @@ function passwordValidator(value: string, args) {
   const hasNumbers = /\d/.test(password);
   const hasNonAlphas = /\W/.test(password);
   return hasNonAlphas && hasNumbers;
-};
-
+}
 function phoneValidation(value: string,  args) {
   return /^\(?([0-9]{3})\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$/.test(value);
 }

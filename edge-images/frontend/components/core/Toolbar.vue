@@ -17,7 +17,7 @@
       </v-flex>
       <v-flex md3 text-xs-right hidden-sm-and-down>
         <nuxt-link to="/configure/admin">
-          <v-avatar size="32" color="white" v-if="$auth.loggedIn">
+          <!-- <v-avatar size="32" color="white" v-if="$auth.loggedIn">
             <img
               v-if="$auth.user.picture"
               :src="$auth.user.picture"
@@ -25,7 +25,7 @@
               style="padding: 1px;"
             />
             <v-icon v-else color="primary">mdi-account</v-icon>
-          </v-avatar>
+          </v-avatar>-->
         </nuxt-link>
       </v-flex>
     </v-layout>
@@ -33,9 +33,9 @@
 </template>
 
 <script lang="ts">
-  import { mapMutations } from "vuex";
   import Component from "nuxt-class-component";
   import Vue from "vue";
+  import { mapMutations } from "vuex";
 
   @Component({
     data: () => ({

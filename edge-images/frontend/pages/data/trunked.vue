@@ -46,11 +46,11 @@
   </v-container>
 </template>
 <script lang="ts">
-  import Vue from "vue";
   import { Component } from "nuxt-property-decorator";
-  import { TrunkedCall } from "~/types/gql.types";
-  import TrunkedCallTable from "~/components/tables/TrunkedCallTable.vue";
+  import Vue from "vue";
   import TrunkedCallCard from "~/components/cards/TrunkedCallCard.vue";
+  import TrunkedCallTable from "~/components/tables/TrunkedCallTable.vue";
+  import { TrunkedCall } from "~/types/gql.types";
   import { toggleAutoPlay } from "~/utils/enums";
 
   @Component({

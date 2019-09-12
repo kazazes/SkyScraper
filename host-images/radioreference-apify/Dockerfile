@@ -38,6 +38,6 @@ RUN yarn global add typescript \
 
 COPY --chown=myuser:myuser . .
 
-RUN yarn compile
+RUN yarn build
 
 CMD ["yarn", "start"]

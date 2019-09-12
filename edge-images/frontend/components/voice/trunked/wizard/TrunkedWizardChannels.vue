@@ -6,10 +6,10 @@
 
 <script lang="ts">
   import Vue from "vue";
-  import {Component} from "vue-property-decorator";
-    import TalkgroupsTable from "./TalkgroupsTable.vue";
+  import { Component } from "vue-property-decorator";
+  import TalkgroupsTable from "./TalkgroupsTable.vue";
 
-    @Component({
+  @Component({
         components: {
             TalkgroupsTable,
         },

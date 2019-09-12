@@ -51,18 +51,13 @@
 <script lang="ts">
   import { MoonLoader } from "@saeris/vue-spinners";
   import consola from "consola";
-  import gql from "graphql-tag";
   import moment from "moment";
   import { Component, Prop, Watch } from "nuxt-property-decorator";
   import Vue from "vue";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { TRUNKED_SYSTEMS } from "~/assets/apollo/queries/getTrunkedSystems";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
-  import {
-    Transcription,
-    TrunkedCall,
-    TrunkedCallOrderByInput,
-  } from "~/types/gql.types";
+  import { Transcription, TrunkedCall, TrunkedCallOrderByInput } from "~/types/gql.types";
 
   @Component({
     name: "TrunkedCallTable",

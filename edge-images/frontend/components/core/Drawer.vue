@@ -65,9 +65,9 @@
 </template>
 
 <script>
-  import { mapMutations, mapState } from "vuex";
+    import { mapMutations, mapState } from "vuex";
 
-  export default {
+    export default {
     data: () => ({
       mini: false,
       logo: "./img/tower.svg",

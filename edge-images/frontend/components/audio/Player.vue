@@ -62,7 +62,7 @@
 </template>
 
 <script lang="ts">
-  import { Howl, Howler } from "howler";
+  import { Howl } from "howler";
   import { Component, Prop, Vue, Watch } from "vue-property-decorator";
   import { toggleAutoPlay } from "~/utils/enums";
 

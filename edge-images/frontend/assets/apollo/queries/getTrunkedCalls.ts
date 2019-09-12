@@ -1,4 +1,5 @@
 import gql from "graphql-tag";
+
 export const TRUNKED_CALLS = gql`
   query trunkedCalls(
     $first: Int

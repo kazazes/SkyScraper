@@ -4,16 +4,15 @@ import { hostname } from "os";
 import log from "../log";
 import { prisma } from "./generated/prisma-client";
 import { resolvers } from "./resolvers";
-import { rule, shield, and, or, not } from 'graphql-shield'
+import { rule, shield, and, or, not } from "graphql-shield";
 import { getUser, permissions } from "./shield";
-
 
 export default () => {
   const graphQLServer = new GraphQLServer({
     context: (req: Request) => ({
       ...req,
       prisma,
-        user: getUser(req),
+      user: getUser(req),
     }),
     resolvers,
     typeDefs: "./src/graphql/schema.graphql",

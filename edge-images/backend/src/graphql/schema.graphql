@@ -34,6 +34,7 @@ type Mutation {
   createTrunkedSystem(system: TrunkedSystemCreateInput): TrunkedSystem!
   register(email: String!, password: String!, phone: String!): User!
   login(username: String!, password: String!): LoginResponse!
+  upsertBaseTrunkedSystem(where: BaseTrunkedSystemWhereUniqueInput!, create: BaseTrunkedSystemCreateInput!, update: BaseTrunkedSystemUpdateInput!): BaseTrunkedSystem!
 }
 
 type TrunkedSystemStats {

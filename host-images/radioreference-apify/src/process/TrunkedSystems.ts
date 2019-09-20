@@ -1,5 +1,6 @@
 import { TrunkedSystem, Convert } from './parsers/systemParser';
 import { groupBy } from 'lodash';
+import { filterSystems } from './summary';
 export default class TrunkedSystems {
   serialized: TrunkedSystem[];
   constructor(data: string | object | Buffer) {
@@ -10,6 +11,13 @@ export default class TrunkedSystems {
     } else {
       this.serialized = Convert.toTrunkedSystem(JSON.stringify(data));
     }
+
+    const preFilterCount = this.serialized.length;
+    this.serialized = filterSystems(this.serialized).systems;
+    console.log(
+      `Removed ${preFilterCount - this.serialized.length} unsupported systems`
+    );
+
     console.log(`Serialized ${this.serialized.length} trunked systems`);
   }
 

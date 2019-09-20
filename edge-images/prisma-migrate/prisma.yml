@@ -5,6 +5,7 @@ datamodel:
   - ./dump1090.prisma
   - ./transcription.prisma
   - ./user.prisma
+  - ./trunked-system.prisma
 
 # Specifies the language and directory for the generated Prisma client.
 generate:

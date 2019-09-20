@@ -2,11 +2,23 @@
   // Please don't change this file manually but run `prisma generate` to update it.
   // For more information, please read the docs: https://www.prisma.io/docs/prisma-client/
 
-export const typeDefs = /* GraphQL */ `type AggregateDump1090Aircraft {
+export const typeDefs = /* GraphQL */ `type AggregateBaseTrunkedSystem {
+  count: Int!
+}
+
+type AggregateDump1090Aircraft {
   count: Int!
 }
 
 type AggregateDump1090Message {
+  count: Int!
+}
+
+type AggregateSiteFrequency {
+  count: Int!
+}
+
+type AggregateSystemSite {
   count: Int!
 }
 
@@ -48,6 +60,210 @@ type AggregateTrunkedTalkgroup {
 
 type AggregateUser {
   count: Int!
+}
+
+type BaseTrunkedSystem {
+  id: ID!
+  name: String!
+  shortName: String!
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+  sites(where: SystemSiteWhereInput, orderBy: SystemSiteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SystemSite!]
+  talkgroups(where: TrunkedTalkgroupWhereInput, orderBy: TrunkedTalkgroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TrunkedTalkgroup!]
+}
+
+type BaseTrunkedSystemConnection {
+  pageInfo: PageInfo!
+  edges: [BaseTrunkedSystemEdge]!
+  aggregate: AggregateBaseTrunkedSystem!
+}
+
+input BaseTrunkedSystemCreateInput {
+  id: ID
+  name: String!
+  shortName: String!
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+  sites: SystemSiteCreateManyInput
+  talkgroups: TrunkedTalkgroupCreateManyInput
+}
+
+type BaseTrunkedSystemEdge {
+  node: BaseTrunkedSystem!
+  cursor: String!
+}
+
+enum BaseTrunkedSystemOrderByInput {
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  shortName_ASC
+  shortName_DESC
+  county_ASC
+  county_DESC
+  systemType_ASC
+  systemType_DESC
+  systemId_ASC
+  systemId_DESC
+  state_ASC
+  state_DESC
+}
+
+type BaseTrunkedSystemPreviousValues {
+  id: ID!
+  name: String!
+  shortName: String!
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+}
+
+type BaseTrunkedSystemSubscriptionPayload {
+  mutation: MutationType!
+  node: BaseTrunkedSystem
+  updatedFields: [String!]
+  previousValues: BaseTrunkedSystemPreviousValues
+}
+
+input BaseTrunkedSystemSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BaseTrunkedSystemWhereInput
+  AND: [BaseTrunkedSystemSubscriptionWhereInput!]
+  OR: [BaseTrunkedSystemSubscriptionWhereInput!]
+  NOT: [BaseTrunkedSystemSubscriptionWhereInput!]
+}
+
+input BaseTrunkedSystemUpdateInput {
+  name: String
+  shortName: String
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+  sites: SystemSiteUpdateManyInput
+  talkgroups: TrunkedTalkgroupUpdateManyInput
+}
+
+input BaseTrunkedSystemUpdateManyMutationInput {
+  name: String
+  shortName: String
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+}
+
+input BaseTrunkedSystemWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  name: String
+  name_not: String
+  name_in: [String!]
+  name_not_in: [String!]
+  name_lt: String
+  name_lte: String
+  name_gt: String
+  name_gte: String
+  name_contains: String
+  name_not_contains: String
+  name_starts_with: String
+  name_not_starts_with: String
+  name_ends_with: String
+  name_not_ends_with: String
+  shortName: String
+  shortName_not: String
+  shortName_in: [String!]
+  shortName_not_in: [String!]
+  shortName_lt: String
+  shortName_lte: String
+  shortName_gt: String
+  shortName_gte: String
+  shortName_contains: String
+  shortName_not_contains: String
+  shortName_starts_with: String
+  shortName_not_starts_with: String
+  shortName_ends_with: String
+  shortName_not_ends_with: String
+  county: String
+  county_not: String
+  county_in: [String!]
+  county_not_in: [String!]
+  county_lt: String
+  county_lte: String
+  county_gt: String
+  county_gte: String
+  county_contains: String
+  county_not_contains: String
+  county_starts_with: String
+  county_not_starts_with: String
+  county_ends_with: String
+  county_not_ends_with: String
+  systemType: TrunkedSystemType
+  systemType_not: TrunkedSystemType
+  systemType_in: [TrunkedSystemType!]
+  systemType_not_in: [TrunkedSystemType!]
+  systemId: String
+  systemId_not: String
+  systemId_in: [String!]
+  systemId_not_in: [String!]
+  systemId_lt: String
+  systemId_lte: String
+  systemId_gt: String
+  systemId_gte: String
+  systemId_contains: String
+  systemId_not_contains: String
+  systemId_starts_with: String
+  systemId_not_starts_with: String
+  systemId_ends_with: String
+  systemId_not_ends_with: String
+  state: String
+  state_not: String
+  state_in: [String!]
+  state_not_in: [String!]
+  state_lt: String
+  state_lte: String
+  state_gt: String
+  state_gte: String
+  state_contains: String
+  state_not_contains: String
+  state_starts_with: String
+  state_not_starts_with: String
+  state_ends_with: String
+  state_not_ends_with: String
+  sites_every: SystemSiteWhereInput
+  sites_some: SystemSiteWhereInput
+  sites_none: SystemSiteWhereInput
+  talkgroups_every: TrunkedTalkgroupWhereInput
+  talkgroups_some: TrunkedTalkgroupWhereInput
+  talkgroups_none: TrunkedTalkgroupWhereInput
+  AND: [BaseTrunkedSystemWhereInput!]
+  OR: [BaseTrunkedSystemWhereInput!]
+  NOT: [BaseTrunkedSystemWhereInput!]
+}
+
+input BaseTrunkedSystemWhereUniqueInput {
+  id: ID
 }
 
 type BatchPayload {
@@ -512,6 +728,12 @@ enum Dump1090TransmissionType {
 scalar Long
 
 type Mutation {
+  createBaseTrunkedSystem(data: BaseTrunkedSystemCreateInput!): BaseTrunkedSystem!
+  updateBaseTrunkedSystem(data: BaseTrunkedSystemUpdateInput!, where: BaseTrunkedSystemWhereUniqueInput!): BaseTrunkedSystem
+  updateManyBaseTrunkedSystems(data: BaseTrunkedSystemUpdateManyMutationInput!, where: BaseTrunkedSystemWhereInput): BatchPayload!
+  upsertBaseTrunkedSystem(where: BaseTrunkedSystemWhereUniqueInput!, create: BaseTrunkedSystemCreateInput!, update: BaseTrunkedSystemUpdateInput!): BaseTrunkedSystem!
+  deleteBaseTrunkedSystem(where: BaseTrunkedSystemWhereUniqueInput!): BaseTrunkedSystem
+  deleteManyBaseTrunkedSystems(where: BaseTrunkedSystemWhereInput): BatchPayload!
   createDump1090Aircraft(data: Dump1090AircraftCreateInput!): Dump1090Aircraft!
   updateDump1090Aircraft(data: Dump1090AircraftUpdateInput!, where: Dump1090AircraftWhereUniqueInput!): Dump1090Aircraft
   updateManyDump1090Aircrafts(data: Dump1090AircraftUpdateManyMutationInput!, where: Dump1090AircraftWhereInput): BatchPayload!
@@ -524,6 +746,18 @@ type Mutation {
   upsertDump1090Message(where: Dump1090MessageWhereUniqueInput!, create: Dump1090MessageCreateInput!, update: Dump1090MessageUpdateInput!): Dump1090Message!
   deleteDump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
   deleteManyDump1090Messages(where: Dump1090MessageWhereInput): BatchPayload!
+  createSiteFrequency(data: SiteFrequencyCreateInput!): SiteFrequency!
+  updateSiteFrequency(data: SiteFrequencyUpdateInput!, where: SiteFrequencyWhereUniqueInput!): SiteFrequency
+  updateManySiteFrequencies(data: SiteFrequencyUpdateManyMutationInput!, where: SiteFrequencyWhereInput): BatchPayload!
+  upsertSiteFrequency(where: SiteFrequencyWhereUniqueInput!, create: SiteFrequencyCreateInput!, update: SiteFrequencyUpdateInput!): SiteFrequency!
+  deleteSiteFrequency(where: SiteFrequencyWhereUniqueInput!): SiteFrequency
+  deleteManySiteFrequencies(where: SiteFrequencyWhereInput): BatchPayload!
+  createSystemSite(data: SystemSiteCreateInput!): SystemSite!
+  updateSystemSite(data: SystemSiteUpdateInput!, where: SystemSiteWhereUniqueInput!): SystemSite
+  updateManySystemSites(data: SystemSiteUpdateManyMutationInput!, where: SystemSiteWhereInput): BatchPayload!
+  upsertSystemSite(where: SystemSiteWhereUniqueInput!, create: SystemSiteCreateInput!, update: SystemSiteUpdateInput!): SystemSite!
+  deleteSystemSite(where: SystemSiteWhereUniqueInput!): SystemSite
+  deleteManySystemSites(where: SystemSiteWhereInput): BatchPayload!
   createTranscription(data: TranscriptionCreateInput!): Transcription!
   updateTranscription(data: TranscriptionUpdateInput!, where: TranscriptionWhereUniqueInput!): Transcription
   updateManyTranscriptions(data: TranscriptionUpdateManyMutationInput!, where: TranscriptionWhereInput): BatchPayload!
@@ -604,12 +838,21 @@ type PageInfo {
 }
 
 type Query {
+  baseTrunkedSystem(where: BaseTrunkedSystemWhereUniqueInput!): BaseTrunkedSystem
+  baseTrunkedSystems(where: BaseTrunkedSystemWhereInput, orderBy: BaseTrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BaseTrunkedSystem]!
+  baseTrunkedSystemsConnection(where: BaseTrunkedSystemWhereInput, orderBy: BaseTrunkedSystemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BaseTrunkedSystemConnection!
   dump1090Aircraft(where: Dump1090AircraftWhereUniqueInput!): Dump1090Aircraft
   dump1090Aircrafts(where: Dump1090AircraftWhereInput, orderBy: Dump1090AircraftOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dump1090Aircraft]!
   dump1090AircraftsConnection(where: Dump1090AircraftWhereInput, orderBy: Dump1090AircraftOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): Dump1090AircraftConnection!
   dump1090Message(where: Dump1090MessageWhereUniqueInput!): Dump1090Message
   dump1090Messages(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Dump1090Message]!
   dump1090MessagesConnection(where: Dump1090MessageWhereInput, orderBy: Dump1090MessageOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): Dump1090MessageConnection!
+  siteFrequency(where: SiteFrequencyWhereUniqueInput!): SiteFrequency
+  siteFrequencies(where: SiteFrequencyWhereInput, orderBy: SiteFrequencyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SiteFrequency]!
+  siteFrequenciesConnection(where: SiteFrequencyWhereInput, orderBy: SiteFrequencyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SiteFrequencyConnection!
+  systemSite(where: SystemSiteWhereUniqueInput!): SystemSite
+  systemSites(where: SystemSiteWhereInput, orderBy: SystemSiteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SystemSite]!
+  systemSitesConnection(where: SystemSiteWhereInput, orderBy: SystemSiteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SystemSiteConnection!
   transcription(where: TranscriptionWhereUniqueInput!): Transcription
   transcriptions(where: TranscriptionWhereInput, orderBy: TranscriptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Transcription]!
   transcriptionsConnection(where: TranscriptionWhereInput, orderBy: TranscriptionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TranscriptionConnection!
@@ -643,9 +886,195 @@ type Query {
   node(id: ID!): Node
 }
 
+enum SiteControl {
+  ALTERNATE
+  PRIMARY
+  NONE
+}
+
+type SiteFrequency {
+  id: ID!
+  control: SiteControl!
+  frequency: Float!
+}
+
+type SiteFrequencyConnection {
+  pageInfo: PageInfo!
+  edges: [SiteFrequencyEdge]!
+  aggregate: AggregateSiteFrequency!
+}
+
+input SiteFrequencyCreateInput {
+  id: ID
+  control: SiteControl!
+  frequency: Float!
+}
+
+input SiteFrequencyCreateManyInput {
+  create: [SiteFrequencyCreateInput!]
+  connect: [SiteFrequencyWhereUniqueInput!]
+}
+
+type SiteFrequencyEdge {
+  node: SiteFrequency!
+  cursor: String!
+}
+
+enum SiteFrequencyOrderByInput {
+  id_ASC
+  id_DESC
+  control_ASC
+  control_DESC
+  frequency_ASC
+  frequency_DESC
+}
+
+type SiteFrequencyPreviousValues {
+  id: ID!
+  control: SiteControl!
+  frequency: Float!
+}
+
+input SiteFrequencyScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  control: SiteControl
+  control_not: SiteControl
+  control_in: [SiteControl!]
+  control_not_in: [SiteControl!]
+  frequency: Float
+  frequency_not: Float
+  frequency_in: [Float!]
+  frequency_not_in: [Float!]
+  frequency_lt: Float
+  frequency_lte: Float
+  frequency_gt: Float
+  frequency_gte: Float
+  AND: [SiteFrequencyScalarWhereInput!]
+  OR: [SiteFrequencyScalarWhereInput!]
+  NOT: [SiteFrequencyScalarWhereInput!]
+}
+
+type SiteFrequencySubscriptionPayload {
+  mutation: MutationType!
+  node: SiteFrequency
+  updatedFields: [String!]
+  previousValues: SiteFrequencyPreviousValues
+}
+
+input SiteFrequencySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SiteFrequencyWhereInput
+  AND: [SiteFrequencySubscriptionWhereInput!]
+  OR: [SiteFrequencySubscriptionWhereInput!]
+  NOT: [SiteFrequencySubscriptionWhereInput!]
+}
+
+input SiteFrequencyUpdateDataInput {
+  control: SiteControl
+  frequency: Float
+}
+
+input SiteFrequencyUpdateInput {
+  control: SiteControl
+  frequency: Float
+}
+
+input SiteFrequencyUpdateManyDataInput {
+  control: SiteControl
+  frequency: Float
+}
+
+input SiteFrequencyUpdateManyInput {
+  create: [SiteFrequencyCreateInput!]
+  update: [SiteFrequencyUpdateWithWhereUniqueNestedInput!]
+  upsert: [SiteFrequencyUpsertWithWhereUniqueNestedInput!]
+  delete: [SiteFrequencyWhereUniqueInput!]
+  connect: [SiteFrequencyWhereUniqueInput!]
+  set: [SiteFrequencyWhereUniqueInput!]
+  disconnect: [SiteFrequencyWhereUniqueInput!]
+  deleteMany: [SiteFrequencyScalarWhereInput!]
+  updateMany: [SiteFrequencyUpdateManyWithWhereNestedInput!]
+}
+
+input SiteFrequencyUpdateManyMutationInput {
+  control: SiteControl
+  frequency: Float
+}
+
+input SiteFrequencyUpdateManyWithWhereNestedInput {
+  where: SiteFrequencyScalarWhereInput!
+  data: SiteFrequencyUpdateManyDataInput!
+}
+
+input SiteFrequencyUpdateWithWhereUniqueNestedInput {
+  where: SiteFrequencyWhereUniqueInput!
+  data: SiteFrequencyUpdateDataInput!
+}
+
+input SiteFrequencyUpsertWithWhereUniqueNestedInput {
+  where: SiteFrequencyWhereUniqueInput!
+  update: SiteFrequencyUpdateDataInput!
+  create: SiteFrequencyCreateInput!
+}
+
+input SiteFrequencyWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  control: SiteControl
+  control_not: SiteControl
+  control_in: [SiteControl!]
+  control_not_in: [SiteControl!]
+  frequency: Float
+  frequency_not: Float
+  frequency_in: [Float!]
+  frequency_not_in: [Float!]
+  frequency_lt: Float
+  frequency_lte: Float
+  frequency_gt: Float
+  frequency_gte: Float
+  AND: [SiteFrequencyWhereInput!]
+  OR: [SiteFrequencyWhereInput!]
+  NOT: [SiteFrequencyWhereInput!]
+}
+
+input SiteFrequencyWhereUniqueInput {
+  id: ID
+}
+
 type Subscription {
+  baseTrunkedSystem(where: BaseTrunkedSystemSubscriptionWhereInput): BaseTrunkedSystemSubscriptionPayload
   dump1090Aircraft(where: Dump1090AircraftSubscriptionWhereInput): Dump1090AircraftSubscriptionPayload
   dump1090Message(where: Dump1090MessageSubscriptionWhereInput): Dump1090MessageSubscriptionPayload
+  siteFrequency(where: SiteFrequencySubscriptionWhereInput): SiteFrequencySubscriptionPayload
+  systemSite(where: SystemSiteSubscriptionWhereInput): SystemSiteSubscriptionPayload
   transcription(where: TranscriptionSubscriptionWhereInput): TranscriptionSubscriptionPayload
   transcriptionWord(where: TranscriptionWordSubscriptionWhereInput): TranscriptionWordSubscriptionPayload
   trunkedCall(where: TrunkedCallSubscriptionWhereInput): TrunkedCallSubscriptionPayload
@@ -656,6 +1085,296 @@ type Subscription {
   trunkedSystem(where: TrunkedSystemSubscriptionWhereInput): TrunkedSystemSubscriptionPayload
   trunkedTalkgroup(where: TrunkedTalkgroupSubscriptionWhereInput): TrunkedTalkgroupSubscriptionPayload
   user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+}
+
+type SystemSite {
+  id: ID!
+  frequencies(where: SiteFrequencyWhereInput, orderBy: SiteFrequencyOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [SiteFrequency!]
+  siteCounty: String
+  siteId: String!
+  siteLink: String!
+  siteName: String!
+}
+
+type SystemSiteConnection {
+  pageInfo: PageInfo!
+  edges: [SystemSiteEdge]!
+  aggregate: AggregateSystemSite!
+}
+
+input SystemSiteCreateInput {
+  id: ID
+  frequencies: SiteFrequencyCreateManyInput
+  siteCounty: String
+  siteId: String!
+  siteLink: String!
+  siteName: String!
+}
+
+input SystemSiteCreateManyInput {
+  create: [SystemSiteCreateInput!]
+  connect: [SystemSiteWhereUniqueInput!]
+}
+
+type SystemSiteEdge {
+  node: SystemSite!
+  cursor: String!
+}
+
+enum SystemSiteOrderByInput {
+  id_ASC
+  id_DESC
+  siteCounty_ASC
+  siteCounty_DESC
+  siteId_ASC
+  siteId_DESC
+  siteLink_ASC
+  siteLink_DESC
+  siteName_ASC
+  siteName_DESC
+}
+
+type SystemSitePreviousValues {
+  id: ID!
+  siteCounty: String
+  siteId: String!
+  siteLink: String!
+  siteName: String!
+}
+
+input SystemSiteScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  siteCounty: String
+  siteCounty_not: String
+  siteCounty_in: [String!]
+  siteCounty_not_in: [String!]
+  siteCounty_lt: String
+  siteCounty_lte: String
+  siteCounty_gt: String
+  siteCounty_gte: String
+  siteCounty_contains: String
+  siteCounty_not_contains: String
+  siteCounty_starts_with: String
+  siteCounty_not_starts_with: String
+  siteCounty_ends_with: String
+  siteCounty_not_ends_with: String
+  siteId: String
+  siteId_not: String
+  siteId_in: [String!]
+  siteId_not_in: [String!]
+  siteId_lt: String
+  siteId_lte: String
+  siteId_gt: String
+  siteId_gte: String
+  siteId_contains: String
+  siteId_not_contains: String
+  siteId_starts_with: String
+  siteId_not_starts_with: String
+  siteId_ends_with: String
+  siteId_not_ends_with: String
+  siteLink: String
+  siteLink_not: String
+  siteLink_in: [String!]
+  siteLink_not_in: [String!]
+  siteLink_lt: String
+  siteLink_lte: String
+  siteLink_gt: String
+  siteLink_gte: String
+  siteLink_contains: String
+  siteLink_not_contains: String
+  siteLink_starts_with: String
+  siteLink_not_starts_with: String
+  siteLink_ends_with: String
+  siteLink_not_ends_with: String
+  siteName: String
+  siteName_not: String
+  siteName_in: [String!]
+  siteName_not_in: [String!]
+  siteName_lt: String
+  siteName_lte: String
+  siteName_gt: String
+  siteName_gte: String
+  siteName_contains: String
+  siteName_not_contains: String
+  siteName_starts_with: String
+  siteName_not_starts_with: String
+  siteName_ends_with: String
+  siteName_not_ends_with: String
+  AND: [SystemSiteScalarWhereInput!]
+  OR: [SystemSiteScalarWhereInput!]
+  NOT: [SystemSiteScalarWhereInput!]
+}
+
+type SystemSiteSubscriptionPayload {
+  mutation: MutationType!
+  node: SystemSite
+  updatedFields: [String!]
+  previousValues: SystemSitePreviousValues
+}
+
+input SystemSiteSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SystemSiteWhereInput
+  AND: [SystemSiteSubscriptionWhereInput!]
+  OR: [SystemSiteSubscriptionWhereInput!]
+  NOT: [SystemSiteSubscriptionWhereInput!]
+}
+
+input SystemSiteUpdateDataInput {
+  frequencies: SiteFrequencyUpdateManyInput
+  siteCounty: String
+  siteId: String
+  siteLink: String
+  siteName: String
+}
+
+input SystemSiteUpdateInput {
+  frequencies: SiteFrequencyUpdateManyInput
+  siteCounty: String
+  siteId: String
+  siteLink: String
+  siteName: String
+}
+
+input SystemSiteUpdateManyDataInput {
+  siteCounty: String
+  siteId: String
+  siteLink: String
+  siteName: String
+}
+
+input SystemSiteUpdateManyInput {
+  create: [SystemSiteCreateInput!]
+  update: [SystemSiteUpdateWithWhereUniqueNestedInput!]
+  upsert: [SystemSiteUpsertWithWhereUniqueNestedInput!]
+  delete: [SystemSiteWhereUniqueInput!]
+  connect: [SystemSiteWhereUniqueInput!]
+  set: [SystemSiteWhereUniqueInput!]
+  disconnect: [SystemSiteWhereUniqueInput!]
+  deleteMany: [SystemSiteScalarWhereInput!]
+  updateMany: [SystemSiteUpdateManyWithWhereNestedInput!]
+}
+
+input SystemSiteUpdateManyMutationInput {
+  siteCounty: String
+  siteId: String
+  siteLink: String
+  siteName: String
+}
+
+input SystemSiteUpdateManyWithWhereNestedInput {
+  where: SystemSiteScalarWhereInput!
+  data: SystemSiteUpdateManyDataInput!
+}
+
+input SystemSiteUpdateWithWhereUniqueNestedInput {
+  where: SystemSiteWhereUniqueInput!
+  data: SystemSiteUpdateDataInput!
+}
+
+input SystemSiteUpsertWithWhereUniqueNestedInput {
+  where: SystemSiteWhereUniqueInput!
+  update: SystemSiteUpdateDataInput!
+  create: SystemSiteCreateInput!
+}
+
+input SystemSiteWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  frequencies_every: SiteFrequencyWhereInput
+  frequencies_some: SiteFrequencyWhereInput
+  frequencies_none: SiteFrequencyWhereInput
+  siteCounty: String
+  siteCounty_not: String
+  siteCounty_in: [String!]
+  siteCounty_not_in: [String!]
+  siteCounty_lt: String
+  siteCounty_lte: String
+  siteCounty_gt: String
+  siteCounty_gte: String
+  siteCounty_contains: String
+  siteCounty_not_contains: String
+  siteCounty_starts_with: String
+  siteCounty_not_starts_with: String
+  siteCounty_ends_with: String
+  siteCounty_not_ends_with: String
+  siteId: String
+  siteId_not: String
+  siteId_in: [String!]
+  siteId_not_in: [String!]
+  siteId_lt: String
+  siteId_lte: String
+  siteId_gt: String
+  siteId_gte: String
+  siteId_contains: String
+  siteId_not_contains: String
+  siteId_starts_with: String
+  siteId_not_starts_with: String
+  siteId_ends_with: String
+  siteId_not_ends_with: String
+  siteLink: String
+  siteLink_not: String
+  siteLink_in: [String!]
+  siteLink_not_in: [String!]
+  siteLink_lt: String
+  siteLink_lte: String
+  siteLink_gt: String
+  siteLink_gte: String
+  siteLink_contains: String
+  siteLink_not_contains: String
+  siteLink_starts_with: String
+  siteLink_not_starts_with: String
+  siteLink_ends_with: String
+  siteLink_not_ends_with: String
+  siteName: String
+  siteName_not: String
+  siteName_in: [String!]
+  siteName_not_in: [String!]
+  siteName_lt: String
+  siteName_lte: String
+  siteName_gt: String
+  siteName_gte: String
+  siteName_contains: String
+  siteName_not_contains: String
+  siteName_starts_with: String
+  siteName_not_starts_with: String
+  siteName_ends_with: String
+  siteName_not_ends_with: String
+  AND: [SystemSiteWhereInput!]
+  OR: [SystemSiteWhereInput!]
+  NOT: [SystemSiteWhereInput!]
+}
+
+input SystemSiteWhereUniqueInput {
+  id: ID
 }
 
 type Transcription {
@@ -3874,6 +4593,11 @@ input TrunkedTalkgroupCreateInput {
   hash: String!
 }
 
+input TrunkedTalkgroupCreateManyInput {
+  create: [TrunkedTalkgroupCreateInput!]
+  connect: [TrunkedTalkgroupWhereUniqueInput!]
+}
+
 input TrunkedTalkgroupCreateManyWithoutSystemInput {
   create: [TrunkedTalkgroupCreateWithoutSystemInput!]
   connect: [TrunkedTalkgroupWhereUniqueInput!]
@@ -4133,6 +4857,20 @@ input TrunkedTalkgroupSubscriptionWhereInput {
   NOT: [TrunkedTalkgroupSubscriptionWhereInput!]
 }
 
+input TrunkedTalkgroupUpdateDataInput {
+  decimal: Int
+  hex: String
+  mode: String
+  alphaTag: String
+  description: String
+  tag: String
+  group: String
+  priority: Int
+  system: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput
+  calls: TrunkedCallUpdateManyWithoutTalkgroupInput
+  hash: String
+}
+
 input TrunkedTalkgroupUpdateInput {
   decimal: Int
   hex: String
@@ -4157,6 +4895,18 @@ input TrunkedTalkgroupUpdateManyDataInput {
   group: String
   priority: Int
   hash: String
+}
+
+input TrunkedTalkgroupUpdateManyInput {
+  create: [TrunkedTalkgroupCreateInput!]
+  update: [TrunkedTalkgroupUpdateWithWhereUniqueNestedInput!]
+  upsert: [TrunkedTalkgroupUpsertWithWhereUniqueNestedInput!]
+  delete: [TrunkedTalkgroupWhereUniqueInput!]
+  connect: [TrunkedTalkgroupWhereUniqueInput!]
+  set: [TrunkedTalkgroupWhereUniqueInput!]
+  disconnect: [TrunkedTalkgroupWhereUniqueInput!]
+  deleteMany: [TrunkedTalkgroupScalarWhereInput!]
+  updateMany: [TrunkedTalkgroupUpdateManyWithWhereNestedInput!]
 }
 
 input TrunkedTalkgroupUpdateManyMutationInput {
@@ -4223,6 +4973,11 @@ input TrunkedTalkgroupUpdateWithoutSystemDataInput {
   hash: String
 }
 
+input TrunkedTalkgroupUpdateWithWhereUniqueNestedInput {
+  where: TrunkedTalkgroupWhereUniqueInput!
+  data: TrunkedTalkgroupUpdateDataInput!
+}
+
 input TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput {
   where: TrunkedTalkgroupWhereUniqueInput!
   data: TrunkedTalkgroupUpdateWithoutSystemDataInput!
@@ -4231,6 +4986,12 @@ input TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput {
 input TrunkedTalkgroupUpsertWithoutCallsInput {
   update: TrunkedTalkgroupUpdateWithoutCallsDataInput!
   create: TrunkedTalkgroupCreateWithoutCallsInput!
+}
+
+input TrunkedTalkgroupUpsertWithWhereUniqueNestedInput {
+  where: TrunkedTalkgroupWhereUniqueInput!
+  update: TrunkedTalkgroupUpdateDataInput!
+  create: TrunkedTalkgroupCreateInput!
 }
 
 input TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput {
@@ -4630,4 +5391,4 @@ input UserWhereUniqueInput {
   email: String
   phone: String
 }
-`;
+`

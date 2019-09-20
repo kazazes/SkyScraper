@@ -43,4 +43,7 @@ export const Mutation: MutationResolvers.Type = {
   login: (parent, args, ctx) => {
     throw new Error("Resolver not implemented");
   },
+  upsertBaseTrunkedSystem: (parent, args, ctx) => {
+    throw new Error("Resolver not implemented");
+  }
 };

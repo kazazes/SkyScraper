@@ -35,7 +35,7 @@
         const t = this as any;
         return {
           query: TRUNKED_SYSTEM_STATS,
-          prefetch: true,
+          fetchPolicy: "cache-first",
         };
       },
     },
@@ -43,7 +43,10 @@
   export default class SystemsConfig extends Vue {
     mounted() {
       this.$nextTick(() => {
-        if (this.$nuxt.$loading && typeof this.$nuxt.$loading.start === "function")
+        if (
+          this.$nuxt.$loading &&
+          typeof this.$nuxt.$loading.start === "function"
+        )
           this.$nuxt.$loading.start();
       });
     }
@@ -75,7 +78,7 @@
     }
 
     formatSystemName(item: TrunkedSystem) {
-      return `${ item.shortName } - ${ item.name }`;
+      return `${item.shortName} - ${item.name}`;
     }
 
     systemChanged(systemId: string) {

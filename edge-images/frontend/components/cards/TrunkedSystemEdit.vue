@@ -4,7 +4,6 @@
       <div class="display-2 py-4 my-3">Select or create a system.</div>
     </v-flex>
     <v-card v-else-if="trunkedSystem" width="100%">
-      <v-card-title>{{trunkedSystem.name}}</v-card-title>
       <v-card-text>
         <client-only>
           <code

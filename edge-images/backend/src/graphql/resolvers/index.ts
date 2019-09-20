@@ -16,8 +16,14 @@ import { TrunkedCallSource } from "./TrunkedCallSource";
 import { TrunkedSystem } from "./TrunkedSystem";
 import { TrunkedSystemStats } from "./TrunkedSystemStats";
 import { TrunkedTalkgroup } from "./TrunkedTalkgroup";
+import { BaseTrunkedSystem } from './BaseTrunkedSystem';
+import { SiteFrequency } from './SiteFrequency';
+import { SystemSite } from './SystemSite';
 
 export const resolvers: Resolvers = {
+  BaseTrunkedSystem,
+  SiteFrequency,
+  SystemSite,
   Query,
   Mutation,
   TrunkedCall,

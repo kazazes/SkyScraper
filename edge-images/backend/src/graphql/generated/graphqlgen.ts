@@ -9,7 +9,10 @@ import {
   TrunkedCallFrequencyTime,
   Transcription,
   TranscriptionWord,
-  User
+  User,
+  BaseTrunkedSystem,
+  SystemSite,
+  SiteFrequency
 } from "./prisma-client";
 import { TrunkedSystemStats, LoginResponse } from "../resolverTypes";
 import { Context } from "../types";
@@ -165,6 +168,25 @@ export type TrunkedSystemOrderByInput =
   | "hideUnknownTalkgroups_ASC"
   | "hideUnknownTalkgroups_DESC";
 export type UserRole = "ADMIN" | "USER" | "SUPPORT";
+export type SiteControl = "ALTERNATE" | "PRIMARY" | "NONE";
+export type SystemSiteOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "siteCounty_ASC"
+  | "siteCounty_DESC"
+  | "siteId_ASC"
+  | "siteId_DESC"
+  | "siteLink_ASC"
+  | "siteLink_DESC"
+  | "siteName_ASC"
+  | "siteName_DESC";
+export type SiteFrequencyOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "control_ASC"
+  | "control_DESC"
+  | "frequency_ASC"
+  | "frequency_DESC";
 
 export namespace QueryResolvers {
   export const defaultResolvers = {};
@@ -946,7 +968,7 @@ export namespace QueryResolvers {
   }
 
   export interface ArgsLogin {
-    user?: UserWhereUniqueInput | null;
+    user: UserWhereUniqueInput;
     password: string;
   }
 
@@ -7614,6 +7636,30 @@ export namespace MutationResolvers {
     hideUnknownTalkgroups?: boolean | null;
     calls?: TrunkedCallCreateManyWithoutSystemInput | null;
   }
+  export interface BaseTrunkedSystemWhereUniqueInput {
+    id?: string | null;
+  }
+  export interface BaseTrunkedSystemCreateInput {
+    id?: string | null;
+    name: string;
+    shortName: string;
+    county?: string | null;
+    systemType?: TrunkedSystemType | null;
+    systemId?: string | null;
+    state?: string | null;
+    sites?: SystemSiteCreateManyInput | null;
+    talkgroups?: TrunkedTalkgroupCreateManyInput | null;
+  }
+  export interface BaseTrunkedSystemUpdateInput {
+    name?: string | null;
+    shortName?: string | null;
+    county?: string | null;
+    systemType?: TrunkedSystemType | null;
+    systemId?: string | null;
+    state?: string | null;
+    sites?: SystemSiteUpdateManyInput | null;
+    talkgroups?: TrunkedTalkgroupUpdateManyInput | null;
+  }
   export interface TrunkedSystemCreatecontrolChannelsInput {
     set?: number[] | null;
   }
@@ -7630,6 +7676,36 @@ export namespace MutationResolvers {
   export interface TrunkedCallCreateManyWithoutSystemInput {
     create?: TrunkedCallCreateWithoutSystemInput[] | null;
     connect?: TrunkedCallWhereUniqueInput[] | null;
+  }
+  export interface SystemSiteCreateManyInput {
+    create?: SystemSiteCreateInput[] | null;
+    connect?: SystemSiteWhereUniqueInput[] | null;
+  }
+  export interface TrunkedTalkgroupCreateManyInput {
+    create?: TrunkedTalkgroupCreateInput[] | null;
+    connect?: TrunkedTalkgroupWhereUniqueInput[] | null;
+  }
+  export interface SystemSiteUpdateManyInput {
+    create?: SystemSiteCreateInput[] | null;
+    update?: SystemSiteUpdateWithWhereUniqueNestedInput[] | null;
+    upsert?: SystemSiteUpsertWithWhereUniqueNestedInput[] | null;
+    delete?: SystemSiteWhereUniqueInput[] | null;
+    connect?: SystemSiteWhereUniqueInput[] | null;
+    set?: SystemSiteWhereUniqueInput[] | null;
+    disconnect?: SystemSiteWhereUniqueInput[] | null;
+    deleteMany?: SystemSiteScalarWhereInput[] | null;
+    updateMany?: SystemSiteUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedTalkgroupUpdateManyInput {
+    create?: TrunkedTalkgroupCreateInput[] | null;
+    update?: TrunkedTalkgroupUpdateWithWhereUniqueNestedInput[] | null;
+    upsert?: TrunkedTalkgroupUpsertWithWhereUniqueNestedInput[] | null;
+    delete?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    connect?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    set?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    disconnect?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    deleteMany?: TrunkedTalkgroupScalarWhereInput[] | null;
+    updateMany?: TrunkedTalkgroupUpdateManyWithWhereNestedInput[] | null;
   }
   export interface TrunkedTalkgroupCreateWithoutSystemInput {
     id?: string | null;
@@ -7669,6 +7745,281 @@ export namespace MutationResolvers {
     id?: string | null;
     callHash?: string | null;
   }
+  export interface SystemSiteCreateInput {
+    id?: string | null;
+    frequencies?: SiteFrequencyCreateManyInput | null;
+    siteCounty?: string | null;
+    siteId: string;
+    siteLink: string;
+    siteName: string;
+  }
+  export interface SystemSiteWhereUniqueInput {
+    id?: string | null;
+  }
+  export interface TrunkedTalkgroupCreateInput {
+    id?: string | null;
+    decimal: number;
+    hex: string;
+    mode: string;
+    alphaTag: string;
+    description: string;
+    tag: string;
+    group: string;
+    priority?: number | null;
+    system: TrunkedSystemCreateOneWithoutTalkgroupsInput;
+    calls?: TrunkedCallCreateManyWithoutTalkgroupInput | null;
+    hash: string;
+  }
+  export interface SystemSiteUpdateWithWhereUniqueNestedInput {
+    where: SystemSiteWhereUniqueInput;
+    data: SystemSiteUpdateDataInput;
+  }
+  export interface SystemSiteUpsertWithWhereUniqueNestedInput {
+    where: SystemSiteWhereUniqueInput;
+    update: SystemSiteUpdateDataInput;
+    create: SystemSiteCreateInput;
+  }
+  export interface SystemSiteScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    siteCounty?: string | null;
+    siteCounty_not?: string | null;
+    siteCounty_in?: string[] | null;
+    siteCounty_not_in?: string[] | null;
+    siteCounty_lt?: string | null;
+    siteCounty_lte?: string | null;
+    siteCounty_gt?: string | null;
+    siteCounty_gte?: string | null;
+    siteCounty_contains?: string | null;
+    siteCounty_not_contains?: string | null;
+    siteCounty_starts_with?: string | null;
+    siteCounty_not_starts_with?: string | null;
+    siteCounty_ends_with?: string | null;
+    siteCounty_not_ends_with?: string | null;
+    siteId?: string | null;
+    siteId_not?: string | null;
+    siteId_in?: string[] | null;
+    siteId_not_in?: string[] | null;
+    siteId_lt?: string | null;
+    siteId_lte?: string | null;
+    siteId_gt?: string | null;
+    siteId_gte?: string | null;
+    siteId_contains?: string | null;
+    siteId_not_contains?: string | null;
+    siteId_starts_with?: string | null;
+    siteId_not_starts_with?: string | null;
+    siteId_ends_with?: string | null;
+    siteId_not_ends_with?: string | null;
+    siteLink?: string | null;
+    siteLink_not?: string | null;
+    siteLink_in?: string[] | null;
+    siteLink_not_in?: string[] | null;
+    siteLink_lt?: string | null;
+    siteLink_lte?: string | null;
+    siteLink_gt?: string | null;
+    siteLink_gte?: string | null;
+    siteLink_contains?: string | null;
+    siteLink_not_contains?: string | null;
+    siteLink_starts_with?: string | null;
+    siteLink_not_starts_with?: string | null;
+    siteLink_ends_with?: string | null;
+    siteLink_not_ends_with?: string | null;
+    siteName?: string | null;
+    siteName_not?: string | null;
+    siteName_in?: string[] | null;
+    siteName_not_in?: string[] | null;
+    siteName_lt?: string | null;
+    siteName_lte?: string | null;
+    siteName_gt?: string | null;
+    siteName_gte?: string | null;
+    siteName_contains?: string | null;
+    siteName_not_contains?: string | null;
+    siteName_starts_with?: string | null;
+    siteName_not_starts_with?: string | null;
+    siteName_ends_with?: string | null;
+    siteName_not_ends_with?: string | null;
+    AND?: SystemSiteScalarWhereInput[] | null;
+    OR?: SystemSiteScalarWhereInput[] | null;
+    NOT?: SystemSiteScalarWhereInput[] | null;
+  }
+  export interface SystemSiteUpdateManyWithWhereNestedInput {
+    where: SystemSiteScalarWhereInput;
+    data: SystemSiteUpdateManyDataInput;
+  }
+  export interface TrunkedTalkgroupUpdateWithWhereUniqueNestedInput {
+    where: TrunkedTalkgroupWhereUniqueInput;
+    data: TrunkedTalkgroupUpdateDataInput;
+  }
+  export interface TrunkedTalkgroupUpsertWithWhereUniqueNestedInput {
+    where: TrunkedTalkgroupWhereUniqueInput;
+    update: TrunkedTalkgroupUpdateDataInput;
+    create: TrunkedTalkgroupCreateInput;
+  }
+  export interface TrunkedTalkgroupScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    decimal?: number | null;
+    decimal_not?: number | null;
+    decimal_in?: number[] | null;
+    decimal_not_in?: number[] | null;
+    decimal_lt?: number | null;
+    decimal_lte?: number | null;
+    decimal_gt?: number | null;
+    decimal_gte?: number | null;
+    hex?: string | null;
+    hex_not?: string | null;
+    hex_in?: string[] | null;
+    hex_not_in?: string[] | null;
+    hex_lt?: string | null;
+    hex_lte?: string | null;
+    hex_gt?: string | null;
+    hex_gte?: string | null;
+    hex_contains?: string | null;
+    hex_not_contains?: string | null;
+    hex_starts_with?: string | null;
+    hex_not_starts_with?: string | null;
+    hex_ends_with?: string | null;
+    hex_not_ends_with?: string | null;
+    mode?: string | null;
+    mode_not?: string | null;
+    mode_in?: string[] | null;
+    mode_not_in?: string[] | null;
+    mode_lt?: string | null;
+    mode_lte?: string | null;
+    mode_gt?: string | null;
+    mode_gte?: string | null;
+    mode_contains?: string | null;
+    mode_not_contains?: string | null;
+    mode_starts_with?: string | null;
+    mode_not_starts_with?: string | null;
+    mode_ends_with?: string | null;
+    mode_not_ends_with?: string | null;
+    alphaTag?: string | null;
+    alphaTag_not?: string | null;
+    alphaTag_in?: string[] | null;
+    alphaTag_not_in?: string[] | null;
+    alphaTag_lt?: string | null;
+    alphaTag_lte?: string | null;
+    alphaTag_gt?: string | null;
+    alphaTag_gte?: string | null;
+    alphaTag_contains?: string | null;
+    alphaTag_not_contains?: string | null;
+    alphaTag_starts_with?: string | null;
+    alphaTag_not_starts_with?: string | null;
+    alphaTag_ends_with?: string | null;
+    alphaTag_not_ends_with?: string | null;
+    description?: string | null;
+    description_not?: string | null;
+    description_in?: string[] | null;
+    description_not_in?: string[] | null;
+    description_lt?: string | null;
+    description_lte?: string | null;
+    description_gt?: string | null;
+    description_gte?: string | null;
+    description_contains?: string | null;
+    description_not_contains?: string | null;
+    description_starts_with?: string | null;
+    description_not_starts_with?: string | null;
+    description_ends_with?: string | null;
+    description_not_ends_with?: string | null;
+    tag?: string | null;
+    tag_not?: string | null;
+    tag_in?: string[] | null;
+    tag_not_in?: string[] | null;
+    tag_lt?: string | null;
+    tag_lte?: string | null;
+    tag_gt?: string | null;
+    tag_gte?: string | null;
+    tag_contains?: string | null;
+    tag_not_contains?: string | null;
+    tag_starts_with?: string | null;
+    tag_not_starts_with?: string | null;
+    tag_ends_with?: string | null;
+    tag_not_ends_with?: string | null;
+    group?: string | null;
+    group_not?: string | null;
+    group_in?: string[] | null;
+    group_not_in?: string[] | null;
+    group_lt?: string | null;
+    group_lte?: string | null;
+    group_gt?: string | null;
+    group_gte?: string | null;
+    group_contains?: string | null;
+    group_not_contains?: string | null;
+    group_starts_with?: string | null;
+    group_not_starts_with?: string | null;
+    group_ends_with?: string | null;
+    group_not_ends_with?: string | null;
+    priority?: number | null;
+    priority_not?: number | null;
+    priority_in?: number[] | null;
+    priority_not_in?: number[] | null;
+    priority_lt?: number | null;
+    priority_lte?: number | null;
+    priority_gt?: number | null;
+    priority_gte?: number | null;
+    hash?: string | null;
+    hash_not?: string | null;
+    hash_in?: string[] | null;
+    hash_not_in?: string[] | null;
+    hash_lt?: string | null;
+    hash_lte?: string | null;
+    hash_gt?: string | null;
+    hash_gte?: string | null;
+    hash_contains?: string | null;
+    hash_not_contains?: string | null;
+    hash_starts_with?: string | null;
+    hash_not_starts_with?: string | null;
+    hash_ends_with?: string | null;
+    hash_not_ends_with?: string | null;
+    AND?: TrunkedTalkgroupScalarWhereInput[] | null;
+    OR?: TrunkedTalkgroupScalarWhereInput[] | null;
+    NOT?: TrunkedTalkgroupScalarWhereInput[] | null;
+  }
+  export interface TrunkedTalkgroupUpdateManyWithWhereNestedInput {
+    where: TrunkedTalkgroupScalarWhereInput;
+    data: TrunkedTalkgroupUpdateManyDataInput;
+  }
   export interface TrunkedCallCreateManyWithoutTalkgroupInput {
     create?: TrunkedCallCreateWithoutTalkgroupInput[] | null;
     connect?: TrunkedCallWhereUniqueInput[] | null;
@@ -7691,6 +8042,51 @@ export namespace MutationResolvers {
   export interface TranscriptionCreateOneWithoutCallInput {
     create?: TranscriptionCreateWithoutCallInput | null;
     connect?: TranscriptionWhereUniqueInput | null;
+  }
+  export interface SiteFrequencyCreateManyInput {
+    create?: SiteFrequencyCreateInput[] | null;
+    connect?: SiteFrequencyWhereUniqueInput[] | null;
+  }
+  export interface TrunkedSystemCreateOneWithoutTalkgroupsInput {
+    create?: TrunkedSystemCreateWithoutTalkgroupsInput | null;
+    connect?: TrunkedSystemWhereUniqueInput | null;
+  }
+  export interface SystemSiteUpdateDataInput {
+    frequencies?: SiteFrequencyUpdateManyInput | null;
+    siteCounty?: string | null;
+    siteId?: string | null;
+    siteLink?: string | null;
+    siteName?: string | null;
+  }
+  export interface SystemSiteUpdateManyDataInput {
+    siteCounty?: string | null;
+    siteId?: string | null;
+    siteLink?: string | null;
+    siteName?: string | null;
+  }
+  export interface TrunkedTalkgroupUpdateDataInput {
+    decimal?: number | null;
+    hex?: string | null;
+    mode?: string | null;
+    alphaTag?: string | null;
+    description?: string | null;
+    tag?: string | null;
+    group?: string | null;
+    priority?: number | null;
+    system?: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput | null;
+    calls?: TrunkedCallUpdateManyWithoutTalkgroupInput | null;
+    hash?: string | null;
+  }
+  export interface TrunkedTalkgroupUpdateManyDataInput {
+    decimal?: number | null;
+    hex?: string | null;
+    mode?: string | null;
+    alphaTag?: string | null;
+    description?: string | null;
+    tag?: string | null;
+    group?: string | null;
+    priority?: number | null;
+    hash?: string | null;
   }
   export interface TrunkedCallCreateWithoutTalkgroupInput {
     id?: string | null;
@@ -7755,45 +8151,13 @@ export namespace MutationResolvers {
   export interface TranscriptionWhereUniqueInput {
     id?: string | null;
   }
-  export interface TrunkedSystemCreateOneWithoutCallsInput {
-    create?: TrunkedSystemCreateWithoutCallsInput | null;
-    connect?: TrunkedSystemWhereUniqueInput | null;
-  }
-  export interface TrunkedSystemCreateOneWithoutTalkgroupsInput {
-    create?: TrunkedSystemCreateWithoutTalkgroupsInput | null;
-    connect?: TrunkedSystemWhereUniqueInput | null;
-  }
-  export interface TranscriptionWordCreateManyWithoutTranscriptionInput {
-    create?: TranscriptionWordCreateWithoutTranscriptionInput[] | null;
-    connect?: TranscriptionWordWhereUniqueInput[] | null;
-  }
-  export interface TrunkedSystemCreateWithoutCallsInput {
+  export interface SiteFrequencyCreateInput {
     id?: string | null;
-    controlChannels?: TrunkedSystemCreatecontrolChannelsInput | null;
-    channels?: TrunkedSystemCreatechannelsInput | null;
-    type: TrunkedSystemType;
-    alphatags?: TrunkedSystemCreatealphatagsInput | null;
-    talkgroups?: TrunkedTalkgroupCreateManyWithoutSystemInput | null;
-    recordUnknown?: boolean | null;
-    shortName: string;
-    name?: string | null;
-    audioArchive?: boolean | null;
-    callLog?: boolean | null;
-    minDuration?: number | null;
-    bandplan?: TrunkedSmartnetBandplan | null;
-    bandplanBase?: number | null;
-    bandplanHigh?: number | null;
-    bandplanLow?: number | null;
-    bandplanSpacing?: number | null;
-    bandplanOffset?: number | null;
-    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
-    delayCreateOutput?: boolean | null;
-    hideEncrypted?: boolean | null;
-    hideUnknownTalkgroups?: boolean | null;
+    control: SiteControl;
+    frequency: number;
   }
-  export interface TrunkedSystemWhereUniqueInput {
+  export interface SiteFrequencyWhereUniqueInput {
     id?: string | null;
-    shortName?: string | null;
   }
   export interface TrunkedSystemCreateWithoutTalkgroupsInput {
     id?: string | null;
@@ -7819,6 +8183,273 @@ export namespace MutationResolvers {
     hideUnknownTalkgroups?: boolean | null;
     calls?: TrunkedCallCreateManyWithoutSystemInput | null;
   }
+  export interface TrunkedSystemWhereUniqueInput {
+    id?: string | null;
+    shortName?: string | null;
+  }
+  export interface SiteFrequencyUpdateManyInput {
+    create?: SiteFrequencyCreateInput[] | null;
+    update?: SiteFrequencyUpdateWithWhereUniqueNestedInput[] | null;
+    upsert?: SiteFrequencyUpsertWithWhereUniqueNestedInput[] | null;
+    delete?: SiteFrequencyWhereUniqueInput[] | null;
+    connect?: SiteFrequencyWhereUniqueInput[] | null;
+    set?: SiteFrequencyWhereUniqueInput[] | null;
+    disconnect?: SiteFrequencyWhereUniqueInput[] | null;
+    deleteMany?: SiteFrequencyScalarWhereInput[] | null;
+    updateMany?: SiteFrequencyUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput {
+    create?: TrunkedSystemCreateWithoutTalkgroupsInput | null;
+    update?: TrunkedSystemUpdateWithoutTalkgroupsDataInput | null;
+    upsert?: TrunkedSystemUpsertWithoutTalkgroupsInput | null;
+    connect?: TrunkedSystemWhereUniqueInput | null;
+  }
+  export interface TrunkedCallUpdateManyWithoutTalkgroupInput {
+    create?: TrunkedCallCreateWithoutTalkgroupInput[] | null;
+    delete?: TrunkedCallWhereUniqueInput[] | null;
+    connect?: TrunkedCallWhereUniqueInput[] | null;
+    set?: TrunkedCallWhereUniqueInput[] | null;
+    disconnect?: TrunkedCallWhereUniqueInput[] | null;
+    update?: TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput[] | null;
+    upsert?: TrunkedCallUpsertWithWhereUniqueWithoutTalkgroupInput[] | null;
+    deleteMany?: TrunkedCallScalarWhereInput[] | null;
+    updateMany?: TrunkedCallUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedSystemCreateOneWithoutCallsInput {
+    create?: TrunkedSystemCreateWithoutCallsInput | null;
+    connect?: TrunkedSystemWhereUniqueInput | null;
+  }
+  export interface TranscriptionWordCreateManyWithoutTranscriptionInput {
+    create?: TranscriptionWordCreateWithoutTranscriptionInput[] | null;
+    connect?: TranscriptionWordWhereUniqueInput[] | null;
+  }
+  export interface SiteFrequencyUpdateWithWhereUniqueNestedInput {
+    where: SiteFrequencyWhereUniqueInput;
+    data: SiteFrequencyUpdateDataInput;
+  }
+  export interface SiteFrequencyUpsertWithWhereUniqueNestedInput {
+    where: SiteFrequencyWhereUniqueInput;
+    update: SiteFrequencyUpdateDataInput;
+    create: SiteFrequencyCreateInput;
+  }
+  export interface SiteFrequencyScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    control?: SiteControl | null;
+    control_not?: SiteControl | null;
+    control_in?: SiteControl[] | null;
+    control_not_in?: SiteControl[] | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    AND?: SiteFrequencyScalarWhereInput[] | null;
+    OR?: SiteFrequencyScalarWhereInput[] | null;
+    NOT?: SiteFrequencyScalarWhereInput[] | null;
+  }
+  export interface SiteFrequencyUpdateManyWithWhereNestedInput {
+    where: SiteFrequencyScalarWhereInput;
+    data: SiteFrequencyUpdateManyDataInput;
+  }
+  export interface TrunkedSystemUpdateWithoutTalkgroupsDataInput {
+    controlChannels?: TrunkedSystemUpdatecontrolChannelsInput | null;
+    channels?: TrunkedSystemUpdatechannelsInput | null;
+    type?: TrunkedSystemType | null;
+    alphatags?: TrunkedSystemUpdatealphatagsInput | null;
+    recordUnknown?: boolean | null;
+    shortName?: string | null;
+    name?: string | null;
+    audioArchive?: boolean | null;
+    callLog?: boolean | null;
+    minDuration?: number | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplanBase?: number | null;
+    bandplanHigh?: number | null;
+    bandplanLow?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanOffset?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    delayCreateOutput?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+    calls?: TrunkedCallUpdateManyWithoutSystemInput | null;
+  }
+  export interface TrunkedSystemUpsertWithoutTalkgroupsInput {
+    update: TrunkedSystemUpdateWithoutTalkgroupsDataInput;
+    create: TrunkedSystemCreateWithoutTalkgroupsInput;
+  }
+  export interface TrunkedCallUpdateWithWhereUniqueWithoutTalkgroupInput {
+    where: TrunkedCallWhereUniqueInput;
+    data: TrunkedCallUpdateWithoutTalkgroupDataInput;
+  }
+  export interface TrunkedCallUpsertWithWhereUniqueWithoutTalkgroupInput {
+    where: TrunkedCallWhereUniqueInput;
+    update: TrunkedCallUpdateWithoutTalkgroupDataInput;
+    create: TrunkedCallCreateWithoutTalkgroupInput;
+  }
+  export interface TrunkedCallScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    startTime?: string | null;
+    startTime_not?: string | null;
+    startTime_in?: string[] | null;
+    startTime_not_in?: string[] | null;
+    startTime_lt?: string | null;
+    startTime_lte?: string | null;
+    startTime_gt?: string | null;
+    startTime_gte?: string | null;
+    endTime?: string | null;
+    endTime_not?: string | null;
+    endTime_in?: string[] | null;
+    endTime_not_in?: string[] | null;
+    endTime_lt?: string | null;
+    endTime_lte?: string | null;
+    endTime_gt?: string | null;
+    endTime_gte?: string | null;
+    emergency?: boolean | null;
+    emergency_not?: boolean | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    source?: number | null;
+    source_not?: number | null;
+    source_in?: number[] | null;
+    source_not_in?: number[] | null;
+    source_lt?: number | null;
+    source_lte?: number | null;
+    source_gt?: number | null;
+    source_gte?: number | null;
+    audioPath?: string | null;
+    audioPath_not?: string | null;
+    audioPath_in?: string[] | null;
+    audioPath_not_in?: string[] | null;
+    audioPath_lt?: string | null;
+    audioPath_lte?: string | null;
+    audioPath_gt?: string | null;
+    audioPath_gte?: string | null;
+    audioPath_contains?: string | null;
+    audioPath_not_contains?: string | null;
+    audioPath_starts_with?: string | null;
+    audioPath_not_starts_with?: string | null;
+    audioPath_ends_with?: string | null;
+    audioPath_not_ends_with?: string | null;
+    callHash?: string | null;
+    callHash_not?: string | null;
+    callHash_in?: string[] | null;
+    callHash_not_in?: string[] | null;
+    callHash_lt?: string | null;
+    callHash_lte?: string | null;
+    callHash_gt?: string | null;
+    callHash_gte?: string | null;
+    callHash_contains?: string | null;
+    callHash_not_contains?: string | null;
+    callHash_starts_with?: string | null;
+    callHash_not_starts_with?: string | null;
+    callHash_ends_with?: string | null;
+    callHash_not_ends_with?: string | null;
+    wavPath?: string | null;
+    wavPath_not?: string | null;
+    wavPath_in?: string[] | null;
+    wavPath_not_in?: string[] | null;
+    wavPath_lt?: string | null;
+    wavPath_lte?: string | null;
+    wavPath_gt?: string | null;
+    wavPath_gte?: string | null;
+    wavPath_contains?: string | null;
+    wavPath_not_contains?: string | null;
+    wavPath_starts_with?: string | null;
+    wavPath_not_starts_with?: string | null;
+    wavPath_ends_with?: string | null;
+    wavPath_not_ends_with?: string | null;
+    AND?: TrunkedCallScalarWhereInput[] | null;
+    OR?: TrunkedCallScalarWhereInput[] | null;
+    NOT?: TrunkedCallScalarWhereInput[] | null;
+  }
+  export interface TrunkedCallUpdateManyWithWhereNestedInput {
+    where: TrunkedCallScalarWhereInput;
+    data: TrunkedCallUpdateManyDataInput;
+  }
+  export interface TrunkedSystemCreateWithoutCallsInput {
+    id?: string | null;
+    controlChannels?: TrunkedSystemCreatecontrolChannelsInput | null;
+    channels?: TrunkedSystemCreatechannelsInput | null;
+    type: TrunkedSystemType;
+    alphatags?: TrunkedSystemCreatealphatagsInput | null;
+    talkgroups?: TrunkedTalkgroupCreateManyWithoutSystemInput | null;
+    recordUnknown?: boolean | null;
+    shortName: string;
+    name?: string | null;
+    audioArchive?: boolean | null;
+    callLog?: boolean | null;
+    minDuration?: number | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplanBase?: number | null;
+    bandplanHigh?: number | null;
+    bandplanLow?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanOffset?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    delayCreateOutput?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+  }
   export interface TranscriptionWordCreateWithoutTranscriptionInput {
     id?: string | null;
     text: string;
@@ -7828,6 +8459,532 @@ export namespace MutationResolvers {
   }
   export interface TranscriptionWordWhereUniqueInput {
     id?: string | null;
+  }
+  export interface SiteFrequencyUpdateDataInput {
+    control?: SiteControl | null;
+    frequency?: number | null;
+  }
+  export interface SiteFrequencyUpdateManyDataInput {
+    control?: SiteControl | null;
+    frequency?: number | null;
+  }
+  export interface TrunkedSystemUpdatecontrolChannelsInput {
+    set?: number[] | null;
+  }
+  export interface TrunkedSystemUpdatechannelsInput {
+    set?: number[] | null;
+  }
+  export interface TrunkedSystemUpdatealphatagsInput {
+    set?: string[] | null;
+  }
+  export interface TrunkedCallUpdateManyWithoutSystemInput {
+    create?: TrunkedCallCreateWithoutSystemInput[] | null;
+    delete?: TrunkedCallWhereUniqueInput[] | null;
+    connect?: TrunkedCallWhereUniqueInput[] | null;
+    set?: TrunkedCallWhereUniqueInput[] | null;
+    disconnect?: TrunkedCallWhereUniqueInput[] | null;
+    update?: TrunkedCallUpdateWithWhereUniqueWithoutSystemInput[] | null;
+    upsert?: TrunkedCallUpsertWithWhereUniqueWithoutSystemInput[] | null;
+    deleteMany?: TrunkedCallScalarWhereInput[] | null;
+    updateMany?: TrunkedCallUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedCallUpdateWithoutTalkgroupDataInput {
+    frequency?: number | null;
+    startTime?: string | null;
+    endTime?: string | null;
+    emergency?: boolean | null;
+    system?: TrunkedSystemUpdateOneWithoutCallsInput | null;
+    sources?: TrunkedCallSourceUpdateManyInput | null;
+    duration?: number | null;
+    source?: number | null;
+    audioPath?: string | null;
+    frequencyList?: TrunkedCallFrequencyTimeUpdateManyInput | null;
+    callHash?: string | null;
+    wavPath?: string | null;
+    remotePaths?: TrunkedCallUpdateremotePathsInput | null;
+    transcription?: TranscriptionUpdateOneWithoutCallInput | null;
+  }
+  export interface TrunkedCallUpdateManyDataInput {
+    frequency?: number | null;
+    startTime?: string | null;
+    endTime?: string | null;
+    emergency?: boolean | null;
+    duration?: number | null;
+    source?: number | null;
+    audioPath?: string | null;
+    callHash?: string | null;
+    wavPath?: string | null;
+    remotePaths?: TrunkedCallUpdateremotePathsInput | null;
+  }
+  export interface TrunkedCallUpdateWithWhereUniqueWithoutSystemInput {
+    where: TrunkedCallWhereUniqueInput;
+    data: TrunkedCallUpdateWithoutSystemDataInput;
+  }
+  export interface TrunkedCallUpsertWithWhereUniqueWithoutSystemInput {
+    where: TrunkedCallWhereUniqueInput;
+    update: TrunkedCallUpdateWithoutSystemDataInput;
+    create: TrunkedCallCreateWithoutSystemInput;
+  }
+  export interface TrunkedSystemUpdateOneWithoutCallsInput {
+    create?: TrunkedSystemCreateWithoutCallsInput | null;
+    update?: TrunkedSystemUpdateWithoutCallsDataInput | null;
+    upsert?: TrunkedSystemUpsertWithoutCallsInput | null;
+    delete?: boolean | null;
+    disconnect?: boolean | null;
+    connect?: TrunkedSystemWhereUniqueInput | null;
+  }
+  export interface TrunkedCallSourceUpdateManyInput {
+    create?: TrunkedCallSourceCreateInput[] | null;
+    update?: TrunkedCallSourceUpdateWithWhereUniqueNestedInput[] | null;
+    upsert?: TrunkedCallSourceUpsertWithWhereUniqueNestedInput[] | null;
+    delete?: TrunkedCallSourceWhereUniqueInput[] | null;
+    connect?: TrunkedCallSourceWhereUniqueInput[] | null;
+    set?: TrunkedCallSourceWhereUniqueInput[] | null;
+    disconnect?: TrunkedCallSourceWhereUniqueInput[] | null;
+    deleteMany?: TrunkedCallSourceScalarWhereInput[] | null;
+    updateMany?: TrunkedCallSourceUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedCallFrequencyTimeUpdateManyInput {
+    create?: TrunkedCallFrequencyTimeCreateInput[] | null;
+    update?: TrunkedCallFrequencyTimeUpdateWithWhereUniqueNestedInput[] | null;
+    upsert?: TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput[] | null;
+    delete?: TrunkedCallFrequencyTimeWhereUniqueInput[] | null;
+    connect?: TrunkedCallFrequencyTimeWhereUniqueInput[] | null;
+    set?: TrunkedCallFrequencyTimeWhereUniqueInput[] | null;
+    disconnect?: TrunkedCallFrequencyTimeWhereUniqueInput[] | null;
+    deleteMany?: TrunkedCallFrequencyTimeScalarWhereInput[] | null;
+    updateMany?:
+      | TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput[]
+      | null;
+  }
+  export interface TrunkedCallUpdateremotePathsInput {
+    set?: string[] | null;
+  }
+  export interface TranscriptionUpdateOneWithoutCallInput {
+    create?: TranscriptionCreateWithoutCallInput | null;
+    update?: TranscriptionUpdateWithoutCallDataInput | null;
+    upsert?: TranscriptionUpsertWithoutCallInput | null;
+    delete?: boolean | null;
+    disconnect?: boolean | null;
+    connect?: TranscriptionWhereUniqueInput | null;
+  }
+  export interface TrunkedCallUpdateWithoutSystemDataInput {
+    frequency?: number | null;
+    startTime?: string | null;
+    endTime?: string | null;
+    emergency?: boolean | null;
+    talkgroup?: TrunkedTalkgroupUpdateOneWithoutCallsInput | null;
+    sources?: TrunkedCallSourceUpdateManyInput | null;
+    duration?: number | null;
+    source?: number | null;
+    audioPath?: string | null;
+    frequencyList?: TrunkedCallFrequencyTimeUpdateManyInput | null;
+    callHash?: string | null;
+    wavPath?: string | null;
+    remotePaths?: TrunkedCallUpdateremotePathsInput | null;
+    transcription?: TranscriptionUpdateOneWithoutCallInput | null;
+  }
+  export interface TrunkedSystemUpdateWithoutCallsDataInput {
+    controlChannels?: TrunkedSystemUpdatecontrolChannelsInput | null;
+    channels?: TrunkedSystemUpdatechannelsInput | null;
+    type?: TrunkedSystemType | null;
+    alphatags?: TrunkedSystemUpdatealphatagsInput | null;
+    talkgroups?: TrunkedTalkgroupUpdateManyWithoutSystemInput | null;
+    recordUnknown?: boolean | null;
+    shortName?: string | null;
+    name?: string | null;
+    audioArchive?: boolean | null;
+    callLog?: boolean | null;
+    minDuration?: number | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplanBase?: number | null;
+    bandplanHigh?: number | null;
+    bandplanLow?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanOffset?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    delayCreateOutput?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+  }
+  export interface TrunkedSystemUpsertWithoutCallsInput {
+    update: TrunkedSystemUpdateWithoutCallsDataInput;
+    create: TrunkedSystemCreateWithoutCallsInput;
+  }
+  export interface TrunkedCallSourceUpdateWithWhereUniqueNestedInput {
+    where: TrunkedCallSourceWhereUniqueInput;
+    data: TrunkedCallSourceUpdateDataInput;
+  }
+  export interface TrunkedCallSourceUpsertWithWhereUniqueNestedInput {
+    where: TrunkedCallSourceWhereUniqueInput;
+    update: TrunkedCallSourceUpdateDataInput;
+    create: TrunkedCallSourceCreateInput;
+  }
+  export interface TrunkedCallSourceScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    sourceId?: number | null;
+    sourceId_not?: number | null;
+    sourceId_in?: number[] | null;
+    sourceId_not_in?: number[] | null;
+    sourceId_lt?: number | null;
+    sourceId_lte?: number | null;
+    sourceId_gt?: number | null;
+    sourceId_gte?: number | null;
+    time?: string | null;
+    time_not?: string | null;
+    time_in?: string[] | null;
+    time_not_in?: string[] | null;
+    time_lt?: string | null;
+    time_lte?: string | null;
+    time_gt?: string | null;
+    time_gte?: string | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    AND?: TrunkedCallSourceScalarWhereInput[] | null;
+    OR?: TrunkedCallSourceScalarWhereInput[] | null;
+    NOT?: TrunkedCallSourceScalarWhereInput[] | null;
+  }
+  export interface TrunkedCallSourceUpdateManyWithWhereNestedInput {
+    where: TrunkedCallSourceScalarWhereInput;
+    data: TrunkedCallSourceUpdateManyDataInput;
+  }
+  export interface TrunkedCallFrequencyTimeUpdateWithWhereUniqueNestedInput {
+    where: TrunkedCallFrequencyTimeWhereUniqueInput;
+    data: TrunkedCallFrequencyTimeUpdateDataInput;
+  }
+  export interface TrunkedCallFrequencyTimeUpsertWithWhereUniqueNestedInput {
+    where: TrunkedCallFrequencyTimeWhereUniqueInput;
+    update: TrunkedCallFrequencyTimeUpdateDataInput;
+    create: TrunkedCallFrequencyTimeCreateInput;
+  }
+  export interface TrunkedCallFrequencyTimeScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    time?: number | null;
+    time_not?: number | null;
+    time_in?: number[] | null;
+    time_not_in?: number[] | null;
+    time_lt?: number | null;
+    time_lte?: number | null;
+    time_gt?: number | null;
+    time_gte?: number | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    length?: number | null;
+    length_not?: number | null;
+    length_in?: number[] | null;
+    length_not_in?: number[] | null;
+    length_lt?: number | null;
+    length_lte?: number | null;
+    length_gt?: number | null;
+    length_gte?: number | null;
+    errors?: number | null;
+    errors_not?: number | null;
+    errors_in?: number[] | null;
+    errors_not_in?: number[] | null;
+    errors_lt?: number | null;
+    errors_lte?: number | null;
+    errors_gt?: number | null;
+    errors_gte?: number | null;
+    spikes?: number | null;
+    spikes_not?: number | null;
+    spikes_in?: number[] | null;
+    spikes_not_in?: number[] | null;
+    spikes_lt?: number | null;
+    spikes_lte?: number | null;
+    spikes_gt?: number | null;
+    spikes_gte?: number | null;
+    AND?: TrunkedCallFrequencyTimeScalarWhereInput[] | null;
+    OR?: TrunkedCallFrequencyTimeScalarWhereInput[] | null;
+    NOT?: TrunkedCallFrequencyTimeScalarWhereInput[] | null;
+  }
+  export interface TrunkedCallFrequencyTimeUpdateManyWithWhereNestedInput {
+    where: TrunkedCallFrequencyTimeScalarWhereInput;
+    data: TrunkedCallFrequencyTimeUpdateManyDataInput;
+  }
+  export interface TranscriptionUpdateWithoutCallDataInput {
+    languageModel?: string | null;
+    beta?: number | null;
+    body?: string | null;
+    words?: TranscriptionWordUpdateManyWithoutTranscriptionInput | null;
+    duration?: number | null;
+    alpha?: number | null;
+  }
+  export interface TranscriptionUpsertWithoutCallInput {
+    update: TranscriptionUpdateWithoutCallDataInput;
+    create: TranscriptionCreateWithoutCallInput;
+  }
+  export interface TrunkedTalkgroupUpdateOneWithoutCallsInput {
+    create?: TrunkedTalkgroupCreateWithoutCallsInput | null;
+    update?: TrunkedTalkgroupUpdateWithoutCallsDataInput | null;
+    upsert?: TrunkedTalkgroupUpsertWithoutCallsInput | null;
+    delete?: boolean | null;
+    disconnect?: boolean | null;
+    connect?: TrunkedTalkgroupWhereUniqueInput | null;
+  }
+  export interface TrunkedTalkgroupUpdateManyWithoutSystemInput {
+    create?: TrunkedTalkgroupCreateWithoutSystemInput[] | null;
+    delete?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    connect?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    set?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    disconnect?: TrunkedTalkgroupWhereUniqueInput[] | null;
+    update?: TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput[] | null;
+    upsert?: TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput[] | null;
+    deleteMany?: TrunkedTalkgroupScalarWhereInput[] | null;
+    updateMany?: TrunkedTalkgroupUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedCallSourceUpdateDataInput {
+    sourceId?: number | null;
+    time?: string | null;
+    position?: number | null;
+  }
+  export interface TrunkedCallSourceUpdateManyDataInput {
+    sourceId?: number | null;
+    time?: string | null;
+    position?: number | null;
+  }
+  export interface TrunkedCallFrequencyTimeUpdateDataInput {
+    frequency?: number | null;
+    time?: number | null;
+    position?: number | null;
+    length?: number | null;
+    errors?: number | null;
+    spikes?: number | null;
+  }
+  export interface TrunkedCallFrequencyTimeUpdateManyDataInput {
+    frequency?: number | null;
+    time?: number | null;
+    position?: number | null;
+    length?: number | null;
+    errors?: number | null;
+    spikes?: number | null;
+  }
+  export interface TranscriptionWordUpdateManyWithoutTranscriptionInput {
+    create?: TranscriptionWordCreateWithoutTranscriptionInput[] | null;
+    delete?: TranscriptionWordWhereUniqueInput[] | null;
+    connect?: TranscriptionWordWhereUniqueInput[] | null;
+    set?: TranscriptionWordWhereUniqueInput[] | null;
+    disconnect?: TranscriptionWordWhereUniqueInput[] | null;
+    update?:
+      | TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput[]
+      | null;
+    upsert?:
+      | TranscriptionWordUpsertWithWhereUniqueWithoutTranscriptionInput[]
+      | null;
+    deleteMany?: TranscriptionWordScalarWhereInput[] | null;
+    updateMany?: TranscriptionWordUpdateManyWithWhereNestedInput[] | null;
+  }
+  export interface TrunkedTalkgroupUpdateWithoutCallsDataInput {
+    decimal?: number | null;
+    hex?: string | null;
+    mode?: string | null;
+    alphaTag?: string | null;
+    description?: string | null;
+    tag?: string | null;
+    group?: string | null;
+    priority?: number | null;
+    system?: TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput | null;
+    hash?: string | null;
+  }
+  export interface TrunkedTalkgroupUpsertWithoutCallsInput {
+    update: TrunkedTalkgroupUpdateWithoutCallsDataInput;
+    create: TrunkedTalkgroupCreateWithoutCallsInput;
+  }
+  export interface TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput {
+    where: TrunkedTalkgroupWhereUniqueInput;
+    data: TrunkedTalkgroupUpdateWithoutSystemDataInput;
+  }
+  export interface TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput {
+    where: TrunkedTalkgroupWhereUniqueInput;
+    update: TrunkedTalkgroupUpdateWithoutSystemDataInput;
+    create: TrunkedTalkgroupCreateWithoutSystemInput;
+  }
+  export interface TranscriptionWordUpdateWithWhereUniqueWithoutTranscriptionInput {
+    where: TranscriptionWordWhereUniqueInput;
+    data: TranscriptionWordUpdateWithoutTranscriptionDataInput;
+  }
+  export interface TranscriptionWordUpsertWithWhereUniqueWithoutTranscriptionInput {
+    where: TranscriptionWordWhereUniqueInput;
+    update: TranscriptionWordUpdateWithoutTranscriptionDataInput;
+    create: TranscriptionWordCreateWithoutTranscriptionInput;
+  }
+  export interface TranscriptionWordScalarWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordScalarWhereInput[] | null;
+    OR?: TranscriptionWordScalarWhereInput[] | null;
+    NOT?: TranscriptionWordScalarWhereInput[] | null;
+  }
+  export interface TranscriptionWordUpdateManyWithWhereNestedInput {
+    where: TranscriptionWordScalarWhereInput;
+    data: TranscriptionWordUpdateManyDataInput;
+  }
+  export interface TrunkedTalkgroupUpdateWithoutSystemDataInput {
+    decimal?: number | null;
+    hex?: string | null;
+    mode?: string | null;
+    alphaTag?: string | null;
+    description?: string | null;
+    tag?: string | null;
+    group?: string | null;
+    priority?: number | null;
+    calls?: TrunkedCallUpdateManyWithoutTalkgroupInput | null;
+    hash?: string | null;
+  }
+  export interface TranscriptionWordUpdateWithoutTranscriptionDataInput {
+    text?: string | null;
+    confidence?: number | null;
+    end?: number | null;
+    start?: number | null;
+  }
+  export interface TranscriptionWordUpdateManyDataInput {
+    text?: string | null;
+    confidence?: number | null;
+    end?: number | null;
+    start?: number | null;
   }
 
   export interface ArgsCreateTrunkedSystem {
@@ -7843,6 +9000,12 @@ export namespace MutationResolvers {
   export interface ArgsLogin {
     username: string;
     password: string;
+  }
+
+  export interface ArgsUpsertBaseTrunkedSystem {
+    where: BaseTrunkedSystemWhereUniqueInput;
+    create: BaseTrunkedSystemCreateInput;
+    update: BaseTrunkedSystemUpdateInput;
   }
 
   export type CreateTrunkedSystemResolver =
@@ -7896,6 +9059,23 @@ export namespace MutationResolvers {
         ) => LoginResponse | Promise<LoginResponse>;
       };
 
+  export type UpsertBaseTrunkedSystemResolver =
+    | ((
+        parent: undefined,
+        args: ArgsUpsertBaseTrunkedSystem,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => BaseTrunkedSystem | Promise<BaseTrunkedSystem>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: undefined,
+          args: ArgsUpsertBaseTrunkedSystem,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => BaseTrunkedSystem | Promise<BaseTrunkedSystem>;
+      };
+
   export interface Type {
     createTrunkedSystem:
       | ((
@@ -7946,6 +9126,1577 @@ export namespace MutationResolvers {
             ctx: Context,
             info: GraphQLResolveInfo
           ) => LoginResponse | Promise<LoginResponse>;
+        };
+
+    upsertBaseTrunkedSystem:
+      | ((
+          parent: undefined,
+          args: ArgsUpsertBaseTrunkedSystem,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => BaseTrunkedSystem | Promise<BaseTrunkedSystem>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: undefined,
+            args: ArgsUpsertBaseTrunkedSystem,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => BaseTrunkedSystem | Promise<BaseTrunkedSystem>;
+        };
+  }
+}
+
+export namespace BaseTrunkedSystemResolvers {
+  export const defaultResolvers = {
+    id: (parent: BaseTrunkedSystem) => parent.id,
+    name: (parent: BaseTrunkedSystem) => parent.name,
+    shortName: (parent: BaseTrunkedSystem) => parent.shortName,
+    county: (parent: BaseTrunkedSystem) =>
+      parent.county === undefined ? null : parent.county,
+    systemType: (parent: BaseTrunkedSystem) =>
+      parent.systemType === undefined ? null : parent.systemType,
+    systemId: (parent: BaseTrunkedSystem) =>
+      parent.systemId === undefined ? null : parent.systemId,
+    state: (parent: BaseTrunkedSystem) =>
+      parent.state === undefined ? null : parent.state
+  };
+
+  export interface SystemSiteWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    frequencies_every?: SiteFrequencyWhereInput | null;
+    frequencies_some?: SiteFrequencyWhereInput | null;
+    frequencies_none?: SiteFrequencyWhereInput | null;
+    siteCounty?: string | null;
+    siteCounty_not?: string | null;
+    siteCounty_in?: string[] | null;
+    siteCounty_not_in?: string[] | null;
+    siteCounty_lt?: string | null;
+    siteCounty_lte?: string | null;
+    siteCounty_gt?: string | null;
+    siteCounty_gte?: string | null;
+    siteCounty_contains?: string | null;
+    siteCounty_not_contains?: string | null;
+    siteCounty_starts_with?: string | null;
+    siteCounty_not_starts_with?: string | null;
+    siteCounty_ends_with?: string | null;
+    siteCounty_not_ends_with?: string | null;
+    siteId?: string | null;
+    siteId_not?: string | null;
+    siteId_in?: string[] | null;
+    siteId_not_in?: string[] | null;
+    siteId_lt?: string | null;
+    siteId_lte?: string | null;
+    siteId_gt?: string | null;
+    siteId_gte?: string | null;
+    siteId_contains?: string | null;
+    siteId_not_contains?: string | null;
+    siteId_starts_with?: string | null;
+    siteId_not_starts_with?: string | null;
+    siteId_ends_with?: string | null;
+    siteId_not_ends_with?: string | null;
+    siteLink?: string | null;
+    siteLink_not?: string | null;
+    siteLink_in?: string[] | null;
+    siteLink_not_in?: string[] | null;
+    siteLink_lt?: string | null;
+    siteLink_lte?: string | null;
+    siteLink_gt?: string | null;
+    siteLink_gte?: string | null;
+    siteLink_contains?: string | null;
+    siteLink_not_contains?: string | null;
+    siteLink_starts_with?: string | null;
+    siteLink_not_starts_with?: string | null;
+    siteLink_ends_with?: string | null;
+    siteLink_not_ends_with?: string | null;
+    siteName?: string | null;
+    siteName_not?: string | null;
+    siteName_in?: string[] | null;
+    siteName_not_in?: string[] | null;
+    siteName_lt?: string | null;
+    siteName_lte?: string | null;
+    siteName_gt?: string | null;
+    siteName_gte?: string | null;
+    siteName_contains?: string | null;
+    siteName_not_contains?: string | null;
+    siteName_starts_with?: string | null;
+    siteName_not_starts_with?: string | null;
+    siteName_ends_with?: string | null;
+    siteName_not_ends_with?: string | null;
+    AND?: SystemSiteWhereInput[] | null;
+    OR?: SystemSiteWhereInput[] | null;
+    NOT?: SystemSiteWhereInput[] | null;
+  }
+  export interface TrunkedTalkgroupWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    decimal?: number | null;
+    decimal_not?: number | null;
+    decimal_in?: number[] | null;
+    decimal_not_in?: number[] | null;
+    decimal_lt?: number | null;
+    decimal_lte?: number | null;
+    decimal_gt?: number | null;
+    decimal_gte?: number | null;
+    hex?: string | null;
+    hex_not?: string | null;
+    hex_in?: string[] | null;
+    hex_not_in?: string[] | null;
+    hex_lt?: string | null;
+    hex_lte?: string | null;
+    hex_gt?: string | null;
+    hex_gte?: string | null;
+    hex_contains?: string | null;
+    hex_not_contains?: string | null;
+    hex_starts_with?: string | null;
+    hex_not_starts_with?: string | null;
+    hex_ends_with?: string | null;
+    hex_not_ends_with?: string | null;
+    mode?: string | null;
+    mode_not?: string | null;
+    mode_in?: string[] | null;
+    mode_not_in?: string[] | null;
+    mode_lt?: string | null;
+    mode_lte?: string | null;
+    mode_gt?: string | null;
+    mode_gte?: string | null;
+    mode_contains?: string | null;
+    mode_not_contains?: string | null;
+    mode_starts_with?: string | null;
+    mode_not_starts_with?: string | null;
+    mode_ends_with?: string | null;
+    mode_not_ends_with?: string | null;
+    alphaTag?: string | null;
+    alphaTag_not?: string | null;
+    alphaTag_in?: string[] | null;
+    alphaTag_not_in?: string[] | null;
+    alphaTag_lt?: string | null;
+    alphaTag_lte?: string | null;
+    alphaTag_gt?: string | null;
+    alphaTag_gte?: string | null;
+    alphaTag_contains?: string | null;
+    alphaTag_not_contains?: string | null;
+    alphaTag_starts_with?: string | null;
+    alphaTag_not_starts_with?: string | null;
+    alphaTag_ends_with?: string | null;
+    alphaTag_not_ends_with?: string | null;
+    description?: string | null;
+    description_not?: string | null;
+    description_in?: string[] | null;
+    description_not_in?: string[] | null;
+    description_lt?: string | null;
+    description_lte?: string | null;
+    description_gt?: string | null;
+    description_gte?: string | null;
+    description_contains?: string | null;
+    description_not_contains?: string | null;
+    description_starts_with?: string | null;
+    description_not_starts_with?: string | null;
+    description_ends_with?: string | null;
+    description_not_ends_with?: string | null;
+    tag?: string | null;
+    tag_not?: string | null;
+    tag_in?: string[] | null;
+    tag_not_in?: string[] | null;
+    tag_lt?: string | null;
+    tag_lte?: string | null;
+    tag_gt?: string | null;
+    tag_gte?: string | null;
+    tag_contains?: string | null;
+    tag_not_contains?: string | null;
+    tag_starts_with?: string | null;
+    tag_not_starts_with?: string | null;
+    tag_ends_with?: string | null;
+    tag_not_ends_with?: string | null;
+    group?: string | null;
+    group_not?: string | null;
+    group_in?: string[] | null;
+    group_not_in?: string[] | null;
+    group_lt?: string | null;
+    group_lte?: string | null;
+    group_gt?: string | null;
+    group_gte?: string | null;
+    group_contains?: string | null;
+    group_not_contains?: string | null;
+    group_starts_with?: string | null;
+    group_not_starts_with?: string | null;
+    group_ends_with?: string | null;
+    group_not_ends_with?: string | null;
+    priority?: number | null;
+    priority_not?: number | null;
+    priority_in?: number[] | null;
+    priority_not_in?: number[] | null;
+    priority_lt?: number | null;
+    priority_lte?: number | null;
+    priority_gt?: number | null;
+    priority_gte?: number | null;
+    system?: TrunkedSystemWhereInput | null;
+    calls_every?: TrunkedCallWhereInput | null;
+    calls_some?: TrunkedCallWhereInput | null;
+    calls_none?: TrunkedCallWhereInput | null;
+    hash?: string | null;
+    hash_not?: string | null;
+    hash_in?: string[] | null;
+    hash_not_in?: string[] | null;
+    hash_lt?: string | null;
+    hash_lte?: string | null;
+    hash_gt?: string | null;
+    hash_gte?: string | null;
+    hash_contains?: string | null;
+    hash_not_contains?: string | null;
+    hash_starts_with?: string | null;
+    hash_not_starts_with?: string | null;
+    hash_ends_with?: string | null;
+    hash_not_ends_with?: string | null;
+    AND?: TrunkedTalkgroupWhereInput[] | null;
+    OR?: TrunkedTalkgroupWhereInput[] | null;
+    NOT?: TrunkedTalkgroupWhereInput[] | null;
+  }
+  export interface SiteFrequencyWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    control?: SiteControl | null;
+    control_not?: SiteControl | null;
+    control_in?: SiteControl[] | null;
+    control_not_in?: SiteControl[] | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    AND?: SiteFrequencyWhereInput[] | null;
+    OR?: SiteFrequencyWhereInput[] | null;
+    NOT?: SiteFrequencyWhereInput[] | null;
+  }
+  export interface TrunkedSystemWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    type?: TrunkedSystemType | null;
+    type_not?: TrunkedSystemType | null;
+    type_in?: TrunkedSystemType[] | null;
+    type_not_in?: TrunkedSystemType[] | null;
+    talkgroups_every?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_some?: TrunkedTalkgroupWhereInput | null;
+    talkgroups_none?: TrunkedTalkgroupWhereInput | null;
+    recordUnknown?: boolean | null;
+    recordUnknown_not?: boolean | null;
+    shortName?: string | null;
+    shortName_not?: string | null;
+    shortName_in?: string[] | null;
+    shortName_not_in?: string[] | null;
+    shortName_lt?: string | null;
+    shortName_lte?: string | null;
+    shortName_gt?: string | null;
+    shortName_gte?: string | null;
+    shortName_contains?: string | null;
+    shortName_not_contains?: string | null;
+    shortName_starts_with?: string | null;
+    shortName_not_starts_with?: string | null;
+    shortName_ends_with?: string | null;
+    shortName_not_ends_with?: string | null;
+    name?: string | null;
+    name_not?: string | null;
+    name_in?: string[] | null;
+    name_not_in?: string[] | null;
+    name_lt?: string | null;
+    name_lte?: string | null;
+    name_gt?: string | null;
+    name_gte?: string | null;
+    name_contains?: string | null;
+    name_not_contains?: string | null;
+    name_starts_with?: string | null;
+    name_not_starts_with?: string | null;
+    name_ends_with?: string | null;
+    name_not_ends_with?: string | null;
+    audioArchive?: boolean | null;
+    audioArchive_not?: boolean | null;
+    callLog?: boolean | null;
+    callLog_not?: boolean | null;
+    minDuration?: number | null;
+    minDuration_not?: number | null;
+    minDuration_in?: number[] | null;
+    minDuration_not_in?: number[] | null;
+    minDuration_lt?: number | null;
+    minDuration_lte?: number | null;
+    minDuration_gt?: number | null;
+    minDuration_gte?: number | null;
+    bandplan?: TrunkedSmartnetBandplan | null;
+    bandplan_not?: TrunkedSmartnetBandplan | null;
+    bandplan_in?: TrunkedSmartnetBandplan[] | null;
+    bandplan_not_in?: TrunkedSmartnetBandplan[] | null;
+    bandplanBase?: number | null;
+    bandplanBase_not?: number | null;
+    bandplanBase_in?: number[] | null;
+    bandplanBase_not_in?: number[] | null;
+    bandplanBase_lt?: number | null;
+    bandplanBase_lte?: number | null;
+    bandplanBase_gt?: number | null;
+    bandplanBase_gte?: number | null;
+    bandplanHigh?: number | null;
+    bandplanHigh_not?: number | null;
+    bandplanHigh_in?: number[] | null;
+    bandplanHigh_not_in?: number[] | null;
+    bandplanHigh_lt?: number | null;
+    bandplanHigh_lte?: number | null;
+    bandplanHigh_gt?: number | null;
+    bandplanHigh_gte?: number | null;
+    bandplanLow?: number | null;
+    bandplanLow_not?: number | null;
+    bandplanLow_in?: number[] | null;
+    bandplanLow_not_in?: number[] | null;
+    bandplanLow_lt?: number | null;
+    bandplanLow_lte?: number | null;
+    bandplanLow_gt?: number | null;
+    bandplanLow_gte?: number | null;
+    bandplanSpacing?: number | null;
+    bandplanSpacing_not?: number | null;
+    bandplanSpacing_in?: number[] | null;
+    bandplanSpacing_not_in?: number[] | null;
+    bandplanSpacing_lt?: number | null;
+    bandplanSpacing_lte?: number | null;
+    bandplanSpacing_gt?: number | null;
+    bandplanSpacing_gte?: number | null;
+    bandplanOffset?: number | null;
+    bandplanOffset_not?: number | null;
+    bandplanOffset_in?: number[] | null;
+    bandplanOffset_not_in?: number[] | null;
+    bandplanOffset_lt?: number | null;
+    bandplanOffset_lte?: number | null;
+    bandplanOffset_gt?: number | null;
+    bandplanOffset_gte?: number | null;
+    talkgroupDisplayFormat?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_not?: TrunkedTalkgroupDisplayFormat | null;
+    talkgroupDisplayFormat_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    talkgroupDisplayFormat_not_in?: TrunkedTalkgroupDisplayFormat[] | null;
+    delayCreateOutput?: boolean | null;
+    delayCreateOutput_not?: boolean | null;
+    hideEncrypted?: boolean | null;
+    hideEncrypted_not?: boolean | null;
+    hideUnknownTalkgroups?: boolean | null;
+    hideUnknownTalkgroups_not?: boolean | null;
+    calls_every?: TrunkedCallWhereInput | null;
+    calls_some?: TrunkedCallWhereInput | null;
+    calls_none?: TrunkedCallWhereInput | null;
+    AND?: TrunkedSystemWhereInput[] | null;
+    OR?: TrunkedSystemWhereInput[] | null;
+    NOT?: TrunkedSystemWhereInput[] | null;
+  }
+  export interface TrunkedCallWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    startTime?: string | null;
+    startTime_not?: string | null;
+    startTime_in?: string[] | null;
+    startTime_not_in?: string[] | null;
+    startTime_lt?: string | null;
+    startTime_lte?: string | null;
+    startTime_gt?: string | null;
+    startTime_gte?: string | null;
+    endTime?: string | null;
+    endTime_not?: string | null;
+    endTime_in?: string[] | null;
+    endTime_not_in?: string[] | null;
+    endTime_lt?: string | null;
+    endTime_lte?: string | null;
+    endTime_gt?: string | null;
+    endTime_gte?: string | null;
+    emergency?: boolean | null;
+    emergency_not?: boolean | null;
+    talkgroup?: TrunkedTalkgroupWhereInput | null;
+    system?: TrunkedSystemWhereInput | null;
+    sources_every?: TrunkedCallSourceWhereInput | null;
+    sources_some?: TrunkedCallSourceWhereInput | null;
+    sources_none?: TrunkedCallSourceWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    source?: number | null;
+    source_not?: number | null;
+    source_in?: number[] | null;
+    source_not_in?: number[] | null;
+    source_lt?: number | null;
+    source_lte?: number | null;
+    source_gt?: number | null;
+    source_gte?: number | null;
+    audioPath?: string | null;
+    audioPath_not?: string | null;
+    audioPath_in?: string[] | null;
+    audioPath_not_in?: string[] | null;
+    audioPath_lt?: string | null;
+    audioPath_lte?: string | null;
+    audioPath_gt?: string | null;
+    audioPath_gte?: string | null;
+    audioPath_contains?: string | null;
+    audioPath_not_contains?: string | null;
+    audioPath_starts_with?: string | null;
+    audioPath_not_starts_with?: string | null;
+    audioPath_ends_with?: string | null;
+    audioPath_not_ends_with?: string | null;
+    frequencyList_every?: TrunkedCallFrequencyTimeWhereInput | null;
+    frequencyList_some?: TrunkedCallFrequencyTimeWhereInput | null;
+    frequencyList_none?: TrunkedCallFrequencyTimeWhereInput | null;
+    callHash?: string | null;
+    callHash_not?: string | null;
+    callHash_in?: string[] | null;
+    callHash_not_in?: string[] | null;
+    callHash_lt?: string | null;
+    callHash_lte?: string | null;
+    callHash_gt?: string | null;
+    callHash_gte?: string | null;
+    callHash_contains?: string | null;
+    callHash_not_contains?: string | null;
+    callHash_starts_with?: string | null;
+    callHash_not_starts_with?: string | null;
+    callHash_ends_with?: string | null;
+    callHash_not_ends_with?: string | null;
+    wavPath?: string | null;
+    wavPath_not?: string | null;
+    wavPath_in?: string[] | null;
+    wavPath_not_in?: string[] | null;
+    wavPath_lt?: string | null;
+    wavPath_lte?: string | null;
+    wavPath_gt?: string | null;
+    wavPath_gte?: string | null;
+    wavPath_contains?: string | null;
+    wavPath_not_contains?: string | null;
+    wavPath_starts_with?: string | null;
+    wavPath_not_starts_with?: string | null;
+    wavPath_ends_with?: string | null;
+    wavPath_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    AND?: TrunkedCallWhereInput[] | null;
+    OR?: TrunkedCallWhereInput[] | null;
+    NOT?: TrunkedCallWhereInput[] | null;
+  }
+  export interface TrunkedCallSourceWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    sourceId?: number | null;
+    sourceId_not?: number | null;
+    sourceId_in?: number[] | null;
+    sourceId_not_in?: number[] | null;
+    sourceId_lt?: number | null;
+    sourceId_lte?: number | null;
+    sourceId_gt?: number | null;
+    sourceId_gte?: number | null;
+    time?: string | null;
+    time_not?: string | null;
+    time_in?: string[] | null;
+    time_not_in?: string[] | null;
+    time_lt?: string | null;
+    time_lte?: string | null;
+    time_gt?: string | null;
+    time_gte?: string | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    AND?: TrunkedCallSourceWhereInput[] | null;
+    OR?: TrunkedCallSourceWhereInput[] | null;
+    NOT?: TrunkedCallSourceWhereInput[] | null;
+  }
+  export interface TrunkedCallFrequencyTimeWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    time?: number | null;
+    time_not?: number | null;
+    time_in?: number[] | null;
+    time_not_in?: number[] | null;
+    time_lt?: number | null;
+    time_lte?: number | null;
+    time_gt?: number | null;
+    time_gte?: number | null;
+    position?: number | null;
+    position_not?: number | null;
+    position_in?: number[] | null;
+    position_not_in?: number[] | null;
+    position_lt?: number | null;
+    position_lte?: number | null;
+    position_gt?: number | null;
+    position_gte?: number | null;
+    length?: number | null;
+    length_not?: number | null;
+    length_in?: number[] | null;
+    length_not_in?: number[] | null;
+    length_lt?: number | null;
+    length_lte?: number | null;
+    length_gt?: number | null;
+    length_gte?: number | null;
+    errors?: number | null;
+    errors_not?: number | null;
+    errors_in?: number[] | null;
+    errors_not_in?: number[] | null;
+    errors_lt?: number | null;
+    errors_lte?: number | null;
+    errors_gt?: number | null;
+    errors_gte?: number | null;
+    spikes?: number | null;
+    spikes_not?: number | null;
+    spikes_in?: number[] | null;
+    spikes_not_in?: number[] | null;
+    spikes_lt?: number | null;
+    spikes_lte?: number | null;
+    spikes_gt?: number | null;
+    spikes_gte?: number | null;
+    AND?: TrunkedCallFrequencyTimeWhereInput[] | null;
+    OR?: TrunkedCallFrequencyTimeWhereInput[] | null;
+    NOT?: TrunkedCallFrequencyTimeWhereInput[] | null;
+  }
+  export interface TranscriptionWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    call?: TrunkedCallWhereInput | null;
+    languageModel?: string | null;
+    languageModel_not?: string | null;
+    languageModel_in?: string[] | null;
+    languageModel_not_in?: string[] | null;
+    languageModel_lt?: string | null;
+    languageModel_lte?: string | null;
+    languageModel_gt?: string | null;
+    languageModel_gte?: string | null;
+    languageModel_contains?: string | null;
+    languageModel_not_contains?: string | null;
+    languageModel_starts_with?: string | null;
+    languageModel_not_starts_with?: string | null;
+    languageModel_ends_with?: string | null;
+    languageModel_not_ends_with?: string | null;
+    beta?: number | null;
+    beta_not?: number | null;
+    beta_in?: number[] | null;
+    beta_not_in?: number[] | null;
+    beta_lt?: number | null;
+    beta_lte?: number | null;
+    beta_gt?: number | null;
+    beta_gte?: number | null;
+    body?: string | null;
+    body_not?: string | null;
+    body_in?: string[] | null;
+    body_not_in?: string[] | null;
+    body_lt?: string | null;
+    body_lte?: string | null;
+    body_gt?: string | null;
+    body_gte?: string | null;
+    body_contains?: string | null;
+    body_not_contains?: string | null;
+    body_starts_with?: string | null;
+    body_not_starts_with?: string | null;
+    body_ends_with?: string | null;
+    body_not_ends_with?: string | null;
+    words_every?: TranscriptionWordWhereInput | null;
+    words_some?: TranscriptionWordWhereInput | null;
+    words_none?: TranscriptionWordWhereInput | null;
+    duration?: number | null;
+    duration_not?: number | null;
+    duration_in?: number[] | null;
+    duration_not_in?: number[] | null;
+    duration_lt?: number | null;
+    duration_lte?: number | null;
+    duration_gt?: number | null;
+    duration_gte?: number | null;
+    alpha?: number | null;
+    alpha_not?: number | null;
+    alpha_in?: number[] | null;
+    alpha_not_in?: number[] | null;
+    alpha_lt?: number | null;
+    alpha_lte?: number | null;
+    alpha_gt?: number | null;
+    alpha_gte?: number | null;
+    AND?: TranscriptionWhereInput[] | null;
+    OR?: TranscriptionWhereInput[] | null;
+    NOT?: TranscriptionWhereInput[] | null;
+  }
+  export interface TranscriptionWordWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    updatedAt?: string | null;
+    updatedAt_not?: string | null;
+    updatedAt_in?: string[] | null;
+    updatedAt_not_in?: string[] | null;
+    updatedAt_lt?: string | null;
+    updatedAt_lte?: string | null;
+    updatedAt_gt?: string | null;
+    updatedAt_gte?: string | null;
+    createdAt?: string | null;
+    createdAt_not?: string | null;
+    createdAt_in?: string[] | null;
+    createdAt_not_in?: string[] | null;
+    createdAt_lt?: string | null;
+    createdAt_lte?: string | null;
+    createdAt_gt?: string | null;
+    createdAt_gte?: string | null;
+    text?: string | null;
+    text_not?: string | null;
+    text_in?: string[] | null;
+    text_not_in?: string[] | null;
+    text_lt?: string | null;
+    text_lte?: string | null;
+    text_gt?: string | null;
+    text_gte?: string | null;
+    text_contains?: string | null;
+    text_not_contains?: string | null;
+    text_starts_with?: string | null;
+    text_not_starts_with?: string | null;
+    text_ends_with?: string | null;
+    text_not_ends_with?: string | null;
+    transcription?: TranscriptionWhereInput | null;
+    confidence?: number | null;
+    confidence_not?: number | null;
+    confidence_in?: number[] | null;
+    confidence_not_in?: number[] | null;
+    confidence_lt?: number | null;
+    confidence_lte?: number | null;
+    confidence_gt?: number | null;
+    confidence_gte?: number | null;
+    end?: number | null;
+    end_not?: number | null;
+    end_in?: number[] | null;
+    end_not_in?: number[] | null;
+    end_lt?: number | null;
+    end_lte?: number | null;
+    end_gt?: number | null;
+    end_gte?: number | null;
+    start?: number | null;
+    start_not?: number | null;
+    start_in?: number[] | null;
+    start_not_in?: number[] | null;
+    start_lt?: number | null;
+    start_lte?: number | null;
+    start_gt?: number | null;
+    start_gte?: number | null;
+    AND?: TranscriptionWordWhereInput[] | null;
+    OR?: TranscriptionWordWhereInput[] | null;
+    NOT?: TranscriptionWordWhereInput[] | null;
+  }
+
+  export interface ArgsSites {
+    where?: SystemSiteWhereInput | null;
+    orderBy?: SystemSiteOrderByInput | null;
+    skip?: number | null;
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+  }
+
+  export interface ArgsTalkgroups {
+    where?: TrunkedTalkgroupWhereInput | null;
+    orderBy?: TrunkedTalkgroupOrderByInput | null;
+    skip?: number | null;
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+  }
+
+  export type IdResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type NameResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type ShortNameResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type CountyResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type SystemTypeResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedSystemType | null | Promise<TrunkedSystemType | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystemType | null | Promise<TrunkedSystemType | null>;
+      };
+
+  export type SystemIdResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type StateResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type SitesResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: ArgsSites,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => SystemSite[] | null | Promise<SystemSite[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: ArgsSites,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SystemSite[] | null | Promise<SystemSite[] | null>;
+      };
+
+  export type TalkgroupsResolver =
+    | ((
+        parent: BaseTrunkedSystem,
+        args: ArgsTalkgroups,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: BaseTrunkedSystem,
+          args: ArgsTalkgroups,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    name:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    shortName:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    county:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    systemType:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedSystemType | null | Promise<TrunkedSystemType | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedSystemType | null | Promise<TrunkedSystemType | null>;
+        };
+
+    systemId:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    state:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    sites:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: ArgsSites,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SystemSite[] | null | Promise<SystemSite[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: ArgsSites,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => SystemSite[] | null | Promise<SystemSite[] | null>;
+        };
+
+    talkgroups:
+      | ((
+          parent: BaseTrunkedSystem,
+          args: ArgsTalkgroups,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: BaseTrunkedSystem,
+            args: ArgsTalkgroups,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => TrunkedTalkgroup[] | null | Promise<TrunkedTalkgroup[] | null>;
+        };
+  }
+}
+
+export namespace SystemSiteResolvers {
+  export const defaultResolvers = {
+    id: (parent: SystemSite) => parent.id,
+    siteCounty: (parent: SystemSite) =>
+      parent.siteCounty === undefined ? null : parent.siteCounty,
+    siteId: (parent: SystemSite) => parent.siteId,
+    siteLink: (parent: SystemSite) => parent.siteLink,
+    siteName: (parent: SystemSite) => parent.siteName
+  };
+
+  export interface SiteFrequencyWhereInput {
+    id?: string | null;
+    id_not?: string | null;
+    id_in?: string[] | null;
+    id_not_in?: string[] | null;
+    id_lt?: string | null;
+    id_lte?: string | null;
+    id_gt?: string | null;
+    id_gte?: string | null;
+    id_contains?: string | null;
+    id_not_contains?: string | null;
+    id_starts_with?: string | null;
+    id_not_starts_with?: string | null;
+    id_ends_with?: string | null;
+    id_not_ends_with?: string | null;
+    control?: SiteControl | null;
+    control_not?: SiteControl | null;
+    control_in?: SiteControl[] | null;
+    control_not_in?: SiteControl[] | null;
+    frequency?: number | null;
+    frequency_not?: number | null;
+    frequency_in?: number[] | null;
+    frequency_not_in?: number[] | null;
+    frequency_lt?: number | null;
+    frequency_lte?: number | null;
+    frequency_gt?: number | null;
+    frequency_gte?: number | null;
+    AND?: SiteFrequencyWhereInput[] | null;
+    OR?: SiteFrequencyWhereInput[] | null;
+    NOT?: SiteFrequencyWhereInput[] | null;
+  }
+
+  export interface ArgsFrequencies {
+    where?: SiteFrequencyWhereInput | null;
+    orderBy?: SiteFrequencyOrderByInput | null;
+    skip?: number | null;
+    after?: string | null;
+    before?: string | null;
+    first?: number | null;
+    last?: number | null;
+  }
+
+  export type IdResolver =
+    | ((
+        parent: SystemSite,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type FrequenciesResolver =
+    | ((
+        parent: SystemSite,
+        args: ArgsFrequencies,
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => SiteFrequency[] | null | Promise<SiteFrequency[] | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: ArgsFrequencies,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SiteFrequency[] | null | Promise<SiteFrequency[] | null>;
+      };
+
+  export type SiteCountyResolver =
+    | ((
+        parent: SystemSite,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | null | Promise<string | null>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>;
+      };
+
+  export type SiteIdResolver =
+    | ((
+        parent: SystemSite,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type SiteLinkResolver =
+    | ((
+        parent: SystemSite,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type SiteNameResolver =
+    | ((
+        parent: SystemSite,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    frequencies:
+      | ((
+          parent: SystemSite,
+          args: ArgsFrequencies,
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SiteFrequency[] | null | Promise<SiteFrequency[] | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: ArgsFrequencies,
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => SiteFrequency[] | null | Promise<SiteFrequency[] | null>;
+        };
+
+    siteCounty:
+      | ((
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | null | Promise<string | null>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | null | Promise<string | null>;
+        };
+
+    siteId:
+      | ((
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    siteLink:
+      | ((
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    siteName:
+      | ((
+          parent: SystemSite,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SystemSite,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+  }
+}
+
+export namespace SiteFrequencyResolvers {
+  export const defaultResolvers = {
+    id: (parent: SiteFrequency) => parent.id,
+    control: (parent: SiteFrequency) => parent.control,
+    frequency: (parent: SiteFrequency) => parent.frequency
+  };
+
+  export type IdResolver =
+    | ((
+        parent: SiteFrequency,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => string | Promise<string>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>;
+      };
+
+  export type ControlResolver =
+    | ((
+        parent: SiteFrequency,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => SiteControl | Promise<SiteControl>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SiteControl | Promise<SiteControl>;
+      };
+
+  export type FrequencyResolver =
+    | ((
+        parent: SiteFrequency,
+        args: {},
+        ctx: Context,
+        info: GraphQLResolveInfo
+      ) => number | Promise<number>)
+    | {
+        fragment: string;
+        resolve: (
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>;
+      };
+
+  export interface Type {
+    id:
+      | ((
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => string | Promise<string>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SiteFrequency,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => string | Promise<string>;
+        };
+
+    control:
+      | ((
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => SiteControl | Promise<SiteControl>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SiteFrequency,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => SiteControl | Promise<SiteControl>;
+        };
+
+    frequency:
+      | ((
+          parent: SiteFrequency,
+          args: {},
+          ctx: Context,
+          info: GraphQLResolveInfo
+        ) => number | Promise<number>)
+      | {
+          fragment: string;
+          resolve: (
+            parent: SiteFrequency,
+            args: {},
+            ctx: Context,
+            info: GraphQLResolveInfo
+          ) => number | Promise<number>;
         };
   }
 }
@@ -8037,6 +10788,9 @@ export interface Resolvers {
   User: UserResolvers.Type;
   LoginResponse: LoginResponseResolvers.Type;
   Mutation: MutationResolvers.Type;
+  BaseTrunkedSystem: BaseTrunkedSystemResolvers.Type;
+  SystemSite: SystemSiteResolvers.Type;
+  SiteFrequency: SiteFrequencyResolvers.Type;
   Subscription: SubscriptionResolvers.Type;
 }
 

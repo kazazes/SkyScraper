@@ -7,7 +7,7 @@ interface UserState {
 
 export const state = (): UserState => ({
   user: undefined,
-  token: undefined
+  token: undefined,
 });
 
 export const mutations = {
@@ -15,7 +15,7 @@ export const mutations = {
     state.user = user;
   },
   setToken(state: UserState, token: string) {
-    state.token =  token;
+    state.token = token;
   },
 };
 
@@ -25,7 +25,8 @@ export const getters = {
   },
   user: (state: UserState) => {
     return state.user;
-  }
+  },
+  isAdmin: (state: UserState) => {
+    return state.user && state.user.role === "ADMIN";
+  },
 };
-
-

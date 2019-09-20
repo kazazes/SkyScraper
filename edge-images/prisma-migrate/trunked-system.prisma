@@ -1,0 +1,32 @@
+type BaseTrunkedSystem {
+  id: ID! @id
+  name: String!
+  shortName: String!
+  county: String
+  systemType: TrunkedSystemType
+  systemId: String
+  state: String
+  sites: [SystemSite!]
+  talkgroups: [TrunkedTalkgroup!]
+}
+
+type SystemSite {
+  id: ID! @id
+  frequencies: [SiteFrequency!]
+  siteCounty: String
+  siteId: String!
+  siteLink: String!
+  siteName: String!
+}
+
+type SiteFrequency {
+  id: ID! @id
+  control: SiteControl!
+  frequency: Float!
+}
+
+enum SiteControl {
+  ALTERNATE
+  PRIMARY
+  NONE
+}

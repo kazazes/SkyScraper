@@ -10,6 +10,11 @@ export type Scalars = {
   Long: any,
 };
 
+export type AggregateBaseTrunkedSystem = {
+   __typename?: 'AggregateBaseTrunkedSystem',
+  count: Scalars['Int'],
+};
+
 export type AggregateDump1090Aircraft = {
    __typename?: 'AggregateDump1090Aircraft',
   count: Scalars['Int'],
@@ -17,6 +22,16 @@ export type AggregateDump1090Aircraft = {
 
 export type AggregateDump1090Message = {
    __typename?: 'AggregateDump1090Message',
+  count: Scalars['Int'],
+};
+
+export type AggregateSiteFrequency = {
+   __typename?: 'AggregateSiteFrequency',
+  count: Scalars['Int'],
+};
+
+export type AggregateSystemSite = {
+   __typename?: 'AggregateSystemSite',
   count: Scalars['Int'],
 };
 
@@ -68,6 +83,237 @@ export type AggregateTrunkedTalkgroup = {
 export type AggregateUser = {
    __typename?: 'AggregateUser',
   count: Scalars['Int'],
+};
+
+export type BaseTrunkedSystem = {
+   __typename?: 'BaseTrunkedSystem',
+  id: Scalars['ID'],
+  name: Scalars['String'],
+  shortName: Scalars['String'],
+  county?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemId?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+  sites?: Maybe<Array<SystemSite>>,
+  talkgroups?: Maybe<Array<TrunkedTalkgroup>>,
+};
+
+
+export type BaseTrunkedSystemSitesArgs = {
+  where?: Maybe<SystemSiteWhereInput>,
+  orderBy?: Maybe<SystemSiteOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type BaseTrunkedSystemTalkgroupsArgs = {
+  where?: Maybe<TrunkedTalkgroupWhereInput>,
+  orderBy?: Maybe<TrunkedTalkgroupOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+export type BaseTrunkedSystemConnection = {
+   __typename?: 'BaseTrunkedSystemConnection',
+  pageInfo: PageInfo,
+  edges: Array<Maybe<BaseTrunkedSystemEdge>>,
+  aggregate: AggregateBaseTrunkedSystem,
+};
+
+export type BaseTrunkedSystemCreateInput = {
+  id?: Maybe<Scalars['ID']>,
+  name: Scalars['String'],
+  shortName: Scalars['String'],
+  county?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemId?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+  sites?: Maybe<SystemSiteCreateManyInput>,
+  talkgroups?: Maybe<TrunkedTalkgroupCreateManyInput>,
+};
+
+export type BaseTrunkedSystemEdge = {
+   __typename?: 'BaseTrunkedSystemEdge',
+  node: BaseTrunkedSystem,
+  cursor: Scalars['String'],
+};
+
+export enum BaseTrunkedSystemOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  ShortNameAsc = 'shortName_ASC',
+  ShortNameDesc = 'shortName_DESC',
+  CountyAsc = 'county_ASC',
+  CountyDesc = 'county_DESC',
+  SystemTypeAsc = 'systemType_ASC',
+  SystemTypeDesc = 'systemType_DESC',
+  SystemIdAsc = 'systemId_ASC',
+  SystemIdDesc = 'systemId_DESC',
+  StateAsc = 'state_ASC',
+  StateDesc = 'state_DESC'
+}
+
+export type BaseTrunkedSystemPreviousValues = {
+   __typename?: 'BaseTrunkedSystemPreviousValues',
+  id: Scalars['ID'],
+  name: Scalars['String'],
+  shortName: Scalars['String'],
+  county?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemId?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+};
+
+export type BaseTrunkedSystemSubscriptionPayload = {
+   __typename?: 'BaseTrunkedSystemSubscriptionPayload',
+  mutation: MutationType,
+  node?: Maybe<BaseTrunkedSystem>,
+  updatedFields?: Maybe<Array<Scalars['String']>>,
+  previousValues?: Maybe<BaseTrunkedSystemPreviousValues>,
+};
+
+export type BaseTrunkedSystemSubscriptionWhereInput = {
+  mutation_in?: Maybe<Array<MutationType>>,
+  updatedFields_contains?: Maybe<Scalars['String']>,
+  updatedFields_contains_every?: Maybe<Array<Scalars['String']>>,
+  updatedFields_contains_some?: Maybe<Array<Scalars['String']>>,
+  node?: Maybe<BaseTrunkedSystemWhereInput>,
+  AND?: Maybe<Array<BaseTrunkedSystemSubscriptionWhereInput>>,
+  OR?: Maybe<Array<BaseTrunkedSystemSubscriptionWhereInput>>,
+  NOT?: Maybe<Array<BaseTrunkedSystemSubscriptionWhereInput>>,
+};
+
+export type BaseTrunkedSystemUpdateInput = {
+  name?: Maybe<Scalars['String']>,
+  shortName?: Maybe<Scalars['String']>,
+  county?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemId?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+  sites?: Maybe<SystemSiteUpdateManyInput>,
+  talkgroups?: Maybe<TrunkedTalkgroupUpdateManyInput>,
+};
+
+export type BaseTrunkedSystemUpdateManyMutationInput = {
+  name?: Maybe<Scalars['String']>,
+  shortName?: Maybe<Scalars['String']>,
+  county?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemId?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+};
+
+export type BaseTrunkedSystemWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  name?: Maybe<Scalars['String']>,
+  name_not?: Maybe<Scalars['String']>,
+  name_in?: Maybe<Array<Scalars['String']>>,
+  name_not_in?: Maybe<Array<Scalars['String']>>,
+  name_lt?: Maybe<Scalars['String']>,
+  name_lte?: Maybe<Scalars['String']>,
+  name_gt?: Maybe<Scalars['String']>,
+  name_gte?: Maybe<Scalars['String']>,
+  name_contains?: Maybe<Scalars['String']>,
+  name_not_contains?: Maybe<Scalars['String']>,
+  name_starts_with?: Maybe<Scalars['String']>,
+  name_not_starts_with?: Maybe<Scalars['String']>,
+  name_ends_with?: Maybe<Scalars['String']>,
+  name_not_ends_with?: Maybe<Scalars['String']>,
+  shortName?: Maybe<Scalars['String']>,
+  shortName_not?: Maybe<Scalars['String']>,
+  shortName_in?: Maybe<Array<Scalars['String']>>,
+  shortName_not_in?: Maybe<Array<Scalars['String']>>,
+  shortName_lt?: Maybe<Scalars['String']>,
+  shortName_lte?: Maybe<Scalars['String']>,
+  shortName_gt?: Maybe<Scalars['String']>,
+  shortName_gte?: Maybe<Scalars['String']>,
+  shortName_contains?: Maybe<Scalars['String']>,
+  shortName_not_contains?: Maybe<Scalars['String']>,
+  shortName_starts_with?: Maybe<Scalars['String']>,
+  shortName_not_starts_with?: Maybe<Scalars['String']>,
+  shortName_ends_with?: Maybe<Scalars['String']>,
+  shortName_not_ends_with?: Maybe<Scalars['String']>,
+  county?: Maybe<Scalars['String']>,
+  county_not?: Maybe<Scalars['String']>,
+  county_in?: Maybe<Array<Scalars['String']>>,
+  county_not_in?: Maybe<Array<Scalars['String']>>,
+  county_lt?: Maybe<Scalars['String']>,
+  county_lte?: Maybe<Scalars['String']>,
+  county_gt?: Maybe<Scalars['String']>,
+  county_gte?: Maybe<Scalars['String']>,
+  county_contains?: Maybe<Scalars['String']>,
+  county_not_contains?: Maybe<Scalars['String']>,
+  county_starts_with?: Maybe<Scalars['String']>,
+  county_not_starts_with?: Maybe<Scalars['String']>,
+  county_ends_with?: Maybe<Scalars['String']>,
+  county_not_ends_with?: Maybe<Scalars['String']>,
+  systemType?: Maybe<TrunkedSystemType>,
+  systemType_not?: Maybe<TrunkedSystemType>,
+  systemType_in?: Maybe<Array<TrunkedSystemType>>,
+  systemType_not_in?: Maybe<Array<TrunkedSystemType>>,
+  systemId?: Maybe<Scalars['String']>,
+  systemId_not?: Maybe<Scalars['String']>,
+  systemId_in?: Maybe<Array<Scalars['String']>>,
+  systemId_not_in?: Maybe<Array<Scalars['String']>>,
+  systemId_lt?: Maybe<Scalars['String']>,
+  systemId_lte?: Maybe<Scalars['String']>,
+  systemId_gt?: Maybe<Scalars['String']>,
+  systemId_gte?: Maybe<Scalars['String']>,
+  systemId_contains?: Maybe<Scalars['String']>,
+  systemId_not_contains?: Maybe<Scalars['String']>,
+  systemId_starts_with?: Maybe<Scalars['String']>,
+  systemId_not_starts_with?: Maybe<Scalars['String']>,
+  systemId_ends_with?: Maybe<Scalars['String']>,
+  systemId_not_ends_with?: Maybe<Scalars['String']>,
+  state?: Maybe<Scalars['String']>,
+  state_not?: Maybe<Scalars['String']>,
+  state_in?: Maybe<Array<Scalars['String']>>,
+  state_not_in?: Maybe<Array<Scalars['String']>>,
+  state_lt?: Maybe<Scalars['String']>,
+  state_lte?: Maybe<Scalars['String']>,
+  state_gt?: Maybe<Scalars['String']>,
+  state_gte?: Maybe<Scalars['String']>,
+  state_contains?: Maybe<Scalars['String']>,
+  state_not_contains?: Maybe<Scalars['String']>,
+  state_starts_with?: Maybe<Scalars['String']>,
+  state_not_starts_with?: Maybe<Scalars['String']>,
+  state_ends_with?: Maybe<Scalars['String']>,
+  state_not_ends_with?: Maybe<Scalars['String']>,
+  sites_every?: Maybe<SystemSiteWhereInput>,
+  sites_some?: Maybe<SystemSiteWhereInput>,
+  sites_none?: Maybe<SystemSiteWhereInput>,
+  talkgroups_every?: Maybe<TrunkedTalkgroupWhereInput>,
+  talkgroups_some?: Maybe<TrunkedTalkgroupWhereInput>,
+  talkgroups_none?: Maybe<TrunkedTalkgroupWhereInput>,
+  AND?: Maybe<Array<BaseTrunkedSystemWhereInput>>,
+  OR?: Maybe<Array<BaseTrunkedSystemWhereInput>>,
+  NOT?: Maybe<Array<BaseTrunkedSystemWhereInput>>,
+};
+
+export type BaseTrunkedSystemWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>,
 };
 
 export type BatchPayload = {
@@ -551,6 +797,12 @@ export type Mutation = {
   createTrunkedSystem: TrunkedSystem,
   register: User,
   login: LoginResponse,
+  upsertBaseTrunkedSystem: BaseTrunkedSystem,
+  createBaseTrunkedSystem: BaseTrunkedSystem,
+  updateBaseTrunkedSystem?: Maybe<BaseTrunkedSystem>,
+  updateManyBaseTrunkedSystems: BatchPayload,
+  deleteBaseTrunkedSystem?: Maybe<BaseTrunkedSystem>,
+  deleteManyBaseTrunkedSystems: BatchPayload,
   createDump1090Aircraft: Dump1090Aircraft,
   updateDump1090Aircraft?: Maybe<Dump1090Aircraft>,
   updateManyDump1090Aircrafts: BatchPayload,
@@ -563,6 +815,18 @@ export type Mutation = {
   upsertDump1090Message: Dump1090Message,
   deleteDump1090Message?: Maybe<Dump1090Message>,
   deleteManyDump1090Messages: BatchPayload,
+  createSiteFrequency: SiteFrequency,
+  updateSiteFrequency?: Maybe<SiteFrequency>,
+  updateManySiteFrequencies: BatchPayload,
+  upsertSiteFrequency: SiteFrequency,
+  deleteSiteFrequency?: Maybe<SiteFrequency>,
+  deleteManySiteFrequencies: BatchPayload,
+  createSystemSite: SystemSite,
+  updateSystemSite?: Maybe<SystemSite>,
+  updateManySystemSites: BatchPayload,
+  upsertSystemSite: SystemSite,
+  deleteSystemSite?: Maybe<SystemSite>,
+  deleteManySystemSites: BatchPayload,
   createTranscription: Transcription,
   updateTranscription?: Maybe<Transcription>,
   updateManyTranscriptions: BatchPayload,
@@ -644,6 +908,40 @@ export type MutationLoginArgs = {
 };
 
 
+export type MutationUpsertBaseTrunkedSystemArgs = {
+  where: BaseTrunkedSystemWhereUniqueInput,
+  create: BaseTrunkedSystemCreateInput,
+  update: BaseTrunkedSystemUpdateInput
+};
+
+
+export type MutationCreateBaseTrunkedSystemArgs = {
+  data: BaseTrunkedSystemCreateInput
+};
+
+
+export type MutationUpdateBaseTrunkedSystemArgs = {
+  data: BaseTrunkedSystemUpdateInput,
+  where: BaseTrunkedSystemWhereUniqueInput
+};
+
+
+export type MutationUpdateManyBaseTrunkedSystemsArgs = {
+  data: BaseTrunkedSystemUpdateManyMutationInput,
+  where?: Maybe<BaseTrunkedSystemWhereInput>
+};
+
+
+export type MutationDeleteBaseTrunkedSystemArgs = {
+  where: BaseTrunkedSystemWhereUniqueInput
+};
+
+
+export type MutationDeleteManyBaseTrunkedSystemsArgs = {
+  where?: Maybe<BaseTrunkedSystemWhereInput>
+};
+
+
 export type MutationCreateDump1090AircraftArgs = {
   data: Dump1090AircraftCreateInput
 };
@@ -709,6 +1007,74 @@ export type MutationDeleteDump1090MessageArgs = {
 
 export type MutationDeleteManyDump1090MessagesArgs = {
   where?: Maybe<Dump1090MessageWhereInput>
+};
+
+
+export type MutationCreateSiteFrequencyArgs = {
+  data: SiteFrequencyCreateInput
+};
+
+
+export type MutationUpdateSiteFrequencyArgs = {
+  data: SiteFrequencyUpdateInput,
+  where: SiteFrequencyWhereUniqueInput
+};
+
+
+export type MutationUpdateManySiteFrequenciesArgs = {
+  data: SiteFrequencyUpdateManyMutationInput,
+  where?: Maybe<SiteFrequencyWhereInput>
+};
+
+
+export type MutationUpsertSiteFrequencyArgs = {
+  where: SiteFrequencyWhereUniqueInput,
+  create: SiteFrequencyCreateInput,
+  update: SiteFrequencyUpdateInput
+};
+
+
+export type MutationDeleteSiteFrequencyArgs = {
+  where: SiteFrequencyWhereUniqueInput
+};
+
+
+export type MutationDeleteManySiteFrequenciesArgs = {
+  where?: Maybe<SiteFrequencyWhereInput>
+};
+
+
+export type MutationCreateSystemSiteArgs = {
+  data: SystemSiteCreateInput
+};
+
+
+export type MutationUpdateSystemSiteArgs = {
+  data: SystemSiteUpdateInput,
+  where: SystemSiteWhereUniqueInput
+};
+
+
+export type MutationUpdateManySystemSitesArgs = {
+  data: SystemSiteUpdateManyMutationInput,
+  where?: Maybe<SystemSiteWhereInput>
+};
+
+
+export type MutationUpsertSystemSiteArgs = {
+  where: SystemSiteWhereUniqueInput,
+  create: SystemSiteCreateInput,
+  update: SystemSiteUpdateInput
+};
+
+
+export type MutationDeleteSystemSiteArgs = {
+  where: SystemSiteWhereUniqueInput
+};
+
+
+export type MutationDeleteManySystemSitesArgs = {
+  where?: Maybe<SystemSiteWhereInput>
 };
 
 
@@ -1076,12 +1442,21 @@ export type Query = {
   sendAuthyVerification: Scalars['Boolean'],
   verifyAuthyToken?: Maybe<LoginResponse>,
   login?: Maybe<LoginResponse>,
+  baseTrunkedSystem?: Maybe<BaseTrunkedSystem>,
+  baseTrunkedSystems: Array<Maybe<BaseTrunkedSystem>>,
+  baseTrunkedSystemsConnection: BaseTrunkedSystemConnection,
   dump1090Aircraft?: Maybe<Dump1090Aircraft>,
   dump1090Aircrafts: Array<Maybe<Dump1090Aircraft>>,
   dump1090AircraftsConnection: Dump1090AircraftConnection,
   dump1090Message?: Maybe<Dump1090Message>,
   dump1090Messages: Array<Maybe<Dump1090Message>>,
   dump1090MessagesConnection: Dump1090MessageConnection,
+  siteFrequency?: Maybe<SiteFrequency>,
+  siteFrequencies: Array<Maybe<SiteFrequency>>,
+  siteFrequenciesConnection: SiteFrequencyConnection,
+  systemSite?: Maybe<SystemSite>,
+  systemSites: Array<Maybe<SystemSite>>,
+  systemSitesConnection: SystemSiteConnection,
   transcription?: Maybe<Transcription>,
   transcriptions: Array<Maybe<Transcription>>,
   transcriptionsConnection: TranscriptionConnection,
@@ -1157,8 +1532,35 @@ export type QueryVerifyAuthyTokenArgs = {
 
 
 export type QueryLoginArgs = {
-  user?: Maybe<UserWhereUniqueInput>,
+  user: UserWhereUniqueInput,
   password: Scalars['String']
+};
+
+
+export type QueryBaseTrunkedSystemArgs = {
+  where: BaseTrunkedSystemWhereUniqueInput
+};
+
+
+export type QueryBaseTrunkedSystemsArgs = {
+  where?: Maybe<BaseTrunkedSystemWhereInput>,
+  orderBy?: Maybe<BaseTrunkedSystemOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QueryBaseTrunkedSystemsConnectionArgs = {
+  where?: Maybe<BaseTrunkedSystemWhereInput>,
+  orderBy?: Maybe<BaseTrunkedSystemOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
 };
 
 
@@ -1208,6 +1610,60 @@ export type QueryDump1090MessagesArgs = {
 export type QueryDump1090MessagesConnectionArgs = {
   where?: Maybe<Dump1090MessageWhereInput>,
   orderBy?: Maybe<Dump1090MessageOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QuerySiteFrequencyArgs = {
+  where: SiteFrequencyWhereUniqueInput
+};
+
+
+export type QuerySiteFrequenciesArgs = {
+  where?: Maybe<SiteFrequencyWhereInput>,
+  orderBy?: Maybe<SiteFrequencyOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QuerySiteFrequenciesConnectionArgs = {
+  where?: Maybe<SiteFrequencyWhereInput>,
+  orderBy?: Maybe<SiteFrequencyOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QuerySystemSiteArgs = {
+  where: SystemSiteWhereUniqueInput
+};
+
+
+export type QuerySystemSitesArgs = {
+  where?: Maybe<SystemSiteWhereInput>,
+  orderBy?: Maybe<SystemSiteOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+
+export type QuerySystemSitesConnectionArgs = {
+  where?: Maybe<SystemSiteWhereInput>,
+  orderBy?: Maybe<SystemSiteOrderByInput>,
   skip?: Maybe<Scalars['Int']>,
   after?: Maybe<Scalars['String']>,
   before?: Maybe<Scalars['String']>,
@@ -1463,12 +1919,203 @@ export type QueryNodeArgs = {
   id: Scalars['ID']
 };
 
+export enum SiteControl {
+  Alternate = 'ALTERNATE',
+  Primary = 'PRIMARY',
+  None = 'NONE'
+}
+
+export type SiteFrequency = {
+   __typename?: 'SiteFrequency',
+  id: Scalars['ID'],
+  control: SiteControl,
+  frequency: Scalars['Float'],
+};
+
+export type SiteFrequencyConnection = {
+   __typename?: 'SiteFrequencyConnection',
+  pageInfo: PageInfo,
+  edges: Array<Maybe<SiteFrequencyEdge>>,
+  aggregate: AggregateSiteFrequency,
+};
+
+export type SiteFrequencyCreateInput = {
+  id?: Maybe<Scalars['ID']>,
+  control: SiteControl,
+  frequency: Scalars['Float'],
+};
+
+export type SiteFrequencyCreateManyInput = {
+  create?: Maybe<Array<SiteFrequencyCreateInput>>,
+  connect?: Maybe<Array<SiteFrequencyWhereUniqueInput>>,
+};
+
+export type SiteFrequencyEdge = {
+   __typename?: 'SiteFrequencyEdge',
+  node: SiteFrequency,
+  cursor: Scalars['String'],
+};
+
+export enum SiteFrequencyOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  ControlAsc = 'control_ASC',
+  ControlDesc = 'control_DESC',
+  FrequencyAsc = 'frequency_ASC',
+  FrequencyDesc = 'frequency_DESC'
+}
+
+export type SiteFrequencyPreviousValues = {
+   __typename?: 'SiteFrequencyPreviousValues',
+  id: Scalars['ID'],
+  control: SiteControl,
+  frequency: Scalars['Float'],
+};
+
+export type SiteFrequencyScalarWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  control?: Maybe<SiteControl>,
+  control_not?: Maybe<SiteControl>,
+  control_in?: Maybe<Array<SiteControl>>,
+  control_not_in?: Maybe<Array<SiteControl>>,
+  frequency?: Maybe<Scalars['Float']>,
+  frequency_not?: Maybe<Scalars['Float']>,
+  frequency_in?: Maybe<Array<Scalars['Float']>>,
+  frequency_not_in?: Maybe<Array<Scalars['Float']>>,
+  frequency_lt?: Maybe<Scalars['Float']>,
+  frequency_lte?: Maybe<Scalars['Float']>,
+  frequency_gt?: Maybe<Scalars['Float']>,
+  frequency_gte?: Maybe<Scalars['Float']>,
+  AND?: Maybe<Array<SiteFrequencyScalarWhereInput>>,
+  OR?: Maybe<Array<SiteFrequencyScalarWhereInput>>,
+  NOT?: Maybe<Array<SiteFrequencyScalarWhereInput>>,
+};
+
+export type SiteFrequencySubscriptionPayload = {
+   __typename?: 'SiteFrequencySubscriptionPayload',
+  mutation: MutationType,
+  node?: Maybe<SiteFrequency>,
+  updatedFields?: Maybe<Array<Scalars['String']>>,
+  previousValues?: Maybe<SiteFrequencyPreviousValues>,
+};
+
+export type SiteFrequencySubscriptionWhereInput = {
+  mutation_in?: Maybe<Array<MutationType>>,
+  updatedFields_contains?: Maybe<Scalars['String']>,
+  updatedFields_contains_every?: Maybe<Array<Scalars['String']>>,
+  updatedFields_contains_some?: Maybe<Array<Scalars['String']>>,
+  node?: Maybe<SiteFrequencyWhereInput>,
+  AND?: Maybe<Array<SiteFrequencySubscriptionWhereInput>>,
+  OR?: Maybe<Array<SiteFrequencySubscriptionWhereInput>>,
+  NOT?: Maybe<Array<SiteFrequencySubscriptionWhereInput>>,
+};
+
+export type SiteFrequencyUpdateDataInput = {
+  control?: Maybe<SiteControl>,
+  frequency?: Maybe<Scalars['Float']>,
+};
+
+export type SiteFrequencyUpdateInput = {
+  control?: Maybe<SiteControl>,
+  frequency?: Maybe<Scalars['Float']>,
+};
+
+export type SiteFrequencyUpdateManyDataInput = {
+  control?: Maybe<SiteControl>,
+  frequency?: Maybe<Scalars['Float']>,
+};
+
+export type SiteFrequencyUpdateManyInput = {
+  create?: Maybe<Array<SiteFrequencyCreateInput>>,
+  update?: Maybe<Array<SiteFrequencyUpdateWithWhereUniqueNestedInput>>,
+  upsert?: Maybe<Array<SiteFrequencyUpsertWithWhereUniqueNestedInput>>,
+  delete?: Maybe<Array<SiteFrequencyWhereUniqueInput>>,
+  connect?: Maybe<Array<SiteFrequencyWhereUniqueInput>>,
+  set?: Maybe<Array<SiteFrequencyWhereUniqueInput>>,
+  disconnect?: Maybe<Array<SiteFrequencyWhereUniqueInput>>,
+  deleteMany?: Maybe<Array<SiteFrequencyScalarWhereInput>>,
+  updateMany?: Maybe<Array<SiteFrequencyUpdateManyWithWhereNestedInput>>,
+};
+
+export type SiteFrequencyUpdateManyMutationInput = {
+  control?: Maybe<SiteControl>,
+  frequency?: Maybe<Scalars['Float']>,
+};
+
+export type SiteFrequencyUpdateManyWithWhereNestedInput = {
+  where: SiteFrequencyScalarWhereInput,
+  data: SiteFrequencyUpdateManyDataInput,
+};
+
+export type SiteFrequencyUpdateWithWhereUniqueNestedInput = {
+  where: SiteFrequencyWhereUniqueInput,
+  data: SiteFrequencyUpdateDataInput,
+};
+
+export type SiteFrequencyUpsertWithWhereUniqueNestedInput = {
+  where: SiteFrequencyWhereUniqueInput,
+  update: SiteFrequencyUpdateDataInput,
+  create: SiteFrequencyCreateInput,
+};
+
+export type SiteFrequencyWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  control?: Maybe<SiteControl>,
+  control_not?: Maybe<SiteControl>,
+  control_in?: Maybe<Array<SiteControl>>,
+  control_not_in?: Maybe<Array<SiteControl>>,
+  frequency?: Maybe<Scalars['Float']>,
+  frequency_not?: Maybe<Scalars['Float']>,
+  frequency_in?: Maybe<Array<Scalars['Float']>>,
+  frequency_not_in?: Maybe<Array<Scalars['Float']>>,
+  frequency_lt?: Maybe<Scalars['Float']>,
+  frequency_lte?: Maybe<Scalars['Float']>,
+  frequency_gt?: Maybe<Scalars['Float']>,
+  frequency_gte?: Maybe<Scalars['Float']>,
+  AND?: Maybe<Array<SiteFrequencyWhereInput>>,
+  OR?: Maybe<Array<SiteFrequencyWhereInput>>,
+  NOT?: Maybe<Array<SiteFrequencyWhereInput>>,
+};
+
+export type SiteFrequencyWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>,
+};
+
 export type Subscription = {
    __typename?: 'Subscription',
   trunkedCalls?: Maybe<TrunkedCall>,
   transcriptions?: Maybe<Transcription>,
+  baseTrunkedSystem?: Maybe<BaseTrunkedSystemSubscriptionPayload>,
   dump1090Aircraft?: Maybe<Dump1090AircraftSubscriptionPayload>,
   dump1090Message?: Maybe<Dump1090MessageSubscriptionPayload>,
+  siteFrequency?: Maybe<SiteFrequencySubscriptionPayload>,
+  systemSite?: Maybe<SystemSiteSubscriptionPayload>,
   transcription?: Maybe<TranscriptionSubscriptionPayload>,
   transcriptionWord?: Maybe<TranscriptionWordSubscriptionPayload>,
   trunkedCall?: Maybe<TrunkedCallSubscriptionPayload>,
@@ -1482,6 +2129,11 @@ export type Subscription = {
 };
 
 
+export type SubscriptionBaseTrunkedSystemArgs = {
+  where?: Maybe<BaseTrunkedSystemSubscriptionWhereInput>
+};
+
+
 export type SubscriptionDump1090AircraftArgs = {
   where?: Maybe<Dump1090AircraftSubscriptionWhereInput>
 };
@@ -1489,6 +2141,16 @@ export type SubscriptionDump1090AircraftArgs = {
 
 export type SubscriptionDump1090MessageArgs = {
   where?: Maybe<Dump1090MessageSubscriptionWhereInput>
+};
+
+
+export type SubscriptionSiteFrequencyArgs = {
+  where?: Maybe<SiteFrequencySubscriptionWhereInput>
+};
+
+
+export type SubscriptionSystemSiteArgs = {
+  where?: Maybe<SystemSiteSubscriptionWhereInput>
 };
 
 
@@ -1539,6 +2201,312 @@ export type SubscriptionTrunkedTalkgroupArgs = {
 
 export type SubscriptionUserArgs = {
   where?: Maybe<UserSubscriptionWhereInput>
+};
+
+export type SystemSite = {
+   __typename?: 'SystemSite',
+  id: Scalars['ID'],
+  frequencies?: Maybe<Array<SiteFrequency>>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId: Scalars['String'],
+  siteLink: Scalars['String'],
+  siteName: Scalars['String'],
+};
+
+
+export type SystemSiteFrequenciesArgs = {
+  where?: Maybe<SiteFrequencyWhereInput>,
+  orderBy?: Maybe<SiteFrequencyOrderByInput>,
+  skip?: Maybe<Scalars['Int']>,
+  after?: Maybe<Scalars['String']>,
+  before?: Maybe<Scalars['String']>,
+  first?: Maybe<Scalars['Int']>,
+  last?: Maybe<Scalars['Int']>
+};
+
+export type SystemSiteConnection = {
+   __typename?: 'SystemSiteConnection',
+  pageInfo: PageInfo,
+  edges: Array<Maybe<SystemSiteEdge>>,
+  aggregate: AggregateSystemSite,
+};
+
+export type SystemSiteCreateInput = {
+  id?: Maybe<Scalars['ID']>,
+  frequencies?: Maybe<SiteFrequencyCreateManyInput>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId: Scalars['String'],
+  siteLink: Scalars['String'],
+  siteName: Scalars['String'],
+};
+
+export type SystemSiteCreateManyInput = {
+  create?: Maybe<Array<SystemSiteCreateInput>>,
+  connect?: Maybe<Array<SystemSiteWhereUniqueInput>>,
+};
+
+export type SystemSiteEdge = {
+   __typename?: 'SystemSiteEdge',
+  node: SystemSite,
+  cursor: Scalars['String'],
+};
+
+export enum SystemSiteOrderByInput {
+  IdAsc = 'id_ASC',
+  IdDesc = 'id_DESC',
+  SiteCountyAsc = 'siteCounty_ASC',
+  SiteCountyDesc = 'siteCounty_DESC',
+  SiteIdAsc = 'siteId_ASC',
+  SiteIdDesc = 'siteId_DESC',
+  SiteLinkAsc = 'siteLink_ASC',
+  SiteLinkDesc = 'siteLink_DESC',
+  SiteNameAsc = 'siteName_ASC',
+  SiteNameDesc = 'siteName_DESC'
+}
+
+export type SystemSitePreviousValues = {
+   __typename?: 'SystemSitePreviousValues',
+  id: Scalars['ID'],
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId: Scalars['String'],
+  siteLink: Scalars['String'],
+  siteName: Scalars['String'],
+};
+
+export type SystemSiteScalarWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteCounty_not?: Maybe<Scalars['String']>,
+  siteCounty_in?: Maybe<Array<Scalars['String']>>,
+  siteCounty_not_in?: Maybe<Array<Scalars['String']>>,
+  siteCounty_lt?: Maybe<Scalars['String']>,
+  siteCounty_lte?: Maybe<Scalars['String']>,
+  siteCounty_gt?: Maybe<Scalars['String']>,
+  siteCounty_gte?: Maybe<Scalars['String']>,
+  siteCounty_contains?: Maybe<Scalars['String']>,
+  siteCounty_not_contains?: Maybe<Scalars['String']>,
+  siteCounty_starts_with?: Maybe<Scalars['String']>,
+  siteCounty_not_starts_with?: Maybe<Scalars['String']>,
+  siteCounty_ends_with?: Maybe<Scalars['String']>,
+  siteCounty_not_ends_with?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteId_not?: Maybe<Scalars['String']>,
+  siteId_in?: Maybe<Array<Scalars['String']>>,
+  siteId_not_in?: Maybe<Array<Scalars['String']>>,
+  siteId_lt?: Maybe<Scalars['String']>,
+  siteId_lte?: Maybe<Scalars['String']>,
+  siteId_gt?: Maybe<Scalars['String']>,
+  siteId_gte?: Maybe<Scalars['String']>,
+  siteId_contains?: Maybe<Scalars['String']>,
+  siteId_not_contains?: Maybe<Scalars['String']>,
+  siteId_starts_with?: Maybe<Scalars['String']>,
+  siteId_not_starts_with?: Maybe<Scalars['String']>,
+  siteId_ends_with?: Maybe<Scalars['String']>,
+  siteId_not_ends_with?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteLink_not?: Maybe<Scalars['String']>,
+  siteLink_in?: Maybe<Array<Scalars['String']>>,
+  siteLink_not_in?: Maybe<Array<Scalars['String']>>,
+  siteLink_lt?: Maybe<Scalars['String']>,
+  siteLink_lte?: Maybe<Scalars['String']>,
+  siteLink_gt?: Maybe<Scalars['String']>,
+  siteLink_gte?: Maybe<Scalars['String']>,
+  siteLink_contains?: Maybe<Scalars['String']>,
+  siteLink_not_contains?: Maybe<Scalars['String']>,
+  siteLink_starts_with?: Maybe<Scalars['String']>,
+  siteLink_not_starts_with?: Maybe<Scalars['String']>,
+  siteLink_ends_with?: Maybe<Scalars['String']>,
+  siteLink_not_ends_with?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+  siteName_not?: Maybe<Scalars['String']>,
+  siteName_in?: Maybe<Array<Scalars['String']>>,
+  siteName_not_in?: Maybe<Array<Scalars['String']>>,
+  siteName_lt?: Maybe<Scalars['String']>,
+  siteName_lte?: Maybe<Scalars['String']>,
+  siteName_gt?: Maybe<Scalars['String']>,
+  siteName_gte?: Maybe<Scalars['String']>,
+  siteName_contains?: Maybe<Scalars['String']>,
+  siteName_not_contains?: Maybe<Scalars['String']>,
+  siteName_starts_with?: Maybe<Scalars['String']>,
+  siteName_not_starts_with?: Maybe<Scalars['String']>,
+  siteName_ends_with?: Maybe<Scalars['String']>,
+  siteName_not_ends_with?: Maybe<Scalars['String']>,
+  AND?: Maybe<Array<SystemSiteScalarWhereInput>>,
+  OR?: Maybe<Array<SystemSiteScalarWhereInput>>,
+  NOT?: Maybe<Array<SystemSiteScalarWhereInput>>,
+};
+
+export type SystemSiteSubscriptionPayload = {
+   __typename?: 'SystemSiteSubscriptionPayload',
+  mutation: MutationType,
+  node?: Maybe<SystemSite>,
+  updatedFields?: Maybe<Array<Scalars['String']>>,
+  previousValues?: Maybe<SystemSitePreviousValues>,
+};
+
+export type SystemSiteSubscriptionWhereInput = {
+  mutation_in?: Maybe<Array<MutationType>>,
+  updatedFields_contains?: Maybe<Scalars['String']>,
+  updatedFields_contains_every?: Maybe<Array<Scalars['String']>>,
+  updatedFields_contains_some?: Maybe<Array<Scalars['String']>>,
+  node?: Maybe<SystemSiteWhereInput>,
+  AND?: Maybe<Array<SystemSiteSubscriptionWhereInput>>,
+  OR?: Maybe<Array<SystemSiteSubscriptionWhereInput>>,
+  NOT?: Maybe<Array<SystemSiteSubscriptionWhereInput>>,
+};
+
+export type SystemSiteUpdateDataInput = {
+  frequencies?: Maybe<SiteFrequencyUpdateManyInput>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+};
+
+export type SystemSiteUpdateInput = {
+  frequencies?: Maybe<SiteFrequencyUpdateManyInput>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+};
+
+export type SystemSiteUpdateManyDataInput = {
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+};
+
+export type SystemSiteUpdateManyInput = {
+  create?: Maybe<Array<SystemSiteCreateInput>>,
+  update?: Maybe<Array<SystemSiteUpdateWithWhereUniqueNestedInput>>,
+  upsert?: Maybe<Array<SystemSiteUpsertWithWhereUniqueNestedInput>>,
+  delete?: Maybe<Array<SystemSiteWhereUniqueInput>>,
+  connect?: Maybe<Array<SystemSiteWhereUniqueInput>>,
+  set?: Maybe<Array<SystemSiteWhereUniqueInput>>,
+  disconnect?: Maybe<Array<SystemSiteWhereUniqueInput>>,
+  deleteMany?: Maybe<Array<SystemSiteScalarWhereInput>>,
+  updateMany?: Maybe<Array<SystemSiteUpdateManyWithWhereNestedInput>>,
+};
+
+export type SystemSiteUpdateManyMutationInput = {
+  siteCounty?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+};
+
+export type SystemSiteUpdateManyWithWhereNestedInput = {
+  where: SystemSiteScalarWhereInput,
+  data: SystemSiteUpdateManyDataInput,
+};
+
+export type SystemSiteUpdateWithWhereUniqueNestedInput = {
+  where: SystemSiteWhereUniqueInput,
+  data: SystemSiteUpdateDataInput,
+};
+
+export type SystemSiteUpsertWithWhereUniqueNestedInput = {
+  where: SystemSiteWhereUniqueInput,
+  update: SystemSiteUpdateDataInput,
+  create: SystemSiteCreateInput,
+};
+
+export type SystemSiteWhereInput = {
+  id?: Maybe<Scalars['ID']>,
+  id_not?: Maybe<Scalars['ID']>,
+  id_in?: Maybe<Array<Scalars['ID']>>,
+  id_not_in?: Maybe<Array<Scalars['ID']>>,
+  id_lt?: Maybe<Scalars['ID']>,
+  id_lte?: Maybe<Scalars['ID']>,
+  id_gt?: Maybe<Scalars['ID']>,
+  id_gte?: Maybe<Scalars['ID']>,
+  id_contains?: Maybe<Scalars['ID']>,
+  id_not_contains?: Maybe<Scalars['ID']>,
+  id_starts_with?: Maybe<Scalars['ID']>,
+  id_not_starts_with?: Maybe<Scalars['ID']>,
+  id_ends_with?: Maybe<Scalars['ID']>,
+  id_not_ends_with?: Maybe<Scalars['ID']>,
+  frequencies_every?: Maybe<SiteFrequencyWhereInput>,
+  frequencies_some?: Maybe<SiteFrequencyWhereInput>,
+  frequencies_none?: Maybe<SiteFrequencyWhereInput>,
+  siteCounty?: Maybe<Scalars['String']>,
+  siteCounty_not?: Maybe<Scalars['String']>,
+  siteCounty_in?: Maybe<Array<Scalars['String']>>,
+  siteCounty_not_in?: Maybe<Array<Scalars['String']>>,
+  siteCounty_lt?: Maybe<Scalars['String']>,
+  siteCounty_lte?: Maybe<Scalars['String']>,
+  siteCounty_gt?: Maybe<Scalars['String']>,
+  siteCounty_gte?: Maybe<Scalars['String']>,
+  siteCounty_contains?: Maybe<Scalars['String']>,
+  siteCounty_not_contains?: Maybe<Scalars['String']>,
+  siteCounty_starts_with?: Maybe<Scalars['String']>,
+  siteCounty_not_starts_with?: Maybe<Scalars['String']>,
+  siteCounty_ends_with?: Maybe<Scalars['String']>,
+  siteCounty_not_ends_with?: Maybe<Scalars['String']>,
+  siteId?: Maybe<Scalars['String']>,
+  siteId_not?: Maybe<Scalars['String']>,
+  siteId_in?: Maybe<Array<Scalars['String']>>,
+  siteId_not_in?: Maybe<Array<Scalars['String']>>,
+  siteId_lt?: Maybe<Scalars['String']>,
+  siteId_lte?: Maybe<Scalars['String']>,
+  siteId_gt?: Maybe<Scalars['String']>,
+  siteId_gte?: Maybe<Scalars['String']>,
+  siteId_contains?: Maybe<Scalars['String']>,
+  siteId_not_contains?: Maybe<Scalars['String']>,
+  siteId_starts_with?: Maybe<Scalars['String']>,
+  siteId_not_starts_with?: Maybe<Scalars['String']>,
+  siteId_ends_with?: Maybe<Scalars['String']>,
+  siteId_not_ends_with?: Maybe<Scalars['String']>,
+  siteLink?: Maybe<Scalars['String']>,
+  siteLink_not?: Maybe<Scalars['String']>,
+  siteLink_in?: Maybe<Array<Scalars['String']>>,
+  siteLink_not_in?: Maybe<Array<Scalars['String']>>,
+  siteLink_lt?: Maybe<Scalars['String']>,
+  siteLink_lte?: Maybe<Scalars['String']>,
+  siteLink_gt?: Maybe<Scalars['String']>,
+  siteLink_gte?: Maybe<Scalars['String']>,
+  siteLink_contains?: Maybe<Scalars['String']>,
+  siteLink_not_contains?: Maybe<Scalars['String']>,
+  siteLink_starts_with?: Maybe<Scalars['String']>,
+  siteLink_not_starts_with?: Maybe<Scalars['String']>,
+  siteLink_ends_with?: Maybe<Scalars['String']>,
+  siteLink_not_ends_with?: Maybe<Scalars['String']>,
+  siteName?: Maybe<Scalars['String']>,
+  siteName_not?: Maybe<Scalars['String']>,
+  siteName_in?: Maybe<Array<Scalars['String']>>,
+  siteName_not_in?: Maybe<Array<Scalars['String']>>,
+  siteName_lt?: Maybe<Scalars['String']>,
+  siteName_lte?: Maybe<Scalars['String']>,
+  siteName_gt?: Maybe<Scalars['String']>,
+  siteName_gte?: Maybe<Scalars['String']>,
+  siteName_contains?: Maybe<Scalars['String']>,
+  siteName_not_contains?: Maybe<Scalars['String']>,
+  siteName_starts_with?: Maybe<Scalars['String']>,
+  siteName_not_starts_with?: Maybe<Scalars['String']>,
+  siteName_ends_with?: Maybe<Scalars['String']>,
+  siteName_not_ends_with?: Maybe<Scalars['String']>,
+  AND?: Maybe<Array<SystemSiteWhereInput>>,
+  OR?: Maybe<Array<SystemSiteWhereInput>>,
+  NOT?: Maybe<Array<SystemSiteWhereInput>>,
+};
+
+export type SystemSiteWhereUniqueInput = {
+  id?: Maybe<Scalars['ID']>,
 };
 
 export type Transcription = {
@@ -4897,6 +5865,11 @@ export type TrunkedTalkgroupCreateInput = {
   hash: Scalars['String'],
 };
 
+export type TrunkedTalkgroupCreateManyInput = {
+  create?: Maybe<Array<TrunkedTalkgroupCreateInput>>,
+  connect?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
+};
+
 export type TrunkedTalkgroupCreateManyWithoutSystemInput = {
   create?: Maybe<Array<TrunkedTalkgroupCreateWithoutSystemInput>>,
   connect?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
@@ -5159,6 +6132,20 @@ export type TrunkedTalkgroupSubscriptionWhereInput = {
   NOT?: Maybe<Array<TrunkedTalkgroupSubscriptionWhereInput>>,
 };
 
+export type TrunkedTalkgroupUpdateDataInput = {
+  decimal?: Maybe<Scalars['Int']>,
+  hex?: Maybe<Scalars['String']>,
+  mode?: Maybe<Scalars['String']>,
+  alphaTag?: Maybe<Scalars['String']>,
+  description?: Maybe<Scalars['String']>,
+  tag?: Maybe<Scalars['String']>,
+  group?: Maybe<Scalars['String']>,
+  priority?: Maybe<Scalars['Int']>,
+  system?: Maybe<TrunkedSystemUpdateOneRequiredWithoutTalkgroupsInput>,
+  calls?: Maybe<TrunkedCallUpdateManyWithoutTalkgroupInput>,
+  hash?: Maybe<Scalars['String']>,
+};
+
 export type TrunkedTalkgroupUpdateInput = {
   decimal?: Maybe<Scalars['Int']>,
   hex?: Maybe<Scalars['String']>,
@@ -5183,6 +6170,18 @@ export type TrunkedTalkgroupUpdateManyDataInput = {
   group?: Maybe<Scalars['String']>,
   priority?: Maybe<Scalars['Int']>,
   hash?: Maybe<Scalars['String']>,
+};
+
+export type TrunkedTalkgroupUpdateManyInput = {
+  create?: Maybe<Array<TrunkedTalkgroupCreateInput>>,
+  update?: Maybe<Array<TrunkedTalkgroupUpdateWithWhereUniqueNestedInput>>,
+  upsert?: Maybe<Array<TrunkedTalkgroupUpsertWithWhereUniqueNestedInput>>,
+  delete?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
+  connect?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
+  set?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
+  disconnect?: Maybe<Array<TrunkedTalkgroupWhereUniqueInput>>,
+  deleteMany?: Maybe<Array<TrunkedTalkgroupScalarWhereInput>>,
+  updateMany?: Maybe<Array<TrunkedTalkgroupUpdateManyWithWhereNestedInput>>,
 };
 
 export type TrunkedTalkgroupUpdateManyMutationInput = {
@@ -5249,6 +6248,11 @@ export type TrunkedTalkgroupUpdateWithoutSystemDataInput = {
   hash?: Maybe<Scalars['String']>,
 };
 
+export type TrunkedTalkgroupUpdateWithWhereUniqueNestedInput = {
+  where: TrunkedTalkgroupWhereUniqueInput,
+  data: TrunkedTalkgroupUpdateDataInput,
+};
+
 export type TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput = {
   where: TrunkedTalkgroupWhereUniqueInput,
   data: TrunkedTalkgroupUpdateWithoutSystemDataInput,
@@ -5257,6 +6261,12 @@ export type TrunkedTalkgroupUpdateWithWhereUniqueWithoutSystemInput = {
 export type TrunkedTalkgroupUpsertWithoutCallsInput = {
   update: TrunkedTalkgroupUpdateWithoutCallsDataInput,
   create: TrunkedTalkgroupCreateWithoutCallsInput,
+};
+
+export type TrunkedTalkgroupUpsertWithWhereUniqueNestedInput = {
+  where: TrunkedTalkgroupWhereUniqueInput,
+  update: TrunkedTalkgroupUpdateDataInput,
+  create: TrunkedTalkgroupCreateInput,
 };
 
 export type TrunkedTalkgroupUpsertWithWhereUniqueWithoutSystemInput = {
@@ -5684,6 +6694,24 @@ export type DeviceRegisteredQuery = (
   & Pick<Query, 'deviceRegistered'>
 );
 
+export type LoginQueryVariables = {
+  user: UserWhereUniqueInput,
+  password: Scalars['String']
+};
+
+
+export type LoginQuery = (
+  { __typename?: 'Query' }
+  & { login: Maybe<(
+    { __typename?: 'LoginResponse' }
+    & Pick<LoginResponse, 'token'>
+    & { user: Maybe<(
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'email' | 'phone' | 'verified' | 'role'>
+    )> }
+  )> }
+);
+
 export type SendAuthyTextQueryVariables = {
   user: UserWhereUniqueInput
 };
@@ -5766,6 +6794,10 @@ export type TrunkedSystemsQuery = (
   & { trunkedSystems: Array<Maybe<(
     { __typename?: 'TrunkedSystem' }
     & Pick<TrunkedSystem, 'id' | 'name' | 'shortName' | 'controlChannels' | 'updatedAt' | 'createdAt' | 'type'>
+    & { talkgroups: Maybe<Array<(
+      { __typename?: 'TrunkedTalkgroup' }
+      & Pick<TrunkedTalkgroup, 'id' | 'hex' | 'decimal'>
+    )>> }
   )>> }
 );
 

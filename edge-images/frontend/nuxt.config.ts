@@ -75,7 +75,6 @@ const config: Configuration = {
     config: {}, // Additional config
   },
   apollo: {
-    $prefetch: false,
     incldueNodeModules: true,
     clientConfigs: {
       default: "~/plugins/apolloDefaultConfig.ts",
@@ -122,7 +121,7 @@ const config: Configuration = {
   typescript: {
     typeCheck: true,
     ignoreNotFoundWarnings: true,
-  }
+  },
 };
 
 export default config;

@@ -55,8 +55,7 @@
   import consola from "consola";
   import gql from "graphql-tag";
   import moment from "moment";
-  import { Component, Prop, Watch } from "nuxt-property-decorator";
-  import Vue from "vue";
+  import { Component, Prop, Watch, Vue } from "nuxt-property-decorator";
   import { TRUNKED_CALLS } from "~/assets/apollo/queries/getTrunkedCalls";
   import { NEW_TRUNKED_CALLS } from "~/assets/apollo/subscriptions/newTrunkedCalls";
   import {
@@ -73,6 +72,17 @@
         subscribeToMore: [
           {
             document: NEW_TRUNKED_CALLS,
+            variables() {
+              const t = this as any;
+              return {
+                where: {
+                  node: {
+                    system: { shortName: t.$route.params.system },
+                    talkgroup: { tag_not_in: t.disabledTags() },
+                  },
+                },
+              };
+            },
             updateQuery(
               previousResult: { trunkedCalls: TrunkedCall[] },
               {
@@ -127,6 +137,10 @@
             first: t.pagination.rowsPerPage,
             skip: (t.pagination.page - 1) * t.pagination.rowsPerPage,
             orderBy: TrunkedCallOrderByInput.StartTimeDesc,
+            where: {
+              system: { shortName: t.$route.params.system },
+              talkgroup: { tag_not_in: t.disabledTags() },
+            },
           };
         },
         update(data) {
@@ -222,20 +236,28 @@
       };
     },
     props: {
-      realTimeQueueEmpty: { default: false },
+      realTimeQueueEmpty: { default: false, required: true },
+      talkgroupTags: { required: true },
     },
   } as any)
   export default class TrunkedCallTable extends Vue {
     error: any = undefined;
-
     trunkedCallCount = 0;
-
     trunkedCalls!: TrunkedCall[];
+
+    @Prop()
+    system?: string;
+
+    @Prop({ required: true })
+    talkgroupTags!: { tag: string; enabled: boolean }[];
 
     @Watch("trunkedCalls", { deep: true })
     emitTrunkedCalls() {
       this.$emit("trunked-calls-updated", this.trunkedCalls);
     }
+
+    @Watch("talkgroupTags", { deep: true })
+    tagSelectionChanged() {}
 
     pagination = {
       descending: true,
@@ -260,6 +282,15 @@
 
     timeAgo(d: string) {
       return moment(d).fromNow();
+    }
+
+    disabledTags() {
+      const disabled = this.talkgroupTags
+        .filter((tag) => {
+          return !tag.enabled;
+        })
+        .map((tag) => tag.tag);
+      return disabled;
     }
   }
 </script>

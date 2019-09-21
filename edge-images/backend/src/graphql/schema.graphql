@@ -16,7 +16,7 @@ type Query {
 }
 
 type Subscription {
-  trunkedCalls: TrunkedCall
+  trunkedCalls(where: TrunkedCallSubscriptionWhereInput): TrunkedCall
   transcriptions: Transcription
 }
 

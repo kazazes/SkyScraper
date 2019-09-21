@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 export const NEW_TRUNKED_CALLS = gql`
-  subscription newTrunkedCalls {
-    trunkedCalls {
+  subscription newTrunkedCalls($where: TrunkedCallSubscriptionWhereInput) {
+    trunkedCalls(where: $where) {
       id
       createdAt
       frequency

@@ -1,5 +1,5 @@
 <template>
-  <v-layout row fill-height pb-5>
+  <v-layout row fill-height>
     <v-container fluid pa-0 style="min-height: 100%;">
       <v-flex>
         <v-tabs

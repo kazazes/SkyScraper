@@ -1,6 +1,6 @@
 {
-  "type": "P25",
-  "shortName": "MTGRY",
-  "name": "Ohio MARCS-IP",
-  "controlChannels": { "set": [858887500, 857887500] }
+  "type": "SMARTNET",
+  "shortName": "sfcers",
+  "name": "San Francisco Public Safety",
+  "controlChannels": { "set": [851400000, 851425000, 851125000] }
 }

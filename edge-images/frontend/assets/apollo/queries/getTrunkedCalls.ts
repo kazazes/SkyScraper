@@ -1,11 +1,13 @@
 import gql from "graphql-tag";
+
 export const TRUNKED_CALLS = gql`
   query trunkedCalls(
     $first: Int
     $skip: Int
     $orderBy: TrunkedCallOrderByInput
+    $where: TrunkedCallWhereInput
   ) {
-    trunkedCalls(first: $first, skip: $skip, orderBy: $orderBy) {
+    trunkedCalls(first: $first, skip: $skip, orderBy: $orderBy, where: $where) {
       id
       createdAt
       frequency

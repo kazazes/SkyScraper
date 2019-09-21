@@ -8,7 +8,7 @@ export const Subscription: SubscriptionResolvers.Type = {
   ...SubscriptionResolvers.defaultResolvers,
   trunkedCalls: {
     subscribe: (parent, args, ctx: Context) => {
-      return ctx.prisma.$subscribe.trunkedCall().node();
+      return ctx.prisma.$subscribe.trunkedCall(args.where).node();
     },
     resolve: (payload: Transcription | any, args, { prisma }) => {
       return payload;

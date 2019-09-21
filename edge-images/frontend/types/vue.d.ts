@@ -52,6 +52,7 @@ declare module "vue/types/options" {
   interface ComponentOptions<V extends Vue> {
     auth?: boolean;
     sockets?: any;
+    apollo?: any;
   }
 }
 
@@ -59,5 +60,6 @@ declare module "vue/types/vue" {
   interface Vue {
     $auth: Auth<any>;
     $connect: any;
+    $apollo: any;
   }
 }

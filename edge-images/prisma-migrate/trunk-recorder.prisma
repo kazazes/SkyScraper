@@ -39,7 +39,7 @@ type TrunkedSystem {
   channels: [Float] @scalarList(strategy: RELATION)
   type: TrunkedSystemType!
   alphatags: [String] @scalarList(strategy: RELATION)
-  talkgroups: [TrunkedTalkgroup]
+  talkgroups: [TrunkedTalkgroup] @relation(onDelete: CASCADE)
   recordUnknown: Boolean! @default(value: false)
   shortName: String! @unique
   name: String! @default(value: "(no name)")

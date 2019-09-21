@@ -11,74 +11,74 @@ export type Scalars = {
 };
 
 export type AggregateDump1090Aircraft = {
-  __typename?: 'AggregateDump1090Aircraft',
+   __typename?: 'AggregateDump1090Aircraft',
   count: Scalars['Int'],
 };
 
 export type AggregateDump1090Message = {
-  __typename?: 'AggregateDump1090Message',
+   __typename?: 'AggregateDump1090Message',
   count: Scalars['Int'],
 };
 
 export type AggregateTranscription = {
-  __typename?: 'AggregateTranscription',
+   __typename?: 'AggregateTranscription',
   count: Scalars['Int'],
 };
 
 export type AggregateTranscriptionWord = {
-  __typename?: 'AggregateTranscriptionWord',
+   __typename?: 'AggregateTranscriptionWord',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedCall = {
-  __typename?: 'AggregateTrunkedCall',
+   __typename?: 'AggregateTrunkedCall',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedCallFrequencyTime = {
-  __typename?: 'AggregateTrunkedCallFrequencyTime',
+   __typename?: 'AggregateTrunkedCallFrequencyTime',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedCallSource = {
-  __typename?: 'AggregateTrunkedCallSource',
+   __typename?: 'AggregateTrunkedCallSource',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedConfig = {
-  __typename?: 'AggregateTrunkedConfig',
+   __typename?: 'AggregateTrunkedConfig',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedSource = {
-  __typename?: 'AggregateTrunkedSource',
+   __typename?: 'AggregateTrunkedSource',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedSystem = {
-  __typename?: 'AggregateTrunkedSystem',
+   __typename?: 'AggregateTrunkedSystem',
   count: Scalars['Int'],
 };
 
 export type AggregateTrunkedTalkgroup = {
-  __typename?: 'AggregateTrunkedTalkgroup',
+   __typename?: 'AggregateTrunkedTalkgroup',
   count: Scalars['Int'],
 };
 
 export type BatchPayload = {
-  __typename?: 'BatchPayload',
+   __typename?: 'BatchPayload',
   count: Scalars['Long'],
 };
 
 
 export type Dump1090Aircraft = {
-  __typename?: 'Dump1090Aircraft',
+   __typename?: 'Dump1090Aircraft',
   id: Scalars['ID'],
   IcaoID?: Maybe<Scalars['String']>,
 };
 
 export type Dump1090AircraftConnection = {
-  __typename?: 'Dump1090AircraftConnection',
+   __typename?: 'Dump1090AircraftConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<Dump1090AircraftEdge>>,
   aggregate: AggregateDump1090Aircraft,
@@ -95,7 +95,7 @@ export type Dump1090AircraftCreateOneInput = {
 };
 
 export type Dump1090AircraftEdge = {
-  __typename?: 'Dump1090AircraftEdge',
+   __typename?: 'Dump1090AircraftEdge',
   node: Dump1090Aircraft,
   cursor: Scalars['String'],
 };
@@ -108,13 +108,13 @@ export enum Dump1090AircraftOrderByInput {
 }
 
 export type Dump1090AircraftPreviousValues = {
-  __typename?: 'Dump1090AircraftPreviousValues',
+   __typename?: 'Dump1090AircraftPreviousValues',
   id: Scalars['ID'],
   IcaoID?: Maybe<Scalars['String']>,
 };
 
 export type Dump1090AircraftSubscriptionPayload = {
-  __typename?: 'Dump1090AircraftSubscriptionPayload',
+   __typename?: 'Dump1090AircraftSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<Dump1090Aircraft>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -198,7 +198,7 @@ export type Dump1090AircraftWhereUniqueInput = {
 };
 
 export type Dump1090Message = {
-  __typename?: 'Dump1090Message',
+   __typename?: 'Dump1090Message',
   id: Scalars['ID'],
   messageType: Dump1090MessageType,
   transmissionType: Dump1090TransmissionType,
@@ -220,7 +220,7 @@ export type Dump1090Message = {
 };
 
 export type Dump1090MessageConnection = {
-  __typename?: 'Dump1090MessageConnection',
+   __typename?: 'Dump1090MessageConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<Dump1090MessageEdge>>,
   aggregate: AggregateDump1090Message,
@@ -248,7 +248,7 @@ export type Dump1090MessageCreateInput = {
 };
 
 export type Dump1090MessageEdge = {
-  __typename?: 'Dump1090MessageEdge',
+   __typename?: 'Dump1090MessageEdge',
   node: Dump1090Message,
   cursor: Scalars['String'],
 };
@@ -291,7 +291,7 @@ export enum Dump1090MessageOrderByInput {
 }
 
 export type Dump1090MessagePreviousValues = {
-  __typename?: 'Dump1090MessagePreviousValues',
+   __typename?: 'Dump1090MessagePreviousValues',
   id: Scalars['ID'],
   messageType: Dump1090MessageType,
   transmissionType: Dump1090TransmissionType,
@@ -312,7 +312,7 @@ export type Dump1090MessagePreviousValues = {
 };
 
 export type Dump1090MessageSubscriptionPayload = {
-  __typename?: 'Dump1090MessageSubscriptionPayload',
+   __typename?: 'Dump1090MessageSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<Dump1090Message>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -536,7 +536,7 @@ export enum Dump1090TransmissionType {
 
 
 export type Mutation = {
-  __typename?: 'Mutation',
+   __typename?: 'Mutation',
   createTrunkedSystem: TrunkedSystem,
   createDump1090Aircraft: Dump1090Aircraft,
   updateDump1090Aircraft?: Maybe<Dump1090Aircraft>,
@@ -991,7 +991,7 @@ export type Node = {
 };
 
 export type PageInfo = {
-  __typename?: 'PageInfo',
+   __typename?: 'PageInfo',
   hasNextPage: Scalars['Boolean'],
   hasPreviousPage: Scalars['Boolean'],
   startCursor?: Maybe<Scalars['String']>,
@@ -999,7 +999,7 @@ export type PageInfo = {
 };
 
 export type Query = {
-  __typename?: 'Query',
+   __typename?: 'Query',
   trunkedCalls: Array<Maybe<TrunkedCall>>,
   trunkedCallCount: Scalars['Int'],
   trunkedSystems: Array<Maybe<TrunkedSystem>>,
@@ -1340,7 +1340,7 @@ export type QueryNodeArgs = {
 };
 
 export type Subscription = {
-  __typename?: 'Subscription',
+   __typename?: 'Subscription',
   trunkedCalls?: Maybe<TrunkedCall>,
   transcriptions?: Maybe<Transcription>,
   dump1090Aircraft?: Maybe<Dump1090AircraftSubscriptionPayload>,
@@ -1354,6 +1354,11 @@ export type Subscription = {
   trunkedSource?: Maybe<TrunkedSourceSubscriptionPayload>,
   trunkedSystem?: Maybe<TrunkedSystemSubscriptionPayload>,
   trunkedTalkgroup?: Maybe<TrunkedTalkgroupSubscriptionPayload>,
+};
+
+
+export type SubscriptionTrunkedCallsArgs = {
+  where?: Maybe<TrunkedCallSubscriptionWhereInput>
 };
 
 
@@ -1412,7 +1417,7 @@ export type SubscriptionTrunkedTalkgroupArgs = {
 };
 
 export type Transcription = {
-  __typename?: 'Transcription',
+   __typename?: 'Transcription',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -1437,7 +1442,7 @@ export type TranscriptionWordsArgs = {
 };
 
 export type TranscriptionConnection = {
-  __typename?: 'TranscriptionConnection',
+   __typename?: 'TranscriptionConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TranscriptionEdge>>,
   aggregate: AggregateTranscription,
@@ -1485,7 +1490,7 @@ export type TranscriptionCreateWithoutWordsInput = {
 };
 
 export type TranscriptionEdge = {
-  __typename?: 'TranscriptionEdge',
+   __typename?: 'TranscriptionEdge',
   node: Transcription,
   cursor: Scalars['String'],
 };
@@ -1510,7 +1515,7 @@ export enum TranscriptionOrderByInput {
 }
 
 export type TranscriptionPreviousValues = {
-  __typename?: 'TranscriptionPreviousValues',
+   __typename?: 'TranscriptionPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -1522,7 +1527,7 @@ export type TranscriptionPreviousValues = {
 };
 
 export type TranscriptionSubscriptionPayload = {
-  __typename?: 'TranscriptionSubscriptionPayload',
+   __typename?: 'TranscriptionSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<Transcription>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -1699,7 +1704,7 @@ export type TranscriptionWhereUniqueInput = {
 };
 
 export type TranscriptionWord = {
-  __typename?: 'TranscriptionWord',
+   __typename?: 'TranscriptionWord',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -1711,7 +1716,7 @@ export type TranscriptionWord = {
 };
 
 export type TranscriptionWordConnection = {
-  __typename?: 'TranscriptionWordConnection',
+   __typename?: 'TranscriptionWordConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TranscriptionWordEdge>>,
   aggregate: AggregateTranscriptionWord,
@@ -1740,7 +1745,7 @@ export type TranscriptionWordCreateWithoutTranscriptionInput = {
 };
 
 export type TranscriptionWordEdge = {
-  __typename?: 'TranscriptionWordEdge',
+   __typename?: 'TranscriptionWordEdge',
   node: TranscriptionWord,
   cursor: Scalars['String'],
 };
@@ -1763,7 +1768,7 @@ export enum TranscriptionWordOrderByInput {
 }
 
 export type TranscriptionWordPreviousValues = {
-  __typename?: 'TranscriptionWordPreviousValues',
+   __typename?: 'TranscriptionWordPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -1848,7 +1853,7 @@ export type TranscriptionWordScalarWhereInput = {
 };
 
 export type TranscriptionWordSubscriptionPayload = {
-  __typename?: 'TranscriptionWordSubscriptionPayload',
+   __typename?: 'TranscriptionWordSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TranscriptionWord>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -2003,7 +2008,7 @@ export type TranscriptionWordWhereUniqueInput = {
 };
 
 export type TrunkedCall = {
-  __typename?: 'TrunkedCall',
+   __typename?: 'TrunkedCall',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2047,7 +2052,7 @@ export type TrunkedCallFrequencyListArgs = {
 };
 
 export type TrunkedCallConnection = {
-  __typename?: 'TrunkedCallConnection',
+   __typename?: 'TrunkedCallConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedCallEdge>>,
   aggregate: AggregateTrunkedCall,
@@ -2146,13 +2151,13 @@ export type TrunkedCallCreateWithoutTranscriptionInput = {
 };
 
 export type TrunkedCallEdge = {
-  __typename?: 'TrunkedCallEdge',
+   __typename?: 'TrunkedCallEdge',
   node: TrunkedCall,
   cursor: Scalars['String'],
 };
 
 export type TrunkedCallFrequencyTime = {
-  __typename?: 'TrunkedCallFrequencyTime',
+   __typename?: 'TrunkedCallFrequencyTime',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2165,7 +2170,7 @@ export type TrunkedCallFrequencyTime = {
 };
 
 export type TrunkedCallFrequencyTimeConnection = {
-  __typename?: 'TrunkedCallFrequencyTimeConnection',
+   __typename?: 'TrunkedCallFrequencyTimeConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedCallFrequencyTimeEdge>>,
   aggregate: AggregateTrunkedCallFrequencyTime,
@@ -2187,7 +2192,7 @@ export type TrunkedCallFrequencyTimeCreateManyInput = {
 };
 
 export type TrunkedCallFrequencyTimeEdge = {
-  __typename?: 'TrunkedCallFrequencyTimeEdge',
+   __typename?: 'TrunkedCallFrequencyTimeEdge',
   node: TrunkedCallFrequencyTime,
   cursor: Scalars['String'],
 };
@@ -2214,7 +2219,7 @@ export enum TrunkedCallFrequencyTimeOrderByInput {
 }
 
 export type TrunkedCallFrequencyTimePreviousValues = {
-  __typename?: 'TrunkedCallFrequencyTimePreviousValues',
+   __typename?: 'TrunkedCallFrequencyTimePreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2311,7 +2316,7 @@ export type TrunkedCallFrequencyTimeScalarWhereInput = {
 };
 
 export type TrunkedCallFrequencyTimeSubscriptionPayload = {
-  __typename?: 'TrunkedCallFrequencyTimeSubscriptionPayload',
+   __typename?: 'TrunkedCallFrequencyTimeSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedCallFrequencyTime>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -2509,7 +2514,7 @@ export enum TrunkedCallOrderByInput {
 }
 
 export type TrunkedCallPreviousValues = {
-  __typename?: 'TrunkedCallPreviousValues',
+   __typename?: 'TrunkedCallPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2646,7 +2651,7 @@ export type TrunkedCallScalarWhereInput = {
 };
 
 export type TrunkedCallSource = {
-  __typename?: 'TrunkedCallSource',
+   __typename?: 'TrunkedCallSource',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2656,7 +2661,7 @@ export type TrunkedCallSource = {
 };
 
 export type TrunkedCallSourceConnection = {
-  __typename?: 'TrunkedCallSourceConnection',
+   __typename?: 'TrunkedCallSourceConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedCallSourceEdge>>,
   aggregate: AggregateTrunkedCallSource,
@@ -2675,7 +2680,7 @@ export type TrunkedCallSourceCreateManyInput = {
 };
 
 export type TrunkedCallSourceEdge = {
-  __typename?: 'TrunkedCallSourceEdge',
+   __typename?: 'TrunkedCallSourceEdge',
   node: TrunkedCallSource,
   cursor: Scalars['String'],
 };
@@ -2696,7 +2701,7 @@ export enum TrunkedCallSourceOrderByInput {
 }
 
 export type TrunkedCallSourcePreviousValues = {
-  __typename?: 'TrunkedCallSourcePreviousValues',
+   __typename?: 'TrunkedCallSourcePreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -2766,7 +2771,7 @@ export type TrunkedCallSourceScalarWhereInput = {
 };
 
 export type TrunkedCallSourceSubscriptionPayload = {
-  __typename?: 'TrunkedCallSourceSubscriptionPayload',
+   __typename?: 'TrunkedCallSourceSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedCallSource>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -2901,7 +2906,7 @@ export type TrunkedCallSourceWhereUniqueInput = {
 };
 
 export type TrunkedCallSubscriptionPayload = {
-  __typename?: 'TrunkedCallSubscriptionPayload',
+   __typename?: 'TrunkedCallSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedCall>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -3216,7 +3221,7 @@ export type TrunkedCallWhereUniqueInput = {
 };
 
 export type TrunkedConfig = {
-  __typename?: 'TrunkedConfig',
+   __typename?: 'TrunkedConfig',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -3255,7 +3260,7 @@ export type TrunkedConfigSystemsArgs = {
 };
 
 export type TrunkedConfigConnection = {
-  __typename?: 'TrunkedConfigConnection',
+   __typename?: 'TrunkedConfigConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedConfigEdge>>,
   aggregate: AggregateTrunkedConfig,
@@ -3276,7 +3281,7 @@ export type TrunkedConfigCreateInput = {
 };
 
 export type TrunkedConfigEdge = {
-  __typename?: 'TrunkedConfigEdge',
+   __typename?: 'TrunkedConfigEdge',
   node: TrunkedConfig,
   cursor: Scalars['String'],
 };
@@ -3307,7 +3312,7 @@ export enum TrunkedConfigOrderByInput {
 }
 
 export type TrunkedConfigPreviousValues = {
-  __typename?: 'TrunkedConfigPreviousValues',
+   __typename?: 'TrunkedConfigPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -3322,7 +3327,7 @@ export type TrunkedConfigPreviousValues = {
 };
 
 export type TrunkedConfigSubscriptionPayload = {
-  __typename?: 'TrunkedConfigSubscriptionPayload',
+   __typename?: 'TrunkedConfigSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedConfig>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -3491,7 +3496,7 @@ export enum TrunkedSmartnetBandplan {
 }
 
 export type TrunkedSource = {
-  __typename?: 'TrunkedSource',
+   __typename?: 'TrunkedSource',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -3509,7 +3514,7 @@ export type TrunkedSource = {
 };
 
 export type TrunkedSourceConnection = {
-  __typename?: 'TrunkedSourceConnection',
+   __typename?: 'TrunkedSourceConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedSourceEdge>>,
   aggregate: AggregateTrunkedSource,
@@ -3536,7 +3541,7 @@ export type TrunkedSourceCreateManyInput = {
 };
 
 export type TrunkedSourceEdge = {
-  __typename?: 'TrunkedSourceEdge',
+   __typename?: 'TrunkedSourceEdge',
   node: TrunkedSource,
   cursor: Scalars['String'],
 };
@@ -3573,7 +3578,7 @@ export enum TrunkedSourceOrderByInput {
 }
 
 export type TrunkedSourcePreviousValues = {
-  __typename?: 'TrunkedSourcePreviousValues',
+   __typename?: 'TrunkedSourcePreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -3717,7 +3722,7 @@ export type TrunkedSourceScalarWhereInput = {
 };
 
 export type TrunkedSourceSubscriptionPayload = {
-  __typename?: 'TrunkedSourceSubscriptionPayload',
+   __typename?: 'TrunkedSourceSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedSource>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -3950,7 +3955,7 @@ export type TrunkedSourceWhereUniqueInput = {
 };
 
 export type TrunkedSystem = {
-  __typename?: 'TrunkedSystem',
+   __typename?: 'TrunkedSystem',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -4001,7 +4006,7 @@ export type TrunkedSystemCallsArgs = {
 };
 
 export type TrunkedSystemConnection = {
-  __typename?: 'TrunkedSystemConnection',
+   __typename?: 'TrunkedSystemConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedSystemEdge>>,
   aggregate: AggregateTrunkedSystem,
@@ -4111,7 +4116,7 @@ export type TrunkedSystemCreateWithoutTalkgroupsInput = {
 };
 
 export type TrunkedSystemEdge = {
-  __typename?: 'TrunkedSystemEdge',
+   __typename?: 'TrunkedSystemEdge',
   node: TrunkedSystem,
   cursor: Scalars['String'],
 };
@@ -4160,7 +4165,7 @@ export enum TrunkedSystemOrderByInput {
 }
 
 export type TrunkedSystemPreviousValues = {
-  __typename?: 'TrunkedSystemPreviousValues',
+   __typename?: 'TrunkedSystemPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -4323,7 +4328,7 @@ export type TrunkedSystemScalarWhereInput = {
 };
 
 export type TrunkedSystemSubscriptionPayload = {
-  __typename?: 'TrunkedSystemSubscriptionPayload',
+   __typename?: 'TrunkedSystemSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedSystem>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -4707,7 +4712,7 @@ export type TrunkedSystemWhereUniqueInput = {
 };
 
 export type TrunkedTalkgroup = {
-  __typename?: 'TrunkedTalkgroup',
+   __typename?: 'TrunkedTalkgroup',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -4736,7 +4741,7 @@ export type TrunkedTalkgroupCallsArgs = {
 };
 
 export type TrunkedTalkgroupConnection = {
-  __typename?: 'TrunkedTalkgroupConnection',
+   __typename?: 'TrunkedTalkgroupConnection',
   pageInfo: PageInfo,
   edges: Array<Maybe<TrunkedTalkgroupEdge>>,
   aggregate: AggregateTrunkedTalkgroup,
@@ -4802,7 +4807,7 @@ export enum TrunkedTalkgroupDisplayFormat {
 }
 
 export type TrunkedTalkgroupEdge = {
-  __typename?: 'TrunkedTalkgroupEdge',
+   __typename?: 'TrunkedTalkgroupEdge',
   node: TrunkedTalkgroup,
   cursor: Scalars['String'],
 };
@@ -4835,7 +4840,7 @@ export enum TrunkedTalkgroupOrderByInput {
 }
 
 export type TrunkedTalkgroupPreviousValues = {
-  __typename?: 'TrunkedTalkgroupPreviousValues',
+   __typename?: 'TrunkedTalkgroupPreviousValues',
   id: Scalars['ID'],
   updatedAt: Scalars['DateTime'],
   createdAt: Scalars['DateTime'],
@@ -5001,7 +5006,7 @@ export type TrunkedTalkgroupScalarWhereInput = {
 };
 
 export type TrunkedTalkgroupSubscriptionPayload = {
-  __typename?: 'TrunkedTalkgroupSubscriptionPayload',
+   __typename?: 'TrunkedTalkgroupSubscriptionPayload',
   mutation: MutationType,
   node?: Maybe<TrunkedTalkgroup>,
   updatedFields?: Maybe<Array<Scalars['String']>>,
@@ -5286,7 +5291,8 @@ export type TrunkedTalkgroupWhereUniqueInput = {
 export type TrunkedCallsQueryVariables = {
   first?: Maybe<Scalars['Int']>,
   skip?: Maybe<Scalars['Int']>,
-  orderBy?: Maybe<TrunkedCallOrderByInput>
+  orderBy?: Maybe<TrunkedCallOrderByInput>,
+  where?: Maybe<TrunkedCallWhereInput>
 };
 
 
@@ -5320,10 +5326,16 @@ export type TrunkedSystemsQuery = (
   & { trunkedSystems: Array<Maybe<(
     { __typename?: 'TrunkedSystem' }
     & Pick<TrunkedSystem, 'type' | 'createdAt' | 'shortName' | 'id'>
+    & { talkgroups: Maybe<Array<(
+      { __typename?: 'TrunkedTalkgroup' }
+      & Pick<TrunkedTalkgroup, 'id' | 'alphaTag' | 'description' | 'tag' | 'priority' | 'mode'>
+    )>> }
   )>> }
 );
 
-export type NewTrunkedCallsSubscriptionVariables = {};
+export type NewTrunkedCallsSubscriptionVariables = {
+  where?: Maybe<TrunkedCallSubscriptionWhereInput>
+};
 
 
 export type NewTrunkedCallsSubscription = (

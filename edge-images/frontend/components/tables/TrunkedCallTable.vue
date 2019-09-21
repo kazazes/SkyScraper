@@ -12,13 +12,15 @@
       <v-card-text class="py-0">
         <template>
           <v-data-table
+            :loading="$apollo.loading"
             :headers="headers"
             :rows-per-page-items="[10,25,50]"
             :items="trunkedCalls"
             :pagination.sync="pagination"
-            :total-items="trunkedCallCount"
+            :total-items="pagination.totalItems"
             class="elevation-3"
           >
+            <v-progress-linear v-slot:progress indeterminate></v-progress-linear>
             <template v-slot:items="props">
               <tr
                 :active="(!!selected && selected.id === props.item.id)"
@@ -143,6 +145,8 @@
           }
         `,
         update({ trunkedCallCount }) {
+          const t = this as any;
+          t.pagination.totalItems = trunkedCallCount;
           return trunkedCallCount;
         },
       },
@@ -238,6 +242,7 @@
       page: 1,
       rowsPerPage: 10,
       sortBy: "startTime",
+      totalItems: 0,
     };
 
     get selected() {
@@ -259,21 +264,9 @@
   }
 </script>
 
-<style scoped>
-  table.v-table tbody td:first-child {
-    padding: 9px 8px;
-  }
-
-  table.v-table tbody td {
-    font-size: 12px;
-  }
-
-  .v-chip {
-    font-size: 11px;
-  }
-
-  tr.active {
-    background-color: aqua;
+<style >
+  .v-datatable.v-table.theme--light button {
+    color: rgba(0, 0, 0, 0.54) !important;
   }
 </style>
 

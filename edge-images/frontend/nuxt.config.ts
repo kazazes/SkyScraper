@@ -1,9 +1,9 @@
-import NuxtConfiguration from "@nuxt/config";
+import { Configuration } from "@nuxt/types";
 import webpack from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
 
-const config: NuxtConfiguration = {
+const config: Configuration = {
   /*
    ** Headers of the page
    */
@@ -35,8 +35,6 @@ const config: NuxtConfiguration = {
    ** Global CSS
    */
   css: ["~/assets/style/index.scss"],
-
-  // css: ["~/assets/style/index.scss", "@mdi/font/css/materialdesignicons.css"],
   /*
    ** Plugins to load before mounting the App
    */
@@ -63,7 +61,6 @@ const config: NuxtConfiguration = {
     ],
     "@nuxtjs/vuetify",
     "@nuxtjs/apollo",
-    "@nuxtjs/proxy",
     "@nuxtjs/pwa",
     "@nuxtjs/auth",
     [
@@ -93,29 +90,17 @@ const config: NuxtConfiguration = {
     treeShake: !isDev,
   },
   build: {
-    devtools: true,
     transpile: [/^vuetify/],
-    extend(config, ctx) {
-      // https://medium.com/js-dojo/debugging-nuxt-js-with-vs-code-60a1a9e75cf6
-      if (ctx.isDev) {
-        config.devtool = ctx.isClient ? "source-map" : "inline-source-map";
-      }
-    },
-    plugins: [new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/)],
-  },
-  vue: {
-    config: {
-      productionTip: false,
-      devtools: isDev,
-      performance: isDev,
-    },
+    plugins: [
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/) as any,
+    ],
   },
   typescript: {
     typeCheck: true,
-    ignoreNotFoundWarnings: true,
   },
   auth: {
     strategies: {
+      local: false,
       auth0: {
         domain: "skyscraper.auth0.com",
         client_id: "Uaz6l2GikGK9BuRoXAK7L7jGPmVNYMSB",

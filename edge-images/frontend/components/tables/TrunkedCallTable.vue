@@ -281,7 +281,7 @@
     }
 
     timeAgo(d: string) {
-      return moment(d).fromNow();
+      return moment(d).format('lll');
     }
 
     disabledTags() {

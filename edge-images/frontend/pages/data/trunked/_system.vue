@@ -1,6 +1,6 @@
 <template>
-  <v-layout row :class="$vuetify.breakpoint.mdAndDown ? 'wrap' : ''">
-    <v-flex class="primary lighten-1" sm12 md4 lg3 xl2 xs12 elevation-5>
+  <v-layout row wrap fill-height class="grey lighten-3">
+    <v-flex class="primary lighten-1" sm12 md3 xl2 xs12 elevation-5>
       <v-container pa-4>
         <v-layout justify-start align-center column>
           <v-flex py-2>
@@ -26,12 +26,14 @@
               label="System"
             ></v-select>
           </v-flex>
-
-          <v-flex grow style="width: 100%;" pt-3 hidden-md-and-down>
-            <v-list dense subheader dark class="primary">
+          <v-flex grow style="width: 100%;" pt-3 hidden-sm-and-down>
+            <v-list dense subheader dark class="primary elevation-4">
               <v-subheader>
                 <v-flex grow>
-                  <span>Groups - {{talkgroupTags.length}}</span>
+                  <span>
+                    Tags
+                    <small>({{talkgroupTags.filter((t) => t.enabled).length}}/{{talkgroupTags.length}})</small>
+                  </span>
                 </v-flex>
                 <v-flex>
                   <v-btn @click="expandGroups = !expandGroups" small block flat>
@@ -40,11 +42,12 @@
                   </v-btn>
                 </v-flex>
               </v-subheader>
+              <v-divider></v-divider>
               <v-list-tile
                 avatar
                 v-for="(group, idx) in talkgroupTags"
                 :key="group.tag + group.enabled"
-                v-show="expandGroups || idx <= 5"
+                v-show="expandGroups || idx <= 3"
               >
                 <v-list-tile-content>
                   <v-list-tile-title v-text="group.tag"></v-list-tile-title>
@@ -53,8 +56,9 @@
                   <v-switch color="red lighten-2" v-model="talkgroupTags[idx].enabled" s></v-switch>
                 </v-list-tile-action>
               </v-list-tile>
+              <v-divider></v-divider>
               <v-list-tile>
-                <v-list-tile-content>
+                <v-list-tile-content class="mt-1">
                   <v-btn @click="expandGroups = !expandGroups" small block flat>
                     <span v-if="!expandGroups">Show All</span>
                     <span v-else>Collapse</span>
@@ -66,20 +70,15 @@
         </v-layout>
       </v-container>
     </v-flex>
+    <v-flex xs12 md9>
     <v-container
       id="trunked_data"
-      fill-height
-      row
-      wrap
-      align-center
-      justify-center
-      xl12
       d-flex
       grid-list-xs
-      pt-2
+        :class="`${$vuetify.breakpoint.smAndDown ? 'px-0' : 'px-4'}`"
     >
-      <v-layout row align-start justify-start wrap>
-        <v-flex xs12 py-2>
+        <v-layout row wrap>
+          <v-flex xs12>
           <TrunkedCallCard
             v-on:play-live-audio="playLiveAudio"
             v-on:play-next-audio="playRealtimeAudio"
@@ -89,7 +88,7 @@
             :toggleAutoPlay="toggleAutoPlay"
           />
         </v-flex>
-        <v-flex pt-2>
+          <v-flex pt-4>
           <TrunkedCallTable
             v-on:selection-changed="$forceUpdate()"
             v-on:trunked-calls-updated="trunkedCallsUpdated"
@@ -100,6 +99,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+    </v-flex>
   </v-layout>
 </template>
 <script lang="ts">

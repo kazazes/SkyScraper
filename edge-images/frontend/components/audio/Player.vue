@@ -41,7 +41,7 @@
           </svg>
         </a>
       </div>
-      <div class="hidden-xs-only">
+      <div class="hidden-md-and-down">
         <a v-on:click.prevent="mute" title="Mute" href="#">
           <svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path

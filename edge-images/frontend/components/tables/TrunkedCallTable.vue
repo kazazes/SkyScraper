@@ -28,7 +28,7 @@
               >
                 <td class="hidden-lg-and-down pl-4">{{ props.item.talkgroup.alphaTag }}</td>
                 <td class="hidden-md-and-down pl-4">
-                  <v-chip>{{ props.item.talkgroup.tag }}</v-chip>
+                  <v-chip small>{{ props.item.talkgroup.tag }}</v-chip>
                 </td>
                 <td>{{ props.item.talkgroup.description }}</td>
                 <td>{{ timeAgo(props.item.startTime) }}</td>
@@ -264,7 +264,19 @@
   }
 </script>
 
-<style >
+<style>
+  table.v-table tbody td:first-child {
+    padding: 9px 8px;
+  }
+
+  table.v-table tbody td {
+    font-size: 12px;
+  }
+
+  .v-chip {
+    font-size: 11px;
+  }
+
   .v-datatable.v-table.theme--light button {
     color: rgba(0, 0, 0, 0.54) !important;
   }

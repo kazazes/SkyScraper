@@ -57,7 +57,7 @@
     "papaparse": "^5.0.2",
     "sass-loader": "^8.0.0",
     "stylus-loader": "^3.0.2",
-    "ts-loader": "^6.0.4",
+    "ts-loader": "^6.1.2",
     "vee-validate": "^2.2.15",
     "vue-chartist": "^2.2.0",
     "vue-class-component": "^7.1.0",

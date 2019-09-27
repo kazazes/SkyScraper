@@ -52,10 +52,10 @@
     source-map "^0.6.1"
     split "^1.0.0"
 
-"@google-cloud/error-reporting@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@google-cloud/error-reporting/-/error-reporting-1.1.1.tgz#33ccabfe735330df5b70963d1ec09cae0e16ede7"
-  integrity sha512-pfb+aR5RMof6lad6WSS2LFNsSF6zOGx9hMGT/GKXZ39OipuoTVGob8RWknDGBxj+w52obA1ih5ZfUBKX6+hIRw==
+"@google-cloud/error-reporting@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@google-cloud/error-reporting/-/error-reporting-1.1.2.tgz#ebfb0e94cfd0a6d2f0e41d8c3f469d2dc5b7c567"
+  integrity sha512-qUqwLXCCZeG+JEgy6baXHM0naG3EPcSjISxrOzfoawpjjXqfik0b21NQHuf5oFdMNhwjWgGF3gHY57u38QAlRg==
   dependencies:
     "@google-cloud/common" "^2.0.1"
     console-log-level "^1.4.1"

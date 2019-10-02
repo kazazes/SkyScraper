@@ -9268,10 +9268,10 @@ netrc-parser@^3.1.4:
     debug "^3.1.0"
     execa "^0.10.0"
 
-newrelic@^5.6.4:
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-5.11.0.tgz#51dc124867f9f8ef4bf797143319c2d28c4c1eb7"
-  integrity sha512-KGWYdQkCIovYW8rtKE1aVu7Sl44xEGHtqXsSuInVWJJyfbI9KN0ZjnZUzdUA7SHlMM6XrW+TPY0bphSjUV2kWw==
+newrelic@^5.13.0:
+  version "5.13.0"
+  resolved "https://registry.yarnpkg.com/newrelic/-/newrelic-5.13.0.tgz#96713e4960af294a580b0abb39e6b9375cabde96"
+  integrity sha512-o0GCbYY3cb3Hxn5OYg6u66Me1tEkf16xNqseuzd7nlpzzb2MX/g4JWpQhUhDx0g3Eq7xJkjTB2BiR2Kn/q20hA==
   dependencies:
     "@newrelic/koa" "^1.0.8"
     "@newrelic/superagent" "^1.0.2"

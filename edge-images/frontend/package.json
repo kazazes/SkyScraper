@@ -40,7 +40,7 @@
     "chroma-js": "^2.0.6",
     "consola": "^2.6.0",
     "core-js": "^2.6.5",
-    "cross-env": "^5.2.1",
+    "cross-env": "^6.0.2",
     "express": "^4.16.4",
     "graphql-client": "^2.0.1",
     "graphql-tag": "^2.10.1",

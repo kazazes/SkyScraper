@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@apify/http-request@^1.0.6":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@apify/http-request/-/http-request-1.0.7.tgz#f6461977eb273e32d44aeeb8cf047aeef478138a"
-  integrity sha512-Ef8uw7TayOnDsy7KjBZEP2wCXs3eRS5hoTCmVL+YMJwYP2rNwZPooTVwTfT/VuyyZgFGY07k1pXj+3/fjGo16g==
+"@apify/http-request@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@apify/http-request/-/http-request-1.1.2.tgz#912a4bf1e6b167c61898b5651a030847d448d9fb"
+  integrity sha512-u3MyDXQ4H2CkITJNr2HNwIQZBTsdkewBd6jJaXSBSzaJ5TdBlY+OKfBpVY3kTb87yl5Ses443cAxen5B8Cy3ZQ==
   dependencies:
     got "^9.6.0"
     proxy-agent "^3.1.0"
@@ -241,12 +241,12 @@ apify-shared@^0.1.45, apify-shared@^0.1.56:
     underscore "^1.8.3"
     url "^0.11.0"
 
-apify@^0.15.5:
-  version "0.15.5"
-  resolved "https://registry.yarnpkg.com/apify/-/apify-0.15.5.tgz#8507400fc2c8da805b2ef50a6cb9787a6b39de3a"
-  integrity sha512-YWPdXjW7cw4AhtqIyddoMoWVvMEUc6ITCTvtlgMiw0nxlUExprQVu6CLU8VzpUioZF+RHRlwPS2bHStdiELnHQ==
+apify@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/apify/-/apify-0.16.0.tgz#fbf8e3d67fb16e46d34d36feef5db24f0338ec03"
+  integrity sha512-TB6CWNFeMiSTJZPUgBEUxV1ebZ96UtW6ho/viKdKinuvxbMvL8rILAN48oNssfW4bTeR1wX7w98hZfUaLsorFQ==
   dependencies:
-    "@apify/http-request" "^1.0.6"
+    "@apify/http-request" "^1.1.2"
     "@apify/ps-tree" "^1.1.3"
     apify-client "^0.5.25"
     apify-shared "^0.1.56"
@@ -260,7 +260,7 @@ apify@^0.15.5:
     proxy-chain "^0.2.7"
     request "^2.88.0"
     request-promise-native "^1.0.5"
-    rimraf "^2.6.2"
+    rimraf "^2.7.1"
     semver "^6.3.0"
     socket.io "^2.2.0"
     underscore "^1.9.1"
@@ -2597,7 +2597,7 @@ restore-cursor@^3.1.0:
   version "1.3.1"
   resolved "https://codeload.github.com/kazazes/reverse-geocode/tar.gz/3fb9b96a4a6b952f7117bffde0f9357c8c3f6afe"
 
-rimraf@^2.6.1, rimraf@^2.6.2:
+rimraf@^2.6.1, rimraf@^2.6.2, rimraf@^2.7.1:
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==

@@ -1,7 +1,7 @@
 FROM balenalib/odroid-xu4-debian
 
-RUN apt update && \
-  apt install -y --no-install-recommends \
+RUN apt-get update && \
+  apt-get install -y --no-install-recommends \
   curl \
   python \
   python-dev \

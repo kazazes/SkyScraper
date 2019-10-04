@@ -1,1451 +1,182 @@
 [
   {
-    "decimal": 12848,
-    "mode": "A",
-    "alphaTag": "SFPD A1",
-    "description": "Dispatch Mobiles  Southern B  Tenderloin J Districts",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 3,
+    "mode": "D",
+    "alphaTag": "14 PACIFIC",
+    "tag": "Pacific 14",
+    "description": "Pacific 14",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 12880,
-    "mode": "A",
-    "alphaTag": "SFPD A2",
-    "description": "Service Portables  Southern B  Tenderloin J Districts",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 5,
+    "mode": "D",
+    "alphaTag": "20 OLYMPIC",
+    "tag": "Olympic 20",
+    "description": "Olympic 20",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 12912,
-    "mode": "A",
-    "alphaTag": "SFPD A3",
-    "description": "Dispatch Mobiles  Bayview C  Mission D Districts",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 7,
+    "mode": "D",
+    "alphaTag": "11 NORTHEAST",
+    "tag": "Northeast 11",
+    "description": "Northeast 11",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 12944,
-    "mode": "A",
-    "alphaTag": "SFPD A4",
-    "description": "Service Portables  Bayview C  Mission D Districts",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 8,
+    "mode": "D",
+    "alphaTag": "21 TOPANGA",
+    "tag": "Topanga 21",
+    "description": "Topanga 21",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 12976,
-    "mode": "A",
-    "alphaTag": "SFPD A5",
-    "description": "Dispatch Mobiles  Central A  Northern E  Park F Districts",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 9,
+    "mode": "D",
+    "alphaTag": "13 NEWTON",
+    "tag": "Newton 13",
+    "description": "Newton 13",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13008,
-    "mode": "A",
-    "alphaTag": "SFPD A6",
-    "description": "Service Portables  Central A  Northern E  Park F Districts",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 10,
+    "mode": "D",
+    "alphaTag": "19 MISSION",
+    "tag": "Mission 19",
+    "description": "Mission 19",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13040,
-    "mode": "A",
-    "alphaTag": "SFPD A7",
-    "description": "Dispatch Mobiles  Richmond G  Ingleside H  Taraval I Districts",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 12,
+    "mode": "D",
+    "alphaTag": "10 WEST VAL",
+    "tag": "West Valley 10",
+    "description": "West Valley 10",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13072,
-    "mode": "A",
-    "alphaTag": "SFPD A8",
-    "description": "Service Portables  Richmond G  Ingleside H  Taraval I Districts",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 13,
+    "mode": "D",
+    "alphaTag": "15 NORTH HWD",
+    "tag": "North Hollywood 15",
+    "description": "North Hollywood 15",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13104,
-    "mode": "A",
-    "alphaTag": "SFPD A9",
-    "description": "Dispatch Spare",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 15,
+    "mode": "D",
+    "alphaTag": "9 VAN NUYS",
+    "tag": "Van Nuys 9",
+    "description": "Van Nuys 9",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13136,
-    "mode": "A",
-    "alphaTag": "SFPD A10",
-    "description": "Dispatch Spare",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 16,
+    "mode": "D",
+    "alphaTag": "1 CENTRAL",
+    "tag": "Central 1",
+    "description": "Central 1",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13168,
-    "mode": "A",
-    "alphaTag": "SFPD A11",
-    "description": "PAT  Muni  Tac  Traffic",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 17,
+    "mode": "D",
+    "alphaTag": "8 WEST LA",
+    "tag": "West LA 8",
+    "description": "West LA 8",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13200,
-    "mode": "A",
-    "alphaTag": "SFPD A12",
-    "description": "Dispatch Spare",
-    "tag": "Law Dispatch",
-    "group": "Police",
+    "decimal": 18,
+    "mode": "D",
+    "alphaTag": "18 SOUTHEAST",
+    "tag": "Southeast 18",
+    "description": "Southeast 18",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13232,
-    "mode": "A",
-    "alphaTag": "SFPD A13",
-    "description": "Station Service A B E F J",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 19,
+    "mode": "D",
+    "alphaTag": "17 DEVONSHRE",
+    "tag": "Devonshire 17",
+    "description": "Devonshire 17",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13264,
-    "mode": "A",
-    "alphaTag": "SFPD A14",
-    "description": "Station Service C D G H I",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 20,
+    "mode": "D",
+    "alphaTag": "2 RAMPART",
+    "tag": "Rampart 2",
+    "description": "Rampart 2",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13296,
-    "mode": "A",
-    "alphaTag": "SFPD PAROLE",
-    "description": "Parole",
-    "tag": "Law Talk",
-    "group": "Police",
+    "decimal": 21,
+    "mode": "D",
+    "alphaTag": "7 WILSHIRE",
+    "tag": "Wilshire 7",
+    "description": "Wilshire 7",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13360,
-    "mode": "A",
-    "alphaTag": "SFPD MA 1",
-    "description": "Mutual Aid 1",
-    "tag": "Law Tac",
-    "group": "Police",
+    "decimal": 22,
+    "mode": "D",
+    "alphaTag": "3 SOUTHWEST",
+    "tag": "Southwest 3",
+    "description": "Southwest 3",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13392,
-    "mode": "A",
-    "alphaTag": "SFPD MA 2",
-    "description": "Mutual Aid 2",
-    "tag": "Law Tac",
-    "group": "Police",
+    "decimal": 23,
+    "mode": "D",
+    "alphaTag": "16 FOOTHILL",
+    "tag": "Foothill 16",
+    "description": "Foothill 16",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13424,
-    "mode": "A",
-    "alphaTag": "SFPD MA 3",
-    "description": "Mutual Aid 3",
-    "tag": "Law Tac",
-    "group": "Police",
+    "decimal": 24,
+    "mode": "D",
+    "alphaTag": "4 HOLLENBECK",
+    "tag": "Hollenbeck 4",
+    "description": "Hollenbeck 4",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13520,
-    "mode": "A",
-    "alphaTag": "EVENT 1",
-    "description": "All City Event 1",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
+    "decimal": 25,
+    "mode": "D",
+    "alphaTag": "6 HOLLYWOOD",
+    "tag": "Hollywood 6",
+    "description": "Hollywood 6",
+    "group": "Law Dispatch",
     "priority": 1
   },
   {
-    "decimal": 13552,
-    "mode": "A",
-    "alphaTag": "EVENT 2",
-    "description": "All City Event 2",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13584,
-    "mode": "A",
-    "alphaTag": "SAFEVT 1",
-    "description": "Public Safety Event 1",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13616,
-    "mode": "A",
-    "alphaTag": "SAFEVT 2",
-    "description": "Public Safety Event 2",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13648,
-    "mode": "A",
-    "alphaTag": "SAFEVT 3",
-    "description": "Public Safety Event 3",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13680,
-    "mode": "A",
-    "alphaTag": "MAP",
-    "description": "Mobile Assistance Patrol",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 13712,
-    "mode": "A",
-    "alphaTag": "SFPD B3",
-    "description": "Tactical B3",
-    "tag": "Law Talk",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 13840,
-    "mode": "A",
-    "alphaTag": "ENF EVT 1",
-    "description": "Enforcement Event 1",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13872,
-    "mode": "A",
-    "alphaTag": "ENF EVT 2",
-    "description": "Enforcement Event 2",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13904,
-    "mode": "A",
-    "alphaTag": "ENF EVT 3",
-    "description": "Enforcement Event 3",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13936,
-    "mode": "A",
-    "alphaTag": "ENF EVT 4",
-    "description": "Enforcement Event 4",
-    "tag": "Interop",
-    "group": "CitywideMutual Aid",
-    "priority": 1
-  },
-  {
-    "decimal": 13968,
-    "mode": "A",
-    "alphaTag": "SFPD HSU",
-    "description": "Homeland Security Unit",
-    "tag": "Law Talk",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14064,
-    "mode": "A",
-    "alphaTag": "SFPD MA 4",
-    "description": "Mutual Aid 4",
-    "tag": "Law Tac",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14224,
-    "mode": "A",
-    "alphaTag": "SFPD MA 5",
-    "description": "Mutual Aid 5",
-    "tag": "Law Tac",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14544,
-    "mode": "A",
-    "alphaTag": "SFPD INV 1",
-    "description": "Investigations 1  Administration",
-    "tag": "Law Talk",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14704,
-    "mode": "A",
-    "alphaTag": "SFPD TRNG 1",
-    "description": "Training 1",
-    "tag": "Law Talk",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14736,
-    "mode": "A",
-    "alphaTag": "SFPD TRNG 2",
-    "description": "Training 2",
-    "tag": "Law Talk",
-    "group": "Police",
-    "priority": 1
-  },
-  {
-    "decimal": 14800,
-    "mode": "A",
-    "alphaTag": "SFFD A1",
-    "description": "Control A1  Downtown Dispatch",
-    "tag": "Fire Dispatch",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14832,
-    "mode": "A",
-    "alphaTag": "SFFD A2",
-    "description": "Control A2  NorthWest Dispatch",
-    "tag": "Fire Dispatch",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14864,
-    "mode": "A",
-    "alphaTag": "SFFD A3",
-    "description": "Control A3  SouthEast Dispatch",
-    "tag": "Fire Dispatch",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14896,
-    "mode": "A",
-    "alphaTag": "SFFD A4",
-    "description": "Command A4  Major Incidents",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14928,
-    "mode": "A",
-    "alphaTag": "SFFD A5",
-    "description": "Command A5  Division 2",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14960,
-    "mode": "A",
-    "alphaTag": "SFFD A6",
-    "description": "Command A6  Division 3",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 14992,
-    "mode": "A",
-    "alphaTag": "SFFD A7",
-    "description": "Tactical A7  Battalion 7",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15024,
-    "mode": "A",
-    "alphaTag": "SFFD A8",
-    "description": "Tactical A8  Battalion 8",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15056,
-    "mode": "A",
-    "alphaTag": "SFFD A9",
-    "description": "Tactical A9  Battalion 9",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15088,
-    "mode": "A",
-    "alphaTag": "SFFD A10",
-    "description": "Tactical A10  Battalion 10",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15120,
-    "mode": "A",
-    "alphaTag": "SFFD A11",
-    "description": "Tactical A11  Battalion 1",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15152,
-    "mode": "A",
-    "alphaTag": "SFFD A12",
-    "description": "Tactical A12  Battalion 2",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15184,
-    "mode": "A",
-    "alphaTag": "SFFD A13",
-    "description": "Tactical A13  Battalion 3",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15216,
-    "mode": "A",
-    "alphaTag": "SFFD A14",
-    "description": "Tactical A14  Battalion 4",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15248,
-    "mode": "A",
-    "alphaTag": "SFFD A15",
-    "description": "Tactical A15  Battalion 5 Disbanded",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15280,
-    "mode": "A",
-    "alphaTag": "SFFD A16",
-    "description": "Tactical A16  Battalion 6",
-    "tag": "Fire-Tac",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15312,
-    "mode": "A",
-    "alphaTag": "SFFD EMS3",
-    "description": "EMS 3  FDB15  City Ambulances NonEmergency",
-    "tag": "EMS-Tac",
-    "group": "EMS",
-    "priority": 1
-  },
-  {
-    "decimal": 15344,
-    "mode": "A",
-    "alphaTag": "SFFD EMS4",
-    "description": "EMS 4  FDB16  Private Ambulances",
-    "tag": "EMS-Tac",
-    "group": "EMS",
-    "priority": 1
-  },
-  {
-    "decimal": 15440,
-    "mode": "A",
-    "alphaTag": "SFFD B8",
-    "description": "Prevention",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15472,
-    "mode": "A",
-    "alphaTag": "SFFD B9",
-    "description": "Auxiliary Water Supply System AWSS",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15504,
-    "mode": "A",
-    "alphaTag": "MEDEXAM",
-    "description": "Medical Examiner Coroner",
-    "tag": "Law Talk",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 15600,
-    "mode": "A",
-    "alphaTag": "SIRENTG",
-    "description": "Outdoor Warning Sirens",
-    "tag": "Data",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 15760,
-    "mode": "A",
-    "alphaTag": "SFFD B10",
-    "description": "Bureau of Equipment BOE",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15792,
-    "mode": "A",
-    "alphaTag": "SFFD B12",
-    "description": "Training",
-    "tag": "Fire-Talk",
-    "group": "Fire",
-    "priority": 1
-  },
-  {
-    "decimal": 15856,
-    "mode": "A",
-    "alphaTag": "SFSD A1 CJ1",
-    "description": "County Jail 1",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 15888,
-    "mode": "A",
-    "alphaTag": "SFSD A2 CJ2",
-    "description": "County Jail 2",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 15920,
-    "mode": "A",
-    "alphaTag": "SFSD A3 CJ3",
-    "description": "County Jail 3",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 15952,
-    "mode": "A",
-    "alphaTag": "SFSD A4 CJ4",
-    "description": "County Jail 4",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 15984,
-    "mode": "A",
-    "alphaTag": "SFSD A5 CJ5",
-    "description": "County Jail 5",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16016,
-    "mode": "A",
-    "alphaTag": "SFSD A6",
-    "description": "Laguna Honda Patrol",
-    "tag": "Law Dispatch",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16048,
-    "mode": "A",
-    "alphaTag": "SFSD A7",
-    "description": "Classification UnitSBBS",
-    "tag": "Corrections",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16080,
-    "mode": "A",
-    "alphaTag": "SFSD A8",
-    "description": "City Hall Patrol Dispatch",
-    "tag": "Law Dispatch",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16112,
-    "mode": "A",
-    "alphaTag": "SFSD A9",
-    "description": "Juvenile Justice Commission JJC Courts",
-    "tag": "Law Dispatch",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16144,
-    "mode": "A",
-    "alphaTag": "SFSD A10",
-    "description": "Courts Dispatch",
-    "tag": "Law Dispatch",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16176,
-    "mode": "A",
-    "alphaTag": "SFSD A11",
-    "description": "TransportationSWAPSFGH",
-    "tag": "Law Tac",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16208,
-    "mode": "A",
-    "alphaTag": "SFSD A12",
-    "description": "Law Talk  Future",
-    "tag": "Law Tac",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16240,
-    "mode": "A",
-    "alphaTag": "SFSD A15 TAC",
-    "description": "TacticalEmergency Services Unit",
-    "tag": "Law Tac",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16272,
-    "mode": "A",
-    "alphaTag": "SFSD A16 DSP",
-    "description": "Patrol DispatchSF General",
-    "tag": "Law Dispatch",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 16464,
-    "mode": "A",
-    "alphaTag": "DPT A1",
-    "description": "Dept of Parking  Traffic A1  PCO Dispatch",
-    "tag": "Law Tac",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16496,
-    "mode": "A",
-    "alphaTag": "DPT A2",
-    "description": "Dept of Parking  Traffic A2  PTC Administration  Engineering",
-    "tag": "Law Tac",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16528,
-    "mode": "A",
-    "alphaTag": "DPT A3",
-    "description": "Dept of Parking  Traffic A3  Paint  Traffic Signal Shops",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16560,
-    "mode": "A",
-    "alphaTag": "DPT A4",
-    "description": "Dept of Parking  Traffic A4  Parking Meter  Sign Shops",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16592,
-    "mode": "A",
-    "alphaTag": "DPT A5",
-    "description": "Dept of Parking  Traffic A5  PTC Special Events",
-    "tag": "Law Tac",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16624,
-    "mode": "A",
-    "alphaTag": "DPT A6",
-    "description": "Dept of Parking  Traffic A6  Traffic Control Center",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16656,
-    "mode": "A",
-    "alphaTag": "SCOFF",
-    "description": "Parking Scofflaws also SFPD A15 SCOFFLAW",
-    "tag": "Law Tac",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16688,
-    "mode": "A",
-    "alphaTag": "TOW",
-    "description": "Parking Tow Dispatch also SFPD A16 TOW CH",
-    "tag": "Law Tac",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16816,
-    "mode": "A",
-    "alphaTag": "WATER 1",
-    "description": "Water Department 1  Administration",
-    "tag": "Utilities",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16848,
-    "mode": "A",
-    "alphaTag": "WATER 2",
-    "description": "Water Department 2  Operations",
-    "tag": "Utilities",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16912,
-    "mode": "A",
-    "alphaTag": "REC A1",
-    "description": "Recreation  Parks A1  AdminRecMarinaEvents",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16944,
-    "mode": "A",
-    "alphaTag": "REC A2",
-    "description": "Recreation  Parks A2  Structural Maintenance",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 16976,
-    "mode": "A",
-    "alphaTag": "REC A3",
-    "description": "Recreation  Parks A3  Park Maintenance  Urban Forestry",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17008,
-    "mode": "A",
-    "alphaTag": "REC A4",
-    "description": "Recreation  Parks A4  Park Patrol",
-    "tag": "Security",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17040,
-    "mode": "A",
-    "alphaTag": "REC A5",
-    "description": "Recreation  Parks A5  Candlestick Park",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17072,
-    "mode": "A",
-    "alphaTag": "Water 3",
-    "description": "Water Department 3",
-    "tag": "Utilities",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17424,
-    "mode": "A",
-    "alphaTag": "OES 1",
-    "description": "Office of Emergency Services 1",
-    "tag": "Emergency Ops",
-    "group": "OES  Homeland Security",
-    "priority": 1
-  },
-  {
-    "decimal": 17456,
-    "mode": "A",
-    "alphaTag": "OES 2",
-    "description": "Office of Emergency Services 2",
-    "tag": "Emergency Ops",
-    "group": "OES  Homeland Security",
-    "priority": 1
-  },
-  {
-    "decimal": 17488,
-    "mode": "A",
-    "alphaTag": "OES ADMIN",
-    "description": "Office of Emergency Services  Administration",
-    "tag": "Emergency Ops",
-    "group": "OES  Homeland Security",
-    "priority": 1
-  },
-  {
-    "decimal": 17648,
-    "mode": "A",
-    "alphaTag": "DTIS1",
-    "description": "Telecomms  Info Services 1",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17680,
-    "mode": "A",
-    "alphaTag": "DTIS2",
-    "description": "Telecomms  Info Services 2",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17712,
-    "mode": "A",
-    "alphaTag": "PUBSAFETY",
-    "description": "Telecomms  Info Services 3  Public Safety",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17744,
-    "mode": "A",
-    "alphaTag": "TELECOM",
-    "description": "Telecomms  Info Services 4  Telecommunications",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17776,
-    "mode": "A",
-    "alphaTag": "EMERGENCY2",
-    "description": "Telecomms  Info Services 5  Emergency",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 17872,
-    "mode": "A",
-    "alphaTag": "SFSU PD 1",
-    "description": "Police Dispatch",
-    "tag": "Law Dispatch",
-    "group": "San Francisco State University",
-    "priority": 1
-  },
-  {
-    "decimal": 17904,
-    "mode": "A",
-    "alphaTag": "SFSU PD 2",
-    "description": "Police Tac",
-    "tag": "Law Tac",
-    "group": "San Francisco State University",
-    "priority": 1
-  },
-  {
-    "decimal": 17936,
-    "mode": "A",
-    "alphaTag": "SFSU PD 3",
-    "description": "Police Parking",
-    "tag": "Law Tac",
-    "group": "San Francisco State University",
-    "priority": 1
-  },
-  {
-    "decimal": 18032,
-    "mode": "A",
-    "alphaTag": "UCSF PD 1",
-    "description": "Police Dispatch",
-    "tag": "Law Dispatch",
-    "group": "UC San Francisco",
-    "priority": 1
-  },
-  {
-    "decimal": 18064,
-    "mode": "A",
-    "alphaTag": "UCSF PD 2",
-    "description": "Police 2",
-    "tag": "Law Tac",
-    "group": "UC San Francisco",
-    "priority": 1
-  },
-  {
-    "decimal": 18096,
-    "mode": "A",
-    "alphaTag": "UCSF PD 3",
-    "description": "Police 3",
-    "tag": "Law Tac",
-    "group": "UC San Francisco",
-    "priority": 1
-  },
-  {
-    "decimal": 18608,
-    "mode": "A",
-    "alphaTag": "CCSF PD",
-    "description": "City College of San Francisco Police",
-    "tag": "Law Dispatch",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 19216,
-    "mode": "A",
-    "alphaTag": "SFPD BU 1",
-    "description": "Police BackUp 1",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19248,
-    "mode": "A",
-    "alphaTag": "SFPD BU 2",
-    "description": "Police BackUp 2",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19280,
-    "mode": "A",
-    "alphaTag": "SFPD BU 3",
-    "description": "Police BackUp 3",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19312,
-    "mode": "A",
-    "alphaTag": "SFPD BU 4",
-    "description": "Police BackUp 4",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19344,
-    "mode": "A",
-    "alphaTag": "SFPD BU 5",
-    "description": "Police BackUp 5",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19376,
-    "mode": "A",
-    "alphaTag": "SFFD BU 1",
-    "description": "Fire BackUp 1",
-    "tag": "Fire-Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19408,
-    "mode": "A",
-    "alphaTag": "SFFD BU 2",
-    "description": "Fire BackUp 2",
-    "tag": "Fire-Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19440,
-    "mode": "A",
-    "alphaTag": "SFSD BU 1",
-    "description": "Sheriff BackUp 1",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 19472,
-    "mode": "A",
-    "alphaTag": "SFSD BU 2",
-    "description": "Sheriff BackUp 2",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 25136,
-    "mode": "A",
-    "alphaTag": "SF USD 1",
-    "description": "San Francisco Unified School District 1 Maintenance A",
-    "tag": "Schools",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 25168,
-    "mode": "A",
-    "alphaTag": "SF USD 2",
-    "description": "San Francisco Unified School District 2 Maintenance B",
-    "tag": "Schools",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 25200,
-    "mode": "A",
-    "alphaTag": "SF USD 3",
-    "description": "San Francisco Unified School District 3",
-    "tag": "Schools",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 25232,
-    "mode": "A",
-    "alphaTag": "SF USD 4",
-    "description": "San Francisco Unified School District 4",
-    "tag": "Schools",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 25648,
-    "mode": "A",
-    "alphaTag": "Animal Contr",
-    "description": "Animal Control",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 26320,
-    "mode": "A",
-    "alphaTag": "CAO 1",
-    "description": "Chief Administrators Office 1 Special",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 26352,
-    "mode": "A",
-    "alphaTag": "CAO 2",
-    "description": "Chief Administrators Office 2 Operations",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 26384,
-    "mode": "A",
-    "alphaTag": "CAO 3",
-    "description": "Chief Administrators Office 3 Farmers Market",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 32432,
-    "mode": "A",
-    "alphaTag": "DA 1",
-    "description": "District Attorney 1",
-    "tag": "Law Talk",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 48080,
-    "mode": "A",
-    "alphaTag": "RADIO1",
-    "description": "Radio Service 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 48112,
-    "mode": "A",
-    "alphaTag": "RADIO2",
-    "description": "Radio Service 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 48336,
-    "mode": "A",
-    "alphaTag": "Port Admin",
-    "description": "Port Authority  Administration",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 48400,
-    "mode": "A",
-    "alphaTag": "Port Maint",
-    "description": "Port Authority  Maintenance",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 48432,
-    "mode": "A",
-    "alphaTag": "WETA",
-    "description": "Water Emergency Transportation Authority",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49008,
-    "mode": "A",
-    "alphaTag": "DPHOPS",
-    "description": "Public Health 1  Operations",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49040,
-    "mode": "A",
-    "alphaTag": "DPHADM",
-    "description": "Public Health 3  Administration",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49072,
-    "mode": "A",
-    "alphaTag": "SFGHENG",
-    "description": "Public Health 2  SFGH Engineering",
-    "tag": "Law Dispatch",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49104,
-    "mode": "A",
-    "alphaTag": "LHHPD",
-    "description": "Public Health 4  Laguna Honda Police",
-    "tag": "Law Dispatch",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49136,
-    "mode": "A",
-    "alphaTag": "LHHADMIN",
-    "description": "Public Health 5  Laguna Honda Administration",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 49200,
-    "mode": "A",
-    "alphaTag": "SFGHIP",
-    "description": "SF General Hospital  Institutional Police",
-    "tag": "Law Tac",
-    "group": "Sheriff",
-    "priority": 1
-  },
-  {
-    "decimal": 49328,
-    "mode": "A",
-    "alphaTag": "SFFDAWSS",
-    "description": "Fire Auxiliary Water Supply System AWSS Data",
-    "tag": "Data",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 50000,
-    "mode": "A",
-    "alphaTag": "Library 1",
-    "description": "SF Public Library 1  Security",
-    "tag": "Security",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 50032,
-    "mode": "A",
-    "alphaTag": "Library 2",
-    "description": "SF Public Library 2",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 50064,
-    "mode": "A",
-    "alphaTag": "Library 3",
-    "description": "SF Public Library 3",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 61808,
-    "mode": "A",
-    "alphaTag": "Motive Power",
-    "description": "Motive Power Electrical maintenance",
-    "tag": "Public Works",
-    "group": "City Government",
-    "priority": 1
-  },
-  {
-    "decimal": 64656,
-    "mode": "A",
-    "alphaTag": "DPW23 RE1",
-    "description": "Real Estate 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64688,
-    "mode": "A",
-    "alphaTag": "DPW22 RE2",
-    "description": "Real Estate 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64720,
-    "mode": "A",
-    "alphaTag": "DPW21 HOJ",
-    "description": "Hall of Justice Engineering",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64752,
-    "mode": "A",
-    "alphaTag": "DPW20 CE2",
-    "description": "CE 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64784,
-    "mode": "A",
-    "alphaTag": "DPW19 BInsp2",
-    "description": "Building Inspectors 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64816,
-    "mode": "A",
-    "alphaTag": "DPW18 BInsp1",
-    "description": "Building Inspectors 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64848,
-    "mode": "A",
-    "alphaTag": "DPW17 RepMt",
-    "description": "Buildings Repair and Maintenance",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64880,
-    "mode": "A",
-    "alphaTag": "DPW16 Sewer1",
-    "description": "Wastewater Sewer Ops 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64912,
-    "mode": "A",
-    "alphaTag": "DPW15 Sewer2",
-    "description": "Wastewater Sewer Ops 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64944,
-    "mode": "A",
-    "alphaTag": "DPW14 StSew2",
-    "description": "Street and Sewer Repair 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 64976,
-    "mode": "A",
-    "alphaTag": "DPW13 Street",
-    "description": "Street and Environmental Services 4",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65008,
-    "mode": "A",
-    "alphaTag": "DPW12 Bldg 2",
-    "description": "Building Repair 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65040,
-    "mode": "A",
-    "alphaTag": "DPW11 StEv3",
-    "description": "Street and Environmental Services 3",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65072,
-    "mode": "A",
-    "alphaTag": "DPW10 Sup 2",
-    "description": "Supervisors 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65104,
-    "mode": "A",
-    "alphaTag": "DPW 9 Sup 1",
-    "description": "Supervisors 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65136,
-    "mode": "A",
-    "alphaTag": "DPW 8 EMERG",
-    "description": "DPW Emergency",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65168,
-    "mode": "A",
-    "alphaTag": "DPW 7 EngAr",
-    "description": "Engineering and Architecture",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65200,
-    "mode": "A",
-    "alphaTag": "DPW 6 UrbFor",
-    "description": "Urban Forestry",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65232,
-    "mode": "A",
-    "alphaTag": "DPW 5 StEv2",
-    "description": "Street and Environmental Services 2",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65264,
-    "mode": "A",
-    "alphaTag": "DPW 4 Bldg 1",
-    "description": "Building Repair 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65296,
-    "mode": "A",
-    "alphaTag": "DPW 3 StSew1",
-    "description": "Street and Sewer Repair 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65328,
-    "mode": "A",
-    "alphaTag": "DPW 2 StEv1",
-    "description": "Street and Environmental Services 1",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
-    "priority": 1
-  },
-  {
-    "decimal": 65360,
-    "mode": "A",
-    "alphaTag": "DPW 1 Disp",
-    "description": "Dispatch",
-    "tag": "Public Works",
-    "group": "Public Service Emergency Radio System",
+    "decimal": 26,
+    "mode": "D",
+    "alphaTag": "12 77TH",
+    "tag": "77th Street 12",
+    "description": "77th Street 12",
+    "group": "Law Dispatch",
     "priority": 1
   }
 ]

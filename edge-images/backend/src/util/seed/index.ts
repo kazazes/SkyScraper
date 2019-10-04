@@ -34,8 +34,8 @@ createSystem()
 async function createSystem() {
   const shortName = tgImport.system.shortName;
   consola.info(`Deleting existing talkgroups and systems`);
-  await prisma.deleteManyTrunkedTalkgroups({ id_not: null });
-  await prisma.deleteManyTrunkedSystems({ id_not: null });
+  // await prisma.deleteManyTrunkedTalkgroups({ id_not: null });
+  // await prisma.deleteManyTrunkedSystems({ id_not: null });
   return prisma.upsertTrunkedSystem({
     create: {
       ...tgImport.system,

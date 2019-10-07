@@ -33,10 +33,10 @@
     retry-request "^4.0.0"
     teeny-request "^5.2.1"
 
-"@google-cloud/debug-agent@^4.0.2":
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@google-cloud/debug-agent/-/debug-agent-4.0.2.tgz#6c79e4c4676a5b7f748a72f9afd6c0bd84542a26"
-  integrity sha512-RrsEWmdjXDsSA2d0Q5NjL/66xhWeWgHUOdtWKYxDyA2w3tRR7ZKPwvnFpWgLwNJt3nruwKgLYNjVDnTwg+T0ZQ==
+"@google-cloud/debug-agent@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@google-cloud/debug-agent/-/debug-agent-4.0.4.tgz#3ea39c0e32ecbb87ac438335b935502ebf95437f"
+  integrity sha512-IqHCZVbumGL3lSfWzPj37Bi+NApzTbcIVkptlYNFdd5yHLrbZLUJFVsG+sxiEQqtnPfiMkQnZ/xvoyxTZRq9gg==
   dependencies:
     "@google-cloud/common" "^2.0.0"
     "@sindresorhus/is" "^1.0.0"
@@ -45,7 +45,7 @@
     console-log-level "^1.4.0"
     extend "^3.0.2"
     findit2 "^2.2.3"
-    gcp-metadata "^2.0.0"
+    gcp-metadata "^3.0.0"
     lodash.pickby "^4.6.0"
     p-limit "^2.2.0"
     semver "^6.0.0"
@@ -2020,6 +2020,14 @@ gcp-metadata@^2.0.0:
   integrity sha512-nrbLj5O1MurvpLC/doFwzdTfKnmYGDYXlY/v7eQ4tJNVIvQXbOK672J9UFbradbtmuTkyHzjpzD8HD0Djz0LWw==
   dependencies:
     gaxios "^2.0.0"
+    json-bigint "^0.3.0"
+
+gcp-metadata@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/gcp-metadata/-/gcp-metadata-3.0.0.tgz#6e43f899728d0e1bb7831631cf3f86cc9e4de3aa"
+  integrity sha512-WP5/TZWri9TrD41jNr8ukY9dKYLL+8jwQVwbtUbmprjWuyybdnJNkbXbwqD2sdbXIVXD1WCqzfj7QftSLB6K8Q==
+  dependencies:
+    gaxios "^2.0.1"
     json-bigint "^0.3.0"
 
 gcs-resumable-upload@^2.0.0:

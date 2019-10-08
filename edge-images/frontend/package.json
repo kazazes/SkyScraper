@@ -73,7 +73,7 @@
     "@types/graphql": "^14.5.0",
     "@types/howler": "^2.1.1",
     "@types/http-proxy-middleware": "^0.19.3",
-    "@types/lodash": "^4.14.141",
+    "@types/lodash": "^4.14.142",
     "@types/papaparse": "^5.0.1",
     "@wry/context": "^0.4.4",
     "eslint": "^6.5.1",

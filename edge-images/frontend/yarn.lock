@@ -1910,10 +1910,10 @@
     consola "^2.9.0"
     dotenv "^8.0.0"
 
-"@nuxtjs/google-tag-manager@^2.2.0":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/google-tag-manager/-/google-tag-manager-2.2.1.tgz#8029953dcc1d09a430fc5f961a48555017c875d0"
-  integrity sha512-1JpV8NRpdTd58FQiPyZUdFdYxfhrt6/a0UUQcoFMBbM3+pELho2RlOj52NE+OYY0IPR0D736ULBHXLhwv1CKdw==
+"@nuxtjs/google-tag-manager@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/google-tag-manager/-/google-tag-manager-2.3.0.tgz#4cd642a21b0f8098dffaee57430652a51903b8a4"
+  integrity sha512-gMkCi8Y4rhxnsm7r+bIsCGZBGoLv7qLeiUX+6CZLULTrDtTrG8RYdf7xGdJ/18wxzRsNf4cG4bDN6oDFHZHjzQ==
 
 "@nuxtjs/localforage@^1.0.2":
   version "1.0.2"

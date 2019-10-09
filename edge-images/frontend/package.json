@@ -16,7 +16,7 @@
     "now-build": "yarn run generate"
   },
   "dependencies": {
-    "@mdi/font": "^4.3.95",
+    "@mdi/font": "^4.5.95",
     "@nuxt/typescript-runtime": "^0.1.5",
     "@nuxtjs/apollo": "^4.0.0-rc12",
     "@nuxtjs/auth": "^4.8.2",

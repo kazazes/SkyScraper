@@ -68,10 +68,12 @@
   dependencies:
     "@types/node" "*"
 
-"@types/consola@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@types/consola/-/consola-1.0.0.tgz#da6c2d81150a8ed67ee043eb97a65ff4befdad66"
-  integrity sha512-Dxn55f4mQDpc3hBhSmgnV/4vcG04KZuZt7wRf/lv4h2BXwQEOeyKdx96MqMkdJ4gc0fMcytsAG73fOXkDZFgKQ==
+"@types/consola@^2.2.5":
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/@types/consola/-/consola-2.2.5.tgz#f84e2842e44aad1e038dff1abbc1c6bf2dd9e65c"
+  integrity sha512-ttF6wKgTQJfdUBK6zwg/C4kqzFyKqwg8kRdUOj+rn1T0CsrBvgwBn+ILLhfoVGiOY5/FAzLbD/Ld/tSgt7Damg==
+  dependencies:
+    consola "*"
 
 "@types/dotenv@^6.1.1":
   version "6.1.1"
@@ -694,7 +696,7 @@ configstore@^4.0.0:
     write-file-atomic "^2.0.0"
     xdg-basedir "^3.0.0"
 
-consola@^2.10.1:
+consola@*, consola@^2.10.1:
   version "2.10.1"
   resolved "https://registry.yarnpkg.com/consola/-/consola-2.10.1.tgz#4693edba714677c878d520e4c7e4f69306b4b927"
   integrity sha512-4sxpH6SGFYLADfUip4vuY65f/gEogrzJoniVhNUYkJHtng0l8ZjnDCqxxrSVRHOHwKxsy8Vm5ONZh1wOR3/l/w==

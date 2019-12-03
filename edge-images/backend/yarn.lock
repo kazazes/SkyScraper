@@ -3750,10 +3750,10 @@ psl@^1.1.28:
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.31.tgz#e9aa86d0101b5b105cbe93ac6b784cd547276184"
   integrity sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==
 
-public-ip@*, public-ip@^3.1.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/public-ip/-/public-ip-3.2.0.tgz#a246cc6e0ba761285b48598f087d8755a82b12ed"
-  integrity sha512-DBq4o955zhrhESG4z6GkLN9mtY9NT/JOjEV8pvnYy3bjVQOQF0J5lJNwWLbEWwNstyNFJlY7JxCPFq4bdXSabw==
+public-ip@*, public-ip@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/public-ip/-/public-ip-4.0.0.tgz#7e90ca5183d322bc4f7a50fedfb40f6e42286b15"
+  integrity sha512-Q5dcQ5qLPpMSyj0iEqucTfeINHVeEhuSjjaPVEU24+6RGlvCrEM6AXwOlWW4iIn10yyWROASRuS3rgbUZIE/5g==
   dependencies:
     dns-socket "^4.2.0"
     got "^9.6.0"

@@ -13,7 +13,7 @@
     "@graphql-codegen/cli": "^1.7.0",
     "@graphql-codegen/introspection": "^1.7.0",
     "@graphql-codegen/typescript": "^1.7.0",
-    "@graphql-codegen/typescript-operations": "1.7.0",
+    "@graphql-codegen/typescript-operations": "1.9.1",
     "graphql": "^14.5.8",
     "graphqlgen": "^0.6.0-rc9",
     "prisma": "^1.34.8"

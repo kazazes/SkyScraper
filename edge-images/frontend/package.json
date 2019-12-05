@@ -42,7 +42,7 @@
     "graphql-client": "^2.0.1",
     "graphql-tag": "^2.10.1",
     "howler": "^2.1.2",
-    "http-proxy-middleware": "^0.19.1",
+    "http-proxy-middleware": "^0.20.0",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",

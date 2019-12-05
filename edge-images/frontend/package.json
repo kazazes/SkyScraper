@@ -81,7 +81,7 @@
     "lerna": "^3.16.4",
     "nodemon": "^1.19.3",
     "nuxt-property-decorator": "^2.4.0",
-    "prettier": "^1.17.1",
+    "prettier": "^1.19.1",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "tslint": "^5.19.0",

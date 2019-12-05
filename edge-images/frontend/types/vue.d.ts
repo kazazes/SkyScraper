@@ -2,8 +2,8 @@
  * Augment the typings of Vue.js
  */
 
-import Vue, { ComponentOptions } from "vue";
-import { CookieAttributes } from "js-cookie";
+import Vue, { ComponentOptions } from "vue"
+import { CookieAttributes } from "js-cookie"
 
 // todo: context?
 interface StorageCookieOptions extends CookieAttributes {

@@ -1,6 +1,8 @@
 <template>
   <v-dialog v-model="dialog" max-width="700px">
-    <v-btn slot="activator" color="secondary">Upload CSV</v-btn>
+    <v-btn slot="activator" color="secondary">
+      Upload CSV
+    </v-btn>
     <v-card>
       <v-container grid-list-md>
         <v-layout wrap>
@@ -11,30 +13,41 @@
             class="ma-auto"
             :hidden="loading"
           ></v-progress-circular> -->
-          <v-flex xs12 v-model="instructions">
-            <v-card-title class="headline">Upload Talkgroups File</v-card-title>
-            <v-card-text>Upload a file with a format similar to the <a
-              href="https://www.radioreference.com/apps/db/?sid=60&tab=reports">RadioReference.com</a>
+          <v-flex v-model="instructions" xs12>
+            <v-card-title class="headline">
+              Upload Talkgroups File
+            </v-card-title>
+            <v-card-text>
+              Upload a file with a format similar to the <a
+                href="https://www.radioreference.com/apps/db/?sid=60&tab=reports"
+              >RadioReference.com</a>
               CSV format.
             </v-card-text>
             <v-card-text>
               <v-card color="white">
-                <v-card-title><h5 class="mx-auto">Required Columns</h5></v-card-title>
-                <v-divider></v-divider>
+                <v-card-title>
+                  <h5 class="mx-auto">
+                    Required Columns
+                  </h5>
+                </v-card-title>
+                <v-divider />
                 <v-list dense>
                   <v-list-tile>
                     <v-list-tile-content>Decimal</v-list-tile-content>
-                    <v-list-tile-content class="align-end">Talkgroup ID
+                    <v-list-tile-content class="align-end">
+                      Talkgroup ID
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>Alpha Tag</v-list-tile-content>
-                    <v-list-tile-content class="align-end">The talkgroup's short tag
+                    <v-list-tile-content class="align-end">
+                      The talkgroup's short tag
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>Mode</v-list-tile-content>
-                    <v-list-tile-content class="align-end">Frequency mode. Accepted values: D
+                    <v-list-tile-content class="align-end">
+                      Frequency mode. Accepted values: D
                       (digital), A (analog), DE (encrypted)
                     </v-list-tile-content>
                   </v-list-tile>
@@ -46,19 +59,23 @@
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>Tag</v-list-tile-content>
-                    <v-list-tile-content class="align-end"><a
-                      href="https://wiki.radioreference.com/index.php/Function_Tags">
-                      A general category, domain and usage. (e.g. Fire Dispatch)</a>
+                    <v-list-tile-content class="align-end">
+                      <a
+                        href="https://wiki.radioreference.com/index.php/Function_Tags"
+                      >
+                        A general category, domain and usage. (e.g. Fire Dispatch)</a>
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>Category</v-list-tile-content>
-                    <v-list-tile-content class="align-end">A high-level category. (e.g. Police)
+                    <v-list-tile-content class="align-end">
+                      A high-level category. (e.g. Police)
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
                     <v-list-tile-content>Priority (optional)</v-list-tile-content>
-                    <v-list-tile-content class="align-end">A priority level from 1 to 3. Defaults to
+                    <v-list-tile-content class="align-end">
+                      A priority level from 1 to 3. Defaults to
                       1.
                     </v-list-tile-content>
                   </v-list-tile>
@@ -66,35 +83,40 @@
               </v-card>
             </v-card-text>
             <v-card-text>
-              <v-spacer></v-spacer>
+              <v-spacer />
               <v-card-actions class="mx-0">
-                <v-btn block @click.stop="downloadSample" color="accent">Download Sample</v-btn>
-                <v-spacer></v-spacer>
+                <v-btn block color="accent" @click.stop="downloadSample">
+                  Download Sample
+                </v-btn>
+                <v-spacer />
                 <label class="d-block file-select ml-2">
-                                    <span class="v-btn theme--light primary">
-                                        <span v-if="selectedFile">Selected File: {{file.name}}</span>
-                                        <span v-else :v-text="buttonText">Select File</span>
-                                     </span>
-                  <input type="file" @change="handleFileChange"/>
+                  <span class="v-btn theme--light primary">
+                    <span v-if="selectedFile">Selected File: {{ file.name }}</span>
+                    <span v-else :v-text="buttonText">Select File</span>
+                  </span>
+                  <input type="file" @change="handleFileChange">
                 </label>
               </v-card-actions>
             </v-card-text>
           </v-flex>
-          <v-flex xs12 v-if="showResults">
+          <v-flex v-if="showResults" xs12>
             <v-alert v-for="(error, idx) in fatal" :key="e + idx" type="error">
-              {{error.toString()}}
+              {{ error.toString() }}
             </v-alert>
-            <v-card-text>Imported <strong>{{talkgroups.length}}</strong> talkgroups.</v-card-text>
-            <v-card-text v-if="rowErrors.length > 0">{{rowErrors.length}} rows were discarded. See below.
+            <v-card-text>Imported <strong>{{ talkgroups.length }}</strong> talkgroups.</v-card-text>
+            <v-card-text v-if="rowErrors.length > 0">
+              {{ rowErrors.length }} rows were discarded. See below.
             </v-card-text>
             <pre v-if="rowErrors.length > 0">
-                            {{JSON.stringify(rowErrors)}}
+                            {{ JSON.stringify(rowErrors) }}
                         </pre>
             <v-card-text>
-              <v-spacer></v-spacer>
+              <v-spacer />
               <v-card-actions class="mx-0">
-                <v-spacer></v-spacer>
-                <v-btn block @click="completeUpload" color="success">Continue</v-btn>
+                <v-spacer />
+                <v-btn block color="success" @click="completeUpload">
+                  Continue
+                </v-btn>
               </v-card-actions>
             </v-card-text>
           </v-flex>
@@ -105,15 +127,15 @@
 </template>
 
 <script lang="ts">
-  import Papa, { ParseResult } from "papaparse";
-  import Vue from "vue";
-  import {Component, Prop} from "vue-property-decorator";
-  import axios from "axios";
-  import { IInputtedTalkgroup, TalkgroupValidator } from "./talkgroupValidator";
+import Papa, { ParseResult } from "papaparse"
+import Vue from "vue"
+import { Component, Prop } from "vue-property-decorator"
+import axios from "axios"
+import { IInputtedTalkgroup, TalkgroupValidator } from "./talkgroupValidator"
 
   @Component({
   })
-  export default class Upload extends Vue {
+export default class Upload extends Vue {
     @Prop({ type: String }) buttonText!: string;
     file: File | undefined = undefined;
     selectedFile = false;
@@ -126,65 +148,65 @@
     talkgroups: IInputtedTalkgroup[] = [];
     loading = false;
 
-    completeUpload() {
-      this.$emit("loadedTalkgroups", this.talkgroups);
-      this.dialog = false;
+    completeUpload () {
+      this.$emit("loadedTalkgroups", this.talkgroups)
+      this.dialog = false
     }
 
-    get showResults() {
-      return !this.instructions;
+    get showResults () {
+      return !this.instructions
     }
 
-    handleFileChange(e: any) {
-      this.$emit("input", e.target.files[0]);
-      console.log(e);
-      this.file = e.target.files[0];
-      this.selectedFile = true;
-      this.loadCSVFromFile(this.file as File);
+    handleFileChange (e: any) {
+      this.$emit("input", e.target.files[0])
+      console.log(e)
+      this.file = e.target.files[0]
+      this.selectedFile = true
+      this.loadCSVFromFile(this.file as File)
     }
 
-    loadCSVFromFile(file: File) {
-      const that = this;
-      this.loading = true;
+    loadCSVFromFile (file: File) {
+      const that = this
+      this.loading = true
       Papa.parse(file, {
         worker: true,
         trimHeaders: true,
         dynamicTyping: true,
-        complete: function (results: ParseResult): void {
-          that.instructions = false;
-          that.processParsedCSV(results);
-        },
-      });
+        complete (results: ParseResult): void {
+          that.instructions = false
+          that.processParsedCSV(results)
+        }
+      })
     }
 
-    protected processParsedCSV(results: ParseResult) {
-      const validator = new TalkgroupValidator(results as ParseResult);
-      const headerErrors = validator.validateHeaders();
+    protected processParsedCSV (results: ParseResult) {
+      const validator = new TalkgroupValidator(results as ParseResult)
+      const headerErrors = validator.validateHeaders()
       if (headerErrors.length > 0) {
-        this.fatal.push(...headerErrors);
+        this.fatal.push(...headerErrors)
       } else {
-        const mapped = validator.mapToTalkgroups();
-        this.talkgroups = mapped.talkgroups;
-        this.rowErrors = mapped.errors;
+        const mapped = validator.mapToTalkgroups()
+        this.talkgroups = mapped.talkgroups
+        this.rowErrors = mapped.errors
       }
     }
 
-    downloadSample() {
+    downloadSample () {
       return axios({
         url: "../sample/SF_TGs.csv",
         method: "GET",
-        responseType: "blob", // important
+        responseType: "blob" // important
       }).then((response) => {
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
+        const url = window.URL.createObjectURL(new Blob([response.data]))
+        const link = document.createElement("a")
+        link.href = url
         link.target = "_blank"
-        link.setAttribute("download", "SF_TGs.csv");
-        document.body.appendChild(link);
-        link.click();
-      });
+        link.setAttribute("download", "SF_TGs.csv")
+        document.body.appendChild(link)
+        link.click()
+      })
     }
-  }
+}
 </script>
 
 <style scoped>

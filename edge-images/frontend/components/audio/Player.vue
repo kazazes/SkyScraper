@@ -2,7 +2,7 @@
   <v-flex class="player">
     <v-flex class="player-controls pa-0">
       <div>
-        <a v-on:click="playPause" title="Play/Pause" href="#">
+        <a title="Play/Pause" href="#" @click="playPause">
           <svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path
               v-if="paused"
@@ -18,16 +18,16 @@
         </a>
       </div>
       <v-flex grow>
-        <div v-on:click="seek" class="player-progress" title="Time played : Total time">
-          <div :style="{ width: this.percentComplete + '%' }" class="player-seeker"></div>
+        <div class="player-progress" title="Time played : Total time" @click="seek">
+          <div :style="{ width: this.percentComplete + '%' }" class="player-seeker" />
         </div>
         <div class="player-time">
-          <div class="player-time-current" v-text="currentTime"></div>
-          <div class="player-time-total" v-text="durationTime"></div>
+          <div class="player-time-current" v-text="currentTime" />
+          <div class="player-time-total" v-text="durationTime" />
         </div>
       </v-flex>
       <div class="hidden-sm-and-down">
-        <a v-on:click.prevent="download" href="#" alt="Download audio.">
+        <a href="#" alt="Download audio." @click.prevent="download">
           <svg
             width="18px"
             xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@
         </a>
       </div>
       <div class="hidden-md-and-down">
-        <a v-on:click.prevent="mute" title="Mute" href="#">
+        <a title="Mute" href="#" @click.prevent="mute">
           <svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
             <path
               v-if="!muted"
@@ -62,21 +62,21 @@
 </template>
 
 <script lang="ts">
-  import { Howl, Howler } from "howler";
-  import { Component, Prop, Vue, Watch } from "vue-property-decorator";
-  import { toggleAutoPlay } from "~/utils/enums";
+import { Howl, Howler } from "howler"
+import { Component, Prop, Vue, Watch } from "vue-property-decorator"
+import { toggleAutoPlay } from "~/utils/enums"
 
-  const convertTimeHHMMSS = (val) => {
-    try {
-      let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
-      return hhmmss.indexOf("00:") === 0 ? hhmmss.substr(3) : hhmmss;
-    } catch (e) {
-      return "0:00";
-    }
-  };
+const convertTimeHHMMSS = (val) => {
+  try {
+    const hhmmss = new Date(val * 1000).toISOString().substr(11, 8)
+    return hhmmss.indexOf("00:") === 0 ? hhmmss.substr(3) : hhmmss
+  } catch (e) {
+    return "0:00"
+  }
+}
 
   @Component({})
-  export default class Player extends Vue {
+export default class Player extends Vue {
     sound!: Howl;
     currentSeconds = 0;
     durationSeconds = 0;
@@ -88,30 +88,30 @@
     muted = false;
 
     @Prop({
-      default: null,
+      default: null
     })
     file?: string | string[];
 
     @Prop({
       type: Number,
       default: 0,
-      required: true,
+      required: true
     })
     toggleAutoPlay;
 
     @Watch("file")
-    fileChanged() {
-      this.currentTime = "00:00";
-      this.percentComplete = 0;
-      this.createHowl();
+    fileChanged () {
+      this.currentTime = "00:00"
+      this.percentComplete = 0
+      this.createHowl()
     }
 
-    createHowl() {
-      if (!this.file) return;
-      let playing = false;
+    createHowl () {
+      if (!this.file) { return }
+      let playing = false
       if (this.sound) {
-        playing = this.sound.playing();
-        this.sound.unload();
+        playing = this.sound.playing()
+        this.sound.unload()
       }
       this.sound = new Howl({
         mute: this.muted,
@@ -119,73 +119,73 @@
         autoplay: this.toggleAutoPlay !== toggleAutoPlay.SINGLE || playing,
         volume: this.volume / 100,
         onpause: () => {
-          this.$emit("player-state-paused", true);
-          this.paused = true;
+          this.$emit("player-state-paused", true)
+          this.paused = true
         },
         onend: () => {
-          this.$emit("player-state-ended", true);
-          this.paused = true;
+          this.$emit("player-state-ended", true)
+          this.paused = true
         },
         onload: () => {
           this.durationTime = String(
             convertTimeHHMMSS(this.sound.duration() || 0)
-          );
-          this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
+          )
+          this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0))
         },
         onplay: () => {
-          this.$emit("player-state-paused", false);
-          requestAnimationFrame(this.step.bind(self));
-          this.paused = false;
+          this.$emit("player-state-paused", false)
+          requestAnimationFrame(this.step.bind(self))
+          this.paused = false
         },
         onseek: () => requestAnimationFrame(this.step.bind(self)),
-        onloaderror: (id, err) => console.warn(err),
-      });
+        onloaderror: (id, err) => console.warn(err)
+      })
     }
 
-    seek(e) {
+    seek (e) {
       if (!this.sound.playing() || e.target.tagName === "SPAN") {
-        return;
+        return
       }
 
-      const el = e.target.getBoundingClientRect();
-      const seekPos = (e.clientX - el.left) / el.width;
-      this.sound.seek(parseInt(String(this.sound.duration() * seekPos)));
+      const el = e.target.getBoundingClientRect()
+      const seekPos = (e.clientX - el.left) / el.width
+      this.sound.seek(parseInt(String(this.sound.duration() * seekPos)))
     }
 
-    mounted() {
-      this.createHowl();
+    mounted () {
+      this.createHowl()
     }
 
-    mute() {
-      this.muted = !this.muted;
-      this.sound.mute(this.muted);
+    mute () {
+      this.muted = !this.muted
+      this.sound.mute(this.muted)
     }
 
-    step() {
-      const self = this;
-      this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0));
+    step () {
+      const self = this
+      this.currentTime = String(convertTimeHHMMSS(this.sound.seek() || 0))
       this.percentComplete =
-        ((this.sound.seek() as number) / (this.sound.duration() || 0)) * 100;
+        ((this.sound.seek() as number) / (this.sound.duration() || 0)) * 100
       if (this.sound.playing()) {
-        requestAnimationFrame(self.step.bind(self));
+        requestAnimationFrame(self.step.bind(self))
       }
     }
 
-    playPause() {
-      if (this.sound.playing()) return this.sound.pause();
-      this.sound.play();
+    playPause () {
+      if (this.sound.playing()) { return this.sound.pause() }
+      this.sound.play()
     }
 
     // Utility
-    download() {
-      if (!this.file) return;
-      const f = Array.isArray(this.file) ? this.file[0] : this.file;
-      window.open(f, "_blank");
+    download () {
+      if (!this.file) { return }
+      const f = Array.isArray(this.file) ? this.file[0] : this.file
+      window.open(f, "_blank")
       // also download json metadata
-      const jsonFile = f.replace(/\.[^\.]+$/, ".json");
-      window.open(jsonFile, "_blank");
+      const jsonFile = f.replace(/\.[^\.]+$/, ".json")
+      window.open(jsonFile, "_blank")
     }
-  }
+}
 </script>
 
 <style lang="scss">

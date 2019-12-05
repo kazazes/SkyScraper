@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 export const NEW_TRUNKED_CALLS = gql`
   subscription newTrunkedCalls($where: TrunkedCallSubscriptionWhereInput) {
@@ -34,4 +34,4 @@ export const NEW_TRUNKED_CALLS = gql`
       }
     }
   }
-`;
+`

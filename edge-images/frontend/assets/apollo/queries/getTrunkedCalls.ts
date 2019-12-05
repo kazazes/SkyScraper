@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 export const TRUNKED_CALLS = gql`
   query trunkedCalls(
@@ -39,4 +39,4 @@ export const TRUNKED_CALLS = gql`
       }
     }
   }
-`;
+`

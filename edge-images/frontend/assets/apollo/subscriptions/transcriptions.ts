@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 export const NEW_TRANSCRIPTIONS = gql`
   subscription transcriptions {
     transcriptions {
@@ -14,4 +14,4 @@ export const NEW_TRANSCRIPTIONS = gql`
       }
     }
   }
-`;
+`

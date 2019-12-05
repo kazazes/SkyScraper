@@ -10,8 +10,8 @@
       >
         <slot v-if="!title && !text" name="header" />
         <span v-else>
-          <h4 class="title font-weight-light mb-2" v-text="title"></h4>
-          <p class="category font-weight-thin" v-text="text"></p>
+          <h4 class="title font-weight-light mb-2" v-text="title" />
+          <p class="category font-weight-thin" v-text="text" />
         </span>
       </v-card>
       <slot v-else name="offset" />
@@ -30,17 +30,17 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "vue-class-component";
-  import { Prop } from "nuxt-property-decorator";
-  import HelperOffset from "~/components/helper/Offset.vue";
+import Vue from "vue"
+import Component from "vue-class-component"
+import { Prop } from "nuxt-property-decorator"
+import HelperOffset from "~/components/helper/Offset.vue"
 
   @Component({
     components: {
-      HelperOffset,
-    },
+      HelperOffset
+    }
   })
-  export default class Card extends Vue {
+export default class Card extends Vue {
     inheritAttrs = false;
     @Prop({ type: String, default: "secondary" })
     color = "secondary";
@@ -63,19 +63,19 @@
     @Prop({ type: String, default: undefined })
     text: String | undefined = undefined;
 
-    get hasOffset() {
-      return this.$slots.header || this.$slots.offset || this.title || this.text;
+    get hasOffset () {
+      return this.$slots.header || this.$slots.offset || this.title || this.text
     }
 
-    get styles() {
-      if (!this.hasOffset) return null;
+    get styles () {
+      if (!this.hasOffset) { return null }
 
       return {
         marginBottom: `${this.offset}px`,
-        marginTop: `${this.offset * 2}px`,
-      };
+        marginTop: `${this.offset * 2}px`
+      }
     }
-  }
+}
 </script>
 
 <style lang="scss">

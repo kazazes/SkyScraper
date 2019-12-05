@@ -9,47 +9,47 @@ interface DockerState {
 export const state = (): DockerState => ({
   containers: {},
   logs: {},
-  globalLogs: [],
-});
+  globalLogs: []
+})
 
 export const mutations = {
-  setContainers(state: DockerState, containers: any[]) {
-    const zipped = {};
+  setContainers (state: DockerState, containers: any[]) {
+    const zipped = {}
     containers.forEach((c) => {
-      state.logs[c.id] = [];
-      c.visibleInGlobal = true;
-      zipped[c.id] = c;
-    });
+      state.logs[c.id] = []
+      c.visibleInGlobal = true
+      zipped[c.id] = c
+    })
 
-    state.containers = zipped;
+    state.containers = zipped
   },
-  pushLog(state: DockerState, logItem: any) {
-    const log = state.logs[logItem.long_id] as any[];
+  pushLog (state: DockerState, logItem: any) {
+    const log = state.logs[logItem.long_id] as any[]
     if (log.length >= 100) {
-      log.pop();
+      log.pop()
     }
 
     if (state.globalLogs.length >= 1000) {
-      state.globalLogs.pop();
+      state.globalLogs.pop()
     }
 
-    state.logs[logItem.long_id] = [logItem, ...log];
-    state.globalLogs = [logItem, ...state.globalLogs];
+    state.logs[logItem.long_id] = [logItem, ...log]
+    state.globalLogs = [logItem, ...state.globalLogs]
   },
-  toggleVisibleInGlobal(state: DockerState, id: string) {
+  toggleVisibleInGlobal (state: DockerState, id: string) {
     state.containers[id].visibleInGlobal = !state.containers[id]
-      .visibleInGlobal;
-  },
-};
+      .visibleInGlobal
+  }
+}
 
 export const getters = {
   containers: (state: DockerState) => {
-    return state.containers;
+    return state.containers
   },
   logsForContainer: (state: DockerState, containerId: string) => {
-    return state.logs[containerId];
+    return state.logs[containerId]
   },
   globalLogs: (state: DockerState) => {
-    return state.globalLogs;
-  },
-};
+    return state.globalLogs
+  }
+}

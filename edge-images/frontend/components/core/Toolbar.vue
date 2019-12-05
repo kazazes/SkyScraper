@@ -1,30 +1,59 @@
 <template>
   <v-toolbar
+    id="core-toolbar"
     app
     dense
     dark
     :scroll-threshold="300"
     :scroll-off-screen="true"
-    id="core-toolbar"
     flat
     color="primary"
   >
     <v-layout align-center justify-space-around wrap row>
       <v-flex md6 text-xs-center offset-md3>
-        <v-btn round flat small active-class="active-nav" nuxt to="/data">Data</v-btn>
-        <v-btn round flat small active-class="active-nav" nuxt to="/analysis">Analyze</v-btn>
-        <v-btn round flat small active-class="active-nav" nuxt to="/configure">Configure</v-btn>
+        <v-btn
+          round
+          flat
+          small
+          active-class="active-nav"
+          nuxt
+          to="/data"
+        >
+          Data
+        </v-btn>
+        <v-btn
+          round
+          flat
+          small
+          active-class="active-nav"
+          nuxt
+          to="/analysis"
+        >
+          Analyze
+        </v-btn>
+        <v-btn
+          round
+          flat
+          small
+          active-class="active-nav"
+          nuxt
+          to="/configure"
+        >
+          Configure
+        </v-btn>
       </v-flex>
       <v-flex md3 text-xs-right hidden-sm-and-down>
         <nuxt-link to="/configure/admin">
-          <v-avatar size="32" color="white" v-if="$auth.loggedIn">
+          <v-avatar v-if="$auth.loggedIn" size="32" color="white">
             <img
               v-if="$auth.user.picture"
               :src="$auth.user.picture"
               :alt="$auth.user.name"
               style="padding: 1px;"
-            />
-            <v-icon v-else color="primary">mdi-account</v-icon>
+            >
+            <v-icon v-else color="primary">
+              mdi-account
+            </v-icon>
           </v-avatar>
         </nuxt-link>
       </v-flex>
@@ -33,46 +62,49 @@
 </template>
 
 <script lang="ts">
-  import { mapMutations } from "vuex";
-  import Component from "nuxt-class-component";
-  import Vue from "vue";
+import { mapMutations } from "vuex"
+import Component from "nuxt-class-component"
+import Vue from "vue"
 
   @Component({
     data: () => ({
       notifications: [],
       title: null,
       responsive: false,
-      responsiveInput: false,
+      responsiveInput: false
     }),
     methods: {
-      ...mapMutations(["setDrawer", "toggleDrawer"]),
-    },
+      ...mapMutations(["setDrawer", "toggleDrawer"])
+    }
   })
-  export default class Toolbar extends Vue {
-    mounted() {
-      (this as any).onResponsiveInverted();
-      window.addEventListener("resize", (this as any).onResponsiveInverted);
-    }
-    beforeDestroy() {
-      window.removeEventListener("resize", (this as any).onResponsiveInverted);
-    }
+export default class Toolbar extends Vue {
+  mounted () {
+    (this as any).onResponsiveInverted()
+    window.addEventListener("resize", (this as any).onResponsiveInverted)
+  }
 
-    onClickBtn() {
-      (this as any).setDrawer(!this.$store.state.drawer);
-    }
-    onClick() {
-      //
-    }
-    onResponsiveInverted() {
-      if (window.innerWidth < 991) {
-        (this as any).responsive = true;
-        (this as any).responsiveInput = false;
-      } else {
-        (this as any).responsive = false;
-        (this as any).responsiveInput = true;
-      }
+  beforeDestroy () {
+    window.removeEventListener("resize", (this as any).onResponsiveInverted)
+  }
+
+  onClickBtn () {
+    (this as any).setDrawer(!this.$store.state.drawer)
+  }
+
+  onClick () {
+    //
+  }
+
+  onResponsiveInverted () {
+    if (window.innerWidth < 991) {
+      (this as any).responsive = true;
+      (this as any).responsiveInput = false
+    } else {
+      (this as any).responsive = false;
+      (this as any).responsiveInput = true
     }
   }
+}
 </script>
 
 <style lang="scss">

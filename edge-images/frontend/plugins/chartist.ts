@@ -1,5 +1,5 @@
-import "chartist/dist/chartist.min.css";
+import "chartist/dist/chartist.min.css"
 
-import Vue from "vue";
+import Vue from "vue"
 
-Vue.use(require('vue-chartist'));
+Vue.use(require("vue-chartist"))

@@ -6,5 +6,4 @@ declare const vue_native_websocket: {
     default: {
         install: any;
     };
-};
-
+}

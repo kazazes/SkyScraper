@@ -1,7 +1,7 @@
-import { Configuration } from "@nuxt/types";
-import webpack from "webpack";
+import { Configuration } from "@nuxt/types"
+import webpack from "webpack"
 
-const isDev = process.env.NODE_ENV !== "production";
+const isDev = process.env.NODE_ENV !== "production"
 
 const config: Configuration = {
   /*
@@ -15,10 +15,10 @@ const config: Configuration = {
       {
         hid: "description",
         name: "description",
-        content: "Admin | SkyScraper",
-      },
+        content: "Admin | SkyScraper"
+      }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
   /*
    ** Customize the progress-bar color
@@ -48,9 +48,9 @@ const config: Configuration = {
           "FILE_HOSTNAME",
           "NODE_ENV",
           "API_ENDPOINT",
-          "API_WS_ENDPOINT",
-        ],
-      },
+          "API_WS_ENDPOINT"
+        ]
+      }
     ],
     "@nuxtjs/vuetify",
     "@nuxtjs/apollo",
@@ -59,37 +59,37 @@ const config: Configuration = {
     [
       "nuxt-validate",
       {
-        lang: "en",
-      },
-    ],
+        lang: "en"
+      }
+    ]
   ],
   sentry: {
     dsn: "https://e9967cc714ae43d6965c8c364e83f49f@sentry.io/1513897",
-    config: {}, // Additional config
+    config: {} // Additional config
   },
   apollo: {
     incldueNodeModules: true,
     clientConfigs: {
-      default: "~/plugins/apolloDefaultConfig.ts",
-    },
+      default: "~/plugins/apolloDefaultConfig.ts"
+    }
   },
   vuetify: {
     materialIcons: false,
     theme: {
-      primary: "#2c303a",
+      primary: "#2c303a"
     },
     customProperties: true,
     iconfont: "mdi",
-    treeShake: !isDev,
+    treeShake: !isDev
   },
   build: {
     transpile: [/^vuetify/],
     plugins: [
-      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/) as any,
-    ],
+      new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/) as any
+    ]
   },
   typescript: {
-    typeCheck: true,
+    typeCheck: true
   },
   auth: {
     strategies: {
@@ -97,10 +97,10 @@ const config: Configuration = {
       auth0: {
         domain: "skyscraper.auth0.com",
         client_id: "Uaz6l2GikGK9BuRoXAK7L7jGPmVNYMSB",
-        audience: "edge.sibyl.vision",
-      },
-    },
-  },
-};
+        audience: "edge.sibyl.vision"
+      }
+    }
+  }
+}
 
-export default config;
+export default config

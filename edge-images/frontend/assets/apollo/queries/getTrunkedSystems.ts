@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 export const TRUNKED_SYSTEMS = gql`
   query trunkedSystems {
     trunkedSystems {
@@ -17,4 +17,4 @@ export const TRUNKED_SYSTEMS = gql`
       id
     }
   }
-`;
+`

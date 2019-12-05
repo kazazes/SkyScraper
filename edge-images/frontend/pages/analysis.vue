@@ -13,34 +13,39 @@
           :scroll-threshold="1"
         >
           <v-tab nuxt to="/analysis/jupyter">
-            <v-icon class="pr-2">mdi-language-python</v-icon>
+            <v-icon class="pr-2">
+              mdi-language-python
+            </v-icon>
             <span class="text-uppercase">Jupyter</span>
           </v-tab>
           <v-tab nuxt to="/analysis/performance">
-            <v-icon class="pr-2">mdi-tune</v-icon>
+            <v-icon class="pr-2">
+              mdi-tune
+            </v-icon>
             <span class="text-uppercase">Performance</span>
           </v-tab>
           <v-tab nuxt to="/analysis/graphql">
-            <v-icon class="pr-2">mdi-graphql</v-icon>
+            <v-icon class="pr-2">
+              mdi-graphql
+            </v-icon>
             <span class="text-uppercase">Graph</span>
           </v-tab>
         </v-tabs>
       </v-flex>
-      <n-child></n-child>
+      <n-child />
     </v-container>
   </v-layout>
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "nuxt-class-component";
+import Vue from "vue"
+import Component from "nuxt-class-component"
 
   @Component({
-    components: {},
+    components: {}
   })
-  export default class Analysis extends Vue {}
+export default class Analysis extends Vue {}
 </script>
-
 
 <style lang="scss">
 </style>

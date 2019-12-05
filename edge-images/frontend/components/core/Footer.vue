@@ -2,17 +2,20 @@
   <v-footer
     id="core-footer"
     absolute
-    height="82">
+    height="82"
+  >
     <div class="footer-items">
       <span
         v-for="link in links"
-        :key="link.name">
+        :key="link.name"
+      >
         <a
           :href="link.Link"
-          class="tertiary--text footer-links">{{ link.name }}</a>
+          class="tertiary--text footer-links"
+        >{{ link.name }}</a>
       </span>
     </div>
-    <v-spacer/>
+    <v-spacer />
     <span class="font-weight-light copyright">
       &copy;
       {{ (new Date()).getFullYear() }}
@@ -27,7 +30,7 @@
 <script>
 export default {
   data: () => ({
-    links: [{ name: 'Home', Link: '/dashboard' }]
+    links: [{ name: "Home", Link: "/dashboard" }]
   })
 }
 </script>

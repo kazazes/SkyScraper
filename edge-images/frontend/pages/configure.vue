@@ -11,37 +11,42 @@
           slider-color="white"
         >
           <v-tab nuxt to="/configure/system" value="true">
-            <v-icon class="pr-2">mdi-plus-box</v-icon>
+            <v-icon class="pr-2">
+              mdi-plus-box
+            </v-icon>
             <span class="text-uppercase">New System</span>
           </v-tab>
           <v-tab nuxt to="/configure/pipelines">
-            <v-icon class="pr-2">mdi-pipe</v-icon>
+            <v-icon class="pr-2">
+              mdi-pipe
+            </v-icon>
             <span class="text-uppercase">Pipelines</span>
           </v-tab>
           <v-tab nuxt to="/configure/admin">
-            <v-icon class="pr-2">mdi-account</v-icon>
+            <v-icon class="pr-2">
+              mdi-account
+            </v-icon>
             <span class="text-uppercase">Account</span>
           </v-tab>
         </v-tabs>
       </v-flex>
-      <n-child></n-child>
+      <n-child />
     </v-container>
   </v-layout>
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "nuxt-class-component";
+import Vue from "vue"
+import Component from "nuxt-class-component"
 
   @Component({
     components: {},
-    data() {
-      return {};
-    },
+    data () {
+      return {}
+    }
   })
-  export default class Configure extends Vue {}
+export default class Configure extends Vue {}
 </script>
-
 
 <style lang="scss">
 </style>

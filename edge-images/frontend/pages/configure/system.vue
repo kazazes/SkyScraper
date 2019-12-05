@@ -9,7 +9,7 @@
           menu-props="auto"
           value="Trunked Voice"
           prepend-icon="mdi-briefcase"
-        ></v-select>
+        />
       </v-flex>
       <Wizard />
     </v-layout>
@@ -17,23 +17,23 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "vue-class-component";
-  import Settings from "~/components/voice/trunked/TrunkedAppSettings.vue";
-  import Wizard from "~/components/voice/trunked/wizard/TrunkedAppWizard.vue";
+import Vue from "vue"
+import Component from "vue-class-component"
+import Settings from "~/components/voice/trunked/TrunkedAppSettings.vue"
+import Wizard from "~/components/voice/trunked/wizard/TrunkedAppWizard.vue"
 
   @Component({
     name: "Trunked",
     components: {
       Settings,
-      Wizard,
+      Wizard
     },
-    data() {
+    data () {
       return {
-        systemType: "Trunked Voice",
-      };
+        systemType: "Trunked Voice"
+      }
     },
-    middleware: ["auth"],
+    middleware: ["auth"]
   })
-  export default class TrunkedPage extends Vue {}
+export default class TrunkedPage extends Vue {}
 </script>

@@ -15,30 +15,33 @@
           slider-color="white"
         >
           <v-tab nuxt to="/data/trunked" value="true">
-            <v-icon class="pr-2">mdi-microphone</v-icon>
+            <v-icon class="pr-2">
+              mdi-microphone
+            </v-icon>
             <span class="text-uppercase">Voice</span>
           </v-tab>
           <v-tab nuxt to="/data/logs">
-            <v-icon class="pr-2">mdi-toolbox</v-icon>
+            <v-icon class="pr-2">
+              mdi-toolbox
+            </v-icon>
             <span class="text-uppercase">Logs</span>
           </v-tab>
         </v-tabs>
       </v-flex>
-      <nuxt-child></nuxt-child>
+      <nuxt-child />
     </v-container>
   </v-layout>
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "vue-class-component";
+import Vue from "vue"
+import Component from "vue-class-component"
 
   @Component({
-    components: {},
+    components: {}
   })
-  export default class Index extends Vue {}
+export default class Index extends Vue {}
 </script>
-
 
 <style lang="scss">
   #core-toolbar {

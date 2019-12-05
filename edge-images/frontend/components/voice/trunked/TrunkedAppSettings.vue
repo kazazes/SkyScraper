@@ -3,13 +3,17 @@
     <v-container fluid grid-list-lg class="theme--light application">
       <v-layout row wrap>
         <v-flex md6 mt-2 offset-md1>
-          <v-select solo :items="configs" item-text="name" item-value="id"></v-select>
+          <v-select solo :items="configs" item-text="name" item-value="id" />
         </v-flex>
         <v-flex md2>
-          <v-btn block color="warning">Revert</v-btn>
+          <v-btn block color="warning">
+            Revert
+          </v-btn>
         </v-flex>
         <v-flex md2>
-          <v-btn block color="info">Save</v-btn>
+          <v-btn block color="info">
+            Save
+          </v-btn>
         </v-flex>
       </v-layout>
     </v-container>
@@ -18,7 +22,9 @@
         <v-flex md12>
           <v-card flat tile style="box-shadow: none">
             <v-card-title>
-              <v-icon left medium>mdi-radio</v-icon>
+              <v-icon left medium>
+                mdi-radio
+              </v-icon>
               <span class="title font-weight-light">Radios</span>
             </v-card-title>
             <v-data-table
@@ -46,17 +52,29 @@
         <v-flex md12>
           <v-card>
             <v-card-title>
-              <v-icon left medium>mdi-city</v-icon>
+              <v-icon left medium>
+                mdi-city
+              </v-icon>
               <span class="title font-weight-light">Systems</span>
             </v-card-title>
             <v-data-table :headers="headers" :items="desserts" class="elevation-1">
               <template slot="items" slot-scope="props">
                 <td>{{ props.item.name }}</td>
-                <td class="text-xs-right">{{ props.item.calories }}</td>
-                <td class="text-xs-right">{{ props.item.fat }}</td>
-                <td class="text-xs-right">{{ props.item.carbs }}</td>
-                <td class="text-xs-right">{{ props.item.protein }}</td>
-                <td class="text-xs-right">{{ props.item.iron }}</td>
+                <td class="text-xs-right">
+                  {{ props.item.calories }}
+                </td>
+                <td class="text-xs-right">
+                  {{ props.item.fat }}
+                </td>
+                <td class="text-xs-right">
+                  {{ props.item.carbs }}
+                </td>
+                <td class="text-xs-right">
+                  {{ props.item.protein }}
+                </td>
+                <td class="text-xs-right">
+                  {{ props.item.iron }}
+                </td>
               </template>
             </v-data-table>
           </v-card>
@@ -67,13 +85,13 @@
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
-  import Component from "vue-class-component";
+import Vue from "vue"
+import Component from "vue-class-component"
 
   @Component({
     name: "TrunkedAppSettings",
     components: {},
-    data() {
+    data () {
       return {
         radios: {
           headers: [
@@ -81,7 +99,7 @@
               text: "Model",
               value: "model",
               align: "left",
-              sortable: false,
+              sortable: false
             },
             { text: "Device String", value: "deviceString" },
             { text: "Gain", value: "gain" },
@@ -90,7 +108,7 @@
             { text: "Rate", value: "rate" },
             { text: "Analog Recorders", value: "analogRecorders" },
             { text: "Digital Recorders", value: "digitalRecorders" },
-            { text: "Modulation", value: "modulation" },
+            { text: "Modulation", value: "modulation" }
           ],
           data: [
             {
@@ -99,9 +117,9 @@
               gain: 30,
               analogRecorders: 3,
               digitalRecorders: 3,
-              deviceString: "bladerf=0",
-            },
-          ],
+              deviceString: "bladerf=0"
+            }
+          ]
         },
 
         headers: [
@@ -109,13 +127,13 @@
             text: "Dessert (100g serving)",
             align: "left",
             sortable: false,
-            value: "name",
+            value: "name"
           },
           { text: "Calories", value: "calories" },
           { text: "Fat (g)", value: "fat" },
           { text: "Carbs (g)", value: "carbs" },
           { text: "Protein (g)", value: "protein" },
-          { text: "Iron (%)", value: "iron" },
+          { text: "Iron (%)", value: "iron" }
         ],
         desserts: [
           {
@@ -125,7 +143,7 @@
             fat: 6.0,
             carbs: 24,
             protein: 4.0,
-            iron: "1%",
+            iron: "1%"
           },
           {
             value: false,
@@ -134,7 +152,7 @@
             fat: 9.0,
             carbs: 37,
             protein: 4.3,
-            iron: "1%",
+            iron: "1%"
           },
           {
             value: false,
@@ -143,7 +161,7 @@
             fat: 16.0,
             carbs: 23,
             protein: 6.0,
-            iron: "7%",
+            iron: "7%"
           },
           {
             value: false,
@@ -152,7 +170,7 @@
             fat: 3.7,
             carbs: 67,
             protein: 4.3,
-            iron: "8%",
+            iron: "8%"
           },
           {
             value: false,
@@ -161,7 +179,7 @@
             fat: 16.0,
             carbs: 49,
             protein: 3.9,
-            iron: "16%",
+            iron: "16%"
           },
           {
             value: false,
@@ -170,7 +188,7 @@
             fat: 0.0,
             carbs: 94,
             protein: 0.0,
-            iron: "0%",
+            iron: "0%"
           },
           {
             value: false,
@@ -179,7 +197,7 @@
             fat: 0.2,
             carbs: 98,
             protein: 0,
-            iron: "2%",
+            iron: "2%"
           },
           {
             value: false,
@@ -188,7 +206,7 @@
             fat: 3.2,
             carbs: 87,
             protein: 6.5,
-            iron: "45%",
+            iron: "45%"
           },
           {
             value: false,
@@ -197,7 +215,7 @@
             fat: 25.0,
             carbs: 51,
             protein: 4.9,
-            iron: "22%",
+            iron: "22%"
           },
           {
             value: false,
@@ -206,7 +224,7 @@
             fat: 26.0,
             carbs: 65,
             protein: 7,
-            iron: "6%",
+            iron: "6%"
           },
           {
             value: false,
@@ -215,7 +233,7 @@
             fat: 9.0,
             carbs: 37,
             protein: 4.3,
-            iron: "1%",
+            iron: "1%"
           },
           {
             value: false,
@@ -224,7 +242,7 @@
             fat: 16.0,
             carbs: 23,
             protein: 6.0,
-            iron: "7%",
+            iron: "7%"
           },
           {
             value: false,
@@ -233,7 +251,7 @@
             fat: 3.7,
             carbs: 67,
             protein: 4.3,
-            iron: "8%",
+            iron: "8%"
           },
           {
             value: false,
@@ -242,7 +260,7 @@
             fat: 16.0,
             carbs: 49,
             protein: 3.9,
-            iron: "16%",
+            iron: "16%"
           },
           {
             value: false,
@@ -251,7 +269,7 @@
             fat: 0.0,
             carbs: 94,
             protein: 0.0,
-            iron: "0%",
+            iron: "0%"
           },
           {
             value: false,
@@ -260,7 +278,7 @@
             fat: 0.2,
             carbs: 98,
             protein: 0,
-            iron: "2%",
+            iron: "2%"
           },
           {
             value: false,
@@ -269,7 +287,7 @@
             fat: 3.2,
             carbs: 87,
             protein: 6.5,
-            iron: "45%",
+            iron: "45%"
           },
           {
             value: false,
@@ -278,7 +296,7 @@
             fat: 25.0,
             carbs: 51,
             protein: 4.9,
-            iron: "22%",
+            iron: "22%"
           },
           {
             value: false,
@@ -287,15 +305,14 @@
             fat: 26.0,
             carbs: 65,
             protein: 7,
-            iron: "6%",
-          },
-        ],
+            iron: "6%"
+          }
+        ]
         // apollo: { trunkedConfigs: { query: trunkedConfigs } }
-      };
-    },
+      }
+    }
   })
-  export default class TrunkedAppSettings extends Vue {
+export default class TrunkedAppSettings extends Vue {
     configs: any[] = [];
-  }
+}
 </script>
-

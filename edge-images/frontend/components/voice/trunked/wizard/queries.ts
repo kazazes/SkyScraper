@@ -1,4 +1,4 @@
-import gql from "graphql-tag";
+import gql from "graphql-tag"
 
 export const trunkedConfigs = gql`
   query {
@@ -54,4 +54,4 @@ export const trunkedConfigs = gql`
       }
     }
   }
-`;
+`

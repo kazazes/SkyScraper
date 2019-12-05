@@ -38,7 +38,7 @@
     "dockerode": "^2.5.8",
     "dotenv-safe": "^8.1.0",
     "geoip-lite": "^1.3.7",
-    "graphql-yoga": "1.18.2",
+    "graphql-yoga": "1.18.3",
     "jwks-rsa": "^1.6.0",
     "koa": "^2.8.1",
     "koa-body": "^4.1.1",

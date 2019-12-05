@@ -2414,10 +2414,10 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/chroma-js@^1.4.2":
-  version "1.4.2"
-  resolved "https://registry.yarnpkg.com/@types/chroma-js/-/chroma-js-1.4.2.tgz#3152c8dedfa8621f1ccaaabb40722a8aca808bcf"
-  integrity sha512-Ni8yCN1vF0yfnfKf5bNrBm+92EdZIX2sUk+A4t4QvO1x/9G04rGyC0nik4i5UcNfx8Q7MhX4XUDcy2nrkKQLFg==
+"@types/chroma-js@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@types/chroma-js/-/chroma-js-1.4.3.tgz#4456e5cb46885a4952324e55a4b6d4064904790c"
+  integrity sha512-m33zg9cRLtuaUSzlbMrr7iLIKNzrD4+M6Unt5+9mCu4BhR5NwnRjVKblINCwzcBXooukIgld8DtEncP8qpvbNg==
 
 "@types/clean-css@*":
   version "4.2.1"

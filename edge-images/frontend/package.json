@@ -10,7 +10,7 @@
     "build": "nuxt-ts build",
     "dev-debug": "node --inspect node_modules/.bin/nuxt-ts",
     "generate": "nuxt-ts generate",
-    "lint": "tslint --project .",
+    "lint": "eslint --ext .ts,.js,.vue .",
     "precommit": "yarn run lint",
     "start": "nuxt-ts start"
   },
@@ -45,7 +45,6 @@
     "http-proxy-middleware": "^0.19.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
-    "newrelic": "^5.6.4",
     "node-sass": "^4.12.0",
     "nuxt": "^2.9.1",
     "nuxt-class-component": "^1.3.0",
@@ -61,26 +60,32 @@
     "vue-native-websocket": "^2.0.13",
     "vue-property-decorator": "^8.1.1",
     "vue-server-renderer": "2.6.10",
-    "vuetify": "^1.5.6"
+    "vuetify": "^1.5.6",
+    "vuex-module-decorators": "^0.11.0"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^0.1.11",
+    "@nuxt/typescript-build": "^0.3.10",
+    "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@types/chroma-js": "^1.4.1",
     "@types/graphql": "^14.2.0",
     "@types/howler": "^2.1.1",
     "@types/http-proxy-middleware": "^0.19.3",
     "@types/lodash": "^4.14.137",
     "@types/papaparse": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
     "@wry/context": "^0.4.4",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-vue": "^6.0.1",
     "lerna": "^3.16.4",
     "nodemon": "^1.19.0",
     "nuxt-property-decorator": "^2.3.0",
-    "prettier": "^1.17.1",
+    "prettier": "^1.19.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "tslint": "^5.19.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.5",
     "vuetify-loader": "^1.3.0"
   }
 }

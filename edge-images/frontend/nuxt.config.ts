@@ -7,13 +7,6 @@ const config: Configuration = {
   /*
    ** Headers of the page
    */
-  meta: {
-    mobileAppIOS: true,
-    theme_color: "#010015",
-    lang: "en",
-    ogSiteName: "SkyScraper Edge",
-    nativeUI: true,
-  },
   head: {
     title: "SkyScraper",
     meta: [

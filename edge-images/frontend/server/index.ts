@@ -1,8 +1,6 @@
 import consola from "consola";
 import express from "express";
 
-require("newrelic");
-
 const { Nuxt, Builder } = require("nuxt");
 const app = express();
 

@@ -1,41 +1,35 @@
-export const state = () => ({
-  edgeHostname: null,
-  fileHostname: null,
-  apiEndpoint: null,
-  wsEndpoint: null,
-});
+import { Module, VuexModule, Mutation, Action } from "vuex-module-decorators";
 
-export const mutations = {
-  setEdgeHostname(state, value) {
-    state.edgeHostname = value;
-  },
-  setFileHostname(state, value) {
-    state.fileHostname = value;
-  },
-  setApiEndpoint(state, value) {
-    state.apiEndpoint = value;
-  },
-  setWsEndpoint(state, value) {
-    state.wsEndpoint = value;
-  },
-};
+@Module({
+  name: "rootstore",
+  stateFactory: true,
+  namespaced: true,
+})
+class RootStore extends VuexModule {
+  edgeHostname = null;
+  fileHostname = null;
+  apiEndpoint = null;
+  wsEndpoint = null;
 
-export const getters = {
-  edgeHostname(state) {
-    return state.edgeHostname;
-  },
-  fileHostname(state) {
-    return state.fileHostname;
-  },
-  apiEndpoint(state) {
-    return state.apiEndpoint;
-  },
-  wsEndpoint(state) {
-    return state.wsEndpoint;
-  },
-};
+  @Mutation
+  setEdgeHostname(value) {
+    this.edgeHostname = value;
+  }
 
-export const actions = {
+  @Mutation
+  setFileHostname(value) {
+    this.fileHostname = value;
+  }
+  @Mutation
+  setApiEndpoint(value) {
+    this.apiEndpoint = value;
+  }
+  @Mutation
+  setWsEndpoint(value) {
+    this.wsEndpoint = value;
+  }
+
+  @Action
   nuxtServerInit({ commit, state }) {
     commit("setEdgeHostname", process.env.EDGE_HOSTNAME);
     commit("setFileHostname", process.env.FILE_HOSTNAME);
@@ -45,5 +39,5 @@ export const actions = {
       process.env.API_WS_ENDPOINT || `wss://${process.env.EDGE_HOSTNAME}/api/ws`
     );
     console.log(JSON.stringify(state, null, 2));
-  },
-};
+  }
+}

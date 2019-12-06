@@ -45,7 +45,7 @@
     "koa-jwt": "^3.6.0",
     "koa-logger": "^3.2.1",
     "koa-mount": "^4.0.0",
-    "koa-ping-healthcheck": "^1.1.0",
+    "koa-ping-healthcheck": "^1.2.0",
     "koa-route": "^3.2.0",
     "koa-router": "^7.4.0",
     "koa-websocket": "^6.0.0",

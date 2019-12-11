@@ -13,6 +13,8 @@ RUN chmod 600 /root/.ssh/id_rsa && eval $(ssh-agent -s) \
   && cat /root/.ssh/id_rsa | ssh-add - \
   && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
+ARG CACHEBUST=3
+ENV EDGE_HOSTNAME=skyscraper
 RUN git clone git@github.com:SkyScraperAI/skyscraper-config.git config
 
 ENTRYPOINT ["/config/fetch-all.sh"]

@@ -18,5 +18,5 @@ ENV NODE_ENV=production
 COPY . /usr/src/app
 RUN yarn build
 
-EXPOSE 3000
+EXPOSE 3000 9090
 CMD [ "yarn", "start" ]

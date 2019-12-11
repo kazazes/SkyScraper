@@ -4,7 +4,7 @@ volumes:
 services:
   prisma-migrate:
     build:
-      context: edge-images/prisma-migrate
+      context: ./prisma-migrate
       dockerfile: Dockerfile
     depends_on:
       - prisma
@@ -38,12 +38,13 @@ services:
       POSTGRES_PASSWORD: prisma
       PGDATA: /data/postgres/pgdata
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   jupyter:
     restart: always
     build:
       dockerfile: Dockerfile
-      context: edge-images/jupyter
+      context: ./jupyter
     environment:
       - CHOWN_HOME=yes
       - GRANT_SUDO=yes
@@ -54,7 +55,8 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     command: "start-notebook.sh \
       --NotebookApp.base_url=/jupyter \
       --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
@@ -66,7 +68,7 @@ services:
       io.balena.features.dbus: "1"
     build:
       dockerfile: Dockerfile
-      context: edge-images/wifi-connect
+      context: ./wifi-connect
     environment:
       - PORTAL_PASSPHRASE=$$craping$$kies
       - PORTAL_SSID=SkyScraper
@@ -74,25 +76,28 @@ services:
   mqtt:
     build:
       dockerfile: Dockerfile
-      context: edge-images/mqtt
+      context: ./mqtt
     user: root
     ports:
       - "1883:1883"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   config:
     build:
       dockerfile: Dockerfile
-      context: edge-images/config
+      context: ./config
     restart: "on-failure"
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   backend:
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     build:
       dockerfile: Dockerfile
-      context: edge-images/backend
+      context: ./backend
     ports:
       - "4000:4000"
     environment:
@@ -110,6 +115,8 @@ services:
       - REDIS_HOST=redis
       - ENABLE_TRANSCRIPTION=1
       - DOCKER_SOCK=/var/run/balena.sock
+      - EDGE_HOSTNAME=127.0.0.1
+      - GOOGLE_APPLICATION_CREDENTIALS=/data/certs/gcp.json
     depends_on:
       - redis
       - mqtt
@@ -134,7 +141,7 @@ services:
   nginx:
     build:
       dockerfile: Dockerfile
-      context: edge-images/nginx
+      context: ./nginx
     depends_on:
       - frontend
       - nodered
@@ -146,13 +153,15 @@ services:
       - "443:443"
     restart: always
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
   nodered:
     build:
       dockerfile: Dockerfile
-      context: edge-images/node-red
+      context: ./node-red
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     ports:
       - "1880:1880"
     environment:
@@ -161,7 +170,7 @@ services:
   ngrok:
     build:
       dockerfile: Dockerfile
-      context: edge-images/ngrok
+      context: ./ngrok
     privileged: false
     depends_on:
       - nginx
@@ -173,9 +182,10 @@ services:
   frontend:
     build:
       dockerfile: Dockerfile
-      context: edge-images/frontend
+      context: ./frontend
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     ports:
       - "3000:3000"
     environment:
@@ -184,7 +194,7 @@ services:
   redis:
     build:
       dockerfile: Dockerfile
-      context: edge-images/redis
+      context: ./redis
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"
@@ -193,12 +203,13 @@ services:
   trunk-recorder:
     build:
       dockerfile: Dockerfile
-      context: edge-images/trunk-recorder
+      context: ./trunk-recorder
     privileged: true
     volumes:
-      - "resin-data:/data"
+      - "./data/:/data"
+      - "/var/run/docker.sock:/var/run/balena.sock"
     environment:
-      - RECORDER_CONF=sites/SF-PK/config.json
+      - RECORDER_CONF=sites/US/FL/PB/config.json
       - SHORTNAME=SFPD
       - MQTT_PASSWORD=1
       - MQTT_PORT=1883

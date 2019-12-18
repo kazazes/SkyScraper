@@ -35,7 +35,7 @@
     "archiver": "^3.1.1",
     "cheerio": "^1.0.0-rc.3",
     "cheerio-tableparser": "^1.0.1",
-    "consola": "^2.10.1",
+    "consola": "^2.11.1",
     "dotenv": "^8.1.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",

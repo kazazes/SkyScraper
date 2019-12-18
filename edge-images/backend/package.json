@@ -33,7 +33,7 @@
     "@koa/cors": "^3.0.0",
     "@sentry/node": "5.6.2",
     "async-mqtt": "^2.4.2",
-    "consola": "^2.10.1",
+    "consola": "^2.11.1",
     "docker-loghose": "^1.6.5",
     "dockerode": "^2.5.8",
     "dotenv-safe": "^8.1.0",

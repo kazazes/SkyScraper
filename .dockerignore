@@ -7,7 +7,7 @@ dev-images
 .vscode
 base-images/
 Dockerfiles/
-host-images/
+host-images
 scripts/
 
 # Created by https://www.gitignore.io/api/vue,node,vuejs,macos,python,virtualenv,intellij+all,visualstudiocode

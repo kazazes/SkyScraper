@@ -62,7 +62,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
 
-RUN lz4 -d /usr/bin/*.lz4 && rm /usr/bin/*.lz4
+RUN lz4 -m -d /usr/bin/*.lz4 && rm /usr/bin/*.lz4
 
 WORKDIR /skyscraper/build/trunk-recorder/
 

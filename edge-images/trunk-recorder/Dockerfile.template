@@ -3,7 +3,7 @@ FROM pckzs/pybombs
 ENV ARCH=amd64
 
 # Static ffmpeg binaries from https://www.johnvansickle.com/ffmpeg/
-COPY ./ffmpeg-4.1.2-$ARCH-static/* /usr/bin/
+COPY ./ffmpeg-4.1.2-$ARCH-static/*.lz4 /usr/bin/
 
 COPY ./gnuradio-runtime.conf /root/.gnuradio/config.conf
 
@@ -49,6 +49,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   build-essential \
   libass-dev \
   libfreetype6-dev \
+  liblz4-tool \
   libtool \
   pkg-config \
   texinfo \
@@ -60,6 +61,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
   && rm -rf /var/lib/apt/lists/* \
   && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen \
   && locale-gen
+
+RUN lz4 -d /usr/bin/*.lz4 && rm /usr/bin/*.lz4
 
 WORKDIR /skyscraper/build/trunk-recorder/
 

@@ -63,7 +63,7 @@
     "vuex-module-decorators": "^0.11.0"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^0.3.10",
+    "@nuxt/typescript-build": "^0.5.5",
     "@nuxtjs/eslint-config-typescript": "^1.0.0",
     "@types/chroma-js": "^1.4.1",
     "@types/graphql": "^14.2.0",

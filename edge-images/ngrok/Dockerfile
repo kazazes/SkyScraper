@@ -16,6 +16,7 @@ RUN architecture="" && \
   i686)   architecture="386" ;; \
   x86_64) architecture="amd64" ;; \
   arm)    dpkg --print-architecture | grep -q "arm64" && architecture="arm64" || architecture="arm" ;; \
+  armv7l) architecture="arm" ;; \
   esac \
   && curl -Lo /ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-${architecture}.zip \
   && unzip -o /ngrok.zip -d /bin \

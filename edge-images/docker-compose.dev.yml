@@ -5,7 +5,7 @@ services:
   prisma-migrate:
     build:
       context: ./prisma-migrate
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
     depends_on:
       - prisma
       - postgres
@@ -40,42 +40,42 @@ services:
     volumes:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
-  jupyter:
-    restart: always
-    build:
-      dockerfile: Dockerfile
-      context: ./jupyter
-    environment:
-      - CHOWN_HOME=yes
-      - GRANT_SUDO=yes
-      - JUPYTER_ENABLE_LAB=yes
-      - PYTHONPATH=/usr/lib/python3/dist-packages
-    user: root
-    privileged: true
-    ports:
-      - "8888:8888"
-    volumes:
-      - "./data/:/data"
+  # jupyter:
+  #   restart: always
+  #   build:
+  #     dockerfile: Dockerfile.template
+  #     context: ./jupyter
+  #   environment:
+  #     - CHOWN_HOME=yes
+  #     - GRANT_SUDO=yes
+  #     - JUPYTER_ENABLE_LAB=yes
+  #     - PYTHONPATH=/usr/lib/python3/dist-packages
+  #   user: root
+  #   privileged: true
+  #   ports:
+  #     - "8888:8888"
+  #   volumes:
+  #     - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
-    command: "start-notebook.sh \
-      --NotebookApp.base_url=/jupyter \
-      --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
-  wifi:
-    privileged: true
-    pid: host
-    network_mode: host
-    labels:
-      io.balena.features.dbus: "1"
-    build:
-      dockerfile: Dockerfile
-      context: ./wifi-connect
-    environment:
-      - PORTAL_PASSPHRASE=$$craping$$kies
-      - PORTAL_SSID=SkyScraper
-      - PORTAL_LISTENING_PORT=8081
+  #   command: "start-notebook.sh \
+  #     --NotebookApp.base_url=/jupyter \
+  #     --NotebookApp.password=sha1:301690a52fdc:225879e4ae5ef0a2a0d85fc2b93bc648949dd113"
+  # wifi:
+  #   privileged: true
+  #   pid: host
+  #   network_mode: host
+  #   labels:
+  #     io.balena.features.dbus: "1"
+  #   build:
+  #     dockerfile: Dockerfile.template
+  #     context: ./wifi-connect
+  #   environment:
+  #     - PORTAL_PASSPHRASE=$$craping$$kies
+  #     - PORTAL_SSID=SkyScraper
+  #     - PORTAL_LISTENING_PORT=8081
   mqtt:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./mqtt
     user: root
     ports:
@@ -85,18 +85,20 @@ services:
       - "/var/run/docker.sock:/var/run/balena.sock"
   config:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./config
     restart: "on-failure"
     volumes:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
+    labels:
+      io.balena.features.supervisor-api: true
   backend:
     volumes:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./backend
     ports:
       - "4000:4000"
@@ -140,14 +142,13 @@ services:
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
   nginx:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./nginx
     depends_on:
       - frontend
       - nodered
       - netdata
       - backend
-      - jupyter
     ports:
       - "8080:8080"
       - "443:443"
@@ -157,7 +158,7 @@ services:
       - "/var/run/docker.sock:/var/run/balena.sock"
   nodered:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./node-red
     volumes:
       - "./data/:/data"
@@ -169,7 +170,7 @@ services:
     restart: always
   ngrok:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./ngrok
     privileged: false
     depends_on:
@@ -181,7 +182,7 @@ services:
       - NGROK_PROTOCOL=TLS
   frontend:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./frontend
     volumes:
       - "./data/:/data"
@@ -193,7 +194,7 @@ services:
     restart: always
   redis:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./redis
     command: redis-server --appendonly yes
     ports:
@@ -202,7 +203,7 @@ services:
     privileged: true
   trunk-recorder:
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.template
       context: ./trunk-recorder
     privileged: true
     volumes:
@@ -215,4 +216,5 @@ services:
       - MQTT_PORT=1883
       - MQTT_USERNAME=edge
       - MQTT_HOST=mqtt
+      - TR_DISABLED=1
     restart: always

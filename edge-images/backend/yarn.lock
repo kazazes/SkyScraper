@@ -2938,10 +2938,10 @@ koa-mount@^4.0.0:
     debug "^4.0.1"
     koa-compose "^4.1.0"
 
-koa-ping-healthcheck@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/koa-ping-healthcheck/-/koa-ping-healthcheck-1.1.0.tgz#429ce36993ec0231e857e4ff055e637114a5f8c6"
-  integrity sha512-y78AVXDwAwJU3NDCYjz2uTzQgJI5Ed5EfCoXfNQEWLuVCl+eB+rybuD6czuTXFXMQ3IQ1TEXeSvOg+cn8UdeNQ==
+koa-ping-healthcheck@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/koa-ping-healthcheck/-/koa-ping-healthcheck-1.2.0.tgz#16413898fdc4fe9e0b9be5b4b900e9fd4fca8c67"
+  integrity sha512-i4Wn5QeulfroHpWTxz1ydfYjdWhvFrALKBuRwaTwpoYT5MSmdNzI+W2npCbfD7Horvy59LLiRSQ4U87fav5QZw==
   dependencies:
     app-root-path "^2.1.0"
     node-df "^0.1.4"

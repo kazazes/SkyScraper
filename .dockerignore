@@ -9,6 +9,8 @@ base-images/
 Dockerfiles/
 host-images
 scripts/
+.venv
+venv
 
 # Created by https://www.gitignore.io/api/vue,node,vuejs,macos,python,virtualenv,intellij+all,visualstudiocode
 # Edit at https://www.gitignore.io/?templates=vue,node,vuejs,macos,python,virtualenv,intellij+all,visualstudiocode

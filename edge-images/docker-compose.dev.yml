@@ -4,8 +4,8 @@ volumes:
 services:
   prisma-migrate:
     build:
-      context: ./edge-images/prisma-migrate
-      dockerfile: Dockerfile
+      context: ./prisma-migrate
+      dockerfile: Dockerfile.template
     depends_on:
       - prisma
       - postgres
@@ -43,8 +43,8 @@ services:
   # jupyter:
   #   restart: always
   #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./edge-images/jupyter
+  #     dockerfile: Dockerfile.template
+  #     context: ./jupyter
   #   environment:
   #     - CHOWN_HOME=yes
   #     - GRANT_SUDO=yes
@@ -67,16 +67,16 @@ services:
   #   labels:
   #     io.balena.features.dbus: "1"
   #   build:
-  #     dockerfile: Dockerfile
-  #     context: ./edge-images/wifi-connect
+  #     dockerfile: Dockerfile.template
+  #     context: ./wifi-connect
   #   environment:
   #     - PORTAL_PASSPHRASE=$$craping$$kies
   #     - PORTAL_SSID=SkyScraper
   #     - PORTAL_LISTENING_PORT=8081
   mqtt:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/mqtt
+      dockerfile: Dockerfile.template
+      context: ./mqtt
     user: root
     ports:
       - "1883:1883"
@@ -85,8 +85,8 @@ services:
       - "/var/run/docker.sock:/var/run/balena.sock"
   config:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/config
+      dockerfile: Dockerfile.template
+      context: ./config
     restart: "on-failure"
     volumes:
       - "./data/:/data"
@@ -98,8 +98,8 @@ services:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/backend
+      dockerfile: Dockerfile.template
+      context: ./backend
     ports:
       - "4000:4000"
     environment:
@@ -142,8 +142,8 @@ services:
       - DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
   nginx:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/nginx
+      dockerfile: Dockerfile.template
+      context: ./nginx
     depends_on:
       - frontend
       - nodered
@@ -158,8 +158,8 @@ services:
       - "/var/run/docker.sock:/var/run/balena.sock"
   nodered:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/node-red
+      dockerfile: Dockerfile.template
+      context: ./node-red
     volumes:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
@@ -170,8 +170,8 @@ services:
     restart: always
   ngrok:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/ngrok
+      dockerfile: Dockerfile.template
+      context: ./ngrok
     privileged: false
     depends_on:
       - nginx
@@ -182,8 +182,8 @@ services:
       - NGROK_PROTOCOL=TLS
   frontend:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/frontend
+      dockerfile: Dockerfile.template
+      context: ./frontend
     volumes:
       - "./data/:/data"
       - "/var/run/docker.sock:/var/run/balena.sock"
@@ -194,8 +194,8 @@ services:
     restart: always
   redis:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/redis
+      dockerfile: Dockerfile.template
+      context: ./redis
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"
@@ -203,8 +203,8 @@ services:
     privileged: true
   trunk-recorder:
     build:
-      dockerfile: Dockerfile
-      context: ./edge-images/trunk-recorder
+      dockerfile: Dockerfile.template
+      context: ./trunk-recorder
     privileged: true
     volumes:
       - "./data/:/data"

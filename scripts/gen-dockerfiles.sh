@@ -57,7 +57,7 @@ generate_base_dockerfile() {
 }
 
 generate_dev_compose() {
-    cd $PROJECT_DIR
+    cd $PROJECT_DIR/edge-images
     cp docker-compose.yml docker-compose.dev.yml
     sed -i -e 's/resin-data:\/data/.\/data\/:\/data/' docker-compose.dev.yml
     sed -i -e 's/\data\/:\/data/\data\/:\/data"\n      - "\/var\/run\/docker.sock:\/var\/run\/balena.sock/' docker-compose.dev.yml

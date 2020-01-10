@@ -18,7 +18,7 @@
     retry-request "^4.0.0"
     teeny-request "^5.2.1"
 
-"@google-cloud/common@^2.0.0", "@google-cloud/common@^2.1.1":
+"@google-cloud/common@^2.0.0", "@google-cloud/common@^2.0.1", "@google-cloud/common@^2.1.1":
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-2.2.2.tgz#bac80e32f860cee64f02b6ab218264990e64c715"
   integrity sha512-AgMdDgLeYlEG17tXtMCowE7mplm907pcugtfJYYAp06HNe9RDnunUIY5KMnn9yikYl7NXNofARC+hwG77Zsa4g==
@@ -33,25 +33,10 @@
     retry-request "^4.0.0"
     teeny-request "^5.2.1"
 
-"@google-cloud/common@^2.0.1":
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-2.1.2.tgz#cefab7522d652d4ee48ab4719e2fe2d6c117db4c"
-  integrity sha512-VAjWRrTEgcGujj/MgTTAtjjzeDoQqs/FDT6DG7004QFZoJsSwBmx2vGpI5TJmCuxLWvhEc0Xs5AMOvhgt7FLSw==
-  dependencies:
-    "@google-cloud/projectify" "^1.0.0"
-    "@google-cloud/promisify" "^1.0.0"
-    arrify "^2.0.0"
-    duplexify "^3.6.0"
-    ent "^2.2.0"
-    extend "^3.0.2"
-    google-auth-library "^5.0.0"
-    retry-request "^4.0.0"
-    teeny-request "^5.2.1"
-
-"@google-cloud/debug-agent@^4.0.2":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@google-cloud/debug-agent/-/debug-agent-4.0.3.tgz#7592703ee904c5814b7051e54ba80113cd0bec7e"
-  integrity sha512-hjdLYvfcvxUSpKdLewPmFeiEYHVj4c8saPiofKpG7sCo5Xmb1ilMogA6FKzpDm51PF6f5jrmewFwzoA7RVQ6MQ==
+"@google-cloud/debug-agent@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/debug-agent/-/debug-agent-4.2.1.tgz#b6340b17dfe783b43dfd68455e9d9f554da11a36"
+  integrity sha512-ZMlbpFgNbRn5Etu19Gf7Wtgx2Gn9wJ9uCFRwebpj8KJIN3vxyx+QR9jzoFsujgjtbKTQR75cVedL4N/CHsSNIw==
   dependencies:
     "@google-cloud/common" "^2.0.0"
     "@sindresorhus/is" "^1.0.0"
@@ -60,10 +45,10 @@
     console-log-level "^1.4.0"
     extend "^3.0.2"
     findit2 "^2.2.3"
-    gcp-metadata "^2.0.0"
+    gcp-metadata "^3.0.0"
     lodash.pickby "^4.6.0"
     p-limit "^2.2.0"
-    semver "^6.0.0"
+    semver "^7.0.0"
     source-map "^0.6.1"
     split "^1.0.0"
 
@@ -2053,14 +2038,6 @@ gaxios@^2.0.0, gaxios@^2.0.1:
     extend "^3.0.2"
     https-proxy-agent "^2.2.1"
     node-fetch "^2.3.0"
-
-gcp-metadata@^2.0.0:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/gcp-metadata/-/gcp-metadata-2.0.4.tgz#ed5e11b1ab463a111f904b777bc6fd65acd0d1c5"
-  integrity sha512-p1lXhJvcKvJHWfQXhkd4Za1kyXRsGZA0JH7Cjs07W9hrg84d/j5tqQhbGewlSLx9gNyuQUid69uLux48YbggLg==
-  dependencies:
-    gaxios "^2.0.1"
-    json-bigint "^0.3.0"
 
 gcp-metadata@^3.0.0:
   version "3.0.0"
@@ -4070,6 +4047,11 @@ semver@^6.0.0, semver@^6.2.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+semver@^7.0.0:
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-7.1.0.tgz#e5870a302d6929a86a967c346e699e19154e38e0"
+  integrity sha512-4P8Vc43MxQL6UKqSiEnf0jZNYx545R9W1HwXP6p65paPp86AUJiafZ8XG81hAbcldKMCUIbeykUTVYG19LB7Cw==
 
 send@0.16.2:
   version "0.16.2"

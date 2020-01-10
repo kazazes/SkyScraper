@@ -27,7 +27,7 @@
     "@nuxtjs/localforage": "^1.0.2",
     "@nuxtjs/pwa": "^3.0.0-beta.16",
     "@nuxtjs/robots": "^2.4.0",
-    "@nuxtjs/vuetify": "^0.5.7",
+    "@nuxtjs/vuetify": "^1.9.1",
     "@nymdev/health-check": "^0.1.3",
     "@saeris/vue-spinners": "^1.0.8",
     "apollo-cache-persist": "^0.1.1",

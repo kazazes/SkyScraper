@@ -1,6 +1,0 @@
-dist
-live_view
-apify_storage
-node_modules
-*.log
-data/*/states

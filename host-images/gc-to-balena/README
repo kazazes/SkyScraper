@@ -1,4 +1,0 @@
-### Environment
-`BALENA_TOKEN`
-
-Mount Docker sock and the git repo to /workspace

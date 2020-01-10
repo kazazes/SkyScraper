@@ -1,3 +1,6 @@
 [submodule "edge-images"]
 	path = edge-images
 	url = git@github.com:SkyScraperAI/skyscraper-edge.git
+[submodule "host-images"]
+	path = host-images
+	url = git@github.com:SkyScraperAI/skyscraper-cloud.git

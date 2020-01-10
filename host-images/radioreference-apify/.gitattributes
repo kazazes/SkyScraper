@@ -1,3 +1,0 @@
-data/08-23-2019/systems.json filter=lfs diff=lfs merge=lfs -text
-data/08-23-2019/sites.json filter=lfs diff=lfs merge=lfs -text
-data/08-23-2019/08-23-2019.zip filter=lfs diff=lfs merge=lfs -text

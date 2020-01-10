@@ -1,0 +1,3 @@
+[submodule "edge-images"]
+	path = edge-images
+	url = git@github.com:SkyScraperAI/skyscraper-edge.git

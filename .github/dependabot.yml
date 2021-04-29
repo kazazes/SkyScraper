@@ -1,0 +1,26 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/edge-images/backend"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  target-branch: develop
+- package-ecosystem: npm
+  directory: "/edge-images/frontend"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  target-branch: develop
+- package-ecosystem: npm
+  directory: "/edge-images/prisma-migrate"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  target-branch: develop
+- package-ecosystem: npm
+  directory: "/host-images/radioreference-apify"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 99
+  target-branch: develop
